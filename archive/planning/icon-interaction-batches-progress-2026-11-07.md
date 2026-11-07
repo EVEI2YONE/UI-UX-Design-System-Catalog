@@ -10,7 +10,7 @@
 | --- | --- | --- | --- | --- |
 | B01 Icon semantics and controls | CKG-01–03 | **Documentation committed; verification incomplete** | `foundation.icon-semantics`, `component.button` | Collected 2026-11-07 |
 | B02 Anatomy, event ownership, coordination | CKG-04, 06–08 | **Documentation committed; verification incomplete** | `architecture.component-contracts` | Collected 2026-11-07 |
-| B03 Icon state, focus, sequential workflows | CKG-09–12 | Not started | `pattern.interaction-recovery`, task flows | Required before B03 |
+| B03 Icon state, focus, sequential workflows | CKG-09–12 | **Documentation committed; verification incomplete** | `pattern.interaction-recovery`, `pattern.task-flows` | Collected 2026-11-07 |
 | B04 Action grouping and effort metrics | CKG-13–14 | Not started | `pattern.advanced-interactions`, UX measurement | Required before B04 |
 | B05 Utility-first styling and anti-duplication | CKG-15–17 | Not started | styling and architecture owners | Required before B05 |
 | B06 Consistency, tests and retrieval | CKG-05, 18–19 | Not started | `governance.quality`, registry/tests | Required before B06 |
@@ -50,3 +50,13 @@ Inspect actual Button, Field, Dialog, Select, Checkbox, navigation/menu patterns
 - **Manual/browser/keyboard/AT/touch/RTL testing:** **NOT VERIFIED**; the catalog remains `proposed`, owner `unassigned`, review date null. No target UI was changed.
 - **PR status:** no PR opened, per user request. Shared branch continues to B03; final PR after B06.
 - **B03 starting context:** Reinspect current `pattern.interaction-recovery`, `pattern.task-flows`, `foundation.icon-semantics`, `architecture.component-contracts` and relevant WAI-ARIA APG focus guidance; recheck main/branch divergence and available tests before drafting event-to-icon transitions, focus continuity, spatial behavior and sequential task controller.
+
+## B03 — completion record, 2026-11-07
+
+- **Pre-edit context gate:** [B03 context ledger](icon-interaction-b03-context-2026-11-07.md) records fixed main SHA `00df3f2055396e586fbb5ffa07e4a80dc8312e8e`, reviewed canonical sources, Little Wins B06–B08 motivating knowledge, overlap/gap decisions and evidence limits. The shared branch retained B01/B02 changes; no catalog PR was opened.
+- **Disposition:** CKG-09 and CKG-10 extend existing `pattern.interaction-recovery`; CKG-11 and CKG-12 extend existing `pattern.task-flows`. These are **incomplete reusable decision contracts**, not absent concepts or production components.
+- **Canonical additions:** icon/label/action status matrix across pending, confirmed, failed, uncertain and changed-permission states; focus on row removal and modal close; guardrails for stable action placement, context preservation, conditional next eligible item and loaded-subset exhaustion. No invented app mutation API or automatic approval.
+- **Files changed:** `patterns/interaction-states-and-recovery.md`, `patterns/task-flows-and-information-architecture.md`, `catalog/index.json`, `patterns/README.md`, `README.md`, `AGENTS.md`, `CHANGELOG.md`, `tests/test_sequential_focus_knowledge.py`, B03 context and this ledger.
+- **Evidence:** B03 canonical pages, registry aliases, progress and tests were written through the GitHub connector. **Automated validator and Python tests NOT RUN**; the catalog workflow triggers on PR or push to main, and no PR exists yet. Actual browser/keyboard/AT/touch/performance or user task outcome improvements **NOT VERIFIED**.
+- **Next context gate B04:** refresh main and branch SHAs, inspect `pattern.advanced-interactions`, `guidance.ux-measurement`, `pattern.task-flows`, `architecture.component-contracts`, existing search aliases, CI/tests and Little Wins B06/B07. Audit existing action grouping and metric definitions before extending; no duplicate canonical concept without a distinct reusable need.
+- **PR status:** deferred until completion of B06 as requested.
