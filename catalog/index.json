@@ -255,7 +255,9 @@
         "pattern.navigation",
         "pattern.task-flows",
         "guidance.accessibility",
-        "governance.quality"
+        "governance.quality",
+        "pattern.authentication-lifecycle",
+        "guidance.privacy-trust"
       ],
       "depends_on": [
         "pattern.task-flows"
@@ -284,7 +286,9 @@
         "retry",
         "network timeout",
         "partial failure",
-        "destructive confirmation"
+        "destructive confirmation",
+        "sync uncertainty",
+        "saved locally versus synced"
       ],
       "domains": [
         "interaction",
@@ -305,7 +309,9 @@
         "architecture.component-contracts",
         "guidance.accessibility",
         "pattern.task-flows",
-        "pattern.service-recovery"
+        "pattern.service-recovery",
+        "pattern.offline-sync",
+        "pattern.authentication-lifecycle"
       ],
       "depends_on": [
         "architecture.component-contracts"
@@ -353,7 +359,8 @@
       "related": [
         "architecture.component-contracts",
         "pattern.interaction-recovery",
-        "guidance.internationalization"
+        "guidance.internationalization",
+        "pattern.authentication-lifecycle"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -808,7 +815,9 @@
         "component.checkbox",
         "component.button",
         "guidance.content-design",
-        "pattern.service-recovery"
+        "pattern.service-recovery",
+        "pattern.offline-sync",
+        "pattern.authentication-lifecycle"
       ],
       "depends_on": [
         "architecture.component-contracts",
@@ -951,7 +960,9 @@
         "status banner",
         "toast notification",
         "success message",
-        "inline feedback"
+        "inline feedback",
+        "transient status",
+        "in-app feedback"
       ],
       "domains": [
         "patterns",
@@ -968,7 +979,8 @@
       "related": [
         "pattern.interaction-recovery",
         "component.field",
-        "component.dialog"
+        "component.dialog",
+        "pattern.notifications-attention"
       ],
       "depends_on": [
         "guidance.accessibility"
@@ -1135,7 +1147,9 @@
         "pattern.search-filter",
         "pattern.service-recovery",
         "guidance.internationalization",
-        "guidance.accessibility"
+        "guidance.accessibility",
+        "guidance.privacy-trust",
+        "pattern.notifications-attention"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -1180,7 +1194,189 @@
         "pattern.forms",
         "pattern.feedback",
         "guidance.content-design",
-        "guidance.ux-measurement"
+        "guidance.ux-measurement",
+        "pattern.offline-sync",
+        "pattern.authentication-lifecycle"
+      ],
+      "depends_on": [
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.privacy-trust",
+      "title": "Privacy, consent and trustworthy UX",
+      "path": "guidance/privacy-consent-and-trust.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Privacy-by-design UX, meaningful choices, dark-pattern avoidance, and truthful data/deletion states.",
+      "aliases": [
+        "privacy UX",
+        "privacy by design",
+        "consent UX",
+        "ethical UX",
+        "trustworthy defaults",
+        "dark patterns",
+        "data minimization",
+        "data deletion",
+        "permission prompt"
+      ],
+      "domains": [
+        "privacy",
+        "trust",
+        "inclusive-design"
+      ],
+      "use_when": [
+        "designing personal-data collection and permission requests",
+        "reviewing consent and preference flows",
+        "designing trustworthy deletion and privacy settings"
+      ],
+      "avoid_when": [
+        "treating design copy as legal compliance",
+        "using deceptive prominence to obtain optional consent"
+      ],
+      "related": [
+        "guidance.content-design",
+        "pattern.authentication-lifecycle",
+        "pattern.notifications-attention",
+        "guidance.accessibility",
+        "pattern.service-recovery"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.authentication-lifecycle",
+      "title": "Authentication and account lifecycle",
+      "path": "patterns/authentication-and-account-lifecycle.md",
+      "layer": "experiences",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Accessible sign-in, passkeys, MFA, account recovery, session expiry, reauthentication and sign-out.",
+      "aliases": [
+        "authentication UX",
+        "sign in",
+        "passkeys",
+        "MFA",
+        "two factor",
+        "account recovery",
+        "session expiry",
+        "reauthentication",
+        "account deletion",
+        "sign out"
+      ],
+      "domains": [
+        "authentication",
+        "account-lifecycle",
+        "security-ux"
+      ],
+      "use_when": [
+        "designing sign in and reauthentication journeys",
+        "handling lost credentials and account recovery",
+        "designing session expiration with safe task return"
+      ],
+      "avoid_when": [
+        "treating client side login screens as security enforcement",
+        "requiring inaccessible cognitive puzzles with no applicable alternative"
+      ],
+      "related": [
+        "pattern.role-aware-workspaces",
+        "pattern.forms",
+        "pattern.interaction-recovery",
+        "guidance.privacy-trust",
+        "pattern.offline-sync"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.notifications-attention",
+      "title": "Notifications and attention management",
+      "path": "patterns/notifications-and-attention.md",
+      "layer": "patterns",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Event relevance, urgency, delivery channel, user preferences, deduplication and sensitive notifications.",
+      "aliases": [
+        "push notifications",
+        "notification preferences",
+        "notification fatigue",
+        "notification inbox",
+        "alert fatigue",
+        "notification permission",
+        "digest",
+        "attention management"
+      ],
+      "domains": [
+        "notifications",
+        "attention",
+        "communication"
+      ],
+      "use_when": [
+        "designing in app and cross channel notification rules",
+        "reviewing opt in and notification frequency",
+        "handling urgent and routine event delivery"
+      ],
+      "avoid_when": [
+        "using push to replace critical in context feedback",
+        "manufacturing urgency for engagement"
+      ],
+      "related": [
+        "pattern.feedback",
+        "guidance.privacy-trust",
+        "pattern.service-recovery",
+        "guidance.content-design",
+        "pattern.authentication-lifecycle"
+      ],
+      "depends_on": [
+        "pattern.feedback"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.offline-sync",
+      "title": "Offline work, synchronization and conflict recovery",
+      "path": "patterns/offline-sync-and-conflicts.md",
+      "layer": "experiences",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Local-versus-remote saved state, queues, reconnect, duplicate-safe retries, concurrent edits and conflict recovery.",
+      "aliases": [
+        "offline first",
+        "offline UX",
+        "background sync",
+        "sync conflict",
+        "conflict resolution",
+        "local draft",
+        "queued changes",
+        "unsynced data",
+        "reconnect"
+      ],
+      "domains": [
+        "offline",
+        "synchronization",
+        "resilience"
+      ],
+      "use_when": [
+        "designing offline edit and deferred synchronization",
+        "handling concurrent changes and conflicting versions",
+        "showing local saved versus remote synced status"
+      ],
+      "avoid_when": [
+        "claiming background sync is guaranteed on unsupported browsers",
+        "automatically retrying non idempotent operations without status checks"
+      ],
+      "related": [
+        "pattern.interaction-recovery",
+        "pattern.forms",
+        "pattern.service-recovery",
+        "pattern.authentication-lifecycle",
+        "guidance.privacy-trust"
       ],
       "depends_on": [
         "pattern.interaction-recovery"
