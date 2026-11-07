@@ -40,3 +40,43 @@ Allow long labels/errors to wrap and form columns to collapse without changing r
 **Canonical ID:** `pattern.forms` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** consolidate repeated field/submit compositions while keeping task policy local. Documentation-only.
 
 Related: [task flows](task-flows-and-information-architecture.md), [recovery](interaction-states-and-recovery.md), [accessibility](../guidance/accessibility.md), [measurement](../guidance/ux-measurement.md). Standards: [WCAG 2.2](../governance/references.md) and native platform semantics where applicable.
+
+## Batch 8 extension — complex forms and data entry
+
+### Plan the input before composing fields
+
+Start from a user task, the minimum information truly needed and why each answer is required. Avoid collecting information simply because a database column exists. Separate **optional**, **required**, **conditional**, **prefilled**, and **review-only** information; explain unknowns and consent before asking for sensitive values. Prefer a single flow when short and understandable; split into steps only when meaningful groups, interruption risk or review needs justify extra navigation.
+
+| Design choice | Decision rule | Test |
+| --- | --- | --- |
+| Field and format | Select input behavior matching real data; show units and realistic examples, accept harmless format variation | Localized entry, paste, screen reader and autofill |
+| Validation timing | Avoid interrupting typing. Validate on submit by default; use post-field or inline checks where immediate feedback helps and does not create anxiety or conflict | Correcting a field never loses cursor focus or data |
+| Error summary | For multi-field submit failures, expose a page-level summary linking to invalid fields plus linked inline messages; make focus behavior and announcements explicit | Keyboard and screen reader can find each error |
+| Multi-step progress | Explain current step, overall scope if known, and safe back/edit/cancel | Back and browser history preserve entries |
+| Save and resume | Communicate whether values are saved, where they are stored, expiry if known, and what happens across devices or sessions | Close/reopen, signed-out, offline and expired session |
+| Pre-fill/autofill | Use standard autocomplete purposes, user-visible review and correction; never assume prefilled personal details remain correct | Correct with keyboard and translated labels |
+| Final review | Expose consequential details and correction links before irreversible submission; server confirms outcome | Transaction status and duplicate-submit behavior |
+| Retry after uncertainty | Confirm server state before repeating a potentially non-idempotent action | Simulate lost response after completed mutation |
+
+**Example (illustrative):** An address application is split into Contact → Address → Review only if a study shows the grouping helps. Saved values remain available when users navigate backward; “Review” clearly distinguishes a draft from a submitted request.
+
+**Anti-example:** A six-step wizard silently auto-saves nothing but displays “Saved” at each step, then resets all values after a timeout.
+
+### Submission error semantics and copy
+
+- Distinguish input validation errors (specific correction) from service failures (status and safe retry); [service recovery](service-recovery-and-support.md) governs escalation beyond the current task.
+- Link errors to [Field and error](../components/field/spec.md) semantics. For longer forms or multiple invalid fields use navigable summary links and preserve all input. Avoid duplicate or endlessly repeating live announcements.
+- Say what can be corrected and how, not just “Invalid value.” Do not expose private account, permissions or eligibility information through validation text.
+- Product constraints may justify different validation timing; document rationale and test against the users and devices involved.
+- Where supported, provide copy that is accurate for every state: **Not submitted**, **Saving draft**, **Draft saved**, **Submission pending**, **Submitted**, or **Status unknown**. Never claim persistence without confirmation.
+
+### Form QA scenarios
+
+1. Empty submit, a single incorrect field, multiple incorrect fields and correction after returning from error summary.
+2. Keyboard-only, screen-reader navigation, 200% text and narrow/400% reflow as applicable to supported web targets.
+3. Long localized copy, locale-specific date/number formatting, mixed LTR/RTL data, autofill and paste.
+4. Browser back/forward, interrupted connection, expired session, repeated button activation, and partial/missing server response.
+5. Review and cancel before an irreversible operation, plus actual persisted-status verification.
+
+**Sources (reviewed 2026-11-07):** [GOV.UK recover from validation errors](https://design-system.service.gov.uk/patterns/validation/) and [Error summary](https://design-system.service.gov.uk/components/error-summary/) present a UK public-service reference pattern, not an unconditional prescription for every product; [W3C WAI form instructions](https://www.w3.org/WAI/tutorials/forms/instructions/) and [Validating input](https://www.w3.org/WAI/tutorials/forms/validation/) describe accessible input guidance. Server-side validation remains essential for integrity/security.
+Related content: [content design](../guidance/content-design-and-ux-writing.md).

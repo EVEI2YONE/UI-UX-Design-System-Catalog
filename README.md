@@ -18,6 +18,26 @@
 | Design and test keyboard, focus, contrast, touch, or zoom | [Accessibility](guidance/accessibility.md) |
 | Support translations, long labels, and RTL | [Internationalization](guidance/internationalization.md) |
 | Define success beyond aesthetic preference | [UX measurement](guidance/ux-measurement.md) |
+| Write clear labels, instructions, error and status copy | [Content design and UX writing](guidance/content-design-and-ux-writing.md) |
+| Design complex forms, safe search, filtering and sorting | [Form composition](patterns/forms.md) and [search/filtering](patterns/search-and-filter.md) |
+| Recover a failed user task across service and support channels | [Service recovery and support handoff](patterns/service-recovery-and-support.md) |
+| Choose a UX study or evaluate evidence quality | [UX research methods](guidance/ux-research-methods.md) |
+| Understand expectations and end-to-end journeys | [Mental models and journey mapping](guidance/mental-models-and-journeys.md) |
+| Reduce memory and decision burden | [Cognitive load and decision design](guidance/cognitive-load-and-decisions.md) |
+| Design perceived speed, loading and field performance evidence | [Performance and perceived speed](guidance/performance-and-perceived-speed.md) |
+| Design controlled A/B studies and trustworthy causal analysis | [UX experimentation](guidance/experimentation-and-causal-evidence.md) |
+| Hand off design tokens and components for real releases | [Lifecycle and decisions](governance/lifecycle-and-decisions.md) and [component contracts](architecture/component-contracts.md) |
+| Explain AI capabilities, uncertainty, evidence and correction | [AI-powered experiences](guidance/ai-powered-experiences-and-trust.md) |
+| Design AI tools with scoped approval and verified outcomes | [Agentic actions and approvals](patterns/agentic-actions-and-approvals.md) |
+| Support accessible voice, chat and multimodal workflows | [Conversational, voice and multimodal UX](patterns/conversational-voice-and-multimodal-ux.md) |
+| Present accessible KPIs, charts and dashboard data | [Data visualization and dashboards](guidance/data-visualization-and-dashboards.md) |
+| Adapt navigation and tasks for mobile/native windows | [Mobile and adaptive platform UX](guidance/mobile-and-adaptive-platform-ux.md) |
+| Design bulk actions, drag alternatives, command palettes and undo | [Advanced interactions](patterns/advanced-interactions-and-reversible-actions.md) |
+| Define enterprise approval and audit-view journeys | [Role-aware workspaces](patterns/role-aware-workspaces-and-context-switching.md) |
+| Build privacy-respecting choices and account deletion flows | [Privacy, consent and trustworthy UX](guidance/privacy-consent-and-trust.md) |
+| Plan sign-in, passkeys, MFA, expiry and recovery | [Authentication and account lifecycle](patterns/authentication-and-account-lifecycle.md) |
+| Control alert urgency, channels, and user attention | [Notifications and attention](patterns/notifications-and-attention.md) |
+| Handle offline drafts, sync and conflicting edits | [Offline work and synchronization](patterns/offline-sync-and-conflicts.md) |
 | Reuse, extend, merge, deprecate, or review guidance | [Lifecycle and decisions](governance/lifecycle-and-decisions.md) and [quality gates](governance/quality-gates.md) |
 
 **Search by word, synonym, or ID:** [`catalog/index.json`](catalog/index.json) is the canonical machine-readable lookup registry. See [lookup instructions](catalog/README.md). Example:
@@ -51,7 +71,7 @@ Practical UI composition typically follows **foundations/tokens → primitives �
 
 - **Included:** guidance, contracts, reference patterns, decision rules, examples/anti-patterns, evidence expectations, and concept metadata.
 - **Not included yet:** compiled tokens, framework-specific components, Storybook previews, product app code, or independently verified UX research. Do not mistake a specification for a working implementation.
-- **Future candidate domains:** content design, data visualization, trust/privacy UX, platform adaptations, performance resilience, AI interaction patterns, and design-tool interoperability. Add these when a reusable need and owner are identified; do not create empty folders for them.
+- **Future candidate domains:** further platform-specific and product-derived gaps must be validated before adding duplicate concepts. Add these when a reusable need and owner are identified; do not create empty folders for them.
 
 ## How to use an entry
 
@@ -110,3 +130,27 @@ Find individually retrievable proposed specifications for [Button, Input, Select
 ## Batch 6 — agent catalog maturity
 
 The [agent lookup protocol](AGENTS.md), [catalog registry](catalog/README.md), [validation script](scripts/validate_catalog.py) and [governance rules](governance/lifecycle-and-decisions.md) now cover complete lookup metadata, deterministic retrieval, cross-references and dependency cycles for all registered concepts. No concept was automatically promoted from `proposed`, and documentation validation is not product accessibility certification.
+
+## Batch 7 — research and product understanding (proposed)
+
+[UX research methods](guidance/ux-research-methods.md), [mental models and journey mapping](guidance/mental-models-and-journeys.md), and [cognitive load](guidance/cognitive-load-and-decisions.md) add evidence-led research and task-design guidance. All three are `proposed`, not user-validated findings or implemented components. The [batch plan](planning/knowledge-expansion-batches-7-12.md) records the expansion scope.
+
+## Batch 8 — content, discovery and task completion (proposed)
+
+[Content design and UX writing](guidance/content-design-and-ux-writing.md) and [service recovery and support handoff](patterns/service-recovery-and-support.md) are new proposed catalog guidance. Existing [form](patterns/forms.md) and [search/filter](patterns/search-and-filter.md) specifications now include complex data entry, validation, save/resume, facets, sorting, pagination and recovery. No production code, real-user studies or manual accessibility verification are implied. This content follows Batch 7 on the cumulative knowledge-expansion branch and PR #5.
+
+## Batch 9 — trust and resilient journeys (proposed)
+
+[Privacy, consent and trustworthy UX](guidance/privacy-consent-and-trust.md), [authentication and account lifecycle](patterns/authentication-and-account-lifecycle.md), [notifications and attention management](patterns/notifications-and-attention.md), and [offline synchronization and conflict recovery](patterns/offline-sync-and-conflicts.md) are four new **proposed** guidance entries. Reuse the existing [role-aware](patterns/role-aware-workspaces-and-context-switching.md), [feedback](patterns/feedback.md), and [interaction-recovery](patterns/interaction-states-and-recovery.md) patterns instead of duplicating those contracts. The [Batch 9 context and gap ledger](planning/batch-9-context-and-gap-ledger.md) records evidence and decisions. No production code, compliance, or test claims are made.
+
+## Batch 10 — dense and platform-specific interfaces (proposed)
+
+New [data visualization](guidance/data-visualization-and-dashboards.md), [mobile/adaptive UX](guidance/mobile-and-adaptive-platform-ux.md) and [advanced interaction](patterns/advanced-interactions-and-reversible-actions.md) guidance complements expanded [data tables](patterns/data-tables.md) and [role-aware workspaces](patterns/role-aware-workspaces-and-context-switching.md). The [context and gap ledger](planning/batch-10-context-and-gap-ledger.md) explains reuse decisions and research references. These are proposed docs, not tested components or verified product performance.
+
+## Batch 11 — AI and multimodal experiences (proposed)
+
+New [AI-powered experiences](guidance/ai-powered-experiences-and-trust.md), [agentic actions and approvals](patterns/agentic-actions-and-approvals.md), and [conversational/voice/multimodal](patterns/conversational-voice-and-multimodal-ux.md) guidance separates generated outputs from verified evidence, tool plans from completed actions, and speech capture from confirmed user intent. The [context and gap ledger](planning/batch-11-context-and-gap-ledger.md) records existing concept boundaries and source limitations. These are proposed documents, not a deployed assistant, implemented authorization mechanism, or real-user/voice-accessibility test.
+
+## Batch 12 — evaluation, performance and delivery (proposed)
+
+New [performance and perceived speed](guidance/performance-and-perceived-speed.md) and [UX experimentation](guidance/experimentation-and-causal-evidence.md) guidance complements expanded [UX measurement](guidance/ux-measurement.md), [quality gates](governance/quality-gates.md), [catalog lifecycle](governance/lifecycle-and-decisions.md), [component handoff](architecture/component-contracts.md), and [design-token interchange](foundations/design-tokens-and-themes.md). The [context-first gap ledger](planning/batch-12-context-and-gap-ledger.md) separates current source guidance from real product evidence. This concludes planned Batches 7–12 on cumulative draft PR #5; all newly added concepts are still proposed and require human review before any merge.

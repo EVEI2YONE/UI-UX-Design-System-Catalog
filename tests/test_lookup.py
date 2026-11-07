@@ -209,5 +209,158 @@ class LookupTests(unittest.TestCase):
         for ident in graph:
             walk(ident)
 
+
+    def test_batch9_trust_and_resilience_lookup(self):
+        cases = {
+            'privacy UX': 'guidance.privacy-trust',
+            'passkeys': 'pattern.authentication-lifecycle',
+            'notification fatigue': 'pattern.notifications-attention',
+            'sync conflict': 'pattern.offline-sync',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                result = lookup(self.entries, query, limit=1)
+                self.assertTrue(result, f'Missing match for {query}')
+                self.assertEqual(result[0]['id'], expected)
+
+    def test_batch9_canonical_paths_statuses_and_refs(self):
+        paths = {
+            'guidance.privacy-trust': 'guidance/privacy-consent-and-trust.md',
+            'pattern.authentication-lifecycle': 'patterns/authentication-and-account-lifecycle.md',
+            'pattern.notifications-attention': 'patterns/notifications-and-attention.md',
+            'pattern.offline-sync': 'patterns/offline-sync-and-conflicts.md',
+        }
+        ids = {e['id'] for e in self.entries}
+        for ident, path in paths.items():
+            with self.subTest(ident=ident):
+                entry = next(e for e in self.entries if e['id'] == ident)
+                self.assertEqual(entry['path'], path)
+                self.assertTrue((ROOT / path).is_file())
+                self.assertEqual(entry['status'], 'proposed')
+                self.assertEqual(entry['owner'], 'unassigned')
+                self.assertIsNone(entry['reviewed_at'])
+                self.assertTrue(entry['use_when'] and entry['avoid_when'])
+                for target in entry['related'] + entry['depends_on']:
+                    self.assertIn(target, ids)
+                    self.assertNotEqual(target, ident)
+
+
+    def test_batch10_chart_mobile_and_advanced_lookup(self):
+        cases = {
+            'data visualization': 'guidance.data-visualization',
+            'dashboard design': 'guidance.data-visualization',
+            'adaptive layout': 'guidance.mobile-adaptive',
+            'safe area': 'guidance.mobile-adaptive',
+            'command palette': 'pattern.advanced-interactions',
+            'drag and drop': 'pattern.advanced-interactions',
+            'approval workflow': 'pattern.role-aware-workspaces',
+            'editable data grid': 'pattern.data-tables',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                found = lookup(self.entries, query, limit=1)
+                self.assertTrue(found, f'Missing match for {query}')
+                self.assertEqual(found[0]['id'], expected)
+
+    def test_batch10_new_guidance_paths_and_refs(self):
+        expected = {
+            'guidance.data-visualization': 'guidance/data-visualization-and-dashboards.md',
+            'guidance.mobile-adaptive': 'guidance/mobile-and-adaptive-platform-ux.md',
+            'pattern.advanced-interactions': 'patterns/advanced-interactions-and-reversible-actions.md',
+        }
+        ids = {x['id'] for x in self.entries}
+        for ident, path in expected.items():
+            with self.subTest(ident=ident):
+                entry = next(x for x in self.entries if x['id'] == ident)
+                self.assertEqual(entry['path'], path)
+                self.assertTrue((ROOT / path).is_file())
+                self.assertEqual(entry['kind'], 'guideline')
+                self.assertEqual(entry['status'], 'proposed')
+                self.assertEqual(entry['owner'], 'unassigned')
+                self.assertIsNone(entry['reviewed_at'])
+                self.assertTrue(entry['use_when'] and entry['avoid_when'])
+                for target in entry['related'] + entry['depends_on']:
+                    self.assertIn(target, ids)
+                    self.assertNotEqual(target, ident)
+
+
+    def test_batch11_ai_agent_multimodal_lookup(self):
+        cases = {
+            'AI transparency': 'guidance.ai-experiences',
+            'AI provenance': 'guidance.ai-experiences',
+            'human in the loop': 'pattern.agentic-actions',
+            'agentic UX': 'pattern.agentic-actions',
+            'AI agent approval': 'pattern.agentic-actions',
+            'voice UX': 'pattern.multimodal-conversation',
+            'speech interaction': 'pattern.multimodal-conversation',
+            'barge in': 'pattern.multimodal-conversation',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                results = lookup(self.entries, query, limit=1)
+                self.assertTrue(results, f'No match for {query}')
+                self.assertEqual(results[0]['id'], expected)
+
+    def test_batch11_canonical_guards_and_related_concepts(self):
+        expected = {
+            'guidance.ai-experiences': 'guidance/ai-powered-experiences-and-trust.md',
+            'pattern.agentic-actions': 'patterns/agentic-actions-and-approvals.md',
+            'pattern.multimodal-conversation': 'patterns/conversational-voice-and-multimodal-ux.md',
+        }
+        ids = {e['id'] for e in self.entries}
+        for ident, path in expected.items():
+            with self.subTest(ident=ident):
+                entry = next(e for e in self.entries if e['id'] == ident)
+                self.assertEqual(entry['path'], path)
+                self.assertTrue((ROOT / path).is_file())
+                self.assertEqual(entry['status'], 'proposed')
+                self.assertEqual(entry['owner'], 'unassigned')
+                self.assertIsNone(entry['reviewed_at'])
+                self.assertEqual(entry['kind'], 'guideline')
+                self.assertTrue(entry['use_when'] and entry['avoid_when'])
+                for link in entry['related'] + entry['depends_on']:
+                    self.assertIn(link, ids)
+                    self.assertNotEqual(link, ident)
+
+
+    def test_batch12_performance_experiment_and_handoff_lookup(self):
+        cases = {
+            'Core Web Vitals': 'guidance.performance-experience',
+            'performance budget': 'guidance.performance-experience',
+            'perceived speed': 'guidance.performance-experience',
+            'real user monitoring': 'guidance.performance-experience',
+            'A/B testing': 'guidance.experimentation',
+            'sample ratio mismatch': 'guidance.experimentation',
+            'experiment guardrails': 'guidance.experimentation',
+            'sequential testing': 'guidance.experimentation',
+            'component spec': 'architecture.component-contracts',
+            'catalog promotion': 'governance.lifecycle',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                found = lookup(self.entries, query, limit=1)
+                self.assertTrue(found, f'Missing match for {query}')
+                self.assertEqual(found[0]['id'], expected)
+
+    def test_batch12_new_paths_and_integrity(self):
+        paths = {
+            'guidance.performance-experience': 'guidance/performance-and-perceived-speed.md',
+            'guidance.experimentation': 'guidance/experimentation-and-causal-evidence.md',
+        }
+        ids = {entry['id'] for entry in self.entries}
+        for ident, path in paths.items():
+            with self.subTest(ident=ident):
+                entry = next(x for x in self.entries if x['id'] == ident)
+                self.assertEqual(entry['path'], path)
+                self.assertEqual(entry['kind'], 'guideline')
+                self.assertTrue((ROOT / path).is_file())
+                self.assertEqual(entry['status'], 'proposed')
+                self.assertEqual(entry['owner'], 'unassigned')
+                self.assertIsNone(entry['reviewed_at'])
+                self.assertTrue(entry['use_when'] and entry['avoid_when'])
+                for target in entry['related'] + entry['depends_on']:
+                    self.assertIn(target, ids)
+                    self.assertNotEqual(target, ident)
+
 if __name__ == '__main__':
     unittest.main()

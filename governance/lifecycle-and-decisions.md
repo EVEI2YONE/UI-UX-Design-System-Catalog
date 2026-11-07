@@ -57,3 +57,27 @@ Before requesting `experimental` or `stable`, capture: a canonical ID and workin
 Every canonical record must include immutable ID, path, lifecycle status, `owner` (explicitly `unassigned` where unknown), nullable review date, `use_when`, `avoid_when`, `related` and `depends_on`. Relationships in `depends_on` must be acyclic; `related` indicates optional supplementary reading, not mandatory prerequisites.
 
 **Proposed maintenance cadence:** review ownership and the applicability of authoritative references quarterly, but do not assign a review date or promote an entry without an actual reviewer and recorded evidence. Record affected consumers, migration path, source/edition, test results and unresolved risks in each PR. If a canonical path moves, preserve IDs and provide a redirect or compatibility note. Documentation status is never proof that framework-specific code is deployed.
+
+## Batch 12 extension — DesignOps and design-to-code lifecycle
+
+When a proposal becomes a real component, track **design decisions, code delivery and evidence separately**. This extends the existing lifecycle policy rather than adding a parallel governance entry.
+
+1. **Intake:** record task, existing concept/alias search, reuse/extend/create rationale, consumers, product risks and owner.
+2. **Design-ready:** supply stable role, states/variants, responsive behavior, localization/RTL, accessibility/focus and semantic token intent. State any unknowns.
+3. **Build-ready:** engineering and designer agree on public API, feature/domain boundaries, versioned token formats, supported runtimes, compatibility and rollback.
+4. **Review-ready:** compare actual code/stories with the contract; verify keyboard/screen reader, interactive failure states, visual diffs, themes, large text and supported locales.
+5. **Release-ready:** record consumer impact, deprecation/version notice, real build/test evidence, staged rollout/monitoring and responsible on-call/rollback owners.
+6. **Maintain:** monitor adoption, defects, support feedback, reference editions and migration; do not promote to stable without artifact-specific review.
+
+| Asset | Where truth lives | Responsible review |
+| --- | --- | --- |
+| Design intent and canonical decision | Catalog ID, version and research/decision record | Design system / UX owner |
+| Token schema and role mapping | Versioned token source and platform transform outputs | Token/library maintainer |
+| Component contract | Owned API, semantics, states and compatibility notes | UI engineering + design |
+| Product permissions, validation and data effects | Feature service and integration | Feature/security owner |
+| Visual acceptance | Reviewed reference snapshots and documented approved differences | Design + engineering |
+| Release, actual task and perf metrics | Deployment/monitoring and experiment system | Product/delivery owner |
+
+**Illustrative handoff:** An input control gains an error description. Handoff records the error association and focus behavior, token/RTL scenarios, migration for consumers, screen reader tests and rollback. **Anti-example:** A design frame is treated as an implementation specification and a build ships without keyboard/validation behavior.
+
+**Boundary:** a polished design, a passing catalog validator, a component story, and a deployed accessible user journey are different artifacts with different evidence. Follow [quality gates](quality-gates.md), [component contracts](../architecture/component-contracts.md), and [tokens](../foundations/design-tokens-and-themes.md). No actual toolchain or release is claimed by this proposed process.
