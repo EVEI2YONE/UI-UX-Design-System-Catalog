@@ -23,3 +23,7 @@ Related: [component model](../architecture/component-model.md), [accessibility](
 ## Batch 1 — semantic icon controls (proposed, 2026-11-07)
 
 [Icon semantics and accessible icon controls](iconography-and-semantics.md) defines an intent registry, decorative/informative/interactive icon roles, icon-only button states, target-size distinctions, RTL rules and verification requirements. It extends—not duplicates—the icon styling guidance above. Canonical ID: `foundation.icon-semantics`; proposed, no component implementation or human review claimed.
+
+## B05 — utility-first styling ownership (proposed, 2026-11-07)
+
+[Practical UI styling recipes](practical-ui-styling-recipes.md) now provides CKG-15: a bounded Tailwind/shadcn-style ownership matrix and illustrative token-backed composition without prescribing a new framework or file-tree migration. [Design tokens](design-tokens-and-themes.md) retain semantic role and theme authority. Real visual/browser verification remains NOT VERIFIED.
