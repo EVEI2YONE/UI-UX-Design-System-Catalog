@@ -127,3 +127,15 @@ The [B0–B7 cumulative handoff](archive/planning/wireframe-integration-handoff-
 ## Support This Project
 
 [![Support on Ko-fi](https://img.shields.io/badge/Support%20on-Ko--fi-13C3FF?logo=ko-fi&logoColor=white)](https://ko-fi.com/S5C12A839Y)
+
+## Settings configuration knowledge (cumulative draft)
+
+For workspace-scoped configuration contracts, server-side authorization, and safe save/recovery behavior, begin with [Account and settings portal — Batch 1](patterns/account-and-settings-portal.md#workspace-configuration-foundation--settings-knowledge-batch-1-proposed-2026-11-07). Continue using [role-aware workspaces](patterns/role-aware-workspaces-and-context-switching.md) for authorization context and [forms](patterns/forms.md) for shared control behavior. This is proposed guidance, not a shipped Little Wins Settings page.
+
+Settings Batch 2: [feature dependency disclosures and review-policy transitions](patterns/account-and-settings-portal.md#settings-knowledge-batch-2--feature-and-policy-configuration-proposed-2026-11-07) extend the existing settings portal; capability truth tables and paused-work recovery remain in their existing canonical patterns.
+
+Settings Batch 3: [timezone/reporting configuration and personal preference scope](patterns/account-and-settings-portal.md#settings-knowledge-batch-3--time-and-personal-preferences-proposed-2026-11-07) reuse the canonical [theme system](foundations/design-tokens-and-themes.md) and [internationalization](guidance/internationalization.md) guidance. A selectable timezone is a product decision, not a shipped default.
+
+Settings Batch 4: [configuration audit events, access and safe reversals](patterns/account-and-settings-portal.md#settings-knowledge-batch-4--configuration-governance-and-audit-proposed-2026-11-07) extend the existing settings portal. Privacy/retention and delegated-access rules remain with their canonical guidance.
+
+**Settings knowledge Batches 1–5:** [closure, gap coverage and validation handoff](archive/planning/little-wins-settings-batches-1-5-closure-2026-11-07.md) records the eight-gap crosswalk, evidence limits, product decisions and outstanding tests. Read the [canonical settings portal](patterns/account-and-settings-portal.md) for reusable rules; the closure ledger is not an additional concept.

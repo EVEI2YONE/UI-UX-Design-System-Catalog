@@ -2241,7 +2241,7 @@
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
-      "summary": "Account settings information architecture, profile/contact management, save and concurrency state contracts.",
+      "summary": "Account and workspace settings IA, typed configuration scope, server authorization, save and concurrency recovery.",
       "aliases": [
         "account settings",
         "settings portal",
@@ -2252,7 +2252,30 @@
         "account data export",
         "email change verification",
         "settings autosave",
-        "settings save cancel"
+        "settings save cancel",
+        "workspace settings",
+        "settings configuration registry",
+        "configuration scope",
+        "settings permission matrix",
+        "settings save recovery",
+        "configuration save lifecycle",
+        "workspace feature settings",
+        "feature settings dependencies",
+        "approval policy settings",
+        "review policy transition",
+        "feature disable confirmation",
+        "settings reporting timezone",
+        "workspace calendar settings",
+        "timezone change consequences",
+        "effective display preference",
+        "device versus workspace appearance",
+        "settings theme density persistence",
+        "settings change history",
+        "configuration audit events",
+        "settings audit trail",
+        "configuration change log",
+        "settings reversal policy",
+        "settings event retention"
       ],
       "domains": [
         "account",
@@ -2264,7 +2287,15 @@
       "use_when": [
         "designing account overview and settings navigation",
         "editing account profile and verified contact information",
-        "handling unsaved settings and conflicts across devices"
+        "handling unsaved settings and conflicts across devices",
+        "defining typed workspace settings and effective scope",
+        "authorizing settings changes and handling settings save conflicts",
+        "defining feature-toggle consequence summaries and dependent capability behavior",
+        "changing approval policy while submissions or awards are pending",
+        "deciding whether reporting timezone is configurable and describing its effects on periods",
+        "exposing personal appearance and density preferences without confusing browser and workspace scope",
+        "documenting auditable configuration changes and authorized settings history",
+        "distinguishing reverting a setting from reversing historical side effects"
       ],
       "avoid_when": [
         "using a settings UI as a replacement for backend identity and authorization policy",
@@ -2279,7 +2310,10 @@
         "pattern.billing-subscription-settings",
         "pattern.notifications-attention",
         "guidance.internationalization",
-        "foundation.design-tokens"
+        "foundation.design-tokens",
+        "pattern.interaction-recovery",
+        "pattern.offline-sync",
+        "guidance.accessibility"
       ],
       "depends_on": [
         "pattern.task-flows",

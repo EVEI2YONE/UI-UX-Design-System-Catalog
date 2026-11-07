@@ -113,3 +113,7 @@ The [synthetic wireframe example bank](../archive/planning/wireframe-synthetic-e
 ## B7 consumer lookup and verification handoff (proposed)
 
 Read the [cumulative wireframe integration handoff](../archive/planning/wireframe-integration-handoff-2026-11-07.md) for the B0–B7 concept ownership map and end-to-end retrieval/annotation/visual-QA contract. It points to the canonical IDs in this registry; it is **not** itself a new canonical entry. CI checks documentation integrity and deterministic retrieval only. Generated-image quality, focus, accessible interaction, responsive runtime behavior and real-user outcomes remain **NOT VERIFIED** without independent evidence.
+
+## Settings knowledge retrieval and verification (draft PR #12)
+
+Retrieve `pattern.account-settings-portal` for configuration registry, server-authorized scope, save lifecycle, feature dependencies, review-policy transitions, timezone decision guidance, personal display preferences and change-event auditability. See the [Batch 1–5 closure ledger](../archive/planning/little-wins-settings-batches-1-5-closure-2026-11-07.md) for source/product crosswalk and checks. The canonical registry remains the single lookup owner; no new Settings ID. Run `python3 -m unittest tests.test_settings_knowledge_coverage` or the full test discovery suite before review; tests are not product conformance evidence.

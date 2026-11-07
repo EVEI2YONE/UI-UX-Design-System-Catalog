@@ -1,5 +1,19 @@
 ## Unreleased
 
+- Settings knowledge Batch 5 (proposed, cumulative draft PR #12): refresh catalog/product context, document the KG-001–008 canonical ownership and Little Wins consumer crosswalk, add focused registry/retrieval regression tests, correct malformed Batch 1 Markdown code delimiters and publish a verification ledger. Source and connector structural checks completed; official catalog validator and unit suite not executed in environment, app/browser/a11y/security checks NOT VERIFIED. No new concept or application code.
+
+
+- Settings knowledge Batch 4 (proposed, cumulative draft PR #12): add KG-007 configuration-change event contract, scoped history viewing, retention/redaction ownership and setting-revert vs historical-side-effect distinction in `pattern.account-settings-portal`. Reuse role-aware audit visibility, privacy and recovery guidance; no new concept, runtime event log or automated proof claimed.
+
+
+- Settings knowledge Batch 3 (proposed, cumulative draft PR #12): add KG-004 time/reporting configuration decision and validation contract, and KG-008 personal preference scope/effective mode and fallback UX to `pattern.account-settings-portal`. Reuse existing theme, internationalization and accessibility owners; do not introduce a timezone control before a domain decision. Little Wins F20 source reviewed; runtime and manual tests NOT VERIFIED.
+
+
+- Settings knowledge Batch 2 (proposed, cumulative draft PR #12): extend `pattern.account-settings-portal` with KG-002 settings-facing feature dependency disclosure, impact/transition matrix checklist, and KG-005 review-policy switching, pending-work protection, authority, and tests. Reuse canonical task-flow and interaction recovery knowledge; no new concept or runtime changes, live tests NOT VERIFIED.
+
+
+- Settings knowledge Batch 1 (proposed, cumulative draft PR): extend canonical `pattern.account-settings-portal` with KG-001 setting registry, KG-003 workspace authorization/scope and KG-006 saving/propagation/recovery. Reuse existing forms, role-aware, offline conflict and interaction recovery concepts; update discovery/lookup, no new canonical concept, no app code, runtime/accessibility/security verification NOT VERIFIED.
+
 - Wireframe knowledge B7 (proposed): integrate B0–B6 canonical ownership and retrieval navigation; add non-canonical B0–B7 integration handoff, consumer lookup sequence, explicit evidence boundaries, cumulative discovery/registry tests and final validation report in shared draft PR #11. No change to 50 proposed canonical entries, no app implementation or human-reviewed lifecycle promotion.
 
 - Wireframe knowledge B6 (proposed): add a non-canonical synthetic bank of six positive/negative task-to-wireframe cases and regression checks for existing-owner retrieval, exact aliases, `avoid_when` exclusion, path/lifecycle integrity and explicit NOT VERIFIED boundaries. No new registry ID, licensed imagery or simulated product PASS.
