@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Wireframe knowledge B5 (proposed): extend existing `governance.quality` with a rendered-image visual inspection rubric (readability, clipping, hierarchy, state consistency, copy accuracy, fabricated functionality, variant consistency, evidence trace), issue severity and validation boundaries. Enrich lookup aliases, navigation, provenance and regression tests; no new concept, no images inspected, no runtime/a11y claims.
+
 - Wireframe knowledge B4 (proposed): extend `guidance.mobile-adaptive`, `guidance.accessibility` and `guidance.internationalization` for representative window transformations, zoom/reflow, long labels, mixed-direction/RTL stress variants, static-image evidence boundaries and deterministic lookup regression. Reused canonical IDs; no runtime tests or compliance claims.
 
 - Wireframe knowledge B3 (proposed): extend `pattern.interaction-recovery` with image-based state coverage, applicability/depicton labels, state-to-screen annotation contract, synthetic unknown-outcome recovery example and prototype/runtime verification boundaries. Update canonical registry aliases, README discovery, source notes and deterministic lookup tests; no new canonical concept or implementation claim.
