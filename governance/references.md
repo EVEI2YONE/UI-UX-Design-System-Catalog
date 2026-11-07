@@ -97,3 +97,11 @@ All are guidance or standards references, not evidence of an actual tested produ
 | [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots) and [Storybook tests](https://storybook.js.org/docs/writing-tests/index) | Visual snapshot/stories can support review with pinned environment, but do not replace actual keyboard, AT or user-task tests. |
 
 Sources are decision references as of 2026-11-07, not a claim of implementation/tool installation. See [Batch 12 context ledger](../archive/planning/batch-12-context-and-gap-ledger.md).
+
+## Wireframe methodology source review (2026-11-07; proposed B1)
+
+- [Nielsen Norman Group, UX Prototypes: Low Fidelity vs. High Fidelity](https://www.nngroup.com/articles/ux-prototype-hi-lo-fidelity/) (2016-12-18; consulted 2026-11-07): practitioner research distinguishing visual, content and interaction fidelity, not normative compliance rules.
+- [Nielsen Norman Group, Usability 101](https://www.nngroup.com/articles/usability-101-introduction-to-usability/) (consulted 2026-11-07): early iterative usability feedback; applicability to an actual design remains unverified.
+- [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (W3C Recommendation; consulted 2026-11-07): implementation-level web criteria; a static wireframe does not prove conformance.
+
+The low/mid/high selection and escalation checklist are proposed catalog synthesis, not universal thresholds or user-tested outcomes.
