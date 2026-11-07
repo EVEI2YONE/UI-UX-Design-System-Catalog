@@ -179,3 +179,10 @@
 - Added proposed recipes for scoped ESLint static imports, dependency-cruiser path/cycle checks and Nx project tags, including coverage limits and intentional fail/pass examples.
 - Documented context-first installation decisions, legacy-violation baselines, nonblocking-to-blocking CI progression and exception governance.
 - Registered canonical lookup and updated developer/agent navigation, source ledger and retrieval tests. No application linter was installed or executed.
+
+## Unreleased — Batch 19: practical architecture examples (2026-11-07)
+
+- Reviewed existing selection, module, migration, enterprise, framework and enforcement guidance before drafting to avoid duplicate policy.
+- Added three explicitly illustrative reference scenarios: minimal prototype, duplicated MVP editor extraction, and two-app enterprise ownership with shared contracts.
+- Included task-to-file lookup examples, allowed/forbidden dependencies, incremental migrations and real-app acceptance requirements.
+- Registered canonical example discovery and updated root/agent/navigation, context ledger and retrieval tests. No application source was built, migrated or benchmarked.
