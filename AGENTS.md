@@ -45,3 +45,8 @@ At each new audit batch, re-fetch product evidence and canonical catalog entries
 ## Batch 6 lookup — persisted collaborative data
 
 For an app with aggregate workspace JSON and revisioned storage, inspect the current data model and migration code before proposing data-lifecycle controls. Retrieve `guidance.privacy-trust` for archive, deletion and export UX; `pattern.offline-sync` for concurrent writes and normalization; `governance.quality` for verification. Do not equate private storage with a backup/restore feature, or a hidden sample group with erased data. See [source ledger](planning/little-wins-batch-6-context-and-gap-ledger.md). No new canonical IDs are needed.
+
+
+## Batch 7 agent lookup — actionable records and modal flows
+
+Before recommending a table redesign, retrieve `pattern.data-tables`, `component.dialog`, `guidance.accessibility` and `governance.quality`; check source markup for native controls, pseudo-interactive rows, backdrop/close behavior and locally held edits. Test the *whole* record -> dialog -> updated record journey, not just the component shell. Source inspection alone cannot prove accessibility failure or compliance. See [Batch 7 ledger](planning/little-wins-batch-7-context-and-gap-ledger.md).
