@@ -1,5 +1,8 @@
 ## Unreleased
 
+- Visual craftsmanship knowledge Batch 5 (proposed, cumulative draft PR #14): add the noncanonical KG-18 integration workflow with stage-by-stage retrieval, design-to-review handoff, honest evidence gates and KG-01–18 ownership map. Update root/section/agent discovery, quality-gate cross-link and registry metadata. Full catalog test suite and real UI/AT testing require separate execution; do not claim production validation from documentation.
+
+
 - Visual craftsmanship knowledge Batch 4 (proposed, cumulative draft PR #14): extend canonical `governance.quality` with KG-15 aesthetic critique rubric and KG-16 rendered-screen inspection/correction loop; add noncanonical synthetic before/after examples for KG-17. Preserve prior wireframe QA ownership; update navigation and retrieval. No real screenshot was inspected and no runtime, visual-regression or accessibility tests were executed.
 
 
