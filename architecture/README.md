@@ -12,3 +12,8 @@ A shared `Dialog` owns focus behavior and an overlay; a feature's account-deleti
 For independent proposed control specifications, see the [core components index](../components/README.md). A component specification is not an implementation or approval to use it without consumer tests.
 
 **Batch 12 handoff:** [Component contracts](component-contracts.md) now require a versioned design-to-code trace, state matrix, token mapping, visual/interaction evidence, affected consumers and rollback. The specification can be reviewed independently from a runtime implementation; a docs-only catalog check never proves a shipped component.
+
+
+## Batch 9 — incremental component extraction
+
+[Component model](component-model.md) now defines a source inventory and vertical-slice migration from concentrated page orchestration into feature presentation and appropriate shared controls. Review the [Batch 9 context ledger](../planning/little-wins-batch-9-context-and-gap-ledger.md) before presuming installed UI components are in use. Existing [component contracts](component-contracts.md) remain authoritative.
