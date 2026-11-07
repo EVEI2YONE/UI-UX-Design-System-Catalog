@@ -1,6 +1,6 @@
 # Proposed UI/UX knowledge expansion — Batches 7–12
 
-**Status:** Planning only; not yet implemented or reviewed.  
+**Status:** Rolling plan; Batches 7–9 have proposed documentation committed to cumulative PR #5. No human or production verification is implied.  
 **Base:** `main` (the branch was created from `main`).  
 **Scope:** Reusable design knowledge in this catalog, not target application code.  
 **Existing work:** Batches 1–6 are documented in the root README and remain unchanged.
@@ -12,7 +12,7 @@
 3. Cite authoritative external references with source date/edition, scope, known limitations, and review owner. Distinguish normative platform rules from empirical UX hypotheses.
 4. Follow `CONTRIBUTING.md`: update canonical concept pages, catalog registry, relevant README indexes, changelog and lookup examples/tests. Keep status `proposed` until reviewed.
 5. Validate `python3 scripts/validate_catalog.py` and any relevant lookup/regression tests; record actual results. Do not claim real-user testing or WCAG compliance from documentation checks.
-6. Keep each batch reviewable as its own PR, based on `main` or a verified agreed dependency. No merge or implementation outside separately authorized scope.
+6. Keep each batch reviewable as a distinct commit group and context ledger **within cumulative draft PR #5**. Continue the existing branch, validate before review, and never merge or modify `main` without approval.
 
 ## Batch overview
 
@@ -95,4 +95,4 @@
 
 **Batch 7 → Batch 8 → Batch 9 → Batch 10 → Batch 11 → Batch 12**, but elevate Batch 11 if AI/agent products are near-term targets. Batches 8 and 9 may proceed in parallel after the inventory; Batch 12 measurement rules can be applied as cross-cutting acceptance checks from the outset.
 
-**Not in scope of this planning commit:** production component code, changed canonical catalog entries, published status promotions, actual user tests, or a claim that these candidate gaps are all verified missing in the live catalog.
+**Out of scope:** production component code, published status promotions, actual user tests, and claims that candidates are all verified missing in a target application. Catalog guidance is added batch-by-batch to PR #5.
