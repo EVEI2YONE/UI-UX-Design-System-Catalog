@@ -67,7 +67,7 @@ External pages were checked for research context on 2026-11-07. They do not cert
 | [WAI-ARIA APG Grid](https://www.w3.org/WAI/ARIA/apg/patterns/grid/) | Keyboard semantics for deliberately implemented interactive grids; not ordinary HTML tables. |
 | [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) | Security requirement for server-side authorization and object scope; not user-experience verification. |
 
-All are guidance or standards references, not evidence of an actual tested product. See [Batch 10 context ledger](../planning/batch-10-context-and-gap-ledger.md).
+All are guidance or standards references, not evidence of an actual tested product. See [Batch 10 context ledger](../archive/planning/batch-10-context-and-gap-ledger.md).
 
 ## Batch 11: AI and multimodal experience sources (reviewed 2026-11-07)
 
@@ -81,7 +81,7 @@ All are guidance or standards references, not evidence of an actual tested produ
 | [MDN SpeechRecognition](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition) | Limited support and possible server-based processing; do not claim offline or device-local recognition on all platforms. |
 | [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) | Web accessibility target; real app evaluation and assistive testing remain necessary. |
 
-**Source interpretation:** normative accessibility criteria, voluntary risk guidance, historical UX research and provider-specific implementation docs have different authority. All are context for proposed knowledge, not tests of an actual product. [Batch 11 ledger](../planning/batch-11-context-and-gap-ledger.md).
+**Source interpretation:** normative accessibility criteria, voluntary risk guidance, historical UX research and provider-specific implementation docs have different authority. All are context for proposed knowledge, not tests of an actual product. [Batch 11 ledger](../archive/planning/batch-11-context-and-gap-ledger.md).
 
 ## Batch 12: performance, experimentation and design-to-code (research 2026-11-07)
 
@@ -96,4 +96,4 @@ All are guidance or standards references, not evidence of an actual tested produ
 | [DTCG Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/) and [format FAQ](https://www.designtokens.org/faq/) | Stable 2025 Community Group token interchange, not W3C Recommendation or the experimental 2026 preview; converter support must be tested. |
 | [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots) and [Storybook tests](https://storybook.js.org/docs/writing-tests/index) | Visual snapshot/stories can support review with pinned environment, but do not replace actual keyboard, AT or user-task tests. |
 
-Sources are decision references as of 2026-11-07, not a claim of implementation/tool installation. See [Batch 12 context ledger](../planning/batch-12-context-and-gap-ledger.md).
+Sources are decision references as of 2026-11-07, not a claim of implementation/tool installation. See [Batch 12 context ledger](../archive/planning/batch-12-context-and-gap-ledger.md).
