@@ -9,6 +9,7 @@
 | If you need to... | Start here |
 | --- | --- |
 | Select wireframe fidelity or decide when interaction is required | [Wireframe methodology](guidance/wireframe-methodology.md) |
+| Review image-based wireframe QA, states and consumer retrieval | [Quality gates](governance/quality-gates.md), [interaction recovery](patterns/interaction-states-and-recovery.md), [wireframe integration handoff](archive/planning/wireframe-integration-handoff-2026-11-07.md) |
 | Establish visual hierarchy, spacing, and affordances | [Design principles](foundations/design-principles.md) |
 | Create a theme or rationalize raw values | [Tokens and themes](foundations/design-tokens-and-themes.md) |
 | Choose prototype, MVP, growing or enterprise app code structure | [Application architecture selection](architecture/application-architecture.md) |
@@ -117,3 +118,7 @@ This proposal was derived from the supplied **UI/UX Design System Architect v1.1
 The [catalog registry](catalog/index.json) provides the current concept inventory (49 proposed entries at the 2026-11-07 baseline; the shared wireframe PR adds a proposed 50th entry). Do not treat counts in dated archival ledgers as present-day inventory. All canonical pages describe design knowledge rather than published components or verified application behavior.
 
 Detailed batch progress, source audits, PR snapshots and product-specific case studies are preserved in [the historical archive](archive/README.md). The [changelog](CHANGELOG.md) records changes; [contributing](CONTRIBUTING.md) and [agent guidance](AGENTS.md) define the current operating workflow.
+
+## Wireframe catalog integration (proposed PR #11)
+
+The [B0–B7 cumulative handoff](archive/planning/wireframe-integration-handoff-2026-11-07.md) maps each gap to its canonical ID, current evidence and outstanding verification. The [synthetic example bank](archive/planning/wireframe-synthetic-example-bank-2026-11-07.md) is illustrative, not canonical guidance. Look up concepts through `catalog/index.json`; consumer agents must inspect the actual generated image and use a prototype or implementation for interaction/accessibility claims. No real images, user studies or runtime accessibility checks were performed for this documentation set: **NOT VERIFIED**.
