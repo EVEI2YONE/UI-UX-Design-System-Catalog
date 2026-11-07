@@ -11,3 +11,8 @@ For changes see [Contributing](../CONTRIBUTING.md) and the [PR template](../.git
 **Agent retrieval:** use `governance.lifecycle` for reuse decisions, ownership, promotion or deprecation; use `governance.quality` for evidence, review and release checks. Their canonical IDs, lifecycle statuses and references live in the [registry](../catalog/index.json). Documentation checks are not proof of a production component or accessible UX. See [AGENTS.md](../AGENTS.md).
 
 **Batch 12 DesignOps delivery:** reuse [lifecycle and decisions](lifecycle-and-decisions.md) for ownership/versioning, [quality gates](quality-gates.md) for release evidence, [component contracts](../architecture/component-contracts.md) for design-to-code handoff, and [design tokens](../foundations/design-tokens-and-themes.md) for DTCG interchange. No parallel governance ID is created. See [Batch 12 context and gap audit](../planning/batch-12-context-and-gap-ledger.md).
+
+
+## Hosted-app assurance extension (2026-11-07)
+
+[Quality gates](quality-gates.md) now describe deployment identity boundary checks, tenant authorization, transactional replay and concurrency, draft recovery, browser accessibility, and negative API tests. A passing isolated domain suite is not equivalent to a production integration test. Checks not run remain **NOT VERIFIED**.
