@@ -72,3 +72,10 @@
 - Add four proposed concepts: `guidance.privacy-trust`, `pattern.authentication-lifecycle`, `pattern.notifications-attention`, and `pattern.offline-sync`.
 - Keep existing runtime/component contracts canonical and link the new journey-specific distinctions from registry, README, AGENTS, feedback and recovery guidance.
 - Sources include ICO/FTC (privacy/deceptive UX), NIST SP 800-63B-4/W3C (authentication), MDN/Apple (notifications), MDN (offline APIs). No application security/legal certification, user studies or manual a11y checks performed.
+
+## Unreleased — Batch 10: dense and platform-specific interfaces (proposed)
+
+- Inspected the 32-entry cumulative registry, existing data-table, role-aware, navigation and accessibility guidance before identifying three distinct gaps; recorded source applicability in the Batch 10 ledger.
+- Add `guidance.data-visualization` (dashboard narrative/scale/accessibility), `guidance.mobile-adaptive` (safe-area/resizing/input models), and `pattern.advanced-interactions` (drag alternatives, shortcuts, bulk actions and undo).
+- Extend existing `pattern.data-tables` and `pattern.role-aware-workspaces` for dense interactive data and enterprise approval/delegation states instead of making duplicates.
+- Update canonical lookup, navigation, source ledger and regression tests; all new entries remain proposed and no real app/user/a11y/security outcomes are claimed.
