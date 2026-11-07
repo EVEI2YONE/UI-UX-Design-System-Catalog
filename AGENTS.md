@@ -65,3 +65,7 @@ Inspect the source's actual import graph, reused and bespoke controls, styling e
 ## Batch 10 lookup regression and closure
 
 Use the canonical registry before proposing a missing concept. Task query examples: `hosted authentication` -> `pattern.authentication-lifecycle`; `human approval workflow` -> `pattern.interaction-recovery` (not AI-specific agent approvals); `feature flags` -> `pattern.task-flows`; `data migration` -> `pattern.offline-sync`; `clickable row` -> `pattern.data-tables`; `dialog focus return` -> `component.dialog`; `global CSS` -> `foundation.design-tokens`. Run [retrieval regression tests](tests/test_little_wins_knowledge_coverage.py) and catalog validation when changing aliases or content. See [cross-batch closure ledger](planning/little-wins-batch-10-context-and-gap-ledger.md). A successful doc validator is not product-quality certification.
+
+## Application architecture task routing (Batch 13)
+
+Query `application architecture`, `MVP architecture`, `repo size`, or `enterprise application structure` for `architecture.application-selection` and read [the canonical application selection guide](architecture/application-architecture.md). Do not treat a suggested tree as a mandate or infer maturity from lines of code alone. Check framework routing conventions and actual import graph before prescribing code moves.
