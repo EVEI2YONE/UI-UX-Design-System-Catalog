@@ -29,3 +29,7 @@ For task-to-screen wireframing, retrieve `guidance.wireframe-methodology` first 
 ## Icon-bearing control retrieval (proposed Batch 1)
 
 Search `foundation.icon-semantics` for icon meanings, decorative/informative roles, icon-only button naming, target geometry and RTL. Search `component.button` for button activation and its state contract. Prefer the canonical entry to copying a product-specific Lucide mapping; the catalog specifies meaning and contracts, not a production icon package. No human/component verification was performed by a documentation-only batch.
+
+## Batch 2 — composite interaction lookup
+
+For “component event ownership”, “cross component events”, “nested interactive controls” or “controlled uncontrolled state”, retrieve **existing** canonical ID `architecture.component-contracts`. Use `component.button` and `foundation.icon-semantics` for host activation and icon meaning, respectively; use `pattern.interaction-recovery` for server-outcome uncertainty and focus recovery. B02 does not introduce a second concept ID, global event bus or verified production behavior.
