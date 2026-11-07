@@ -72,3 +72,25 @@ The example omits the referenced palette by design; it cannot pass alias-resolut
 | Compatibility | Old-to-new token map, affected consumers, rollback method |
 
 Avoid encoding success/error only by color. A palette comparison alone does not establish contrast or accessible interaction.
+
+## Batch 12 extension — token interchange and release checks
+
+Keep **one reviewed semantic token source** with explicit schema version, types, aliases, purpose, ownership and platform/mode mappings. As of 2026-11-07, the Design Tokens Community Group Format Module **2025.10 is stable**, but it is a W3C **Community Group report, not a W3C Recommendation**. Newer 2026 preview drafts must not be treated as authoritative release specifications.
+
+| Decision | Evidence and risk |
+| --- | --- |
+| Source | Named token repository/export, pinned format version, changelog and maintainers |
+| Types and references | Compatible typed values, all aliases resolve, no cycles, type/format mismatch or invalid references |
+| Semantic intent | Shared meaning and role before literal values or app-specific colors |
+| Themes | Explicit light/dark/high-contrast/brand/density mappings; no accidental missing tokens |
+| Platform transform | Test generated CSS/native tokens in actual consumers, including units and color-space support |
+| Compatibility | Document renamed tokens, migration aliases, affected components, release version and rollback |
+| Experience | Verify real focus/disabled/error contrast, responsive modes, RTL and content extremes; screenshots are supplementary |
+
+**Illustrative workflow:** a reviewed semantic color role changes, a pinned converter exports CSS/native values, tests validate aliases and usage, visual snapshots are compared for representative states, and keyboard/focus/contrast are manually checked before a versioned rollout. The token's own metadata does not certify accessibility.
+
+**Anti-example:** overwrite exported raw values, rename widely used aliases without notice, accept every regenerated screenshot and declare all themes compliant.
+
+Sources consulted 2026-11-07: [DTCG Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/), [DTCG spec status and caveats](https://www.designtokens.org/faq/) and [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots). No actual token transform or test occurred as part of this docs-only addition.
+
+Related: [component contracts](../architecture/component-contracts.md), [quality gates](../governance/quality-gates.md), [lifecycle](../governance/lifecycle-and-decisions.md).
