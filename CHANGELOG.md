@@ -260,3 +260,10 @@
 - Expanded canonical `architecture.component-contracts` with composite part/slot ownership, local UI events vs feature commands vs domain outcomes, sibling coordination, controlled state and invalid nested activation (CKG-04, CKG-06–08).
 - Updated canonical retrieval aliases, root/architecture/components indexes, examples and regression tests; retained all existing component IDs and application-specific business logic boundaries.
 - Captured [pre-edit context](archive/planning/icon-interaction-b02-context-2026-11-07.md). Human review and product/browser/accessibility verification remain NOT VERIFIED. Shared PR waits until B06.
+
+## Unreleased — icon and interaction system, Batch 3 (2026-11-07)
+
+- Extended `pattern.interaction-recovery` (CKG-09/10) with icon/status timing, authoritative outcome semantics, focus fallback after removed records and a recovery acceptance matrix.
+- Extended `pattern.task-flows` (CKG-11/12) with stable action zones, preserved queue context and a guarded next-eligible-item state model including skip/stop, unknown writes, permissions and pagination.
+- Updated canonical registry aliases and root/pattern/agent discovery; added knowledge retrieval tests and a [pre-edit context ledger](archive/planning/icon-interaction-b03-context-2026-11-07.md).
+- No new component package, tested task-efficiency improvement or verified accessibility conformance. Shared PR remains deferred until B06.
