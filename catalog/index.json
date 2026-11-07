@@ -2266,6 +2266,53 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "guidance.wireframe-methodology",
+      "title": "Wireframe methodology and prototype escalation",
+      "path": "guidance/wireframe-methodology.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Tool-neutral image wireframe fidelity, review objectives, limitations and when interactive prototypes are required.",
+      "aliases": [
+        "wireframe methodology",
+        "low fidelity wireframe",
+        "mid fidelity wireframe",
+        "high fidelity wireframe",
+        "image based wireframing",
+        "interactive prototype escalation",
+        "static wireframe",
+        "prototype fidelity"
+      ],
+      "domains": [
+        "wireframing",
+        "prototyping",
+        "ux-research",
+        "visual-design"
+      ],
+      "use_when": [
+        "selecting wireframe fidelity for a design question",
+        "comparing image based wireframes and escalation to interactive testing",
+        "annotating static wireframe assumptions and limitations"
+      ],
+      "avoid_when": [
+        "treating an image as an interactive implementation",
+        "claiming accessibility or runtime behavior from static illustrations"
+      ],
+      "related": [
+        "principle.visual-hierarchy",
+        "pattern.task-flows",
+        "pattern.interaction-recovery",
+        "guidance.accessibility",
+        "guidance.mobile-adaptive",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "pattern.task-flows"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
