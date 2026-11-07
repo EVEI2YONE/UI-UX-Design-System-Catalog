@@ -69,3 +69,7 @@ Use the canonical registry before proposing a missing concept. Task query exampl
 ## Application architecture task routing (Batch 13)
 
 Query `application architecture`, `MVP architecture`, `repo size`, or `enterprise application structure` for `architecture.application-selection` and read [the canonical application selection guide](architecture/application-architecture.md). Do not treat a suggested tree as a mandate or infer maturity from lines of code alone. Check framework routing conventions and actual import graph before prescribing code moves.
+
+## Batches 14–16: application module and platform decisions
+
+Resolve these canonical IDs via the registry: `architecture.module-boundaries` for feature/domain/shared imports, reuse and developer lookup; `architecture.evolution` for architecture migration/fitness; `architecture.enterprise-multiapp` for monorepo, multirepo, modular monolith and microfrontend topology. Start with selection (`architecture.application-selection`) and only traverse dependent concepts needed by the user's actual repository. Every batch began with a catalog coverage audit captured in [the context and gap ledger](planning/application-architecture-batches-13-16-context-and-gaps.md). Documentation-only status remains proposed; do not assert actual code reduction or runtime passes.
