@@ -1,5 +1,8 @@
 ## Unreleased
 
+- Visual craftsmanship knowledge Batch 3 (proposed, cumulative draft PR #14): extend `foundation.visual-craftsmanship` with KG-11–14: rights-aware inspiration/references, observation-to-rule extraction, comparable candidate directions and explicit selection gates. Reuse existing user research and prototype owners; no new canonical concept. Reference links and connector structure checked; actual user study, prototype, WCAG, screenshot and automated repository suite NOT VERIFIED.
+
+
 - Visual craftsmanship knowledge Batch 2 (proposed, shared draft PR #14): add canonical practical styling recipes for KG-06–10: responsive layout choices, surface hierarchy, imagery/icon consistency, UI archetypes and motion/reduced-motion; update foundations/root discovery and registry. All CSS samples illustrative; runtime, accessibility and visual testing NOT VERIFIED.
 
 
