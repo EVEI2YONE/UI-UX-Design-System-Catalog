@@ -156,3 +156,7 @@ The [canonical component contract](architecture/component-contracts.md#batch-2--
 ## Batch 3 — state and sequential workflow handoffs (proposed, 2026-11-07)
 
 For icon/status timing and focus when a selected item is updated or removed, see [interaction recovery](patterns/interaction-states-and-recovery.md) (`pattern.interaction-recovery`). For stable actions and selecting the next eligible task only after an authoritative outcome, see [task flows](patterns/task-flows-and-information-architecture.md) (`pattern.task-flows`). These are proposed contracts, not measured reductions in pointer travel or an implemented review controller.
+
+## Batch 4 — action choice and interaction-cost evidence (proposed, 2026-11-07)
+
+See [advanced interactions](patterns/advanced-interactions-and-reversible-actions.md) for when to prefer explicit Buttons, toolbars, overflow, split actions, shortcuts or confirmations (`pattern.advanced-interactions`); use [UX measurement](guidance/ux-measurement.md) for input-specific effort measures and task-success guardrails (`guidance.ux-measurement`). Both extend existing proposed concepts, not a new packaged component or validated efficiency improvement.
