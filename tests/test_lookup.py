@@ -244,5 +244,44 @@ class LookupTests(unittest.TestCase):
                     self.assertIn(target, ids)
                     self.assertNotEqual(target, ident)
 
+
+    def test_batch10_chart_mobile_and_advanced_lookup(self):
+        cases = {
+            'data visualization': 'guidance.data-visualization',
+            'dashboard design': 'guidance.data-visualization',
+            'adaptive layout': 'guidance.mobile-adaptive',
+            'safe area': 'guidance.mobile-adaptive',
+            'command palette': 'pattern.advanced-interactions',
+            'drag and drop': 'pattern.advanced-interactions',
+            'approval workflow': 'pattern.role-aware-workspaces',
+            'editable data grid': 'pattern.data-tables',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                found = lookup(self.entries, query, limit=1)
+                self.assertTrue(found, f'Missing match for {query}')
+                self.assertEqual(found[0]['id'], expected)
+
+    def test_batch10_new_guidance_paths_and_refs(self):
+        expected = {
+            'guidance.data-visualization': 'guidance/data-visualization-and-dashboards.md',
+            'guidance.mobile-adaptive': 'guidance/mobile-and-adaptive-platform-ux.md',
+            'pattern.advanced-interactions': 'patterns/advanced-interactions-and-reversible-actions.md',
+        }
+        ids = {x['id'] for x in self.entries}
+        for ident, path in expected.items():
+            with self.subTest(ident=ident):
+                entry = next(x for x in self.entries if x['id'] == ident)
+                self.assertEqual(entry['path'], path)
+                self.assertTrue((ROOT / path).is_file())
+                self.assertEqual(entry['kind'], 'guideline')
+                self.assertEqual(entry['status'], 'proposed')
+                self.assertEqual(entry['owner'], 'unassigned')
+                self.assertIsNone(entry['reviewed_at'])
+                self.assertTrue(entry['use_when'] and entry['avoid_when'])
+                for target in entry['related'] + entry['depends_on']:
+                    self.assertIn(target, ids)
+                    self.assertNotEqual(target, ident)
+
 if __name__ == '__main__':
     unittest.main()
