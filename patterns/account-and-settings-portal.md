@@ -228,3 +228,58 @@ Review policy should be modeled as an **authorized, versioned workflow policy**,
 **Scope and sources:** Reuse [role-aware workspace authorization](role-aware-workspaces-and-context-switching.md) and [Batch 1 setting registry](#workspace-configuration-foundation--settings-knowledge-batch-1-proposed-2026-11-07). The generic requirements above draw on the catalog's canonical task/recovery guidance, [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html), [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (reference review date 2026-11-07; external URL reachability not verified in this batch). Little Wins F20 source evidence: `server/modules/reviews/index.ts` declares modes `approval_required` and `trusted_recorder_acceptance`, and gates acceptance on a distinct capability; its README states the latter is proposed and not activated in legacy routes. `docs/little-wins/03_DECISIONS_AND_OPEN_QUESTIONS.md` still flags review atomicity (DEC-009) as open. This product snapshot is not the authoritative catalog and is not proof of deployment.
 
 **Status:** proposed knowledge on draft PR #12; catalog owner unassigned; product policy approval, live behavior, accessibility and authorization tests **NOT VERIFIED**. Batch 3 must re-gather context before proceeding.
+
+
+## Settings knowledge Batch 3 — time and personal preferences (proposed, 2026-11-07)
+
+**Context refresh and coverage disposition:** Re-read current `main` and the cumulative branch, canonical registry, [design tokens/themes](../foundations/design-tokens-and-themes.md), [internationalization](../guidance/internationalization.md), and [accessibility](../guidance/accessibility.md). Their semantic token, mode/density, locale formatting, and reduced-motion requirements **already exist**. This addition specifies how a settings page exposes *effective preferences* and how a workspace timezone decision affects period-based tasks; it does not duplicate token implementation. In the available cleaned Little Wins F20 ZIP, `shell/context/display-preferences.ts` defines `light`/`high-contrast` and `comfortable`/`compact` with browser-local storage, while `server/modules/history/index.ts` reports periods as UTC. Its decision register `DEC-010` still leaves timezone and activity-versus-award date semantics open. No live user behavior, deployments, or changed target implementation are verified.
+
+### KG-004 — Reporting timezone and calendar-period configuration
+
+**Use when** a configurable timezone changes which business dates or reporting periods contain a record. **Avoid** assuming that changing how a date is *displayed* authorizes rewriting timestamps or reassigning historical awards.
+
+A timezone setting must not be editable until the following domain decisions have an accountable owner:
+
+| Decision | Required contract |
+| --- | --- |
+| Authority and scope | Is the reporting timezone fixed by deployment, workspace, project, or user? Who may edit it? |
+| Identifier and default | Specify an explicit valid IANA timezone identifier, default, and fallback; avoid fixed UTC offsets for DST-sensitive civil periods. |
+| Date types | Distinguish activity occurrence date, submission date, review/award instant, redemption/request instant, and correction date. |
+| Period definition | Define calendar boundary inclusivity, start/end instants, month/week numbering, locale calendar assumptions and DST behavior. |
+| Historical semantics | Decide whether a timezone change re-buckets past records for reports, affects only future periods, or requires a versioned migration. Never silently alter underlying event timestamps. |
+| In-flight and concurrent edits | Define effective version/time, report cache invalidation, stale editors and permission handling. |
+| Display vs computation | Format a time using locale for readability, but compute authoritative period boundaries with the selected workspace policy, not the device's implicit timezone. |
+| Rollout compatibility | Identify API/contract versioning, legacy UTC queries, migrations and rollback before enabling a selectable control. |
+
+**Example (illustrative):** A stored UTC instant shortly after midnight UTC may belong to the prior local calendar day in `America/New_York`. A monthly report must consistently apply the selected timezone to its period boundaries; merely relabeling the UTC result with a local date would be misleading. The decision about **which event timestamp** determines the period remains product-owned.
+
+**Default when unresolved:** show current reporting basis explicitly as read-only (for example, “Reports currently use UTC”), link an explanation if supported, and do not expose a functional-looking timezone selector. There is no evidence that Little Wins F20 implements configurable reporting timezones.
+
+**Verification cases:** UTC day/month rollover; spring-forward missing local hour and fall-back repeated hour; timestamps around period boundaries; date-only activity input; locale date display different from period computation; stale cached report after authorized change; historical export; unauthorized edit; concurrent edit; invalid timezone and tzdb update. Tests must compare authoritative aggregation outputs, not only formatted labels.
+
+### KG-008 — Preference scope, effective mode and safe fallback
+
+Use [design tokens and themes](../foundations/design-tokens-and-themes.md#appearance-preferences-as-a-product-journey--account-batch-3-kg-016017) as canonical ownership for semantic themes, modes, density and contrast; [accessibility](../guidance/accessibility.md) owns platform-level accessibility requirements. The settings page owns *the user journey and scope disclosure*, not an independent theme engine.
+
+| Preference decision | Settings experience requirement |
+| --- | --- |
+| Scope | Label browser/device versus signed-in account or workspace sync, with explicit persistence claims only where implemented. |
+| Available options | Show only supported modes and density values; a hypothetical “system”, “dark” or language mode is not a functioning setting. |
+| Effective value | Explain default, manual override, system influence when supported, and storage-blocked fallback. |
+| Preview and save | Apply reversible visual preferences immediately when safe; distinguish session-only changes from durable persistence and offer a clear reset. |
+| Reconciliation | On hydration or account switch, avoid false synced-state claims, unwanted theme flashes, and cross-workspace overrides. |
+| Accessibility | All supported themes require usable focus, status/error/disabled states, reflow and zoom; user toggles cannot be prerequisites for accessible operation. |
+| Localized content | Language selection (if actually supported) must update document language and translated UI, independent of calendar timezone; long labels, RTL and mixed-direction input need tests. |
+
+**Illustrative reuse:** a Settings appearance panel consumes an existing display-preference provider to set `theme` and `density`; it does not persist them again as workspace business settings or create a second provider. A local-storage write failure may leave an effective session preference, but must not be presented as a guaranteed saved account preference.
+
+**Avoid:** conflating timezone, locale and theme into a single “region” selector; exposing nonexistent dark/system modes; persisting business authority to browser storage; or using “high contrast” as a substitute for accessible default styling.
+
+**Acceptance cases:** reload with valid/invalid stored value, disabled storage, hydration first paint, preference reset, second device expectations, light/high-contrast focus and errors, compact density at touch/zoom, browser reduced-motion override, untranslated text and mixed RTL strings. Record actual run results separately from the proposed checks.
+
+### Batch 3 evidence and unresolved decisions
+
+- **Reusable sources:** [IANA Time Zone Database](https://www.iana.org/time-zones) (tzdb, consulted 2026-11-07; political/DST revisions occur), [MDN `Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) (locale-aware display and explicit `timeZone`, consulted 2026-11-07), [W3C Internationalization](https://www.w3.org/International/quicktips/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
+- **Little Wins source snapshot:** cleaned F20 archive provided by the user; direct inspection of `docs/little-wins/03_DECISIONS_AND_OPEN_QUESTIONS.md`, `shell/context/display-preferences.ts`, `shell/context/display-preferences-provider.tsx`, and `server/modules/history/index.ts`. Source inspection supports only those observed claims, not deployed behavior.
+- **Open product decision:** `DEC-010` is unresolved. Do not infer the workspace timezone or choose activity versus award date semantics on behalf of the product owner.
+- **Status:** proposed catalog guidance; owner/review assignment outstanding; catalog validator, runtime timezone correctness, browser preference behavior, accessibility and internationalization tests **NOT VERIFIED**. Next batch must re-collect current context before modifying guidance.
