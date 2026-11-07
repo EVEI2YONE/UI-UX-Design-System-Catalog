@@ -101,3 +101,7 @@ Use `pattern.interaction-recovery` for `wireframe state coverage`, `static wiref
 ## Responsive and inclusive wireframe lookup (proposed B4)
 
 `guidance.mobile-adaptive` owns responsive wireframe composition and viewport matrix queries; `guidance.accessibility` owns inclusive static design review and annotated zoom/focus expectations; `guidance.internationalization` owns long-text, RTL and bidi wireframe stress review. These extend existing proposed IDs and do not certify responsive behavior or WCAG conformance.
+
+## Static wireframe visual QA (proposed B5)
+
+Retrieve `governance.quality` for `wireframe visual QA`, `wireframe clipping inspection`, `generated wireframe copy fidelity` or `image based wireframe review`. The quality gate must identify the exact inspected image/revision and classify observed defects; if no image was inspected, image QA is `NOT VERIFIED`. Reuse `principle.visual-hierarchy` and `guidance.content-design` for the underlying design and copy rules.
