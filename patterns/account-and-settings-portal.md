@@ -74,7 +74,7 @@ Prefer an explicit save for high-consequence or multi-field forms; autosave may 
 
 ## Workspace configuration foundation — Settings knowledge Batch 1 (proposed, 2026-11-07)
 
-**Scope:** generalizable settings *knowledge* for applications with personal and workspace configuration. This section extends \`pattern.account-settings-portal\`; it does not create a new Settings component, implement a server, or grant permissions. The Little Wins F20 source-code review motivated the gap, but its product-specific feature names, values, and route contracts remain in the product repository. Re-check the catalog and target at the start of each subsequent batch.
+**Scope:** generalizable settings *knowledge* for applications with personal and workspace configuration. This section extends `pattern.account-settings-portal`; it does not create a new Settings component, implement a server, or grant permissions. The Little Wins F20 source-code review motivated the gap, but its product-specific feature names, values, and route contracts remain in the product repository. Re-check the catalog and target at the start of each subsequent batch.
 
 ### KG-001 — Authoritative setting registry
 
@@ -82,17 +82,17 @@ Define one reviewed contract per setting before exposing its control. Keep a sin
 
 | Field | Decision or acceptance question |
 | --- | --- |
-| \`key\`, \`description\`, \`type\`, \`allowedValues\` | Is the setting uniquely named, documented and type-validated at its authority boundary? |
-| \`scope\`, \`targetId\`, \`source\` | Is this device, person, workspace, project or system state? Which exact target changes? |
-| \`default\`, \`effectiveValue\`, \`inheritance\` | What happens before first save? Is a value inherited, overridden, unavailable, or locked? |
-| \`readCapability\`, \`writeCapability\`, \`authority\` | Who may read/change the setting, and which server policy decides? |
-| \`storageOwner\`, \`schemaVersion\`, \`migration\` | Where is the canonical value persisted, and how do old records migrate safely? |
-| \`validation\`, \`dependencies\`, \`impact\` | Which combinations are invalid, which downstream tasks change, and what persists unchanged? |
-| \`saveMode\`, \`reversibility\`, \`auditClass\` | Autosave or explicit save; can change be undone, and should it be logged? |
-| \`status\`, \`owner\`, \`evidence\` | Proposed/implemented/verified, accountable reviewer, and actual test evidence. |
+| `key`, `description`, `type`, `allowedValues` | Is the setting uniquely named, documented and type-validated at its authority boundary? |
+| `scope`, `targetId`, `source` | Is this device, person, workspace, project or system state? Which exact target changes? |
+| `default`, `effectiveValue`, `inheritance` | What happens before first save? Is a value inherited, overridden, unavailable, or locked? |
+| `readCapability`, `writeCapability`, `authority` | Who may read/change the setting, and which server policy decides? |
+| `storageOwner`, `schemaVersion`, `migration` | Where is the canonical value persisted, and how do old records migrate safely? |
+| `validation`, `dependencies`, `impact` | Which combinations are invalid, which downstream tasks change, and what persists unchanged? |
+| `saveMode`, `reversibility`, `auditClass` | Autosave or explicit save; can change be undone, and should it be logged? |
+| `status`, `owner`, `evidence` | Proposed/implemented/verified, accountable reviewer, and actual test evidence. |
 
 **Example (illustrative, not deployed):**
-\`\`\`yaml
+```yaml
 key: workspace.activityReviewRequired
 scope: workspace
 type: boolean
@@ -107,9 +107,9 @@ impact: future submissions only unless an explicit migration is approved
 saveMode: explicit
 reversibility: requires_policy_transition_review
 status: proposed
-\`\`\`
+```
 
-**Avoid:** storing permissions in browser preferences, creating one untyped \`settings\` object shared by all features, or treating a disabled UI control as proof of server policy.
+**Avoid:** storing permissions in browser preferences, creating one untyped `settings` object shared by all features, or treating a disabled UI control as proof of server policy.
 
 ### KG-003 — Scope, authority, and permission boundaries
 
@@ -125,7 +125,7 @@ status: proposed
 
 Use the existing persistence-state table above as the **canonical UI state reference**; implement the following cross-feature process without inventing a second form component:
 
-\`\`\`text
+```text
 load effective setting + scope + version
 -> edit local draft (no server assertion yet)
 -> validate permitted type / local dependencies
@@ -135,7 +135,7 @@ load effective setting + scope + version
 -> return authoritative effective value / version
 -> invalidate dependent views and reconcile presentation
 -> announce saved scope, or preserve draft with recovery guidance
-\`\`\`
+```
 
 - **Low-consequence, reversible personal settings:** autosave may be appropriate if failures are visible, persisted state is distinguishable from draft state, and prior value can be restored.
 - **Workspace-wide, dependent or destructive settings:** default to explicit Save and a consequence summary; require confirmation only where consequences are material, not for every minor edit.
@@ -170,7 +170,7 @@ load effective setting + scope + version
 
 ### Shared batch-PR protocol
 
-This section is Batch 1 of a cumulative settings-knowledge PR. At the **start of each later batch**, re-fetch \`main\`, this PR branch, the canonical catalog registry, relevant linked concepts, and the latest available target code/decision context; log differences, existing ownership, evidence limitations and applicable standards before changing guidance. Do not overwrite unrelated changes, silently use old target assumptions, or mark proposed guidance as merged. Batch 2 concerns feature/capability dependencies and policy transitions; Batch 3 time and personalization; Batch 4 auditability; Batch 5 catalog validation and crosswalk. Subsequent changes remain reviewed separately inside the same draft PR until it is ready for approval.
+This section is Batch 1 of a cumulative settings-knowledge PR. At the **start of each later batch**, re-fetch `main`, this PR branch, the canonical catalog registry, relevant linked concepts, and the latest available target code/decision context; log differences, existing ownership, evidence limitations and applicable standards before changing guidance. Do not overwrite unrelated changes, silently use old target assumptions, or mark proposed guidance as merged. Batch 2 concerns feature/capability dependencies and policy transitions; Batch 3 time and personalization; Batch 4 auditability; Batch 5 catalog validation and crosswalk. Subsequent changes remain reviewed separately inside the same draft PR until it is ready for approval.
 
 
 ## Settings knowledge Batch 2 — feature and policy configuration (proposed, 2026-11-07)
