@@ -232,7 +232,11 @@
         "switch workspace",
         "tenant switching",
         "account switching",
-        "RBAC"
+        "RBAC",
+        "approval workflow",
+        "delegated approval",
+        "audit trail UX",
+        "separation of duties"
       ],
       "domains": [
         "information-architecture",
@@ -245,7 +249,8 @@
       "use_when": [
         "designing navigation for users with multiple authorized roles",
         "switching tenants or workspaces while preserving context",
-        "separating customer preview from privileged impersonation"
+        "separating customer preview from privileged impersonation",
+        "designing role scoped approval handoffs and delegated actions"
       ],
       "avoid_when": [
         "treating UI role switching as server authorization",
@@ -257,7 +262,9 @@
         "guidance.accessibility",
         "governance.quality",
         "pattern.authentication-lifecycle",
-        "guidance.privacy-trust"
+        "guidance.privacy-trust",
+        "pattern.advanced-interactions",
+        "guidance.mobile-adaptive"
       ],
       "depends_on": [
         "pattern.task-flows"
@@ -360,7 +367,10 @@
         "architecture.component-contracts",
         "pattern.interaction-recovery",
         "guidance.internationalization",
-        "pattern.authentication-lifecycle"
+        "pattern.authentication-lifecycle",
+        "guidance.data-visualization",
+        "guidance.mobile-adaptive",
+        "pattern.advanced-interactions"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -854,7 +864,8 @@
       ],
       "related": [
         "pattern.task-flows",
-        "pattern.role-aware-workspaces"
+        "pattern.role-aware-workspaces",
+        "guidance.mobile-adaptive"
       ],
       "depends_on": [
         "principle.visual-hierarchy"
@@ -922,7 +933,11 @@
         "data table",
         "sortable table",
         "records grid",
-        "table pagination"
+        "table pagination",
+        "editable data grid",
+        "virtualized rows",
+        "select all results",
+        "sticky table header"
       ],
       "domains": [
         "patterns",
@@ -931,7 +946,9 @@
       ],
       "use_when": [
         "comparing rows and columns",
-        "reviewing row actions and sorting"
+        "reviewing row actions and sorting",
+        "choosing read only table versus interactive data grid",
+        "designing accessible bulk operations across paginated tables"
       ],
       "avoid_when": [
         "using tables solely for page layout"
@@ -939,7 +956,10 @@
       "related": [
         "pattern.search-filter",
         "guidance.accessibility",
-        "guidance.internationalization"
+        "guidance.internationalization",
+        "guidance.data-visualization",
+        "pattern.advanced-interactions",
+        "guidance.mobile-adaptive"
       ],
       "depends_on": [
         "pattern.task-flows"
@@ -1103,7 +1123,8 @@
         "principle.visual-hierarchy",
         "guidance.ux-research",
         "guidance.accessibility",
-        "guidance.journey-mapping"
+        "guidance.journey-mapping",
+        "guidance.data-visualization"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -1377,6 +1398,142 @@
         "pattern.service-recovery",
         "pattern.authentication-lifecycle",
         "guidance.privacy-trust"
+      ],
+      "depends_on": [
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.data-visualization",
+      "title": "Data visualization and dashboards",
+      "path": "guidance/data-visualization-and-dashboards.md",
+      "layer": "intelligence",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Task-first chart choice, accurate scales, accessible data narratives and reliable dashboard states.",
+      "aliases": [
+        "data visualization",
+        "dashboard design",
+        "accessible charts",
+        "KPI dashboard",
+        "chart choice",
+        "data storytelling",
+        "graph accessibility",
+        "chart alt text"
+      ],
+      "domains": [
+        "data-visualization",
+        "dashboards",
+        "accessibility",
+        "analytics"
+      ],
+      "use_when": [
+        "choosing chart types for user decisions",
+        "designing dashboards and KPI status",
+        "providing nonvisual chart equivalents"
+      ],
+      "avoid_when": [
+        "using a chart where a table or sentence is clearer",
+        "implying causality or freshness not supported by data"
+      ],
+      "related": [
+        "pattern.data-tables",
+        "guidance.ux-measurement",
+        "guidance.accessibility",
+        "guidance.internationalization",
+        "guidance.cognitive-load"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.mobile-adaptive",
+      "title": "Mobile and adaptive platform UX",
+      "path": "guidance/mobile-and-adaptive-platform-ux.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Window-aware mobile and native layouts, safe areas, platform navigation and equivalent input methods.",
+      "aliases": [
+        "mobile UX",
+        "native mobile",
+        "adaptive layout",
+        "responsive mobile",
+        "safe area",
+        "dynamic type",
+        "mobile navigation",
+        "split view",
+        "touch alternatives"
+      ],
+      "domains": [
+        "mobile",
+        "responsive",
+        "native-platforms",
+        "inclusive-design"
+      ],
+      "use_when": [
+        "designing for mobile native and web targets",
+        "adapting navigation across window sizes",
+        "checking touch keyboard and safe area states"
+      ],
+      "avoid_when": [
+        "treating device breakpoints as fixed feature permissions",
+        "copying platform specific navigation to all other platforms"
+      ],
+      "related": [
+        "guidance.accessibility",
+        "guidance.internationalization",
+        "pattern.task-flows",
+        "pattern.advanced-interactions",
+        "pattern.offline-sync"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.advanced-interactions",
+      "title": "Advanced interactions and reversible actions",
+      "path": "patterns/advanced-interactions-and-reversible-actions.md",
+      "layer": "patterns",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Accessible drag alternatives, bulk selection/actions, command shortcuts, undo and partial failure.",
+      "aliases": [
+        "drag and drop",
+        "drag alternative",
+        "keyboard shortcuts",
+        "command palette",
+        "bulk actions",
+        "undo redo",
+        "item reorder",
+        "batch operations",
+        "reversible actions"
+      ],
+      "domains": [
+        "interaction",
+        "data-operations",
+        "accessibility",
+        "recovery"
+      ],
+      "use_when": [
+        "designing bulk actions on records",
+        "adding keyboard command palettes and shortcuts",
+        "providing reorder and undo behavior"
+      ],
+      "avoid_when": [
+        "making dragging or gesture the only way to complete a task",
+        "promising undo for irreversible effects"
+      ],
+      "related": [
+        "pattern.data-tables",
+        "pattern.role-aware-workspaces",
+        "pattern.interaction-recovery",
+        "guidance.accessibility",
+        "guidance.mobile-adaptive"
       ],
       "depends_on": [
         "pattern.interaction-recovery"
