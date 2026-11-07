@@ -613,7 +613,7 @@
       "layer": "cross-cutting",
       "kind": "checklist",
       "status": "proposed",
-      "summary": "Checklist for task value, contracts, tokens, accessibility, research and repository evidence.",
+      "summary": "Design/catalog quality gates, including static wireframe visual inspection, evidence traceability and runtime verification limits.",
       "aliases": [
         "QA",
         "quality checklist",
@@ -629,7 +629,14 @@
         "accessibility release blocker",
         "knowledge coverage audit",
         "catalog regression tests",
-        "source evidence gate"
+        "source evidence gate",
+        "wireframe visual QA",
+        "image based wireframe review",
+        "wireframe image quality checklist",
+        "generated wireframe copy fidelity",
+        "wireframe clipping inspection",
+        "static mockup evidence review",
+        "visual artifact QA"
       ],
       "domains": [
         "quality",
@@ -641,11 +648,16 @@
         "recording actual checks and verification status",
         "assessing release blockers and migration priorities",
         "checking cross-references and documentation integrity",
-        "auditing catalog knowledge coverage and regression test evidence before final review"
+        "auditing catalog knowledge coverage and regression test evidence before final review",
+        "reviewing readability and clipping in rendered wireframe images",
+        "checking generated copy fidelity and invented implementation claims",
+        "logging visual QA evidence tied to a specific image revision"
       ],
       "avoid_when": [
         "marking unperformed checks as PASS",
-        "treating documentation validation as runtime accessibility compliance"
+        "treating documentation validation as runtime accessibility compliance",
+        "claiming functioning behavior from an attractive screenshot",
+        "marking visual inspection PASS when the image was not inspected"
       ],
       "related": [
         "governance.lifecycle",
@@ -655,7 +667,8 @@
         "guidance.performance-experience",
         "guidance.experimentation",
         "architecture.component-contracts",
-        "foundation.design-tokens"
+        "foundation.design-tokens",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [],
       "owner": "unassigned",
