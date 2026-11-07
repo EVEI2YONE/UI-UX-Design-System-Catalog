@@ -186,3 +186,10 @@
 - Added three explicitly illustrative reference scenarios: minimal prototype, duplicated MVP editor extraction, and two-app enterprise ownership with shared contracts.
 - Included task-to-file lookup examples, allowed/forbidden dependencies, incremental migrations and real-app acceptance requirements.
 - Registered canonical example discovery and updated root/agent/navigation, context ledger and retrieval tests. No application source was built, migrated or benchmarked.
+
+## Unreleased — Batch 20: application architecture knowledge audit and closure (2026-11-07)
+
+- Audited the seven new canonical entries from Batches 13–19 against the existing component model, governance and navigation; found no justification for another concept.
+- Replaced chronological architecture navigation with a concise task-first index; reordered root discovery to begin with profile selection rather than examples and CI.
+- Added closure ledger and cross-batch tests for unique IDs, proposed ownership, route/link navigation, retrieval intents, history and acyclic dependencies.
+- Kept unresolved framework, runtime enforcement, user-journey, code-reduction and developer metrics explicitly NOT VERIFIED. This closes documentation development only, not a production-app verification or a PR merge.
