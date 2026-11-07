@@ -1,5 +1,7 @@
 # UI/UX Design System Catalog
 
+[![Support me on Ko-fi](https://img.shields.io/badge/Ko--fi-Support%20me-cc1d1d?logo=ko-fi&logoColor=white)](https://ko-fi.com/S5C12A839Y)
+
 > **Status:** proposal scaffold (v0.1.0). A catalog of reusable design knowledge, not a published UI component library or a claim of accessibility conformance.
 
 **Purpose.** Make UI/UX decisions easy to find, explain, review, implement, and validate. The catalog is for designers, engineers, researchers, accessibility reviewers, product teams, and AI agents. Entries specify *why and when* to use a concept, *how* it affects components and product journeys, and *what evidence* is needed before adoption.
