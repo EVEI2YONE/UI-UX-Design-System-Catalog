@@ -10,3 +10,5 @@ A shared `Dialog` owns focus behavior and an overlay; a feature's account-deleti
 
 
 For independent proposed control specifications, see the [core components index](../components/README.md). A component specification is not an implementation or approval to use it without consumer tests.
+
+**Batch 12 handoff:** [Component contracts](component-contracts.md) now require a versioned design-to-code trace, state matrix, token mapping, visual/interaction evidence, affected consumers and rollback. The specification can be reviewed independently from a runtime implementation; a docs-only catalog check never proves a shipped component.
