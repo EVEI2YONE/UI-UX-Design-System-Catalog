@@ -1853,6 +1853,317 @@
       "depends_on": [],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "architecture.application-selection",
+      "title": "Application architecture and scalability selection",
+      "path": "architecture/application-architecture.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Choose complexity-adaptive application file structures for prototypes, MVPs, growing products and multi-app platforms.",
+      "aliases": [
+        "application architecture",
+        "application folder structure",
+        "repo size",
+        "prototype architecture",
+        "MVP architecture",
+        "enterprise application structure",
+        "feature-first architecture",
+        "scalable application architecture"
+      ],
+      "domains": [
+        "application-architecture",
+        "developer-experience",
+        "scalability"
+      ],
+      "use_when": [
+        "choosing a scalable application file structure",
+        "comparing prototype MVP enterprise architecture",
+        "deciding when features domains or packages are justified"
+      ],
+      "avoid_when": [
+        "choosing folder trees purely by line count or team size",
+        "requiring enterprise layers for an experimental prototype"
+      ],
+      "related": [
+        "architecture.component-model",
+        "governance.lifecycle",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "architecture.component-model"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "architecture.module-boundaries",
+      "title": "Application module boundaries and developer navigation",
+      "path": "architecture/module-boundaries-and-developer-navigation.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Feature/domain/shared ownership, one-way imports, reuse promotion and developer task discoverability.",
+      "aliases": [
+        "feature module boundaries",
+        "domain vs feature",
+        "shared UI ownership",
+        "developer navigation",
+        "feature-first modularity",
+        "dependency boundaries",
+        "public feature API"
+      ],
+      "domains": [
+        "application-architecture",
+        "developer-experience",
+        "reusability"
+      ],
+      "use_when": [
+        "splitting a large app into features",
+        "deciding what belongs in shared versus domain",
+        "improving developer navigation and import discipline"
+      ],
+      "avoid_when": [
+        "promoting screen-specific code solely because it looks similar"
+      ],
+      "related": [
+        "architecture.application-selection",
+        "architecture.component-model",
+        "governance.lifecycle"
+      ],
+      "depends_on": [
+        "architecture.application-selection"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "architecture.evolution",
+      "title": "Application architecture evolution and fitness",
+      "path": "architecture/architecture-evolution.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Context-led transitions between architecture profiles, vertical-slice migration, measurable architecture fitness, and rollback.",
+      "aliases": [
+        "architecture migration",
+        "architecture evolution",
+        "refactoring large repositories",
+        "architecture fitness functions",
+        "incremental refactor",
+        "modular monolith migration"
+      ],
+      "domains": [
+        "application-architecture",
+        "scalability",
+        "migration",
+        "developer-experience"
+      ],
+      "use_when": [
+        "planning incremental migration from MVP to modular architecture",
+        "measuring architecture change safety",
+        "refactoring a large feature page"
+      ],
+      "avoid_when": [
+        "rewriting an entire application to satisfy folder aesthetics",
+        "using unmeasured line count thresholds as architectural evidence"
+      ],
+      "related": [
+        "architecture.application-selection",
+        "architecture.module-boundaries",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "architecture.application-selection",
+        "architecture.module-boundaries"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "architecture.enterprise-multiapp",
+      "title": "Enterprise and multi-application architecture",
+      "path": "architecture/enterprise-and-multiapp.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Choose between modular monolith, monorepo, multirepo and microfrontends with ownership, versioning, UX and delivery tradeoffs.",
+      "aliases": [
+        "monorepo architecture",
+        "microfrontend",
+        "micro-frontends",
+        "multirepo",
+        "enterprise architecture",
+        "multiple applications",
+        "modular monolith",
+        "shared packages"
+      ],
+      "domains": [
+        "application-architecture",
+        "enterprise",
+        "scalability",
+        "developer-experience"
+      ],
+      "use_when": [
+        "selecting a repository topology for multiple apps",
+        "considering independent frontend deployment",
+        "creating cross-team shared packages and ownership policies"
+      ],
+      "avoid_when": [
+        "adopting microfrontends only to solve merge conflicts",
+        "splitting stable code into packages without actual consumers"
+      ],
+      "related": [
+        "architecture.application-selection",
+        "architecture.module-boundaries",
+        "architecture.evolution",
+        "governance.lifecycle"
+      ],
+      "depends_on": [
+        "architecture.application-selection",
+        "architecture.module-boundaries"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "architecture.framework-aware",
+      "title": "Framework-aware application structure and route ownership",
+      "path": "architecture/framework-aware-application-structure.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Adapt application feature and route organization to framework-specific file conventions without losing modularity.",
+      "aliases": [
+        "framework aware architecture",
+        "Next.js app router structure",
+        "Angular feature folders",
+        "React Router file routes",
+        "route colocation",
+        "framework routing conventions",
+        "route feature boundaries"
+      ],
+      "domains": [
+        "application-architecture",
+        "developer-experience",
+        "routing",
+        "scalability"
+      ],
+      "use_when": [
+        "mapping a feature-first layout to Next.js Angular or React Router",
+        "deciding whether route files or features own UI",
+        "migrating folder structures without breaking routes"
+      ],
+      "avoid_when": [
+        "moving framework special files into generic abstract folder trees",
+        "assuming router modes are universal across framework versions"
+      ],
+      "related": [
+        "architecture.application-selection",
+        "architecture.module-boundaries",
+        "architecture.evolution",
+        "pattern.navigation"
+      ],
+      "depends_on": [
+        "architecture.application-selection",
+        "architecture.module-boundaries"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "architecture.enforcement-ci",
+      "title": "Application architecture enforcement and CI guardrails",
+      "path": "architecture/architecture-enforcement-and-ci.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Select and stage architectural lint, dependency graph, Nx project constraints and CI without false compliance claims.",
+      "aliases": [
+        "architecture enforcement",
+        "module boundary lint",
+        "architecture CI",
+        "dependency cycle detection",
+        "dependency-cruiser rules",
+        "ESLint no-restricted-imports",
+        "Nx module boundaries",
+        "architecture lint rules"
+      ],
+      "domains": [
+        "application-architecture",
+        "developer-experience",
+        "scalability",
+        "quality"
+      ],
+      "use_when": [
+        "enforcing feature domain and shared import boundaries",
+        "introducing architecture checks into CI",
+        "choosing between ESLint graph checks and Nx rules"
+      ],
+      "avoid_when": [
+        "assuming alias-only lint covers all relative imports",
+        "adding untested blocking architecture checks to a legacy application"
+      ],
+      "related": [
+        "architecture.module-boundaries",
+        "architecture.evolution",
+        "architecture.framework-aware",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "architecture.module-boundaries",
+        "architecture.evolution"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "architecture.reference-examples",
+      "title": "Application architecture reference implementations and migrations",
+      "path": "architecture/application-architecture-reference-examples.md",
+      "layer": "cross-cutting",
+      "kind": "example",
+      "status": "proposed",
+      "summary": "Illustrative prototype, modular MVP and multi-app enterprise source layouts with developer tasks, imports and migration checkpoints.",
+      "aliases": [
+        "application architecture examples",
+        "MVP folder structure example",
+        "prototype file structure",
+        "enterprise monorepo example",
+        "feature-first reference implementation",
+        "before and after application refactor",
+        "architecture migration example"
+      ],
+      "domains": [
+        "application-architecture",
+        "developer-experience",
+        "scalability",
+        "migration"
+      ],
+      "use_when": [
+        "locating code for common tasks in prototype MVP and enterprise architectures",
+        "planning a safe feature-first refactor with before and after folder examples",
+        "comparing shared domain packages with app-specific workflows"
+      ],
+      "avoid_when": [
+        "copying illustrative files as a production starter without a framework assessment",
+        "assuming documentation examples were built or accessibility tested"
+      ],
+      "related": [
+        "architecture.application-selection",
+        "architecture.module-boundaries",
+        "architecture.evolution",
+        "architecture.enterprise-multiapp",
+        "architecture.framework-aware",
+        "architecture.enforcement-ci"
+      ],
+      "depends_on": [
+        "architecture.application-selection",
+        "architecture.module-boundaries"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }

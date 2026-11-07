@@ -65,3 +65,27 @@ Inspect the source's actual import graph, reused and bespoke controls, styling e
 ## Batch 10 lookup regression and closure
 
 Use the canonical registry before proposing a missing concept. Task query examples: `hosted authentication` -> `pattern.authentication-lifecycle`; `human approval workflow` -> `pattern.interaction-recovery` (not AI-specific agent approvals); `feature flags` -> `pattern.task-flows`; `data migration` -> `pattern.offline-sync`; `clickable row` -> `pattern.data-tables`; `dialog focus return` -> `component.dialog`; `global CSS` -> `foundation.design-tokens`. Run [retrieval regression tests](tests/test_little_wins_knowledge_coverage.py) and catalog validation when changing aliases or content. See [cross-batch closure ledger](planning/little-wins-batch-10-context-and-gap-ledger.md). A successful doc validator is not product-quality certification.
+
+## Application architecture task routing (Batch 13)
+
+Query `application architecture`, `MVP architecture`, `repo size`, or `enterprise application structure` for `architecture.application-selection` and read [the canonical application selection guide](architecture/application-architecture.md). Do not treat a suggested tree as a mandate or infer maturity from lines of code alone. Check framework routing conventions and actual import graph before prescribing code moves.
+
+## Batches 14–16: application module and platform decisions
+
+Resolve these canonical IDs via the registry: `architecture.module-boundaries` for feature/domain/shared imports, reuse and developer lookup; `architecture.evolution` for architecture migration/fitness; `architecture.enterprise-multiapp` for monorepo, multirepo, modular monolith and microfrontend topology. Start with selection (`architecture.application-selection`) and only traverse dependent concepts needed by the user's actual repository. Every batch began with a catalog coverage audit captured in [the context and gap ledger](planning/application-architecture-batches-13-16-context-and-gaps.md). Documentation-only status remains proposed; do not assert actual code reduction or runtime passes.
+
+## Batch 17 — framework routing and source structure
+
+Query `framework aware architecture`, `Next.js app router structure`, `Angular feature folders`, or `React Router file routes` for `architecture.framework-aware`. First inspect actual framework, version and routing mode, then preserve special route files and server/client boundaries. This is a proposed guideline, not a validated code scaffold. See the [Batch 17 evidence ledger](planning/application-architecture-batch-17-context-and-gaps.md).
+
+## Batch 18 — enforceable module boundaries
+
+Resolve `architecture.enforcement-ci` for queries such as `module boundary lint`, `dependency-cruiser rules`, `Nx module boundaries` or `architecture CI`. Always inspect target language, framework alias resolution and existing lint/CI before recommending tool setup. Check positive/negative fixtures and relative-import escape paths; never claim example rules were executed in a target application. See [Batch 18 context](planning/application-architecture-batch-18-context-and-gaps.md).
+
+## Batch 19 — reference examples and task-to-code lookup
+
+Resolve `architecture.reference-examples` for `prototype file structure`, `MVP folder structure example`, `enterprise monorepo example`, `architecture migration example`, and similar applied tasks. Use the examples for illustration only after selecting a profile and inspecting the target framework and module boundaries. Examples are **not runnable implementations**; consult [the Batch 19 context ledger](planning/application-architecture-batch-19-context-and-gaps.md) for evidence limits.
+
+## Batch 20 — application architecture knowledge closure
+
+Use the [task-first architecture index](architecture/README.md) rather than chronological batch notes as a navigation starting point. The [final architecture knowledge audit](planning/application-architecture-batch-20-closure-audit.md) reconciles seven new proposed canonical concepts, documents known overlaps and residual implementation evidence. Choose guidance by actual developer task: selection → module ownership → framework → enterprise topology, migration, enforcement and examples as needed. Do not promote proposed guidance or claim runtime verification from catalog CI.

@@ -10,6 +10,13 @@
 | --- | --- |
 | Establish visual hierarchy, spacing, and affordances | [Design principles](foundations/design-principles.md) |
 | Create a theme or rationalize raw values | [Tokens and themes](foundations/design-tokens-and-themes.md) |
+| Choose prototype, MVP, growing or enterprise app code structure | [Application architecture selection](architecture/application-architecture.md) |
+| Organize features, domains, and developer navigation | [Module boundaries and developer navigation](architecture/module-boundaries-and-developer-navigation.md) |
+| Adapt app structure to Next.js, Angular or React Router | [Framework-aware application structure](architecture/framework-aware-application-structure.md) |
+| Decide between monorepo, multirepo or microfrontends | [Enterprise and multi-app architecture](architecture/enterprise-and-multiapp.md) |
+| Migrate or measure application modularity | [Architecture evolution and fitness](architecture/architecture-evolution.md) |
+| Enforce feature/module import boundaries in CI | [Architecture enforcement and CI guardrails](architecture/architecture-enforcement-and-ci.md) |
+| Explore prototype, MVP and enterprise code-layout examples | [Application architecture reference examples](architecture/application-architecture-reference-examples.md) |
 | Decide primitive vs component vs pattern vs feature | [Component model](architecture/component-model.md) |
 | Specify a new or changed reusable component | [Component contracts](architecture/component-contracts.md) and [entry template](templates/concept-entry.md) |
 | Design role-based portals, previews or workspace switching | [Role-aware workspaces and context switching](patterns/role-aware-workspaces-and-context-switching.md) |
@@ -192,3 +199,27 @@ For large route modules and partially adopted UI libraries, follow the [componen
 ## Batch 10 — knowledge coverage and lookup regression closure (proposed, 2026-11-07)
 
 The [cross-batch coverage and validation ledger](planning/little-wins-batch-10-context-and-gap-ledger.md) maps all ten Little Wins-derived documentation batches to existing canonical IDs, evidence boundaries and unresolved product tests. The [canonical registry](catalog/index.json) now includes task-oriented aliases for hosted identity, human review, feature dependencies, data migrations, table actions and styling migration. [Lookup regression tests](tests/test_little_wins_knowledge_coverage.py) exercise these searches. No new concept IDs or product implementation were introduced, and passing catalog CI does not certify Little Wins UX or security.
+
+## Application code architecture (proposed, Batch 13)
+
+For **how to structure an application repository**, rather than the catalog itself, start with [application architecture selection](architecture/application-architecture.md). Compare prototype, MVP, growing modular product and multi-application profiles using actual team/domain/change evidence. The [component model](architecture/component-model.md) continues to own UI component tiers; the [architecture index](architecture/README.md) links both. Guidance is proposed, not an audited app implementation.
+
+## Batches 13–16: application architecture and scalability
+
+Start with [application structure selection](architecture/application-architecture.md), then [module boundaries and developer navigation](architecture/module-boundaries-and-developer-navigation.md), [incremental architecture evolution](architecture/architecture-evolution.md), and [enterprise multi-app decisions](architecture/enterprise-and-multiapp.md). Read the [context-first gap ledger](planning/application-architecture-batches-13-16-context-and-gaps.md) before treating illustrative trees as recommendations for an actual app. All entries remain proposed guidance.
+
+## Batch 17 — framework-aware application file structure
+
+The [framework-aware application structure guide](architecture/framework-aware-application-structure.md) maps generic feature-first advice to Next.js App Router, Angular and React Router while protecting route semantics. Consult the [context-first Batch 17 ledger](planning/application-architecture-batch-17-context-and-gaps.md) before adapting examples to a real app. Framework-specific behavior remains implementation- and version-dependent.
+
+## Batch 18 — application architecture enforcement
+
+The [architecture enforcement guide](architecture/architecture-enforcement-and-ci.md) provides actionable ESLint, dependency-cruiser and Nx approaches, limitations and incremental CI adoption; the [context-first evidence ledger](planning/application-architecture-batch-18-context-and-gaps.md) distinguishes current catalog coverage from new implementation guidance. Configuration fragments are illustrative, not executed checks in a product repository.
+
+## Batch 19 — practical application architecture examples
+
+[Architecture reference examples](architecture/application-architecture-reference-examples.md) map developer tasks to code ownership across prototype, modular MVP and multi-application contexts, including before/after extraction and verification. The [Batch 19 context ledger](planning/application-architecture-batch-19-context-and-gaps.md) explains overlaps and documentation-only evidence limitations.
+
+## Batch 20 — application architecture knowledge closure
+
+The [task-first architecture index](architecture/README.md) is the recommended starting point for developers. The [Batch 20 audit](planning/application-architecture-batch-20-closure-audit.md) reconciles Batches 13–19, identifies canonical owners and records unverified application-specific outcomes. This closes knowledge development for the initiative, **not** a runtime refactor, empirical DX test or approval to merge the draft PR.

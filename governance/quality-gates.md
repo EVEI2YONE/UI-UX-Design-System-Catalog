@@ -153,3 +153,11 @@ Do not mark a product test PASS based solely on source review or on the presence
 | Adoption/release | Small vertical slice first, measured regressions, named owner and removal conditions for adapters | NOT VERIFIED |
 
 A component-library folder is **not** evidence that its contracts are adopted by the app. A passing snapshot or bundler build is not proof that keyboard, focus, business transitions or accessibility are unchanged.
+
+## Application architecture selection and evolution (Batches 13–16)
+
+For an app architecture recommendation, record the repository/ref, framework and routing constraints, primary user journeys, current tree/import graph, real duplication and cross-feature edits, ownership/deployment boundaries, and unknowns. Check that (1) the selected profile is no more complex than needed; (2) feature/domain/shared APIs have documented owners and directional imports; (3) cross-package decisions have real consumers; (4) developer task-to-file discoverability has a baseline; (5) regression and rollback plans cover critical workflows, accessibility, responsive/i18n/theme states and data integrity. A clean docs registry is not proof of an application architecture improvement. See [selection](../architecture/application-architecture.md), [modules](../architecture/module-boundaries-and-developer-navigation.md), [evolution](../architecture/architecture-evolution.md), [enterprise topology](../architecture/enterprise-and-multiapp.md).
+
+## Batch 18 — architecture boundary enforcement evidence
+
+For real application releases, document the owner and allowed dependency contract, installed tool/version, alias and relative-import resolution, positive/negative fixture results, existing-versus-new violations, CI check results, approved exception expirations, and cross-feature consumer impact. A green static import check alone does not establish that relative imports, dynamic imports or other languages are covered. The catalog's document validator **cannot** prove application architecture enforcement. Follow [architecture enforcement recipes](../architecture/architecture-enforcement-and-ci.md) and the [Batch 18 context ledger](../planning/application-architecture-batch-18-context-and-gaps.md).

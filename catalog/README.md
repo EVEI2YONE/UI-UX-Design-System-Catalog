@@ -61,3 +61,23 @@ The [schema](schema.json) specifies fields; the dependency/reference validator u
 ## Batch 10 — task-based retrieval coverage
 
 The existing 40 concepts remain canonical; retrieval metadata now maps user task phrases such as `hosted authentication`, `human approval workflow`, `feature flags`, `data migration`, `clickable row`, `dialog focus return` and `global CSS` to their owning pages. This is alias and `use_when` enrichment, not concept creation or promotion. See [Batch 10 evidence ledger](../planning/little-wins-batch-10-context-and-gap-ledger.md) and [regression tests](../tests/test_little_wins_knowledge_coverage.py). Rank indicates retrieval relevance, not implementation correctness.
+
+## Application architecture task lookup (Batches 13–16)
+
+Use `architecture.application-selection` for profiles and example trees, `architecture.module-boundaries` for feature/domain/shared ownership and developer findability, `architecture.evolution` for migration/fitness, and `architecture.enterprise-multiapp` for monorepo/multirepo/microfrontend selection. These are proposed application-code guidelines rather than a restructuring of the catalog itself. [Batch context and coverage](../planning/application-architecture-batches-13-16-context-and-gaps.md).
+
+## Batch 17 framework-aware architecture lookup
+
+Resolve `architecture.framework-aware` for applying application/feature organization without overriding Next.js App Router, Angular or React Router file conventions. Start with `architecture.application-selection` and `architecture.module-boundaries` for generalized ownership decisions. See [Batch 17 context](../planning/application-architecture-batch-17-context-and-gaps.md).
+
+## Batch 18 architecture-enforcement lookup
+
+Use `architecture.enforcement-ci` for example boundary lint, graph cycle detection, Nx project constraints, exception review and CI rollout. This is distinct from `architecture.module-boundaries`, which owns the application design decisions. [Batch 18 source and gap ledger](../planning/application-architecture-batch-18-context-and-gaps.md).
+
+## Batch 19 applied architecture examples
+
+Use `architecture.reference-examples` for prototype/MVP/enterprise developer-task-to-file walkthroughs and before/after modularity decisions. Selection and module contracts remain canonical in `architecture.application-selection` and `architecture.module-boundaries`. [Batch 19 context](../planning/application-architecture-batch-19-context-and-gaps.md).
+
+## Batch 20 — architecture coverage and selection
+
+The [architecture index](../architecture/README.md) is the human task-first entrypoint to the seven application architecture concepts introduced in Batches 13–19. The [closure audit](../planning/application-architecture-batch-20-closure-audit.md) documents canonical ownership, lookup coverage, historical context and unverified application outcomes. Prefer existing IDs over creating redundant concept entries.

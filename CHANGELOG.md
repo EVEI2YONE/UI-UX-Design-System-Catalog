@@ -151,3 +151,45 @@
 - Added regression tests for 12 task-to-concept queries, unique IDs, proposed statuses, and Batch 6–10 evidence ledgers.
 - Added the final cross-batch context, gap and verification ledger and linked it from canonical discovery files.
 - The previous Batch 9 head passed GitHub's Validate catalog workflow run #98. Batch 10 final-head CI is a separate gate; target-app security/UX remain NOT VERIFIED. Keep PR draft pending review.
+
+## Unreleased — Batch 13: application architecture selection (2026-11-07)
+
+- Audited existing component-model, architecture index, governance and quality coverage before writing; existing component tiers were preserved.
+- Added complexity-adaptive application architecture profiles, context collection, selection heuristics, anti-patterns and verification criteria.
+- Registered canonical application-selection guidance and indexed it for people and agents; no application code was modified.
+
+## Unreleased — Batches 14–16: application modularity, evolution and enterprise topology (2026-11-07)
+
+- Batch 14: audited existing component and lifecycle boundaries; added application feature/domain/shared ownership, import/API and developer navigation guidance.
+- Batch 15: audited existing incremental extraction and quality gates; added app-scale migration triggers, fitness indicators and staged rollback.
+- Batch 16: audited prior profile guidance and lifecycle contracts; added modular-monolith/monorepo/multirepo/microfrontend selection and cross-team governance.
+- Indexed four canonical proposed concepts, updated human/agent lookup and added regression tests plus per-batch context/gap ledger.
+- No app source migration or runtime usability/a11y evaluation was performed; actual final-head CI checks must be verified separately.
+
+## Unreleased — Batch 17: framework-aware application code organization (2026-11-07)
+
+- Revisited Batches 13–16 application structure, module ownership and migration guidance before drafting.
+- Identified incomplete framework-specific route/feature placement guidance and added a new proposed canonical page for Next.js, Angular and React Router, citing official documentation.
+- Added route-local versus feature-shared decision criteria, server/client and deep-link migration guardrails, discovery metadata, navigation and lookup tests.
+- All example structures are illustrative; runtime behavior, accessibility and developer performance remain NOT VERIFIED.
+
+## Unreleased — Batch 18: architecture enforcement and CI (2026-11-07)
+
+- Audited prior module-boundary, migration, framework and quality guidance before writing; documented gaps and tool-specific limitations.
+- Added proposed recipes for scoped ESLint static imports, dependency-cruiser path/cycle checks and Nx project tags, including coverage limits and intentional fail/pass examples.
+- Documented context-first installation decisions, legacy-violation baselines, nonblocking-to-blocking CI progression and exception governance.
+- Registered canonical lookup and updated developer/agent navigation, source ledger and retrieval tests. No application linter was installed or executed.
+
+## Unreleased — Batch 19: practical architecture examples (2026-11-07)
+
+- Reviewed existing selection, module, migration, enterprise, framework and enforcement guidance before drafting to avoid duplicate policy.
+- Added three explicitly illustrative reference scenarios: minimal prototype, duplicated MVP editor extraction, and two-app enterprise ownership with shared contracts.
+- Included task-to-file lookup examples, allowed/forbidden dependencies, incremental migrations and real-app acceptance requirements.
+- Registered canonical example discovery and updated root/agent/navigation, context ledger and retrieval tests. No application source was built, migrated or benchmarked.
+
+## Unreleased — Batch 20: application architecture knowledge audit and closure (2026-11-07)
+
+- Audited the seven new canonical entries from Batches 13–19 against the existing component model, governance and navigation; found no justification for another concept.
+- Replaced chronological architecture navigation with a concise task-first index; reordered root discovery to begin with profile selection rather than examples and CI.
+- Added closure ledger and cross-batch tests for unique IDs, proposed ownership, route/link navigation, retrieval intents, history and acyclic dependencies.
+- Kept unresolved framework, runtime enforcement, user-journey, code-reduction and developer metrics explicitly NOT VERIFIED. This closes documentation development only, not a production-app verification or a PR merge.
