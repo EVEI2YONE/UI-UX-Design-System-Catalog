@@ -73,3 +73,7 @@ Resolve `architecture.framework-aware` for applying application/feature organiza
 ## Batch 18 architecture-enforcement lookup
 
 Use `architecture.enforcement-ci` for example boundary lint, graph cycle detection, Nx project constraints, exception review and CI rollout. This is distinct from `architecture.module-boundaries`, which owns the application design decisions. [Batch 18 source and gap ledger](../planning/application-architecture-batch-18-context-and-gaps.md).
+
+## Batch 19 applied architecture examples
+
+Use `architecture.reference-examples` for prototype/MVP/enterprise developer-task-to-file walkthroughs and before/after modularity decisions. Selection and module contracts remain canonical in `architecture.application-selection` and `architecture.module-boundaries`. [Batch 19 context](../planning/application-architecture-batch-19-context-and-gaps.md).
