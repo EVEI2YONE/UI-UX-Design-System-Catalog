@@ -12,7 +12,7 @@
 | B02 Anatomy, event ownership, coordination | CKG-04, 06–08 | **Documentation committed; verification incomplete** | `architecture.component-contracts` | Collected 2026-11-07 |
 | B03 Icon state, focus, sequential workflows | CKG-09–12 | **Documentation committed; verification incomplete** | `pattern.interaction-recovery`, `pattern.task-flows` | Collected 2026-11-07 |
 | B04 Action grouping and effort metrics | CKG-13–14 | **Documentation committed; verification incomplete** | `pattern.advanced-interactions`, `guidance.ux-measurement` | Collected 2026-11-07 |
-| B05 Utility-first styling and anti-duplication | CKG-15–17 | Not started | styling and architecture owners | Required before B05 |
+| B05 Utility-first styling and anti-duplication | CKG-15–17 | **Documentation committed; verification incomplete** | `foundation.practical-styling`, `architecture.enforcement-ci`, `architecture.component-model` | Collected 2026-11-07 |
 | B06 Consistency, tests and retrieval | CKG-05, 18–19 | Not started | `governance.quality`, registry/tests | Required before B06 |
 
 ## Before each batch: repeat the context gate
@@ -70,3 +70,13 @@ Inspect actual Button, Field, Dialog, Select, Checkbox, navigation/menu patterns
 - **GitHub confirmation:** connector accepted B04 commits and branch-relative file fetches can establish their presence. CI `Validate catalog` triggers for PRs or main pushes, not this branch alone; no PR is opened. **Validator and full Python test suite NOT RUN / NOT VERIFIED**; no claim of passing checks, actual pointer metrics, user research, keyboard/AT/touch conformity or production adoption.
 - **B05 context gate:** refresh main/branch and inspect tokens, practical styling, framework-aware architecture, component model, architecture enforcement, catalog aliases, lint/check scripts and existing test expectations. Seek practical scalable styling without another monolithic stylesheet. Preserve shared branch and single PR after B06.
 - **PR:** not opened per user instruction.
+
+## B05 — context, committed guidance and verification disposition (2026-11-07)
+
+- **Context gathered before writing:** [B05 context gate](icon-interaction-b05-context-2026-11-07.md) records main SHA `00df3f2055396e586fbb5ffa07e4a80dc8312e8e`, agent/contribution policy, current token/theme, styling, component model, framework-aware architecture and CI rules, section navigation, catalog metadata and Little Wins B01/B03 motivating proposals. No new upstream main changes observed.
+- **Gap decisions:** CKG-15 extends existing `foundation.practical-styling` with utility-first ownership and illustrative token-backed control composition. CKG-16 extends `architecture.enforcement-ci` with CSS/utility drift checks and baseline-aware adoption. CKG-17 extends `architecture.component-model` with installed/exported/imported/used inventory distinctions and contract mapping. No new canonical IDs.
+- **Files updated:** `foundations/practical-ui-styling-recipes.md`, `architecture/architecture-enforcement-and-ci.md`, `architecture/component-model.md`, `catalog/index.json`, `foundations/README.md`, `architecture/README.md`, `README.md`, `AGENTS.md`, `CHANGELOG.md`; added `tests/test_styling_architecture_knowledge.py` and `archive/planning/icon-interaction-b05-context-2026-11-07.md`, plus this ledger.
+- **Safeguards:** unchanged token source ownership; no prescribed new directory layout or second design system; no magic file-size limits or blanket ban on runtime dynamic styling. Styles, permissions and business outcomes remain application-owned.
+- **Verification:** source commits and branch-qualified file existence may be checked through GitHub connector. New regression tests are **written but NOT RUN**. GitHub Actions on this repo triggers validation only on PR or `main` pushes; no PR yet. Local Git clone DNS was unavailable during B01; no successful full validator/test execution established. Actual app CSS lint, responsive/browser/AT tests, theme compilation, user success and human approval remain **NOT VERIFIED**.
+- **B06 starting gate:** fresh main/branch context, compare all B01–B05 canonical coverage and aliases; inspect `governance.quality`, validator, tests, link/lookup behavior, icon consistency policy, existing full registry and change diff. Resolve observed QA defects before opening **one PR** after final batch completion.
+- **PR status:** not opened, by request.
