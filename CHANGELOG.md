@@ -65,3 +65,10 @@
 - Add canonical `guidance.content-design` (task language, scannability, error microcopy, lifecycle) and `pattern.service-recovery` (outages, escalation, support handoff and task resumption).
 - Extend existing `pattern.forms` and `pattern.search-filter` rather than creating duplicates; include state tables, decision rules, accessibility/i18n examples and verification.
 - Update canonical retrieval metadata, root/nested indexes, sources and agent guidance. Added concepts remain proposed with unassigned owners; product testing NOT VERIFIED.
+
+## Unreleased — Batch 9: trust and resilient journeys (proposed)
+
+- Inspected 28 existing canonical concepts and the role-aware, feedback, recovery, form, privacy and accessibility boundaries before adding guidance; captured primary-source context in the Batch 9 ledger.
+- Add four proposed concepts: `guidance.privacy-trust`, `pattern.authentication-lifecycle`, `pattern.notifications-attention`, and `pattern.offline-sync`.
+- Keep existing runtime/component contracts canonical and link the new journey-specific distinctions from registry, README, AGENTS, feedback and recovery guidance.
+- Sources include ICO/FTC (privacy/deceptive UX), NIST SP 800-63B-4/W3C (authentication), MDN/Apple (notifications), MDN (offline APIs). No application security/legal certification, user studies or manual a11y checks performed.
