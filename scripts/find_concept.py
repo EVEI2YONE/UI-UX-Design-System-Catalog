@@ -2,41 +2,47 @@
 """Rank canonical catalog entries; stdlib only and deterministic."""
 import argparse
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def normalize(text):
+    """Casefold and normalize punctuation to spaces without stripping Unicode words."""
+    return ' '.join(re.findall(r'[^\\W_]+', text.casefold(), flags=re.UNICODE))
+
+
 def score(entry, query):
     """Return relevance or -1. Exact ID > exact alias > exact title > words."""
-    q = query.casefold().strip()
+    q = normalize(query)
     if not q:
         return 0
-    if entry['id'].casefold() == q:
+    if normalize(entry['id']) == q:
         return 100
-    if any(alias.casefold() == q for alias in entry['aliases']):
+    if any(normalize(alias) == q for alias in entry['aliases']):
         return 90
-    if entry['title'].casefold() == q:
+    if normalize(entry['title']) == q:
         return 80
     fields = [entry['id'], entry['title'], entry['summary'],
               *entry['aliases'], *entry['domains'],
-              *entry.get('use_when', []), *entry.get('avoid_when', [])]
-    search_text = ' '.join(fields).casefold()
+              *entry.get('use_when', [])]
+    search_text = ' '.join(normalize(field) for field in fields)
     terms = q.split()
     if not all(term in search_text for term in terms):
         return -1
-    if q in entry['title'].casefold():
+    if q in normalize(entry['title']):
         return 70
-    if any(q in alias.casefold() for alias in entry['aliases']):
+    if any(q in normalize(alias) for alias in entry['aliases']):
         return 60
-    if q in entry['id'].casefold():
+    if q in normalize(entry['id']):
         return 55
-    if any(q in item.casefold() for item in entry.get('use_when', [])):
+    if any(q in normalize(item) for item in entry.get('use_when', [])):
         return 50
     return 10
 
 
-def lookup(entries, query='', layer=None, domain=None):
+def lookup(entries, query='', layer=None, domain=None, status=None, limit=None):
     ranked = []
     for entry in entries:
         if layer and entry['layer'].casefold() != layer.casefold():
@@ -44,11 +50,14 @@ def lookup(entries, query='', layer=None, domain=None):
         if domain and not any(domain.casefold() in d.casefold()
                               for d in entry['domains']):
             continue
+        if status and entry['status'].casefold() != status.casefold():
+            continue
         relevance = score(entry, query)
         if relevance >= 0:
             ranked.append((relevance, entry))
     ranked.sort(key=lambda pair: (-pair[0], pair[1]['id']))
-    return [entry for _, entry in ranked]
+    results = [entry for _, entry in ranked]
+    return results[:limit] if limit is not None else results
 
 
 def run():
@@ -57,10 +66,14 @@ def run():
     parser.add_argument('--layer', help='filter by primary layer')
     parser.add_argument('--domain', help='filter by domain')
     parser.add_argument('--json', action='store_true', help='machine-readable results')
+    parser.add_argument('--status', choices=['proposed', 'experimental', 'stable', 'deprecated', 'removed'])
+    parser.add_argument('--limit', type=int, help='positive maximum number of results')
     args = parser.parse_args()
+    if args.limit is not None and args.limit <= 0:
+        parser.error('--limit must be positive')
     registry = json.loads((ROOT / 'catalog/index.json').read_text(encoding='utf-8'))
     results = lookup(registry['entries'], ' '.join(args.query),
-                     layer=args.layer, domain=args.domain)
+                     layer=args.layer, domain=args.domain, status=args.status, limit=args.limit)
     if args.json:
         print(json.dumps({'results': results}, ensure_ascii=False, indent=2))
     elif not results:
