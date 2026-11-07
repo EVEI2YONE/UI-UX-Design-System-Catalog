@@ -78,7 +78,8 @@
       ],
       "related": [
         "architecture.component-contracts",
-        "guidance.accessibility"
+        "guidance.accessibility",
+        "governance.quality"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -155,7 +156,9 @@
       ],
       "related": [
         "pattern.interaction-recovery",
-        "guidance.accessibility"
+        "guidance.accessibility",
+        "governance.quality",
+        "governance.lifecycle"
       ],
       "depends_on": [
         "architecture.component-model",
@@ -320,7 +323,8 @@
         "pattern.service-recovery",
         "pattern.offline-sync",
         "pattern.authentication-lifecycle",
-        "pattern.agentic-actions"
+        "pattern.agentic-actions",
+        "guidance.performance-experience"
       ],
       "depends_on": [
         "architecture.component-contracts"
@@ -469,7 +473,9 @@
         "pattern.interaction-recovery",
         "governance.quality",
         "guidance.ai-experiences",
-        "pattern.multimodal-conversation"
+        "pattern.multimodal-conversation",
+        "guidance.performance-experience",
+        "guidance.experimentation"
       ],
       "depends_on": [
         "pattern.task-flows"
@@ -517,7 +523,9 @@
       "related": [
         "architecture.component-model",
         "architecture.component-contracts",
-        "governance.quality"
+        "governance.quality",
+        "foundation.design-tokens",
+        "guidance.ux-measurement"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -564,7 +572,11 @@
         "governance.lifecycle",
         "guidance.accessibility",
         "guidance.internationalization",
-        "guidance.ux-measurement"
+        "guidance.ux-measurement",
+        "guidance.performance-experience",
+        "guidance.experimentation",
+        "architecture.component-contracts",
+        "foundation.design-tokens"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -1048,7 +1060,8 @@
       "related": [
         "guidance.ux-measurement",
         "guidance.journey-mapping",
-        "guidance.accessibility"
+        "guidance.accessibility",
+        "guidance.experimentation"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -1687,6 +1700,98 @@
         "guidance.accessibility",
         "guidance.mobile-adaptive",
         "guidance.content-design"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.performance-experience",
+      "title": "Performance, perceived speed and resilient task feedback",
+      "path": "guidance/performance-and-perceived-speed.md",
+      "layer": "intelligence",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Field versus lab performance, Core Web Vitals, task readiness, truthful loading and resilience.",
+      "aliases": [
+        "perceived performance",
+        "perceived speed",
+        "Core Web Vitals",
+        "LCP INP CLS",
+        "real user monitoring",
+        "performance budget",
+        "web performance UX",
+        "loading skeleton",
+        "progressive rendering",
+        "responsive latency"
+      ],
+      "domains": [
+        "performance",
+        "resilience",
+        "measurement",
+        "inclusive-design"
+      ],
+      "use_when": [
+        "defining user perceived performance feedback and success measures",
+        "reviewing real user Core Web Vitals and task latency",
+        "testing low network slow device and progressive content"
+      ],
+      "avoid_when": [
+        "treating a spinner or skeleton as confirmed task completion",
+        "claiming lab score measures all production users"
+      ],
+      "related": [
+        "guidance.ux-measurement",
+        "pattern.interaction-recovery",
+        "pattern.offline-sync",
+        "governance.quality",
+        "guidance.experimentation"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.experimentation",
+      "title": "UX experimentation and causal evidence",
+      "path": "guidance/experimentation-and-causal-evidence.md",
+      "layer": "intelligence",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Randomized experiment planning, assignment integrity, sample ratio mismatch, guardrails and credible causal inference.",
+      "aliases": [
+        "A/B testing",
+        "UX experimentation",
+        "randomized controlled experiment",
+        "sample ratio mismatch",
+        "A/A testing",
+        "experiment guardrails",
+        "experimental design",
+        "causal inference",
+        "sequential testing",
+        "experiment power"
+      ],
+      "domains": [
+        "experimentation",
+        "measurement",
+        "research",
+        "causal-inference"
+      ],
+      "use_when": [
+        "designing a randomized experiment to compare interface changes",
+        "checking sample ratio mismatch and assignment telemetry",
+        "interpreting uncertainty effect and safety guardrails"
+      ],
+      "avoid_when": [
+        "declaring causation from before and after analytics",
+        "peeking at fixed horizon tests without a valid monitoring plan"
+      ],
+      "related": [
+        "guidance.ux-measurement",
+        "guidance.ux-research",
+        "governance.quality",
+        "guidance.privacy-trust",
+        "guidance.performance-experience"
       ],
       "depends_on": [],
       "owner": "unassigned",
