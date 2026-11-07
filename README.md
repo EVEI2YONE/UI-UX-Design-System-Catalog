@@ -148,3 +148,7 @@ Settings Batch 4: [configuration audit events, access and safe reversals](patter
 ## Batch 1 — Icon semantics and accessible controls (proposed, 2026-11-07)
 
 For an [icon intent registry, accessible icon-only action and state/target guidance](foundations/iconography-and-semantics.md), use `foundation.icon-semantics`. For appearance alone (stroke, optical sizing, icon and illustration craftsmanship), keep using `foundation.practical-styling`. The [Button contract](components/button/spec.md) specifies how its host activates and handles pending/disabled states. These are proposed knowledge specifications, not published UI assets.
+
+## Batch 2 — component events and coordination (proposed, 2026-11-07)
+
+The [canonical component contract](architecture/component-contracts.md#batch-2--composite-anatomy-and-event-coordination-ckg-04-ckg-0608-proposed-2026-11-07) now covers host/slot ownership, local events versus feature commands versus domain outcomes, sibling coordination, controlled state and nested-interaction pitfalls. Retrieve `architecture.component-contracts`; do not infer an implemented component library or measured behavior.
