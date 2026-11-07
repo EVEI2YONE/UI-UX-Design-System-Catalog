@@ -67,3 +67,10 @@ For **web** journeys, current external good thresholds are LCP ≤2.5 seconds, I
 **Inclusion/privacy:** Minimize sensitive telemetry and small cohort disclosures; examine low-end devices, input modalities, assistive technologies, locales and accessibility failure reports alongside aggregate metrics. Treat field/lab differences as questions to investigate.
 
 Sources consulted 2026-11-07: [web.dev Web Vitals](https://web.dev/articles/vitals), [User-centric performance metrics](https://web.dev/articles/user-centric-performance-metrics), and [Microsoft Research SRM guidance](https://www.microsoft.com/en-us/research/articles/diagnosing-sample-ratio-mismatch-in-a-b-testing/). This is proposed measurement guidance, not measured application data.
+
+
+## Collaborative reviews and shared-value journeys (2026-11-07)
+
+Use journey-aligned metrics instead of generic dashboard engagement. Prioritize **submission completion** (server-confirmed successful contributions / eligible started attempts), **review turnaround** (median and p75 elapsed from submission to first substantive decision), **return/rework** (returned submissions / eligible reviewed submissions, with reasons), **review correctness** (authorized corrections and error-severity categories), **reward fulfillment** (fulfilled / eligible requested, with pending age), and **scope confusion** (project-switch recovery or wrong-scope attempts from qualitative research). Record eligible cohort, event version, timezone, deduplication and cancellation separately. Compare owner-managed and independently authenticated workflows only if those distinct populations exist.
+
+For toggled-off features, mark related metrics **NOT APPLICABLE** to the disabled period, not zero performance. For offline/timeouts, distinguish server-confirmed transactions from UI requests. Never capture contribution descriptions, private member details, or other sensitive content in telemetry. No Little Wins baseline or causal effect has been verified in this catalog change.
