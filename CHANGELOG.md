@@ -52,3 +52,9 @@
 - Improve retrieval with punctuation normalization, status/limit filters and exclusion of negative `avoid_when` from positive matching.
 - Require consistent metadata through the schema and strengthen validator checks for duplicate canonical paths, type/duplicate metadata and dependency cycles.
 - Add lookup and registry regression coverage, governance ownership/review practices and agent documentation. No component implementation or manual UX conformance claims.
+
+## Unreleased — Batch 7 proposed research guidance
+
+- Gathered context from the catalog registry, existing task-flow/design-principle/measurement pages and external user-research and cognitive accessibility guidance.
+- Added three proposed canonical guidelines for UX research methods, mental models and journey mapping, and cognitive load.
+- Extended root/guidance/agent navigation, source registry and lookup metadata. Real-user studies and manual accessibility checks remain NOT VERIFIED.
