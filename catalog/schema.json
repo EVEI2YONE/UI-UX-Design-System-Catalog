@@ -42,7 +42,13 @@
         "status",
         "summary",
         "aliases",
-        "domains"
+        "domains",
+        "use_when",
+        "avoid_when",
+        "related",
+        "depends_on",
+        "owner",
+        "reviewed_at"
       ],
       "properties": {
         "id": {
@@ -101,38 +107,50 @@
         "aliases": {
           "type": "array",
           "items": {
-            "type": "string"
-          }
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
         },
         "domains": {
           "type": "array",
           "items": {
-            "type": "string"
-          }
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
         },
         "use_when": {
           "type": "array",
           "items": {
-            "type": "string"
-          }
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
         },
         "avoid_when": {
           "type": "array",
           "items": {
-            "type": "string"
-          }
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
         },
         "related": {
           "type": "array",
           "items": {
-            "type": "string"
-          }
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
         },
         "depends_on": {
           "type": "array",
           "items": {
-            "type": "string"
-          }
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
         },
         "owner": {
           "type": "string",

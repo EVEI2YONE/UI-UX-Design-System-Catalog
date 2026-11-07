@@ -43,3 +43,10 @@ For PRs that expand existing scaffold entries, reviewers should see a batch labe
 | Research baseline | UNKNOWN unless measured with documented cohort/denominator |
 
 Record actual script output in the PR, and keep code/UX claims distinct from validation of Markdown files.
+
+## Agent lookup and metadata acceptance
+
+- **Registry:** one canonical ID and path per entry, complete typed metadata, valid references, no dependency cycles or dead local links.
+- **Retrieval:** deterministic exact ID/alias priority; punctuation normalization, optional status/limit filtering, and no positive match solely from `avoid_when`.
+- **Governance:** explicit ownership or `unassigned`, review date or `null`, documented source limitations and review evidence before lifecycle promotion.
+- **Verification:** run `python3 scripts/validate_catalog.py` and `python3 -m unittest discover -s tests -v`; log actual outcomes. Runtime keyboard, a11y, RTL, theme and user testing are **NOT VERIFIED** by documentation tests.

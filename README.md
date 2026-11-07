@@ -33,6 +33,7 @@ python3 scripts/find_concept.py --layer components
 | Section | What lives there |
 | --- | --- |
 | [Foundations](foundations/README.md) | Principles, semantic tokens, theme architecture, visual rules |
+| [Core components](components/README.md) | Proposed contracts for Button, Input, Select, Checkbox, Dialog and Field/Error |
 | [Architecture](architecture/README.md) | Primitive/component/pattern boundaries, shared contracts |
 | [Patterns](patterns/README.md) | IA, task flows, interaction states, recovery |
 | [Guidance](guidance/README.md) | Accessibility, internationalization, research and metrics |
@@ -97,3 +98,15 @@ Agents should begin with [AGENTS.md](AGENTS.md), query [the canonical registry](
 **Batch 2 agent lookup:** [Patterns](patterns/README.md) and [cross-cutting guidance](guidance/README.md) now expose task-flow, recovery, accessibility and localization canonical IDs through the same registry. These remain proposed guidance, not verified product implementations.
 
 **Batch 3 agent lookup:** [UX measurement](guidance/ux-measurement.md) and [governance](governance/README.md) now expose metrics, lifecycle and quality-gate concepts through the same registry. Retrieval metadata is present for all three scaffold-definition batches; the separately documented role-aware workspace entry remains unchanged.
+
+## Batch 4 — core component contracts
+
+Find individually retrievable proposed specifications for [Button, Input, Select, Checkbox, Dialog and Field/Error](components/README.md). They extend the existing architecture guidance, include state and inclusive-design checks, and are **not** implemented packages or tested components.
+
+## Batch 5 — composed patterns
+
+[Forms, navigation, search/filtering, data tables and feedback](patterns/README.md) now have canonical, agent-retrievable pattern specifications. These compose the [Batch 4 component contracts](components/README.md) and existing guidance without becoming product-specific feature implementations. All remain proposed and unverified on real user interfaces.
+
+## Batch 6 — agent catalog maturity
+
+The [agent lookup protocol](AGENTS.md), [catalog registry](catalog/README.md), [validation script](scripts/validate_catalog.py) and [governance rules](governance/lifecycle-and-decisions.md) now cover complete lookup metadata, deterministic retrieval, cross-references and dependency cycles for all registered concepts. No concept was automatically promoted from `proposed`, and documentation validation is not product accessibility certification.

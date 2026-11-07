@@ -43,3 +43,16 @@ python3 scripts/find_concept.py 'documentation checks' --json
 ```
 
 These resolve to canonical guidance, lifecycle policy and quality checklist entries. All remain `proposed`; no observed UX outcomes or implementation conformance are implied.
+
+## Batch 6 — consistent agent retrieval
+
+All entries, including [role-aware workspaces](../patterns/role-aware-workspaces-and-context-switching.md), now provide owner, review date, use/avoid guidance, related IDs and dependencies. The resolver normalizes case/punctuation, ranks exact IDs and aliases first, supports `--status` and `--limit`, and excludes `avoid_when` from positive search scoring. That field still appears in JSON results so agents can interpret contraindications.
+
+```bash
+python3 scripts/find_concept.py 'role switching' --json --limit 3
+python3 scripts/find_concept.py 'modal-dialog' --status proposed
+python3 scripts/validate_catalog.py
+python3 -m unittest discover -s tests -v
+```
+
+The [schema](schema.json) specifies fields; the dependency/reference validator uses the Python standard library rather than a complete JSON Schema engine. Documentation checks do not establish verified accessibility or implemented component quality.

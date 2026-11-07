@@ -51,3 +51,9 @@ Before requesting `experimental` or `stable`, capture: a canonical ID and workin
 - `deprecated → removed`: link/reference preservation and compatibility implications documented.
 
 **Decision-record example (illustrative):** `DS-EXAMPLE-01` — reuse existing Dialog shell for destructive tasks; keep confirmation text, access checks and mutations in the feature; reconsider if the shell cannot satisfy tested focus and modal semantics. Owner: unassigned; review: pending. This is not an approved project decision.
+
+## Agent-first catalog maintenance
+
+Every canonical record must include immutable ID, path, lifecycle status, `owner` (explicitly `unassigned` where unknown), nullable review date, `use_when`, `avoid_when`, `related` and `depends_on`. Relationships in `depends_on` must be acyclic; `related` indicates optional supplementary reading, not mandatory prerequisites.
+
+**Proposed maintenance cadence:** review ownership and the applicability of authoritative references quarterly, but do not assign a review date or promote an entry without an actual reviewer and recorded evidence. Record affected consumers, migration path, source/edition, test results and unresolved risks in each PR. If a canonical path moves, preserve IDs and provide a redirect or compatibility note. Documentation status is never proof that framework-specific code is deployed.

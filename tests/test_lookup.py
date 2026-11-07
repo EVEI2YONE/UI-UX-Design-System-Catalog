@@ -24,7 +24,7 @@ class LookupTests(unittest.TestCase):
 
     def test_task_phrase(self):
         found = lookup(self.entries, 'loading button')
-        self.assertEqual(found[0]['id'], 'architecture.component-contracts')
+        self.assertEqual(found[0]['id'], 'component.button')
 
     def test_filter(self):
         found = lookup(self.entries, 'theme', layer='tokens')
@@ -89,6 +89,125 @@ class LookupTests(unittest.TestCase):
             for ref in entry['related'] + entry['depends_on']:
                 self.assertIn(ref, ids)
                 self.assertNotEqual(ref, ident)
+
+
+    def test_batch4_component_lookup(self):
+        cases = {
+            'loading button': 'component.button',
+            'email input': 'component.input',
+            'native select': 'component.select',
+            'indeterminate checkbox': 'component.checkbox',
+            'modal dialog': 'component.dialog',
+            'field error': 'component.field',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                self.assertEqual(lookup(self.entries, query)[0]['id'], expected)
+
+    def test_batch4_canonical_paths_and_refs(self):
+        ids = {e['id'] for e in self.entries}
+        for component in ('button', 'input', 'select', 'checkbox', 'dialog', 'field'):
+            e = next(x for x in self.entries if x['id'] == 'component.' + component)
+            self.assertEqual(e['path'], f'components/{component}/spec.md')
+            self.assertTrue((ROOT / e['path']).is_file())
+            self.assertEqual(e['kind'], 'specification')
+            self.assertEqual(e['status'], 'proposed')
+            self.assertEqual(e['owner'], 'unassigned')
+            self.assertIsNone(e['reviewed_at'])
+            self.assertTrue(e['use_when'] and e['avoid_when'])
+            for ref in e['related'] + e['depends_on']:
+                self.assertIn(ref, ids)
+
+
+    def test_batch5_pattern_lookup(self):
+        cases = {
+            'form composition': 'pattern.forms',
+            'primary navigation': 'pattern.navigation',
+            'search filtering': 'pattern.search-filter',
+            'sortable table': 'pattern.data-tables',
+            'toast notification': 'pattern.feedback',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                self.assertEqual(lookup(self.entries, query)[0]['id'], expected)
+
+    def test_batch5_pattern_contracts(self):
+        ids = {entry['id'] for entry in self.entries}
+        expected_paths = {
+            'forms': 'patterns/forms.md',
+            'navigation': 'patterns/navigation.md',
+            'search-filter': 'patterns/search-and-filter.md',
+            'data-tables': 'patterns/data-tables.md',
+            'feedback': 'patterns/feedback.md',
+        }
+        for item, path in expected_paths.items():
+            with self.subTest(item=item):
+                entry = next(e for e in self.entries if e['id'] == 'pattern.' + item)
+                self.assertEqual(entry['path'], path)
+                self.assertTrue((ROOT / path).is_file())
+                self.assertEqual(entry['kind'], 'specification')
+                self.assertEqual(entry['status'], 'proposed')
+                self.assertEqual(entry['owner'], 'unassigned')
+                self.assertIsNone(entry['reviewed_at'])
+                self.assertTrue(entry['use_when'] and entry['avoid_when'])
+                for ref in entry['related'] + entry['depends_on']:
+                    self.assertIn(ref, ids)
+
+
+    def test_batch6_role_metadata_complete(self):
+        entry = next(e for e in self.entries if e['id'] == 'pattern.role-aware-workspaces')
+        for field in ('use_when', 'avoid_when', 'related', 'depends_on', 'owner', 'reviewed_at'):
+            self.assertIn(field, entry)
+        self.assertEqual(entry['status'], 'proposed')
+        self.assertEqual(entry['owner'], 'unassigned')
+
+    def test_batch6_normalization_and_filters(self):
+        self.assertEqual(lookup(self.entries, 'role_aware-workspaces')[0]['id'],
+                         'pattern.role-aware-workspaces')
+        self.assertEqual(lookup(self.entries, 'modal-dialog')[0]['id'], 'component.dialog')
+        self.assertEqual(lookup(self.entries, 'loading button', limit=1)[0]['id'],
+                         'component.button')
+        self.assertEqual(lookup(self.entries, status='stable'), [])
+
+    def test_batch6_negative_guidance_not_positive_search(self):
+        from find_concept import score
+        entry = {'id': 'sample.noop', 'title': 'Noop', 'summary': 'example',
+                 'aliases': [], 'domains': [], 'use_when': [],
+                 'avoid_when': ['secret negative marker']}
+        self.assertEqual(score(entry, 'secret negative marker'), -1)
+
+    def test_batch6_invalid_references_and_types(self):
+        from validate_catalog import main
+        # The validator runs against the real checkout; this test checks
+        # the canonical registry contract without mutating repository data.
+        registry = json.loads((ROOT / 'catalog/index.json').read_text())
+        ids = {entry['id'] for entry in registry['entries']}
+        paths = [entry['path'] for entry in registry['entries']]
+        self.assertEqual(len(paths), len(set(paths)))
+        for entry in registry['entries']:
+            self.assertTrue(set(('use_when', 'avoid_when', 'related',
+                                 'depends_on', 'owner', 'reviewed_at')) <= set(entry))
+            self.assertIsInstance(entry['use_when'], list)
+            self.assertIsInstance(entry['avoid_when'], list)
+            self.assertIsInstance(entry['owner'], str)
+            for target in entry['related'] + entry['depends_on']:
+                self.assertIn(target, ids)
+        self.assertEqual(main(), 0)
+
+    def test_batch6_dependency_graph_acyclic(self):
+        graph = {e['id']: e['depends_on'] for e in self.entries}
+        visited, active = set(), set()
+        def walk(ident):
+            self.assertNotIn(ident, active)
+            if ident in visited:
+                return
+            active.add(ident)
+            for child in graph[ident]:
+                walk(child)
+            active.remove(ident)
+            visited.add(ident)
+        for ident in graph:
+            walk(ident)
 
 if __name__ == '__main__':
     unittest.main()
