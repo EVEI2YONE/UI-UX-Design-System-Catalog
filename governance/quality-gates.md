@@ -137,3 +137,19 @@ Do not mark a product test PASS based solely on source review or on the presence
 | Accessibility/locale | Clear paused versus no-data messaging, keyboard reachability, screen-reader status and long translations | NOT VERIFIED |
 
 **Release decision:** independently stored options with dependent behavior require a documented dependency matrix and server tests. No separate login, hard-coded global flag system or arbitrary disabled-state semantics are prescribed by the catalog.
+
+
+## Batch 9 — safe component and styling modernization (proposed, 2026-11-07)
+
+| Gate | Evidence and risk to check | Untested status |
+| --- | --- | --- |
+| Existing component inventory | Actually imported/used library controls versus merely installed template files, plus feature modules | NOT VERIFIED |
+| Extraction ownership | Route orchestration, domain mutation, feature form, shared control and style responsibilities separated | NOT VERIFIED |
+| Baseline/compatibility | Before/after task state and semantic behavior; public API/consumer matrix, version/rollback plan | NOT VERIFIED |
+| CSS/token migration | Selector inventory, semantic-role mapping, specificity/cascade and dead-class detection | NOT VERIFIED |
+| Inclusive interaction | Native control labels, keyboard/focus after dialog, error recovery, zoom/RTL and reduced motion | NOT VERIFIED |
+| Responsive/visual checks | Supported viewport and theme snapshots reviewed, not blindly updated; font fallback and long copy | NOT VERIFIED |
+| Domain invariants | Existing command and points/reward/review histories unchanged by presentation-only migration | NOT VERIFIED |
+| Adoption/release | Small vertical slice first, measured regressions, named owner and removal conditions for adapters | NOT VERIFIED |
+
+A component-library folder is **not** evidence that its contracts are adopted by the app. A passing snapshot or bundler build is not proof that keyboard, focus, business transitions or accessibility are unchanged.
