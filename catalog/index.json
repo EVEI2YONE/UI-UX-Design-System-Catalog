@@ -320,7 +320,15 @@
         "API",
         "state matrix",
         "contract",
-        "focus lifecycle"
+        "focus lifecycle",
+        "component event ownership",
+        "cross component events",
+        "composite component anatomy",
+        "nested interactive controls",
+        "controlled uncontrolled state",
+        "component event propagation",
+        "event contract matrix",
+        "feature workflow command"
       ],
       "domains": [
         "components",
@@ -330,7 +338,11 @@
       "use_when": [
         "specifying reusable controls",
         "defining component states",
-        "reviewing a loading button or dialog"
+        "reviewing a loading button or dialog",
+        "coordinating sibling UI state",
+        "specifying composite component event semantics",
+        "preventing nested interactive event collisions",
+        "designing controlled versus uncontrolled components"
       ],
       "avoid_when": [
         "embedding product APIs in reusable controls"
@@ -339,7 +351,12 @@
         "pattern.interaction-recovery",
         "guidance.accessibility",
         "governance.quality",
-        "governance.lifecycle"
+        "governance.lifecycle",
+        "foundation.icon-semantics",
+        "component.field",
+        "component.dialog",
+        "pattern.search-filter",
+        "pattern.data-tables"
       ],
       "depends_on": [
         "architecture.component-model",
