@@ -56,3 +56,8 @@ python3 -m unittest discover -s tests -v
 ```
 
 The [schema](schema.json) specifies fields; the dependency/reference validator uses the Python standard library rather than a complete JSON Schema engine. Documentation checks do not establish verified accessibility or implemented component quality.
+
+
+## Batch 10 — task-based retrieval coverage
+
+The existing 40 concepts remain canonical; retrieval metadata now maps user task phrases such as `hosted authentication`, `human approval workflow`, `feature flags`, `data migration`, `clickable row`, `dialog focus return` and `global CSS` to their owning pages. This is alias and `use_when` enrichment, not concept creation or promotion. See [Batch 10 evidence ledger](../planning/little-wins-batch-10-context-and-gap-ledger.md) and [regression tests](../tests/test_little_wins_knowledge_coverage.py). Rank indicates retrieval relevance, not implementation correctness.
