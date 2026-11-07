@@ -39,3 +39,15 @@ Record ID, date, scope, problem/user task, alternatives, rationale, owner, evide
 ## Verification
 
 Confirm no duplicate or orphaned entry, a named owner or explicitly `unassigned`, source currency, catalog registry/index synchronization, and documented unknowns. Use [quality gates](quality-gates.md). Never claim a PR, merge or test was completed without a verified result.
+
+## Definition of done for a proposed catalog entry
+
+Before requesting `experimental` or `stable`, capture: a canonical ID and working path; user/design decision; use and avoid cases; evidence and standards scope; example and anti-example; component/state implications; accessibility/i18n/theme considerations; an owner; date; test results; consumer impact and migration notes. A `stable` guideline may remain documentation-only; code maturity must be tracked separately.
+
+**Review transitions:**
+- `proposed → experimental`: assigned owner, bounded trial context and explicit unknowns.
+- `experimental → stable`: reviewed evidence for the stated artifact type, consumers and maintenance plan.
+- `stable → deprecated`: replacement or stop-using rationale, affected consumers, migration path and sunset review.
+- `deprecated → removed`: link/reference preservation and compatibility implications documented.
+
+**Decision-record example (illustrative):** `DS-EXAMPLE-01` — reuse existing Dialog shell for destructive tasks; keep confirmation text, access checks and mutations in the feature; reconsider if the shell cannot satisfy tested focus and modal semantics. Owner: unassigned; review: pending. This is not an approved project decision.

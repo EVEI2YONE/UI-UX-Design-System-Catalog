@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Search the catalog's canonical JSON registry; stdlib only."""
+"""Rank canonical catalog entries; stdlib only and deterministic."""
 import argparse
 import json
 from pathlib import Path
@@ -7,30 +7,71 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def run() -> int:
-    parser = argparse.ArgumentParser(description='Search catalog IDs, titles, summaries, synonyms and domains.')
-    parser.add_argument('query', nargs='*', help='term(s), e.g. "focus recovery"')
-    parser.add_argument('--layer', help='filter by primary layer, e.g. components')
-    parser.add_argument('--domain', help='filter by domain, e.g. accessibility')
+def score(entry, query):
+    """Return relevance or -1. Exact ID > exact alias > exact title > words."""
+    q = query.casefold().strip()
+    if not q:
+        return 0
+    if entry['id'].casefold() == q:
+        return 100
+    if any(alias.casefold() == q for alias in entry['aliases']):
+        return 90
+    if entry['title'].casefold() == q:
+        return 80
+    fields = [entry['id'], entry['title'], entry['summary'],
+              *entry['aliases'], *entry['domains'],
+              *entry.get('use_when', []), *entry.get('avoid_when', [])]
+    search_text = ' '.join(fields).casefold()
+    terms = q.split()
+    if not all(term in search_text for term in terms):
+        return -1
+    if q in entry['title'].casefold():
+        return 70
+    if any(q in alias.casefold() for alias in entry['aliases']):
+        return 60
+    if q in entry['id'].casefold():
+        return 55
+    if any(q in item.casefold() for item in entry.get('use_when', [])):
+        return 50
+    return 10
+
+
+def lookup(entries, query='', layer=None, domain=None):
+    ranked = []
+    for entry in entries:
+        if layer and entry['layer'].casefold() != layer.casefold():
+            continue
+        if domain and not any(domain.casefold() in d.casefold()
+                              for d in entry['domains']):
+            continue
+        relevance = score(entry, query)
+        if relevance >= 0:
+            ranked.append((relevance, entry))
+    ranked.sort(key=lambda pair: (-pair[0], pair[1]['id']))
+    return [entry for _, entry in ranked]
+
+
+def run():
+    parser = argparse.ArgumentParser(description='Find canonical UI/UX guidance.')
+    parser.add_argument('query', nargs='*', help='task, ID or alias')
+    parser.add_argument('--layer', help='filter by primary layer')
+    parser.add_argument('--domain', help='filter by domain')
+    parser.add_argument('--json', action='store_true', help='machine-readable results')
     args = parser.parse_args()
     registry = json.loads((ROOT / 'catalog/index.json').read_text(encoding='utf-8'))
-    terms = [q.casefold() for q in ' '.join(args.query).split()]
-    matches = []
-    for entry in registry['entries']:
-        if args.layer and entry['layer'].casefold() != args.layer.casefold():
-            continue
-        if args.domain and not any(args.domain.casefold() in domain.casefold() for domain in entry['domains']):
-            continue
-        searchable = ' '.join([entry['id'], entry['title'], entry['summary'], *entry['aliases'], *entry['domains']]).casefold()
-        if all(term in searchable for term in terms):
-            matches.append(entry)
-    if not matches:
+    results = lookup(registry['entries'], ' '.join(args.query),
+                     layer=args.layer, domain=args.domain)
+    if args.json:
+        print(json.dumps({'results': results}, ensure_ascii=False, indent=2))
+    elif not results:
         print('No concepts found. Try a synonym or browse catalog/README.md.')
-        return 1
-    for entry in matches:
-        print(f"{entry['id']}  [{entry['layer']}; {entry['status']}]\n  {entry['title']} — {entry['summary']}\n  {entry['path']}")
-    print(f'\n{len(matches)} result(s).')
-    return 0
+    else:
+        for entry in results:
+            print(f"{entry['id']}  [{entry['layer']}; {entry['status']}]")
+            print(f"  {entry['title']} — {entry['summary']}")
+            print(f"  {entry['path']}")
+        print(f"\n{len(results)} result(s).")
+    return 0 if results else 1
 
 
 if __name__ == '__main__':

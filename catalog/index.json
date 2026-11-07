@@ -28,7 +28,22 @@
       "domains": [
         "visual-design",
         "information-architecture"
-      ]
+      ],
+      "use_when": [
+        "reviewing screen hierarchy",
+        "defining primary actions",
+        "checking affordances"
+      ],
+      "avoid_when": [
+        "using visual consistency at the expense of task completion"
+      ],
+      "related": [
+        "pattern.task-flows",
+        "guidance.accessibility"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "foundation.design-tokens",
@@ -52,7 +67,22 @@
         "foundations",
         "styling",
         "theming"
-      ]
+      ],
+      "use_when": [
+        "naming semantic colors and spacing",
+        "designing themes",
+        "migrating raw values"
+      ],
+      "avoid_when": [
+        "storing product business state in tokens"
+      ],
+      "related": [
+        "architecture.component-contracts",
+        "guidance.accessibility"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "architecture.component-model",
@@ -74,7 +104,24 @@
         "architecture",
         "reuse",
         "components"
-      ]
+      ],
+      "use_when": [
+        "deciding reuse versus create",
+        "placing a primitive or feature",
+        "promoting shared components"
+      ],
+      "avoid_when": [
+        "moving unstable one-off workflows into shared components"
+      ],
+      "related": [
+        "architecture.component-contracts",
+        "governance.lifecycle"
+      ],
+      "depends_on": [
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "architecture.component-contracts",
@@ -97,7 +144,25 @@
         "components",
         "accessibility",
         "implementation"
-      ]
+      ],
+      "use_when": [
+        "specifying reusable controls",
+        "defining component states",
+        "reviewing a loading button or dialog"
+      ],
+      "avoid_when": [
+        "embedding product APIs in reusable controls"
+      ],
+      "related": [
+        "pattern.interaction-recovery",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "architecture.component-model",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "pattern.task-flows",
@@ -114,13 +179,38 @@
         "wayfinding",
         "flow",
         "search",
-        "funnel"
+        "funnel",
+        "task flow",
+        "information architecture",
+        "deep links",
+        "breadcrumbs"
       ],
       "domains": [
         "information-architecture",
         "ux",
         "journeys"
-      ]
+      ],
+      "use_when": [
+        "designing a task journey",
+        "reorganizing navigation and wayfinding",
+        "preserving search and filter context",
+        "reviewing entry and exit paths"
+      ],
+      "avoid_when": [
+        "optimizing click counts without verifying user task success",
+        "hiding safety critical information in progressive disclosure"
+      ],
+      "related": [
+        "principle.visual-hierarchy",
+        "pattern.role-aware-workspaces",
+        "guidance.ux-measurement",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "principle.visual-hierarchy"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "pattern.role-aware-workspaces",
@@ -170,13 +260,37 @@
         "toast",
         "dialog focus",
         "offline",
-        "async"
+        "async",
+        "retry",
+        "network timeout",
+        "partial failure",
+        "destructive confirmation"
       ],
       "domains": [
         "interaction",
         "accessibility",
         "error-handling"
-      ]
+      ],
+      "use_when": [
+        "designing loading error and empty states",
+        "defining recoverable form validation",
+        "handling safe retry after a timeout",
+        "managing dialog focus and completion feedback"
+      ],
+      "avoid_when": [
+        "retrying a non-idempotent action without confirming outcome",
+        "discarding entered data on an error"
+      ],
+      "related": [
+        "architecture.component-contracts",
+        "guidance.accessibility",
+        "pattern.task-flows"
+      ],
+      "depends_on": [
+        "architecture.component-contracts"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "guidance.accessibility",
@@ -195,13 +309,34 @@
         "focus",
         "zoom",
         "touch target",
-        "reduced motion"
+        "reduced motion",
+        "keyboard navigation",
+        "modal focus",
+        "screen reader testing"
       ],
       "domains": [
         "accessibility",
         "testing",
         "inclusive-design"
-      ]
+      ],
+      "use_when": [
+        "reviewing keyboard and focus behavior",
+        "checking semantic HTML and accessible names",
+        "testing zoom reflow and contrast",
+        "evaluating touch interaction and reduced motion"
+      ],
+      "avoid_when": [
+        "claiming WCAG compliance from automated checks alone",
+        "using ARIA when native semantics suffice"
+      ],
+      "related": [
+        "architecture.component-contracts",
+        "pattern.interaction-recovery",
+        "guidance.internationalization"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "guidance.internationalization",
@@ -219,13 +354,34 @@
         "bidi",
         "locale",
         "plural",
-        "pseudolocalization"
+        "pseudolocalization",
+        "text expansion",
+        "locale formatting",
+        "bidirectional layout"
       ],
       "domains": [
         "internationalization",
         "localization",
         "accessibility"
-      ]
+      ],
+      "use_when": [
+        "externalizing product messages",
+        "designing RTL and mixed direction layouts",
+        "testing translated error labels",
+        "formatting dates numbers and plurals by locale"
+      ],
+      "avoid_when": [
+        "concatenating translated sentence fragments",
+        "mirroring logos or numeric data without review"
+      ],
+      "related": [
+        "guidance.accessibility",
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "guidance.ux-measurement",
@@ -244,13 +400,39 @@
         "time on task",
         "drop-off",
         "abandonment",
-        "analytics"
+        "analytics",
+        "task completion rate",
+        "usability metrics",
+        "funnel measurement",
+        "event schema",
+        "survey score"
       ],
       "domains": [
         "ux-research",
         "measurement",
         "analytics"
-      ]
+      ],
+      "use_when": [
+        "defining task success and eligible attempts",
+        "measuring error rates or step abandonment",
+        "designing privacy-respecting UX event instrumentation",
+        "interpreting SUS CES and NPS scores"
+      ],
+      "avoid_when": [
+        "treating SUS as a percentage of users",
+        "claiming causality without controlled evidence",
+        "collecting secrets or sensitive form inputs in telemetry"
+      ],
+      "related": [
+        "pattern.task-flows",
+        "pattern.interaction-recovery",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "pattern.task-flows"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "governance.lifecycle",
@@ -267,13 +449,36 @@
         "status",
         "ownership",
         "versioning",
-        "decision record"
+        "decision record",
+        "component lifecycle",
+        "catalog promotion",
+        "sunset plan",
+        "migration decision",
+        "stable guideline"
       ],
       "domains": [
         "governance",
         "lifecycle",
         "adoption"
-      ]
+      ],
+      "use_when": [
+        "deciding whether to reuse extend or create a concept",
+        "promoting proposed guidance to experimental or stable",
+        "deprecating a shared pattern",
+        "recording owner and compatibility decisions"
+      ],
+      "avoid_when": [
+        "promoting a proposal without reviewed evidence and ownership",
+        "removing a referenced entry without migration guidance"
+      ],
+      "related": [
+        "architecture.component-model",
+        "architecture.component-contracts",
+        "governance.quality"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "governance.quality",
@@ -290,13 +495,37 @@
         "validation",
         "test",
         "release gate",
-        "migration priorities"
+        "migration priorities",
+        "quality gates",
+        "catalog validation",
+        "documentation checks",
+        "verification evidence",
+        "accessibility release blocker"
       ],
       "domains": [
         "quality",
         "testing",
         "governance"
-      ]
+      ],
+      "use_when": [
+        "reviewing catalog entry completeness",
+        "recording actual checks and verification status",
+        "assessing release blockers and migration priorities",
+        "checking cross-references and documentation integrity"
+      ],
+      "avoid_when": [
+        "marking unperformed checks as PASS",
+        "treating documentation validation as runtime accessibility compliance"
+      ],
+      "related": [
+        "governance.lifecycle",
+        "guidance.accessibility",
+        "guidance.internationalization",
+        "guidance.ux-measurement"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }

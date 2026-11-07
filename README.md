@@ -12,7 +12,8 @@
 | Create a theme or rationalize raw values | [Tokens and themes](foundations/design-tokens-and-themes.md) |
 | Decide primitive vs component vs pattern vs feature | [Component model](architecture/component-model.md) |
 | Specify a new or changed reusable component | [Component contracts](architecture/component-contracts.md) and [entry template](templates/concept-entry.md) |
-| Design role-based portals, previews or workspace switching | [Role-aware workspaces and context switching](patterns/role-aware-workspaces-and-context-switching.md) |\n| Simplify navigation or a critical task | [Task flows and information architecture](patterns/task-flows-and-information-architecture.md) |
+| Design role-based portals, previews or workspace switching | [Role-aware workspaces and context switching](patterns/role-aware-workspaces-and-context-switching.md) |
+| Simplify navigation or a critical task | [Task flows and information architecture](patterns/task-flows-and-information-architecture.md) |
 | Design loading, error, or destructive states | [Interaction states and recovery](patterns/interaction-states-and-recovery.md) |
 | Design and test keyboard, focus, contrast, touch, or zoom | [Accessibility](guidance/accessibility.md) |
 | Support translations, long labels, and RTL | [Internationalization](guidance/internationalization.md) |
@@ -78,3 +79,21 @@ The validator checks registered paths, IDs, titles, statuses, directory indexes 
 This proposal was derived from the supplied **UI/UX Design System Architect v1.1** instruction package (particularly the component, token, UX, accessibility, i18n, metrics, catalog, and governance guidance). It selectively translates reusable knowledge into catalog pages; operational agent instructions are not imported as design authority. External standards are linked in [References](governance/references.md) with dates and scope. See [Changelog](CHANGELOG.md) for release notes.
 
 **Repository license:** not specified in the starting repository. Contributors should resolve licensing before distributing third-party code or assets; no license is implied by public visibility.
+
+## Definition batches (proposal)
+
+The scaffold is being expanded in reviewable **documentation batches**, each using the existing canonical IDs rather than introducing placeholder component implementations:
+
+1. **Foundations and architecture:** [design principles](foundations/design-principles.md), [token authoring](foundations/design-tokens-and-themes.md), [component model](architecture/component-model.md), and [component contracts](architecture/component-contracts.md).
+2. **Flows and inclusive behavior:** [task flows](patterns/task-flows-and-information-architecture.md), [recovery states](patterns/interaction-states-and-recovery.md), [accessibility](guidance/accessibility.md), and [internationalization](guidance/internationalization.md).
+3. **Measurement and governance:** [UX measurement](guidance/ux-measurement.md), [lifecycle](governance/lifecycle-and-decisions.md), and [quality gates](governance/quality-gates.md).
+
+These are **proposed guidance definitions**. Component implementations, manual accessibility testing and user research remain outside this PR.
+
+## Agent-first lookup
+
+Agents should begin with [AGENTS.md](AGENTS.md), query [the canonical registry](catalog/index.json) with the [lookup tool](scripts/find_concept.py), then open only the relevant source pages. The [catalog schema](catalog/schema.json) defines optional retrieval metadata. IDs, status and source paths remain canonical; no published component implementations are implied.
+
+**Batch 2 agent lookup:** [Patterns](patterns/README.md) and [cross-cutting guidance](guidance/README.md) now expose task-flow, recovery, accessibility and localization canonical IDs through the same registry. These remain proposed guidance, not verified product implementations.
+
+**Batch 3 agent lookup:** [UX measurement](guidance/ux-measurement.md) and [governance](governance/README.md) now expose metrics, lifecycle and quality-gate concepts through the same registry. Retrieval metadata is present for all three scaffold-definition batches; the separately documented role-aware workspace entry remains unchanged.

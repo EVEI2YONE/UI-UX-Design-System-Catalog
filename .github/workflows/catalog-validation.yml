@@ -18,3 +18,6 @@ jobs:
         run: python3 scripts/validate_catalog.py
       - name: Smoke-test lookup
         run: python3 scripts/find_concept.py dialog
+
+      - name: Test deterministic agent lookup
+        run: python3 -m unittest discover -s tests -v

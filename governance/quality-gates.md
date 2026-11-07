@@ -29,3 +29,17 @@ This checks *document structure and lookup integrity only*. Example manual check
 ## Priority and release decisions
 
 P0 accessibility/safety/privacy/security/data-loss and critical regressions override the normal migration ranking. The user-impact order for product modernization is P1 core workflows, P2 IA/navigation, P3 minimal foundations/components, P4 onboarding/change management, P5 high-friction quick wins, P6 secondary experiences, P7 cosmetic polish. Engineering prerequisites may execute earlier than a higher-value product change. Do not invent usage frequency or test outcomes.
+
+## Per-batch evidence record
+
+For PRs that expand existing scaffold entries, reviewers should see a batch label, canonical paths touched, the design decisions added, known limitations, and check results. A useful definition includes an actionable rule, example/anti-example, a verification method and an identified owner or explicitly unassigned ownership. Avoid promoting entries solely because documentation validation passes.
+
+| Check | Current documentation-only interpretation |
+| --- | --- |
+| Registry integrity | Existing stable IDs and paths remain unchanged unless intentionally migrated |
+| Markdown navigation | Relative links and section/root index references resolve |
+| Content completeness | Decisions, counterexamples, scenarios and limitations provided |
+| Code a11y / RTL / runtime UX | NOT APPLICABLE to docs-only changes; downstream behavior NOT VERIFIED |
+| Research baseline | UNKNOWN unless measured with documented cohort/denominator |
+
+Record actual script output in the PR, and keep code/UX claims distinct from validation of Markdown files.

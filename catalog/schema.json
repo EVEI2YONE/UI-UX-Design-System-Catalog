@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UI/UX design system catalog index",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "catalog_version",
+    "status_model",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "catalog_version": {
+      "type": "string"
+    },
+    "status_model": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "path",
+        "layer",
+        "kind",
+        "status",
+        "summary",
+        "aliases",
+        "domains"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^[^/].*\\.md$"
+        },
+        "layer": {
+          "type": "string",
+          "enum": [
+            "context",
+            "principles",
+            "behavior",
+            "tokens",
+            "foundations",
+            "primitives",
+            "components",
+            "patterns",
+            "experiences",
+            "intelligence",
+            "cross-cutting"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "guideline",
+            "contract",
+            "policy",
+            "checklist",
+            "specification",
+            "example"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "proposed",
+            "experimental",
+            "stable",
+            "deprecated",
+            "removed"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "use_when": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "avoid_when": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "related": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
