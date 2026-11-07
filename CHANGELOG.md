@@ -165,3 +165,10 @@
 - Batch 16: audited prior profile guidance and lifecycle contracts; added modular-monolith/monorepo/multirepo/microfrontend selection and cross-team governance.
 - Indexed four canonical proposed concepts, updated human/agent lookup and added regression tests plus per-batch context/gap ledger.
 - No app source migration or runtime usability/a11y evaluation was performed; actual final-head CI checks must be verified separately.
+
+## Unreleased — Batch 17: framework-aware application code organization (2026-11-07)
+
+- Revisited Batches 13–16 application structure, module ownership and migration guidance before drafting.
+- Identified incomplete framework-specific route/feature placement guidance and added a new proposed canonical page for Next.js, Angular and React Router, citing official documentation.
+- Added route-local versus feature-shared decision criteria, server/client and deep-link migration guardrails, discovery metadata, navigation and lookup tests.
+- All example structures are illustrative; runtime behavior, accessibility and developer performance remain NOT VERIFIED.
