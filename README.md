@@ -152,3 +152,7 @@ For an [icon intent registry, accessible icon-only action and state/target guida
 ## Batch 2 — component events and coordination (proposed, 2026-11-07)
 
 The [canonical component contract](architecture/component-contracts.md#batch-2--composite-anatomy-and-event-coordination-ckg-04-ckg-0608-proposed-2026-11-07) now covers host/slot ownership, local events versus feature commands versus domain outcomes, sibling coordination, controlled state and nested-interaction pitfalls. Retrieve `architecture.component-contracts`; do not infer an implemented component library or measured behavior.
+
+## Batch 3 — state and sequential workflow handoffs (proposed, 2026-11-07)
+
+For icon/status timing and focus when a selected item is updated or removed, see [interaction recovery](patterns/interaction-states-and-recovery.md) (`pattern.interaction-recovery`). For stable actions and selecting the next eligible task only after an authoritative outcome, see [task flows](patterns/task-flows-and-information-architecture.md) (`pattern.task-flows`). These are proposed contracts, not measured reductions in pointer travel or an implemented review controller.
