@@ -41,3 +41,8 @@ Use the existing [task-flow](task-flows-and-information-architecture.md) and [in
 ## Little Wins context-first extensions (2026-11-07)
 
 For hosted identity and managed-profile boundaries use [authentication](authentication-and-account-lifecycle.md) plus [role-aware workspaces](role-aware-workspaces-and-context-switching.md). For **human** submission reviews, value changes and irreversible history use [interaction recovery](interaction-states-and-recovery.md); AI agent approvals remain a separate pattern. For group/project scope and independently toggled features use [task flows](task-flows-and-information-architecture.md). All extensions remain proposed and require runtime-specific verification.
+
+
+## Batch 6 — versioned workspace migration
+
+[Offline work and synchronization](offline-sync-and-conflicts.md) now distinguishes safe read-time normalization from durable migration, backup, import/restore, version conflicts and aggregate contention. See [privacy lifecycle](../guidance/privacy-consent-and-trust.md) for archive/retention/export UX, and [Batch 6 context ledger](../planning/little-wins-batch-6-context-and-gap-ledger.md) for the Little Wins source basis.
