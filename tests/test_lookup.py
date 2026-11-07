@@ -90,5 +90,33 @@ class LookupTests(unittest.TestCase):
                 self.assertIn(ref, ids)
                 self.assertNotEqual(ref, ident)
 
+
+    def test_batch4_component_lookup(self):
+        cases = {
+            'loading button': 'component.button',
+            'email input': 'component.input',
+            'native select': 'component.select',
+            'indeterminate checkbox': 'component.checkbox',
+            'modal dialog': 'component.dialog',
+            'field error': 'component.field',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                self.assertEqual(lookup(self.entries, query)[0]['id'], expected)
+
+    def test_batch4_canonical_paths_and_refs(self):
+        ids = {e['id'] for e in self.entries}
+        for component in ('button', 'input', 'select', 'checkbox', 'dialog', 'field'):
+            e = next(x for x in self.entries if x['id'] == 'component.' + component)
+            self.assertEqual(e['path'], f'components/{component}/spec.md')
+            self.assertTrue((ROOT / e['path']).is_file())
+            self.assertEqual(e['kind'], 'specification')
+            self.assertEqual(e['status'], 'proposed')
+            self.assertEqual(e['owner'], 'unassigned')
+            self.assertIsNone(e['reviewed_at'])
+            self.assertTrue(e['use_when'] and e['avoid_when'])
+            for ref in e['related'] + e['depends_on']:
+                self.assertIn(ref, ids)
+
 if __name__ == '__main__':
     unittest.main()

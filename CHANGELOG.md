@@ -32,3 +32,9 @@
 - Extend agent lookup tests for metrics, catalog promotion, documentation checks and reference integrity.
 - Update governance, guidance, catalog and agent discovery; correct a literal newline in root navigation.
 - Preserve canonical IDs, statuses and paths. The independently added role-aware workspace concept is outside these three batches.
+
+## Unreleased — Batch 4 core component specifications
+
+- Add six independent proposed component contracts: Button, Input, Select, Checkbox, Dialog and Field/Error.
+- Register canonical IDs, usage boundaries, related guidance and dependencies for agent retrieval; update root/architecture/agent discovery and lookup tests.
+- No published component implementations, design-token exports, manual accessibility checks, or measured UX outcomes.

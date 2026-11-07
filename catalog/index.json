@@ -526,6 +526,225 @@
       "depends_on": [],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "component.button",
+      "title": "Button",
+      "path": "components/button/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Initiate actions with semantic states and safe async activation.",
+      "aliases": [
+        "button action",
+        "loading button",
+        "primary action",
+        "submit button"
+      ],
+      "domains": [
+        "components",
+        "forms"
+      ],
+      "use_when": [
+        "initiating an action",
+        "defining an asynchronous action button"
+      ],
+      "avoid_when": [
+        "using a button for navigation"
+      ],
+      "related": [
+        "architecture.component-contracts",
+        "pattern.interaction-recovery"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.input",
+      "title": "Input",
+      "path": "components/input/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Single-line editable input with labels, values and validation hooks.",
+      "aliases": [
+        "text input",
+        "email input",
+        "input field",
+        "text field"
+      ],
+      "domains": [
+        "components",
+        "forms"
+      ],
+      "use_when": [
+        "collecting short text input",
+        "providing accessible editable fields"
+      ],
+      "avoid_when": [
+        "using a placeholder as the only label"
+      ],
+      "related": [
+        "component.field",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.select",
+      "title": "Select",
+      "path": "components/select/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Select a single known option using native semantics where possible.",
+      "aliases": [
+        "dropdown",
+        "select menu",
+        "native select",
+        "choice input"
+      ],
+      "domains": [
+        "components",
+        "forms"
+      ],
+      "use_when": [
+        "choosing from a bounded list",
+        "specifying native versus custom selection"
+      ],
+      "avoid_when": [
+        "building a custom listbox for cosmetic reasons"
+      ],
+      "related": [
+        "component.field",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.checkbox",
+      "title": "Checkbox",
+      "path": "components/checkbox/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Express independent Boolean choices and group selection.",
+      "aliases": [
+        "check box",
+        "boolean input",
+        "multiple selection",
+        "indeterminate checkbox"
+      ],
+      "domains": [
+        "components",
+        "forms"
+      ],
+      "use_when": [
+        "toggling an independent choice",
+        "representing mixed group selection"
+      ],
+      "avoid_when": [
+        "using a checkbox for exclusive choices"
+      ],
+      "related": [
+        "component.field",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.dialog",
+      "title": "Dialog",
+      "path": "components/dialog/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Reusable modal shell with focus, dismissal and accessible semantics.",
+      "aliases": [
+        "modal dialog",
+        "modal",
+        "focus trap",
+        "dialog shell",
+        "confirmation dialog"
+      ],
+      "domains": [
+        "components",
+        "forms",
+        "overlays"
+      ],
+      "use_when": [
+        "building focused foreground tasks",
+        "managing modal focus and dismissal"
+      ],
+      "avoid_when": [
+        "embedding product-specific destructive actions in the shell"
+      ],
+      "related": [
+        "pattern.interaction-recovery",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.field",
+      "title": "Field and error",
+      "path": "components/field/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Compose persistent label, help and field-error associations.",
+      "aliases": [
+        "form field",
+        "field error",
+        "error message",
+        "field label",
+        "validation message"
+      ],
+      "domains": [
+        "components",
+        "forms"
+      ],
+      "use_when": [
+        "grouping control labels and errors",
+        "displaying accessible validation guidance"
+      ],
+      "avoid_when": [
+        "putting business validation logic in the field wrapper"
+      ],
+      "related": [
+        "component.input",
+        "pattern.interaction-recovery"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
