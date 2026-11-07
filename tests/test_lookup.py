@@ -283,5 +283,44 @@ class LookupTests(unittest.TestCase):
                     self.assertIn(target, ids)
                     self.assertNotEqual(target, ident)
 
+
+    def test_batch11_ai_agent_multimodal_lookup(self):
+        cases = {
+            'AI transparency': 'guidance.ai-experiences',
+            'AI provenance': 'guidance.ai-experiences',
+            'human in the loop': 'pattern.agentic-actions',
+            'agentic UX': 'pattern.agentic-actions',
+            'AI agent approval': 'pattern.agentic-actions',
+            'voice UX': 'pattern.multimodal-conversation',
+            'speech interaction': 'pattern.multimodal-conversation',
+            'barge in': 'pattern.multimodal-conversation',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                results = lookup(self.entries, query, limit=1)
+                self.assertTrue(results, f'No match for {query}')
+                self.assertEqual(results[0]['id'], expected)
+
+    def test_batch11_canonical_guards_and_related_concepts(self):
+        expected = {
+            'guidance.ai-experiences': 'guidance/ai-powered-experiences-and-trust.md',
+            'pattern.agentic-actions': 'patterns/agentic-actions-and-approvals.md',
+            'pattern.multimodal-conversation': 'patterns/conversational-voice-and-multimodal-ux.md',
+        }
+        ids = {e['id'] for e in self.entries}
+        for ident, path in expected.items():
+            with self.subTest(ident=ident):
+                entry = next(e for e in self.entries if e['id'] == ident)
+                self.assertEqual(entry['path'], path)
+                self.assertTrue((ROOT / path).is_file())
+                self.assertEqual(entry['status'], 'proposed')
+                self.assertEqual(entry['owner'], 'unassigned')
+                self.assertIsNone(entry['reviewed_at'])
+                self.assertEqual(entry['kind'], 'guideline')
+                self.assertTrue(entry['use_when'] and entry['avoid_when'])
+                for link in entry['related'] + entry['depends_on']:
+                    self.assertIn(link, ids)
+                    self.assertNotEqual(link, ident)
+
 if __name__ == '__main__':
     unittest.main()
