@@ -118,5 +118,40 @@ class LookupTests(unittest.TestCase):
             for ref in e['related'] + e['depends_on']:
                 self.assertIn(ref, ids)
 
+
+    def test_batch5_pattern_lookup(self):
+        cases = {
+            'form composition': 'pattern.forms',
+            'primary navigation': 'pattern.navigation',
+            'search filtering': 'pattern.search-filter',
+            'sortable table': 'pattern.data-tables',
+            'toast notification': 'pattern.feedback',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                self.assertEqual(lookup(self.entries, query)[0]['id'], expected)
+
+    def test_batch5_pattern_contracts(self):
+        ids = {entry['id'] for entry in self.entries}
+        expected_paths = {
+            'forms': 'patterns/forms.md',
+            'navigation': 'patterns/navigation.md',
+            'search-filter': 'patterns/search-and-filter.md',
+            'data-tables': 'patterns/data-tables.md',
+            'feedback': 'patterns/feedback.md',
+        }
+        for item, path in expected_paths.items():
+            with self.subTest(item=item):
+                entry = next(e for e in self.entries if e['id'] == 'pattern.' + item)
+                self.assertEqual(entry['path'], path)
+                self.assertTrue((ROOT / path).is_file())
+                self.assertEqual(entry['kind'], 'specification')
+                self.assertEqual(entry['status'], 'proposed')
+                self.assertEqual(entry['owner'], 'unassigned')
+                self.assertIsNone(entry['reviewed_at'])
+                self.assertTrue(entry['use_when'] and entry['avoid_when'])
+                for ref in entry['related'] + entry['depends_on']:
+                    self.assertIn(ref, ids)
+
 if __name__ == '__main__':
     unittest.main()

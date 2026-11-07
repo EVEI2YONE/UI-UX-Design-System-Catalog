@@ -745,6 +745,195 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "pattern.forms",
+      "title": "Form composition and validation",
+      "path": "patterns/forms.md",
+      "layer": "patterns",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Compose accessible fields, validation, submission and recovery.",
+      "aliases": [
+        "form workflow",
+        "form composition",
+        "form validation",
+        "form submit"
+      ],
+      "domains": [
+        "patterns",
+        "ux",
+        "forms"
+      ],
+      "use_when": [
+        "designing multi-field forms",
+        "handling server validation and submit recovery"
+      ],
+      "avoid_when": [
+        "embedding business validation into shared controls"
+      ],
+      "related": [
+        "component.field",
+        "component.input",
+        "component.select",
+        "component.checkbox",
+        "component.button"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.navigation",
+      "title": "Navigation and wayfinding",
+      "path": "patterns/navigation.md",
+      "layer": "patterns",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Compose primary and contextual navigation with meaningful route state.",
+      "aliases": [
+        "primary navigation",
+        "breadcrumbs navigation",
+        "wayfinding menu",
+        "route navigation"
+      ],
+      "domains": [
+        "patterns",
+        "ux",
+        "navigation"
+      ],
+      "use_when": [
+        "designing app navigation",
+        "preserving deep links and active location"
+      ],
+      "avoid_when": [
+        "changing route structure for cosmetic reasons"
+      ],
+      "related": [
+        "pattern.task-flows",
+        "pattern.role-aware-workspaces"
+      ],
+      "depends_on": [
+        "principle.visual-hierarchy"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.search-filter",
+      "title": "Search and filtering",
+      "path": "patterns/search-and-filter.md",
+      "layer": "patterns",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Compose queries, filters, result states and safe recovery.",
+      "aliases": [
+        "search filtering",
+        "search results",
+        "filter panel",
+        "query filters"
+      ],
+      "domains": [
+        "patterns",
+        "ux",
+        "search"
+      ],
+      "use_when": [
+        "designing searchable result collections",
+        "handling zero results and filter reset"
+      ],
+      "avoid_when": [
+        "adding search when direct choice is clearer"
+      ],
+      "related": [
+        "component.input",
+        "component.select",
+        "component.checkbox",
+        "pattern.task-flows"
+      ],
+      "depends_on": [
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.data-tables",
+      "title": "Data tables and collection actions",
+      "path": "patterns/data-tables.md",
+      "layer": "patterns",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Present comparable data with semantic headers and clear actions.",
+      "aliases": [
+        "data table",
+        "sortable table",
+        "records grid",
+        "table pagination"
+      ],
+      "domains": [
+        "patterns",
+        "ux",
+        "data"
+      ],
+      "use_when": [
+        "comparing rows and columns",
+        "reviewing row actions and sorting"
+      ],
+      "avoid_when": [
+        "using tables solely for page layout"
+      ],
+      "related": [
+        "pattern.search-filter",
+        "guidance.accessibility",
+        "guidance.internationalization"
+      ],
+      "depends_on": [
+        "pattern.task-flows"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.feedback",
+      "title": "Feedback and status messaging",
+      "path": "patterns/feedback.md",
+      "layer": "patterns",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Compose persistent and transient user-facing status and recovery.",
+      "aliases": [
+        "feedback messaging",
+        "status banner",
+        "toast notification",
+        "success message",
+        "inline feedback"
+      ],
+      "domains": [
+        "patterns",
+        "ux",
+        "feedback"
+      ],
+      "use_when": [
+        "communicating async outcomes",
+        "choosing persistent versus transient errors"
+      ],
+      "avoid_when": [
+        "using ephemeral messages for critical recovery"
+      ],
+      "related": [
+        "pattern.interaction-recovery",
+        "component.field",
+        "component.dialog"
+      ],
+      "depends_on": [
+        "guidance.accessibility"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }

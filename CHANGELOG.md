@@ -38,3 +38,10 @@
 - Add six independent proposed component contracts: Button, Input, Select, Checkbox, Dialog and Field/Error.
 - Register canonical IDs, usage boundaries, related guidance and dependencies for agent retrieval; update root/architecture/agent discovery and lookup tests.
 - No published component implementations, design-token exports, manual accessibility checks, or measured UX outcomes.
+
+## Unreleased — Batch 5 composed patterns (same PR as Batch 4)
+
+- Add proposed specifications for forms, navigation, search/filtering, data tables and feedback.
+- Register five stable canonical lookup IDs with aliases, usage boundaries, dependencies and unassigned ownership.
+- Update root, pattern and agent indexes, plus regression tests; preserve existing component and conceptual guidance without copying implementation logic.
+- No production components, manual a11y/RTL checks or validated UX research are included.

@@ -102,3 +102,7 @@ Agents should begin with [AGENTS.md](AGENTS.md), query [the canonical registry](
 ## Batch 4 — core component contracts
 
 Find individually retrievable proposed specifications for [Button, Input, Select, Checkbox, Dialog and Field/Error](components/README.md). They extend the existing architecture guidance, include state and inclusive-design checks, and are **not** implemented packages or tested components.
+
+## Batch 5 — composed patterns
+
+[Forms, navigation, search/filtering, data tables and feedback](patterns/README.md) now have canonical, agent-retrievable pattern specifications. These compose the [Batch 4 component contracts](components/README.md) and existing guidance without becoming product-specific feature implementations. All remain proposed and unverified on real user interfaces.
