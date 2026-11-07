@@ -121,3 +121,11 @@ The brief contract, comparison matrix and default two meaningful alternatives ar
 - [W3C WAI Forms Validation](https://www.w3.org/WAI/tutorials/forms/validation/): form error communication and accessible recovery; relevant to implemented field validation, not runtime evidence here.
 
 **Provenance:** B3 state taxonomy and handoff labels are derived from existing proposed `pattern.interaction-recovery`, `pattern.forms`, `pattern.feedback`, `pattern.offline-sync`, `guidance.accessibility` and B1 methodology. The annotation fields and synthetic report-export example are catalog synthesis. These URLs are references for applicability, **not** independently tested product behavior, and live external content freshness is NOT VERIFIED in this batch.
+
+## Wireframe B4 — responsive and inclusive composition (repository source reuse, 2026-11-07)
+
+- [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) (Recommendation): applicable web reflow/resize, focus, non-color-only information and target-related criteria; only implemented experiences can be tested for conformance.
+- [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/) (W3C guidance): text expansion, direction and language metadata considerations, not a numeric string growth guarantee.
+- [Apple HIG Layout](https://developer.apple.com/design/human-interface-guidelines/layout) and [Android adaptive layouts](https://developer.android.com/design/ui/mobile/guides/layout-and-content/adapt-layout): platform-specific window, safe-area and navigation considerations; not universal fixed breakpoint instructions.
+
+**Evidence boundary:** B4 is a proposed synthesis of existing canonical `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization` and B1 wireframe methodology. No external page re-fetch, real-device, zoom, AT, native SDK or translated-language evaluation was performed for this batch; all such outcomes are **NOT VERIFIED**.
