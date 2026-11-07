@@ -41,3 +41,44 @@ Label search and filter groups, expose active selections beyond color, support k
 **Canonical ID:** `pattern.search-filter` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** preserve query/deep-link semantics and avoid unnecessary custom widgets. Documentation-only.
 
 Related: [task flows](task-flows-and-information-architecture.md), [recovery](interaction-states-and-recovery.md), [measurement](../guidance/ux-measurement.md), [accessibility](../guidance/accessibility.md). Standards: [WCAG 2.2](../governance/references.md).
+
+## Batch 8 extension — discovery, sorting and result semantics
+
+### Choose the discovery model
+
+**Search** retrieves candidate records from a query. **Filters/facets** constrain a collection using structured attributes; a **sort** changes ordering, not eligibility. Users may need any combination; do not add all controls by default. Identify first whether people begin with an exact identifier, descriptive words, known categories, or browsing. Test vocabulary and domain data before committing to a query model.
+
+| Scenario | Guidance | Failure to avoid |
+| --- | --- | --- |
+| Known identifier or exact record | Offer a narrow labeled lookup, then show an identifiable, authorized match | Redirecting straight into a sensitive record without context |
+| Open-ended discovery | Query matching, understandable relevance, category navigation and optional facets | Undocumented matching or opaque “best” ranking |
+| Very large results | Meaningful summary, useful facets and predictable pagination/load-more as justified | Result count that describes a different query/filter state |
+| Repeated refinements | Show applied filters as text; allow one-by-one removal and clear-all | Hidden filters or a reset that does not actually clear the query |
+| Sorting | Explicit sort label and selected order; stable, documented defaults | Quietly reshuffling results without announcing a new order |
+| Zero matches | Distinguish query mismatch, restrictive filters and genuine empty collections | Calling an outage “No results” |
+| Error / timeout | Preserve criteria and known previous results without presenting stale data as current | Empty list with no failure explanation |
+
+### Apply filters deliberately
+
+Decide between **explicit Apply** and **live filtering** based on response time, number of controls, accessible announcement load, and evidence from actual users. Explicit Apply is often safer for long/filter-heavy tasks, particularly on mobile. If live filtering is used, keep focus stable, avoid layout shifts and announce the changed results unobtrusively. Preserve a clear distinction between **edited but not applied** and **currently applied** criteria.
+
+Test narrow screens with filter controls closed/open and results visible; make applied conditions perceivable even when a filter panel is collapsed. Persist query and filters in a shareable URL only when doing so does not expose confidential inputs.
+
+### Results and pagination contract
+
+Each result should show enough safe distinguishing context to support selection, not more sensitive information than authorized. Explain why highlights or matches appear when useful and never use color alone. Keep selected sort, result count, page/position and applied criteria coherent. When returning from a detail page, preserve the query context and position when feasible. If the dataset changes during pagination, describe the changed result context instead of misleading totals.
+
+**Example (illustrative):** “24 records. Status: Pending. Sorted: Newest first.” A user removes Pending, sees an updated count, inspects a record and returns to the same search state.
+
+**Anti-example:** Typing triggers five overlapping network requests; an older response overwrites newer results, pagination silently resets, and the UI announces “0 results” after a network error.
+
+### QA and boundaries
+
+- Exact, misspelled, empty and overly broad queries; permission-limited results; multi-filter empty states; clear/reset and sorting transitions.
+- Loading/error/cancelled/out-of-order responses; query persistence across refresh and back/forward; long localized terms and RTL.
+- Keyboard and touch control operation, accessible names, focus after results change, careful live status announcements.
+- Search ranking and performance remain owned by the product backend. No claim of search quality is possible without evaluation on representative data and users.
+
+**Sources (reviewed 2026-11-07):** [USWDS search](https://designsystem.digital.gov/components/search/) and [pagination](https://designsystem.digital.gov/components/pagination/); [DWP filters design notes](https://design-system.dwp.gov.uk/contribute/filters/design-notes) is contextual and research in progress, not universal policy; [Scottish Government search filters](https://designsystem.gov.scot/patterns/search-results/search-filters) demonstrates applied criteria and mobile options.
+
+Related guidance: [content design](../guidance/content-design-and-ux-writing.md), [service recovery](service-recovery-and-support.md).
