@@ -1,5 +1,8 @@
 ## Unreleased
 
+- Visual craftsmanship knowledge Batch 4 (proposed, cumulative draft PR #14): extend canonical `governance.quality` with KG-15 aesthetic critique rubric and KG-16 rendered-screen inspection/correction loop; add noncanonical synthetic before/after examples for KG-17. Preserve prior wireframe QA ownership; update navigation and retrieval. No real screenshot was inspected and no runtime, visual-regression or accessibility tests were executed.
+
+
 - Visual craftsmanship knowledge Batch 3 (proposed, cumulative draft PR #14): extend `foundation.visual-craftsmanship` with KG-11–14: rights-aware inspiration/references, observation-to-rule extraction, comparable candidate directions and explicit selection gates. Reuse existing user research and prototype owners; no new canonical concept. Reference links and connector structure checked; actual user study, prototype, WCAG, screenshot and automated repository suite NOT VERIFIED.
 
 
