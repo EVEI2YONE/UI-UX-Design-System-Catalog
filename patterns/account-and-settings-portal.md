@@ -171,3 +171,60 @@ load effective setting + scope + version
 ### Shared batch-PR protocol
 
 This section is Batch 1 of a cumulative settings-knowledge PR. At the **start of each later batch**, re-fetch \`main\`, this PR branch, the canonical catalog registry, relevant linked concepts, and the latest available target code/decision context; log differences, existing ownership, evidence limitations and applicable standards before changing guidance. Do not overwrite unrelated changes, silently use old target assumptions, or mark proposed guidance as merged. Batch 2 concerns feature/capability dependencies and policy transitions; Batch 3 time and personalization; Batch 4 auditability; Batch 5 catalog validation and crosswalk. Subsequent changes remain reviewed separately inside the same draft PR until it is ready for approval.
+
+
+## Settings knowledge Batch 2 — feature and policy configuration (proposed, 2026-11-07)
+
+**Fresh-context check:** Compared `main` against cumulative PR #12, inspected the canonical registry and existing [task-flow capability matrix](task-flows-and-information-architecture.md#batch-8--capability-dependencies-and-configuration-state-journeys-2026-11-07), [paused-work recovery](interaction-states-and-recovery.md#batch-8--paused-capabilities-and-work-already-in-progress-2026-11-07), and current available Little Wins F20 review-policy contracts. The existing catalog **already documents** feature-flag combinations, server-command gating, retained history and paused-task recovery. This batch adds the missing *settings-specific authoring and policy-transition contract*; it does not duplicate or replace that matrix.
+
+### KG-002 — Configuration-to-capability UX contract
+
+A settings switch changes a **stored preference or policy**, not automatically every dependent user capability. Use the canonical [task-flow feature/capability matrix](task-flows-and-information-architecture.md#batch-8--capability-dependencies-and-configuration-state-journeys-2026-11-07) to define valid state combinations, direct-command constraints, and historical continuity.
+
+Before rendering a workspace toggle, complete this checklist:
+
+| Requirement | Question the setting contract must answer |
+| --- | --- |
+| Scope and actor | Which workspace/project changes; who may read and save? |
+| Stored flag vs effective capability | Which actions actually require this flag and which *other* policies or features? |
+| Dependency disclosure | Will another enabled feature become unusable? Does its stored value remain enabled but ineffective? |
+| Pre-save consequences | Which new actions pause, which existing requests may finish, and what remains visible or editable? |
+| Transition timing | Is the change immediate for future commands? What if a command is already in flight? |
+| Navigation and recovery | Can the owner still reach outstanding requests and historical records when primary navigation is hidden? |
+| Re-enable behavior | Are previous settings and history preserved; are new capabilities revalidated without retroactive award? |
+| Safety evidence | Have server-side checks, all relevant flag combinations, stale-tab races and direct URL/API requests been tested? |
+
+**Illustrative policy choice, not universal behavior:** disabling points may pause *new* reward requests that require points while preserving existing requests and ledger history; the product owner must specify whether fulfillment of previously requested rewards remains available. Do not silently change one flag when another is toggled, delete historic records, or claim that turning a feature back on automatically recreates past credits.
+
+**Settings UI pattern:** show the effective state and a concise dependency explanation adjacent to the control; for consequential changes show a review summary identifying affected capabilities and preserved data before explicit Save. Confirm *persisted* changes and refresh affected navigation and task views. Preserve access to authorized management of outstanding work even if a primary feature is paused. If action is unsupported, distinguish "paused by configuration" from "no permission" and "no data."
+
+**Anti-example:** "Rewards: On" is presented as immediately available while Points is off, without explaining the effective disabled capability, and the only path to existing reward requests disappears.
+
+**Verification:** enumerate full flag-state table and each transition, authorization denial, in-flight operations, pending-work management, refresh/second session, re-enable, accessibility announcements, mobile navigation and long translated labels. Mark untested states **NOT VERIFIED**.
+
+### KG-005 — Review/approval policy transition contract
+
+Review policy should be modeled as an **authorized, versioned workflow policy**, not as a purely visual toggle. Before implementation the product must define its mode names, default, effective time, actor capabilities, existing pending submissions, accepted/rejected/returned history and points/entitlement effects. [Interaction recovery](interaction-states-and-recovery.md#human-review-and-value-changing-transaction-lifecycle-2026-11-07) remains canonical for submission and review *states*.
+
+| Configuration situation | Required decision and presentation |
+| --- | --- |
+| Default review mode | State current effective mode; never infer an "automatic" mode from the presence of an enum |
+| Eligible editor | Server authorizes workspace ownership or explicitly granted policy-change capability |
+| Change to a more permissive mode | Verify recorder authorization and gate activation; identify whether only **new** submissions are affected |
+| Change to approval-required mode | New submissions follow the new requirement; define handling of already accepted, pending or in-flight submissions |
+| Pending requests at transition | Choose explicit grandfather, migrate, or separate administrative decision; no silent approval/rejection |
+| Concurrent decisions and mode edit | Use persisted version/sequence and atomic server checks; no duplicate approvals, awards or lost reviewer input |
+| Previously approved or rejected history | Preserve immutable decision and award provenance; corrections require a separate reviewed workflow |
+| Paused points or feature | Approval and crediting are separate consequences; specify whether credit is withheld, delayed or amended (never assume backfill) |
+| Unsupported policy capability | Explain why mode is unavailable; do not offer a selectable but nonfunctional option |
+| Reversal and audit | Explain whether changing mode back affects only future work, and record high-impact policy changes appropriately |
+
+**Illustrative transition:** `approval_required` → `trusted_recorder_acceptance` can be offered *only after* the server has an independently authenticated trusted-recorder capability and the product has decided how queued submissions are handled. An owner-managed profile label is not authentication or authorization. If the capability is unimplemented, display the current policy read-only or omit the unavailable mode rather than implying it works.
+
+**Illustrative user-facing warning:** "Changing review policy affects future submissions. Pending reviews will remain pending under the current rules." Use such wording **only if the domain contract actually guarantees it**; otherwise specify the true transition behavior before shipping.
+
+**Acceptance tests:** direct mutation with insufficient capability, flag gate off, stale policy version, pending submission race, approval/rejection/return transitions, duplicate processing, points-off award, policy reversal, preserved history, long text, keyboard and screen reader status. Manual/runtime outcomes remain **NOT VERIFIED**.
+
+**Scope and sources:** Reuse [role-aware workspace authorization](role-aware-workspaces-and-context-switching.md) and [Batch 1 setting registry](#workspace-configuration-foundation--settings-knowledge-batch-1-proposed-2026-11-07). The generic requirements above draw on the catalog's canonical task/recovery guidance, [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html), [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (reference review date 2026-11-07; external URL reachability not verified in this batch). Little Wins F20 source evidence: `server/modules/reviews/index.ts` declares modes `approval_required` and `trusted_recorder_acceptance`, and gates acceptance on a distinct capability; its README states the latter is proposed and not activated in legacy routes. `docs/little-wins/03_DECISIONS_AND_OPEN_QUESTIONS.md` still flags review atomicity (DEC-009) as open. This product snapshot is not the authoritative catalog and is not proof of deployment.
+
+**Status:** proposed knowledge on draft PR #12; catalog owner unassigned; product policy approval, live behavior, accessibility and authorization tests **NOT VERIFIED**. Batch 3 must re-gather context before proceeding.
