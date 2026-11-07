@@ -23,7 +23,10 @@
         "affordance",
         "consistency",
         "progressive disclosure",
-        "user centered"
+        "user centered",
+        "wireframe screen hierarchy",
+        "primary action hierarchy",
+        "screen information priority"
       ],
       "domains": [
         "visual-design",
@@ -32,14 +35,17 @@
       "use_when": [
         "reviewing screen hierarchy",
         "defining primary actions",
-        "checking affordances"
+        "checking affordances",
+        "composing a task specific wireframe screen",
+        "comparing primary action and content hierarchy"
       ],
       "avoid_when": [
         "using visual consistency at the expense of task completion"
       ],
       "related": [
         "pattern.task-flows",
-        "guidance.accessibility"
+        "guidance.accessibility",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -183,7 +189,7 @@
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
-      "summary": "Task-first UX journeys, navigation, wayfinding, IA and progressive disclosure.",
+      "summary": "Task-first UX journeys, navigation, screen composition, meaningful structural alternatives, wayfinding and IA.",
       "aliases": [
         "IA",
         "user journey",
@@ -199,7 +205,13 @@
         "feature flags",
         "feature toggle dependencies",
         "capability matrix",
-        "group project scope"
+        "group project scope",
+        "task to screen composition",
+        "wireframe screen alternatives",
+        "structural wireframe alternatives",
+        "screen composition",
+        "wireframe comparison matrix",
+        "screen flow wireframe"
       ],
       "domains": [
         "information-architecture",
@@ -212,17 +224,23 @@
         "preserving search and filter context",
         "reviewing entry and exit paths",
         "designing navigation when rewards depend on points being enabled",
-        "mapping optional feature flag combinations and historic task access"
+        "mapping optional feature flag combinations and historic task access",
+        "turning a user task into a screen sequence",
+        "comparing meaningful structural wireframe alternatives",
+        "mapping required design context and explicit assumptions"
       ],
       "avoid_when": [
         "optimizing click counts without verifying user task success",
-        "hiding safety critical information in progressive disclosure"
+        "hiding safety critical information in progressive disclosure",
+        "treating cosmetic reskins as meaningful structural alternatives",
+        "assuming product permissions or workflows from static mockups"
       ],
       "related": [
         "principle.visual-hierarchy",
         "pattern.role-aware-workspaces",
         "guidance.ux-measurement",
-        "guidance.accessibility"
+        "guidance.accessibility",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [
         "principle.visual-hierarchy"
