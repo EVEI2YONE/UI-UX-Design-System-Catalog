@@ -60,3 +60,21 @@ Keep **UI language**, **date/number locale**, **timezone**, **billing currency**
 | Offline/unknown save | Preserve accurate effective-vs-pending language choice |
 
 **Status:** product checks NOT VERIFIED. Related: [account settings](../patterns/account-and-settings-portal.md), [notification preferences](../patterns/notifications-and-attention.md), [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/) (consulted 2026-11-07).
+
+
+## Text-expansion and RTL wireframe composition review (proposed Batch 4, 2026-11-07)
+
+**Use when:** static screen concepts contain translated labels, variable data, dates/amounts, long validation instructions or bidirectional navigation. **Avoid when:** an English-only screenshot is treated as proof of localization, exact expansion factors are invented as universal, or every icon/number/logo is mirrored indiscriminately.
+
+For each representative wireframe, specify **content language/locale and direction**, mark displayed copy as `KNOWN` (approved) or `ILLUSTRATIVE` (synthetic), and create additional **stress variants** when supported locales or tasks require them:
+
+- **Extended copy:** replace short headings, buttons and errors with meaning-preserving long test text. Check visually for wrapping, hierarchy preservation, actions/disclosures remaining readable and growth in page length. Synthetic growth is an early screen-design probe, *not* linguistic or runtime verification.
+- **RTL and mixed direction:** illustrate logical start/end groups, back/forward navigation cues where direction-aware, and names, numbers, IDs, dates or URLs with mixed scripts. Do not blindly flip brand marks or numeric values. If RTL support is unknown, label the depiction `ASSUMED`; if out of scope, record the product decision and reason.
+- **Locale-sensitive information:** leave enough space for formatted currency/dates/units and plural forms, without fabricating a supported locale or changing transaction values. Exact rendered formats need real localization resources and testing.
+- **Accessible labels and status:** depict the *intended* pairing of field label, hint, error and focus target after translation; verify actual semantics only in the implementation.
+
+**Handoff matrix:** `screen_id | locale/direction (KNOWN/ASSUMED) | source copy | expanded or bidi example | affected navigation/actions | intended reflow | depiction status | actual localization/AT test status`.
+
+**Synthetic example:** A right-to-left account-settings mock keeps a long translated section heading and mixed-direction account ID readable, while the return affordance is direction-aware; mark all language as illustrative unless reviewed by a qualified speaker. **Anti-example:** a fixed-width tab silently truncates the only security-setting description, and an English label is overlaid on an RTL screenshot with no content direction plan.
+
+**Verification:** compare translated resources and real typography at representative windows; test bidi controls, focus order, mixed-direction data, zoom and validation with supported locales and assistive technologies. A wireframe alone remains **NOT VERIFIED** for localization support or accessibility. Related: [adaptive UX](mobile-and-adaptive-platform-ux.md), [accessibility](accessibility.md), [task flow composition](../patterns/task-flows-and-information-architecture.md).

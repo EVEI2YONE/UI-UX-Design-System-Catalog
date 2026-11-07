@@ -97,3 +97,50 @@ All are guidance or standards references, not evidence of an actual tested produ
 | [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots) and [Storybook tests](https://storybook.js.org/docs/writing-tests/index) | Visual snapshot/stories can support review with pinned environment, but do not replace actual keyboard, AT or user-task tests. |
 
 Sources are decision references as of 2026-11-07, not a claim of implementation/tool installation. See [Batch 12 context ledger](../archive/planning/batch-12-context-and-gap-ledger.md).
+
+## Wireframe methodology source review (2026-11-07; proposed B1)
+
+- [Nielsen Norman Group, UX Prototypes: Low Fidelity vs. High Fidelity](https://www.nngroup.com/articles/ux-prototype-hi-lo-fidelity/) (2016-12-18; consulted 2026-11-07): practitioner research distinguishing visual, content and interaction fidelity, not normative compliance rules.
+- [Nielsen Norman Group, Usability 101](https://www.nngroup.com/articles/usability-101-introduction-to-usability/) (consulted 2026-11-07): early iterative usability feedback; applicability to an actual design remains unverified.
+- [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (W3C Recommendation; consulted 2026-11-07): implementation-level web criteria; a static wireframe does not prove conformance.
+
+The low/mid/high selection and escalation checklist are proposed catalog synthesis, not universal thresholds or user-tested outcomes.
+
+## Wireframe task-to-screen composition (proposed B2, sources checked 2026-11-07)
+
+- [GOV.UK Service Standard: understand users and their needs](https://www.gov.uk/service-manual/service-standard/point-1-understand-user-needs) (updated 2022-05-30): base prototypes on user problems and test assumptions; public service setting, not a mandated wireframe-count rule.
+- [GOV.UK Service Manual: learning about users and their needs](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs): distinguish evidenced user needs from untested assumptions; research methods need contextual fit.
+- [Home Office UCD designer role standard](https://design.homeoffice.gov.uk/design-and-content/professional-standards/designer-role-standard): multiple design approaches and hypotheses for alpha; not quantitative evidence that one screen structure performs better.
+
+The brief contract, comparison matrix and default two meaningful alternatives are **proposed catalog design conventions**, not externally mandated thresholds or verified product outcomes.
+
+## Wireframe B3 — state depictions and accessibility boundary (2026-11-07)
+
+- [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/): actual web implementation criteria for status, errors and usable interaction; static images cannot establish conformance.
+- [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/): implementation design/keyboard behavior examples; it does not make a screenshot interactive.
+- [W3C WAI Forms Validation](https://www.w3.org/WAI/tutorials/forms/validation/): form error communication and accessible recovery; relevant to implemented field validation, not runtime evidence here.
+
+**Provenance:** B3 state taxonomy and handoff labels are derived from existing proposed `pattern.interaction-recovery`, `pattern.forms`, `pattern.feedback`, `pattern.offline-sync`, `guidance.accessibility` and B1 methodology. The annotation fields and synthetic report-export example are catalog synthesis. These URLs are references for applicability, **not** independently tested product behavior, and live external content freshness is NOT VERIFIED in this batch.
+
+## Wireframe B4 — responsive and inclusive composition (repository source reuse, 2026-11-07)
+
+- [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) (Recommendation): applicable web reflow/resize, focus, non-color-only information and target-related criteria; only implemented experiences can be tested for conformance.
+- [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/) (W3C guidance): text expansion, direction and language metadata considerations, not a numeric string growth guarantee.
+- [Apple HIG Layout](https://developer.apple.com/design/human-interface-guidelines/layout) and [Android adaptive layouts](https://developer.android.com/design/ui/mobile/guides/layout-and-content/adapt-layout): platform-specific window, safe-area and navigation considerations; not universal fixed breakpoint instructions.
+
+**Evidence boundary:** B4 is a proposed synthesis of existing canonical `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization` and B1 wireframe methodology. No external page re-fetch, real-device, zoom, AT, native SDK or translated-language evaluation was performed for this batch; all such outcomes are **NOT VERIFIED**.
+
+## Wireframe B5 — visual QA evidence (2026-11-07)
+
+- [W3C WAI Easy Checks](https://www.w3.org/WAI/test-evaluate/preliminary/): introductory accessibility inspection guidance; not a complete test or proof of conformance, and not an image-generation benchmark.
+- [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/): applicable implemented-web criteria, not certification from wireframe pixels.
+
+**Source lineage:** B5 synthesizes proposed `governance.quality`, `principle.visual-hierarchy`, `guidance.content-design`, B1 wireframe methodology, B2 task composition, B3 states and B4 inclusive responsive guidance. Proposed reviewer thresholds and synthetic examples are not observed product defects. No generated images or human-user sessions were inspected, and external-page freshness was **NOT VERIFIED** in this batch.
+
+## Wireframe B6 — synthetic scenarios and retrieval evidence (2026-11-07)
+
+- **Internal canonical source:** B1–B5 pages for `guidance.wireframe-methodology`, `pattern.task-flows`, `pattern.interaction-recovery`, `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization` and `governance.quality`. Each remains `proposed`.
+- **Fixture source:** [synthetic WRF-01–06 example bank](../archive/planning/wireframe-synthetic-example-bank-2026-11-07.md). All cases and placeholder data are authored test illustrations, not real research, screenshots, or externally sourced assets.
+- **Retrieval contract:** [deterministic resolver](../scripts/find_concept.py) and [regression tests](../tests/test_wireframe_examples_retrieval.py); `avoid_when` is negative metadata, not a positive discovery field. Python checks validate lookup behavior only.
+
+No new external standard was required for B6. User-testing, actual image inspection, translation correctness, accessibility and app/runtime claims: **NOT VERIFIED**.

@@ -85,3 +85,31 @@ The [architecture index](../architecture/README.md) is the human task-first entr
 ## Account/settings portal retrieval
 
 Start with `pattern.account-settings-portal` for settings IA, profile management, contact verification and save state. Use `pattern.billing-subscription-settings` for plans, payment and invoices. For credentials use `pattern.authentication-lifecycle`; for privacy rights `guidance.privacy-trust`; for alerts `pattern.notifications-attention`; for user language `guidance.internationalization`; for appearance `foundation.design-tokens`; for authorization `pattern.role-aware-workspaces`. See [three-batch audit ledger](../archive/planning/account-settings-batch-progress.md). All entries are proposed; no live account portal or payment system is asserted.
+
+## Wireframe methodology (proposed, PR #11)
+
+Use `guidance.wireframe-methodology` for low/mid/high visual fidelity, static-image limitations and when to escalate to an interactive prototype. Continue to use `pattern.task-flows` for task composition, `pattern.interaction-recovery` for states, and `governance.quality` for verification. The registry status is **proposed**, not implemented or reviewed.
+
+## Task-to-screen composition (proposed B2)
+
+Use `pattern.task-flows` for minimum design context, screen sequence, action continuity, structurally meaningful alternatives and comparison criteria; use `principle.visual-hierarchy` for within-screen action priority. `guidance.wireframe-methodology` remains the owner of fidelity and escalation. All remain proposed and require verification for real products.
+
+## Static state coverage (proposed wireframe B3)
+
+Use `pattern.interaction-recovery` for `wireframe state coverage`, `static wireframe state matrix`, and `state annotation handoff`. Its canonical page owns the state inventory and screenshot/annotation evidence boundary. It does not establish functioning permission checks or real recovery behavior; follow `guidance.wireframe-methodology` for prototype escalation.
+
+## Responsive and inclusive wireframe lookup (proposed B4)
+
+`guidance.mobile-adaptive` owns responsive wireframe composition and viewport matrix queries; `guidance.accessibility` owns inclusive static design review and annotated zoom/focus expectations; `guidance.internationalization` owns long-text, RTL and bidi wireframe stress review. These extend existing proposed IDs and do not certify responsive behavior or WCAG conformance.
+
+## Static wireframe visual QA (proposed B5)
+
+Retrieve `governance.quality` for `wireframe visual QA`, `wireframe clipping inspection`, `generated wireframe copy fidelity` or `image based wireframe review`. The quality gate must identify the exact inspected image/revision and classify observed defects; if no image was inspected, image QA is `NOT VERIFIED`. Reuse `principle.visual-hierarchy` and `guidance.content-design` for the underlying design and copy rules.
+
+## Wireframe example and retrieval regressions (proposed B6)
+
+The [synthetic wireframe example bank](../archive/planning/wireframe-synthetic-example-bank-2026-11-07.md) supplies paired positive/negative scenarios WRF-01–06 and expected canonical owners. Run `python3 -m unittest discover -s tests -v`, including `tests/test_wireframe_examples_retrieval.py`, to check deterministic task/alias routing, preserved existing owners and exclusion of `avoid_when`-only terms from positive matches. These checks validate **retrieval metadata**, not generated-image quality, actual usability or implementation behavior.
+
+## B7 consumer lookup and verification handoff (proposed)
+
+Read the [cumulative wireframe integration handoff](../archive/planning/wireframe-integration-handoff-2026-11-07.md) for the B0–B7 concept ownership map and end-to-end retrieval/annotation/visual-QA contract. It points to the canonical IDs in this registry; it is **not** itself a new canonical entry. CI checks documentation integrity and deterministic retrieval only. Generated-image quality, focus, accessible interaction, responsive runtime behavior and real-user outcomes remain **NOT VERIFIED** without independent evidence.

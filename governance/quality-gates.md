@@ -180,3 +180,52 @@ The portal's release gate must validate a **real joined journey**, not just isol
 Measure task completion, error/recovery, abandonment and support contact by user job with defined denominators and privacy-preserving events. Include compatibility, staged rollout, rollback trigger, security/legal reviewers and baseline gaps. **All app runtime, payment, accessibility, analytics and legal verification currently NOT VERIFIED.** Passing catalog lint/links does not imply implemented capabilities or accessibility conformance.
 
 Related: [account portal](../patterns/account-and-settings-portal.md), [quality gates](quality-gates.md), [measurement](../guidance/ux-measurement.md), [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
+
+
+## Static wireframe visual QA and evidence rubric (proposed Batch 5, 2026-11-07)
+
+**Use when:** reviewing generated or manually drafted image-based wireframes before presenting a design direction or advancing to interactive prototyping. **Avoid when:** visual neatness substitutes for task outcomes, a screenshot is treated as proof of implementation, or a claimed automated score has no repeatable method and inspected evidence.
+
+This extends `governance.quality` for **visual inspection and evidence reporting**. [Visual hierarchy](../foundations/design-principles.md) owns the principles of action priority; [task composition](../patterns/task-flows-and-information-architecture.md) owns screen alternatives; [wireframe methodology](../guidance/wireframe-methodology.md) owns fidelity/interaction escalation; [interaction recovery](../patterns/interaction-states-and-recovery.md) owns state semantics; [accessibility](../guidance/accessibility.md) owns web/assistive conformance expectations. Do not replicate those concepts as competing standards.
+
+### Inspect the actual artifact, not the prompt
+
+Review the **rendered image at its intended sharing size**, including every screen and important inset/callout. Compare against the task brief and approved content separately. A statement in the generation prompt does not establish that it appeared correctly in the output. If the image is unavailable, mark all artifact-specific observations **NOT VERIFIED**, rather than inventing a pass.
+
+| Visual QA gate | What to inspect in the image | Example failure / disposition |
+| --- | --- | --- |
+| **Legibility and content fidelity** | Can headings, labels, critical values and notes actually be read? Does each essential label match source-of-truth text? | Garbled/generated copy, altered monetary value, tiny annotation → **FAIL** until corrected; unknown source copy → **NOT VERIFIED** |
+| **Clipping and geometry** | Are controls, text, borders, overlays and screen edges intact at the depicted viewport? | Truncated error or overlapped primary button → **FAIL** for depicted state |
+| **Hierarchy and task orientation** | Are current scope, user decision, primary action, supporting context and safe exit identifiable? | Decorative hero dominates task; equal-priority CTAs → revise or justify |
+| **Affordance and state consistency** | Do identical patterns look alike across screens? Do loading, empty, error, denied, confirmed and return states differ meaningfully? | “Success” styling on unknown-outcome state → **FAIL**, not a confirmed transaction |
+| **Truthfulness and invented behavior** | Are permissions, live availability, payment/export completion, routes, support channels and saving claims backed by input or marked illustrative? | Fake capability displayed as implemented → **FAIL**; unknowns must be labeled |
+| **Cross-screen/variant consistency** | Do navigation, terminology, selected item, filter scope, CTA label and data carry coherently across alternatives/viewport images? | Task identity silently changes between compact and wide mock → **FAIL** or documented intentional change |
+| **Responsive/locale stress visibility** | Are intended compact/wide, long copy, RTL and error variants depicted or clearly listed as not shown? | Single desktop image claimed to prove reflow/RTL → **FAIL** for the claim; actual behavior **NOT VERIFIED** |
+| **Source and decision trace** | Are image ID/version, task, canonical IDs, known/assumed information, reviewer, issue severity and next step recorded? | No way to match criticism to artifact or brief → request evidence |
+
+A static review may establish that an **observed image** visibly includes or omits content. It cannot establish keyboard operation, accessible names, focus, actual reflow, service permissions, server results, or real-user comprehension. Use `NOT APPLICABLE` only when a reviewed task/scope justifies it; use `NOT SHOWN` to describe omitted imagery, not as a test result.
+
+### Lightweight issue log, severity and disposition
+
+For each finding record:
+`artifact_id + revision | screen/state/viewport | gate | observed evidence (quote/crop reference) | expected source/requirement | severity | action | owner | status | verification method`.
+
+- **Blocker:** unreadable task-critical content, fabricated material capability or outcome, obscured safety/price/privacy disclosure, or a depiction that would materially mislead the decision. Correct the image/content before presenting it as an approved direction.
+- **Major:** broken primary path, confusing state differentiation, clipped error text, inconsistent task context, or missing required view/state without disclosure. Revise or visibly constrain scope.
+- **Minor:** cosmetic alignment or decoration that does not hide information or change task meaning. Record for proportionate refinement.
+
+These are **proposed review priorities**, not measured defect frequency or a universal risk rating. Assign `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` separately for each inspected gate and explicitly state *which image/revision was inspected*. A visual PASS means only that specified depiction met the documented review expectation, not accessibility or implementation compliance.
+
+### Verification order
+
+1. **Brief check:** compare screen IDs, tasks, source text and constraints to the [B2 brief contract](../patterns/task-flows-and-information-architecture.md); label assumptions and synthetic content.
+2. **Image check:** inspect each delivered raster/vector page at native and presentation scale; capture concrete visual defects. Re-render after corrections and re-inspect the changed version, not an earlier screenshot.
+3. **Coverage check:** map each depicted state to [B3 state inventory](../patterns/interaction-states-and-recovery.md) and each depicted viewport/locale to [B4 adaptive and locale guidance](../guidance/mobile-and-adaptive-platform-ux.md). List all unshown variants.
+4. **Traceability check:** ensure review notes link a stable artifact ID, revision, reviewer/date and the applicable registry IDs. Use a human text transcript/source of truth for content that an image generator may distort.
+5. **Escalation check:** if the question requires clicking, real resize, screen-reader behavior, data persistence, authorization, successful transactions or task performance, require an actual prototype/product test; label these **NOT VERIFIED** until run.
+
+**Synthetic good example:** a two-screen appointment selection mock is inspected at presentation scale; text is cross-checked against approved labels; an invented appointment time is marked **ILLUSTRATIVE**; a loading-state inset is **SHOWN**; keyboard behavior is **NOT VERIFIED**. **Anti-example:** a beautiful payment success mock contains a fictitious “payment processed” badge and clipped fee disclosure, yet is reported “production ready and WCAG compliant” because an image looked polished.
+
+### Evidence boundaries and source applicability
+
+The rubric is a **proposed synthesis** of existing catalog hierarchy, UX writing, interaction-state and verification guidance. W3C [WCAG 2.2](https://www.w3.org/TR/WCAG22/) informs *applicable actual web-content evaluation* but is not an image-only certification. [W3C WAI Easy Checks](https://www.w3.org/WAI/test-evaluate/preliminary/) offers preliminary inspection prompts, not complete accessibility assurance. Actual generated images were **not** produced or visually inspected in this documentation batch, so **visual artifact QA: NOT VERIFIED**. Human-user, keyboard, screen reader, browser/device, localization and backend behavior checks are also **NOT VERIFIED**.

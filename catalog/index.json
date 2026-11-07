@@ -23,7 +23,10 @@
         "affordance",
         "consistency",
         "progressive disclosure",
-        "user centered"
+        "user centered",
+        "wireframe screen hierarchy",
+        "primary action hierarchy",
+        "screen information priority"
       ],
       "domains": [
         "visual-design",
@@ -32,14 +35,17 @@
       "use_when": [
         "reviewing screen hierarchy",
         "defining primary actions",
-        "checking affordances"
+        "checking affordances",
+        "composing a task specific wireframe screen",
+        "comparing primary action and content hierarchy"
       ],
       "avoid_when": [
         "using visual consistency at the expense of task completion"
       ],
       "related": [
         "pattern.task-flows",
-        "guidance.accessibility"
+        "guidance.accessibility",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -183,7 +189,7 @@
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
-      "summary": "Task-first UX journeys, navigation, wayfinding, IA and progressive disclosure.",
+      "summary": "Task-first UX journeys, navigation, screen composition, meaningful structural alternatives, wayfinding and IA.",
       "aliases": [
         "IA",
         "user journey",
@@ -199,7 +205,13 @@
         "feature flags",
         "feature toggle dependencies",
         "capability matrix",
-        "group project scope"
+        "group project scope",
+        "task to screen composition",
+        "wireframe screen alternatives",
+        "structural wireframe alternatives",
+        "screen composition",
+        "wireframe comparison matrix",
+        "screen flow wireframe"
       ],
       "domains": [
         "information-architecture",
@@ -212,17 +224,23 @@
         "preserving search and filter context",
         "reviewing entry and exit paths",
         "designing navigation when rewards depend on points being enabled",
-        "mapping optional feature flag combinations and historic task access"
+        "mapping optional feature flag combinations and historic task access",
+        "turning a user task into a screen sequence",
+        "comparing meaningful structural wireframe alternatives",
+        "mapping required design context and explicit assumptions"
       ],
       "avoid_when": [
         "optimizing click counts without verifying user task success",
-        "hiding safety critical information in progressive disclosure"
+        "hiding safety critical information in progressive disclosure",
+        "treating cosmetic reskins as meaningful structural alternatives",
+        "assuming product permissions or workflows from static mockups"
       ],
       "related": [
         "principle.visual-hierarchy",
         "pattern.role-aware-workspaces",
         "guidance.ux-measurement",
-        "guidance.accessibility"
+        "guidance.accessibility",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [
         "principle.visual-hierarchy"
@@ -304,7 +322,7 @@
       "layer": "behavior",
       "kind": "guideline",
       "status": "proposed",
-      "summary": "Loading, errors, confirmation, offline states, retry, focus and recovery.",
+      "summary": "Loading, empty, error, permission, success, confirmation and recovery states, including static wireframe state coverage and verified-behavior limits.",
       "aliases": [
         "focus recovery",
         "error recovery",
@@ -324,7 +342,14 @@
         "human approval workflow",
         "contribution review lifecycle",
         "review correction history",
-        "points reward recovery"
+        "points reward recovery",
+        "wireframe state coverage",
+        "static wireframe state matrix",
+        "state annotation handoff",
+        "wireframe recovery states",
+        "wireframe loading empty error success",
+        "permission denied wireframe",
+        "unknown outcome state"
       ],
       "domains": [
         "interaction",
@@ -338,11 +363,16 @@
         "managing dialog focus and completion feedback",
         "designing human submission approval return and resubmission states",
         "handling points or rewards transaction confirmation and correction",
-        "explaining paused actions and in flight configuration changes"
+        "explaining paused actions and in flight configuration changes",
+        "illustrating state coverage in image based wireframes",
+        "annotating static loading empty validation error permission success and recovery variants",
+        "distinguishing documented state intent from verified interaction behavior"
       ],
       "avoid_when": [
         "retrying a non-idempotent action without confirming outcome",
-        "discarding entered data on an error"
+        "discarding entered data on an error",
+        "treating a static state mockup as proof that transitions or recovery work",
+        "showing unknown transaction outcomes as completed or safe to retry"
       ],
       "related": [
         "architecture.component-contracts",
@@ -352,7 +382,8 @@
         "pattern.offline-sync",
         "pattern.authentication-lifecycle",
         "pattern.agentic-actions",
-        "guidance.performance-experience"
+        "guidance.performance-experience",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [
         "architecture.component-contracts"
@@ -380,7 +411,11 @@
         "reduced motion",
         "keyboard navigation",
         "modal focus",
-        "screen reader testing"
+        "screen reader testing",
+        "inclusive wireframe review",
+        "wireframe zoom reflow",
+        "wireframe focus annotations",
+        "wireframe accessibility stress review"
       ],
       "domains": [
         "accessibility",
@@ -391,11 +426,14 @@
         "reviewing keyboard and focus behavior",
         "checking semantic HTML and accessible names",
         "testing zoom reflow and contrast",
-        "evaluating touch interaction and reduced motion"
+        "evaluating touch interaction and reduced motion",
+        "annotating inclusive wireframe expectations before implementation",
+        "reviewing visual intent under zoom and reading order changes"
       ],
       "avoid_when": [
         "claiming WCAG compliance from automated checks alone",
-        "using ARIA when native semantics suffice"
+        "using ARIA when native semantics suffice",
+        "claiming accessibility conformance from static wireframe imagery"
       ],
       "related": [
         "architecture.component-contracts",
@@ -405,7 +443,8 @@
         "guidance.data-visualization",
         "guidance.mobile-adaptive",
         "pattern.advanced-interactions",
-        "pattern.multimodal-conversation"
+        "pattern.multimodal-conversation",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -430,7 +469,11 @@
         "pseudolocalization",
         "text expansion",
         "locale formatting",
-        "bidirectional layout"
+        "bidirectional layout",
+        "wireframe text expansion",
+        "rtl wireframe layout",
+        "bidi wireframe review",
+        "wireframe localization stress"
       ],
       "domains": [
         "internationalization",
@@ -441,16 +484,20 @@
         "externalizing product messages",
         "designing RTL and mixed direction layouts",
         "testing translated error labels",
-        "formatting dates numbers and plurals by locale"
+        "formatting dates numbers and plurals by locale",
+        "illustrating long translated copy and mixed direction data in wireframes",
+        "annotating localization assumptions and unverified RTL behavior"
       ],
       "avoid_when": [
         "concatenating translated sentence fragments",
-        "mirroring logos or numeric data without review"
+        "mirroring logos or numeric data without review",
+        "treating English-only images as verified localized layouts"
       ],
       "related": [
         "guidance.accessibility",
         "architecture.component-contracts",
-        "foundation.design-tokens"
+        "foundation.design-tokens",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -566,7 +613,7 @@
       "layer": "cross-cutting",
       "kind": "checklist",
       "status": "proposed",
-      "summary": "Checklist for task value, contracts, tokens, accessibility, research and repository evidence.",
+      "summary": "Design/catalog quality gates, including static wireframe visual inspection, evidence traceability and runtime verification limits.",
       "aliases": [
         "QA",
         "quality checklist",
@@ -582,7 +629,14 @@
         "accessibility release blocker",
         "knowledge coverage audit",
         "catalog regression tests",
-        "source evidence gate"
+        "source evidence gate",
+        "wireframe visual QA",
+        "image based wireframe review",
+        "wireframe image quality checklist",
+        "generated wireframe copy fidelity",
+        "wireframe clipping inspection",
+        "static mockup evidence review",
+        "visual artifact QA"
       ],
       "domains": [
         "quality",
@@ -594,11 +648,16 @@
         "recording actual checks and verification status",
         "assessing release blockers and migration priorities",
         "checking cross-references and documentation integrity",
-        "auditing catalog knowledge coverage and regression test evidence before final review"
+        "auditing catalog knowledge coverage and regression test evidence before final review",
+        "reviewing readability and clipping in rendered wireframe images",
+        "checking generated copy fidelity and invented implementation claims",
+        "logging visual QA evidence tied to a specific image revision"
       ],
       "avoid_when": [
         "marking unperformed checks as PASS",
-        "treating documentation validation as runtime accessibility compliance"
+        "treating documentation validation as runtime accessibility compliance",
+        "claiming functioning behavior from an attractive screenshot",
+        "marking visual inspection PASS when the image was not inspected"
       ],
       "related": [
         "governance.lifecycle",
@@ -608,7 +667,8 @@
         "guidance.performance-experience",
         "guidance.experimentation",
         "architecture.component-contracts",
-        "foundation.design-tokens"
+        "foundation.design-tokens",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -1547,7 +1607,12 @@
         "dynamic type",
         "mobile navigation",
         "split view",
-        "touch alternatives"
+        "touch alternatives",
+        "responsive wireframe composition",
+        "compact wide wireframe layouts",
+        "wireframe viewport matrix",
+        "wireframe layout reflow",
+        "adaptive wireframe handoff"
       ],
       "domains": [
         "mobile",
@@ -1558,18 +1623,22 @@
       "use_when": [
         "designing for mobile native and web targets",
         "adapting navigation across window sizes",
-        "checking touch keyboard and safe area states"
+        "checking touch keyboard and safe area states",
+        "comparing compact intermediate and wide wireframe layouts",
+        "annotating content and navigation transforms across windows"
       ],
       "avoid_when": [
         "treating device breakpoints as fixed feature permissions",
-        "copying platform specific navigation to all other platforms"
+        "copying platform specific navigation to all other platforms",
+        "treating a scaled desktop image as evidence of responsive implementation"
       ],
       "related": [
         "guidance.accessibility",
         "guidance.internationalization",
         "pattern.task-flows",
         "pattern.advanced-interactions",
-        "pattern.offline-sync"
+        "pattern.offline-sync",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -2263,6 +2332,53 @@
       ],
       "depends_on": [
         "pattern.account-settings-portal"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.wireframe-methodology",
+      "title": "Wireframe methodology and prototype escalation",
+      "path": "guidance/wireframe-methodology.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Tool-neutral image wireframe fidelity, review objectives, limitations and when interactive prototypes are required.",
+      "aliases": [
+        "wireframe methodology",
+        "low fidelity wireframe",
+        "mid fidelity wireframe",
+        "high fidelity wireframe",
+        "image based wireframing",
+        "interactive prototype escalation",
+        "static wireframe",
+        "prototype fidelity"
+      ],
+      "domains": [
+        "wireframing",
+        "prototyping",
+        "ux-research",
+        "visual-design"
+      ],
+      "use_when": [
+        "selecting wireframe fidelity for a design question",
+        "comparing image based wireframes and escalation to interactive testing",
+        "annotating static wireframe assumptions and limitations"
+      ],
+      "avoid_when": [
+        "treating an image as an interactive implementation",
+        "claiming accessibility or runtime behavior from static illustrations"
+      ],
+      "related": [
+        "principle.visual-hierarchy",
+        "pattern.task-flows",
+        "pattern.interaction-recovery",
+        "guidance.accessibility",
+        "guidance.mobile-adaptive",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "pattern.task-flows"
       ],
       "owner": "unassigned",
       "reviewed_at": null

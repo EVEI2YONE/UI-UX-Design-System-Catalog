@@ -2,6 +2,7 @@
 
 This section supplies requirements that should be applied to every appropriate foundation, control, pattern and experience.
 
+- [Wireframe methodology and prototype escalation](wireframe-methodology.md): fidelity, decision questions, image limitations and interaction escalation.
 - [Accessibility](accessibility.md): inclusive semantic and interaction expectations and evidence.
 - [Internationalization](internationalization.md): translation, formatting, long strings and bidirectional layouts.
 - [UX measurement](ux-measurement.md): behavioral and attitudinal outcomes, cohorts and privacy.
@@ -17,6 +18,8 @@ This section supplies requirements that should be applied to every appropriate f
 - [UX experimentation and causal evidence](experimentation-and-causal-evidence.md): preplanned A/B tests, assignment, SRM, guardrails and credible interpretation.
 
 Also see [quality gates](../governance/quality-gates.md) and [sources](../governance/references.md).
+
+**Wireframing lookup:** start with `guidance.wireframe-methodology` for fidelity and static/prototype decisions; follow `pattern.task-flows` for screen composition and `governance.quality` for evidence gates.
 
 **Agent retrieval:** `guidance.accessibility` covers semantics, keyboard, focus and verification; `guidance.internationalization` covers locale formatting, translation growth and RTL. Both are cross-cutting and should be checked against the product's actual supported platforms/locales. Locate canonical paths and lifecycle status in [the registry](../catalog/index.json) or follow the [agent protocol](../AGENTS.md).
 
@@ -44,3 +47,5 @@ Also see [quality gates](../governance/quality-gates.md) and [sources](../govern
 ## Batch 7 — integrated accessibility tasks
 
 [Accessibility guidance](accessibility.md) now includes record-to-dialog-to-updated-list journey verification and explicit source-observed versus actually tested claims. Pair [table actions](../patterns/data-tables.md) with [dialog focus behavior](../components/dialog/spec.md).
+
+**Wireframe Batch 4 discovery:** use `guidance.mobile-adaptive` for viewport and pane transformations, `guidance.accessibility` for intended zoom/focus/reading-order coverage, and `guidance.internationalization` for text expansion, RTL and mixed-direction content. Static imagery remains a review artifact, not runtime conformance evidence.

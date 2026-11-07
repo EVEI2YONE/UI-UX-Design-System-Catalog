@@ -1,4 +1,23 @@
-## Unreleased\n\n- Propose role-aware workspace and context-switching guidance, separating role switch, tenant switch, customer preview and impersonation; add catalog discovery and source references.\n\n# Changelog
+## Unreleased
+
+- Wireframe knowledge B7 (proposed): integrate B0–B6 canonical ownership and retrieval navigation; add non-canonical B0–B7 integration handoff, consumer lookup sequence, explicit evidence boundaries, cumulative discovery/registry tests and final validation report in shared draft PR #11. No change to 50 proposed canonical entries, no app implementation or human-reviewed lifecycle promotion.
+
+- Wireframe knowledge B6 (proposed): add a non-canonical synthetic bank of six positive/negative task-to-wireframe cases and regression checks for existing-owner retrieval, exact aliases, `avoid_when` exclusion, path/lifecycle integrity and explicit NOT VERIFIED boundaries. No new registry ID, licensed imagery or simulated product PASS.
+
+- Wireframe knowledge B5 (proposed): extend existing `governance.quality` with a rendered-image visual inspection rubric (readability, clipping, hierarchy, state consistency, copy accuracy, fabricated functionality, variant consistency, evidence trace), issue severity and validation boundaries. Enrich lookup aliases, navigation, provenance and regression tests; no new concept, no images inspected, no runtime/a11y claims.
+
+- Wireframe knowledge B4 (proposed): extend `guidance.mobile-adaptive`, `guidance.accessibility` and `guidance.internationalization` for representative window transformations, zoom/reflow, long labels, mixed-direction/RTL stress variants, static-image evidence boundaries and deterministic lookup regression. Reused canonical IDs; no runtime tests or compliance claims.
+
+- Wireframe knowledge B3 (proposed): extend `pattern.interaction-recovery` with image-based state coverage, applicability/depicton labels, state-to-screen annotation contract, synthetic unknown-outcome recovery example and prototype/runtime verification boundaries. Update canonical registry aliases, README discovery, source notes and deterministic lookup tests; no new canonical concept or implementation claim.
+
+- Wireframe knowledge B2 (proposed): extend existing `pattern.task-flows` and `principle.visual-hierarchy` with minimum task brief, assumption labels, screen action hierarchy, structurally different alternatives, comparative review criteria, synthetic examples/anti-examples and retrieval regression tests. No new canonical ID or claims of implemented interactions.
+
+- Wireframe knowledge B1 (proposed): add tool-neutral `guidance.wireframe-methodology` for visual/content/interaction fidelity, representation selection, static-image claims and prototype escalation; update registry, discovery and lookup regression checks. Existing task-flow, state and quality concepts remain canonical. No user studies or runtime checks claimed.
+
+
+- Propose role-aware workspace and context-switching guidance, separating role switch, tenant switch, customer preview and impersonation; add catalog discovery and source references.
+
+# Changelog
 
 ## Historical — proposed catalog scaffold
 
