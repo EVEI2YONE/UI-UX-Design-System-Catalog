@@ -61,3 +61,9 @@ For an image-based wireframe request, consumers should:
 ## Branch and PR policy
 
 All B0–B7 documentation work accumulates on `docs/wireframe-knowledge-batches-2026-11-07`, targeting `main` through [draft PR #11](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/11). Batch commits are already on the same PR. **Do not merge, mark review passed or promote status automatically.** See the [batch tracker](wireframe-knowledge-batches-2026-11-07.md) and [changelog](../../CHANGELOG.md) for recorded progress and source boundaries.
+
+## B7 GitHub Actions execution record (2026-11-07)
+
+- **Initial test-first CI failure:** workflow `42370481609` at commit `7ad1e27d23a4183694f85455f83cabacd81287b4` ran before navigation was updated; 1 of 83 tests failed because `AGENTS.md` did not yet link this handoff. This was a sequencing defect, **corrected** by subsequent commits.
+- **Integrated CI PASS:** workflow `42370511127` on commit `eaa1b5380251b77b6ecebd5d11fbd36659f96b1f`, job `128397497783`: 83 Python tests **PASSED**; catalog validator reported **50 unique concepts, 8 section READMEs, 665 relative links checked**. This included the four new cumulative B7 integration tests. Source links outside repository, manual UX, actual wireframes and runtime behavior remained **NOT VERIFIED**.
+- Changes to this dated evidence ledger after that CI commit are **documentation-only** and were not included in the referenced run. Do not infer a later independent CI run without checking the commit run history.
