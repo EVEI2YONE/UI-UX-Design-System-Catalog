@@ -73,3 +73,7 @@ Query `application architecture`, `MVP architecture`, `repo size`, or `enterpris
 ## Batches 14–16: application module and platform decisions
 
 Resolve these canonical IDs via the registry: `architecture.module-boundaries` for feature/domain/shared imports, reuse and developer lookup; `architecture.evolution` for architecture migration/fitness; `architecture.enterprise-multiapp` for monorepo, multirepo, modular monolith and microfrontend topology. Start with selection (`architecture.application-selection`) and only traverse dependent concepts needed by the user's actual repository. Every batch began with a catalog coverage audit captured in [the context and gap ledger](planning/application-architecture-batches-13-16-context-and-gaps.md). Documentation-only status remains proposed; do not assert actual code reduction or runtime passes.
+
+## Batch 17 — framework routing and source structure
+
+Query `framework aware architecture`, `Next.js app router structure`, `Angular feature folders`, or `React Router file routes` for `architecture.framework-aware`. First inspect actual framework, version and routing mode, then preserve special route files and server/client boundaries. This is a proposed guideline, not a validated code scaffold. See the [Batch 17 evidence ledger](planning/application-architecture-batch-17-context-and-gaps.md).
