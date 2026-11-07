@@ -131,3 +131,5 @@ The [B0–B7 cumulative handoff](archive/planning/wireframe-integration-handoff-
 ## Settings configuration knowledge (cumulative draft)
 
 For workspace-scoped configuration contracts, server-side authorization, and safe save/recovery behavior, begin with [Account and settings portal — Batch 1](patterns/account-and-settings-portal.md#workspace-configuration-foundation--settings-knowledge-batch-1-proposed-2026-11-07). Continue using [role-aware workspaces](patterns/role-aware-workspaces-and-context-switching.md) for authorization context and [forms](patterns/forms.md) for shared control behavior. This is proposed guidance, not a shipped Little Wins Settings page.
+
+Settings Batch 2: [feature dependency disclosures and review-policy transitions](patterns/account-and-settings-portal.md#settings-knowledge-batch-2--feature-and-policy-configuration-proposed-2026-11-07) extend the existing settings portal; capability truth tables and paused-work recovery remain in their existing canonical patterns.
