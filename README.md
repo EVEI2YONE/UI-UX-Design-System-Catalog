@@ -144,3 +144,7 @@ Settings Batch 3: [timezone/reporting configuration and personal preference scop
 Settings Batch 4: [configuration audit events, access and safe reversals](patterns/account-and-settings-portal.md#settings-knowledge-batch-4--configuration-governance-and-audit-proposed-2026-11-07) extend the existing settings portal. Privacy/retention and delegated-access rules remain with their canonical guidance.
 
 **Settings knowledge Batches 1–5:** [closure, gap coverage and validation handoff](archive/planning/little-wins-settings-batches-1-5-closure-2026-11-07.md) records the eight-gap crosswalk, evidence limits, product decisions and outstanding tests. Read the [canonical settings portal](patterns/account-and-settings-portal.md) for reusable rules; the closure ledger is not an additional concept.
+
+## Batch 1 — Icon semantics and accessible controls (proposed, 2026-11-07)
+
+For an [icon intent registry, accessible icon-only action and state/target guidance](foundations/iconography-and-semantics.md), use `foundation.icon-semantics`. For appearance alone (stroke, optical sizing, icon and illustration craftsmanship), keep using `foundation.practical-styling`. The [Button contract](components/button/spec.md) specifies how its host activates and handles pending/disabled states. These are proposed knowledge specifications, not published UI assets.
