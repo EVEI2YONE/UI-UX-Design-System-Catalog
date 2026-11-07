@@ -49,3 +49,7 @@ Also see [quality gates](../governance/quality-gates.md) and [sources](../govern
 [Accessibility guidance](accessibility.md) now includes record-to-dialog-to-updated-list journey verification and explicit source-observed versus actually tested claims. Pair [table actions](../patterns/data-tables.md) with [dialog focus behavior](../components/dialog/spec.md).
 
 **Wireframe Batch 4 discovery:** use `guidance.mobile-adaptive` for viewport and pane transformations, `guidance.accessibility` for intended zoom/focus/reading-order coverage, and `guidance.internationalization` for text expansion, RTL and mixed-direction content. Static imagery remains a review artifact, not runtime conformance evidence.
+
+## B04 — interaction-effort measurement (proposed, 2026-11-07)
+
+[UX measurement](ux-measurement.md) now includes CKG-14: task-specific pointer travel, focus/keyboard effort, re-entry, target relocations and time to next eligible action, always interpreted alongside task success, errors, safety and privacy. Use canonical ID `guidance.ux-measurement`; the documentation provides no measured product baseline.
