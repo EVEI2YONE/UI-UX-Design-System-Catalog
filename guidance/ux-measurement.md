@@ -47,3 +47,23 @@ Use this worksheet before instrumenting a task. Do not assign a target until bas
 Record event version, deduplication rule, session/attempt timeout, retry treatment, analysis window, missing events and privacy review. Prefer aggregate or pseudonymous measurement; never collect form secrets or input contents. Distinguish abandonment from deliberate cancellation and failures from unobserved outcomes. Compare distributions and qualitative sessions before attributing changes to a UI edit.
 
 **Decision gate:** specify evidence needed to ship, iterate or rollback (including accessibility and performance regressions). An observed improvement does not itself establish causation.
+
+## Batch 12 extension — experiment, field performance and task metrics
+
+The existing task-success contract remains authoritative for user outcomes. For rendering and responsiveness use [performance and perceived speed](performance-and-perceived-speed.md); for causal comparisons use [experimentation and causal evidence](experimentation-and-causal-evidence.md). Good web performance or a significant experiment is not automatically evidence of task success or accessibility.
+
+| Evidence type | Define with | Do not infer |
+| --- | --- | --- |
+| Core Web Vitals | p75 LCP/INP/CLS, period, real-user coverage, page/route and mobile/desktop cohort | Every user had a fast page, or the task was completed |
+| Task readiness | Time from entry to useful actionable content, user job, low-end device conditions | Skeleton/loading feedback means content is ready |
+| Server-confirmed action | Actual backend result, unique attempt, retry/duplicate classification and timeout | Button tap or early UI update means persistence |
+| A/B experiment | Randomization unit, planned allocation, exposure, one primary outcome, guardrails, uncertainty, sample-ratio mismatch and preplanned stopping | Before/after correlations or post-hoc slices prove causation |
+| Delivery/rollout | Version, actual release cohort, defects/AT and privacy guardrails, rollback owner | A green catalog validator proves a real product works |
+
+**Illustrative instrumentation:** For an application confirmation flow, count only backend-confirmed completions toward successful attempts; log non-sensitive failure categories and deduplicate retries. If controlled experimentation is used, check exposure/assignment integrity and SRM before interpreting any apparent lift. Without valid randomization, describe changes as observational.
+
+For **web** journeys, current external good thresholds are LCP ≤2.5 seconds, INP ≤200 milliseconds and CLS ≤0.1 at the 75th percentile, considered separately for mobile and desktop. This is not a universal native-app SLA. Any baseline, budget, variant effect or claim of improvement remains UNKNOWN until real evidence exists.
+
+**Inclusion/privacy:** Minimize sensitive telemetry and small cohort disclosures; examine low-end devices, input modalities, assistive technologies, locales and accessibility failure reports alongside aggregate metrics. Treat field/lab differences as questions to investigate.
+
+Sources consulted 2026-11-07: [web.dev Web Vitals](https://web.dev/articles/vitals), [User-centric performance metrics](https://web.dev/articles/user-centric-performance-metrics), and [Microsoft Research SRM guidance](https://www.microsoft.com/en-us/research/articles/diagnosing-sample-ratio-mismatch-in-a-b-testing/). This is proposed measurement guidance, not measured application data.
