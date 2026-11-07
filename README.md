@@ -23,6 +23,7 @@
 | Organize profile, security and personal preferences in a settings portal | [Account and settings portal](patterns/account-and-settings-portal.md) |
 | Design billing details, subscription changes or invoices | [Billing and subscription settings](patterns/billing-and-subscription-settings.md) |
 | Design role-based portals, previews or workspace switching | [Role-aware workspaces and context switching](patterns/role-aware-workspaces-and-context-switching.md) |
+| Compose task-specific wireframe screens and compare structural alternatives | [Task flows and information architecture](patterns/task-flows-and-information-architecture.md) and [visual hierarchy](foundations/design-principles.md) |
 | Simplify navigation or a critical task | [Task flows and information architecture](patterns/task-flows-and-information-architecture.md) |
 | Design loading, error, or destructive states | [Interaction states and recovery](patterns/interaction-states-and-recovery.md) |
 | Design and test keyboard, focus, contrast, touch, or zoom | [Accessibility](guidance/accessibility.md) |
