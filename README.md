@@ -172,3 +172,8 @@ These are documentation proposals only. They do not certify a Sites deployment, 
 ## Batch 6 — data lifecycle and migration safety (proposed, 2026-11-07)
 
 For archive/retention and trustworthy export/delete journeys, start with [privacy and consent](guidance/privacy-consent-and-trust.md). For revisioned aggregate migrations, concurrent edits and restoration, follow [offline/sync/conflicts](patterns/offline-sync-and-conflicts.md). [Quality gates](governance/quality-gates.md) documents verification scenarios. The [Batch 6 context and gap ledger](planning/little-wins-batch-6-context-and-gap-ledger.md) traces source evidence, limitations and reuse decisions. These are extensions of canonical IDs, not shipped exports, restored backups or new components.
+
+
+## Batch 7 — accessible record-action journeys (proposed, 2026-11-07)
+
+For actionable record lists, read [data tables](patterns/data-tables.md) before making an entire row keyboard-focusable. Use the [Dialog component contract](components/dialog/spec.md) for native dialog focus, dismissal, unsaved edits and completion; test the end-to-end route through [accessibility](guidance/accessibility.md) and [quality gates](governance/quality-gates.md). See the [Batch 7 evidence ledger](planning/little-wins-batch-7-context-and-gap-ledger.md). These are proposed checks, not proof of Little Wins WCAG conformance.
