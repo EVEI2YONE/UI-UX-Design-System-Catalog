@@ -24,6 +24,9 @@
 | Choose a UX study or evaluate evidence quality | [UX research methods](guidance/ux-research-methods.md) |
 | Understand expectations and end-to-end journeys | [Mental models and journey mapping](guidance/mental-models-and-journeys.md) |
 | Reduce memory and decision burden | [Cognitive load and decision design](guidance/cognitive-load-and-decisions.md) |
+| Design perceived speed, loading and field performance evidence | [Performance and perceived speed](guidance/performance-and-perceived-speed.md) |
+| Design controlled A/B studies and trustworthy causal analysis | [UX experimentation](guidance/experimentation-and-causal-evidence.md) |
+| Hand off design tokens and components for real releases | [Lifecycle and decisions](governance/lifecycle-and-decisions.md) and [component contracts](architecture/component-contracts.md) |
 | Explain AI capabilities, uncertainty, evidence and correction | [AI-powered experiences](guidance/ai-powered-experiences-and-trust.md) |
 | Design AI tools with scoped approval and verified outcomes | [Agentic actions and approvals](patterns/agentic-actions-and-approvals.md) |
 | Support accessible voice, chat and multimodal workflows | [Conversational, voice and multimodal UX](patterns/conversational-voice-and-multimodal-ux.md) |
@@ -68,7 +71,7 @@ Practical UI composition typically follows **foundations/tokens → primitives �
 
 - **Included:** guidance, contracts, reference patterns, decision rules, examples/anti-patterns, evidence expectations, and concept metadata.
 - **Not included yet:** compiled tokens, framework-specific components, Storybook previews, product app code, or independently verified UX research. Do not mistake a specification for a working implementation.
-- **Future candidate domains:** performance resilience and design-tool interoperability. Add these when a reusable need and owner are identified; do not create empty folders for them.
+- **Future candidate domains:** further platform-specific and product-derived gaps must be validated before adding duplicate concepts. Add these when a reusable need and owner are identified; do not create empty folders for them.
 
 ## How to use an entry
 
@@ -147,3 +150,7 @@ New [data visualization](guidance/data-visualization-and-dashboards.md), [mobile
 ## Batch 11 — AI and multimodal experiences (proposed)
 
 New [AI-powered experiences](guidance/ai-powered-experiences-and-trust.md), [agentic actions and approvals](patterns/agentic-actions-and-approvals.md), and [conversational/voice/multimodal](patterns/conversational-voice-and-multimodal-ux.md) guidance separates generated outputs from verified evidence, tool plans from completed actions, and speech capture from confirmed user intent. The [context and gap ledger](planning/batch-11-context-and-gap-ledger.md) records existing concept boundaries and source limitations. These are proposed documents, not a deployed assistant, implemented authorization mechanism, or real-user/voice-accessibility test.
+
+## Batch 12 — evaluation, performance and delivery (proposed)
+
+New [performance and perceived speed](guidance/performance-and-perceived-speed.md) and [UX experimentation](guidance/experimentation-and-causal-evidence.md) guidance complements expanded [UX measurement](guidance/ux-measurement.md), [quality gates](governance/quality-gates.md), [catalog lifecycle](governance/lifecycle-and-decisions.md), [component handoff](architecture/component-contracts.md), and [design-token interchange](foundations/design-tokens-and-themes.md). The [context-first gap ledger](planning/batch-12-context-and-gap-ledger.md) separates current source guidance from real product evidence. This concludes planned Batches 7–12 on cumulative draft PR #5; all newly added concepts are still proposed and require human review before any merge.
