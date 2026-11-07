@@ -11,6 +11,7 @@
 | --- | --- |
 | Select wireframe fidelity or decide when interaction is required | [Wireframe methodology](guidance/wireframe-methodology.md) |
 | Review image-based wireframe QA, states and consumer retrieval | [Quality gates](governance/quality-gates.md), [interaction recovery](patterns/interaction-states-and-recovery.md), [wireframe integration handoff](archive/planning/wireframe-integration-handoff-2026-11-07.md) |
+| Choose a coherent aesthetic direction, typography, color and layout rhythm | [Visual design craftsmanship](foundations/visual-design-craftsmanship.md) |
 | Establish visual hierarchy, spacing, and affordances | [Design principles](foundations/design-principles.md) |
 | Create a theme or rationalize raw values | [Tokens and themes](foundations/design-tokens-and-themes.md) |
 | Choose prototype, MVP, growing or enterprise app code structure | [Application architecture selection](architecture/application-architecture.md) |
