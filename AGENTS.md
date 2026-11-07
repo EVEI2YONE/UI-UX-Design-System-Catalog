@@ -50,3 +50,8 @@ For an app with aggregate workspace JSON and revisioned storage, inspect the cur
 ## Batch 7 agent lookup — actionable records and modal flows
 
 Before recommending a table redesign, retrieve `pattern.data-tables`, `component.dialog`, `guidance.accessibility` and `governance.quality`; check source markup for native controls, pseudo-interactive rows, backdrop/close behavior and locally held edits. Test the *whole* record -> dialog -> updated record journey, not just the component shell. Source inspection alone cannot prove accessibility failure or compliance. See [Batch 7 ledger](planning/little-wins-batch-7-context-and-gap-ledger.md).
+
+
+## Batch 8 lookup — configuration-dependent actions
+
+Before recommending new flags or changing feature navigation, inspect the domain command guards, stored configuration, current UI gating and outstanding historical records. Retrieve `pattern.task-flows` for capability truth tables, `pattern.interaction-recovery` for paused states, and `governance.quality` for all-combination and direct-API verification. A hidden nav item is not a security boundary; an independently stored boolean is not necessarily an independent capability. Review [Batch 8 source ledger](planning/little-wins-batch-8-context-and-gap-ledger.md).
