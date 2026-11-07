@@ -100,6 +100,59 @@
       "reviewed_at": null
     },
     {
+      "id": "foundation.practical-styling",
+      "title": "Practical UI styling recipes",
+      "path": "foundations/practical-ui-styling-recipes.md",
+      "layer": "foundations",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Content-driven layout recipes, surface depth, imagery and icon consistency, interface archetypes and purposeful motion with CSS examples and verification checks.",
+      "aliases": [
+        "styling recipes",
+        "ui layout recipes",
+        "responsive grid styling",
+        "surface styling",
+        "card shadows",
+        "iconography",
+        "image art direction",
+        "UI archetypes",
+        "interface styling",
+        "microinteractions",
+        "motion design",
+        "reduced motion styling"
+      ],
+      "domains": [
+        "visual-design",
+        "responsive-layout",
+        "styling",
+        "motion"
+      ],
+      "use_when": [
+        "implementing a coherent visual direction in component or page CSS",
+        "choosing layout and surface styling for a UI archetype",
+        "reviewing image/icon consistency and purposeful feedback motion"
+      ],
+      "avoid_when": [
+        "using recipes without task and accessibility requirements",
+        "copying unsupported CSS into production without token definitions and testing"
+      ],
+      "related": [
+        "foundation.visual-craftsmanship",
+        "foundation.design-tokens",
+        "principle.visual-hierarchy",
+        "architecture.component-contracts",
+        "guidance.mobile-adaptive",
+        "guidance.data-visualization",
+        "guidance.accessibility",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "foundation.visual-craftsmanship"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
       "id": "foundation.design-tokens",
       "title": "Design tokens and themes",
       "path": "foundations/design-tokens-and-themes.md",
