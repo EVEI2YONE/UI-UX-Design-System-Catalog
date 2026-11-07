@@ -1,5 +1,8 @@
 ## Unreleased
 
+- Visual craftsmanship knowledge Batch 2 (proposed, shared draft PR #14): add canonical practical styling recipes for KG-06–10: responsive layout choices, surface hierarchy, imagery/icon consistency, UI archetypes and motion/reduced-motion; update foundations/root discovery and registry. All CSS samples illustrative; runtime, accessibility and visual testing NOT VERIFIED.
+
+
 - Visual craftsmanship knowledge Batch 1 (proposed, shared cumulative PR): add canonical guidance for KG-01–05 composition, typography, color, spacing and art direction; extend existing principles/tokens with canonical cross-links and update discovery/index. Documentation-only; no browser, design user study or accessibility conformance verified.
 
 
