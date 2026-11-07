@@ -132,3 +132,12 @@
 - Extended recovery guidance to distinguish paused, unauthorized and empty states and handle in-flight requests when settings change.
 - Added feature-combination, direct-API, history and pending-work acceptance tests to quality gates.
 - Added context-first source/gap ledger and updated catalog discovery; no new registry ID, live feature changes or product-test PASS claims.
+
+
+## Unreleased — Batch 9 (2026-11-07)
+
+- Reviewed Little Wins page/component imports, existing UI library, global CSS and current catalog architecture/token/release guidance before drafting.
+- Extended existing component-model guidance with a one-workflow-at-a-time extraction and reuse decision contract.
+- Extended token/theming guidance with legacy selector inventory, semantic role mapping, scoped styling and compatibility safeguards.
+- Expanded quality gates for real component adoption, accessibility/visual/domain regressions and rollback readiness.
+- Recorded context-first gap decisions and updated catalog navigation; no new canonical IDs, implemented refactor or verified product testing.
