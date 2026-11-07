@@ -132,7 +132,11 @@
         "interface styling",
         "microinteractions",
         "motion design",
-        "reduced motion styling"
+        "reduced motion styling",
+        "utility-first styling ownership",
+        "tailwind shadcn component styling",
+        "token-backed utility classes",
+        "scoped feature CSS"
       ],
       "domains": [
         "visual-design",
@@ -143,7 +147,9 @@
       "use_when": [
         "implementing a coherent visual direction in component or page CSS",
         "choosing layout and surface styling for a UI archetype",
-        "reviewing image/icon consistency and purposeful feedback motion"
+        "reviewing image/icon consistency and purposeful feedback motion",
+        "implementing styling boundaries in a utility-first application",
+        "reusing an existing shadcn-style component library"
       ],
       "avoid_when": [
         "using recipes without task and accessibility requirements",
@@ -157,7 +163,9 @@
         "guidance.mobile-adaptive",
         "guidance.data-visualization",
         "guidance.accessibility",
-        "governance.quality"
+        "governance.quality",
+        "architecture.component-model",
+        "architecture.enforcement-ci"
       ],
       "depends_on": [
         "foundation.visual-craftsmanship"
@@ -278,7 +286,12 @@
         "reuse",
         "component migration",
         "incremental component extraction",
-        "unused component library"
+        "unused component library",
+        "component inventory to contract mapping",
+        "installed versus used components",
+        "component reuse inventory",
+        "duplicate primitive audit",
+        "component promotion worksheet"
       ],
       "domains": [
         "architecture",
@@ -290,14 +303,18 @@
         "placing a primitive or feature",
         "promoting shared components",
         "extracting presentation from large page modules in vertical slices",
-        "distinguishing present UI-library files from components actually adopted in the app"
+        "distinguishing present UI-library files from components actually adopted in the app",
+        "auditing existing UI controls before creating new components",
+        "mapping component inventory to canonical reusable contracts"
       ],
       "avoid_when": [
         "moving unstable one-off workflows into shared components"
       ],
       "related": [
         "architecture.component-contracts",
-        "governance.lifecycle"
+        "governance.lifecycle",
+        "foundation.practical-styling",
+        "architecture.enforcement-ci"
       ],
       "depends_on": [
         "foundation.design-tokens"
@@ -2411,7 +2428,12 @@
         "dependency-cruiser rules",
         "ESLint no-restricted-imports",
         "Nx module boundaries",
-        "architecture lint rules"
+        "architecture lint rules",
+        "visual redundancy enforcement",
+        "CSS ownership lint",
+        "duplicate utility style detection",
+        "global CSS selector guardrails",
+        "variant explosion lint"
       ],
       "domains": [
         "application-architecture",
@@ -2422,7 +2444,9 @@
       "use_when": [
         "enforcing feature domain and shared import boundaries",
         "introducing architecture checks into CI",
-        "choosing between ESLint graph checks and Nx rules"
+        "choosing between ESLint graph checks and Nx rules",
+        "detecting duplicate primitive and feature styles",
+        "introducing baseline-aware CSS and utility lint safeguards"
       ],
       "avoid_when": [
         "assuming alias-only lint covers all relative imports",
@@ -2432,7 +2456,9 @@
         "architecture.module-boundaries",
         "architecture.evolution",
         "architecture.framework-aware",
-        "governance.quality"
+        "governance.quality",
+        "foundation.practical-styling",
+        "architecture.component-model"
       ],
       "depends_on": [
         "architecture.module-boundaries",
