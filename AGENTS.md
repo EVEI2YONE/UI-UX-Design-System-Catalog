@@ -77,3 +77,7 @@ Resolve these canonical IDs via the registry: `architecture.module-boundaries` f
 ## Batch 17 — framework routing and source structure
 
 Query `framework aware architecture`, `Next.js app router structure`, `Angular feature folders`, or `React Router file routes` for `architecture.framework-aware`. First inspect actual framework, version and routing mode, then preserve special route files and server/client boundaries. This is a proposed guideline, not a validated code scaffold. See the [Batch 17 evidence ledger](planning/application-architecture-batch-17-context-and-gaps.md).
+
+## Batch 18 — enforceable module boundaries
+
+Resolve `architecture.enforcement-ci` for queries such as `module boundary lint`, `dependency-cruiser rules`, `Nx module boundaries` or `architecture CI`. Always inspect target language, framework alias resolution and existing lint/CI before recommending tool setup. Check positive/negative fixtures and relative-import escape paths; never claim example rules were executed in a target application. See [Batch 18 context](planning/application-architecture-batch-18-context-and-gaps.md).
