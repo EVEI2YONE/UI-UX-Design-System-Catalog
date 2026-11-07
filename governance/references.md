@@ -136,3 +136,11 @@ The brief contract, comparison matrix and default two meaningful alternatives ar
 - [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/): applicable implemented-web criteria, not certification from wireframe pixels.
 
 **Source lineage:** B5 synthesizes proposed `governance.quality`, `principle.visual-hierarchy`, `guidance.content-design`, B1 wireframe methodology, B2 task composition, B3 states and B4 inclusive responsive guidance. Proposed reviewer thresholds and synthetic examples are not observed product defects. No generated images or human-user sessions were inspected, and external-page freshness was **NOT VERIFIED** in this batch.
+
+## Wireframe B6 — synthetic scenarios and retrieval evidence (2026-11-07)
+
+- **Internal canonical source:** B1–B5 pages for `guidance.wireframe-methodology`, `pattern.task-flows`, `pattern.interaction-recovery`, `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization` and `governance.quality`. Each remains `proposed`.
+- **Fixture source:** [synthetic WRF-01–06 example bank](../archive/planning/wireframe-synthetic-example-bank-2026-11-07.md). All cases and placeholder data are authored test illustrations, not real research, screenshots, or externally sourced assets.
+- **Retrieval contract:** [deterministic resolver](../scripts/find_concept.py) and [regression tests](../tests/test_wireframe_examples_retrieval.py); `avoid_when` is negative metadata, not a positive discovery field. Python checks validate lookup behavior only.
+
+No new external standard was required for B6. User-testing, actual image inspection, translation correctness, accessibility and app/runtime claims: **NOT VERIFIED**.
