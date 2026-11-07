@@ -28,7 +28,22 @@
       "domains": [
         "visual-design",
         "information-architecture"
-      ]
+      ],
+      "use_when": [
+        "reviewing screen hierarchy",
+        "defining primary actions",
+        "checking affordances"
+      ],
+      "avoid_when": [
+        "using visual consistency at the expense of task completion"
+      ],
+      "related": [
+        "pattern.task-flows",
+        "guidance.accessibility"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "foundation.design-tokens",
@@ -52,7 +67,22 @@
         "foundations",
         "styling",
         "theming"
-      ]
+      ],
+      "use_when": [
+        "naming semantic colors and spacing",
+        "designing themes",
+        "migrating raw values"
+      ],
+      "avoid_when": [
+        "storing product business state in tokens"
+      ],
+      "related": [
+        "architecture.component-contracts",
+        "guidance.accessibility"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "architecture.component-model",
@@ -74,7 +104,24 @@
         "architecture",
         "reuse",
         "components"
-      ]
+      ],
+      "use_when": [
+        "deciding reuse versus create",
+        "placing a primitive or feature",
+        "promoting shared components"
+      ],
+      "avoid_when": [
+        "moving unstable one-off workflows into shared components"
+      ],
+      "related": [
+        "architecture.component-contracts",
+        "governance.lifecycle"
+      ],
+      "depends_on": [
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "architecture.component-contracts",
@@ -97,7 +144,25 @@
         "components",
         "accessibility",
         "implementation"
-      ]
+      ],
+      "use_when": [
+        "specifying reusable controls",
+        "defining component states",
+        "reviewing a loading button or dialog"
+      ],
+      "avoid_when": [
+        "embedding product APIs in reusable controls"
+      ],
+      "related": [
+        "pattern.interaction-recovery",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "architecture.component-model",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "pattern.task-flows",

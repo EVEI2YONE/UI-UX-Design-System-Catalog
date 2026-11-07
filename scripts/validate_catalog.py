@@ -40,6 +40,38 @@ def main() -> int:
         text = path.read_text(encoding='utf-8')
         if f'# {item["title"]}' not in text:
             errors.append(f'{item["id"]}: page heading does not match registry title')
+
+    # Validate the agent retrieval contract against a documented JSON Schema
+    # without introducing a third-party dependency into the standard validator.
+    schema = json.loads((ROOT / 'catalog/schema.json').read_text(encoding='utf-8'))
+    required = set(schema['$defs']['entry']['required'])
+    allowed = set(schema['$defs']['entry']['properties'])
+    ids = {entry.get('id') for entry in entries}
+    for entry in entries:
+        ident = entry.get('id', '<missing id>')
+        unknown = set(entry) - allowed
+        if unknown:
+            errors.append(f'{ident}: unknown registry fields {sorted(unknown)}')
+        if required - set(entry):
+            errors.append(f'{ident}: missing schema fields {sorted(required - set(entry))}')
+        for field in ('use_when', 'avoid_when', 'related', 'depends_on'):
+            if field in entry and (not isinstance(entry[field], list) or
+                                   not all(isinstance(x, str) and x for x in entry[field])):
+                errors.append(f'{ident}: {field} must contain nonempty strings')
+        for field in ('related', 'depends_on'):
+            if isinstance(entry.get(field, []), list):
+                for target in entry.get(field, []):
+                    if target not in ids or target == ident:
+                        errors.append(f'{ident}: invalid {field} reference {target}')
+        if 'owner' in entry and (not isinstance(entry['owner'], str) or not entry['owner'].strip()):
+            errors.append(f'{ident}: invalid owner')
+        if entry.get('reviewed_at') is not None:
+            import datetime
+            try:
+                datetime.date.fromisoformat(entry['reviewed_at'])
+            except (TypeError, ValueError):
+                errors.append(f'{ident}: invalid reviewed_at')
+
     for section in SECTIONS:
         if not (ROOT / section / 'README.md').is_file():
             errors.append(f'missing {section}/README.md')

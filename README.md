@@ -88,3 +88,7 @@ The scaffold is being expanded in reviewable **documentation batches**, each usi
 3. **Measurement and governance:** [UX measurement](guidance/ux-measurement.md), [lifecycle](governance/lifecycle-and-decisions.md), and [quality gates](governance/quality-gates.md).
 
 These are **proposed guidance definitions**. Component implementations, manual accessibility testing and user research remain outside this PR.
+
+## Agent-first lookup
+
+Agents should begin with [AGENTS.md](AGENTS.md), query [the canonical registry](catalog/index.json) with the [lookup tool](scripts/find_concept.py), then open only the relevant source pages. The [catalog schema](catalog/schema.json) defines optional retrieval metadata. IDs, status and source paths remain canonical; no published component implementations are implied.

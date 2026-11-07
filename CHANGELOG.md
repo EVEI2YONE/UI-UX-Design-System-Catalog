@@ -13,3 +13,9 @@
 - Batch 2: add a task-flow specification, recovery scenarios and testable accessibility/localization acceptance matrices.
 - Batch 3: add a task-measurement worksheet, lifecycle promotion rules and per-batch review gates.
 - Preserve canonical concept IDs, existing paths and `proposed` statuses; no runtime components or user tests are claimed.
+
+## Unreleased — Batch 1 agent lookup structure
+
+- Preserve the four Batch 1 canonical pages while adding an agent lookup protocol and structured metadata.
+- Add optional schema-governed retrieval fields, deterministic ranking, reference checks and stdlib lookup tests.
+- Keep proposed statuses and app-specific component implementations unchanged.
