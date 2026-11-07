@@ -5,6 +5,7 @@ This section defines consistent design decision-making before component-level st
 - [Design principles](design-principles.md) — hierarchy, consistency, grouping, progressive disclosure, signifiers and recovery.
 - [Visual design craftsmanship](visual-design-craftsmanship.md) — composition, typography, palette construction, spatial rhythm and art-direction briefs (KG-01–05); reference research, abstraction, direction exploration and tradeoff selection (KG-11–14).
 - [Practical UI styling recipes](practical-ui-styling-recipes.md) — layouts, surfaces, imagery, interface archetypes and purposeful motion (KG-06–10).
+- [Synthetic visual refinement examples](visual-refinement-examples.md) — six written before/after critique cases for KG-17; not rendered or user-tested.
 - [Design tokens and themes](design-tokens-and-themes.md) — reference → semantic → component aliases, light/dark/high-contrast mappings and token hygiene.
 
 Related: [component model](../architecture/component-model.md), [accessibility](../guidance/accessibility.md), and [quality gates](../governance/quality-gates.md).
