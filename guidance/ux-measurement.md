@@ -74,3 +74,49 @@ Sources consulted 2026-11-07: [web.dev Web Vitals](https://web.dev/articles/vita
 Use journey-aligned metrics instead of generic dashboard engagement. Prioritize **submission completion** (server-confirmed successful contributions / eligible started attempts), **review turnaround** (median and p75 elapsed from submission to first substantive decision), **return/rework** (returned submissions / eligible reviewed submissions, with reasons), **review correctness** (authorized corrections and error-severity categories), **reward fulfillment** (fulfilled / eligible requested, with pending age), and **scope confusion** (project-switch recovery or wrong-scope attempts from qualitative research). Record eligible cohort, event version, timezone, deduplication and cancellation separately. Compare owner-managed and independently authenticated workflows only if those distinct populations exist.
 
 For toggled-off features, mark related metrics **NOT APPLICABLE** to the disabled period, not zero performance. For offline/timeouts, distinguish server-confirmed transactions from UI requests. Never capture contribution descriptions, private member details, or other sensitive content in telemetry. No Little Wins baseline or causal effect has been verified in this catalog change.
+
+## B04 — interaction-effort measurement without click-count tunnel vision (CKG-14; proposed 2026-11-07)
+
+**Purpose:** test whether an interaction consolidation or stable action region improves real user tasks while protecting comprehension, safety and inclusive access. This extends the existing [TCR, time, errors and privacy contract](#core-metrics); [advanced interactions](../patterns/advanced-interactions-and-reversible-actions.md) owns choosing buttons, toolbars, menus, split actions and shortcuts. [Task flows](../patterns/task-flows-and-information-architecture.md) owns spatial/next-action layout and scope.
+
+### Operational task-cost worksheet
+
+Fix a **task start** and **authoritative completion** event, eligible cohort, observed device/input modality, viewport/zoom and same work complexity before comparing versions. Optional, secondary effort measures follow; none replaces successful completion.
+
+| Measure | Operational definition and unit | Interpretation / limit |
+| --- | --- | --- |
+| Pointer travel | Sum of distances between successive task-relevant pointer positions in **CSS pixels** during eligible pointer tasks; record sampling/missingness and normalization by task/viewport when comparing | Describes travel burden, not motor effort or universally optimal pixels; not applicable to keyboard-only attempts |
+| Pointer target relocations | Count of unexpected action-target position changes during the same task, especially after async updates | May reveal unstable actions; distinguish deliberate responsive reflow |
+| Click/tap activations | Count **intentional activations** per eligible task attempt, separated by successful, cancelled and incomplete attempts | Fewer clicks is not inherently better if confirmations protect users |
+| Keyboard navigation effort | Tab/Shift+Tab/arrow activations or focus transitions to target, with missed/stranded focus reported separately | Modality-specific; do not compare raw counts to mouse travel |
+| Scroll/viewport interruptions | Count of substantial manual scroll changes or independent scroll-container switches on the way to the next required action; define threshold before study | Detects reorientation, not a universal optimum |
+| Re-entry and re-selection | Count of repeated entries of unchanged values or repeated item selections caused by refresh/navigation | Must distinguish deliberate correction or change in authorized scope |
+| Time to next actionable item | Elapsed **milliseconds/seconds from authoritative completion of prior item** to first intentional action on the next **eligible** item; report unavailable/abandoned cases separately | Do not measure from an optimistic click; do not exclude slow or failed attempts silently |
+| Comprehension/safety | Rate of users who can correctly predict consequences, plus task errors, duplicate attempts, permission/scope confusion and recovery | Guardrail against overcompressed, ambiguous controls |
+
+**For pointer telemetry**, record only consented, minimized, task-scoped interaction measurements; do not collect raw screen recordings, exact private text, sensitive item coordinates, names or identifiers without explicit privacy/legal review. In many cases moderated observation, aggregate interaction counts and coarse positioning categories are preferable to collecting continuous trajectories.
+
+### Study and inference protocol
+
+1. State the **hypothesis** (e.g., keeping a review action bar stable reduces re-selection), selected task, candidate variants, eligible user cohort, baseline and target condition. If actual baseline is unavailable, label it **UNKNOWN** rather than inventing counts.
+2. Define **confirmed success** independently of UI intent. Preserve failure, cancellation, partial and uncertain outcomes in the denominator policy; do not classify them all as valid zero-duration successes.
+3. Compare equivalent tasks under matched devices, viewports, zoom, task complexity, input modality and permissions. Include novice and returning users when relevant; describe observed differences without causal claims unless the study design justifies them.
+4. Report TCR, error severity, time distributions and recovery alongside any pointer/step reduction. Stratify keyboard, touch and assistive technology separately; never give nonpointer attempts a fabricated pointer distance of zero.
+5. Review discoverability, comprehension, focus, translation/RTL, touch, safety and server-correctness guardrails; do not adopt an optimization if fewer actions increase consequential mistakes.
+6. Record consent/data minimization, versioned instrumentation, missing events, confidence limitations, decision owner, rollout/rollback and actual PASS/FAIL/NOT VERIFIED results.
+
+**Illustrative example:** version A requires choosing a new record after each acknowledged review; version B presents the next eligible item in a stable pane. Compare completion, decision correctness, time-to-next-action, focus recovery and deliberate stops across matched sessions. Without observed attempts, both a faster pointer path and its actual benefit remain hypotheses.
+
+**Anti-example:** declare a 50% UX improvement because a prototype uses two buttons instead of four, while ignoring hidden Reject, lost keyboard access, unverified approvals and users who abandon the task.
+
+### B04 verification status
+
+| Evidence | Required before claiming improvement | Status |
+| --- | --- | --- |
+| Task definition, cohort and baseline | Versioned start/success events, validated attempts and sampling | NOT VERIFIED |
+| Input-modality coverage | Pointer, keyboard, touch, assistive technology where applicable | NOT VERIFIED |
+| Outcome and error safeguards | TCR, server correctness, recovery, scope/permission errors | NOT VERIFIED |
+| Privacy-respecting instrumentation | Purpose limitation, data minimization, consent and retention review | NOT VERIFIED |
+| Controlled/observational interpretation | Study design, uncertainty, consistent comparable tasks | NOT VERIFIED |
+
+**References:** [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/), [Nielsen Norman Group: Measuring UX](https://www.nngroup.com/articles/which-ux-research-methods/) (method-selection starting point, not proof of a specific metric threshold), and [experimentation guidance](experimentation-and-causal-evidence.md) (consulted 2026-11-07). Context: proposed Little Wins B06 effort metrics and B07 action-consolidation patterns; product baselines remain unknown.
