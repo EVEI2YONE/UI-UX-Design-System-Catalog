@@ -9,7 +9,7 @@
 | Batch | Gap IDs | Status | Canonical owner(s) | Context gate |
 | --- | --- | --- | --- | --- |
 | B01 Icon semantics and controls | CKG-01–03 | **Documentation committed; verification incomplete** | `foundation.icon-semantics`, `component.button` | Collected 2026-11-07 |
-| B02 Anatomy, event ownership, coordination | CKG-04, 06–08 | Not started | `architecture.component-contracts` | Required before B02 |
+| B02 Anatomy, event ownership, coordination | CKG-04, 06–08 | **Documentation committed; verification incomplete** | `architecture.component-contracts` | Collected 2026-11-07 |
 | B03 Icon state, focus, sequential workflows | CKG-09–12 | Not started | `pattern.interaction-recovery`, task flows | Required before B03 |
 | B04 Action grouping and effort metrics | CKG-13–14 | Not started | `pattern.advanced-interactions`, UX measurement | Required before B04 |
 | B05 Utility-first styling and anti-duplication | CKG-15–17 | Not started | styling and architecture owners | Required before B05 |
@@ -39,3 +39,14 @@
 ## B02 preparation reminder
 
 Inspect actual Button, Field, Dialog, Select, Checkbox, navigation/menu patterns; resolve event-owner differences (component event vs feature command vs domain outcome) and conflicting nested triggers. Re-check catalog aliases and authoritative APG guidance for actual composite widgets. Commit a concise context-specific audit before drafting B02.
+
+## B02 — completed documentation scope and verification disposition, 2026-11-07
+
+- **Context gate passed before edits:** [B02 context/evidence ledger](icon-interaction-b02-context-2026-11-07.md) records 49+ preexisting registry concepts, canonical page overlap, Little Wins B03/B07 motivating cases, primary standards and source limits. The working branch was created from main `00df3f2055396e586fbb5ffa07e4a80dc8312e8e`, and main remained on that commit during B02.
+- **Gap disposition:** CKG-04/06/07/08 were **incomplete guidance**, not four missing independent components. Extended `architecture.component-contracts` rather than creating duplicate canonical entries.
+- **Canonical content:** host/slot anatomy matrix, local component events vs workflow commands vs authoritative outcomes, two cross-component examples (search/results and item/menu/dialog) plus form summary, controlled/uncontrolled ownership and invalid nested event combinations. This is conceptual guidance, not a production event library.
+- **Files updated:** `architecture/component-contracts.md`, `catalog/index.json` (existing ID aliases, use-when and related IDs), `architecture/README.md`, `components/README.md`, `README.md`, `AGENTS.md`, `CHANGELOG.md`, `tests/test_component_event_knowledge.py` (new), `archive/planning/icon-interaction-b02-context-2026-11-07.md` (new), and this progress ledger.
+- **Source-only evidence:** current branch content and registered metadata were read through the GitHub connector. Automated retrieval test cases are committed but execution is **NOT VERIFIED**. The standard GitHub Actions workflow triggers only on `main` push or pull request; a standalone batch branch does not trigger it. Local Git clone for B01 was blocked by DNS, and no new successful full test run has been established at B02.
+- **Manual/browser/keyboard/AT/touch/RTL testing:** **NOT VERIFIED**; the catalog remains `proposed`, owner `unassigned`, review date null. No target UI was changed.
+- **PR status:** no PR opened, per user request. Shared branch continues to B03; final PR after B06.
+- **B03 starting context:** Reinspect current `pattern.interaction-recovery`, `pattern.task-flows`, `foundation.icon-semantics`, `architecture.component-contracts` and relevant WAI-ARIA APG focus guidance; recheck main/branch divergence and available tests before drafting event-to-icon transitions, focus continuity, spatial behavior and sequential task controller.
