@@ -60,3 +60,8 @@ Before recommending new flags or changing feature navigation, inspect the domain
 ## Batch 9 lookup — incremental migration of existing app UI
 
 Inspect the source's actual import graph, reused and bespoke controls, styling entrypoints and deployed themes before proposing component extraction or global CSS changes. Retrieve `architecture.component-model` for feature-vs-shared boundaries, `foundation.design-tokens` for selector/token migration, and `governance.quality` for staged verification. Installed components, a shadcn configuration or a Tailwind import alone do **not** establish runtime reuse, conformance or migration necessity. Record a one-feature baseline and compatibility/rollback plan before recommending broad changes. See [Batch 9 ledger](planning/little-wins-batch-9-context-and-gap-ledger.md).
+
+
+## Batch 10 lookup regression and closure
+
+Use the canonical registry before proposing a missing concept. Task query examples: `hosted authentication` -> `pattern.authentication-lifecycle`; `human approval workflow` -> `pattern.interaction-recovery` (not AI-specific agent approvals); `feature flags` -> `pattern.task-flows`; `data migration` -> `pattern.offline-sync`; `clickable row` -> `pattern.data-tables`; `dialog focus return` -> `component.dialog`; `global CSS` -> `foundation.design-tokens`. Run [retrieval regression tests](tests/test_little_wins_knowledge_coverage.py) and catalog validation when changing aliases or content. See [cross-batch closure ledger](planning/little-wins-batch-10-context-and-gap-ledger.md). A successful doc validator is not product-quality certification.
