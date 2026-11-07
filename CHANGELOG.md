@@ -267,3 +267,9 @@
 - Extended `pattern.task-flows` (CKG-11/12) with stable action zones, preserved queue context and a guarded next-eligible-item state model including skip/stop, unknown writes, permissions and pagination.
 - Updated canonical registry aliases and root/pattern/agent discovery; added knowledge retrieval tests and a [pre-edit context ledger](archive/planning/icon-interaction-b03-context-2026-11-07.md).
 - No new component package, tested task-efficiency improvement or verified accessibility conformance. Shared PR remains deferred until B06.
+
+## Unreleased — icon and interaction system, Batch 4 (2026-11-07)
+
+- Expanded `pattern.advanced-interactions` (CKG-13) with explicit-button/toolbar/overflow/split/shortcut choice matrix, consequence, focus and accessibility constraints.
+- Expanded `guidance.ux-measurement` (CKG-14) with task-scoped pointer/keyboard/scroll/re-entry/time-to-next metrics, privacy handling and task-success guardrails.
+- Updated existing registry aliases and source indexes; saved [B04 context review](archive/planning/icon-interaction-b04-context-2026-11-07.md). No new canonical IDs or observed user-efficiency claims.
