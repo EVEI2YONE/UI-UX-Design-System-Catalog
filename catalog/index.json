@@ -1,0 +1,271 @@
+{
+  "schema_version": "0.1.0",
+  "catalog_version": "0.1.0",
+  "status_model": [
+    "proposed",
+    "experimental",
+    "stable",
+    "deprecated",
+    "removed"
+  ],
+  "entries": [
+    {
+      "id": "principle.visual-hierarchy",
+      "title": "Design principles",
+      "path": "foundations/design-principles.md",
+      "layer": "principles",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Visual hierarchy, consistency, whitespace, signifiers and user-centered priorities.",
+      "aliases": [
+        "visual hierarchy",
+        "whitespace",
+        "affordance",
+        "consistency",
+        "progressive disclosure",
+        "user centered"
+      ],
+      "domains": [
+        "visual-design",
+        "information-architecture"
+      ]
+    },
+    {
+      "id": "foundation.design-tokens",
+      "title": "Design tokens and themes",
+      "path": "foundations/design-tokens-and-themes.md",
+      "layer": "tokens",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Semantic design tokens, aliases, themes, contrast and density.",
+      "aliases": [
+        "token",
+        "theme",
+        "dark mode",
+        "high contrast",
+        "spacing",
+        "typography",
+        "CSS variables",
+        "DTCG"
+      ],
+      "domains": [
+        "foundations",
+        "styling",
+        "theming"
+      ]
+    },
+    {
+      "id": "architecture.component-model",
+      "title": "Component model",
+      "path": "architecture/component-model.md",
+      "layer": "components",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Boundaries for primitives, components, patterns, features and pages; reuse decisions.",
+      "aliases": [
+        "primitive",
+        "composability",
+        "component hierarchy",
+        "atomic design",
+        "mega component",
+        "reuse"
+      ],
+      "domains": [
+        "architecture",
+        "reuse",
+        "components"
+      ]
+    },
+    {
+      "id": "architecture.component-contracts",
+      "title": "Component contracts",
+      "path": "architecture/component-contracts.md",
+      "layer": "components",
+      "kind": "contract",
+      "status": "proposed",
+      "summary": "Specify public API, variants, states, accessibility, responsiveness and evidence.",
+      "aliases": [
+        "component spec",
+        "dialog",
+        "button",
+        "API",
+        "state matrix",
+        "contract",
+        "focus lifecycle"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "implementation"
+      ]
+    },
+    {
+      "id": "pattern.task-flows",
+      "title": "Task flows and information architecture",
+      "path": "patterns/task-flows-and-information-architecture.md",
+      "layer": "experiences",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Task-first UX journeys, navigation, wayfinding, IA and progressive disclosure.",
+      "aliases": [
+        "IA",
+        "user journey",
+        "navigation",
+        "wayfinding",
+        "flow",
+        "search",
+        "funnel"
+      ],
+      "domains": [
+        "information-architecture",
+        "ux",
+        "journeys"
+      ]
+    },
+    {
+      "id": "pattern.interaction-recovery",
+      "title": "Interaction states and recovery",
+      "path": "patterns/interaction-states-and-recovery.md",
+      "layer": "behavior",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Loading, errors, confirmation, offline states, retry, focus and recovery.",
+      "aliases": [
+        "focus recovery",
+        "error recovery",
+        "loading",
+        "empty state",
+        "validation",
+        "toast",
+        "dialog focus",
+        "offline",
+        "async"
+      ],
+      "domains": [
+        "interaction",
+        "accessibility",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "guidance.accessibility",
+      "title": "Accessibility",
+      "path": "guidance/accessibility.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Web accessibility requirements and manual/automated verification expectations.",
+      "aliases": [
+        "WCAG",
+        "ARIA",
+        "keyboard",
+        "screen reader",
+        "contrast",
+        "focus",
+        "zoom",
+        "touch target",
+        "reduced motion"
+      ],
+      "domains": [
+        "accessibility",
+        "testing",
+        "inclusive-design"
+      ]
+    },
+    {
+      "id": "guidance.internationalization",
+      "title": "Internationalization and bidirectional support",
+      "path": "guidance/internationalization.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Localization, pluralization, locale formatting, text growth and RTL.",
+      "aliases": [
+        "i18n",
+        "l10n",
+        "RTL",
+        "translation",
+        "bidi",
+        "locale",
+        "plural",
+        "pseudolocalization"
+      ],
+      "domains": [
+        "internationalization",
+        "localization",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "guidance.ux-measurement",
+      "title": "UX measurement",
+      "path": "guidance/ux-measurement.md",
+      "layer": "intelligence",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Task completion, error, abandonment, time, conversion and survey metrics.",
+      "aliases": [
+        "TCR",
+        "SUS",
+        "CES",
+        "NPS",
+        "conversion",
+        "time on task",
+        "drop-off",
+        "abandonment",
+        "analytics"
+      ],
+      "domains": [
+        "ux-research",
+        "measurement",
+        "analytics"
+      ]
+    },
+    {
+      "id": "governance.lifecycle",
+      "title": "Catalog lifecycle and decision policy",
+      "path": "governance/lifecycle-and-decisions.md",
+      "layer": "cross-cutting",
+      "kind": "policy",
+      "status": "proposed",
+      "summary": "Reuse/create/deprecate decisions, ownership, status and migration.",
+      "aliases": [
+        "governance",
+        "reuse decision",
+        "deprecate",
+        "status",
+        "ownership",
+        "versioning",
+        "decision record"
+      ],
+      "domains": [
+        "governance",
+        "lifecycle",
+        "adoption"
+      ]
+    },
+    {
+      "id": "governance.quality",
+      "title": "Design and catalog quality gates",
+      "path": "governance/quality-gates.md",
+      "layer": "cross-cutting",
+      "kind": "checklist",
+      "status": "proposed",
+      "summary": "Checklist for task value, contracts, tokens, accessibility, research and repository evidence.",
+      "aliases": [
+        "QA",
+        "quality checklist",
+        "acceptance",
+        "validation",
+        "test",
+        "release gate",
+        "migration priorities"
+      ],
+      "domains": [
+        "quality",
+        "testing",
+        "governance"
+      ]
+    }
+  ]
+}

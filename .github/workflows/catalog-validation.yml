@@ -1,0 +1,20 @@
+name: Validate catalog
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check-catalog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Validate index, sections, and links
+        run: python3 scripts/validate_catalog.py
+      - name: Smoke-test lookup
+        run: python3 scripts/find_concept.py dialog
