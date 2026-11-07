@@ -1,4 +1,4 @@
-## Unreleased\n\n- Propose role-aware workspace and context-switching guidance, separating role switch, tenant switch, customer preview and impersonation; add catalog discovery and source references.\n\n# Changelog
+## Unreleased\n\n- Wireframe knowledge B1 (proposed): add tool-neutral `guidance.wireframe-methodology` for visual/content/interaction fidelity, representation selection, static-image claims and prototype escalation; update registry, discovery and lookup regression checks. Existing task-flow, state and quality concepts remain canonical. No user studies or runtime checks claimed.\n\n\n- Propose role-aware workspace and context-switching guidance, separating role switch, tenant switch, customer preview and impersonation; add catalog discovery and source references.\n\n# Changelog
 
 ## Historical — proposed catalog scaffold
 
