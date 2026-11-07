@@ -30,3 +30,7 @@ Choose the **developer task first**, then read its canonical guidance. This sect
 - Earlier work: [Batch 9 component extraction context](../archive/planning/little-wins-batch-9-context-and-gap-ledger.md); Batch 12 component design-to-code trace is documented in [component contracts](component-contracts.md).
 
 For agent retrieval, resolve canonical IDs using [the registry](../catalog/index.json) and [AGENTS.md](../AGENTS.md), then follow `related` and `depends_on` selectively. The [quality gates](../governance/quality-gates.md) distinguish documentation validation from tested accessibility, DX and application behavior. No runtime test can be marked PASS because a Markdown validator succeeded.
+
+## B02 — component anatomy and event coordination (proposed, 2026-11-07)
+
+[Component contracts](component-contracts.md) now include CKG-04 and CKG-06–08: composite slot/host ownership; local component events versus feature commands versus authoritative outcomes; sibling state coordination; controlled/uncontrolled ownership; and nested interactive anti-patterns. Search canonical ID `architecture.component-contracts` for “component event ownership” or “cross component events”. These are documentation specifications, not runtime behavior verified by tests.
