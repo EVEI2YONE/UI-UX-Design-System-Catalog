@@ -40,3 +40,8 @@ Do not edit the default branch directly or treat a documentation specification a
 ## Hosted collaborative-app lookup regression (2026-11-07)
 
 At each new audit batch, re-fetch product evidence and canonical catalog entries before writing. For an app hosted behind managed authentication, retrieve `pattern.authentication-lifecycle` before recommending any new sign-in; retrieve `pattern.role-aware-workspaces` for identity-to-membership and tenant scope; retrieve `pattern.interaction-recovery` for human approvals and ledger feedback; retrieve `pattern.task-flows` for nested project/group context; retrieve `guidance.ux-measurement` and `governance.quality` for metrics and negative-path validation. Existing `pattern.agentic-actions` is specific to AI tool delegation, **not** the canonical guide for ordinary human contribution approvals. Differentiate `source-observed`, `inferred`, `NOT VERIFIED` and `deployment-confirmed`. Never equate this agent instruction package with the separately hosted catalog.
+
+
+## Batch 6 lookup — persisted collaborative data
+
+For an app with aggregate workspace JSON and revisioned storage, inspect the current data model and migration code before proposing data-lifecycle controls. Retrieve `guidance.privacy-trust` for archive, deletion and export UX; `pattern.offline-sync` for concurrent writes and normalization; `governance.quality` for verification. Do not equate private storage with a backup/restore feature, or a hidden sample group with erased data. See [source ledger](planning/little-wins-batch-6-context-and-gap-ledger.md). No new canonical IDs are needed.
