@@ -42,3 +42,7 @@ Test real request failures, latency, translated errors, retry, touch and keyboar
 **State transitions:** specify idle → validating → pending → success/failure, cancellation, and retry. Avoid optimistic success messages for irreversible operations before confirmation. When a pending control is unavailable, do not remove the user's focus without a meaningful next destination. When an error replaces content, ensure the new message is discoverable to keyboard and screen-reader users.
 
 **Test scenarios:** delayed response, double activation, lost connection after submission, server validation, expired permission, translated error, interrupted modal, and retry from the recovery state. Report actual run status; guidance is not proof of implementation.
+
+## Batch 9 boundary — offline/sync and authentication
+
+This page continues to own generic pending, timeout, retry, error and cancellation states. For **Saved on this device → Queued → Syncing → Synced** distinctions, divergent edits, concurrent conflict review and rejected offline work, use [offline work, synchronization and conflicts](offline-sync-and-conflicts.md). For expired sessions, safe reauthentication and legitimate account recovery, use [authentication lifecycle](authentication-and-account-lifecycle.md). Never automatically retry a consequential, potentially non-idempotent mutation after an ambiguous network failure. Describe verified local versus remote state; do not show “All saved” before backend confirmation.
