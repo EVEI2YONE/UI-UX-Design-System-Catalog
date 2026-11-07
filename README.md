@@ -24,6 +24,9 @@
 | Choose a UX study or evaluate evidence quality | [UX research methods](guidance/ux-research-methods.md) |
 | Understand expectations and end-to-end journeys | [Mental models and journey mapping](guidance/mental-models-and-journeys.md) |
 | Reduce memory and decision burden | [Cognitive load and decision design](guidance/cognitive-load-and-decisions.md) |
+| Explain AI capabilities, uncertainty, evidence and correction | [AI-powered experiences](guidance/ai-powered-experiences-and-trust.md) |
+| Design AI tools with scoped approval and verified outcomes | [Agentic actions and approvals](patterns/agentic-actions-and-approvals.md) |
+| Support accessible voice, chat and multimodal workflows | [Conversational, voice and multimodal UX](patterns/conversational-voice-and-multimodal-ux.md) |
 | Present accessible KPIs, charts and dashboard data | [Data visualization and dashboards](guidance/data-visualization-and-dashboards.md) |
 | Adapt navigation and tasks for mobile/native windows | [Mobile and adaptive platform UX](guidance/mobile-and-adaptive-platform-ux.md) |
 | Design bulk actions, drag alternatives, command palettes and undo | [Advanced interactions](patterns/advanced-interactions-and-reversible-actions.md) |
@@ -65,7 +68,7 @@ Practical UI composition typically follows **foundations/tokens → primitives �
 
 - **Included:** guidance, contracts, reference patterns, decision rules, examples/anti-patterns, evidence expectations, and concept metadata.
 - **Not included yet:** compiled tokens, framework-specific components, Storybook previews, product app code, or independently verified UX research. Do not mistake a specification for a working implementation.
-- **Future candidate domains:** performance resilience, AI interaction patterns, and design-tool interoperability. Add these when a reusable need and owner are identified; do not create empty folders for them.
+- **Future candidate domains:** performance resilience and design-tool interoperability. Add these when a reusable need and owner are identified; do not create empty folders for them.
 
 ## How to use an entry
 
@@ -140,3 +143,7 @@ The [agent lookup protocol](AGENTS.md), [catalog registry](catalog/README.md), [
 ## Batch 10 — dense and platform-specific interfaces (proposed)
 
 New [data visualization](guidance/data-visualization-and-dashboards.md), [mobile/adaptive UX](guidance/mobile-and-adaptive-platform-ux.md) and [advanced interaction](patterns/advanced-interactions-and-reversible-actions.md) guidance complements expanded [data tables](patterns/data-tables.md) and [role-aware workspaces](patterns/role-aware-workspaces-and-context-switching.md). The [context and gap ledger](planning/batch-10-context-and-gap-ledger.md) explains reuse decisions and research references. These are proposed docs, not tested components or verified product performance.
+
+## Batch 11 — AI and multimodal experiences (proposed)
+
+New [AI-powered experiences](guidance/ai-powered-experiences-and-trust.md), [agentic actions and approvals](patterns/agentic-actions-and-approvals.md), and [conversational/voice/multimodal](patterns/conversational-voice-and-multimodal-ux.md) guidance separates generated outputs from verified evidence, tool plans from completed actions, and speech capture from confirmed user intent. The [context and gap ledger](planning/batch-11-context-and-gap-ledger.md) records existing concept boundaries and source limitations. These are proposed documents, not a deployed assistant, implemented authorization mechanism, or real-user/voice-accessibility test.
