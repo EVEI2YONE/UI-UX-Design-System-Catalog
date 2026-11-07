@@ -29,3 +29,9 @@ Before choosing a feature/domain/package tree, use [application architecture and
 - [Enterprise and multi-application architecture](enterprise-and-multiapp.md): modular monolith, monorepo, multirepo and microfrontends; team/package governance.
 
 The [per-batch context and gap ledger](../planning/application-architecture-batches-13-16-context-and-gaps.md) records overlap with earlier knowledge and unverified claims. Use canonical registry IDs rather than treating these as runtime libraries.
+
+## Batch 17 — framework-aware application structure
+
+- [Framework-aware application structure and route ownership](framework-aware-application-structure.md): preserve Next.js, Angular and React Router conventions while choosing between route-local and feature-owned UI.
+
+Start with the [Batch 17 context and sources ledger](../planning/application-architecture-batch-17-context-and-gaps.md). Routes and module boundaries are different concerns; verify actual framework/version before applying any tree.
