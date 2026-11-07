@@ -264,7 +264,8 @@
         "pattern.authentication-lifecycle",
         "guidance.privacy-trust",
         "pattern.advanced-interactions",
-        "guidance.mobile-adaptive"
+        "guidance.mobile-adaptive",
+        "pattern.agentic-actions"
       ],
       "depends_on": [
         "pattern.task-flows"
@@ -318,7 +319,8 @@
         "pattern.task-flows",
         "pattern.service-recovery",
         "pattern.offline-sync",
-        "pattern.authentication-lifecycle"
+        "pattern.authentication-lifecycle",
+        "pattern.agentic-actions"
       ],
       "depends_on": [
         "architecture.component-contracts"
@@ -370,7 +372,8 @@
         "pattern.authentication-lifecycle",
         "guidance.data-visualization",
         "guidance.mobile-adaptive",
-        "pattern.advanced-interactions"
+        "pattern.advanced-interactions",
+        "pattern.multimodal-conversation"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -464,7 +467,9 @@
       "related": [
         "pattern.task-flows",
         "pattern.interaction-recovery",
-        "governance.quality"
+        "governance.quality",
+        "guidance.ai-experiences",
+        "pattern.multimodal-conversation"
       ],
       "depends_on": [
         "pattern.task-flows"
@@ -1170,7 +1175,9 @@
         "guidance.internationalization",
         "guidance.accessibility",
         "guidance.privacy-trust",
-        "pattern.notifications-attention"
+        "pattern.notifications-attention",
+        "guidance.ai-experiences",
+        "pattern.multimodal-conversation"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -1263,7 +1270,10 @@
         "pattern.authentication-lifecycle",
         "pattern.notifications-attention",
         "guidance.accessibility",
-        "pattern.service-recovery"
+        "pattern.service-recovery",
+        "guidance.ai-experiences",
+        "pattern.agentic-actions",
+        "pattern.multimodal-conversation"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -1351,7 +1361,8 @@
         "guidance.privacy-trust",
         "pattern.service-recovery",
         "guidance.content-design",
-        "pattern.authentication-lifecycle"
+        "pattern.authentication-lifecycle",
+        "pattern.agentic-actions"
       ],
       "depends_on": [
         "pattern.feedback"
@@ -1533,11 +1544,151 @@
         "pattern.role-aware-workspaces",
         "pattern.interaction-recovery",
         "guidance.accessibility",
-        "guidance.mobile-adaptive"
+        "guidance.mobile-adaptive",
+        "pattern.agentic-actions"
       ],
       "depends_on": [
         "pattern.interaction-recovery"
       ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.ai-experiences",
+      "title": "AI-powered experiences, transparency and calibrated trust",
+      "path": "guidance/ai-powered-experiences-and-trust.md",
+      "layer": "intelligence",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "AI disclosure, expectation setting, real source provenance, uncertainty and meaningful correction.",
+      "aliases": [
+        "AI UX",
+        "human AI interaction",
+        "AI transparency",
+        "AI-generated content",
+        "calibrated trust",
+        "AI uncertainty",
+        "AI provenance",
+        "AI explainability",
+        "AI correction"
+      ],
+      "domains": [
+        "artificial-intelligence",
+        "trust",
+        "inclusive-design",
+        "human-ai-interaction"
+      ],
+      "use_when": [
+        "setting expectations for an AI powered feature",
+        "explaining generated content uncertainty and source provenance",
+        "designing correction and manual alternatives for AI results"
+      ],
+      "avoid_when": [
+        "treating a model's confident answer as verified data",
+        "displaying invented numeric confidence without calibration"
+      ],
+      "related": [
+        "guidance.privacy-trust",
+        "guidance.content-design",
+        "guidance.ux-research",
+        "pattern.agentic-actions",
+        "pattern.multimodal-conversation"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.agentic-actions",
+      "title": "Agentic actions, approvals and reversible workflows",
+      "path": "patterns/agentic-actions-and-approvals.md",
+      "layer": "experiences",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Scoped AI tool use, reviewable plans, risk-weighted approvals, confirmed outcomes and safe interruption.",
+      "aliases": [
+        "agentic UX",
+        "AI agent approval",
+        "human in the loop",
+        "agent autonomy",
+        "agent activity timeline",
+        "agent tool execution",
+        "AI action review",
+        "agentic workflows",
+        "AI guardrails"
+      ],
+      "domains": [
+        "ai-agents",
+        "authorization",
+        "human-oversight",
+        "task-recovery"
+      ],
+      "use_when": [
+        "designing agent tools with side effects",
+        "planning approvals for AI initiated external actions",
+        "showing pending partial or confirmed agent outcomes"
+      ],
+      "avoid_when": [
+        "using model generated text as authorization for a tool call",
+        "claiming cancellation reversed an irreversible external action"
+      ],
+      "related": [
+        "guidance.ai-experiences",
+        "pattern.advanced-interactions",
+        "pattern.role-aware-workspaces",
+        "guidance.privacy-trust",
+        "pattern.interaction-recovery",
+        "pattern.multimodal-conversation"
+      ],
+      "depends_on": [
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.multimodal-conversation",
+      "title": "Conversational, voice and multimodal UX",
+      "path": "patterns/conversational-voice-and-multimodal-ux.md",
+      "layer": "experiences",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Voice/text multimodal turn taking, speech correction, transcripts, interruptions, privacy and non-audio paths.",
+      "aliases": [
+        "voice UX",
+        "conversational UX",
+        "multimodal interface",
+        "voice assistant",
+        "speech interaction",
+        "turn taking",
+        "voice transcription",
+        "barge in",
+        "spoken assistant",
+        "speech recognition UX"
+      ],
+      "domains": [
+        "voice",
+        "multimodal",
+        "conversation",
+        "accessibility"
+      ],
+      "use_when": [
+        "designing voice and text conversational experiences",
+        "supporting audio transcription correction and interruption",
+        "switching between spoken and graphical task modes"
+      ],
+      "avoid_when": [
+        "making speech the only way to access critical actions",
+        "treating a recognized phrase as a confirmed external authorization"
+      ],
+      "related": [
+        "guidance.ai-experiences",
+        "pattern.agentic-actions",
+        "guidance.accessibility",
+        "guidance.mobile-adaptive",
+        "guidance.content-design"
+      ],
+      "depends_on": [],
       "owner": "unassigned",
       "reviewed_at": null
     }
