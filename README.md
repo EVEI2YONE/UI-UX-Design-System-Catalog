@@ -164,3 +164,7 @@ See [advanced interactions](patterns/advanced-interactions-and-reversible-action
 ## Batch 5 — styling architecture and reuse inventory (proposed, 2026-11-07)
 
 Use [practical styling](foundations/practical-ui-styling-recipes.md) (`foundation.practical-styling`) for utility-first styling ownership, [architecture enforcement](architecture/architecture-enforcement-and-ci.md) (`architecture.enforcement-ci`) for baseline-aware CSS/variant drift checks, and [component model](architecture/component-model.md) (`architecture.component-model`) for component inventory-to-contract mapping. These extend three existing concepts; no packaged Tailwind theme, automated code linter or product accessibility result is claimed.
+
+## Batch 6 — icon consistency, interaction verification and discovery (proposed, 2026-11-07)
+
+Use [icon semantics](foundations/iconography-and-semantics.md) for icon-intent collision and consistency review (CKG-05), and [quality gates](governance/quality-gates.md) for real interaction-state test scenarios and task-based canonical retrieval (CKG-18/19). The shared B01–B06 branch adds catalog guidance and regression tests only; human review, actual browser accessibility, user outcomes and production adoption require separate evidence.
