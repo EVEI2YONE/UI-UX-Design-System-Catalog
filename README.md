@@ -160,3 +160,7 @@ For icon/status timing and focus when a selected item is updated or removed, see
 ## Batch 4 — action choice and interaction-cost evidence (proposed, 2026-11-07)
 
 See [advanced interactions](patterns/advanced-interactions-and-reversible-actions.md) for when to prefer explicit Buttons, toolbars, overflow, split actions, shortcuts or confirmations (`pattern.advanced-interactions`); use [UX measurement](guidance/ux-measurement.md) for input-specific effort measures and task-success guardrails (`guidance.ux-measurement`). Both extend existing proposed concepts, not a new packaged component or validated efficiency improvement.
+
+## Batch 5 — styling architecture and reuse inventory (proposed, 2026-11-07)
+
+Use [practical styling](foundations/practical-ui-styling-recipes.md) (`foundation.practical-styling`) for utility-first styling ownership, [architecture enforcement](architecture/architecture-enforcement-and-ci.md) (`architecture.enforcement-ci`) for baseline-aware CSS/variant drift checks, and [component model](architecture/component-model.md) (`architecture.component-model`) for component inventory-to-contract mapping. These extend three existing concepts; no packaged Tailwind theme, automated code linter or product accessibility result is claimed.
