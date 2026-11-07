@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Wireframe knowledge B4 (proposed): extend `guidance.mobile-adaptive`, `guidance.accessibility` and `guidance.internationalization` for representative window transformations, zoom/reflow, long labels, mixed-direction/RTL stress variants, static-image evidence boundaries and deterministic lookup regression. Reused canonical IDs; no runtime tests or compliance claims.
+
 - Wireframe knowledge B3 (proposed): extend `pattern.interaction-recovery` with image-based state coverage, applicability/depicton labels, state-to-screen annotation contract, synthetic unknown-outcome recovery example and prototype/runtime verification boundaries. Update canonical registry aliases, README discovery, source notes and deterministic lookup tests; no new canonical concept or implementation claim.
 
 - Wireframe knowledge B2 (proposed): extend existing `pattern.task-flows` and `principle.visual-hierarchy` with minimum task brief, assumption labels, screen action hierarchy, structurally different alternatives, comparative review criteria, synthetic examples/anti-examples and retrieval regression tests. No new canonical ID or claims of implemented interactions.
