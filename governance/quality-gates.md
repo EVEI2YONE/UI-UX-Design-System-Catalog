@@ -282,3 +282,7 @@ Record an observation, why it matters, a specific proposed correction and the ar
 - [ ] Actual responsive, long copy, themes, focus/error/disabled, locale/RTL and reduced-motion behavior checked where applicable, or marked `NOT VERIFIED`.
 - [ ] Critical workflows remain usable; image QA, component contract and release/accessibility gates remain separately applicable.
 - [ ] Change log and canonical lookup map KG-15/16 to `governance.quality`, KG-17 to a non-canonical example bank.
+
+## Integrated visual craftsmanship workflow — Batch 5 (KG-18, proposed)
+
+To apply visual direction, styling and critique as a connected process, use the [end-to-end visual craftsmanship workflow](visual-craftsmanship-workflow.md). This document remains the canonical owner of review and evidence requirements; the linked guide is **non-canonical orchestration** only. It maps KG-01–18 to existing owners, defines proportionate intake and handoff, and requires accurate `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` checks. Do not infer visual quality or accessibility from documentation alone.
