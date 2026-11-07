@@ -40,3 +40,35 @@ For interoperable exports, consider the [DTCG 2025.10 typed format](../governanc
 ## Verification
 
 Check alias resolution, a sample of component states across modes, reflow, translated labels and reduced motion. Token values alone do not establish accessibility compliance. Related: [component contracts](../architecture/component-contracts.md) and [accessibility](../guidance/accessibility.md).
+
+## Token authoring and migration contract
+
+A token record should state **name, type, value or alias, purpose, owner, supported modes, consumers and status**. Resolve aliases before use and reject cycles. Distinguish a semantic role from a particular brand color: changing a reference palette should not require edits across controls.
+
+Illustrative, **not an importable token export**:
+
+```json
+{
+  "color": {
+    "text": {
+      "primary": {
+        "$type": "color",
+        "$value": "{palette.neutral.900}"
+      }
+    }
+  }
+}
+```
+
+The example omits the referenced palette by design; it cannot pass alias-resolution checks on its own. A real export must define the referenced token and follow its toolchain's supported DTCG syntax.
+
+**Migration sequence:** inventory repeated literals and contexts; map to a small semantic role set; define mode mappings; migrate one representative component; compare all states and narrow/zoom layouts; then expand consumers incrementally. Keep app-specific values local until a repeated semantic role is established.
+
+| Gate | Evidence required |
+| --- | --- |
+| Alias integrity | Every alias resolves, no cycles or ambiguous duplicates |
+| Theme behavior | Text, action, focus, status and disabled roles reviewed in every supported mode |
+| Styling | Component styles use owned aliases; justified dynamic exceptions recorded |
+| Compatibility | Old-to-new token map, affected consumers, rollback method |
+
+Avoid encoding success/error only by color. A palette comparison alone does not establish contrast or accessible interaction.

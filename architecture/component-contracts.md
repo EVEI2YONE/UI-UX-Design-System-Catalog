@@ -33,3 +33,21 @@ A shared component needs a stable, inspectable contract before it is marked read
 | Theme variants | Contrast and focus across applicable modes | NOT VERIFIED |
 
 Use [the entry template](../templates/concept-entry.md) to record an actual component specification. Do not mark this sample matrix as tested.
+
+## Example contract: asynchronous action button (illustrative)
+
+- **Purpose:** initiate a non-navigation action; use a link for navigation.
+- **Anatomy:** required accessible label, optional icon, focus treatment, optional progress indicator.
+- **API decisions:** `variant` expresses meaning (primary/secondary/destructive), `size` expresses density, `disabled` prevents activation; `loading` communicates pending work. Keep invalid combinations documented rather than adding unrelated Boolean flags.
+- **Interaction:** native `button` semantics where possible, Enter/Space activation, visible focus, no duplicate submission while pending, meaningful result/error feedback. Do not make a disabled control the only way to learn why a task is unavailable.
+- **Presentation:** semantic action/focus/status tokens, content-sized layout, long-label wrapping, theme and reduced-motion behavior. Icons must not be the sole signal for destructive intent.
+
+| State | Behavior | Verification target |
+| --- | --- | --- |
+| Idle | Action is available and named | Pointer, keyboard, assistive technology |
+| Focus-visible | Focus indication is discernible | Tab navigation across themes |
+| Pending | Repeat activation is prevented without losing task context | Async success/failure path |
+| Failed | Error explains recovery; entered content retained | Screen reader and retry |
+| Disabled | Reason discoverable from adjacent content where needed | Alternative instructions |
+
+**Scope boundary:** the button does not own payment, account deletion, telemetry payloads, or network retries. A feature decides if retries are safe. Test a real implementation before marking any row PASS. Related: [interaction recovery](../patterns/interaction-states-and-recovery.md).
