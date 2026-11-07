@@ -24,7 +24,7 @@ class LookupTests(unittest.TestCase):
 
     def test_task_phrase(self):
         found = lookup(self.entries, 'loading button')
-        self.assertEqual(found[0]['id'], 'architecture.component-contracts')
+        self.assertEqual(found[0]['id'], 'component.button')
 
     def test_filter(self):
         found = lookup(self.entries, 'theme', layer='tokens')
