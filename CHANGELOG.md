@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Wireframe knowledge B7 (proposed): integrate B0–B6 canonical ownership and retrieval navigation; add non-canonical B0–B7 integration handoff, consumer lookup sequence, explicit evidence boundaries, cumulative discovery/registry tests and final validation report in shared draft PR #11. No change to 50 proposed canonical entries, no app implementation or human-reviewed lifecycle promotion.
+
 - Wireframe knowledge B6 (proposed): add a non-canonical synthetic bank of six positive/negative task-to-wireframe cases and regression checks for existing-owner retrieval, exact aliases, `avoid_when` exclusion, path/lifecycle integrity and explicit NOT VERIFIED boundaries. No new registry ID, licensed imagery or simulated product PASS.
 
 - Wireframe knowledge B5 (proposed): extend existing `governance.quality` with a rendered-image visual inspection rubric (readability, clipping, hierarchy, state consistency, copy accuracy, fabricated functionality, variant consistency, evidence trace), issue severity and validation boundaries. Enrich lookup aliases, navigation, provenance and regression tests; no new concept, no images inspected, no runtime/a11y claims.
