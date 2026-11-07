@@ -79,3 +79,11 @@
 - Add `guidance.data-visualization` (dashboard narrative/scale/accessibility), `guidance.mobile-adaptive` (safe-area/resizing/input models), and `pattern.advanced-interactions` (drag alternatives, shortcuts, bulk actions and undo).
 - Extend existing `pattern.data-tables` and `pattern.role-aware-workspaces` for dense interactive data and enterprise approval/delegation states instead of making duplicates.
 - Update canonical lookup, navigation, source ledger and regression tests; all new entries remain proposed and no real app/user/a11y/security outcomes are claimed.
+
+## Unreleased — Batch 11: AI and multimodal experiences (proposed)
+
+- Audited the 35-entry cumulative catalog and relevant trust, privacy, accessibility, research, feedback, recovery and action patterns before authoring. Reviewed Google PAIR, Microsoft Human-AI, NIST AI 600-1, OpenAI agent/voice guidance, MDN speech and WCAG 2.2; recorded limits in the context ledger.
+- Add `guidance.ai-experiences` for AI disclosure, uncertain evidence, corrected outputs and calibrated trust.
+- Add `pattern.agentic-actions` for scoped side effects, illustrative approval risk ladder, reviewable agent plans, unknown outcomes and verified completion.
+- Add `pattern.multimodal-conversation` for chat/voice turn-taking, transcript correction, modality switching, non-audio alternatives and recording privacy.
+- Update canonical retrieval/navigation and lookup tests. All remain proposed; no tested model, real agent, production user workflow or accessibility assurance claimed.
