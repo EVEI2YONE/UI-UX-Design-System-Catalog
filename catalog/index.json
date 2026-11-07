@@ -2026,6 +2026,51 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "architecture.framework-aware",
+      "title": "Framework-aware application structure and route ownership",
+      "path": "architecture/framework-aware-application-structure.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Adapt application feature and route organization to framework-specific file conventions without losing modularity.",
+      "aliases": [
+        "framework aware architecture",
+        "Next.js app router structure",
+        "Angular feature folders",
+        "React Router file routes",
+        "route colocation",
+        "framework routing conventions",
+        "route feature boundaries"
+      ],
+      "domains": [
+        "application-architecture",
+        "developer-experience",
+        "routing",
+        "scalability"
+      ],
+      "use_when": [
+        "mapping a feature-first layout to Next.js Angular or React Router",
+        "deciding whether route files or features own UI",
+        "migrating folder structures without breaking routes"
+      ],
+      "avoid_when": [
+        "moving framework special files into generic abstract folder trees",
+        "assuming router modes are universal across framework versions"
+      ],
+      "related": [
+        "architecture.application-selection",
+        "architecture.module-boundaries",
+        "architecture.evolution",
+        "pattern.navigation"
+      ],
+      "depends_on": [
+        "architecture.application-selection",
+        "architecture.module-boundaries"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
