@@ -28,3 +28,22 @@ Define the user problem, target segment, success event/denominator, primary outc
 ## Verification
 
 Record instrumentation quality and missing baselines as **unknown**, not zero. State which testing actually happened. Related: [task flows](../patterns/task-flows-and-information-architecture.md) and [quality gates](../governance/quality-gates.md).
+
+## Journey measurement worksheet
+
+Use this worksheet before instrumenting a task. Do not assign a target until baseline and product constraints are understood.
+
+| Field | Example definition for a form task (illustrative) |
+| --- | --- |
+| Eligible attempt | User opens the form with permission to submit |
+| Start event | `task_started` once per attempt |
+| Success event | Server-confirmed `task_succeeded`, not merely a button click |
+| Failure events | `validation_error`, `task_failed` with non-sensitive reason categories |
+| TCR | Successful eligible attempts / all eligible attempts in the agreed window |
+| Guardrails | Duplicate submissions, critical errors, keyboard access, latency |
+| Segments | Device/input, first-time vs returning; only where privacy and sample size permit |
+| Baseline | `UNKNOWN` until events and cohort quality are checked |
+
+Record event version, deduplication rule, session/attempt timeout, retry treatment, analysis window, missing events and privacy review. Prefer aggregate or pseudonymous measurement; never collect form secrets or input contents. Distinguish abandonment from deliberate cancellation and failures from unobserved outcomes. Compare distributions and qualitative sessions before attributing changes to a UI edit.
+
+**Decision gate:** specify evidence needed to ship, iterate or rollback (including accessibility and performance regressions). An observed improvement does not itself establish causation.

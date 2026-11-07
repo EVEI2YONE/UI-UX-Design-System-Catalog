@@ -78,3 +78,13 @@ The validator checks registered paths, IDs, titles, statuses, directory indexes 
 This proposal was derived from the supplied **UI/UX Design System Architect v1.1** instruction package (particularly the component, token, UX, accessibility, i18n, metrics, catalog, and governance guidance). It selectively translates reusable knowledge into catalog pages; operational agent instructions are not imported as design authority. External standards are linked in [References](governance/references.md) with dates and scope. See [Changelog](CHANGELOG.md) for release notes.
 
 **Repository license:** not specified in the starting repository. Contributors should resolve licensing before distributing third-party code or assets; no license is implied by public visibility.
+
+## Definition batches (proposal)
+
+The scaffold is being expanded in reviewable **documentation batches**, each using the existing canonical IDs rather than introducing placeholder component implementations:
+
+1. **Foundations and architecture:** [design principles](foundations/design-principles.md), [token authoring](foundations/design-tokens-and-themes.md), [component model](architecture/component-model.md), and [component contracts](architecture/component-contracts.md).
+2. **Flows and inclusive behavior:** [task flows](patterns/task-flows-and-information-architecture.md), [recovery states](patterns/interaction-states-and-recovery.md), [accessibility](guidance/accessibility.md), and [internationalization](guidance/internationalization.md).
+3. **Measurement and governance:** [UX measurement](guidance/ux-measurement.md), [lifecycle](governance/lifecycle-and-decisions.md), and [quality gates](governance/quality-gates.md).
+
+These are **proposed guidance definitions**. Component implementations, manual accessibility testing and user research remain outside this PR.
