@@ -11,7 +11,7 @@
 | B01 Icon semantics and controls | CKG-01–03 | **Documentation committed; verification incomplete** | `foundation.icon-semantics`, `component.button` | Collected 2026-11-07 |
 | B02 Anatomy, event ownership, coordination | CKG-04, 06–08 | **Documentation committed; verification incomplete** | `architecture.component-contracts` | Collected 2026-11-07 |
 | B03 Icon state, focus, sequential workflows | CKG-09–12 | **Documentation committed; verification incomplete** | `pattern.interaction-recovery`, `pattern.task-flows` | Collected 2026-11-07 |
-| B04 Action grouping and effort metrics | CKG-13–14 | Not started | `pattern.advanced-interactions`, UX measurement | Required before B04 |
+| B04 Action grouping and effort metrics | CKG-13–14 | **Documentation committed; verification incomplete** | `pattern.advanced-interactions`, `guidance.ux-measurement` | Collected 2026-11-07 |
 | B05 Utility-first styling and anti-duplication | CKG-15–17 | Not started | styling and architecture owners | Required before B05 |
 | B06 Consistency, tests and retrieval | CKG-05, 18–19 | Not started | `governance.quality`, registry/tests | Required before B06 |
 
@@ -60,3 +60,13 @@ Inspect actual Button, Field, Dialog, Select, Checkbox, navigation/menu patterns
 - **Evidence:** B03 canonical pages, registry aliases, progress and tests were written through the GitHub connector. **Automated validator and Python tests NOT RUN**; the catalog workflow triggers on PR or push to main, and no PR exists yet. Actual browser/keyboard/AT/touch/performance or user task outcome improvements **NOT VERIFIED**.
 - **Next context gate B04:** refresh main and branch SHAs, inspect `pattern.advanced-interactions`, `guidance.ux-measurement`, `pattern.task-flows`, `architecture.component-contracts`, existing search aliases, CI/tests and Little Wins B06/B07. Audit existing action grouping and metric definitions before extending; no duplicate canonical concept without a distinct reusable need.
 - **PR status:** deferred until completion of B06 as requested.
+
+## B04 — context, implementation and verification (2026-11-07)
+
+- **Context gathered before edits:** [B04 context gate](icon-interaction-b04-context-2026-11-07.md), comparing catalog `pattern.advanced-interactions`, `guidance.ux-measurement`, B03 task flows, B02 component contracts, registry aliases, README ownership, and Little Wins B06/B07 motivating proposals. Main remained at `00df3f2055396e586fbb5ffa07e4a80dc8312e8e`.
+- **Gap disposition:** CKG-13 and CKG-14 were incomplete decision/evidence rules in two established canonical pages. Extended them instead of introducing a duplicate action menu, split-button component or metrics concept.
+- **Knowledge committed:** action placement and consolidation choice matrix for visible buttons, peer outcomes, contextual toolbars, menus, split buttons, shortcuts and risk/confirmation; task-effort worksheet with pointer travel, target relocation, click/tap, keyboard navigation, re-entry, scroll and authoritative time-to-next-action, always alongside TCR, error and privacy guardrails.
+- **Files:** `patterns/advanced-interactions-and-reversible-actions.md`, `guidance/ux-measurement.md`, `catalog/index.json`, `patterns/README.md`, `guidance/README.md`, `README.md`, `AGENTS.md`, `CHANGELOG.md`, `tests/test_interaction_effort_knowledge.py`, `archive/planning/icon-interaction-b04-context-2026-11-07.md`, this ledger.
+- **GitHub confirmation:** connector accepted B04 commits and branch-relative file fetches can establish their presence. CI `Validate catalog` triggers for PRs or main pushes, not this branch alone; no PR is opened. **Validator and full Python test suite NOT RUN / NOT VERIFIED**; no claim of passing checks, actual pointer metrics, user research, keyboard/AT/touch conformity or production adoption.
+- **B05 context gate:** refresh main/branch and inspect tokens, practical styling, framework-aware architecture, component model, architecture enforcement, catalog aliases, lint/check scripts and existing test expectations. Seek practical scalable styling without another monolithic stylesheet. Preserve shared branch and single PR after B06.
+- **PR:** not opened per user instruction.
