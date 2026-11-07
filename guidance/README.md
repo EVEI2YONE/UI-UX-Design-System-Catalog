@@ -5,6 +5,9 @@ This section supplies requirements that should be applied to every appropriate f
 - [Accessibility](accessibility.md): inclusive semantic and interaction expectations and evidence.
 - [Internationalization](internationalization.md): translation, formatting, long strings and bidirectional layouts.
 - [UX measurement](ux-measurement.md): behavioral and attitudinal outcomes, cohorts and privacy.
+- [UX research methods and evidence](ux-research-methods.md): select studies, recruit ethically, distinguish observations and hypotheses.
+- [Mental models and journey mapping](mental-models-and-journeys.md): task analysis, experience maps and service blueprints.
+- [Cognitive load and decision design](cognitive-load-and-decisions.md): memory, attention and meaningful choices.
 
 Also see [quality gates](../governance/quality-gates.md) and [sources](../governance/references.md).
 
@@ -12,3 +15,5 @@ Also see [quality gates](../governance/quality-gates.md) and [sources](../govern
 
 
 **Measurement lookup:** use `guidance.ux-measurement` when defining task success, cohort/denominator, funnel abandonment or survey interpretation. Follow `related` references to the relevant task journey and quality gates. See the [registry](../catalog/index.json) for canonical metadata; missing baselines remain unknown.
+
+**Batch 7 discovery:** `guidance.ux-research`, `guidance.journey-mapping`, and `guidance.cognitive-load` are proposed guidelines. Review the method limits and real-user evidence before using them as design authority.
