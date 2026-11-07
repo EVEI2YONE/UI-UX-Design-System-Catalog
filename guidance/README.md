@@ -13,6 +13,8 @@ This section supplies requirements that should be applied to every appropriate f
 - [Data visualization and dashboards](data-visualization-and-dashboards.md): task-driven chart choices, honest scales and accessible summaries.
 - [Mobile and adaptive platform UX](mobile-and-adaptive-platform-ux.md): adaptive windows, safe areas, native patterns and equivalent inputs.
 - [AI-powered experiences, transparency and calibrated trust](ai-powered-experiences-and-trust.md): AI limits, provenance, uncertainty, correction and manual control.
+- [Performance, perceived speed and resilient task feedback](performance-and-perceived-speed.md): Core Web Vitals, real-user vs lab data, task readiness and safe pending states.
+- [UX experimentation and causal evidence](experimentation-and-causal-evidence.md): preplanned A/B tests, assignment, SRM, guardrails and credible interpretation.
 
 Also see [quality gates](../governance/quality-gates.md) and [sources](../governance/references.md).
 
@@ -30,3 +32,5 @@ Also see [quality gates](../governance/quality-gates.md) and [sources](../govern
 **Batch 10 discovery:** `guidance.data-visualization` owns chart and KPI narratives; `guidance.mobile-adaptive` owns cross-platform adaptation. The [data tables](../patterns/data-tables.md) and [advanced interactions](../patterns/advanced-interactions-and-reversible-actions.md) entries own record and complex-command behavior.
 
 **Batch 11 discovery:** `guidance.ai-experiences` addresses generated-output trust and evidence. For side-effecting AI tools, use `pattern.agentic-actions`; for voice/chat and modality switching, use `pattern.multimodal-conversation`. All remain proposed.
+
+**Batch 12 discovery:** `guidance.performance-experience` owns perceived/operational performance; `guidance.experimentation` owns controlled comparisons and validity. Continue to use `guidance.ux-measurement` for underlying task events/denominators, and existing [quality gates](../governance/quality-gates.md) for implementation evidence.
