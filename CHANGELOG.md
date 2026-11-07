@@ -1,5 +1,8 @@
 ## Unreleased
 
+- Settings knowledge Batch 3 (proposed, cumulative draft PR #12): add KG-004 time/reporting configuration decision and validation contract, and KG-008 personal preference scope/effective mode and fallback UX to `pattern.account-settings-portal`. Reuse existing theme, internationalization and accessibility owners; do not introduce a timezone control before a domain decision. Little Wins F20 source reviewed; runtime and manual tests NOT VERIFIED.
+
+
 - Settings knowledge Batch 2 (proposed, cumulative draft PR #12): extend `pattern.account-settings-portal` with KG-002 settings-facing feature dependency disclosure, impact/transition matrix checklist, and KG-005 review-policy switching, pending-work protection, authority, and tests. Reuse canonical task-flow and interaction recovery knowledge; no new concept or runtime changes, live tests NOT VERIFIED.
 
 
