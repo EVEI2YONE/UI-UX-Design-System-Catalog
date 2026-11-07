@@ -58,7 +58,7 @@
       "layer": "foundations",
       "kind": "guideline",
       "status": "proposed",
-      "summary": "Practical composition, typography, color palette construction, spatial rhythm and art direction with examples and review heuristics.",
+      "summary": "Composition, typography, color, spacing and art direction; rights-aware reference research, visual direction comparisons and selection tradeoffs.",
       "aliases": [
         "visual craftsmanship",
         "visual composition",
@@ -69,7 +69,15 @@
         "palette construction",
         "spacing rhythm",
         "art direction",
-        "visual identity"
+        "visual identity",
+        "visual reference research",
+        "reference moodboard",
+        "inspiration research",
+        "art direction exploration",
+        "aesthetic decision matrix",
+        "visual style comparison",
+        "reference-to-rule translation",
+        "design direction selection"
       ],
       "domains": [
         "visual-design",
@@ -81,7 +89,10 @@
         "defining an interface visual direction",
         "selecting typography and palette relationships",
         "critiquing compositional balance",
-        "choosing density and spatial rhythm"
+        "choosing density and spatial rhythm",
+        "researching aesthetic references",
+        "comparing visual design directions",
+        "recording an art-direction tradeoff decision"
       ],
       "avoid_when": [
         "using cosmetic styling instead of improving critical task accessibility or completion",
@@ -91,7 +102,9 @@
         "principle.visual-hierarchy",
         "foundation.design-tokens",
         "guidance.accessibility",
-        "governance.quality"
+        "governance.quality",
+        "guidance.ux-research",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [
         "principle.visual-hierarchy"
