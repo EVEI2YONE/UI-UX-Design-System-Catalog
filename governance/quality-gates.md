@@ -122,3 +122,18 @@ Documentation review can PASS while these product gates remain NOT VERIFIED. Do 
 | State/locale/responsive | Error/retry, disabled/busy, long labels, keyboard at narrow/zoom, RTL and supported AT/browser matrix | NOT VERIFIED |
 
 Do not mark a product test PASS based solely on source review or on the presence of a prebuilt accessible component library. Prefer one integrated end-to-end evidence record for the full journey, supplemented by unit/component checks.
+
+
+## Batch 8 — independent flags and dependent capabilities (2026-11-07)
+
+| Test | Required evidence | Untested status |
+| --- | --- | --- |
+| Capability matrix | All meaningful flag combinations and action dependencies recorded, including direct server commands | NOT VERIFIED |
+| Cross-layer agreement | Visible navigation, disabled controls, deep links and server enforcement agree; UI hidden state is not authorization | NOT VERIFIED |
+| Pause and resume | Before/after snapshots of approved contributions, challenge history, balances, ledger entries and requests | NOT VERIFIED |
+| Pending work | Configuration changed during form/edit/redeem/fulfill; safe rejection or completion with honest user-facing status | NOT VERIFIED |
+| Orphaned tasks | Existing reward requests remain discoverable and actionable to authorized owners even when new redemption is disabled | NOT VERIFIED |
+| Configuration persistence | Save, reload, concurrent admins/tabs, retry, default new workspace settings and rollback | NOT VERIFIED |
+| Accessibility/locale | Clear paused versus no-data messaging, keyboard reachability, screen-reader status and long translations | NOT VERIFIED |
+
+**Release decision:** independently stored options with dependent behavior require a documented dependency matrix and server tests. No separate login, hard-coded global flag system or arbitrary disabled-state semantics are prescribed by the catalog.
