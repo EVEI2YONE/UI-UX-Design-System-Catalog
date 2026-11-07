@@ -734,7 +734,14 @@
         "usability metrics",
         "funnel measurement",
         "event schema",
-        "survey score"
+        "survey score",
+        "interaction cost measurement",
+        "pointer travel distance",
+        "time to next action",
+        "keyboard navigation effort",
+        "repeat selection effort",
+        "action efficiency guardrails",
+        "task reentry count"
       ],
       "domains": [
         "ux-research",
@@ -745,7 +752,10 @@
         "defining task success and eligible attempts",
         "measuring error rates or step abandonment",
         "designing privacy-respecting UX event instrumentation",
-        "interpreting SUS CES and NPS scores"
+        "interpreting SUS CES and NPS scores",
+        "measuring pointer, keyboard or touch effort during a user task",
+        "evaluating task efficiency and safe action consolidation",
+        "comparing time to next eligible action without sacrificing correctness"
       ],
       "avoid_when": [
         "treating SUS as a percentage of users",
@@ -759,7 +769,8 @@
         "guidance.ai-experiences",
         "pattern.multimodal-conversation",
         "guidance.performance-experience",
-        "guidance.experimentation"
+        "guidance.experimentation",
+        "pattern.advanced-interactions"
       ],
       "depends_on": [
         "pattern.task-flows"
@@ -1891,7 +1902,14 @@
         "undo redo",
         "item reorder",
         "batch operations",
-        "reversible actions"
+        "reversible actions",
+        "action consolidation decision matrix",
+        "split button safety",
+        "contextual action toolbar",
+        "primary versus overflow actions",
+        "action grouping",
+        "control overloading",
+        "contextual overflow menu"
       ],
       "domains": [
         "interaction",
@@ -1902,7 +1920,10 @@
       "use_when": [
         "designing bulk actions on records",
         "adding keyboard command palettes and shortcuts",
-        "providing reorder and undo behavior"
+        "providing reorder and undo behavior",
+        "deciding whether to group actions in a split button, toolbar or menu",
+        "comparing visible actions with overflow alternatives",
+        "preventing ambiguous consolidated controls"
       ],
       "avoid_when": [
         "making dragging or gesture the only way to complete a task",
@@ -1914,7 +1935,10 @@
         "pattern.interaction-recovery",
         "guidance.accessibility",
         "guidance.mobile-adaptive",
-        "pattern.agentic-actions"
+        "pattern.agentic-actions",
+        "guidance.ux-measurement",
+        "architecture.component-contracts",
+        "foundation.icon-semantics"
       ],
       "depends_on": [
         "pattern.interaction-recovery"
