@@ -1,4 +1,4 @@
-# Billing, plans, invoices and subscription settings
+# Billing, plans and subscription settings
 
 **Kind:** guideline · **Status:** proposed · **Layer:** experiences · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
