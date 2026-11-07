@@ -182,3 +182,8 @@ For actionable record lists, read [data tables](patterns/data-tables.md) before 
 ## Batch 8 — capability dependencies and safe feature toggles (proposed, 2026-11-07)
 
 For independently stored settings with dependent actions, use [task-flow capability matrices](patterns/task-flows-and-information-architecture.md), [paused-state recovery](patterns/interaction-states-and-recovery.md), and [configuration quality gates](governance/quality-gates.md). The [Batch 8 context and gap ledger](planning/little-wins-batch-8-context-and-gap-ledger.md) documents Little Wins' points/rewards/challenges behavior and unresolved policy questions. No product flags or permissions were implemented; no runtime behavior was verified.
+
+
+## Batch 9 — safe component and styling modernization (proposed, 2026-11-07)
+
+For large route modules and partially adopted UI libraries, follow the [component model's incremental extraction guidance](architecture/component-model.md), [design-token/global-CSS migration guidance](foundations/design-tokens-and-themes.md) and [quality gates](governance/quality-gates.md). The [Batch 9 source/gap ledger](planning/little-wins-batch-9-context-and-gap-ledger.md) explains Little Wins' page, existing UI controls and stylesheet evidence. No component implementation, source code refactor or new catalog ID is included.
