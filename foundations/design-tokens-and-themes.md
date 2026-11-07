@@ -120,3 +120,7 @@ Optional accessibility adjustments (contrast, density, motion or text) must not 
 **Example:** system theme defaults to OS setting, manual selection clearly overrides and can revert to system. **Anti-example:** a dark-mode toggle is shown while the app still has unreadable dark overlays and hard-coded text colors.
 
 **Verification NOT VERIFIED:** first load/flicker, reload and concurrent device preference, system theme changes, high-contrast/forced colors, reduced motion, keyboard/screen reader, locale text expansion, logged-out behavior. See [account settings](../patterns/account-and-settings-portal.md), [accessibility](../guidance/accessibility.md), and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07).
+
+## Aesthetic palette and typography decisions — craftsmanship Batch 1 (proposed)
+
+This page owns **token naming, roles, modes and migration**. For selecting a coherent tonal palette, purposeful accent saturation, type pairing, optical typography and density before encoding them as tokens, use [Visual design craftsmanship](visual-design-craftsmanship.md) (KG-02–04). Do not mistake attractive sample values for contrast-tested or production-ready tokens.

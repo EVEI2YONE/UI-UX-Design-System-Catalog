@@ -52,6 +52,120 @@
       "reviewed_at": null
     },
     {
+      "id": "foundation.visual-craftsmanship",
+      "title": "Visual design craftsmanship",
+      "path": "foundations/visual-design-craftsmanship.md",
+      "layer": "foundations",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Composition, typography, color, spacing and art direction; rights-aware reference research, visual direction comparisons and selection tradeoffs.",
+      "aliases": [
+        "visual craftsmanship",
+        "visual composition",
+        "optical balance",
+        "font pairing",
+        "typography design",
+        "color harmony",
+        "palette construction",
+        "spacing rhythm",
+        "art direction",
+        "visual identity",
+        "visual reference research",
+        "reference moodboard",
+        "inspiration research",
+        "art direction exploration",
+        "aesthetic decision matrix",
+        "visual style comparison",
+        "reference-to-rule translation",
+        "design direction selection"
+      ],
+      "domains": [
+        "visual-design",
+        "typography",
+        "color",
+        "design-foundations"
+      ],
+      "use_when": [
+        "defining an interface visual direction",
+        "selecting typography and palette relationships",
+        "critiquing compositional balance",
+        "choosing density and spatial rhythm",
+        "researching aesthetic references",
+        "comparing visual design directions",
+        "recording an art-direction tradeoff decision"
+      ],
+      "avoid_when": [
+        "using cosmetic styling instead of improving critical task accessibility or completion",
+        "asserting aesthetic taste is a verified UX outcome"
+      ],
+      "related": [
+        "principle.visual-hierarchy",
+        "foundation.design-tokens",
+        "guidance.accessibility",
+        "governance.quality",
+        "guidance.ux-research",
+        "guidance.wireframe-methodology"
+      ],
+      "depends_on": [
+        "principle.visual-hierarchy"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "foundation.practical-styling",
+      "title": "Practical UI styling recipes",
+      "path": "foundations/practical-ui-styling-recipes.md",
+      "layer": "foundations",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Content-driven layout recipes, surface depth, imagery and icon consistency, interface archetypes and purposeful motion with CSS examples and verification checks.",
+      "aliases": [
+        "styling recipes",
+        "ui layout recipes",
+        "responsive grid styling",
+        "surface styling",
+        "card shadows",
+        "iconography",
+        "image art direction",
+        "UI archetypes",
+        "interface styling",
+        "microinteractions",
+        "motion design",
+        "reduced motion styling"
+      ],
+      "domains": [
+        "visual-design",
+        "responsive-layout",
+        "styling",
+        "motion"
+      ],
+      "use_when": [
+        "implementing a coherent visual direction in component or page CSS",
+        "choosing layout and surface styling for a UI archetype",
+        "reviewing image/icon consistency and purposeful feedback motion"
+      ],
+      "avoid_when": [
+        "using recipes without task and accessibility requirements",
+        "copying unsupported CSS into production without token definitions and testing"
+      ],
+      "related": [
+        "foundation.visual-craftsmanship",
+        "foundation.design-tokens",
+        "principle.visual-hierarchy",
+        "architecture.component-contracts",
+        "guidance.mobile-adaptive",
+        "guidance.data-visualization",
+        "guidance.accessibility",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "foundation.visual-craftsmanship"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
       "id": "foundation.design-tokens",
       "title": "Design tokens and themes",
       "path": "foundations/design-tokens-and-themes.md",
@@ -613,7 +727,7 @@
       "layer": "cross-cutting",
       "kind": "checklist",
       "status": "proposed",
-      "summary": "Design/catalog quality gates, including static wireframe visual inspection, evidence traceability and runtime verification limits.",
+      "summary": "Design/catalog quality gates including wireframe artifact QA, rendered-UI visual craftsmanship critique, screenshot iteration, evidence limits and runtime verification.",
       "aliases": [
         "QA",
         "quality checklist",
@@ -636,7 +750,21 @@
         "generated wireframe copy fidelity",
         "wireframe clipping inspection",
         "static mockup evidence review",
-        "visual artifact QA"
+        "visual artifact QA",
+        "visual craftsmanship critique",
+        "aesthetic review rubric",
+        "render inspect refine",
+        "screenshot refinement",
+        "before after design review",
+        "optical alignment review",
+        "visual design critique",
+        "design polish QA",
+        "visual craftsmanship workflow",
+        "end-to-end visual design",
+        "visual design delivery pipeline",
+        "design to render review",
+        "visual style implementation checklist",
+        "KG-18 workflow integration"
       ],
       "domains": [
         "quality",
@@ -651,7 +779,12 @@
         "auditing catalog knowledge coverage and regression test evidence before final review",
         "reviewing readability and clipping in rendered wireframe images",
         "checking generated copy fidelity and invented implementation claims",
-        "logging visual QA evidence tied to a specific image revision"
+        "logging visual QA evidence tied to a specific image revision",
+        "critically reviewing a rendered interface for visual craft",
+        "iterating on screenshot-based layout and styling defects",
+        "checking before-and-after visual corrections with evidence",
+        "integrating visual direction styling and rendered QA in one design-to-delivery workflow",
+        "auditing visual craftsmanship knowledge coverage and evidence handoff"
       ],
       "avoid_when": [
         "marking unperformed checks as PASS",
@@ -668,7 +801,9 @@
         "guidance.experimentation",
         "architecture.component-contracts",
         "foundation.design-tokens",
-        "guidance.wireframe-methodology"
+        "guidance.wireframe-methodology",
+        "foundation.visual-craftsmanship",
+        "foundation.practical-styling"
       ],
       "depends_on": [],
       "owner": "unassigned",

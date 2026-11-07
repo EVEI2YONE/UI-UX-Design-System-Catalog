@@ -37,9 +37,9 @@ class WireframeIntegrationHandoffTests(unittest.TestCase):
                 self.assertTrue((ROOT / hits[0]["path"]).is_file())
 
     def test_new_concept_and_existing_owners_are_proposed(self):
-        self.assertEqual(len(self.entries), 50)
-        self.assertEqual(len(self.by_id), 50)
-        self.assertEqual(len({x["path"] for x in self.entries}), 50)
+        # Validate unique catalog identities/paths without freezing global size.
+        self.assertEqual(len(self.entries), len(self.by_id))
+        self.assertEqual(len(self.entries), len({x["path"] for x in self.entries}))
         self.assertEqual([e["id"] for e in self.entries if "wireframe" in e["id"]],
                          ["guidance.wireframe-methodology"])
         for entry in self.entries:

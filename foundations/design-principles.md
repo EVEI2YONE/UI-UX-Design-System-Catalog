@@ -55,3 +55,7 @@ For each proposed screen, write a compact **hierarchy contract**: (1) context an
 **Good synthetic example:** an appointment-selection screen leads with service and date context, then available slots, then “Continue to review”; change service and back remain discoverable. **Anti-example:** promotional cards dominate, “Confirm” appears before a time is chosen, and no exit or recovery route is visible. A visually balanced screen may still be task-incomplete.
 
 **Verification expectation:** review annotation against the user's task brief; compare context-to-action scan order, action label/outcome consistency, safe exit, meaningful grouping and omission of known critical information. Check narrow/reflow and translated labels on rendered implementations when available, recording unexecuted checks as **NOT VERIFIED**. Distinct composition variants must retain the same user/task context for a fair comparison. See [Task-to-screen composition](../patterns/task-flows-and-information-architecture.md).
+
+## Visual composition cross-reference — craftsmanship Batch 1 (proposed)
+
+This page owns **user-task and action priority**. For optical balance, composition, visual weight, focal-point treatment and practical contrast among visual regions, use [Visual design craftsmanship](visual-design-craftsmanship.md) (KG-01). Do not infer user success from visually attractive hierarchy; verify the actual journey separately.

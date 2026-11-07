@@ -233,3 +233,56 @@ The rubric is a **proposed synthesis** of existing catalog hierarchy, UX writing
 ## Settings configuration propagation assurance — PR #13 Batch 2 (proposed, 2026-11-07)
 
 For a consequential setting, trace one intent from edited draft through authorized revisioned persistence to **every named affected consumer**. The canonical [Settings Batch 2 contract](../patterns/account-and-settings-portal.md#settings-knowledge-batch-2--propagation-and-integration-verification-kg-010-kg-013-proposed-2026-11-07) defines the consumer/invariant matrix and recovery behavior. Do not duplicate it in each feature. Check authoritative value/version, dependent navigation and direct API enforcement, stale/failed read refreshes, multi-tab conflicts, tenant isolation, in-flight work, retained history, and rollback. Passing field-level tests or the catalog validator does not establish end-to-end correctness; unexecuted target tests remain **NOT VERIFIED**.
+
+
+## Visual craftsmanship review and corrective iteration — Batch 4 (KG-15 and KG-16; proposed, 2026-11-07)
+
+**Use when:** judging a high-fidelity mock, rendered webpage, component story, or implementation screenshot for *aesthetic coherence and execution quality*. **Avoid when:** replacing the existing [static-wireframe visual QA](#static-wireframe-visual-qa-and-evidence-rubric-proposed-batch-5-2026-11-07), calling a pleasing still image accessible, or claiming animation, keyboard behavior or user success from pixels. The existing image QA still owns literal text fidelity, clipping and screenshot-evidence boundaries; this extension adds **aesthetic craftsmanship** and an iterative correction protocol. [Visual foundations](../foundations/visual-design-craftsmanship.md) own the aesthetic principles; [practical recipes](../foundations/practical-ui-styling-recipes.md) own implementation options.
+
+### KG-15 — Reproducible visual critique rubric
+
+Record an observation, why it matters, a specific proposed correction and the artifact/view state for **each applicable dimension**. Use `PASS` / `FAIL` / `NOT VERIFIED` / `NOT APPLICABLE` per dimension, with reviewer and evidence. Do not turn taste into an unexplained numerical “beauty” score.
+
+| Lens | Inspect | Illustrative failure → precise correction |
+| --- | --- | --- |
+| **Focal point and scan path** | Dominant element, first useful information, secondary information and action weight | Four equally saturated CTAs → reserve dominant emphasis for current next action, demote other actions without hiding them |
+| **Alignment and proportion** | Shared edges, grid logic, optical (not only geometric) centering, column proportions | Card labels drift across rows → establish common inset and alignment spine |
+| **Typographic hierarchy** | Role distinction, scale jumps, line breaks, line length, optical spacing, fallback rendering | Heading wraps awkwardly while captions are too tiny → tune max measure and role-specific line-height/size |
+| **Color orchestration** | Relative saturation, neutral surface balance, actionable/status accents, theme coherence | Five bright card backgrounds compete → use quiet surfaces, preserve semantic status cues and single intended accent |
+| **Spacing and density** | Repeated spatial rhythm; grouping versus separation; meaningful whitespace at real content length | Every gap is identical → distinguish field, component and section spacing based on relationship |
+| **Surface and depth** | Consistent border, radius, elevation levels; overlays distinguish foreground from base | Every card casts an equally dramatic shadow → reserve elevation for actual layering |
+| **Image and icon direction** | Consistent crop, illustration style, optical icon size and content relevance | Mixed icon families and random photo crops → choose one family and documented subject framing |
+| **States and responsive coherence** | Empty, loading, error, focus, compact and expanded layouts retain visual grammar | Error state introduces entirely new spacing and color rules → reuse existing semantic state grammar |
+
+**Severity:** `BLOCKER` for a visual defect that prevents critical content/action comprehension or conceals required information; `MAJOR` for unclear hierarchy, clipping, severe inconsistency or difficult scanning; `MINOR` for polish such as small optical misalignment; `PREFERENCE` for reasonable stylistic alternatives without supported task impact. Apply actual applicable accessibility failures under their stronger established release gates, not as subjective preferences.
+
+**Good critique:** “At the 375px error-state capture, the second line of the Save error overlaps Cancel; make the message area auto-height, allow wrapping and re-render at 375px/zoom.” **Bad critique:** “Feels off; make it more modern,” without evidence or a change hypothesis.
+
+### KG-16 — Render → inspect → diagnose → adjust → re-render
+
+1. **Establish the comparison baseline:** task, visual-direction brief, authoritative content, route/component and revision; selected viewports, theme, locale, state, browser, font loading, device scale and capture method. Never compare unrelated states as visual improvements.
+2. **Render real artifacts** with the available stack. Capture representative narrow/wide, long-copy, empty/error/loading, light/dark and focus/reduced-motion variants when applicable. Record any unrendered scenarios as `NOT VERIFIED`; screenshots alone cannot validate actual focus or motion behavior.
+3. **Inspect at presentation and native pixel scale** against the dimensions above. Separate observed pixels from inferred causes; if a font fails to load, first fix the environment before redesigning typography.
+4. **Log findings** in this minimum format: `VIS-# | artifact path + revision | viewport/state | observation | lens + severity | suspected cause | proposed smallest fix | owner | verification needed | status`.
+5. **Fix highest-impact issues first**: comprehension and clipping, then hierarchy, spacing/alignment, type and palette, surfaces, decorative polish. Preserve interactions and constraints; prefer token/component-owned changes to one-off global overrides.
+6. **Re-render the exact changed state** after each coherent correction set; compare original and new renders under equivalent conditions and check adjacent states for regressions. Do not auto-approve all screenshot baseline diffs.
+7. **Stop intentionally:** no blocking/major unresolved issue in the evaluated scope; remaining preference disagreements are documented; applicable runtime tests and user studies are performed or explicitly pending. “Looks polished” alone is not a release condition.
+
+**Troubleshooting example (synthetic):** a screenshot shows the call-to-action cramped against a card edge. Determine if the cause is card inset, button sizing, misapplied token, or a text-wrap edge case. Fix the owning component/style rule, re-render compact and wide versions, then check its disabled and loading variants rather than adding a local negative margin.
+
+**Before/after evidence contract:** capture IDs and same-task comparison with context/state, one specific hypothesis per meaningful change, diffs or annotated observations, side-effect check, reviewer decision and any unverified behavior. See [the synthetic visual-refinement examples](../foundations/visual-refinement-examples.md) (KG-17). Illustrative written examples are **not real screenshots, executed tests or validated user outcomes**.
+
+**Evidence boundary:** Playwright [visual comparisons](https://playwright.dev/docs/test-snapshots) and [Storybook visual testing](https://storybook.js.org/docs/writing-tests/visual-testing) describe potential tooling; neither is declared installed here. Screenshot rendering can detect visual drift but cannot establish WCAG compliance, task completion, font licensing or causal UX improvements. Continue using [WCAG 2.2](https://www.w3.org/TR/WCAG22/) and platform/manual tests for relevant accessibility evidence.
+
+### Batch 4 acceptance
+
+- [ ] Critique identifies concrete aesthetic observations rather than general preference scores.
+- [ ] Evidence IDs, viewport/state, browser/font inputs, affected owner and severity are explicit.
+- [ ] Every high-impact fix has a before/after same-condition re-render or is `NOT VERIFIED`.
+- [ ] Actual responsive, long copy, themes, focus/error/disabled, locale/RTL and reduced-motion behavior checked where applicable, or marked `NOT VERIFIED`.
+- [ ] Critical workflows remain usable; image QA, component contract and release/accessibility gates remain separately applicable.
+- [ ] Change log and canonical lookup map KG-15/16 to `governance.quality`, KG-17 to a non-canonical example bank.
+
+## Integrated visual craftsmanship workflow — Batch 5 (KG-18, proposed)
+
+To apply visual direction, styling and critique as a connected process, use the [end-to-end visual craftsmanship workflow](visual-craftsmanship-workflow.md). This document remains the canonical owner of review and evidence requirements; the linked guide is **non-canonical orchestration** only. It maps KG-01–18 to existing owners, defines proportionate intake and handoff, and requires accurate `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` checks. Do not infer visual quality or accessibility from documentation alone.

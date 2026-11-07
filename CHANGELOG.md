@@ -1,5 +1,20 @@
 ## Unreleased
 
+- Visual craftsmanship knowledge Batch 5 (proposed, cumulative draft PR #14): add the noncanonical KG-18 integration workflow with stage-by-stage retrieval, design-to-review handoff, honest evidence gates and KG-01–18 ownership map. Update root/section/agent discovery, quality-gate cross-link and registry metadata. Full catalog test suite and real UI/AT testing require separate execution; do not claim production validation from documentation.
+
+
+- Visual craftsmanship knowledge Batch 4 (proposed, cumulative draft PR #14): extend canonical `governance.quality` with KG-15 aesthetic critique rubric and KG-16 rendered-screen inspection/correction loop; add noncanonical synthetic before/after examples for KG-17. Preserve prior wireframe QA ownership; update navigation and retrieval. No real screenshot was inspected and no runtime, visual-regression or accessibility tests were executed.
+
+
+- Visual craftsmanship knowledge Batch 3 (proposed, cumulative draft PR #14): extend `foundation.visual-craftsmanship` with KG-11–14: rights-aware inspiration/references, observation-to-rule extraction, comparable candidate directions and explicit selection gates. Reuse existing user research and prototype owners; no new canonical concept. Reference links and connector structure checked; actual user study, prototype, WCAG, screenshot and automated repository suite NOT VERIFIED.
+
+
+- Visual craftsmanship knowledge Batch 2 (proposed, shared draft PR #14): add canonical practical styling recipes for KG-06–10: responsive layout choices, surface hierarchy, imagery/icon consistency, UI archetypes and motion/reduced-motion; update foundations/root discovery and registry. All CSS samples illustrative; runtime, accessibility and visual testing NOT VERIFIED.
+
+
+- Visual craftsmanship knowledge Batch 1 (proposed, shared cumulative PR): add canonical guidance for KG-01–05 composition, typography, color, spacing and art direction; extend existing principles/tokens with canonical cross-links and update discovery/index. Documentation-only; no browser, design user study or accessibility conformance verified.
+
+
 - Settings knowledge Batch 5 (proposed, cumulative draft PR #12): refresh catalog/product context, document the KG-001–008 canonical ownership and Little Wins consumer crosswalk, add focused registry/retrieval regression tests, correct malformed Batch 1 Markdown code delimiters and publish a verification ledger. Source and connector structural checks completed; official catalog validator and unit suite not executed in environment, app/browser/a11y/security checks NOT VERIFIED. No new concept or application code.
 
 

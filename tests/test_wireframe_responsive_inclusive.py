@@ -64,7 +64,8 @@ class WireframeResponsiveInclusiveTests(unittest.TestCase):
     def test_no_parallel_wireframe_concept_created(self):
         ids = [entry["id"] for entry in self.entries]
         self.assertEqual(len(ids), len(set(ids)))
-        self.assertEqual(len(ids), 50)
+        self.assertEqual([ident for ident in ids if "wireframe" in ident],
+                         ["guidance.wireframe-methodology"])
 
 
 if __name__ == "__main__":

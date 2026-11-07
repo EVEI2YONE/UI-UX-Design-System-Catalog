@@ -46,8 +46,10 @@ class WireframeVisualQATests(unittest.TestCase):
                 self.assertIn(phrase, content)
 
     def test_no_new_concept_id(self):
-        self.assertEqual(len(self.entries), 50)
-        self.assertEqual(len({e["id"] for e in self.entries}), 50)
+        # No duplicate concept ID or parallel wireframe owner; global catalog grows.
+        self.assertEqual(len(self.entries), len({e["id"] for e in self.entries}))
+        self.assertEqual([e["id"] for e in self.entries if "wireframe" in e["id"]],
+                         ["guidance.wireframe-methodology"])
 
 
 if __name__ == "__main__":
