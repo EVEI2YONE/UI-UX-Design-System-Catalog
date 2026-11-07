@@ -5,6 +5,7 @@ This section supplies requirements that should be applied to every appropriate f
 - [Accessibility](accessibility.md): inclusive semantic and interaction expectations and evidence.
 - [Internationalization](internationalization.md): translation, formatting, long strings and bidirectional layouts.
 - [UX measurement](ux-measurement.md): behavioral and attitudinal outcomes, cohorts and privacy.
+- [Content design and UX writing](content-design-and-ux-writing.md): user-needs-first language, error microcopy, labels, content lifecycle.
 
 Also see [quality gates](../governance/quality-gates.md) and [sources](../governance/references.md).
 
@@ -12,3 +13,5 @@ Also see [quality gates](../governance/quality-gates.md) and [sources](../govern
 
 
 **Measurement lookup:** use `guidance.ux-measurement` when defining task success, cohort/denominator, funnel abandonment or survey interpretation. Follow `related` references to the relevant task journey and quality gates. See the [registry](../catalog/index.json) for canonical metadata; missing baselines remain unknown.
+
+**Batch 8 discovery:** `guidance.content-design` covers task language and content governance. Use `pattern.forms` and `pattern.search-filter` for the actual interaction composition; `pattern.service-recovery` owns cross-channel support handoffs. All entries remain proposed and untested in a live product.
