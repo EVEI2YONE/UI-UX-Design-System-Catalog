@@ -21,3 +21,8 @@ For changes see [Contributing](../CONTRIBUTING.md) and the [PR template](../.git
 ## Batch 6 — data lifecycle validation
 
 [Quality gates](quality-gates.md) now defines export/retention, legacy migration, read-side effects, backup/restore and aggregate concurrency acceptance scenarios. The [Batch 6 evidence ledger](../planning/little-wins-batch-6-context-and-gap-ledger.md) distinguishes source observations and unverified deployment requirements.
+
+
+## Batch 7 — table-to-dialog regression checks
+
+[Quality gates](quality-gates.md) include native action semantics, focus lifecycle, unsaved-draft cancellation and post-review focus fallback. Evidence is recorded in [Batch 7 context ledger](../planning/little-wins-batch-7-context-and-gap-ledger.md); runtime tests remain NOT VERIFIED.
