@@ -1,4 +1,4 @@
-# Application module boundaries, reuse and developer navigation
+# Application module boundaries and developer navigation
 
 **Kind:** guideline · **Status:** proposed · **Owner:** unassigned · **Review:** pending
 
