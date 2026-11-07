@@ -1,4 +1,4 @@
-# Application architecture selection by product complexity
+# Application architecture and scalability selection
 
 **Kind:** guideline · **Status:** proposed · **Primary layer:** cross-cutting · **Owner:** unassigned · **Review:** pending
 
