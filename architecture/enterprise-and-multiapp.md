@@ -1,4 +1,4 @@
-# Enterprise and multi-application frontend architecture
+# Enterprise and multi-application architecture
 
 **Kind:** guideline · **Status:** proposed · **Owner:** unassigned · **Review:** pending
 
