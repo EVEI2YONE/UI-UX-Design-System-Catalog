@@ -2,7 +2,7 @@
 
 Patterns explain how multiple components support a task in context. Pages and user journeys are composed experiences, not replacements for reusable controls.
 
-- [Task flows and information architecture](task-flows-and-information-architecture.md): navigation, progressive disclosure, wayfinding, task-first flow design.
+- [Task flows and information architecture](task-flows-and-information-architecture.md): navigation, task-to-screen composition, meaningful structural wireframe alternatives and comparison, progressive disclosure and wayfinding.
 - [Role-aware workspaces and context switching](role-aware-workspaces-and-context-switching.md): multiple authorized roles, workspace routing, customer previews, privileged impersonation boundaries.
 - [Interaction states and recovery](interaction-states-and-recovery.md): loading, empty, error, offline, destructive actions, retry and focus recovery.
 
@@ -62,3 +62,5 @@ For hosted identity and managed-profile boundaries use [authentication](authenti
 - [Account and settings portal](account-and-settings-portal.md) — `pattern.account-settings-portal`; IA, profile/contact verification, effective save states, concurrent edits and data export. Follow existing canonical identity, privacy and form guidance.
 - [Billing and subscription settings](billing-and-subscription-settings.md) — `pattern.billing-subscription-settings`; payment methods, renewal, downgrade/cancellation and invoice access. Payment and legal outcomes require real product verification.
 - [Batch progress and gap disposition](../archive/planning/account-settings-batch-progress.md) — three context-first batches, same PR, with known scope boundaries.
+
+**Wireframe Batch 2:** retrieve `pattern.task-flows` for screen sequence and alternatives; `principle.visual-hierarchy` for within-screen priority; `guidance.wireframe-methodology` for fidelity and interactive-prototype escalation. All content is proposed; illustrated screens do not establish implementation.
