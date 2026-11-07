@@ -26,3 +26,8 @@ For changes see [Contributing](../CONTRIBUTING.md) and the [PR template](../.git
 ## Batch 7 — table-to-dialog regression checks
 
 [Quality gates](quality-gates.md) include native action semantics, focus lifecycle, unsaved-draft cancellation and post-review focus fallback. Evidence is recorded in [Batch 7 context ledger](../planning/little-wins-batch-7-context-and-gap-ledger.md); runtime tests remain NOT VERIFIED.
+
+
+## Batch 8 — feature dependency validation
+
+[Quality gates](quality-gates.md) now checks flag-combination coverage, server versus UI capability agreement, historical preservation, outstanding requests and toggle races. [Batch 8 evidence ledger](../planning/little-wins-batch-8-context-and-gap-ledger.md) separates code-observed facts from deployment tests.
