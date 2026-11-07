@@ -17,13 +17,27 @@ def main() -> int:
     errors = []
     registry = json.loads(INDEX.read_text(encoding='utf-8'))
     entries = registry.get('entries', [])
+    if not isinstance(entries, list):
+        print('FAIL: registry entries must be an array')
+        return 1
     statuses = set(registry.get('status_model', []))
+    if statuses != {'proposed', 'experimental', 'stable', 'deprecated', 'removed'}:
+        errors.append('status_model differs from the documented lifecycle statuses')
     seen = set()
     paths = set()
     for item in entries:
+        if not isinstance(item, dict):
+            errors.append('registry entry must be an object')
+            continue
         missing = {'id','title','path','layer','kind','status','summary','aliases','domains'} - item.keys()
         if missing:
             errors.append(f"entry missing fields: {sorted(missing)}")
+            continue
+        if any(not isinstance(item.get(k), str) or not item[k].strip() for k in ('id','title','path','summary')):
+            errors.append('entry has invalid identity/title/path/summary')
+            continue
+        if not isinstance(item['aliases'], list) or not isinstance(item['domains'], list):
+            errors.append(f"{item['id']}: aliases and domains must be arrays")
             continue
         ident = item['id'].casefold()
         if ident in seen:
@@ -54,9 +68,11 @@ def main() -> int:
     schema = json.loads((ROOT / 'catalog/schema.json').read_text(encoding='utf-8'))
     required = set(schema['$defs']['entry']['required'])
     allowed = set(schema['$defs']['entry']['properties'])
-    ids = {entry.get('id') for entry in entries}
+    ids = {entry.get('id') for entry in entries if isinstance(entry, dict) and isinstance(entry.get('id'), str)}
     dependencies = {}
     for entry in entries:
+        if not isinstance(entry, dict):
+            continue
         ident = entry.get('id', '<missing id>')
         unknown = set(entry) - allowed
         if unknown:
@@ -67,14 +83,14 @@ def main() -> int:
             if field in entry and (not isinstance(entry[field], list) or
                                    not all(isinstance(x, str) and x.strip() for x in entry[field])):
                 errors.append(f'{ident}: {field} must contain nonempty strings')
-            elif len({x.casefold() for x in entry[field]}) != len(entry[field]):
+            elif field in entry and len({x.casefold() for x in entry[field]}) != len(entry[field]):
                 errors.append(f'{ident}: {field} contains duplicate values')
         for field in ('related', 'depends_on'):
             if isinstance(entry.get(field, []), list):
                 for target in entry.get(field, []):
                     if target not in ids or target == ident:
                         errors.append(f'{ident}: invalid {field} reference {target}')
-        dependencies[ident] = entry.get('depends_on', [])
+        dependencies[ident] = entry.get('depends_on', []) if isinstance(entry.get('depends_on', []), list) else []
         if 'owner' in entry and (not isinstance(entry['owner'], str) or not entry['owner'].strip()):
             errors.append(f'{ident}: invalid owner')
         if entry.get('reviewed_at') is not None:
@@ -82,6 +98,18 @@ def main() -> int:
                 datetime.date.fromisoformat(entry['reviewed_at'])
             except (TypeError, ValueError):
                 errors.append(f'{ident}: invalid reviewed_at')
+
+    # Reject entries that violate the schema's primitive type and enum guarantees.
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        for field in ('id','title','path','layer','kind','status','summary','owner'):
+            if field in entry and (not isinstance(entry[field], str) or not entry[field].strip()):
+                errors.append(f"{entry.get('id', '<missing>')}: invalid {field} type/value")
+        if isinstance(entry.get('path'), str) and (not entry['path'].endswith('.md') or entry['path'].startswith('/')):
+            errors.append(f"{entry.get('id', '<missing>')}: invalid canonical Markdown path")
+        if 'reviewed_at' in entry and entry['reviewed_at'] is not None and not isinstance(entry['reviewed_at'], str):
+            errors.append(f"{entry.get('id', '<missing>')}: reviewed_at must be a date string or null")
 
     visited = set()
     visiting = set()

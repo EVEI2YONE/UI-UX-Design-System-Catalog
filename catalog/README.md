@@ -23,7 +23,7 @@ An empty query lists all entries. Search matches partial text across titles, IDs
 The registry is intended for discoverability, not an implementation API. If a concept moves, preserve its ID, update the canonical path, and provide redirects/migration where old links were published. See [Contributing](../CONTRIBUTING.md).
 ## Agent-oriented lookup
 
-The [JSON Schema](schema.json) describes the registry record. Batch 1–3 scaffold entries additionally provide `use_when`, `avoid_when`, `related`, `depends_on`, `owner`, and nullable `reviewed_at`; other entries can adopt these fields incrementally. The registry remains the only machine-readable metadata source. Related references are canonical IDs, not duplicate Markdown files.
+The [JSON Schema](schema.json) describes the registry record. Every current entry requires `use_when`, `avoid_when`, `related`, `depends_on`, `owner`, and nullable `reviewed_at`; this applies to all 49 entries, including those introduced after the scaffold batches. The registry remains the only machine-readable metadata source. Related references are canonical IDs, not duplicate Markdown files.
 
 ```bash
 python3 scripts/find_concept.py 'loading button' --json
@@ -55,12 +55,12 @@ python3 scripts/validate_catalog.py
 python3 -m unittest discover -s tests -v
 ```
 
-The [schema](schema.json) specifies fields; the dependency/reference validator uses the Python standard library rather than a complete JSON Schema engine. Documentation checks do not establish verified accessibility or implemented component quality.
+The [schema](schema.json) specifies the complete metadata contract; the standard-library validator checks selected structural and reference invariants but does not implement a complete JSON Schema engine. Documentation checks do not establish verified accessibility or implemented component quality.
 
 
 ## Batch 10 — task-based retrieval coverage
 
-The existing 40 concepts remain canonical; retrieval metadata now maps user task phrases such as `hosted authentication`, `human approval workflow`, `feature flags`, `data migration`, `clickable row`, `dialog focus return` and `global CSS` to their owning pages. This is alias and `use_when` enrichment, not concept creation or promotion. See [Batch 10 evidence ledger](../planning/little-wins-batch-10-context-and-gap-ledger.md) and [regression tests](../tests/test_little_wins_knowledge_coverage.py). Rank indicates retrieval relevance, not implementation correctness.
+At the historical Batch 10 snapshot, 40 concepts were canonical (the current registry contains 49); retrieval metadata now maps user task phrases such as `hosted authentication`, `human approval workflow`, `feature flags`, `data migration`, `clickable row`, `dialog focus return` and `global CSS` to their owning pages. This is alias and `use_when` enrichment, not concept creation or promotion. See [Batch 10 evidence ledger](../planning/little-wins-batch-10-context-and-gap-ledger.md) and [regression tests](../tests/test_little_wins_knowledge_coverage.py). Rank indicates retrieval relevance, not implementation correctness.
 
 ## Application architecture task lookup (Batches 13–16)
 
