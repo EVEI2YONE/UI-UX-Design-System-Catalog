@@ -135,3 +135,5 @@ For workspace-scoped configuration contracts, server-side authorization, and saf
 Settings Batch 2: [feature dependency disclosures and review-policy transitions](patterns/account-and-settings-portal.md#settings-knowledge-batch-2--feature-and-policy-configuration-proposed-2026-11-07) extend the existing settings portal; capability truth tables and paused-work recovery remain in their existing canonical patterns.
 
 Settings Batch 3: [timezone/reporting configuration and personal preference scope](patterns/account-and-settings-portal.md#settings-knowledge-batch-3--time-and-personal-preferences-proposed-2026-11-07) reuse the canonical [theme system](foundations/design-tokens-and-themes.md) and [internationalization](guidance/internationalization.md) guidance. A selectable timezone is a product decision, not a shipped default.
+
+Settings Batch 4: [configuration audit events, access and safe reversals](patterns/account-and-settings-portal.md#settings-knowledge-batch-4--configuration-governance-and-audit-proposed-2026-11-07) extend the existing settings portal. Privacy/retention and delegated-access rules remain with their canonical guidance.
