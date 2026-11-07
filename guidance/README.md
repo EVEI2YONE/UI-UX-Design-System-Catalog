@@ -10,6 +10,8 @@ This section supplies requirements that should be applied to every appropriate f
 - [Cognitive load and decision design](cognitive-load-and-decisions.md): memory, attention and meaningful choices.
 - [Content design and UX writing](content-design-and-ux-writing.md): user-needs-first language, error microcopy, labels, content lifecycle.
 - [Privacy, consent and trustworthy UX](privacy-consent-and-trust.md): purpose-limited data use, meaningful choice, consent and deletion states.
+- [Data visualization and dashboards](data-visualization-and-dashboards.md): task-driven chart choices, honest scales and accessible summaries.
+- [Mobile and adaptive platform UX](mobile-and-adaptive-platform-ux.md): adaptive windows, safe areas, native patterns and equivalent inputs.
 
 Also see [quality gates](../governance/quality-gates.md) and [sources](../governance/references.md).
 
@@ -23,3 +25,5 @@ Also see [quality gates](../governance/quality-gates.md) and [sources](../govern
 **Batch 8 discovery:** `guidance.content-design` covers task language and content governance. Use `pattern.forms` and `pattern.search-filter` for the actual interaction composition; `pattern.service-recovery` owns cross-channel support handoffs. All entries remain proposed and untested in a live product.
 
 **Batch 9 discovery:** use `guidance.privacy-trust` for user-facing privacy choices; follow `pattern.authentication-lifecycle`, `pattern.notifications-attention`, or `pattern.offline-sync` for task-specific decisions. These are proposed practices, not legal or security certification.
+
+**Batch 10 discovery:** `guidance.data-visualization` owns chart and KPI narratives; `guidance.mobile-adaptive` owns cross-platform adaptation. The [data tables](../patterns/data-tables.md) and [advanced interactions](../patterns/advanced-interactions-and-reversible-actions.md) entries own record and complex-command behavior.
