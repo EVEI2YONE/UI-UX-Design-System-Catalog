@@ -12,6 +12,7 @@ This section supplies requirements that should be applied to every appropriate f
 - [Privacy, consent and trustworthy UX](privacy-consent-and-trust.md): purpose-limited data use, meaningful choice, consent and deletion states.
 - [Data visualization and dashboards](data-visualization-and-dashboards.md): task-driven chart choices, honest scales and accessible summaries.
 - [Mobile and adaptive platform UX](mobile-and-adaptive-platform-ux.md): adaptive windows, safe areas, native patterns and equivalent inputs.
+- [AI-powered experiences, transparency and calibrated trust](ai-powered-experiences-and-trust.md): AI limits, provenance, uncertainty, correction and manual control.
 
 Also see [quality gates](../governance/quality-gates.md) and [sources](../governance/references.md).
 
@@ -27,3 +28,5 @@ Also see [quality gates](../governance/quality-gates.md) and [sources](../govern
 **Batch 9 discovery:** use `guidance.privacy-trust` for user-facing privacy choices; follow `pattern.authentication-lifecycle`, `pattern.notifications-attention`, or `pattern.offline-sync` for task-specific decisions. These are proposed practices, not legal or security certification.
 
 **Batch 10 discovery:** `guidance.data-visualization` owns chart and KPI narratives; `guidance.mobile-adaptive` owns cross-platform adaptation. The [data tables](../patterns/data-tables.md) and [advanced interactions](../patterns/advanced-interactions-and-reversible-actions.md) entries own record and complex-command behavior.
+
+**Batch 11 discovery:** `guidance.ai-experiences` addresses generated-output trust and evidence. For side-effecting AI tools, use `pattern.agentic-actions`; for voice/chat and modality switching, use `pattern.multimodal-conversation`. All remain proposed.
