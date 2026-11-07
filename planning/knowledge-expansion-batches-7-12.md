@@ -1,6 +1,6 @@
 # Proposed UI/UX knowledge expansion — Batches 7–12
 
-**Status:** Rolling plan; Batches 7–9 have proposed documentation committed to cumulative PR #5. No human or production verification is implied.  
+**Status:** Rolling plan; Batches 7–10 have proposed documentation committed to cumulative PR #5. No human or production verification is implied.  
 **Base:** `main` (the branch was created from `main`).  
 **Scope:** Reusable design knowledge in this catalog, not target application code.  
 **Existing work:** Batches 1–6 are documented in the root README and remain unchanged.
@@ -89,7 +89,7 @@
 - [ ] Registry, root/nested README navigation, related concepts and changelog updated if needed.
 - [ ] Documentation/lookup validation actually run and outputs recorded.
 - [ ] Accessibility, i18n/RTL, responsive/theme and performance applicability reviewed.
-- [ ] PR opened separately for review; no default-branch push and no unapproved merge.
+- [ ] Batch included as a separately reviewable commit group on cumulative PR #5; no default-branch push and no unapproved merge.
 
 ## Suggested implementation order
 
