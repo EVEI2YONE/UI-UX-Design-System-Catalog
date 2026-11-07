@@ -68,3 +68,17 @@ External pages were checked for research context on 2026-11-07. They do not cert
 | [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) | Security requirement for server-side authorization and object scope; not user-experience verification. |
 
 All are guidance or standards references, not evidence of an actual tested product. See [Batch 10 context ledger](../planning/batch-10-context-and-gap-ledger.md).
+
+## Batch 11: AI and multimodal experience sources (reviewed 2026-11-07)
+
+| Source | Applicability and limits |
+| --- | --- |
+| [Google People + AI, Explainability and Trust](https://pair.withgoogle.com/guidebook-v2/chapter/explainability-trust/) and [Feedback and Control](https://pair.withgoogle.com/guidebook-v2/chapter/feedback-controls/) | Professional UX principles for calibrated trust, evidence, uncertainty and user controls; not a mandated confidence scoring formula. |
+| [Microsoft Research, Guidelines for Human-AI Interaction](https://www.microsoft.com/en-us/research/group/customer-insights-research/articles/guidelines-for-human-ai-interaction-eighteen-best-practices-for-human-centered-ai-design/) | Research-based guidelines published 2019; helpful for behavior over time, failure and correction but not current-model certification. |
+| [NIST AI 600-1 Generative AI Profile](https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence) | Published 2024-07-26; voluntary cross-sector AI risk reference, not an endorsement of this catalog's illustrative approval levels. |
+| [OpenAI, Agent guardrails and human review](https://developers.openai.com/api/docs/guides/agents/guardrails-approvals) and [Agents SDK human-in-the-loop](https://openai.github.io/openai-agents-python/human_in_the_loop/) | Runtime-specific pause/approval/rejection patterns, enforcement and unsafe replay caveats; not automatically present in every agent implementation. |
+| [OpenAI, Voice agents](https://developers.openai.com/api/docs/guides/voice-agents) and [Realtime conversations](https://developers.openai.com/api/docs/guides/realtime-conversations) | Voice-specific tool and turn-taking considerations; not universal architecture requirements. |
+| [MDN SpeechRecognition](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition) | Limited support and possible server-based processing; do not claim offline or device-local recognition on all platforms. |
+| [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) | Web accessibility target; real app evaluation and assistive testing remain necessary. |
+
+**Source interpretation:** normative accessibility criteria, voluntary risk guidance, historical UX research and provider-specific implementation docs have different authority. All are context for proposed knowledge, not tests of an actual product. [Batch 11 ledger](../planning/batch-11-context-and-gap-ledger.md).
