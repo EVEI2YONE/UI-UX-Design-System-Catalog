@@ -65,3 +65,7 @@ The existing 40 concepts remain canonical; retrieval metadata now maps user task
 ## Application architecture task lookup (Batches 13–16)
 
 Use `architecture.application-selection` for profiles and example trees, `architecture.module-boundaries` for feature/domain/shared ownership and developer findability, `architecture.evolution` for migration/fitness, and `architecture.enterprise-multiapp` for monorepo/multirepo/microfrontend selection. These are proposed application-code guidelines rather than a restructuring of the catalog itself. [Batch context and coverage](../planning/application-architecture-batches-13-16-context-and-gaps.md).
+
+## Batch 17 framework-aware architecture lookup
+
+Resolve `architecture.framework-aware` for applying application/feature organization without overriding Next.js App Router, Angular or React Router file conventions. Start with `architecture.application-selection` and `architecture.module-boundaries` for generalized ownership decisions. See [Batch 17 context](../planning/application-architecture-batch-17-context-and-gaps.md).
