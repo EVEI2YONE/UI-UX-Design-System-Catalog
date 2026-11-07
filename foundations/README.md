@@ -14,3 +14,5 @@ Related: [component model](../architecture/component-model.md), [accessibility](
 ## Batch 9 — global CSS to semantic tokens
 
 [Design tokens and themes](design-tokens-and-themes.md) now gives a staged selector, value and consumer migration plan for large global stylesheets, with compatibility and reflow checks. The [Batch 9 context ledger](../archive/planning/little-wins-batch-9-context-and-gap-ledger.md) documents the motivating source. No framework replacement or actual token export is claimed.
+
+**Wireframe hierarchy (proposed B2):** [Design principles](design-principles.md) define context, content hierarchy and primary/secondary actions in a screen. Use [task flows](../patterns/task-flows-and-information-architecture.md) for structurally meaningful alternatives and evaluation, and [wireframe methodology](../guidance/wireframe-methodology.md) for fidelity.
