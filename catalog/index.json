@@ -190,7 +190,12 @@
         "accessible icon controls",
         "icon button loading state",
         "decorative status icon",
-        "icon accessibility"
+        "icon accessibility",
+        "icon consistency audit",
+        "icon intent collision review",
+        "icon visual consistency",
+        "icon glyph registry review",
+        "inconsistent action icons"
       ],
       "domains": [
         "iconography",
@@ -203,7 +208,9 @@
         "selecting icons for reusable UI controls",
         "defining semantic icon intent and action labels",
         "designing icon-only buttons and state transitions",
-        "auditing decorative versus informative icons"
+        "auditing decorative versus informative icons",
+        "reviewing conflicting icon meanings and duplicate glyphs",
+        "auditing icon usage across actual product components"
       ],
       "avoid_when": [
         "adding icons merely to decorate every control",
@@ -216,7 +223,8 @@
         "guidance.accessibility",
         "guidance.internationalization",
         "pattern.feedback",
-        "pattern.interaction-recovery"
+        "pattern.interaction-recovery",
+        "governance.quality"
       ],
       "depends_on": [
         "architecture.component-contracts",
@@ -887,7 +895,13 @@
         "visual design delivery pipeline",
         "design to render review",
         "visual style implementation checklist",
-        "KG-18 workflow integration"
+        "KG-18 workflow integration",
+        "interaction state test matrix",
+        "icon interaction testing",
+        "catalog retrieval regression",
+        "icon interaction QA",
+        "cross component interaction tests",
+        "six batch knowledge audit"
       ],
       "domains": [
         "quality",
@@ -907,7 +921,10 @@
         "iterating on screenshot-based layout and styling defects",
         "checking before-and-after visual corrections with evidence",
         "integrating visual direction styling and rendered QA in one design-to-delivery workflow",
-        "auditing visual craftsmanship knowledge coverage and evidence handoff"
+        "auditing visual craftsmanship knowledge coverage and evidence handoff",
+        "planning interaction-state tests across component and workflow boundaries",
+        "verifying agent task retrieval maps to canonical concept owners",
+        "reviewing icon and interaction documentation acceptance"
       ],
       "avoid_when": [
         "marking unperformed checks as PASS",
@@ -926,7 +943,10 @@
         "foundation.design-tokens",
         "guidance.wireframe-methodology",
         "foundation.visual-craftsmanship",
-        "foundation.practical-styling"
+        "foundation.practical-styling",
+        "foundation.icon-semantics",
+        "pattern.advanced-interactions",
+        "pattern.task-flows"
       ],
       "depends_on": [],
       "owner": "unassigned",
