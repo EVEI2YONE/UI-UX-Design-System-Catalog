@@ -758,7 +758,13 @@
         "before after design review",
         "optical alignment review",
         "visual design critique",
-        "design polish QA"
+        "design polish QA",
+        "visual craftsmanship workflow",
+        "end-to-end visual design",
+        "visual design delivery pipeline",
+        "design to render review",
+        "visual style implementation checklist",
+        "KG-18 workflow integration"
       ],
       "domains": [
         "quality",
@@ -776,7 +782,9 @@
         "logging visual QA evidence tied to a specific image revision",
         "critically reviewing a rendered interface for visual craft",
         "iterating on screenshot-based layout and styling defects",
-        "checking before-and-after visual corrections with evidence"
+        "checking before-and-after visual corrections with evidence",
+        "integrating visual direction styling and rendered QA in one design-to-delivery workflow",
+        "auditing visual craftsmanship knowledge coverage and evidence handoff"
       ],
       "avoid_when": [
         "marking unperformed checks as PASS",
