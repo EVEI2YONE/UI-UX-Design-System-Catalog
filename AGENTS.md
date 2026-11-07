@@ -33,3 +33,7 @@ Search `foundation.icon-semantics` for icon meanings, decorative/informative rol
 ## Batch 2 — composite interaction lookup
 
 For “component event ownership”, “cross component events”, “nested interactive controls” or “controlled uncontrolled state”, retrieve **existing** canonical ID `architecture.component-contracts`. Use `component.button` and `foundation.icon-semantics` for host activation and icon meaning, respectively; use `pattern.interaction-recovery` for server-outcome uncertainty and focus recovery. B02 does not introduce a second concept ID, global event bus or verified production behavior.
+
+## Batch 3 — action continuation and focus retrieval
+
+Search `pattern.interaction-recovery` for “icon state synchronization”, “post mutation focus”, “focus after item removal” and “pending confirmed icon”. Search `pattern.task-flows` for “sequential task controller”, “next eligible item”, “stable action region” and “pointer travel continuity”. Read `foundation.icon-semantics` for semantic glyph roles and `architecture.component-contracts` for event ownership; neither replaces the workflow's authoritative mutation/reconciliation logic. B03 tests are documentation-level; product UX and accessibility remain NOT VERIFIED.
