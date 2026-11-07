@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Settings knowledge Batch 1 (proposed, cumulative draft PR): extend canonical `pattern.account-settings-portal` with KG-001 setting registry, KG-003 workspace authorization/scope and KG-006 saving/propagation/recovery. Reuse existing forms, role-aware, offline conflict and interaction recovery concepts; update discovery/lookup, no new canonical concept, no app code, runtime/accessibility/security verification NOT VERIFIED.
+
 - Wireframe knowledge B7 (proposed): integrate B0–B6 canonical ownership and retrieval navigation; add non-canonical B0–B7 integration handoff, consumer lookup sequence, explicit evidence boundaries, cumulative discovery/registry tests and final validation report in shared draft PR #11. No change to 50 proposed canonical entries, no app implementation or human-reviewed lifecycle promotion.
 
 - Wireframe knowledge B6 (proposed): add a non-canonical synthetic bank of six positive/negative task-to-wireframe cases and regression checks for existing-owner retrieval, exact aliases, `avoid_when` exclusion, path/lifecycle integrity and explicit NOT VERIFIED boundaries. No new registry ID, licensed imagery or simulated product PASS.
