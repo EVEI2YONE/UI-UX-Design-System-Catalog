@@ -127,3 +127,7 @@ The [B0–B7 cumulative handoff](archive/planning/wireframe-integration-handoff-
 ## Support This Project
 
 [![Support on Ko-fi](https://img.shields.io/badge/Support%20on-Ko--fi-13C3FF?logo=ko-fi&logoColor=white)](https://ko-fi.com/S5C12A839Y)
+
+## Settings configuration knowledge (cumulative draft)
+
+For workspace-scoped configuration contracts, server-side authorization, and safe save/recovery behavior, begin with [Account and settings portal — Batch 1](patterns/account-and-settings-portal.md#workspace-configuration-foundation--settings-knowledge-batch-1-proposed-2026-11-07). Continue using [role-aware workspaces](patterns/role-aware-workspaces-and-context-switching.md) for authorization context and [forms](patterns/forms.md) for shared control behavior. This is proposed guidance, not a shipped Little Wins Settings page.
