@@ -254,3 +254,9 @@
 - Added proposed `foundation.icon-semantics` guidance for semantic icon intent, accessible icon-only action controls, host state and verification.
 - Extended Button and styling docs with canonical ownership boundaries and updated index/agent lookup paths.
 - No shipped component, human review, or manual accessibility conformance is implied. Batches 2–6 remain pending on the shared branch.
+
+## Unreleased — icon and interaction system, Batch 2 (2026-11-07)
+
+- Expanded canonical `architecture.component-contracts` with composite part/slot ownership, local UI events vs feature commands vs domain outcomes, sibling coordination, controlled state and invalid nested activation (CKG-04, CKG-06–08).
+- Updated canonical retrieval aliases, root/architecture/components indexes, examples and regression tests; retained all existing component IDs and application-specific business logic boundaries.
+- Captured [pre-edit context](archive/planning/icon-interaction-b02-context-2026-11-07.md). Human review and product/browser/accessibility verification remain NOT VERIFIED. Shared PR waits until B06.
