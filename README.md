@@ -187,3 +187,8 @@ For independently stored settings with dependent actions, use [task-flow capabil
 ## Batch 9 — safe component and styling modernization (proposed, 2026-11-07)
 
 For large route modules and partially adopted UI libraries, follow the [component model's incremental extraction guidance](architecture/component-model.md), [design-token/global-CSS migration guidance](foundations/design-tokens-and-themes.md) and [quality gates](governance/quality-gates.md). The [Batch 9 source/gap ledger](planning/little-wins-batch-9-context-and-gap-ledger.md) explains Little Wins' page, existing UI controls and stylesheet evidence. No component implementation, source code refactor or new catalog ID is included.
+
+
+## Batch 10 — knowledge coverage and lookup regression closure (proposed, 2026-11-07)
+
+The [cross-batch coverage and validation ledger](planning/little-wins-batch-10-context-and-gap-ledger.md) maps all ten Little Wins-derived documentation batches to existing canonical IDs, evidence boundaries and unresolved product tests. The [canonical registry](catalog/index.json) now includes task-oriented aliases for hosted identity, human review, feature dependencies, data migrations, table actions and styling migration. [Lookup regression tests](tests/test_little_wins_knowledge_coverage.py) exercise these searches. No new concept IDs or product implementation were introduced, and passing catalog CI does not certify Little Wins UX or security.
