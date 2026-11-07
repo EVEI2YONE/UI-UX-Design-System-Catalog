@@ -10,6 +10,7 @@
 | --- | --- |
 | Establish visual hierarchy, spacing, and affordances | [Design principles](foundations/design-principles.md) |
 | Create a theme or rationalize raw values | [Tokens and themes](foundations/design-tokens-and-themes.md) |
+| Adapt app structure to Next.js, Angular or React Router | [Framework-aware application structure](architecture/framework-aware-application-structure.md) |
 | Choose prototype, MVP, growing or enterprise app code structure | [Application architecture selection](architecture/application-architecture.md) |
 | Organize features, domains, and developer navigation | [Module boundaries and developer navigation](architecture/module-boundaries-and-developer-navigation.md) |
 | Migrate or measure application modularity | [Architecture evolution and fitness](architecture/architecture-evolution.md) |
@@ -204,3 +205,7 @@ For **how to structure an application repository**, rather than the catalog itse
 ## Batches 13–16: application architecture and scalability
 
 Start with [application structure selection](architecture/application-architecture.md), then [module boundaries and developer navigation](architecture/module-boundaries-and-developer-navigation.md), [incremental architecture evolution](architecture/architecture-evolution.md), and [enterprise multi-app decisions](architecture/enterprise-and-multiapp.md). Read the [context-first gap ledger](planning/application-architecture-batches-13-16-context-and-gaps.md) before treating illustrative trees as recommendations for an actual app. All entries remain proposed guidance.
+
+## Batch 17 — framework-aware application file structure
+
+The [framework-aware application structure guide](architecture/framework-aware-application-structure.md) maps generic feature-first advice to Next.js App Router, Angular and React Router while protecting route semantics. Consult the [context-first Batch 17 ledger](planning/application-architecture-batch-17-context-and-gaps.md) before adapting examples to a real app. Framework-specific behavior remains implementation- and version-dependent.
