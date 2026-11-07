@@ -10,6 +10,7 @@
 | If you need to... | Start here |
 | --- | --- |
 | Select wireframe fidelity or decide when interaction is required | [Wireframe methodology](guidance/wireframe-methodology.md) |
+| Critique a rendered UI, iterate screenshots and study before/after styling examples | [Visual craftsmanship quality gates](governance/quality-gates.md#visual-craftsmanship-review-and-corrective-iteration--batch-4-kg-15-and-kg-16-proposed-2026-11-07) and [synthetic refinement examples](foundations/visual-refinement-examples.md) |
 | Review image-based wireframe QA, states and consumer retrieval | [Quality gates](governance/quality-gates.md), [interaction recovery](patterns/interaction-states-and-recovery.md), [wireframe integration handoff](archive/planning/wireframe-integration-handoff-2026-11-07.md) |
 | Gather visual references, compare art directions and select a style with documented tradeoffs | [Visual design craftsmanship — Batch 3](foundations/visual-design-craftsmanship.md#batch-3--art-direction-research-exploration-and-selection-kg-1114-proposed) |
 | Choose a coherent aesthetic direction, typography, color and layout rhythm | [Visual design craftsmanship](foundations/visual-design-craftsmanship.md) |
