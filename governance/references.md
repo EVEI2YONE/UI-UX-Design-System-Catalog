@@ -17,3 +17,17 @@ Initial concepts are a selective synthesis of the user-provided **UI/UX Design S
 ## Evidence hygiene
 
 New guidance should capture a source URL, edition/date, scope, limitations, last review date and owner. Prefer primary authoritative references for normative claims, and actual user research or telemetry for product outcomes. Label hypotheses as hypotheses. If a source is inaccessible, mark it unverified rather than fabricating a quotation or result.
+## Batch 8: content, forms, discovery and service recovery (review queue, 2026-11-07)
+
+| Source | Applicability and limits |
+| --- | --- |
+| [GOV.UK content design](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/plan-manage-content/understand-content-design/) | User-needs-first writing and content maintenance; public-service context, adapt to product vocabulary. |
+| [GOV.UK clear structure](https://guidance.publishing.service.gov.uk/writing-to-gov-uk-standards/writing-guidelines/clear-structure/) | Descriptive headings and scannability; not a universal content length quota. |
+| [GOV.UK validation pattern](https://design-system.service.gov.uk/patterns/validation/) and [error summary](https://design-system.service.gov.uk/components/error-summary/) | Recoverable form errors, input retention, focus and summary links; service-specific implementation guidance, not universal component mandate. |
+| [W3C WAI forms instructions](https://www.w3.org/WAI/tutorials/forms/instructions/) and [validation](https://www.w3.org/WAI/tutorials/forms/validation/) | Accessible labels, instructions and validation; live system semantics must still be tested. |
+| [USWDS search](https://designsystem.digital.gov/components/search/) and [pagination](https://designsystem.digital.gov/components/pagination/) | Search/pagination component guidance; does not prove application relevance or ranking quality. |
+| [DWP filter design notes](https://design-system.dwp.gov.uk/contribute/filters/design-notes) | Emerging research on deliberate vs live filters; context-specific, not universal rule. |
+| [GOV.UK service unavailable](https://design-system.service.gov.uk/patterns/service-unavailable-pages/) and [service problems](https://design-system.service.gov.uk/patterns/problem-with-the-service-pages/) | Distinguish planned outage from unexpected failure and explain saved data; government service context. |
+| [GOV.UK user support operations](https://www.gov.uk/service-manual/helping-people-to-use-your-service/set-up-and-manage-user-support) | Cross-channel support and contact metrics; operational guidance, not evidence of this product's support capability. |
+
+These URLs were inspected as research starting points on 2026-11-07; source editions/changes must be rechecked on future reviews. No live product tests or external content endorsements are claimed.
