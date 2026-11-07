@@ -280,3 +280,9 @@
 - Extended `architecture.enforcement-ci` (CKG-16) with baseline-aware global CSS, raw-token, duplicate-primitive and variant drift guardrails plus exception and false-positive handling.
 - Extended `architecture.component-model` (CKG-17) with installed/exported/imported/used inventory distinctions and reuse/compose/extend/keep-local/create/deprecate decision worksheet.
 - Added [B05 context review](archive/planning/icon-interaction-b05-context-2026-11-07.md), index aliases, retrieval tests and progress tracking. No new canonical concept or target-app linter installed.
+
+## Unreleased — icon and interaction system, Batch 6 (2026-11-07)
+
+- Extended `foundation.icon-semantics` (CKG-05) with semantic icon collision/consistency review, versioned migration and actual UI verification requirements.
+- Extended `governance.quality` (CKG-18/19) with interaction-state test cases, canonical task lookup matrix, positive/negative documentation checks and evidence separation.
+- Updated registry aliases and discovery indexes, added B06 context and cumulative retrieval tests; B01–B06 shared PR follows documentation completion. Do not infer human-approved standards or verified runtime accessibility from docs-only commits.
