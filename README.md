@@ -177,3 +177,8 @@ For archive/retention and trustworthy export/delete journeys, start with [privac
 ## Batch 7 — accessible record-action journeys (proposed, 2026-11-07)
 
 For actionable record lists, read [data tables](patterns/data-tables.md) before making an entire row keyboard-focusable. Use the [Dialog component contract](components/dialog/spec.md) for native dialog focus, dismissal, unsaved edits and completion; test the end-to-end route through [accessibility](guidance/accessibility.md) and [quality gates](governance/quality-gates.md). See the [Batch 7 evidence ledger](planning/little-wins-batch-7-context-and-gap-ledger.md). These are proposed checks, not proof of Little Wins WCAG conformance.
+
+
+## Batch 8 — capability dependencies and safe feature toggles (proposed, 2026-11-07)
+
+For independently stored settings with dependent actions, use [task-flow capability matrices](patterns/task-flows-and-information-architecture.md), [paused-state recovery](patterns/interaction-states-and-recovery.md), and [configuration quality gates](governance/quality-gates.md). The [Batch 8 context and gap ledger](planning/little-wins-batch-8-context-and-gap-ledger.md) documents Little Wins' points/rewards/challenges behavior and unresolved policy questions. No product flags or permissions were implemented; no runtime behavior was verified.
