@@ -59,3 +59,14 @@ This page continues to own generic pending, timeout, retry, error and cancellati
 **Positive example:** review screen shows submitted value, proposed edits, reviewer identity, calculated award, confirmation and a durable post-approval record. **Anti-example:** repeated Approve clicks award twice, or resubmission overwrites the sole preserved original.
 
 **Tests:** valid/invalid transitions, concurrent reviewers, replay/idempotency, correction history, reward reservation/decline/refund, keyboard focus and announcements, timezone/locale-safe timestamps, recoverable validation errors. All product checks remain NOT VERIFIED unless actually executed.
+
+
+## Batch 8 — paused capabilities and work already in progress (2026-11-07)
+
+Do not conflate **paused**, **unauthorized**, **empty**, **disabled**, **unsupported** and **completed**. A capability paused by group configuration should identify what stopped, what remains preserved, what existing requests can still be managed, and how an eligible user resumes it. Do not show “No rewards” when redemptions are merely unavailable or hidden.
+
+For feature-sensitive transactions, verify the authoritative configuration again when committing the action. When a setting changes between opening and submitting a form, preserve entered data where safe and explain the new state without claiming the action was saved. Existing requests and fulfilled outcomes may require management even when new actions are blocked; design an explicit route for authorized owners rather than relying on a hidden navigation item or browser history.
+
+**Example:** “Rewards are paused. Existing requests are preserved. You can review pending requests in Group history.” The destination and permissions must actually exist before shipping such copy. **Anti-example:** “Your reward was redeemed” shown optimistically after the server rejects it because points were disabled.
+
+**Check:** disable during pending request, failed direct command, refresh while editing, re-enable and accurate feedback; record actual persistence and keyboard/screen reader announcements. Source review is not a runtime PASS.
