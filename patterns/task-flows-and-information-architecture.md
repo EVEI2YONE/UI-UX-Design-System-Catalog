@@ -29,3 +29,18 @@ Record user cohort, context, success condition, primary action, safe exit, and f
 ## Verification
 
 Test representative first-time and returning tasks, navigate with keyboard, inspect narrow and zoomed layouts, and compare task completion and step abandonment with a documented baseline. See [UX measurement](../guidance/ux-measurement.md).
+
+## Flow specification and acceptance example
+
+Record a task as **entry → orientation → choose → act → pending → outcome → recover/exit**. For each transition document user intent, destination, data preserved, error states, keyboard/focus destination and any authorization constraint. Navigation changes need deep-link and browser-history checks; do not break direct entry to a valid route in order to simplify the menu.
+
+**Illustrative flow: finding a saved item**
+
+| Step | Visible information | Next action | Exceptional state |
+| --- | --- | --- | --- |
+| Entry | Current section and clear page heading | Open search | Expired session: explain and provide safe sign-in return |
+| Search | Query, filters and result count | Open result | No results: offer query edit/reset |
+| Detail | Item title, context and related actions | Return to results | No access: explain availability without exposing private data |
+| Return | Preserved query and prior position | Continue selection | Stale item: refresh without silently discarding context |
+
+**IA acceptance:** primary routes and labels are distinguishable; landmarks and headings form a predictable hierarchy; filter and back behavior are consistent; direct links and narrow/reflowed views function; empty/error branches have recoverable next steps. Validate the model with task observation and task completion, not click count alone.

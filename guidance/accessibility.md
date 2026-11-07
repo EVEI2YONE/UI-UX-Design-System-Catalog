@@ -26,3 +26,18 @@ Accessibility is a design and delivery requirement, not a visual polish phase. U
 | Long translated labels and RTL when applicable | Manual/pseudolocalized | NOT VERIFIED |
 
 Automated checks alone cannot establish accessibility compliance. Treat blockers in core flows as release-significant. Related: [component contracts](../architecture/component-contracts.md) and [interaction states](../patterns/interaction-states-and-recovery.md).
+
+## Component acceptance scenarios
+
+For each *implemented* critical task, document the assistive technology/input combination, browser/viewport, expected behavior, actual result, severity, owner, and retest. Automated scans detect subsets of issues; manual keyboard, screen-reader and zoom checks are still required.
+
+| Scenario | Acceptance expectation | Evidence to record |
+| --- | --- | --- |
+| Keyboard from entry to completion | All necessary actions operable, focus visible, sensible sequence | Focus path and blocked step |
+| Error and correction | Invalid control named, error associated, recovery works without losing input | Accessibility tree/announcement observation |
+| Modal open and close | Name and modality correct, focus enters, background unavailable when modal, focus returns sensibly | Entry and exit focus targets |
+| Zoom and narrow layout | Essential content and actions remain usable without two-dimensional page scrolling where WCAG requires reflow | Zoom level, viewport, screenshot and exceptions |
+| Touch and alternatives | Targets/spacing meet applicable criteria; gestures have alternatives | Device/input and target behavior |
+| Motion and themes | Reduced-motion preference honored; focus and status distinguishable | Mode, preference and contrast measurements |
+
+Use [WCAG 2.2](../governance/references.md) for the precise normative success criteria and exceptions rather than turning these scenario descriptions into invented numeric thresholds. Mark each check `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` with reason; do not claim blanket compliance from an empty scan.
