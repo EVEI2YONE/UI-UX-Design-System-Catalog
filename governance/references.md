@@ -55,3 +55,16 @@ These URLs were inspected as research starting points on 2026-11-07; source edit
 | [MDN Background Synchronization API](https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API), [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) | Background Sync has limited support; local storage retention and security must be evaluated. |
 
 External pages were checked for research context on 2026-11-07. They do not certify this catalog or a target application.
+
+## Batch 10: charts, mobile/adaptive UX, advanced interactions and enterprise (reviewed 2026-11-07)
+
+| Source | Applicability and limits |
+| --- | --- |
+| [USWDS Data visualizations](https://designsystem.digital.gov/components/data-visualizations/) | Guidance-only chart accessibility and narrative examples; not a shipped chart library or statistical validation. |
+| [Apple HIG Layout](https://developer.apple.com/design/human-interface-guidelines/layout) | Updated 2026-09-09; Apple layout, safe areas, Dynamic Type and window adaptation; not universal web/Android guidance. |
+| [Android Adapt layouts](https://developer.android.com/design/ui/mobile/guides/layout-and-content/adapt-layout) and [navigation patterns](https://developer.android.com/design/ui/mobile/guides/layout-and-content/layout-and-nav-patterns) | Android adaptive layout, window-size and nav patterns; SDK/device review required. |
+| [W3C WCAG 2.2 Dragging Movements](https://www.w3.org/WAI/WCAG22/Understanding/dragging-movements) | Applicable web AA criterion requiring a non-drag single-pointer alternative; keyboard access separately required. |
+| [WAI-ARIA APG Grid](https://www.w3.org/WAI/ARIA/apg/patterns/grid/) | Keyboard semantics for deliberately implemented interactive grids; not ordinary HTML tables. |
+| [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) | Security requirement for server-side authorization and object scope; not user-experience verification. |
+
+All are guidance or standards references, not evidence of an actual tested product. See [Batch 10 context ledger](../planning/batch-10-context-and-gap-ledger.md).
