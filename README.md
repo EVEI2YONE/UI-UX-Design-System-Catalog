@@ -9,6 +9,7 @@
 
 | If you need to... | Start here |
 | --- | --- |
+| Deliver an end-to-end visual design from brief through styling, rendering, critique and evidence | [Visual craftsmanship workflow](governance/visual-craftsmanship-workflow.md) |
 | Select wireframe fidelity or decide when interaction is required | [Wireframe methodology](guidance/wireframe-methodology.md) |
 | Critique a rendered UI, iterate screenshots and study before/after styling examples | [Visual craftsmanship quality gates](governance/quality-gates.md#visual-craftsmanship-review-and-corrective-iteration--batch-4-kg-15-and-kg-16-proposed-2026-11-07) and [synthetic refinement examples](foundations/visual-refinement-examples.md) |
 | Review image-based wireframe QA, states and consumer retrieval | [Quality gates](governance/quality-gates.md), [interaction recovery](patterns/interaction-states-and-recovery.md), [wireframe integration handoff](archive/planning/wireframe-integration-handoff-2026-11-07.md) |
