@@ -1896,6 +1896,47 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "architecture.module-boundaries",
+      "title": "Application module boundaries and developer navigation",
+      "path": "architecture/module-boundaries-and-developer-navigation.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Feature/domain/shared ownership, one-way imports, reuse promotion and developer task discoverability.",
+      "aliases": [
+        "feature module boundaries",
+        "domain vs feature",
+        "shared UI ownership",
+        "developer navigation",
+        "feature-first modularity",
+        "dependency boundaries",
+        "public feature API"
+      ],
+      "domains": [
+        "application-architecture",
+        "developer-experience",
+        "reusability"
+      ],
+      "use_when": [
+        "splitting a large app into features",
+        "deciding what belongs in shared versus domain",
+        "improving developer navigation and import discipline"
+      ],
+      "avoid_when": [
+        "promoting screen-specific code solely because it looks similar"
+      ],
+      "related": [
+        "architecture.application-selection",
+        "architecture.component-model",
+        "governance.lifecycle"
+      ],
+      "depends_on": [
+        "architecture.application-selection"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
