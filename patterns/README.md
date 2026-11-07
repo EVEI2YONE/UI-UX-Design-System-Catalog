@@ -51,3 +51,8 @@ For hosted identity and managed-profile boundaries use [authentication](authenti
 ## Batch 7 — record actions and dialog continuity
 
 [Data tables](data-tables.md) now gives an explicit native action-cell control versus clickable-row decision. Combine with the [Dialog contract](../components/dialog/spec.md) and [accessibility journey criteria](../guidance/accessibility.md), rather than treating a keyboard-focusable `<tr>` as a full grid. [Batch 7 ledger](../planning/little-wins-batch-7-context-and-gap-ledger.md) records the source context.
+
+
+## Batch 8 — configuration and capability dependencies
+
+[Task flows](task-flows-and-information-architecture.md) now distinguishes independently stored feature flags from dependent user capabilities and requires an explicit configuration/action matrix. [Interaction recovery](interaction-states-and-recovery.md) covers paused-feature transitions and pending work. Review the [Batch 8 evidence ledger](../planning/little-wins-batch-8-context-and-gap-ledger.md) before drawing conclusions about any particular application.
