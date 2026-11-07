@@ -157,3 +157,11 @@
 - Audited existing component-model, architecture index, governance and quality coverage before writing; existing component tiers were preserved.
 - Added complexity-adaptive application architecture profiles, context collection, selection heuristics, anti-patterns and verification criteria.
 - Registered canonical application-selection guidance and indexed it for people and agents; no application code was modified.
+
+## Unreleased — Batches 14–16: application modularity, evolution and enterprise topology (2026-11-07)
+
+- Batch 14: audited existing component and lifecycle boundaries; added application feature/domain/shared ownership, import/API and developer navigation guidance.
+- Batch 15: audited existing incremental extraction and quality gates; added app-scale migration triggers, fitness indicators and staged rollback.
+- Batch 16: audited prior profile guidance and lifecycle contracts; added modular-monolith/monorepo/multirepo/microfrontend selection and cross-team governance.
+- Indexed four canonical proposed concepts, updated human/agent lookup and added regression tests plus per-batch context/gap ledger.
+- No app source migration or runtime usability/a11y evaluation was performed; actual final-head CI checks must be verified separately.
