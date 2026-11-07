@@ -123,3 +123,12 @@
 - Extended the Dialog component spec for unsaved-change dismissal, native cancel/backdrop behavior, server-confirmed completion and fallback focus.
 - Extended accessibility and quality gates for a connected record-to-dialog-to-updated-list user journey.
 - Added source-first evidence ledger and root/nested discovery links; no new IDs, app changes or verified accessibility claims.
+
+
+## Unreleased — Batch 8 (2026-11-07)
+
+- Inspected Little Wins three stored settings, server redemption/review guards, and navigation gating before editing the catalog.
+- Extended canonical task-flow guidance with dependent-capability configuration matrices, pause/resume transitions and historical-data discoverability.
+- Extended recovery guidance to distinguish paused, unauthorized and empty states and handle in-flight requests when settings change.
+- Added feature-combination, direct-API, history and pending-work acceptance tests to quality gates.
+- Added context-first source/gap ledger and updated catalog discovery; no new registry ID, live feature changes or product-test PASS claims.
