@@ -105,3 +105,12 @@
 - Batch 4: added group/project scope and optional-feature navigation checks, plus review/fulfillment metrics without invented baselines.
 - Batch 5: updated catalog discovery and agent lookup regression guidance; reused existing canonical IDs, no new registry entries.
 - Scope: documentation only, all runtime/host verification NOT VERIFIED; original Little Wins ZIP used as illustrative source, not a claim about live deployment.
+
+
+## Unreleased — Batch 6 (2026-11-07)
+
+- Gathered Little Wins ZIP evidence and existing canonical catalog entries before editing.
+- Extended privacy guidance with archive/retention, data portability, value-history correction and export/import UX contracts.
+- Extended offline/sync guidance with versioned aggregate migration, read-side effects, compare-and-swap conflicts, restore and migration idempotency.
+- Added data lifecycle, backup/restore and migration acceptance scenarios to governance quality gates.
+- Updated root, nested and agent indexes and added a per-batch context/decision ledger. No new catalog ID, component implementation or verified product backup/export capability.
