@@ -1,49 +1,32 @@
 # Application and component architecture
 
-The reusable hierarchy is [foundations/tokens → primitives → components → patterns/features → pages/modal flows](component-model.md). Use this as a decision model, not an instruction to create a separate package for every level.
+Choose the **developer task first**, then read its canonical guidance. This section concerns both application-code boundaries and reusable UI component contracts; these are different decisions. All catalog entries are proposed knowledge, not installed component libraries or verified app refactors.
 
-- [Component model](component-model.md): boundaries, examples, and reuse/adapt/create checks.
-- [Component contracts](component-contracts.md): anatomy, public API, states, inclusive behavior and verification.
+## Find the right architecture guidance
 
-A shared `Dialog` owns focus behavior and an overlay; a feature's account-deletion dialog owns confirmation language, domain data and product telemetry. Related: [interaction states](../patterns/interaction-states-and-recovery.md), [governance](../governance/lifecycle-and-decisions.md).
-**For agents:** use `architecture.component-model` for placement/reuse decisions and `architecture.component-contracts` for state/API contracts. Both resolve through [the canonical registry](../catalog/index.json); see [AGENTS.md](../AGENTS.md).
+| I need to... | Canonical guidance |
+| --- | --- |
+| Choose a prototype, MVP, modular product or enterprise file structure | [Application architecture selection](application-architecture.md) (`architecture.application-selection`) |
+| Place feature, domain, shared UI code and public module APIs | [Module boundaries and developer navigation](module-boundaries-and-developer-navigation.md) (`architecture.module-boundaries`) |
+| Preserve Next.js, Angular or React Router route conventions | [Framework-aware structure](framework-aware-application-structure.md) (`architecture.framework-aware`) |
+| Compare modular monolith, monorepo, multirepo and microfrontends | [Enterprise and multi-application architecture](enterprise-and-multiapp.md) (`architecture.enterprise-multiapp`) |
+| Migrate incrementally or measure architectural fitness | [Architecture evolution](architecture-evolution.md) (`architecture.evolution`) |
+| Enforce imports, module boundaries and cycles in CI | [Architecture enforcement](architecture-enforcement-and-ci.md) (`architecture.enforcement-ci`) |
+| See prototype/MVP/enterprise before-and-after code placement | [Reference examples](application-architecture-reference-examples.md) (`architecture.reference-examples`) |
+| Decide primitive vs component vs task-specific feature | [Component model](component-model.md) (`architecture.component-model`) |
+| Define component API, states, semantics and tests | [Component contracts](component-contracts.md) (`architecture.component-contracts`) |
 
+**Fast path:** select an [architecture profile](application-architecture.md) → assign [module owners](module-boundaries-and-developer-navigation.md) → inspect [framework conventions](framework-aware-application-structure.md) → consult [examples](application-architecture-reference-examples.md). Use [enterprise topology](enterprise-and-multiapp.md), [migration](architecture-evolution.md) and [enforcement](architecture-enforcement-and-ci.md) only when the actual task needs them.
 
-For independent proposed control specifications, see the [core components index](../components/README.md). A component specification is not an implementation or approval to use it without consumer tests.
+**Component versus application boundary:** the [component model](component-model.md) owns reusable component tiers (foundations/tokens → primitives → components → patterns/features → pages/modal flows). A shared `Dialog` owns keyboard and focus semantics, while an account-deletion flow owns its user-facing confirmation, authorization, mutation and telemetry. See [interaction recovery](../patterns/interaction-states-and-recovery.md) and [lifecycle governance](../governance/lifecycle-and-decisions.md). [Core control specifications](../components/README.md) are not runtime implementations.
 
-**Batch 12 handoff:** [Component contracts](component-contracts.md) now require a versioned design-to-code trace, state matrix, token mapping, visual/interaction evidence, affected consumers and rollback. The specification can be reviewed independently from a runtime implementation; a docs-only catalog check never proves a shipped component.
+## Source and verification context
 
+- [Batches 13–16: selection, modules, migration, enterprise](../planning/application-architecture-batches-13-16-context-and-gaps.md)
+- [Batch 17: framework routing](../planning/application-architecture-batch-17-context-and-gaps.md)
+- [Batch 18: enforcement and CI](../planning/application-architecture-batch-18-context-and-gaps.md)
+- [Batch 19: applied examples](../planning/application-architecture-batch-19-context-and-gaps.md)
+- [Batch 20: final coverage audit and unresolved evidence](../planning/application-architecture-batch-20-closure-audit.md)
+- Earlier work: [Batch 9 component extraction context](../planning/little-wins-batch-9-context-and-gap-ledger.md); Batch 12 component design-to-code trace is documented in [component contracts](component-contracts.md).
 
-## Batch 9 — incremental component extraction
-
-[Component model](component-model.md) now defines a source inventory and vertical-slice migration from concentrated page orchestration into feature presentation and appropriate shared controls. Review the [Batch 9 context ledger](../planning/little-wins-batch-9-context-and-gap-ledger.md) before presuming installed UI components are in use. Existing [component contracts](component-contracts.md) remain authoritative.
-
-## Application code organization (Batch 13)
-
-Before choosing a feature/domain/package tree, use [application architecture and scalability selection](application-architecture.md) for context-first prototype, MVP, modular-product and multi-app profiles. This is application-level guidance; the existing [component model](component-model.md) remains canonical for UI component placement. Subsequent batches cover module boundaries, migration, and enterprise topology.
-
-## Application scalability guidance — Batches 14–16
-
-- [Module boundaries and developer navigation](module-boundaries-and-developer-navigation.md): feature, domain, shared ownership, one-way imports and task-to-code discoverability.
-- [Architecture evolution and fitness](architecture-evolution.md): context-led migration, vertical slices, baseline and rollback.
-- [Enterprise and multi-application architecture](enterprise-and-multiapp.md): modular monolith, monorepo, multirepo and microfrontends; team/package governance.
-
-The [per-batch context and gap ledger](../planning/application-architecture-batches-13-16-context-and-gaps.md) records overlap with earlier knowledge and unverified claims. Use canonical registry IDs rather than treating these as runtime libraries.
-
-## Batch 17 — framework-aware application structure
-
-- [Framework-aware application structure and route ownership](framework-aware-application-structure.md): preserve Next.js, Angular and React Router conventions while choosing between route-local and feature-owned UI.
-
-Start with the [Batch 17 context and sources ledger](../planning/application-architecture-batch-17-context-and-gaps.md). Routes and module boundaries are different concerns; verify actual framework/version before applying any tree.
-
-## Batch 18 — enforceable architecture boundaries
-
-- [Architecture enforcement and CI guardrails](architecture-enforcement-and-ci.md): compare scoped ESLint import restrictions, dependency-cruiser path/cycle rules and Nx project tags, with known blind spots and staged CI rollout.
-
-Read the [Batch 18 context and source ledger](../planning/application-architecture-batch-18-context-and-gaps.md). These are illustrative implementation recipes; this documentation repository has no application import graph to validate.
-
-## Batch 19 — practical application architecture examples
-
-- [Application architecture reference implementations and migrations](application-architecture-reference-examples.md): prototype, MVP refactoring and enterprise examples with task-to-file maps, import boundaries, migration steps and acceptance evidence.
-
-See the [Batch 19 context and gap ledger](../planning/application-architecture-batch-19-context-and-gaps.md). Examples illustrate placement decisions and are not runnable starter projects.
+For agent retrieval, resolve canonical IDs using [the registry](../catalog/index.json) and [AGENTS.md](../AGENTS.md), then follow `related` and `depends_on` selectively. The [quality gates](../governance/quality-gates.md) distinguish documentation validation from tested accessibility, DX and application behavior. No runtime test can be marked PASS because a Markdown validator succeeded.
