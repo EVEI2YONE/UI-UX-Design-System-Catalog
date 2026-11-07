@@ -17,3 +17,7 @@ For independent proposed control specifications, see the [core components index]
 ## Batch 9 — incremental component extraction
 
 [Component model](component-model.md) now defines a source inventory and vertical-slice migration from concentrated page orchestration into feature presentation and appropriate shared controls. Review the [Batch 9 context ledger](../planning/little-wins-batch-9-context-and-gap-ledger.md) before presuming installed UI components are in use. Existing [component contracts](component-contracts.md) remain authoritative.
+
+## Application code organization (Batch 13)
+
+Before choosing a feature/domain/package tree, use [application architecture and scalability selection](application-architecture.md) for context-first prototype, MVP, modular-product and multi-app profiles. This is application-level guidance; the existing [component model](component-model.md) remains canonical for UI component placement. Subsequent batches cover module boundaries, migration, and enterprise topology.
