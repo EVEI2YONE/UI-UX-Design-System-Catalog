@@ -78,3 +78,23 @@ Related: [role-aware workspaces](role-aware-workspaces-and-context-switching.md)
 **Anti-example:** recommend a new login UI solely because the app has owner-managed member profiles, or claim the identity header is secure without testing whether clients can spoof it at the deployed boundary.
 
 **Verification (NOT VERIFIED for Little Wins):** authenticated/unauthenticated direct API requests; forged identity header through every reachable endpoint; cross-owner workspace IDs; revoked membership; session expiry; private-site audience policy; development-identity isolation; no sensitive cache/history leakage. Report deploy-specific findings separately from reusable design guidance.
+
+
+## Account security settings journey — account/settings batch 2 (KG-007–010)
+
+**Scope:** extends existing sign-in/recovery guidance to **authenticated account maintenance**, not a new authentication component. Identity and security owners must confirm available actions and policies; no credential factor, session or API is assumed to exist.
+
+| User task | States and controls | Required recovery / evidence |
+| --- | --- | --- |
+| Change password or credentials (KG-007) | Method available/unavailable, step-up required, current value verification when policy requires, processing, success, denial | Preserve account recovery, password-manager compatibility and error privacy; never echo secrets or claim change before server confirmation |
+| Add, replace or remove MFA/passkey (KG-008) | Eligible, enrollment pending, platform prompt, challenge verified, backup/recovery method offered, factor active, factor revocation | Do not strand users with no authorized factor; require risk-approved recovery and reauthentication; verify active factors server-side |
+| View sessions/devices (KG-009) | Device/session inventory, current vs other, last activity with timezone/uncertainty, revoke pending/completed, stale/unknown | Never present approximate device geolocation as exact; require policy controls on revoke-all/current session and test stale tabs |
+| Link/unlink external provider or app (KG-010) | Provider identity and scopes, pending authorization, linked, conflict, expired, unlink pending/completed | Explicitly distinguish identity provider link from delegated app permissions; explain consequences, keep a usable sign-in route and handle callback errors |
+
+**Flow:** enter security section → inspect effective server-side status → optional step-up → disclose impact → initiate action → confirm authoritative result → show durable, accessible history/next step. A successful OAuth redirect, passkey dialog close or request receipt does **not** imply account state changed.
+
+**Anti-example:** the settings page offers a “Remove last sign-in method” link without warning, hides recovery routes, and updates device inventory optimistically without a revocation result.
+
+**Verification (NOT VERIFIED):** current/revoked sessions from multiple browsers; MFA enrollment and factor loss; passkey/browser unsupported/cancel paths; reauthentication expiry; external-provider callback timeout; keyboard/focus and localized recovery messages; no enumeration, session fixation or privilege escalation. Security tests must be executed against the actual identity provider and backend.
+
+**Sources:** [NIST SP 800-63B-4](https://csrc.nist.gov/pubs/sp/800/63/b/4/final) (2025 digital identity guidance, applicability determined by security owner); [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html) and [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html) (maintained engineering guidance; consulted 2026-11-07); [WCAG 2.2 SC 3.3.8](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html) (applicable accessible authentication tests). Related portal composition: [Account/settings portal](account-and-settings-portal.md).
