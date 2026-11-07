@@ -1,72 +1,52 @@
-# Account and settings portal composition
+# Account/settings knowledge expansion — batch progress
 
-**Kind:** guideline · **Status:** proposed · **Layer:** experiences · **Owner:** unassigned · **Reviewed:** null
+**Prepared:** 2026-11-07. **Base:** `main` at `de4a290fc062267fb0ede14f53601036378a4e91`. **Branch:** `docs/account-settings-knowledge-batches`. **Review:** proposed; PR not merged. **Source product:** no specific target application was selected; observations refer to existing catalog, not a tested account portal.
 
-## Purpose and ownership
+## Context-first methodology and batch disposition
 
-Use this pattern when users need a coherent place to understand and change account identity, contact details, preferences, security, privacy, notifications or billing. Avoid treating a generic settings screen as a substitute for authoritative permission, identity, privacy or payment policy. This page owns **cross-section composition, navigation, account overview, profile editing and save behavior**; specialized security, billing and consent rules remain with their respective canonical pages.
+| Batch | Candidate gaps | Catalog context reviewed before editing | Canonical action and batch commit | Status |
+| --- | --- | --- | --- | --- |
+| 1 — Portal/profile | KG-001–006 | Registry, root/nested indexes, task flows, form and interaction recovery, authentication, privacy, role-aware access, contribution rules | Create [account/settings portal](../patterns/account-and-settings-portal.md) for cross-section architecture, overview, profile and contact changes; defer identity and data policy to related owners · `6e8ca76` | Committed; index integration in final commit |
+| 2 — Security/privacy | KG-007–013 and KG-023 | Auth lifecycle, privacy/data lifecycle, managed profile vs login, role-aware server authorization, NIST/OWASP and jurisdictional limits | **Extend** [authentication](../patterns/authentication-and-account-lifecycle.md), [privacy](../guidance/privacy-consent-and-trust.md) and [role-aware](../patterns/role-aware-workspaces-and-context-switching.md) contracts · `323958a` | Committed; domain owner review pending |
+| 3 — Preferences/billing/QA | KG-014–022 and KG-024 | Notifications, themes, localization and quality pages, catalog structure, payment vs form/state boundaries | **Extend** notifications/themes/i18n/quality; **create** [billing/subscription](../patterns/billing-and-subscription-settings.md) for distinct payment/plan/invoice tasks · `ba382b7` | Committed; provider/legal review pending |
 
-### Navigation and overview contract (KG-001, KG-002)
+## Candidate-by-candidate coverage decisions
 
-- Group by user mental model and consequence: **Profile**, **Security**, **Privacy & data**, **Notifications**, **Appearance & language**, **Billing & plan** where supported. Do not render unavailable or inapplicable groups merely to complete a template.
-- Put account identifier and status in an understandable overview; show actionable alerts and last successful state only when supported by reliable data. Do not display secrets, full payment instruments or sensitive identifiers in dashboards.
-- Use stable named routes and deep links, distinguish current section in navigation, preserve back/forward and meaningful headings. On small screens, use an accessible list-to-detail navigation instead of forcing a cramped desktop sidebar.
-- Treat cross-workspace/global settings explicitly. Display which account, user, team or tenant will be changed; do not silently apply a personal preference to all workspaces.
-- Place destructive account actions in an intentionally separated section with descriptive consequences, not adjacent to routine profile edits.
-
-### Profile and contact information (KG-004, KG-005, KG-006)
-
-- Separate editable display information from verified identity claims. Label what is public, shared internally or private; indicate server-managed or locked fields and explain why they cannot be edited.
-- For avatar/photo changes, provide preview, cropping alternative, accessible text, size/type validation, cancellation and a recoverable upload failure; do not assume an image is mandatory.
-- Changing a verified email or phone is a **pending verification journey**, not an ordinary text-save. Distinguish requested, challenge sent, verified, expired, rejected and reverted states. Keep current verified contact available until policy-defined transfer completes.
-- Data export is a separate asynchronous request with eligible scope, request time, ready/expired/failed status and a private authenticated download route. Legal and retention obligations require product-specific review; never promise instant export or universal portability.
-
-### Settings persistence (KG-003)
-
-| State | User-facing contract | Verification |
+| Candidate | Decision | Canonical owner |
 | --- | --- | --- |
-| Pristine | Display effective server-backed value and source (account, workspace or device) | Reload and compare |
-| Dirty | Mark what has changed; expose save/cancel or clearly explained autosave | Back/close with dirty input |
-| Saving | Disable conflicting repeated changes only as necessary; preserve focus and inputs | Slow network and repeated action |
-| Saved | Confirm persistence at the actual scope, not simply click receipt | Refresh, second device and fresh session |
-| Validation failure | Put specific errors next to fields and provide summary for complex forms | Keyboard and screen reader |
-| Conflict | Explain another editor/device changed the value; offer safe reload/compare/reapply when possible | Concurrent edits |
-| Offline or unknown outcome | Do not imply remote save succeeded; distinguish draft and synchronized value | Offline, timeout, server retry |
-| Permission revoked | Explain why change is no longer permitted without leaking other users' data | Server authorization and stale page |
+| KG-001 Settings IA | New composed portal guidance | `pattern.account-settings-portal` |
+| KG-002 Account overview | New composed portal guidance | `pattern.account-settings-portal` |
+| KG-003 Save/dirty/conflict | Extend composition, reuse forms/offline | `pattern.account-settings-portal` |
+| KG-004 Profile editing | New composed portal guidance, reuse forms | `pattern.account-settings-portal` |
+| KG-005 Verified email/phone | Extend authenticated contact journey | `pattern.account-settings-portal` + `pattern.authentication-lifecycle` |
+| KG-006 Account export | Reuse existing data lifecycle; add portal state | `guidance.privacy-trust` + `pattern.account-settings-portal` |
+| KG-007 Credentials | Extend existing auth | `pattern.authentication-lifecycle` |
+| KG-008 MFA/passkeys | Extend existing auth | `pattern.authentication-lifecycle` |
+| KG-009 Device sessions | Extend existing auth | `pattern.authentication-lifecycle` |
+| KG-010 Connected provider/apps | Extend existing auth | `pattern.authentication-lifecycle` |
+| KG-011 Privacy preference center | Extend existing privacy | `guidance.privacy-trust` |
+| KG-012 Personal data rights | Extend existing privacy | `guidance.privacy-trust` |
+| KG-013 Closure/deletion | Extend existing privacy + auth | `guidance.privacy-trust` |
+| KG-014 Notification taxonomy | Extend existing notifications | `pattern.notifications-attention` |
+| KG-015 Quiet hours/digest | Extend existing notifications | `pattern.notifications-attention` |
+| KG-016 Appearance controls | Extend tokens/theme rules | `foundation.design-tokens` |
+| KG-017 Accessibility preferences | Extend theme/system preference constraints | `foundation.design-tokens` |
+| KG-018 Language switch | Extend existing i18n | `guidance.internationalization` |
+| KG-019 Regional settings | Extend existing i18n | `guidance.internationalization` |
+| KG-020 Billing methods | New specialized lifecycle | `pattern.billing-subscription-settings` |
+| KG-021 Plan/subscription changes | New specialized lifecycle | `pattern.billing-subscription-settings` |
+| KG-022 Invoices/history | New specialized lifecycle | `pattern.billing-subscription-settings` |
+| KG-023 High-risk authorization | Extend role-aware access rules | `pattern.role-aware-workspaces` |
+| KG-024 Portal-wide verification | Extend existing quality gate | `governance.quality` |
 
-Prefer an explicit save for high-consequence or multi-field forms; autosave may fit independent, reversible settings when effective state, failure and rollback are clear. Use [forms](forms.md), [offline conflicts](offline-sync-and-conflicts.md) and [interaction recovery](interaction-states-and-recovery.md) rather than creating unique controls for every setting.
+**Disposition summary:** 24 candidates reviewed; 2 new canonical concepts; 7 existing concept documents extended; 0 intentionally duplicated component contracts. The original 24 candidates were prompts, **not 24 verified missing catalog pages**. All additions remain proposed and require accountable owner, design, security, privacy/legal and real-product review as applicable.
 
-## Composition example
+## Source applicability and review limits
 
-`/settings` account overview -> `/settings/profile` editable fields -> validation -> submit -> verified persisted result. A separate `/settings/security` high-risk action first asks for server-approved step-up verification, then returns focus and navigational context. On mobile, the section list precedes the detail view; deep links still open directly with a clear back route.
+- [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) — normative accessibility standards and practical widget patterns; product testing required.
+- [NIST SP 800-63B-4](https://csrc.nist.gov/pubs/sp/800/63/b/4/final) and [OWASP Authentication](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html), [Authorization](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) — identity/security guidance, not evidence of implementation.
+- [ICO data protection by design](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/data-protection-by-design-and-by-default) and [FTC Dark Patterns](https://www.ftc.gov/reports/bringing-dark-patterns-light) — jurisdiction-specific and advisory privacy/choice context, not a legal determination.
+- [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/) — language/RTL considerations; product support depends on locale scope.
+- [PCI SSC document library](https://www.pcisecuritystandards.org/document_library/) — payment security reference requiring expert applicability assessment; no claim of compliance or provider behavior.
 
-**Anti-example:** a single giant tab panel mixes cancel subscription, theme toggle and email change with one global Save button; changing email appears successful before address verification, and navigating away silently discards data.
-
-## Inclusive operation and review
-
-- Use semantic sections, a single main landmark, descriptive headings, active navigation state and focus management when changing views. Keep touch, keyboard, zoom/reflow and 200% text-equivalent scenarios operable.
-- Externalize labels, errors and date/number formats. Test long translations and RTL; do not use left/right wording to describe settings controls.
-- Test unsaved-change dialogs without trapping users; safe exit must remain possible. Honor reduced motion, all supported themes, contrast and persistent focus indicators.
-- Measure settings task completion, form corrections and failure recovery; do not claim adoption, task success or WCAG conformance without product tests.
-
-## Existing canonical ownership and sources
-
-- [Task flows and information architecture](task-flows-and-information-architecture.md): wayfinding, hierarchy, deep links.
-- [Forms](forms.md): input, validation and save mechanics.
-- [Authentication and account lifecycle](authentication-and-account-lifecycle.md): identity proof, factors and verification.
-- [Privacy and trust](../guidance/privacy-consent-and-trust.md): audience, rights requests and deletion.
-- [Role-aware workspaces](role-aware-workspaces-and-context-switching.md): tenant/member permission boundaries.
-- [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) (Recommendation; consulted 2026-11-07): applicable accessibility criteria, not product certification.
-- [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (consulted 2026-11-07): accessible navigation/widget patterns; prefer native HTML.
-- [Nielsen Norman Group, Settings](https://www.nngroup.com/articles/) (general practitioner reading; applicability must be reviewed, not a normative standard).
-
-## Evidence matrix
-
-| Check | Status |
-| --- | --- |
-| Existing catalog ownership and aliases inspected | PASS (documentation review) |
-| Portal navigation, persistence and concurrency tested in product | NOT VERIFIED |
-| Keyboard, assistive technology, responsive/RTL, cross-device | NOT VERIFIED |
-| Identity verification and data portability policy approved | NOT VERIFIED |
-
-**Canonical ID:** `pattern.account-settings-portal` · **Drafted:** 2026-11-07.
+**Verification at drafting:** catalog source review PASS; catalog validator/unit/CI checks PENDING; actual product flow, payment, authentication, deletion, browser delivery, keyboard/assistive technology and locale tests NOT VERIFIED. Report real checks and results in PR before review. There is no target-app implementation PR.

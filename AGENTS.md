@@ -89,3 +89,7 @@ Resolve `architecture.reference-examples` for `prototype file structure`, `MVP f
 ## Batch 20 — application architecture knowledge closure
 
 Use the [task-first architecture index](architecture/README.md) rather than chronological batch notes as a navigation starting point. The [final architecture knowledge audit](planning/application-architecture-batch-20-closure-audit.md) reconciles seven new proposed canonical concepts, documents known overlaps and residual implementation evidence. Choose guidance by actual developer task: selection → module ownership → framework → enterprise topology, migration, enforcement and examples as needed. Do not promote proposed guidance or claim runtime verification from catalog CI.
+
+## Account and settings portal lookup (three-batch initiative)
+
+Inspect [batch context and progress](planning/account-settings-batch-progress.md) before extending portal concepts. Use `pattern.account-settings-portal` to compose settings navigation, profile and save states, and `pattern.billing-subscription-settings` for payment/plan/invoices. Reuse existing `pattern.authentication-lifecycle`, `guidance.privacy-trust`, `pattern.notifications-attention`, `foundation.design-tokens`, `guidance.internationalization`, and `pattern.role-aware-workspaces` for domain rules; do not duplicate. Validate the registry and all tests, and do not claim security, payment, accessibility or legal conformance without real-world evidence.

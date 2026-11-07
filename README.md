@@ -19,6 +19,8 @@
 | Explore prototype, MVP and enterprise code-layout examples | [Application architecture reference examples](architecture/application-architecture-reference-examples.md) |
 | Decide primitive vs component vs pattern vs feature | [Component model](architecture/component-model.md) |
 | Specify a new or changed reusable component | [Component contracts](architecture/component-contracts.md) and [entry template](templates/concept-entry.md) |
+| Organize profile, security and personal preferences in a settings portal | [Account and settings portal](patterns/account-and-settings-portal.md) |
+| Design billing details, subscription changes or invoices | [Billing and subscription settings](patterns/billing-and-subscription-settings.md) |
 | Design role-based portals, previews or workspace switching | [Role-aware workspaces and context switching](patterns/role-aware-workspaces-and-context-switching.md) |
 | Simplify navigation or a critical task | [Task flows and information architecture](patterns/task-flows-and-information-architecture.md) |
 | Design loading, error, or destructive states | [Interaction states and recovery](patterns/interaction-states-and-recovery.md) |
@@ -223,3 +225,7 @@ The [architecture enforcement guide](architecture/architecture-enforcement-and-c
 ## Batch 20 — application architecture knowledge closure
 
 The [task-first architecture index](architecture/README.md) is the recommended starting point for developers. The [Batch 20 audit](planning/application-architecture-batch-20-closure-audit.md) reconciles Batches 13–19, identifies canonical owners and records unverified application-specific outcomes. This closes knowledge development for the initiative, **not** a runtime refactor, empirical DX test or approval to merge the draft PR.
+
+## Account/settings knowledge batches (proposed)
+
+[Context-first progress and candidate dispositions](planning/account-settings-batch-progress.md) record three audited batches on one shared branch/PR. The [account/settings portal](patterns/account-and-settings-portal.md) owns cross-section composition; [billing/subscription settings](patterns/billing-and-subscription-settings.md) owns payments and plan journeys; security, privacy, notifications, theming, localization and access control reuse their existing canonical concepts. These are proposed documentation artifacts, not deployed or tested application features.

@@ -56,3 +56,9 @@ For hosted identity and managed-profile boundaries use [authentication](authenti
 ## Batch 8 — configuration and capability dependencies
 
 [Task flows](task-flows-and-information-architecture.md) now distinguishes independently stored feature flags from dependent user capabilities and requires an explicit configuration/action matrix. [Interaction recovery](interaction-states-and-recovery.md) covers paused-feature transitions and pending work. Review the [Batch 8 evidence ledger](../planning/little-wins-batch-8-context-and-gap-ledger.md) before drawing conclusions about any particular application.
+
+## Account and settings knowledge batches
+
+- [Account and settings portal](account-and-settings-portal.md) — `pattern.account-settings-portal`; IA, profile/contact verification, effective save states, concurrent edits and data export. Follow existing canonical identity, privacy and form guidance.
+- [Billing and subscription settings](billing-and-subscription-settings.md) — `pattern.billing-subscription-settings`; payment methods, renewal, downgrade/cancellation and invoice access. Payment and legal outcomes require real product verification.
+- [Batch progress and gap disposition](../planning/account-settings-batch-progress.md) — three context-first batches, same PR, with known scope boundaries.
