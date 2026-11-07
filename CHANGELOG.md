@@ -1,5 +1,8 @@
 ## Unreleased
 
+- Settings knowledge Batch 4 (proposed, cumulative draft PR #12): add KG-007 configuration-change event contract, scoped history viewing, retention/redaction ownership and setting-revert vs historical-side-effect distinction in `pattern.account-settings-portal`. Reuse role-aware audit visibility, privacy and recovery guidance; no new concept, runtime event log or automated proof claimed.
+
+
 - Settings knowledge Batch 3 (proposed, cumulative draft PR #12): add KG-004 time/reporting configuration decision and validation contract, and KG-008 personal preference scope/effective mode and fallback UX to `pattern.account-settings-portal`. Reuse existing theme, internationalization and accessibility owners; do not introduce a timezone control before a domain decision. Little Wins F20 source reviewed; runtime and manual tests NOT VERIFIED.
 
 
