@@ -179,13 +179,38 @@
         "wayfinding",
         "flow",
         "search",
-        "funnel"
+        "funnel",
+        "task flow",
+        "information architecture",
+        "deep links",
+        "breadcrumbs"
       ],
       "domains": [
         "information-architecture",
         "ux",
         "journeys"
-      ]
+      ],
+      "use_when": [
+        "designing a task journey",
+        "reorganizing navigation and wayfinding",
+        "preserving search and filter context",
+        "reviewing entry and exit paths"
+      ],
+      "avoid_when": [
+        "optimizing click counts without verifying user task success",
+        "hiding safety critical information in progressive disclosure"
+      ],
+      "related": [
+        "principle.visual-hierarchy",
+        "pattern.role-aware-workspaces",
+        "guidance.ux-measurement",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "principle.visual-hierarchy"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "pattern.role-aware-workspaces",
@@ -235,13 +260,37 @@
         "toast",
         "dialog focus",
         "offline",
-        "async"
+        "async",
+        "retry",
+        "network timeout",
+        "partial failure",
+        "destructive confirmation"
       ],
       "domains": [
         "interaction",
         "accessibility",
         "error-handling"
-      ]
+      ],
+      "use_when": [
+        "designing loading error and empty states",
+        "defining recoverable form validation",
+        "handling safe retry after a timeout",
+        "managing dialog focus and completion feedback"
+      ],
+      "avoid_when": [
+        "retrying a non-idempotent action without confirming outcome",
+        "discarding entered data on an error"
+      ],
+      "related": [
+        "architecture.component-contracts",
+        "guidance.accessibility",
+        "pattern.task-flows"
+      ],
+      "depends_on": [
+        "architecture.component-contracts"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "guidance.accessibility",
@@ -260,13 +309,34 @@
         "focus",
         "zoom",
         "touch target",
-        "reduced motion"
+        "reduced motion",
+        "keyboard navigation",
+        "modal focus",
+        "screen reader testing"
       ],
       "domains": [
         "accessibility",
         "testing",
         "inclusive-design"
-      ]
+      ],
+      "use_when": [
+        "reviewing keyboard and focus behavior",
+        "checking semantic HTML and accessible names",
+        "testing zoom reflow and contrast",
+        "evaluating touch interaction and reduced motion"
+      ],
+      "avoid_when": [
+        "claiming WCAG compliance from automated checks alone",
+        "using ARIA when native semantics suffice"
+      ],
+      "related": [
+        "architecture.component-contracts",
+        "pattern.interaction-recovery",
+        "guidance.internationalization"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "guidance.internationalization",
@@ -284,13 +354,34 @@
         "bidi",
         "locale",
         "plural",
-        "pseudolocalization"
+        "pseudolocalization",
+        "text expansion",
+        "locale formatting",
+        "bidirectional layout"
       ],
       "domains": [
         "internationalization",
         "localization",
         "accessibility"
-      ]
+      ],
+      "use_when": [
+        "externalizing product messages",
+        "designing RTL and mixed direction layouts",
+        "testing translated error labels",
+        "formatting dates numbers and plurals by locale"
+      ],
+      "avoid_when": [
+        "concatenating translated sentence fragments",
+        "mirroring logos or numeric data without review"
+      ],
+      "related": [
+        "guidance.accessibility",
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "guidance.ux-measurement",

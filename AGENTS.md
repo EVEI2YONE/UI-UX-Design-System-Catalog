@@ -13,3 +13,5 @@ This repository is a **reference catalog of proposed UI/UX knowledge**, not a sh
 For humans, see [README](README.md). For schema and lookup behavior, see [catalog lookup](catalog/README.md). Validate with `python3 scripts/validate_catalog.py` and `python3 -m unittest discover -s tests -v`.
 
 Do not edit the default branch directly or treat a documentation specification as an executable component.
+
+**Batch 2 starting points:** [Task flows and information architecture](patterns/task-flows-and-information-architecture.md), [interaction states and recovery](patterns/interaction-states-and-recovery.md), [accessibility](guidance/accessibility.md), and [internationalization](guidance/internationalization.md). Example queries: `python3 scripts/find_concept.py 'information architecture' --json`, `python3 scripts/find_concept.py 'network timeout' --json`, `python3 scripts/find_concept.py 'keyboard navigation' --json`, `python3 scripts/find_concept.py 'text expansion' --json`. Validate fit against the canonical page before adopting a result.

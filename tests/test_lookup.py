@@ -34,5 +34,36 @@ class LookupTests(unittest.TestCase):
         self.assertEqual(lookup(self.entries, 'quasar pineapple nebula'), [])
 
 
+    def test_task_flow_alias(self):
+        found = lookup(self.entries, 'information architecture')
+        self.assertEqual(found[0]['id'], 'pattern.task-flows')
+
+    def test_recovery_intent(self):
+        found = lookup(self.entries, 'network timeout')
+        self.assertEqual(found[0]['id'], 'pattern.interaction-recovery')
+
+    def test_keyboard_accessibility(self):
+        found = lookup(self.entries, 'keyboard navigation')
+        self.assertEqual(found[0]['id'], 'guidance.accessibility')
+
+    def test_translation_intent(self):
+        found = lookup(self.entries, 'text expansion')
+        self.assertEqual(found[0]['id'], 'guidance.internationalization')
+
+    def test_batch2_cross_references(self):
+        ids = {entry['id'] for entry in self.entries}
+        for ident in ('pattern.task-flows', 'pattern.interaction-recovery',
+                      'guidance.accessibility', 'guidance.internationalization'):
+            entry = next(e for e in self.entries if e['id'] == ident)
+            self.assertEqual(entry['status'], 'proposed')
+            self.assertEqual(entry['owner'], 'unassigned')
+            self.assertIsNone(entry['reviewed_at'])
+            self.assertTrue(entry['use_when'])
+            self.assertTrue(entry['avoid_when'])
+            self.assertTrue(entry['related'])
+            for ref in entry['related'] + entry['depends_on']:
+                self.assertIn(ref, ids)
+                self.assertNotEqual(ref, ident)
+
 if __name__ == '__main__':
     unittest.main()
