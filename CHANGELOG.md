@@ -25,3 +25,10 @@
 - Add retrieval metadata, intent aliases, usage boundaries and canonical cross-references for task flows, interaction recovery, accessibility and internationalization.
 - Extend lookup regression tests with four task-oriented queries and cross-reference verification.
 - Update pattern/guidance agent discovery and correct the literal newline in the patterns index. All canonical paths and proposed statuses remain unchanged.
+
+## Unreleased — Batch 3 agent lookup structure
+
+- Add usage boundaries, aliases, canonical references and explicit unassigned ownership for UX measurement, lifecycle and quality guidance.
+- Extend agent lookup tests for metrics, catalog promotion, documentation checks and reference integrity.
+- Update governance, guidance, catalog and agent discovery; correct a literal newline in root navigation.
+- Preserve canonical IDs, statuses and paths. The independently added role-aware workspace concept is outside these three batches.

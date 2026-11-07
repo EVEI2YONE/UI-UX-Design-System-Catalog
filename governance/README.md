@@ -7,3 +7,5 @@ The catalog needs stable identity, accountable decisions, evidence and planned d
 - [References](references.md): authoritative standards starting points and source status.
 
 For changes see [Contributing](../CONTRIBUTING.md) and the [PR template](../.github/pull_request_template.md).
+
+**Agent retrieval:** use `governance.lifecycle` for reuse decisions, ownership, promotion or deprecation; use `governance.quality` for evidence, review and release checks. Their canonical IDs, lifecycle statuses and references live in the [registry](../catalog/index.json). Documentation checks are not proof of a production component or accessible UX. See [AGENTS.md](../AGENTS.md).

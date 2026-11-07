@@ -400,13 +400,39 @@
         "time on task",
         "drop-off",
         "abandonment",
-        "analytics"
+        "analytics",
+        "task completion rate",
+        "usability metrics",
+        "funnel measurement",
+        "event schema",
+        "survey score"
       ],
       "domains": [
         "ux-research",
         "measurement",
         "analytics"
-      ]
+      ],
+      "use_when": [
+        "defining task success and eligible attempts",
+        "measuring error rates or step abandonment",
+        "designing privacy-respecting UX event instrumentation",
+        "interpreting SUS CES and NPS scores"
+      ],
+      "avoid_when": [
+        "treating SUS as a percentage of users",
+        "claiming causality without controlled evidence",
+        "collecting secrets or sensitive form inputs in telemetry"
+      ],
+      "related": [
+        "pattern.task-flows",
+        "pattern.interaction-recovery",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "pattern.task-flows"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "governance.lifecycle",
@@ -423,13 +449,36 @@
         "status",
         "ownership",
         "versioning",
-        "decision record"
+        "decision record",
+        "component lifecycle",
+        "catalog promotion",
+        "sunset plan",
+        "migration decision",
+        "stable guideline"
       ],
       "domains": [
         "governance",
         "lifecycle",
         "adoption"
-      ]
+      ],
+      "use_when": [
+        "deciding whether to reuse extend or create a concept",
+        "promoting proposed guidance to experimental or stable",
+        "deprecating a shared pattern",
+        "recording owner and compatibility decisions"
+      ],
+      "avoid_when": [
+        "promoting a proposal without reviewed evidence and ownership",
+        "removing a referenced entry without migration guidance"
+      ],
+      "related": [
+        "architecture.component-model",
+        "architecture.component-contracts",
+        "governance.quality"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "governance.quality",
@@ -446,13 +495,37 @@
         "validation",
         "test",
         "release gate",
-        "migration priorities"
+        "migration priorities",
+        "quality gates",
+        "catalog validation",
+        "documentation checks",
+        "verification evidence",
+        "accessibility release blocker"
       ],
       "domains": [
         "quality",
         "testing",
         "governance"
-      ]
+      ],
+      "use_when": [
+        "reviewing catalog entry completeness",
+        "recording actual checks and verification status",
+        "assessing release blockers and migration priorities",
+        "checking cross-references and documentation integrity"
+      ],
+      "avoid_when": [
+        "marking unperformed checks as PASS",
+        "treating documentation validation as runtime accessibility compliance"
+      ],
+      "related": [
+        "governance.lifecycle",
+        "guidance.accessibility",
+        "guidance.internationalization",
+        "guidance.ux-measurement"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }

@@ -65,5 +65,30 @@ class LookupTests(unittest.TestCase):
                 self.assertIn(ref, ids)
                 self.assertNotEqual(ref, ident)
 
+
+    def test_measurement_intent(self):
+        found = lookup(self.entries, 'task completion rate')
+        self.assertEqual(found[0]['id'], 'guidance.ux-measurement')
+
+    def test_lifecycle_intent(self):
+        found = lookup(self.entries, 'catalog promotion')
+        self.assertEqual(found[0]['id'], 'governance.lifecycle')
+
+    def test_quality_intent(self):
+        found = lookup(self.entries, 'documentation checks')
+        self.assertEqual(found[0]['id'], 'governance.quality')
+
+    def test_batch3_registry_metadata_and_references(self):
+        ids = {entry['id'] for entry in self.entries}
+        for ident in ('guidance.ux-measurement', 'governance.lifecycle', 'governance.quality'):
+            entry = next(e for e in self.entries if e['id'] == ident)
+            self.assertEqual(entry['status'], 'proposed')
+            self.assertEqual(entry['owner'], 'unassigned')
+            self.assertIsNone(entry['reviewed_at'])
+            self.assertTrue(entry['use_when'] and entry['avoid_when'] and entry['related'])
+            for ref in entry['related'] + entry['depends_on']:
+                self.assertIn(ref, ids)
+                self.assertNotEqual(ref, ident)
+
 if __name__ == '__main__':
     unittest.main()

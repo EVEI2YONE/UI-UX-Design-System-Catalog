@@ -12,7 +12,8 @@
 | Create a theme or rationalize raw values | [Tokens and themes](foundations/design-tokens-and-themes.md) |
 | Decide primitive vs component vs pattern vs feature | [Component model](architecture/component-model.md) |
 | Specify a new or changed reusable component | [Component contracts](architecture/component-contracts.md) and [entry template](templates/concept-entry.md) |
-| Design role-based portals, previews or workspace switching | [Role-aware workspaces and context switching](patterns/role-aware-workspaces-and-context-switching.md) |\n| Simplify navigation or a critical task | [Task flows and information architecture](patterns/task-flows-and-information-architecture.md) |
+| Design role-based portals, previews or workspace switching | [Role-aware workspaces and context switching](patterns/role-aware-workspaces-and-context-switching.md) |
+| Simplify navigation or a critical task | [Task flows and information architecture](patterns/task-flows-and-information-architecture.md) |
 | Design loading, error, or destructive states | [Interaction states and recovery](patterns/interaction-states-and-recovery.md) |
 | Design and test keyboard, focus, contrast, touch, or zoom | [Accessibility](guidance/accessibility.md) |
 | Support translations, long labels, and RTL | [Internationalization](guidance/internationalization.md) |
@@ -94,3 +95,5 @@ These are **proposed guidance definitions**. Component implementations, manual a
 Agents should begin with [AGENTS.md](AGENTS.md), query [the canonical registry](catalog/index.json) with the [lookup tool](scripts/find_concept.py), then open only the relevant source pages. The [catalog schema](catalog/schema.json) defines optional retrieval metadata. IDs, status and source paths remain canonical; no published component implementations are implied.
 
 **Batch 2 agent lookup:** [Patterns](patterns/README.md) and [cross-cutting guidance](guidance/README.md) now expose task-flow, recovery, accessibility and localization canonical IDs through the same registry. These remain proposed guidance, not verified product implementations.
+
+**Batch 3 agent lookup:** [UX measurement](guidance/ux-measurement.md) and [governance](governance/README.md) now expose metrics, lifecycle and quality-gate concepts through the same registry. Retrieval metadata is present for all three scaffold-definition batches; the separately documented role-aware workspace entry remains unchanged.
