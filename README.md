@@ -10,6 +10,7 @@
 | --- | --- |
 | Establish visual hierarchy, spacing, and affordances | [Design principles](foundations/design-principles.md) |
 | Create a theme or rationalize raw values | [Tokens and themes](foundations/design-tokens-and-themes.md) |
+| Enforce feature/module import boundaries in CI | [Architecture enforcement and CI guardrails](architecture/architecture-enforcement-and-ci.md) |
 | Adapt app structure to Next.js, Angular or React Router | [Framework-aware application structure](architecture/framework-aware-application-structure.md) |
 | Choose prototype, MVP, growing or enterprise app code structure | [Application architecture selection](architecture/application-architecture.md) |
 | Organize features, domains, and developer navigation | [Module boundaries and developer navigation](architecture/module-boundaries-and-developer-navigation.md) |
@@ -209,3 +210,7 @@ Start with [application structure selection](architecture/application-architectu
 ## Batch 17 — framework-aware application file structure
 
 The [framework-aware application structure guide](architecture/framework-aware-application-structure.md) maps generic feature-first advice to Next.js App Router, Angular and React Router while protecting route semantics. Consult the [context-first Batch 17 ledger](planning/application-architecture-batch-17-context-and-gaps.md) before adapting examples to a real app. Framework-specific behavior remains implementation- and version-dependent.
+
+## Batch 18 — application architecture enforcement
+
+The [architecture enforcement guide](architecture/architecture-enforcement-and-ci.md) provides actionable ESLint, dependency-cruiser and Nx approaches, limitations and incremental CI adoption; the [context-first evidence ledger](planning/application-architecture-batch-18-context-and-gaps.md) distinguishes current catalog coverage from new implementation guidance. Configuration fragments are illustrative, not executed checks in a product repository.
