@@ -166,6 +166,58 @@
       "reviewed_at": null
     },
     {
+      "id": "foundation.icon-semantics",
+      "title": "Icon semantics and accessible icon controls",
+      "path": "foundations/iconography-and-semantics.md",
+      "layer": "foundations",
+      "kind": "contract",
+      "status": "proposed",
+      "summary": "Semantic icon intent registry, decorative/informative/action roles, and accessible icon-only action states and target rules.",
+      "aliases": [
+        "icon semantics",
+        "iconography registry",
+        "semantic icon registry",
+        "icon-only button",
+        "icon action",
+        "accessible icon controls",
+        "icon button loading state",
+        "decorative status icon",
+        "icon accessibility"
+      ],
+      "domains": [
+        "iconography",
+        "accessibility",
+        "components",
+        "interaction-states",
+        "visual-design"
+      ],
+      "use_when": [
+        "selecting icons for reusable UI controls",
+        "defining semantic icon intent and action labels",
+        "designing icon-only buttons and state transitions",
+        "auditing decorative versus informative icons"
+      ],
+      "avoid_when": [
+        "adding icons merely to decorate every control",
+        "replacing an existing button or menu implementation with a new icon component"
+      ],
+      "related": [
+        "foundation.practical-styling",
+        "component.button",
+        "architecture.component-contracts",
+        "guidance.accessibility",
+        "guidance.internationalization",
+        "pattern.feedback",
+        "pattern.interaction-recovery"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "guidance.accessibility"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
       "id": "foundation.design-tokens",
       "title": "Design tokens and themes",
       "path": "foundations/design-tokens-and-themes.md",
