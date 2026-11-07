@@ -34,3 +34,13 @@ Also see [quality gates](../governance/quality-gates.md) and [sources](../govern
 **Batch 11 discovery:** `guidance.ai-experiences` addresses generated-output trust and evidence. For side-effecting AI tools, use `pattern.agentic-actions`; for voice/chat and modality switching, use `pattern.multimodal-conversation`. All remain proposed.
 
 **Batch 12 discovery:** `guidance.performance-experience` owns perceived/operational performance; `guidance.experimentation` owns controlled comparisons and validity. Continue to use `guidance.ux-measurement` for underlying task events/denominators, and existing [quality gates](../governance/quality-gates.md) for implementation evidence.
+
+
+## Batch 6 — persisted data lifecycle
+
+[Privacy, consent and trustworthy UX](privacy-consent-and-trust.md) now includes archival, versioned export, retention and correction-history expectations. For synchronization and migration mechanics, follow [offline/sync and conflict recovery](../patterns/offline-sync-and-conflicts.md), with [quality gates](../governance/quality-gates.md) for evidence. These are proposed designs, not verified product capabilities.
+
+
+## Batch 7 — integrated accessibility tasks
+
+[Accessibility guidance](accessibility.md) now includes record-to-dialog-to-updated-list journey verification and explicit source-observed versus actually tested claims. Pair [table actions](../patterns/data-tables.md) with [dialog focus behavior](../components/dialog/spec.md).

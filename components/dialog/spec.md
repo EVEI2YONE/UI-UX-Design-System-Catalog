@@ -42,3 +42,14 @@ Use semantic overlay, surface, typography, border, elevation and focus roles, no
 **Canonical ID:** `component.dialog` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** unify dialog shells only after focus, dismissal and consumer-impact checks; keep task flows app-local. Documentation-only.
 
 Related: [component contracts](../../architecture/component-contracts.md), [interaction recovery](../../patterns/interaction-states-and-recovery.md), [accessibility](../../guidance/accessibility.md). Authoritative interaction guidance: [WAI-ARIA APG](../../governance/references.md), with native semantic controls preferred where appropriate.
+
+
+## Batch 7 — native dialog integration and task continuity (2026-11-07)
+
+**Source trigger:** Little Wins composes a native `<dialog>`, calls `showModal()` after mount, handles `cancel` with a parent callback, and closes via a parent-controlled unmount and backdrop click. Its contribution form can hold unsaved input inside that dialog. These are implementation facts from the supplied ZIP, **not** evidence that focus or drafts are actually lost.
+
+**Decision contract:** for a stateful modal, specify an invocation focus target, initial focus strategy, `cancel`/Escape path, close-button path, backdrop behavior, save/discard/cancel policy, post-commit focus destination and fallback when the invoker disappears. Make the handling of the native `cancel` event explicit; if the app denies dismissal to protect unsaved work, use an accessible confirmation flow and state-based close policy, not a broken Escape key. Confirm that backdrop clicks cannot silently destroy a draft. Use the platform's dialog focus/inert behavior where supported; do not assume a custom mount/unmount wrapper implements every return-focus case.
+
+**Implementation verification:** (1) open with keyboard and pointer, inspect actual initial focus; (2) Tab/Shift+Tab, Escape, Cancel and backdrop; (3) modify input, attempt dismissal, verify truthful loss warning and resumption; (4) complete async save with success/error, verify status plus focus after close; (5) remove initiating row on approval/filter and verify fallback focus; (6) repeat at narrow/zoomed view, with long translated content and screen reader. Record PASS/FAIL/NOT VERIFIED per scenario, browser and assistive technology.
+
+**Good:** dialog closes after confirmed success and focus moves to the refreshed review list heading or next item if the original action disappeared. **Anti-example:** a modal unmounts on backdrop without checking edits, or assumes the browser will restore focus to a now-removed row.

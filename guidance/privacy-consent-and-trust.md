@@ -61,3 +61,18 @@ A browser/device permission is not the same thing as an app-category preference.
 **Canonical ID:** `guidance.privacy-trust` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
 Related: [content design](content-design-and-ux-writing.md), [authentication lifecycle](../patterns/authentication-and-account-lifecycle.md), [notifications](../patterns/notifications-and-attention.md), [accessibility](accessibility.md), [service recovery](../patterns/service-recovery-and-support.md).
+
+
+## Data lifecycle, portability and archived records (Batch 6 — proposed, 2026-11-07)
+
+**When to use:** collaborative products with persisted contribution histories, reward/credit ledgers, legacy records, retained archives or user-requested exports. **Avoid:** assuming that hiding an item, removing a UI switch, archiving a group, deleting an account and erasing every record are equivalent operations. This extends existing deletion/download guidance; it does not establish a particular legal right or retention period.
+
+**Lifecycle contract:** document a record's owner/controller, subject, collection purpose, visibility, mutability, archival state, retention basis, export eligibility, deletion restrictions and restoration path. Separate *active*, *archived*, *restricted*, *deletion-pending* and *erased*; show which states remain accessible to administrators and data subjects. Explain whether account closure, group removal and member removal affect historical attributions, reward reservations and approved contributions.
+
+**Portability UX:** before export, show scope (workspace/group/project/date), included record types, formatting, recipients, privacy exposure and exclusion/redaction policy. Confirm availability only when the backend produces a usable file; never claim an export feature exists from a JSON storage implementation alone. For imports/restores, preview target scope, duplicates, merge-versus-replace behavior, audit consequences and rollback options. Avoid re-importing a value-changing ledger twice.
+
+**Preservation rules:** treat historical points and review outcomes as an auditable sequence rather than mutable totals; where policy allows corrections, append a reasoned correction record and keep actor/subject distinctions. Archiving a sample group or disabling a feature is not data deletion. Data minimization and subject-access duties require product-specific privacy/legal review; do not treat archival history as indefinitely retainable by default.
+
+**Illustrative trigger:** Little Wins stores an owner-scoped D1 workspace JSON aggregate, preserves legacy unscoped activity by normalizing it to a General project, archives demo groups, and does not document an end-user export/restore flow. These source observations are not evidence that production backup or privacy requests are implemented.
+
+**Acceptance (NOT VERIFIED unless tested):** export consistency against backend records; record-level access/redaction; bulk file size; versioned export schema; duplicate import/idempotency; role revocation during download; deletion and backup-retention boundaries; screen-reader/keyboard export feedback; safe error and interrupted-download recovery.

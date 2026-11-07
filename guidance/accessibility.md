@@ -41,3 +41,10 @@ For each *implemented* critical task, document the assistive technology/input co
 | Motion and themes | Reduced-motion preference honored; focus and status distinguishable | Mode, preference and contrast measurements |
 
 Use [WCAG 2.2](../governance/references.md) for the precise normative success criteria and exceptions rather than turning these scenario descriptions into invented numeric thresholds. Mark each check `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` with reason; do not claim blanket compliance from an empty scan.
+
+
+## Batch 7 — connected journey evidence, not isolated controls (2026-11-07)
+
+Audit **entry -> record action -> modal/form -> validation or submission -> updated list -> resumed focus** as one continuous task. Check that a keyboard user can reach every step and can identify where they are after an item disappears, scope changes or a modal closes. Prefer native buttons/links in table action cells and genuine `<dialog>` semantics; avoid turning a whole `<tr>` into a pseudo-button when a discrete control conveys the action clearly.
+
+Capture actual focus destinations, screen-reader announcements, keyboard activation (including Space for buttons), unexpected draft loss, background operability, Escape/cancel behavior, and change-of-context communication. Separate source-observed semantics from tested failure: a suspicious pattern is an audit candidate, **not** automatic proof of WCAG failure. Use [data tables](../patterns/data-tables.md) and the [dialog contract](../components/dialog/spec.md) for the canonical ownership details. No Little Wins runtime accessibility verification was performed in this batch.

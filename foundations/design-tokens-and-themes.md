@@ -94,3 +94,18 @@ Keep **one reviewed semantic token source** with explicit schema version, types,
 Sources consulted 2026-11-07: [DTCG Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/), [DTCG spec status and caveats](https://www.designtokens.org/faq/) and [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots). No actual token transform or test occurred as part of this docs-only addition.
 
 Related: [component contracts](../architecture/component-contracts.md), [quality gates](../governance/quality-gates.md), [lifecycle](../governance/lifecycle-and-decisions.md).
+
+
+## Batch 9 — legacy global CSS to scoped semantic styling (proposed, 2026-11-07)
+
+**Observed migration trigger:** Little Wins imports Tailwind but also relies on a large `app/globals.css` with compact global selectors, raw hex custom properties (`--ink`, `--paper`, `--sidebar`, `--purple`) and repeated breakpoint overrides. The source includes a shadcn-style configuration and a separate UI component collection. Neither that configuration nor a Tailwind import proves product-specific classes already follow the library's token and component conventions.
+
+**Inventory contract:** for each recurring visual intent, record the existing CSS selector/source, resolved color/space/font/motion value, light/dark/high-contrast behavior, affected components, owner and proposed semantic token. Distinguish a **reference value**, a **semantic role**, a **component-scoped override** and an **intentional one-off**. Collect selector dependencies before renaming; generic class names such as `.button`, `.card` or `.status` can have a broad blast radius.
+
+**Migration order:** (1) keep current appearance as a recorded baseline; (2) map raw values into reviewed semantic aliases, preserving aliases during transition; (3) scope feature styling to owned components (CSS modules, documented namespacing or another existing supported approach); (4) replace one workflow at a time; (5) remove old global selectors only when consumers and visual/interactive regressions are checked. The catalog does not mandate Tailwind, CSS modules, CSS-in-JS or a new design-system package.
+
+**Safeguards:** preserve cascade order, specificity, focus-visible treatment, reduced-motion preferences, responsive breakpoints, font loading and translated text expansion. Do not change accessibility semantics merely to match a screenshot. Unknown modes remain unverified; do not introduce an untested dark theme or claim token adoption before runtime evidence.
+
+**Illustrative mapping only:** `--ink` might map to a reviewed `color.text.primary` role and `--paper` to `color.surface.canvas`, but do not equate raw colors with roles without checking uses, contrast and theme behavior. CSS variable names and values in the source are not universal standards.
+
+**Verification:** documented before/after selector and token map; light/dark only where implemented; responsive snapshots at supported breakpoints, keyboard focus, dialog/backdrop layering, reduced motion, high zoom, long/RTL copy, font fallback and performance measurements where available. Compare component consumers incrementally and keep a revert path.

@@ -95,3 +95,59 @@
 - Added `guidance.experimentation` for A/B test design, assignment, sample-ratio mismatch, effect uncertainty, guardrails and safe stopping.
 - Extended existing `guidance.ux-measurement`, `governance.quality`, `governance.lifecycle`, `architecture.component-contracts` and `foundation.design-tokens` for design-to-code handoff, interoperable tokens, visual/AT checks and release evidence. No parallel DesignOps entry.
 - Registered canonical IDs and links, added retrieval tests, and documented sources/gaps. This completes the planned Batches 7–12 scope in cumulative draft PR #5, without merging or claiming product validation.
+
+
+## Unreleased — Little Wins knowledge-gap extension (2026-11-07)
+
+- Batch 1: expanded existing authentication guidance with a hosted identity trust-boundary decision and anti-example (no redundant login concept).
+- Batch 2: clarified managed profiles versus authenticated collaborators, and human review/points/reward transaction recovery.
+- Batch 3: added negative authorization, concurrency/replay, value integrity and deployed-runtime assurance scenarios to quality gates.
+- Batch 4: added group/project scope and optional-feature navigation checks, plus review/fulfillment metrics without invented baselines.
+- Batch 5: updated catalog discovery and agent lookup regression guidance; reused existing canonical IDs, no new registry entries.
+- Scope: documentation only, all runtime/host verification NOT VERIFIED; original Little Wins ZIP used as illustrative source, not a claim about live deployment.
+
+
+## Unreleased — Batch 6 (2026-11-07)
+
+- Gathered Little Wins ZIP evidence and existing canonical catalog entries before editing.
+- Extended privacy guidance with archive/retention, data portability, value-history correction and export/import UX contracts.
+- Extended offline/sync guidance with versioned aggregate migration, read-side effects, compare-and-swap conflicts, restore and migration idempotency.
+- Added data lifecycle, backup/restore and migration acceptance scenarios to governance quality gates.
+- Updated root, nested and agent indexes and added a per-batch context/decision ledger. No new catalog ID, component implementation or verified product backup/export capability.
+
+
+## Unreleased — Batch 7 (2026-11-07)
+
+- Inspected Little Wins table-row and native-dialog source plus existing catalog guidance before editing.
+- Extended the canonical data-table pattern with named row-action controls and table-versus-grid decision rules.
+- Extended the Dialog component spec for unsaved-change dismissal, native cancel/backdrop behavior, server-confirmed completion and fallback focus.
+- Extended accessibility and quality gates for a connected record-to-dialog-to-updated-list user journey.
+- Added source-first evidence ledger and root/nested discovery links; no new IDs, app changes or verified accessibility claims.
+
+
+## Unreleased — Batch 8 (2026-11-07)
+
+- Inspected Little Wins three stored settings, server redemption/review guards, and navigation gating before editing the catalog.
+- Extended canonical task-flow guidance with dependent-capability configuration matrices, pause/resume transitions and historical-data discoverability.
+- Extended recovery guidance to distinguish paused, unauthorized and empty states and handle in-flight requests when settings change.
+- Added feature-combination, direct-API, history and pending-work acceptance tests to quality gates.
+- Added context-first source/gap ledger and updated catalog discovery; no new registry ID, live feature changes or product-test PASS claims.
+
+
+## Unreleased — Batch 9 (2026-11-07)
+
+- Reviewed Little Wins page/component imports, existing UI library, global CSS and current catalog architecture/token/release guidance before drafting.
+- Extended existing component-model guidance with a one-workflow-at-a-time extraction and reuse decision contract.
+- Extended token/theming guidance with legacy selector inventory, semantic role mapping, scoped styling and compatibility safeguards.
+- Expanded quality gates for real component adoption, accessibility/visual/domain regressions and rollback readiness.
+- Recorded context-first gap decisions and updated catalog navigation; no new canonical IDs, implemented refactor or verified product testing.
+
+
+## Unreleased — Batch 10 (2026-11-07)
+
+- Audited the cumulative ten-batch knowledge coverage, source limitations and prior documentation CI baseline.
+- Found natural-language lookup gaps despite existing canonical pages, including confusing human approval requests with AI-agent approval guidance.
+- Enriched aliases/`use_when` metadata on 11 existing concept IDs without adding or renaming IDs.
+- Added regression tests for 12 task-to-concept queries, unique IDs, proposed statuses, and Batch 6–10 evidence ledgers.
+- Added the final cross-batch context, gap and verification ledger and linked it from canonical discovery files.
+- The previous Batch 9 head passed GitHub's Validate catalog workflow run #98. Batch 10 final-head CI is a separate gate; target-app security/UX remain NOT VERIFIED. Keep PR draft pending review.

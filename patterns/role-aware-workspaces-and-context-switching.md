@@ -127,3 +127,14 @@ Role/workspace *selection* remains the core contract above. Enterprise teams add
 **Verification:** test multiple authorized roles, simultaneous reassignment, revocation, approval vs execution distinction, direct/deep links, denied actions, audit visibility, partial batch completion, narrow/RTL and screen-reader state announcements. No tested workflow or security proof is claimed.
 
 References: [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) (server-side access control); [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (web accessibility criteria); [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) only when a matching custom widget is used.
+
+
+## Managed profiles versus authenticated collaborators (Little Wins learning, 2026-11-07)
+
+**Observed context:** Little Wins documents owner-managed participant profiles within a Sites-authenticated, owner-scoped D1 workspace; profile roles are descriptive and are explicitly **not** independent login identities or security permissions. Do not invent a missing sign-in requirement without asking whether owner-operation is the intended product scope.
+
+**Decision:** inventory actor (authenticated account), represented subject (managed profile), active group/project, membership record, permission and action scope separately. A profile label does not grant reviewer rights. If collaboration is introduced, provision a verified identity-to-membership mapping, explicit invitations/acceptance/revocation, deny-by-default server checks, and safe no-access/removed-member states. Never infer cross-owner sharing from the UI alone.
+
+**Example:** an owner can submit on behalf of a managed participant while the audit record identifies the owner as actor and participant as subject. **Anti-example:** a reviewer dropdown or profile ID is treated as permission to approve another person's submission.
+
+**Acceptance (implementation NOT VERIFIED):** own versus other workspace, group and project ID tampering; revoked/expired membership; member-versus-reviewer actions; session change during an approval; actor/subject audit labeling; keyboard and localized no-access feedback.

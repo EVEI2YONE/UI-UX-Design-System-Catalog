@@ -154,3 +154,41 @@ New [AI-powered experiences](guidance/ai-powered-experiences-and-trust.md), [age
 ## Batch 12 — evaluation, performance and delivery (proposed)
 
 New [performance and perceived speed](guidance/performance-and-perceived-speed.md) and [UX experimentation](guidance/experimentation-and-causal-evidence.md) guidance complements expanded [UX measurement](guidance/ux-measurement.md), [quality gates](governance/quality-gates.md), [catalog lifecycle](governance/lifecycle-and-decisions.md), [component handoff](architecture/component-contracts.md), and [design-token interchange](foundations/design-tokens-and-themes.md). The [context-first gap ledger](planning/batch-12-context-and-gap-ledger.md) separates current source guidance from real product evidence. This concludes planned Batches 7–12 on cumulative draft PR #5; all newly added concepts are still proposed and require human review before any merge.
+
+
+## Little Wins knowledge-gap batches (proposed, 2026-11-07)
+
+A source-based review of a Sites-hosted, owner-operated contribution-tracking pilot identified reusable extensions to **existing** catalog IDs, without introducing a second component taxonomy or new login requirement:
+
+1. [Authentication and account lifecycle](patterns/authentication-and-account-lifecycle.md) — inventory host identity before recommending new sign-in.
+2. [Role-aware workspaces](patterns/role-aware-workspaces-and-context-switching.md) and [interaction recovery](patterns/interaction-states-and-recovery.md) — managed profiles, human review versions, point/reward outcomes.
+3. [Quality gates](governance/quality-gates.md) — negative authorization, concurrency, replay, and runtime validation.
+4. [Task flows](patterns/task-flows-and-information-architecture.md) and [UX measurement](guidance/ux-measurement.md) — group/project scope, optional features, collaboration measures.
+5. [Agent lookup protocol](AGENTS.md) — evidence-first retrieval and correction/regression prevention.
+
+These are documentation proposals only. They do not certify a Sites deployment, imply individual member accounts, or verify a production application. No catalog IDs or registry schema are added because canonical guidance already exists.
+
+
+## Batch 6 — data lifecycle and migration safety (proposed, 2026-11-07)
+
+For archive/retention and trustworthy export/delete journeys, start with [privacy and consent](guidance/privacy-consent-and-trust.md). For revisioned aggregate migrations, concurrent edits and restoration, follow [offline/sync/conflicts](patterns/offline-sync-and-conflicts.md). [Quality gates](governance/quality-gates.md) documents verification scenarios. The [Batch 6 context and gap ledger](planning/little-wins-batch-6-context-and-gap-ledger.md) traces source evidence, limitations and reuse decisions. These are extensions of canonical IDs, not shipped exports, restored backups or new components.
+
+
+## Batch 7 — accessible record-action journeys (proposed, 2026-11-07)
+
+For actionable record lists, read [data tables](patterns/data-tables.md) before making an entire row keyboard-focusable. Use the [Dialog component contract](components/dialog/spec.md) for native dialog focus, dismissal, unsaved edits and completion; test the end-to-end route through [accessibility](guidance/accessibility.md) and [quality gates](governance/quality-gates.md). See the [Batch 7 evidence ledger](planning/little-wins-batch-7-context-and-gap-ledger.md). These are proposed checks, not proof of Little Wins WCAG conformance.
+
+
+## Batch 8 — capability dependencies and safe feature toggles (proposed, 2026-11-07)
+
+For independently stored settings with dependent actions, use [task-flow capability matrices](patterns/task-flows-and-information-architecture.md), [paused-state recovery](patterns/interaction-states-and-recovery.md), and [configuration quality gates](governance/quality-gates.md). The [Batch 8 context and gap ledger](planning/little-wins-batch-8-context-and-gap-ledger.md) documents Little Wins' points/rewards/challenges behavior and unresolved policy questions. No product flags or permissions were implemented; no runtime behavior was verified.
+
+
+## Batch 9 — safe component and styling modernization (proposed, 2026-11-07)
+
+For large route modules and partially adopted UI libraries, follow the [component model's incremental extraction guidance](architecture/component-model.md), [design-token/global-CSS migration guidance](foundations/design-tokens-and-themes.md) and [quality gates](governance/quality-gates.md). The [Batch 9 source/gap ledger](planning/little-wins-batch-9-context-and-gap-ledger.md) explains Little Wins' page, existing UI controls and stylesheet evidence. No component implementation, source code refactor or new catalog ID is included.
+
+
+## Batch 10 — knowledge coverage and lookup regression closure (proposed, 2026-11-07)
+
+The [cross-batch coverage and validation ledger](planning/little-wins-batch-10-context-and-gap-ledger.md) maps all ten Little Wins-derived documentation batches to existing canonical IDs, evidence boundaries and unresolved product tests. The [canonical registry](catalog/index.json) now includes task-oriented aliases for hosted identity, human review, feature dependencies, data migrations, table actions and styling migration. [Lookup regression tests](tests/test_little_wins_knowledge_coverage.py) exercise these searches. No new concept IDs or product implementation were introduced, and passing catalog CI does not certify Little Wins UX or security.

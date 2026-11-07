@@ -36,3 +36,23 @@ Use the existing [task-flow](task-flows-and-information-architecture.md) and [in
 **Batch 10 extensions:** [Data tables](data-tables.md) now distinguishes read-only tables from interactive grids and defines bulk operations. [Role-aware workspaces](role-aware-workspaces-and-context-switching.md) now includes enterprise approvals, delegation and authorized audit visibility. For charts see [data visualization](../guidance/data-visualization-and-dashboards.md), and for mobile behavior see [adaptive platform UX](../guidance/mobile-and-adaptive-platform-ux.md).
 
 **Batch 11 boundary:** AI disclosure, source provenance and uncertainty live under [AI experience guidance](../guidance/ai-powered-experiences-and-trust.md). [Agentic actions](agentic-actions-and-approvals.md) governs AI-specific tool approval and action states rather than replacing [advanced interactions](advanced-interactions-and-reversible-actions.md) or [role-aware workspaces](role-aware-workspaces-and-context-switching.md). [Voice and multimodal UX](conversational-voice-and-multimodal-ux.md) uses existing accessibility, content and privacy contracts.
+
+
+## Little Wins context-first extensions (2026-11-07)
+
+For hosted identity and managed-profile boundaries use [authentication](authentication-and-account-lifecycle.md) plus [role-aware workspaces](role-aware-workspaces-and-context-switching.md). For **human** submission reviews, value changes and irreversible history use [interaction recovery](interaction-states-and-recovery.md); AI agent approvals remain a separate pattern. For group/project scope and independently toggled features use [task flows](task-flows-and-information-architecture.md). All extensions remain proposed and require runtime-specific verification.
+
+
+## Batch 6 — versioned workspace migration
+
+[Offline work and synchronization](offline-sync-and-conflicts.md) now distinguishes safe read-time normalization from durable migration, backup, import/restore, version conflicts and aggregate contention. See [privacy lifecycle](../guidance/privacy-consent-and-trust.md) for archive/retention/export UX, and [Batch 6 context ledger](../planning/little-wins-batch-6-context-and-gap-ledger.md) for the Little Wins source basis.
+
+
+## Batch 7 — record actions and dialog continuity
+
+[Data tables](data-tables.md) now gives an explicit native action-cell control versus clickable-row decision. Combine with the [Dialog contract](../components/dialog/spec.md) and [accessibility journey criteria](../guidance/accessibility.md), rather than treating a keyboard-focusable `<tr>` as a full grid. [Batch 7 ledger](../planning/little-wins-batch-7-context-and-gap-ledger.md) records the source context.
+
+
+## Batch 8 — configuration and capability dependencies
+
+[Task flows](task-flows-and-information-architecture.md) now distinguishes independently stored feature flags from dependent user capabilities and requires an explicit configuration/action matrix. [Interaction recovery](interaction-states-and-recovery.md) covers paused-feature transitions and pending work. Review the [Batch 8 evidence ledger](../planning/little-wins-batch-8-context-and-gap-ledger.md) before drawing conclusions about any particular application.

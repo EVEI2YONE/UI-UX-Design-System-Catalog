@@ -16,3 +16,8 @@ These are **proposed, platform-neutral contracts**, not framework implementation
 Start with [component boundaries](../architecture/component-model.md) and [contract guidelines](../architecture/component-contracts.md). Keep business validation, requests and product-specific modal flows outside these shared contracts. Review [accessibility](../guidance/accessibility.md), [i18n](../guidance/internationalization.md) and [interaction recovery](../patterns/interaction-states-and-recovery.md) for each implemented consumer.
 
 All owners are **unassigned**, statuses **proposed**, and manual checks **NOT VERIFIED**. Do not advertise runnable components or checked WCAG conformance.
+
+
+## Batch 7 — stateful native-dialog integration
+
+The [Dialog contract](dialog/spec.md) now calls out focus/dismissal, stateful unsaved forms, confirmed async outcomes and fallback focus when the invoking record disappears. This extends its existing canonical ID; it does not certify an implementation. See [Batch 7 context ledger](../planning/little-wins-batch-7-context-and-gap-ledger.md).

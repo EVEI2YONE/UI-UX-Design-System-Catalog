@@ -35,3 +35,33 @@ Do not edit the default branch directly or treat a documentation specification a
 **Batch 11 AI/multimodal discovery:** use `guidance.ai-experiences` for model expectation setting, limits, provenance and correction; `pattern.agentic-actions` for tool plans, human approval, audit/status and bounded external side effects; `pattern.multimodal-conversation` for chat/voice capture, barge-in, transcription correction and non-audio pathways. Reuse existing `guidance.privacy-trust`, `pattern.interaction-recovery`, `pattern.advanced-interactions` and `guidance.accessibility` for their general boundaries. Read [Batch 11 context ledger](planning/batch-11-context-and-gap-ledger.md). Proposed guidelines never grant security permissions or replace real model evaluations.
 
 **Batch 12 evaluation and delivery discovery:** `guidance.performance-experience` owns field/lab performance, loading feedback, task readiness and constrained-device evidence; `guidance.experimentation` owns planned A/B assignment, SRM, guardrails and causal interpretation. `guidance.ux-measurement` remains the canonical definition of task events and denominators. **DesignOps and design-to-code are extensions of existing IDs**: `architecture.component-contracts`, `foundation.design-tokens`, `governance.lifecycle` and `governance.quality`; do not create competing entries. Read [Batch 12 gap ledger](planning/batch-12-context-and-gap-ledger.md). None of this authorizes claims of measured performance, experimental lift, deployed components or accessibility conformance.
+
+
+## Hosted collaborative-app lookup regression (2026-11-07)
+
+At each new audit batch, re-fetch product evidence and canonical catalog entries before writing. For an app hosted behind managed authentication, retrieve `pattern.authentication-lifecycle` before recommending any new sign-in; retrieve `pattern.role-aware-workspaces` for identity-to-membership and tenant scope; retrieve `pattern.interaction-recovery` for human approvals and ledger feedback; retrieve `pattern.task-flows` for nested project/group context; retrieve `guidance.ux-measurement` and `governance.quality` for metrics and negative-path validation. Existing `pattern.agentic-actions` is specific to AI tool delegation, **not** the canonical guide for ordinary human contribution approvals. Differentiate `source-observed`, `inferred`, `NOT VERIFIED` and `deployment-confirmed`. Never equate this agent instruction package with the separately hosted catalog.
+
+
+## Batch 6 lookup — persisted collaborative data
+
+For an app with aggregate workspace JSON and revisioned storage, inspect the current data model and migration code before proposing data-lifecycle controls. Retrieve `guidance.privacy-trust` for archive, deletion and export UX; `pattern.offline-sync` for concurrent writes and normalization; `governance.quality` for verification. Do not equate private storage with a backup/restore feature, or a hidden sample group with erased data. See [source ledger](planning/little-wins-batch-6-context-and-gap-ledger.md). No new canonical IDs are needed.
+
+
+## Batch 7 agent lookup — actionable records and modal flows
+
+Before recommending a table redesign, retrieve `pattern.data-tables`, `component.dialog`, `guidance.accessibility` and `governance.quality`; check source markup for native controls, pseudo-interactive rows, backdrop/close behavior and locally held edits. Test the *whole* record -> dialog -> updated record journey, not just the component shell. Source inspection alone cannot prove accessibility failure or compliance. See [Batch 7 ledger](planning/little-wins-batch-7-context-and-gap-ledger.md).
+
+
+## Batch 8 lookup — configuration-dependent actions
+
+Before recommending new flags or changing feature navigation, inspect the domain command guards, stored configuration, current UI gating and outstanding historical records. Retrieve `pattern.task-flows` for capability truth tables, `pattern.interaction-recovery` for paused states, and `governance.quality` for all-combination and direct-API verification. A hidden nav item is not a security boundary; an independently stored boolean is not necessarily an independent capability. Review [Batch 8 source ledger](planning/little-wins-batch-8-context-and-gap-ledger.md).
+
+
+## Batch 9 lookup — incremental migration of existing app UI
+
+Inspect the source's actual import graph, reused and bespoke controls, styling entrypoints and deployed themes before proposing component extraction or global CSS changes. Retrieve `architecture.component-model` for feature-vs-shared boundaries, `foundation.design-tokens` for selector/token migration, and `governance.quality` for staged verification. Installed components, a shadcn configuration or a Tailwind import alone do **not** establish runtime reuse, conformance or migration necessity. Record a one-feature baseline and compatibility/rollback plan before recommending broad changes. See [Batch 9 ledger](planning/little-wins-batch-9-context-and-gap-ledger.md).
+
+
+## Batch 10 lookup regression and closure
+
+Use the canonical registry before proposing a missing concept. Task query examples: `hosted authentication` -> `pattern.authentication-lifecycle`; `human approval workflow` -> `pattern.interaction-recovery` (not AI-specific agent approvals); `feature flags` -> `pattern.task-flows`; `data migration` -> `pattern.offline-sync`; `clickable row` -> `pattern.data-tables`; `dialog focus return` -> `component.dialog`; `global CSS` -> `foundation.design-tokens`. Run [retrieval regression tests](tests/test_little_wins_knowledge_coverage.py) and catalog validation when changing aliases or content. See [cross-batch closure ledger](planning/little-wins-batch-10-context-and-gap-ledger.md). A successful doc validator is not product-quality certification.

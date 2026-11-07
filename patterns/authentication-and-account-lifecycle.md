@@ -63,3 +63,18 @@ Identity/security owners define authentication assurance, session timeouts, perm
 **Canonical ID:** `pattern.authentication-lifecycle` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
 Related: [role-aware workspaces](role-aware-workspaces-and-context-switching.md), [forms](forms.md), [interaction recovery](interaction-states-and-recovery.md), [privacy](../guidance/privacy-consent-and-trust.md), [offline and sync](offline-sync-and-conflicts.md).
+
+
+## Hosted-platform identity boundary — Little Wins evidence-led extension (2026-11-07)
+
+**Context before guidance:** The Little Wins source README describes a Sites-native private owner-operated pilot; `app/api/workspace/route.ts` derives workspace ownership from `oai-authenticated-user-id`, scopes D1 queries by that owner, and supplies a development-only preview identity. The README warns that its raw Worker must not be exposed outside trusted Sites authentication. This is **source-observed configuration**, not an independently tested guarantee about every deployment.
+
+**Decision rule:** Inventory the hosting platform and its existing authentication before recommending sign-up, passwords, MFA, or a second identity system. Separate: (1) identity proof by the hosting platform, (2) trustworthy delivery of identity to the backend, (3) app-specific membership and roles, and (4) server-authorized operations. Do not treat a user-provided header, cookie, route, or UI role label as authorization; verify trusted proxy/header stripping, direct-origin reachability, session revocation and owner isolation with the actual deployment owner.
+
+**When to use:** hosted apps, delegated identity, managed workspaces, embedded/portal apps. **Avoid:** assuming a platform identity proves access to every group or that a member profile is an independently authenticated person.
+
+**Example:** retain existing managed sign-in, bind a verified subject to an internal workspace membership, authorize each protected action against the membership, and show an intelligible access-denied state.
+
+**Anti-example:** recommend a new login UI solely because the app has owner-managed member profiles, or claim the identity header is secure without testing whether clients can spoof it at the deployed boundary.
+
+**Verification (NOT VERIFIED for Little Wins):** authenticated/unauthenticated direct API requests; forged identity header through every reachable endpoint; cross-owner workspace IDs; revoked membership; session expiry; private-site audience policy; development-identity isolation; no sensitive cache/history leakage. Report deploy-specific findings separately from reusable design guidance.

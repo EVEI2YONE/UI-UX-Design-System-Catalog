@@ -46,3 +46,27 @@ Test real request failures, latency, translated errors, retry, touch and keyboar
 ## Batch 9 boundary — offline/sync and authentication
 
 This page continues to own generic pending, timeout, retry, error and cancellation states. For **Saved on this device → Queued → Syncing → Synced** distinctions, divergent edits, concurrent conflict review and rejected offline work, use [offline work, synchronization and conflicts](offline-sync-and-conflicts.md). For expired sessions, safe reauthentication and legitimate account recovery, use [authentication lifecycle](authentication-and-account-lifecycle.md). Never automatically retry a consequential, potentially non-idempotent mutation after an ambiguous network failure. Describe verified local versus remote state; do not show “All saved” before backend confirmation.
+
+
+## Human review and value-changing transaction lifecycle (2026-11-07)
+
+**Evidence trigger:** Little Wins supports drafts, submitted contributions, returned-for-changes, approvals/rejections, item-level reviewer edits, points and reward reservation/fulfillment. Generic AI agent approvals are a different concept; do not reuse AI-specific automation assumptions for human-to-human moderation.
+
+**Reusable state contract:** draft -> submitted -> returned -> resubmitted -> approved/rejected, with explicit permitted transitions and reasons. Maintain an immutable record of **who acted**, **for which subject**, **what version**, **when**, and **what changed** for consequential decisions, subject to a product retention/privacy policy. Display item-level differences and totals before commit; allow explanation and resubmission without silently replacing previous versions. Once value is awarded, use an authorized corrective entry with a reason rather than rewriting historical ledger entries; do not imply a correction UI exists when only accounting rules exist.
+
+**Transactional UX:** surface pending/confirmed/failed/unknown outcomes; rely on authoritative backend confirmation, not optimistic points or a toast. Prevent duplicate credits/redemptions on replay; maintain balance/reservation consistency. For unknown outcomes, re-fetch transaction status before retry. Hide no state transitions merely because optional challenges/points/rewards are disabled; historical data may still require display and export.
+
+**Positive example:** review screen shows submitted value, proposed edits, reviewer identity, calculated award, confirmation and a durable post-approval record. **Anti-example:** repeated Approve clicks award twice, or resubmission overwrites the sole preserved original.
+
+**Tests:** valid/invalid transitions, concurrent reviewers, replay/idempotency, correction history, reward reservation/decline/refund, keyboard focus and announcements, timezone/locale-safe timestamps, recoverable validation errors. All product checks remain NOT VERIFIED unless actually executed.
+
+
+## Batch 8 — paused capabilities and work already in progress (2026-11-07)
+
+Do not conflate **paused**, **unauthorized**, **empty**, **disabled**, **unsupported** and **completed**. A capability paused by group configuration should identify what stopped, what remains preserved, what existing requests can still be managed, and how an eligible user resumes it. Do not show “No rewards” when redemptions are merely unavailable or hidden.
+
+For feature-sensitive transactions, verify the authoritative configuration again when committing the action. When a setting changes between opening and submitting a form, preserve entered data where safe and explain the new state without claiming the action was saved. Existing requests and fulfilled outcomes may require management even when new actions are blocked; design an explicit route for authorized owners rather than relying on a hidden navigation item or browser history.
+
+**Example:** “Rewards are paused. Existing requests are preserved. You can review pending requests in Group history.” The destination and permissions must actually exist before shipping such copy. **Anti-example:** “Your reward was redeemed” shown optimistically after the server rejects it because points were disabled.
+
+**Check:** disable during pending request, failed direct command, refresh while editing, re-enable and accurate feedback; record actual persistence and keyboard/screen reader announcements. Source review is not a runtime PASS.

@@ -61,7 +61,10 @@
         "spacing",
         "typography",
         "CSS variables",
-        "DTCG"
+        "DTCG",
+        "global CSS",
+        "scoped styling migration",
+        "legacy CSS tokens"
       ],
       "domains": [
         "foundations",
@@ -71,7 +74,8 @@
       "use_when": [
         "naming semantic colors and spacing",
         "designing themes",
-        "migrating raw values"
+        "migrating raw values",
+        "migrating raw global CSS variables into semantic scoped tokens without breaking cascade"
       ],
       "avoid_when": [
         "storing product business state in tokens"
@@ -99,7 +103,10 @@
         "component hierarchy",
         "atomic design",
         "mega component",
-        "reuse"
+        "reuse",
+        "component migration",
+        "incremental component extraction",
+        "unused component library"
       ],
       "domains": [
         "architecture",
@@ -109,7 +116,9 @@
       "use_when": [
         "deciding reuse versus create",
         "placing a primitive or feature",
-        "promoting shared components"
+        "promoting shared components",
+        "extracting presentation from large page modules in vertical slices",
+        "distinguishing present UI-library files from components actually adopted in the app"
       ],
       "avoid_when": [
         "moving unstable one-off workflows into shared components"
@@ -186,7 +195,11 @@
         "task flow",
         "information architecture",
         "deep links",
-        "breadcrumbs"
+        "breadcrumbs",
+        "feature flags",
+        "feature toggle dependencies",
+        "capability matrix",
+        "group project scope"
       ],
       "domains": [
         "information-architecture",
@@ -197,7 +210,9 @@
         "designing a task journey",
         "reorganizing navigation and wayfinding",
         "preserving search and filter context",
-        "reviewing entry and exit paths"
+        "reviewing entry and exit paths",
+        "designing navigation when rewards depend on points being enabled",
+        "mapping optional feature flag combinations and historic task access"
       ],
       "avoid_when": [
         "optimizing click counts without verifying user task success",
@@ -239,7 +254,11 @@
         "approval workflow",
         "delegated approval",
         "audit trail UX",
-        "separation of duties"
+        "separation of duties",
+        "workspace membership",
+        "owner managed profiles",
+        "member authorization",
+        "actor versus subject"
       ],
       "domains": [
         "information-architecture",
@@ -253,7 +272,9 @@
         "designing navigation for users with multiple authorized roles",
         "switching tenants or workspaces while preserving context",
         "separating customer preview from privileged impersonation",
-        "designing role scoped approval handoffs and delegated actions"
+        "designing role scoped approval handoffs and delegated actions",
+        "distinguishing owner managed member profiles from independent authenticated users",
+        "mapping group membership to verified identities and server permissions"
       ],
       "avoid_when": [
         "treating UI role switching as server authorization",
@@ -299,7 +320,11 @@
         "partial failure",
         "destructive confirmation",
         "sync uncertainty",
-        "saved locally versus synced"
+        "saved locally versus synced",
+        "human approval workflow",
+        "contribution review lifecycle",
+        "review correction history",
+        "points reward recovery"
       ],
       "domains": [
         "interaction",
@@ -310,7 +335,10 @@
         "designing loading error and empty states",
         "defining recoverable form validation",
         "handling safe retry after a timeout",
-        "managing dialog focus and completion feedback"
+        "managing dialog focus and completion feedback",
+        "designing human submission approval return and resubmission states",
+        "handling points or rewards transaction confirmation and correction",
+        "explaining paused actions and in flight configuration changes"
       ],
       "avoid_when": [
         "retrying a non-idempotent action without confirming outcome",
@@ -551,7 +579,10 @@
         "catalog validation",
         "documentation checks",
         "verification evidence",
-        "accessibility release blocker"
+        "accessibility release blocker",
+        "knowledge coverage audit",
+        "catalog regression tests",
+        "source evidence gate"
       ],
       "domains": [
         "quality",
@@ -562,7 +593,8 @@
         "reviewing catalog entry completeness",
         "recording actual checks and verification status",
         "assessing release blockers and migration priorities",
-        "checking cross-references and documentation integrity"
+        "checking cross-references and documentation integrity",
+        "auditing catalog knowledge coverage and regression test evidence before final review"
       ],
       "avoid_when": [
         "marking unperformed checks as PASS",
@@ -739,7 +771,10 @@
         "modal",
         "focus trap",
         "dialog shell",
-        "confirmation dialog"
+        "confirmation dialog",
+        "dialog focus return",
+        "unsaved modal form",
+        "native dialog cancellation"
       ],
       "domains": [
         "components",
@@ -748,7 +783,8 @@
       ],
       "use_when": [
         "building focused foreground tasks",
-        "managing modal focus and dismissal"
+        "managing modal focus and dismissal",
+        "preserving unsaved dialog input on cancellation and returning focus after modal review"
       ],
       "avoid_when": [
         "embedding product-specific destructive actions in the shell"
@@ -954,7 +990,10 @@
         "editable data grid",
         "virtualized rows",
         "select all results",
-        "sticky table header"
+        "sticky table header",
+        "clickable row",
+        "accessible row action",
+        "table row button"
       ],
       "domains": [
         "patterns",
@@ -965,7 +1004,8 @@
         "comparing rows and columns",
         "reviewing row actions and sorting",
         "choosing read only table versus interactive data grid",
-        "designing accessible bulk operations across paginated tables"
+        "designing accessible bulk operations across paginated tables",
+        "replacing keyboard focusable table rows with named action cell controls"
       ],
       "avoid_when": [
         "using tables solely for page layout"
@@ -1262,7 +1302,11 @@
         "dark patterns",
         "data minimization",
         "data deletion",
-        "permission prompt"
+        "permission prompt",
+        "privacy retention",
+        "export data",
+        "archive retention",
+        "data portability"
       ],
       "domains": [
         "privacy",
@@ -1272,7 +1316,8 @@
       "use_when": [
         "designing personal-data collection and permission requests",
         "reviewing consent and preference flows",
-        "designing trustworthy deletion and privacy settings"
+        "designing trustworthy deletion and privacy settings",
+        "explaining archive export import and user data retention states"
       ],
       "avoid_when": [
         "treating design copy as legal compliance",
@@ -1310,7 +1355,11 @@
         "session expiry",
         "reauthentication",
         "account deletion",
-        "sign out"
+        "sign out",
+        "hosted authentication",
+        "managed platform sign in",
+        "trusted identity boundary",
+        "ChatGPT Sites sign in"
       ],
       "domains": [
         "authentication",
@@ -1320,7 +1369,9 @@
       "use_when": [
         "designing sign in and reauthentication journeys",
         "handling lost credentials and account recovery",
-        "designing session expiration with safe task return"
+        "designing session expiration with safe task return",
+        "evaluating whether a hosted app already has authentication before recommending new login",
+        "verifying how a managed platform passes trusted identity to app APIs"
       ],
       "avoid_when": [
         "treating client side login screens as security enforcement",
@@ -1400,7 +1451,11 @@
         "local draft",
         "queued changes",
         "unsynced data",
-        "reconnect"
+        "reconnect",
+        "data migration",
+        "versioned workspace migration",
+        "read side migration",
+        "backup restore UX"
       ],
       "domains": [
         "offline",
@@ -1410,7 +1465,9 @@
       "use_when": [
         "designing offline edit and deferred synchronization",
         "handling concurrent changes and conflicting versions",
-        "showing local saved versus remote synced status"
+        "showing local saved versus remote synced status",
+        "designing revisioned aggregate migration and concurrent write recovery",
+        "verifying idempotent legacy data normalization"
       ],
       "avoid_when": [
         "claiming background sync is guaranteed on unsupported browsers",
