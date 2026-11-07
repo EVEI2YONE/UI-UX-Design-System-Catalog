@@ -85,7 +85,7 @@ class WireframeExampleRetrievalTests(unittest.TestCase):
     def test_no_parallel_wireframe_canonical_concepts(self):
         ids = [e["id"] for e in self.entries]
         self.assertEqual(len(ids), len(set(ids)))
-        self.assertEqual(len(ids), 50)
+        # New unrelated catalog entries must not break wireframe ownership.
         self.assertEqual([e["id"] for e in self.entries if "wireframe" in e["id"]],
                          ["guidance.wireframe-methodology"])
 
