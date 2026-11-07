@@ -25,3 +25,7 @@ Before contributions, validate the registry and run the Python test suite. Prese
 ## Image-based wireframe consumer lookup (proposed PR #11)
 
 For task-to-screen wireframing, retrieve `guidance.wireframe-methodology` first for fidelity and static-image boundaries, then `pattern.task-flows` and `principle.visual-hierarchy` for composition. Use `pattern.interaction-recovery`, `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization` and `governance.quality` only where relevant. See the [cumulative wireframe integration handoff](archive/planning/wireframe-integration-handoff-2026-11-07.md) for B0–B7 disposition and [synthetic cases](archive/planning/wireframe-synthetic-example-bank-2026-11-07.md) for positive/negative retrieval rehearsal. Canonical registry pages, not the handoff, own the design rules. Do not treat static images as working behavior or claim actual product testing from catalog CI.
+
+## Icon-bearing control retrieval (proposed Batch 1)
+
+Search `foundation.icon-semantics` for icon meanings, decorative/informative roles, icon-only button naming, target geometry and RTL. Search `component.button` for button activation and its state contract. Prefer the canonical entry to copying a product-specific Lucide mapping; the catalog specifies meaning and contracts, not a production icon package. No human/component verification was performed by a documentation-only batch.
