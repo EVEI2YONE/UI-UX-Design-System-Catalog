@@ -45,20 +45,20 @@ For hosted identity and managed-profile boundaries use [authentication](authenti
 
 ## Batch 6 — versioned workspace migration
 
-[Offline work and synchronization](offline-sync-and-conflicts.md) now distinguishes safe read-time normalization from durable migration, backup, import/restore, version conflicts and aggregate contention. See [privacy lifecycle](../guidance/privacy-consent-and-trust.md) for archive/retention/export UX, and [Batch 6 context ledger](../planning/little-wins-batch-6-context-and-gap-ledger.md) for the Little Wins source basis.
+[Offline work and synchronization](offline-sync-and-conflicts.md) now distinguishes safe read-time normalization from durable migration, backup, import/restore, version conflicts and aggregate contention. See [privacy lifecycle](../guidance/privacy-consent-and-trust.md) for archive/retention/export UX, and [Batch 6 context ledger](../archive/planning/little-wins-batch-6-context-and-gap-ledger.md) for the Little Wins source basis.
 
 
 ## Batch 7 — record actions and dialog continuity
 
-[Data tables](data-tables.md) now gives an explicit native action-cell control versus clickable-row decision. Combine with the [Dialog contract](../components/dialog/spec.md) and [accessibility journey criteria](../guidance/accessibility.md), rather than treating a keyboard-focusable `<tr>` as a full grid. [Batch 7 ledger](../planning/little-wins-batch-7-context-and-gap-ledger.md) records the source context.
+[Data tables](data-tables.md) now gives an explicit native action-cell control versus clickable-row decision. Combine with the [Dialog contract](../components/dialog/spec.md) and [accessibility journey criteria](../guidance/accessibility.md), rather than treating a keyboard-focusable `<tr>` as a full grid. [Batch 7 ledger](../archive/planning/little-wins-batch-7-context-and-gap-ledger.md) records the source context.
 
 
 ## Batch 8 — configuration and capability dependencies
 
-[Task flows](task-flows-and-information-architecture.md) now distinguishes independently stored feature flags from dependent user capabilities and requires an explicit configuration/action matrix. [Interaction recovery](interaction-states-and-recovery.md) covers paused-feature transitions and pending work. Review the [Batch 8 evidence ledger](../planning/little-wins-batch-8-context-and-gap-ledger.md) before drawing conclusions about any particular application.
+[Task flows](task-flows-and-information-architecture.md) now distinguishes independently stored feature flags from dependent user capabilities and requires an explicit configuration/action matrix. [Interaction recovery](interaction-states-and-recovery.md) covers paused-feature transitions and pending work. Review the [Batch 8 evidence ledger](../archive/planning/little-wins-batch-8-context-and-gap-ledger.md) before drawing conclusions about any particular application.
 
 ## Account and settings knowledge batches
 
 - [Account and settings portal](account-and-settings-portal.md) — `pattern.account-settings-portal`; IA, profile/contact verification, effective save states, concurrent edits and data export. Follow existing canonical identity, privacy and form guidance.
 - [Billing and subscription settings](billing-and-subscription-settings.md) — `pattern.billing-subscription-settings`; payment methods, renewal, downgrade/cancellation and invoice access. Payment and legal outcomes require real product verification.
-- [Batch progress and gap disposition](../planning/account-settings-batch-progress.md) — three context-first batches, same PR, with known scope boundaries.
+- [Batch progress and gap disposition](../archive/planning/account-settings-batch-progress.md) — three context-first batches, same PR, with known scope boundaries.
