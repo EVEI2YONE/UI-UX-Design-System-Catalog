@@ -41,3 +41,5 @@ For changes see [Contributing](../CONTRIBUTING.md) and the [PR template](../.git
 ## Batch 10 — final cumulative coverage audit
 
 The [Batch 10 ledger](../archive/planning/little-wins-batch-10-context-and-gap-ledger.md) maps Batches 1–10 to canonical IDs, evidence and outstanding product verification. Registry lookup [regression tests](../tests/test_little_wins_knowledge_coverage.py) cover ambiguous human-versus-agent approval and other task queries; the full catalog validator remains the source of documentation-integrity results.
+
+**Wireframe Batch 5:** [Quality gates](quality-gates.md) (`governance.quality`) now owns visual inspection of rendered wireframe imagery, including legibility, clipping, source-copy accuracy, hierarchy, invented capabilities and artifact-specific issue logs. This does not establish runtime or WCAG conformance; see [wireframe methodology](../guidance/wireframe-methodology.md) for prototype escalation.
