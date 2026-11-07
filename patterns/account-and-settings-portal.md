@@ -283,3 +283,77 @@ Use [design tokens and themes](../foundations/design-tokens-and-themes.md#appear
 - **Little Wins source snapshot:** cleaned F20 archive provided by the user; direct inspection of `docs/little-wins/03_DECISIONS_AND_OPEN_QUESTIONS.md`, `shell/context/display-preferences.ts`, `shell/context/display-preferences-provider.tsx`, and `server/modules/history/index.ts`. Source inspection supports only those observed claims, not deployed behavior.
 - **Open product decision:** `DEC-010` is unresolved. Do not infer the workspace timezone or choose activity versus award date semantics on behalf of the product owner.
 - **Status:** proposed catalog guidance; owner/review assignment outstanding; catalog validator, runtime timezone correctness, browser preference behavior, accessibility and internationalization tests **NOT VERIFIED**. Next batch must re-collect current context before modifying guidance.
+
+
+## Settings knowledge Batch 4 — configuration governance and audit (proposed, 2026-11-07)
+
+**Fresh-context and reuse check:** At the start of Batch 4, compared current `main` and PR #12 branch, inspected `catalog/index.json`, this portal, [role-aware audit visibility](role-aware-workspaces-and-context-switching.md#batch-10-extension--enterprise-approvals-delegation-and-audit-visibility), [privacy/retention](../guidance/privacy-consent-and-trust.md), [interaction recovery](interaction-states-and-recovery.md), and [governance decisions](../governance/lifecycle-and-decisions.md). Existing pages already own permission-aware audit viewing, data lifecycle, and general recovery. This extension owns only the **workspace settings change-event contract and its management journey**. Do not equate catalog decision/changelog records with runtime administrative audit events.
+
+### KG-007 — Configuration-change history contract
+
+**Use when:** a setting changes who can act, which workflows execute, how reports are grouped, how data is retained, or other consequential workspace behavior. **Avoid:** logging every ephemeral personal theme selection as an administrative change or promising a tamper-proof audit trail without backend guarantees.
+
+Before implementation, assign the product/security owners and determine which changes warrant an audit event. Use the existing Batch 1 `auditClass` registry field to document whether each setting is `none`, `operational` or `sensitive` (illustrative classification names, not a mandated schema).
+
+| Event field / behavior | Minimum contract |
+| --- | --- |
+| Event identity | Durable event ID, event type, operation/request ID, schema version and correlation to the accepted mutation |
+| Actor and authority | Authenticated actor ID, validated role/capability, and delegated actor versus subject when applicable; do not treat UI role labels as evidence |
+| Target and scope | Setting key, effective workspace/tenant ID, scope, affected configuration version and policy mode |
+| Time and ordering | Server-generated UTC instant and stable ordering/revision; format display in the viewer's locale with explicit timezone |
+| Before and after | Safe old/new **effective** values or redacted summaries; for secrets/tokens record presence/rotation, never the raw secret |
+| Outcome | Authorized attempted vs committed vs rejected/failed; distinguish security telemetry from the history of **successful configuration changes** |
+| Reason and approval | Required business reason or approver only where the product policy mandates it; do not fabricate universal justification or approval workflows |
+| Integrity and retention | Write path, access controls, retention schedule, archival/redaction/deletion exceptions and operational monitoring owned by engineering/compliance |
+
+**Atomicity:** for high-impact settings, define how the committed configuration and corresponding event are durably associated. A UI success message is not an audit event. On partial failure, the authoritative mutation outcome must be independently recoverable; do not claim perfect event completeness unless the actual persistence architecture supports it. Never silently remove prior events when a setting is later changed again.
+
+### Authorized audit viewing and correction UX
+
+- Show an **administrative settings activity** view only to authorized roles, scoped to the current workspace; independently authorize both event queries and export/download if implemented. Omit or redact fields the viewer is not entitled to see.
+- Display the **setting, actor (where permitted), effective timestamp, scope, change summary and outcome**; separate proposed/draft values from confirmed persisted changes. Use accessible semantic tables or timelines with labels and readable empty/filter/error states.
+- For conflicting updates, link the event or configuration revision to the safe [Batch 1 save recovery](#workspace-configuration-foundation--settings-knowledge-batch-1-proposed-2026-11-07) flow. A log entry explains what changed but does not itself restore access or guarantee undo.
+- **Revert policy:** decide separately whether the *setting* can be restored and whether downstream effects can be reversed. Reverting `reviewRequired` may change future submissions without undoing prior approvals or points transactions. When reversal is unsafe, provide an authorized compensating workflow and explain the consequences rather than a misleading one-click “Undo.”
+- **Retention and privacy:** choose a justified retention schedule and disclosure policy with product/security/legal owners; consider minors, member identities, sensitive values, access revocations, account/group deletion, and exports. Do not hardcode a universal retention duration or claim immutable retention that conflicts with legitimate deletion processes.
+- **Presentation and localization:** use explicit timestamps and timezone, translated actor/action labels and error text, long-name reflow, keyboard-accessible filters and focus, readable contrast and status announcements. Audit history must remain usable without relying on colors or icons alone.
+
+**Example (illustrative, no production schema):**
+
+```json
+{
+  "eventId": "evt-example",
+  "kind": "workspace.settings.changed",
+  "workspaceId": "workspace-example",
+  "actorId": "authenticated-actor",
+  "settingKey": "workspace.reviewRequired",
+  "previousSummary": "approval required",
+  "newSummary": "trusted mode (capability gated)",
+  "revision": 17,
+  "recordedAtUtc": "2026-11-07T16:00:00Z",
+  "outcome": "committed"
+}
+```
+
+The event illustrates audit semantics only. The specific setting and trusted mode are **not** evidence of an implemented Little Wins configuration capability.
+
+**Anti-examples:** a settings switch saves but the only audit trace is a client console message; a “Revert” button promises to erase awards granted while a permissive review policy was active; a settings export exposes secret values or unrelated workspaces.
+
+### Verification and accountable decisions
+
+| Scenario | Required evidence |
+| --- | --- |
+| Authorized committed change | One correctly scoped, queryable change event linked to the persisted revision |
+| Unauthorized or rejected write | No false committed event; separate security logging only if required |
+| Concurrent/stale update | Accurate winner revision and no misleading or duplicate committed changes |
+| Event-write/store outage | Documented durable handling and truthful recovery, no fabricated audit completion |
+| Cross-workspace access | Server denies event read, mutation and export across unauthorized boundaries |
+| Sensitive value change | Redaction works in stored event, API, UI, export and telemetry |
+| Revert after downstream transaction | Setting change does not silently rewrite historic ledger or reviewer outcomes |
+| Retention/erasure request | Product-specific lawful policy is applied without unsupported automatic promises |
+| Keyboard, screen reader, RTL, long labels | Usable and localized history filters, timestamps, detail and error states |
+
+**Sources and boundaries:** This knowledge reuses [role-aware audit and delegation](role-aware-workspaces-and-context-switching.md), [privacy/data lifecycle](../guidance/privacy-consent-and-trust.md), [interaction recovery](interaction-states-and-recovery.md), [OWASP Logging Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html), [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html), and [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) (reference review: 2026-11-07; link reachability not independently verified).
+
+**Little Wins F20 evidence boundary:** the inspected product snapshot provides contribution/review/reward history and owner-managed configuration; it is **not proof of an implemented configuration-change event stream, viewer, export, retention policy or undo function**. No event schema, retention duration or audit-authorized role is approved by this guidance.
+
+**Status:** proposed catalog guidance; product/security/legal ownership and implementation choices pending. Source/catalog review completed; validator, security tests, browser/a11y checks, event integrity and actual retention enforcement **NOT VERIFIED**. Batch 5 must gather fresh context, run catalog-wide validation where available, and record the remaining product-specific decisions.
