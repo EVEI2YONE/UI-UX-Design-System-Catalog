@@ -8,7 +8,7 @@ Base: `main` at `729a1051e7834b0e964630ad991ae47c444fbf8a`.
 | --- | --- | --- | --- |
 | 1 | KG-009, KG-011, KG-012 | Settings composition, unavailable-feature UX, impact communication | Guidance drafted; review and validation pending |
 | 2 | KG-010, KG-013 | Configuration synchronization and integration-test patterns | Guidance committed; validation/review pending |
-| 3 | KG-014 | Settings lifecycle and migration/deprecation | Pending |
+| 3 | KG-014 | Settings lifecycle and migration/deprecation | Guidance committed; validation/review pending |
 
 Each candidate must be reconciled against existing canonical entries before editing. Update established guidance instead of creating duplicate concepts, cite source guidance, keep catalog indexes valid, and mark tests accurately. Each batch will be committed to this same branch and reviewed under the same pull request. Do not merge until reviewed.
 
@@ -30,3 +30,11 @@ Each candidate must be reconciled against existing canonical entries before edit
 - KG-013: partially covered; added setting-to-consumer end-to-end evidence matrix, security/integrity and rollback gates, and crosslink from quality gates.
 - Registry and canonical concept IDs unchanged. Product security/accessibility/E2E validation **NOT VERIFIED**; owner remains unassigned.
 - Batch 3 remains pending; keep this shared PR in draft until all batch checks and review are recorded.
+
+## Batch 3 context and disposition
+
+- Refreshed catalog `main` at `729a1051e7834b0e964630ad991ae47c444fbf8a`; existing draft PR #13 and Batch 1–2 guidance retained.
+- Existing ownership: `governance/lifecycle-and-decisions.md` for lifecycle/status/deprecation; `pattern.offline-sync` for versioned data conversions; `pattern.account-settings-portal` for Settings UX and effective values.
+- KG-014: **partially covered**. Added per-setting transitions for new options, labels/keys, default changes, split/merge, personal/workspace scope moves, deprecation and retirement; included consumer/compatibility checks, fixtures, safe rollout and reversibility.
+- Canonical concept IDs and registry unchanged. No product schema or runtime migration performed. Application tests, human review and catalog automation **NOT VERIFIED**.
+- **All three knowledge batches are drafted and committed in PR #13.** Human review and catalog validator/test execution remain required before marking the PR ready for merge.
