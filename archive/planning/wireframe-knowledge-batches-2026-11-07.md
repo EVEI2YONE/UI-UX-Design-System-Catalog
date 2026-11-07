@@ -21,7 +21,7 @@ Before **each** batch's substantive knowledge commit: fetch the latest branch an
 | B1 | P0 | Fidelity, outcomes and prototype escalation | CONTENT COMMITTED — proposed, pending human review | CREATE `guidance.wireframe-methodology`; REUSE hierarchy/flows/recovery/quality owners | CI PASS: 59 tests; validator PASS (50 IDs, 8 READMEs, 587 links); manual UX NOT VERIFIED |
 | B2 | P0 | Task-to-screen composition and alternatives | CONTENT COMMITTED — proposed, awaiting human review | EXTEND `principle.visual-hierarchy`, `pattern.task-flows`; REUSE `guidance.wireframe-methodology` | CI PASS: 62 tests; validator PASS (50 IDs, 8 READMEs, 598 links); manual UX NOT VERIFIED |
 | B3 | P1 | State annotations and recovery | CONTENT COMMITTED — proposed, human review pending | EXTEND `pattern.interaction-recovery`; REUSE forms/feedback/offline/accessibility and B1 methodology | CI PASS: 65 tests; validator PASS (50 IDs, 8 READMEs, 606 links); runtime/manual UX NOT VERIFIED |
-| B4 | P1 | Responsive, reflow, long text and RTL | NOT STARTED | `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization` | NOT VERIFIED |
+| B4 | P1 | Responsive, reflow, long text and RTL | CONTENT COMMITTED — proposed, human review pending | EXTEND `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization`; REUSE B1 and B3 | CI pending; manual runtime tests NOT VERIFIED |
 | B5 | P1 | Static visual QA and evidence | NOT STARTED | `governance.quality` | NOT VERIFIED |
 | B6 | P2 | Synthetic examples, aliases and lookup regression | NOT STARTED | canonical examples, `catalog/index.json`, tests | NOT VERIFIED |
 | B7 | gate | Integrate READMEs, registry, changelog, source ledger, validate and hand off | NOT STARTED | discoverable navigation and quality gates | NOT VERIFIED |
@@ -65,3 +65,11 @@ Retrieve by task/alias from `catalog/index.json`; read canonical `path`, positiv
 - **Disposition:** EXTEND `pattern.interaction-recovery`; REUSE B1 fidelity and B2 task context; DEFER viewport/RTL stress tests to B4 and image quality to B5; CREATE none.
 - **Sources:** existing proposed repository pages, W3C WCAG 2.2, WAI-ARIA APG and WAI forms validation guidance; latter links are applicability references, not independent current-web verification. Proposed state-to-screen fields and synthetic export example are synthesis, not observed product evidence.
 - **Validation:** GitHub Actions run `42368095022` on B3 content/tracker commit `88a49d850041030dfda6c2353c7da70ec567913c` PASS: 65 Python tests including 3 new state-coverage tests; 50 unique concepts, 8 section READMEs and 606 relative links. Actual runtime authorization, data persistence, human task results, keyboard/AT, translated labels and responsive state transitions NOT VERIFIED.
+
+## B4 context and disposition (2026-11-07)
+
+- **Fresh baseline:** `main` at `6ed00199047488d8d5f42886112a35639fffe3ef`, PR #11 head before editing `e7909eec42ae54bfdb004b9a8e43134dbe0f3d34`. Re-read AGENTS/CONTRIBUTING, schema and 50-entry registry, B1–B3 guidance, adaptive/accessibility/i18n pages, quality expectations, indexes and lookup-test conventions.
+- **Observed ownership:** adaptive layout/window decisions already belong to `guidance.mobile-adaptive`; keyboard/zoom/accessibility evidence belongs to `guidance.accessibility`; locale expansion and RTL belong to `guidance.internationalization`. Distinct gap: screen-image stress variants and a cross-viewport handoff/evidence matrix.
+- **Decision:** EXTEND those three owners and aliases; REUSE B1 fidelity and B3 state coverage. CREATE none; DEFER direct image QA to B5, expanded examples/retrieval to B6.
+- **Sources:** reused existing standards/source ledger references to WCAG 2.2, W3C Internationalization Quick Tips, Apple HIG and Android adaptive guidance. No newly verified external content. Viewport examples and review fields are catalog synthesis; no claim of universal breakpoint or WCAG pass.
+- **Validation:** CI pending at commit; actual device resize, browser reflow/zoom, long-copy translation quality, RTL, focus/AT, and real-user evidence **NOT VERIFIED**.
