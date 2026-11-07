@@ -1980,6 +1980,52 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "architecture.enterprise-multiapp",
+      "title": "Enterprise and multi-application architecture",
+      "path": "architecture/enterprise-and-multiapp.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Choose between modular monolith, monorepo, multirepo and microfrontends with ownership, versioning, UX and delivery tradeoffs.",
+      "aliases": [
+        "monorepo architecture",
+        "microfrontend",
+        "micro-frontends",
+        "multirepo",
+        "enterprise architecture",
+        "multiple applications",
+        "modular monolith",
+        "shared packages"
+      ],
+      "domains": [
+        "application-architecture",
+        "enterprise",
+        "scalability",
+        "developer-experience"
+      ],
+      "use_when": [
+        "selecting a repository topology for multiple apps",
+        "considering independent frontend deployment",
+        "creating cross-team shared packages and ownership policies"
+      ],
+      "avoid_when": [
+        "adopting microfrontends only to solve merge conflicts",
+        "splitting stable code into packages without actual consumers"
+      ],
+      "related": [
+        "architecture.application-selection",
+        "architecture.module-boundaries",
+        "architecture.evolution",
+        "governance.lifecycle"
+      ],
+      "depends_on": [
+        "architecture.application-selection",
+        "architecture.module-boundaries"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
