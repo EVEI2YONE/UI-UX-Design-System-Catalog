@@ -95,3 +95,35 @@ Do users truly need one shared login and distinct workspaces, or only a role-sen
 - [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/) — adaptable text/direction guidance.
 
 **Status:** proposed catalog guidance only. No target app, component implementation, security penetration test, or user research was executed.
+
+## Batch 10 extension — enterprise approvals, delegation and audit visibility
+
+Role/workspace *selection* remains the core contract above. Enterprise teams additionally need explicit task state, authorized handoffs and understandable permission boundaries. These are **feature-level workflows**, not reasons to change the authorization model in the UI.
+
+### Approval and delegation state matrix
+
+| State | Show the user | Safety/recovery |
+| --- | --- | --- |
+| Draft | Owner, destination/approver and material consequences | Edit/cancel; don't imply submission |
+| Submitted / pending | Request ID (if real), step/status, next actor or group where disclosure is allowed | Preserve read-only history and correction path |
+| Requires changes | Clear reason with safe editable fields | Return to author without losing permitted work |
+| Approved | Decision, effective time and any separate execution step | Don't assume approval executed the requested mutation |
+| Rejected or withdrawn | Honest status, allowed follow-up, who can act next | Do not expose confidential notes to unauthorized roles |
+| Expired / delegated | Expiry, delegated scope, reason and responsible authorized actor | Fresh authorization and safe reassignment |
+| Partial execution / conflict | Which actions actually completed, failed or await review | Check backend outcome before retrying |
+
+- **Separation of duties:** where policy requires, ensure requesters cannot approve their own actions. Server-side policy must decide eligibility on *every* transition; hiding an Approve button is not enforcement.
+- **Delegation:** label actor vs represented person/organization, effective scope, expiry and revocation. Treat delegated approval and impersonation as different modes; log materially consequential actions.
+- **Audit trail:** show trustworthy status history, timestamps/time zones and decision reasons only to authorized viewers. Avoid promising immutable logs or universal access unless backend implements them. Provide a meaningful accessible timeline or table.
+- **Permission-change recovery:** if a role, tenant or approval scope changes mid-task, explain what remains actionable and preserve permissible drafts without leaking prior tenant data.
+- **Dense operations:** connect selection and bulk approval to [advanced interactions](advanced-interactions-and-reversible-actions.md) and [data tables](data-tables.md). Show item counts/scope, eligibility failures, partial success and bounded undo promises.
+- **Multi-actor handoff:** communicate whether notifications are merely delivered vs task truly assigned or acted upon. [Notifications](notifications-and-attention.md) owns channel/attention choices.
+- **Accessibility and locale:** verify keyboard roles, headings, error focus, long team names, translated status words, RTL, and clear date/time zone formatting. A status color alone is insufficient.
+
+**Illustrative good:** An employee requests access to a project, sees “Pending approval” and a status page, and can withdraw the request until the product-authorized cutoff; approver sees a scoped decision with audit history.
+
+**Anti-example:** A manager opens another tenant in a stale tab, approves requests hidden behind a client-only role check, and sees “Approved” before the server confirms.
+
+**Verification:** test multiple authorized roles, simultaneous reassignment, revocation, approval vs execution distinction, direct/deep links, denied actions, audit visibility, partial batch completion, narrow/RTL and screen-reader state announcements. No tested workflow or security proof is claimed.
+
+References: [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) (server-side access control); [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (web accessibility criteria); [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) only when a matching custom widget is used.
