@@ -39,3 +39,7 @@ Use text, icon and structure rather than color alone; test contrast, zoom/reflow
 **Canonical ID:** `pattern.feedback` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** unify messaging semantics while preserving critical persistent feedback. This is proposed guidance, not a shipped toast implementation.
 
 Related: [interaction recovery](interaction-states-and-recovery.md), [form composition](forms.md), [accessibility](../guidance/accessibility.md), [UX measurement](../guidance/ux-measurement.md). Standards: [WCAG 2.2 and WAI-ARIA APG](../governance/references.md).
+
+## Batch 9 boundary — notification delivery vs in-task feedback
+
+Keep this canonical pattern focused on **presenting** inline errors, banners, statuses and transient in-app messages. For event *selection*, urgency, timing, cross-device delivery, user-controlled push/email preferences and permission prompts, use [notifications and attention management](notifications-and-attention.md). Do not imply a successful push delivery is evidence of task completion. A security event may require a persistent record as well as a policy-approved notification; do not expose sensitive data through a lock-screen preview.
