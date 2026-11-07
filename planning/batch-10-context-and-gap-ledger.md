@@ -30,6 +30,6 @@ No legal, accessibility, performance, security, user-research or product-conform
 - New IDs: `guidance.data-visualization`, `guidance.mobile-adaptive`, `pattern.advanced-interactions`. New statuses remain `proposed`, owners `unassigned`, `reviewed_at: null`.
 - Required context checks: keyboard/screen-reader/narrow/zoom, touch/gesture alternatives, RTL/locale, dynamic type, responsive themes, bulk scope and partial failure, enterprise authorization, chart narrative.
 - **Real application tests:** NOT VERIFIED. **Source publication applicability:** human review required.
-- **Full repo validation:** record exact CI evidence and commit SHA when available; don't declare it passed until reported.
+- **GitHub Actions validation PASS:** [Validate catalog run #43](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42347138196) completed successfully on commit `572928a34a38d70ce69d7c21b39e99720c766963`. Individual steps **Validate index, sections, and links**, **Smoke-test lookup**, and **Test deterministic agent lookup** all succeeded. Product/usability/security verification remains NOT VERIFIED.
 
 **Delivery:** commit Batch 10 changes to the existing PR #5 branch; do not create a separate PR or merge `main`.
