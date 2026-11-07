@@ -33,7 +33,7 @@ Before authoring, reviewed `catalog/index.json` (28 concepts after Batches 7–8
 - [x] Reuse existing feedback, form, role-aware and interaction-recovery guidance rather than duplicate.
 - [x] Add proposed entry pages with actions, failure matrices, inclusion and source-ledger details.
 - [x] Register durable IDs, related/dependency metadata, discovery paths and changelog.
-- [ ] Run full repo validator and lookup tests from an executable checkout or CI; **NOT RUN** unless evidence is reported.
+- [x] GitHub Actions **Validate catalog** on commit `f68044c149d3109178e615e1d1cc0b7bd688a9e2` completed with **success** ([run #33](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42346757875)); job steps **Validate index, sections, and links**, **Smoke-test lookup**, and **Test deterministic agent lookup** all succeeded. This is CI evidence for the cited commit, not a manual product test.
 - [ ] Verify actual product keyboard, screen reader, translations, consent/backend behavior, account security, notification delivery and conflict handling; **NOT VERIFIED**.
 - [ ] Assign owners and complete human source/semantics review; remains `unassigned`.
 
