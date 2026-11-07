@@ -45,3 +45,7 @@ Resolve `pattern.advanced-interactions` for “action consolidation decision mat
 ## Batch 5 — styling and component ownership retrieval
 
 For “utility-first styling ownership” or “tailwind shadcn component styling”, retrieve `foundation.practical-styling`; for “visual redundancy enforcement”, “CSS ownership lint” or “variant explosion lint”, retrieve `architecture.enforcement-ci`; for “component inventory to contract mapping”, “installed versus used components” or “duplicate primitive audit”, retrieve `architecture.component-model`. Retain `foundation.design-tokens` for token definitions and modes. B05 is documentation-only; do not infer actual CI linting or visual QA.
+
+## Batch 6 — final icon and interaction verification retrieval
+
+Resolve `foundation.icon-semantics` for “icon consistency audit” and “icon intent collision review”. Resolve `governance.quality` for “interaction state test matrix”, “icon interaction testing”, “catalog retrieval regression” and the cumulative B01–B06 evidence gate. Use the canonical owners returned by `scripts/find_concept.py`, not repeated guidance from historical batch ledgers. Automated catalog tests cannot prove screen-reader, keyboard, touch, responsive or live network behavior.
