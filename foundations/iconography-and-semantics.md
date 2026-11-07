@@ -106,3 +106,47 @@ The example assumes an implementation with appropriate focus, menu semantics, st
 Motivating example: [Little Wins icon knowledge B05](https://github.com/EVEI2YONE/Little_Wins/blob/main/docs/little-wins/ui-knowledge/batch-05-iconography-and-affordances.md) (app-local proposals, not observed user comprehension or general icon mandates).
 
 **Related canonical IDs:** `foundation.practical-styling`, `component.button`, `architecture.component-contracts`, `guidance.accessibility`, `guidance.internationalization`, `pattern.feedback`, `pattern.interaction-recovery`. **Lifecycle:** proposed, owner unassigned, no human review or product tests recorded.
+
+## B06 — icon-consistency audit and evolution (CKG-05; proposed 2026-11-07)
+
+**Scope:** review whether a product's chosen icon family and semantic intent registry remain coherent as new components are added. This is a **decision and audit contract**, not a universal glyph set, a Lucide export list, or evidence of implementation. General visual craftsmanship stays with [practical styling](practical-ui-styling-recipes.md); controls own actual activation through their [component contracts](../architecture/component-contracts.md); verification ownership is [quality gates](../governance/quality-gates.md).
+
+### A reviewable semantic icon registry entry
+
+For each intent, capture: `semanticIntent`, human-readable **verb/object or status**, visual glyph identifier and installed package/version, semantic role (decorative/informative/action/navigation/disclosure), allowed host components, icon size/token, required nearby text/accessible name source, state-specific alternatives, directional/RTL policy, owner, consumers, status and migration aliases. Product teams should choose the actual glyph and confirm package exports; the catalog must not mandate an icon family for every consumer.
+
+### CKG-05 consistency and collision matrix
+
+| Audit question | Positive condition | Error or escalation |
+| --- | --- | --- |
+| Same semantic intent across pages | One registered meaning with context-specific clear labels | Two glyphs both mean "Delete" without documented context/reason |
+| Same glyph across intents | Distinct neighboring labels and no misleading high-stakes ambiguity | Check glyph used interchangeably for "select", "approve", "saved" and "completed" without labels |
+| Icon-only affordances | Named host button/menu, visible focus, reasonable target, touch/keyboard route | Bare clickable SVG, hover-only reveal, inaccessible tooltip-only meaning |
+| Status identity over time | Text/status remains authoritative across pending/confirmed/failed/unknown | Green check appears as soon as "Approve" is clicked before confirmation |
+| Visual language | Coherent stroke/fill, optical alignment and size roles, compatible themes | Inconsistent unrelated icon packs or status conveyed only by color |
+| Responsive and localization | Label and target remain usable at zoom/narrow widths; reviewed directional mirroring | Automatic RTL mirroring of clocks/status/brands or clipped translated labels |
+| Duplicate/dormant registry entries | Alias/deprecation path and consumer inventory | Same meaning entered under multiple IDs with no compatibility plan |
+| Contextual consequence | Destructive/high-risk action has a precise verb/object and impact explanation | Trash icon hidden in "More" without discoverable consequence or permission checking |
+
+### Audit and migration sequence
+
+1. Sample **actual rendered consumers** and the app's icon registry/imports. Distinguish unused installed glyphs from icons exposed in live UI.
+2. Map visible action/status icons to semantic intent, host accessible name and permission/outcome model; review duplicate meanings **before** standardizing colors.
+3. Flag mismatches with severity, affected screens, owner and recommended fix; preserve a valid alternate when cultural or task context requires it. Never automatically unify symbols that have different meanings.
+4. Choose a canonical intent and document any renamed glyph alias, affected components, states, tests and staged migration. Check the impact on saved documents, right-to-left navigation and long labels.
+5. For implementation, verify with keyboard, screen reader, pointer/touch, high-contrast/forced-colors, zoom, translations, reduced motion and delayed/unknown backend results. Record actual evidence per environment.
+6. Keep the registry and its consumers versioned together. **Documentation-only checks cannot certify icon recognition or accessibility.**
+
+**Illustrative good:** a task-specific "Edit submission" Button uses a consistent pencil intent, while a pending review Badge shows an informative clock **plus text**; success status waits for authoritative confirmation. **Anti-example:** a clickable check glyph alternates between checking a checkbox and approving a transaction, gains a green fill immediately on click, and has no accessible name.
+
+### CKG-05 verification and adoption
+
+| Check | Scope/evidence | Status |
+| --- | --- | --- |
+| Registry intent collision audit | Product glyph mapping, live consumers and semantic labels | NOT VERIFIED |
+| Glyph package/version and theme consistency | Actual installed assets, rendering across modes | NOT VERIFIED |
+| Native roles, keyboard/AT and target size | Browser/device and screen-reader test log, WCAG applicability | NOT VERIFIED |
+| Pending/failed/uncertain icon timing | Authorized service/integration scenarios | NOT VERIFIED |
+| Translation, RTL and visual reflow | Supported locale and responsive matrix | NOT VERIFIED |
+
+**References (consulted 2026-11-07):** [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/), [MDN aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden). Audit outcomes remain app-specific; no new packaged component is provided.
