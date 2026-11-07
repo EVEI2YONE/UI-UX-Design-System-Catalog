@@ -153,5 +153,61 @@ class LookupTests(unittest.TestCase):
                 for ref in entry['related'] + entry['depends_on']:
                     self.assertIn(ref, ids)
 
+
+    def test_batch6_role_metadata_complete(self):
+        entry = next(e for e in self.entries if e['id'] == 'pattern.role-aware-workspaces')
+        for field in ('use_when', 'avoid_when', 'related', 'depends_on', 'owner', 'reviewed_at'):
+            self.assertIn(field, entry)
+        self.assertEqual(entry['status'], 'proposed')
+        self.assertEqual(entry['owner'], 'unassigned')
+
+    def test_batch6_normalization_and_filters(self):
+        self.assertEqual(lookup(self.entries, 'role_aware-workspaces')[0]['id'],
+                         'pattern.role-aware-workspaces')
+        self.assertEqual(lookup(self.entries, 'modal-dialog')[0]['id'], 'component.dialog')
+        self.assertEqual(lookup(self.entries, 'loading button', limit=1)[0]['id'],
+                         'component.button')
+        self.assertEqual(lookup(self.entries, status='stable'), [])
+
+    def test_batch6_negative_guidance_not_positive_search(self):
+        from find_concept import score
+        entry = {'id': 'sample.noop', 'title': 'Noop', 'summary': 'example',
+                 'aliases': [], 'domains': [], 'use_when': [],
+                 'avoid_when': ['secret negative marker']}
+        self.assertEqual(score(entry, 'secret negative marker'), -1)
+
+    def test_batch6_invalid_references_and_types(self):
+        from validate_catalog import main
+        # The validator runs against the real checkout; this test checks
+        # the canonical registry contract without mutating repository data.
+        registry = json.loads((ROOT / 'catalog/index.json').read_text())
+        ids = {entry['id'] for entry in registry['entries']}
+        paths = [entry['path'] for entry in registry['entries']]
+        self.assertEqual(len(paths), len(set(paths)))
+        for entry in registry['entries']:
+            self.assertTrue(set(('use_when', 'avoid_when', 'related',
+                                 'depends_on', 'owner', 'reviewed_at')) <= set(entry))
+            self.assertIsInstance(entry['use_when'], list)
+            self.assertIsInstance(entry['avoid_when'], list)
+            self.assertIsInstance(entry['owner'], str)
+            for target in entry['related'] + entry['depends_on']:
+                self.assertIn(target, ids)
+        self.assertEqual(main(), 0)
+
+    def test_batch6_dependency_graph_acyclic(self):
+        graph = {e['id']: e['depends_on'] for e in self.entries}
+        visited, active = set(), set()
+        def walk(ident):
+            self.assertNotIn(ident, active)
+            if ident in visited:
+                return
+            active.add(ident)
+            for child in graph[ident]:
+                walk(child)
+            active.remove(ident)
+            visited.add(ident)
+        for ident in graph:
+            walk(ident)
+
 if __name__ == '__main__':
     unittest.main()

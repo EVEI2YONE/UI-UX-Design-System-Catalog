@@ -35,3 +35,7 @@ We favor **small, evidence-led, canonical guidance** over volume. The catalog co
 `proposed` → `experimental` → `stable` is a possible path, not an automatic promotion. `deprecated` and `removed` require migration notice and owner review. A conceptual page can become stable without a published coded component, but must always describe which type of artifact it represents.
 
 Open focused PRs from a branch. **Do not push catalog changes directly to the default branch or merge without review/approval.** If the repository has no initial commit, an owner must first initialize the default branch as a separately reviewed bootstrap operation.
+
+## Agent retrieval and lifecycle maintenance
+
+Keep metadata in the single [canonical registry](catalog/index.json) with [schema](catalog/schema.json). Define task-positive `use_when` and real contraindications in `avoid_when`, not keyword stuffing. Use canonical IDs in `related` and cycle-free `depends_on`; record `unassigned` until an owner accepts responsibility. Leave `reviewed_at` null until a human review happens. If a new dedicated concept supersedes a generic match, update lookup regression tests intentionally. Run the validator and lookup tests before review; mark missing manual evidence `NOT VERIFIED`.

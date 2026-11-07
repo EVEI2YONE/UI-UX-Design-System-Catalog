@@ -106,3 +106,7 @@ Find individually retrievable proposed specifications for [Button, Input, Select
 ## Batch 5 — composed patterns
 
 [Forms, navigation, search/filtering, data tables and feedback](patterns/README.md) now have canonical, agent-retrievable pattern specifications. These compose the [Batch 4 component contracts](components/README.md) and existing guidance without becoming product-specific feature implementations. All remain proposed and unverified on real user interfaces.
+
+## Batch 6 — agent catalog maturity
+
+The [agent lookup protocol](AGENTS.md), [catalog registry](catalog/README.md), [validation script](scripts/validate_catalog.py) and [governance rules](governance/lifecycle-and-decisions.md) now cover complete lookup metadata, deterministic retrieval, cross-references and dependency cycles for all registered concepts. No concept was automatically promoted from `proposed`, and documentation validation is not product accessibility certification.

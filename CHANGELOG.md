@@ -45,3 +45,10 @@
 - Register five stable canonical lookup IDs with aliases, usage boundaries, dependencies and unassigned ownership.
 - Update root, pattern and agent indexes, plus regression tests; preserve existing component and conceptual guidance without copying implementation logic.
 - No production components, manual a11y/RTL checks or validated UX research are included.
+
+## Unreleased — Batch 6 agent catalog maturity (same PR as Batches 4–5)
+
+- Complete structured lookup metadata for the previously separate role-aware workspace entry, without changing its ID or status.
+- Improve retrieval with punctuation normalization, status/limit filters and exclusion of negative `avoid_when` from positive matching.
+- Require consistent metadata through the schema and strengthen validator checks for duplicate canonical paths, type/duplicate metadata and dependency cycles.
+- Add lookup and registry regression coverage, governance ownership/review practices and agent documentation. No component implementation or manual UX conformance claims.
