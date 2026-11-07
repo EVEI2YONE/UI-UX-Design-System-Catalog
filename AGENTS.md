@@ -41,3 +41,7 @@ Search `pattern.interaction-recovery` for “icon state synchronization”, “p
 ## Batch 4 — action consolidation and effort retrieval
 
 Resolve `pattern.advanced-interactions` for “action consolidation decision matrix”, “split button safety”, “contextual action toolbar”, “control overloading” or “primary versus overflow actions”. Resolve `guidance.ux-measurement` for “pointer travel distance”, “time to next action”, “keyboard navigation effort” and “interaction cost measurement”. Use B03 `pattern.task-flows` for spatial layout/next-item progression, not to redefine the metric; all UX improvements require actual task evidence.
+
+## Batch 5 — styling and component ownership retrieval
+
+For “utility-first styling ownership” or “tailwind shadcn component styling”, retrieve `foundation.practical-styling`; for “visual redundancy enforcement”, “CSS ownership lint” or “variant explosion lint”, retrieve `architecture.enforcement-ci`; for “component inventory to contract mapping”, “installed versus used components” or “duplicate primitive audit”, retrieve `architecture.component-model`. Retain `foundation.design-tokens` for token definitions and modes. B05 is documentation-only; do not infer actual CI linting or visual QA.
