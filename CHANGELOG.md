@@ -248,3 +248,9 @@
 - Batch 2 (KG-007–013, KG-023): expand existing authentication, privacy and role-aware workspace guidance for factor/session/provider management, consent/data lifecycle and high-risk settings authorization; no duplicate concepts.
 - Batch 3 (KG-014–022, KG-024): extend notification, token/appearance, i18n and quality guidance; add `pattern.billing-subscription-settings` for payment/plan/invoice decisions. Keep product tests NOT VERIFIED.
 - Register both new IDs, sync root/nested discovery and maintain one shared PR with separate batch commits; no app implementation or validated security/compliance outcomes.
+
+## Unreleased — icon and interaction system, Batch 1 (2026-11-07)
+
+- Added proposed `foundation.icon-semantics` guidance for semantic icon intent, accessible icon-only action controls, host state and verification.
+- Extended Button and styling docs with canonical ownership boundaries and updated index/agent lookup paths.
+- No shipped component, human review, or manual accessibility conformance is implied. Batches 2–6 remain pending on the shared branch.
