@@ -47,3 +47,5 @@ Also see [quality gates](../governance/quality-gates.md) and [sources](../govern
 ## Batch 7 — integrated accessibility tasks
 
 [Accessibility guidance](accessibility.md) now includes record-to-dialog-to-updated-list journey verification and explicit source-observed versus actually tested claims. Pair [table actions](../patterns/data-tables.md) with [dialog focus behavior](../components/dialog/spec.md).
+
+**Wireframe Batch 4 discovery:** use `guidance.mobile-adaptive` for viewport and pane transformations, `guidance.accessibility` for intended zoom/focus/reading-order coverage, and `guidance.internationalization` for text expansion, RTL and mixed-direction content. Static imagery remains a review artifact, not runtime conformance evidence.
