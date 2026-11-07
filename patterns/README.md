@@ -46,3 +46,8 @@ For hosted identity and managed-profile boundaries use [authentication](authenti
 ## Batch 6 — versioned workspace migration
 
 [Offline work and synchronization](offline-sync-and-conflicts.md) now distinguishes safe read-time normalization from durable migration, backup, import/restore, version conflicts and aggregate contention. See [privacy lifecycle](../guidance/privacy-consent-and-trust.md) for archive/retention/export UX, and [Batch 6 context ledger](../planning/little-wins-batch-6-context-and-gap-ledger.md) for the Little Wins source basis.
+
+
+## Batch 7 — record actions and dialog continuity
+
+[Data tables](data-tables.md) now gives an explicit native action-cell control versus clickable-row decision. Combine with the [Dialog contract](../components/dialog/spec.md) and [accessibility journey criteria](../guidance/accessibility.md), rather than treating a keyboard-focusable `<tr>` as a full grid. [Batch 7 ledger](../planning/little-wins-batch-7-context-and-gap-ledger.md) records the source context.
