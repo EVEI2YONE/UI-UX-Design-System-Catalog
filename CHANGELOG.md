@@ -273,3 +273,10 @@
 - Expanded `pattern.advanced-interactions` (CKG-13) with explicit-button/toolbar/overflow/split/shortcut choice matrix, consequence, focus and accessibility constraints.
 - Expanded `guidance.ux-measurement` (CKG-14) with task-scoped pointer/keyboard/scroll/re-entry/time-to-next metrics, privacy handling and task-success guardrails.
 - Updated existing registry aliases and source indexes; saved [B04 context review](archive/planning/icon-interaction-b04-context-2026-11-07.md). No new canonical IDs or observed user-efficiency claims.
+
+## Unreleased — icon and interaction system, Batch 5 (2026-11-07)
+
+- Extended `foundation.practical-styling` (CKG-15) with utility-first token/component/feature ownership and a bounded Tailwind/shadcn-style example.
+- Extended `architecture.enforcement-ci` (CKG-16) with baseline-aware global CSS, raw-token, duplicate-primitive and variant drift guardrails plus exception and false-positive handling.
+- Extended `architecture.component-model` (CKG-17) with installed/exported/imported/used inventory distinctions and reuse/compose/extend/keep-local/create/deprecate decision worksheet.
+- Added [B05 context review](archive/planning/icon-interaction-b05-context-2026-11-07.md), index aliases, retrieval tests and progress tracking. No new canonical concept or target-app linter installed.
