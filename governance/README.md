@@ -36,3 +36,8 @@ For changes see [Contributing](../CONTRIBUTING.md) and the [PR template](../.git
 ## Batch 9 — refactor safety evidence
 
 [Quality gates](quality-gates.md) now checks existing component adoption, public compatibility, staged CSS/token migration, vertical-slice regressions and rollback before calling an app modernization successful. [Batch 9 evidence](../planning/little-wins-batch-9-context-and-gap-ledger.md) is a source audit, not product test evidence.
+
+
+## Batch 10 — final cumulative coverage audit
+
+The [Batch 10 ledger](../planning/little-wins-batch-10-context-and-gap-ledger.md) maps Batches 1–10 to canonical IDs, evidence and outstanding product verification. Registry lookup [regression tests](../tests/test_little_wins_knowledge_coverage.py) cover ambiguous human-versus-agent approval and other task queries; the full catalog validator remains the source of documentation-integrity results.
