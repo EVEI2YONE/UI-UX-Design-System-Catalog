@@ -141,3 +141,13 @@
 - Extended token/theming guidance with legacy selector inventory, semantic role mapping, scoped styling and compatibility safeguards.
 - Expanded quality gates for real component adoption, accessibility/visual/domain regressions and rollback readiness.
 - Recorded context-first gap decisions and updated catalog navigation; no new canonical IDs, implemented refactor or verified product testing.
+
+
+## Unreleased — Batch 10 (2026-11-07)
+
+- Audited the cumulative ten-batch knowledge coverage, source limitations and prior documentation CI baseline.
+- Found natural-language lookup gaps despite existing canonical pages, including confusing human approval requests with AI-agent approval guidance.
+- Enriched aliases/`use_when` metadata on 11 existing concept IDs without adding or renaming IDs.
+- Added regression tests for 12 task-to-concept queries, unique IDs, proposed statuses, and Batch 6–10 evidence ledgers.
+- Added the final cross-batch context, gap and verification ledger and linked it from canonical discovery files.
+- The previous Batch 9 head passed GitHub's Validate catalog workflow run #98. Batch 10 final-head CI is a separate gate; target-app security/UX remain NOT VERIFIED. Keep PR draft pending review.
