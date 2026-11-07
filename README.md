@@ -1,6 +1,5 @@
 # UI/UX Design System Catalog
 
-[![Support me on Ko-fi](https://img.shields.io/badge/Ko--fi-Support%20me-cc1d1d?logo=ko-fi&logoColor=white)](https://ko-fi.com/S5C12A839Y)
 
 > **Status:** proposal scaffold (v0.1.0). A catalog of reusable design knowledge, not a published UI component library or a claim of accessibility conformance.
 
@@ -124,3 +123,7 @@ Detailed batch progress, source audits, PR snapshots and product-specific case s
 ## Wireframe catalog integration (proposed PR #11)
 
 The [B0–B7 cumulative handoff](archive/planning/wireframe-integration-handoff-2026-11-07.md) maps each gap to its canonical ID, current evidence and outstanding verification. The [synthetic example bank](archive/planning/wireframe-synthetic-example-bank-2026-11-07.md) is illustrative, not canonical guidance. Look up concepts through `catalog/index.json`; consumer agents must inspect the actual generated image and use a prototype or implementation for interaction/accessibility claims. No real images, user studies or runtime accessibility checks were performed for this documentation set: **NOT VERIFIED**.
+
+## Support This Project
+
+[![Support on Ko-fi](https://img.shields.io/badge/Support%20on-Ko--fi-13C3FF?logo=ko-fi&logoColor=white)](https://ko-fi.com/S5C12A839Y)
