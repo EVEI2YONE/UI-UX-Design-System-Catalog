@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Wireframe knowledge B2 (proposed): extend existing `pattern.task-flows` and `principle.visual-hierarchy` with minimum task brief, assumption labels, screen action hierarchy, structurally different alternatives, comparative review criteria, synthetic examples/anti-examples and retrieval regression tests. No new canonical ID or claims of implemented interactions.
+
 - Wireframe knowledge B1 (proposed): add tool-neutral `guidance.wireframe-methodology` for visual/content/interaction fidelity, representation selection, static-image claims and prototype escalation; update registry, discovery and lookup regression checks. Existing task-flow, state and quality concepts remain canonical. No user studies or runtime checks claimed.
 
 
