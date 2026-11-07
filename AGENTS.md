@@ -85,3 +85,7 @@ Resolve `architecture.enforcement-ci` for queries such as `module boundary lint`
 ## Batch 19 — reference examples and task-to-code lookup
 
 Resolve `architecture.reference-examples` for `prototype file structure`, `MVP folder structure example`, `enterprise monorepo example`, `architecture migration example`, and similar applied tasks. Use the examples for illustration only after selecting a profile and inspecting the target framework and module boundaries. Examples are **not runnable implementations**; consult [the Batch 19 context ledger](planning/application-architecture-batch-19-context-and-gaps.md) for evidence limits.
+
+## Batch 20 — application architecture knowledge closure
+
+Use the [task-first architecture index](architecture/README.md) rather than chronological batch notes as a navigation starting point. The [final architecture knowledge audit](planning/application-architecture-batch-20-closure-audit.md) reconciles seven new proposed canonical concepts, documents known overlaps and residual implementation evidence. Choose guidance by actual developer task: selection → module ownership → framework → enterprise topology, migration, enforcement and examples as needed. Do not promote proposed guidance or claim runtime verification from catalog CI.
