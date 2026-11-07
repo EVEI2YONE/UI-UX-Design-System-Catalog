@@ -52,6 +52,54 @@
       "reviewed_at": null
     },
     {
+      "id": "foundation.visual-craftsmanship",
+      "title": "Visual design craftsmanship",
+      "path": "foundations/visual-design-craftsmanship.md",
+      "layer": "foundations",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Practical composition, typography, color palette construction, spatial rhythm and art direction with examples and review heuristics.",
+      "aliases": [
+        "visual craftsmanship",
+        "visual composition",
+        "optical balance",
+        "font pairing",
+        "typography design",
+        "color harmony",
+        "palette construction",
+        "spacing rhythm",
+        "art direction",
+        "visual identity"
+      ],
+      "domains": [
+        "visual-design",
+        "typography",
+        "color",
+        "design-foundations"
+      ],
+      "use_when": [
+        "defining an interface visual direction",
+        "selecting typography and palette relationships",
+        "critiquing compositional balance",
+        "choosing density and spatial rhythm"
+      ],
+      "avoid_when": [
+        "using cosmetic styling instead of improving critical task accessibility or completion",
+        "asserting aesthetic taste is a verified UX outcome"
+      ],
+      "related": [
+        "principle.visual-hierarchy",
+        "foundation.design-tokens",
+        "guidance.accessibility",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "principle.visual-hierarchy"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
       "id": "foundation.design-tokens",
       "title": "Design tokens and themes",
       "path": "foundations/design-tokens-and-themes.md",
