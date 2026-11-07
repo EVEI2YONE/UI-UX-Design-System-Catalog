@@ -19,5 +19,8 @@ These are **proposed composition specifications**, not runtime implementations. 
 - [Search and filtering](search-and-filter.md) — `pattern.search-filter`, queries, selected filters, no-results and failed requests
 - [Data tables and collection actions](data-tables.md) — `pattern.data-tables`, semantics, sorting, selection and pagination
 - [Feedback and status messaging](feedback.md) — `pattern.feedback`, banners, inline status, transient notices and announcements
+- [Service recovery and support handoff](service-recovery-and-support.md) — `pattern.service-recovery`, escalations, outages, case status and resuming tasks
 
 Use the existing [task-flow](task-flows-and-information-architecture.md) and [interaction-recovery](interaction-states-and-recovery.md) guidance as the shared decision layer rather than copying it into every pattern.
+
+**Batch 8 extension:** [Forms](forms.md) now describes data collection, validation timing, multi-step forms, review, autosave, autofill and error handling; [search/filtering](search-and-filter.md) covers discovery strategy, facets, sorting, pagination and no-result/error distinction. Use [content design](../guidance/content-design-and-ux-writing.md) for copy standards; these are documentation patterns, not implemented controls.
