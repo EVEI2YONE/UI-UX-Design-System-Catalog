@@ -97,3 +97,7 @@ Use `pattern.task-flows` for minimum design context, screen sequence, action con
 ## Static state coverage (proposed wireframe B3)
 
 Use `pattern.interaction-recovery` for `wireframe state coverage`, `static wireframe state matrix`, and `state annotation handoff`. Its canonical page owns the state inventory and screenshot/annotation evidence boundary. It does not establish functioning permission checks or real recovery behavior; follow `guidance.wireframe-methodology` for prototype escalation.
+
+## Responsive and inclusive wireframe lookup (proposed B4)
+
+`guidance.mobile-adaptive` owns responsive wireframe composition and viewport matrix queries; `guidance.accessibility` owns inclusive static design review and annotated zoom/focus expectations; `guidance.internationalization` owns long-text, RTL and bidi wireframe stress review. These extend existing proposed IDs and do not certify responsive behavior or WCAG conformance.
