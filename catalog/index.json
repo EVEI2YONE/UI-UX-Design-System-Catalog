@@ -411,7 +411,11 @@
         "reduced motion",
         "keyboard navigation",
         "modal focus",
-        "screen reader testing"
+        "screen reader testing",
+        "inclusive wireframe review",
+        "wireframe zoom reflow",
+        "wireframe focus annotations",
+        "wireframe accessibility stress review"
       ],
       "domains": [
         "accessibility",
@@ -422,11 +426,14 @@
         "reviewing keyboard and focus behavior",
         "checking semantic HTML and accessible names",
         "testing zoom reflow and contrast",
-        "evaluating touch interaction and reduced motion"
+        "evaluating touch interaction and reduced motion",
+        "annotating inclusive wireframe expectations before implementation",
+        "reviewing visual intent under zoom and reading order changes"
       ],
       "avoid_when": [
         "claiming WCAG compliance from automated checks alone",
-        "using ARIA when native semantics suffice"
+        "using ARIA when native semantics suffice",
+        "claiming accessibility conformance from static wireframe imagery"
       ],
       "related": [
         "architecture.component-contracts",
@@ -436,7 +443,8 @@
         "guidance.data-visualization",
         "guidance.mobile-adaptive",
         "pattern.advanced-interactions",
-        "pattern.multimodal-conversation"
+        "pattern.multimodal-conversation",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -461,7 +469,11 @@
         "pseudolocalization",
         "text expansion",
         "locale formatting",
-        "bidirectional layout"
+        "bidirectional layout",
+        "wireframe text expansion",
+        "rtl wireframe layout",
+        "bidi wireframe review",
+        "wireframe localization stress"
       ],
       "domains": [
         "internationalization",
@@ -472,16 +484,20 @@
         "externalizing product messages",
         "designing RTL and mixed direction layouts",
         "testing translated error labels",
-        "formatting dates numbers and plurals by locale"
+        "formatting dates numbers and plurals by locale",
+        "illustrating long translated copy and mixed direction data in wireframes",
+        "annotating localization assumptions and unverified RTL behavior"
       ],
       "avoid_when": [
         "concatenating translated sentence fragments",
-        "mirroring logos or numeric data without review"
+        "mirroring logos or numeric data without review",
+        "treating English-only images as verified localized layouts"
       ],
       "related": [
         "guidance.accessibility",
         "architecture.component-contracts",
-        "foundation.design-tokens"
+        "foundation.design-tokens",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -1578,7 +1594,12 @@
         "dynamic type",
         "mobile navigation",
         "split view",
-        "touch alternatives"
+        "touch alternatives",
+        "responsive wireframe composition",
+        "compact wide wireframe layouts",
+        "wireframe viewport matrix",
+        "wireframe layout reflow",
+        "adaptive wireframe handoff"
       ],
       "domains": [
         "mobile",
@@ -1589,18 +1610,22 @@
       "use_when": [
         "designing for mobile native and web targets",
         "adapting navigation across window sizes",
-        "checking touch keyboard and safe area states"
+        "checking touch keyboard and safe area states",
+        "comparing compact intermediate and wide wireframe layouts",
+        "annotating content and navigation transforms across windows"
       ],
       "avoid_when": [
         "treating device breakpoints as fixed feature permissions",
-        "copying platform specific navigation to all other platforms"
+        "copying platform specific navigation to all other platforms",
+        "treating a scaled desktop image as evidence of responsive implementation"
       ],
       "related": [
         "guidance.accessibility",
         "guidance.internationalization",
         "pattern.task-flows",
         "pattern.advanced-interactions",
-        "pattern.offline-sync"
+        "pattern.offline-sync",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [],
       "owner": "unassigned",
