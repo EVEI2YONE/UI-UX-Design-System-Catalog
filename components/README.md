@@ -20,4 +20,4 @@ All owners are **unassigned**, statuses **proposed**, and manual checks **NOT VE
 
 ## Batch 7 — stateful native-dialog integration
 
-The [Dialog contract](dialog/spec.md) now calls out focus/dismissal, stateful unsaved forms, confirmed async outcomes and fallback focus when the invoking record disappears. This extends its existing canonical ID; it does not certify an implementation. See [Batch 7 context ledger](../planning/little-wins-batch-7-context-and-gap-ledger.md).
+The [Dialog contract](dialog/spec.md) now calls out focus/dismissal, stateful unsaved forms, confirmed async outcomes and fallback focus when the invoking record disappears. This extends its existing canonical ID; it does not certify an implementation. See [Batch 7 context ledger](../archive/planning/little-wins-batch-7-context-and-gap-ledger.md).

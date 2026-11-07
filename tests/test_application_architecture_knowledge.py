@@ -58,7 +58,7 @@ class ApplicationArchitectureKnowledgeTests(unittest.TestCase):
             check(concept_id, set())
 
     def test_batch_context_ledger_is_present(self):
-        self.assertTrue((ROOT / "planning/application-architecture-batches-13-16-context-and-gaps.md").is_file())
+        self.assertTrue((ROOT / "archive/planning/application-architecture-batches-13-16-context-and-gaps.md").is_file())
 
 
 if __name__ == "__main__":

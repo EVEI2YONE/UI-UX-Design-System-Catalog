@@ -23,7 +23,7 @@ An empty query lists all entries. Search matches partial text across titles, IDs
 The registry is intended for discoverability, not an implementation API. If a concept moves, preserve its ID, update the canonical path, and provide redirects/migration where old links were published. See [Contributing](../CONTRIBUTING.md).
 ## Agent-oriented lookup
 
-The [JSON Schema](schema.json) describes the registry record. Batch 1–3 scaffold entries additionally provide `use_when`, `avoid_when`, `related`, `depends_on`, `owner`, and nullable `reviewed_at`; other entries can adopt these fields incrementally. The registry remains the only machine-readable metadata source. Related references are canonical IDs, not duplicate Markdown files.
+The [JSON Schema](schema.json) describes the registry record. Every current entry requires `use_when`, `avoid_when`, `related`, `depends_on`, `owner`, and nullable `reviewed_at`; this applies to all 49 entries, including those introduced after the scaffold batches. The registry remains the only machine-readable metadata source. Related references are canonical IDs, not duplicate Markdown files.
 
 ```bash
 python3 scripts/find_concept.py 'loading button' --json
@@ -55,33 +55,33 @@ python3 scripts/validate_catalog.py
 python3 -m unittest discover -s tests -v
 ```
 
-The [schema](schema.json) specifies fields; the dependency/reference validator uses the Python standard library rather than a complete JSON Schema engine. Documentation checks do not establish verified accessibility or implemented component quality.
+The [schema](schema.json) specifies the complete metadata contract; the standard-library validator checks selected structural and reference invariants but does not implement a complete JSON Schema engine. Documentation checks do not establish verified accessibility or implemented component quality.
 
 
 ## Batch 10 — task-based retrieval coverage
 
-The existing 40 concepts remain canonical; retrieval metadata now maps user task phrases such as `hosted authentication`, `human approval workflow`, `feature flags`, `data migration`, `clickable row`, `dialog focus return` and `global CSS` to their owning pages. This is alias and `use_when` enrichment, not concept creation or promotion. See [Batch 10 evidence ledger](../planning/little-wins-batch-10-context-and-gap-ledger.md) and [regression tests](../tests/test_little_wins_knowledge_coverage.py). Rank indicates retrieval relevance, not implementation correctness.
+At the historical Batch 10 snapshot, 40 concepts were canonical (the current registry contains 49); retrieval metadata now maps user task phrases such as `hosted authentication`, `human approval workflow`, `feature flags`, `data migration`, `clickable row`, `dialog focus return` and `global CSS` to their owning pages. This is alias and `use_when` enrichment, not concept creation or promotion. See [Batch 10 evidence ledger](../archive/planning/little-wins-batch-10-context-and-gap-ledger.md) and [regression tests](../tests/test_little_wins_knowledge_coverage.py). Rank indicates retrieval relevance, not implementation correctness.
 
 ## Application architecture task lookup (Batches 13–16)
 
-Use `architecture.application-selection` for profiles and example trees, `architecture.module-boundaries` for feature/domain/shared ownership and developer findability, `architecture.evolution` for migration/fitness, and `architecture.enterprise-multiapp` for monorepo/multirepo/microfrontend selection. These are proposed application-code guidelines rather than a restructuring of the catalog itself. [Batch context and coverage](../planning/application-architecture-batches-13-16-context-and-gaps.md).
+Use `architecture.application-selection` for profiles and example trees, `architecture.module-boundaries` for feature/domain/shared ownership and developer findability, `architecture.evolution` for migration/fitness, and `architecture.enterprise-multiapp` for monorepo/multirepo/microfrontend selection. These are proposed application-code guidelines rather than a restructuring of the catalog itself. [Batch context and coverage](../archive/planning/application-architecture-batches-13-16-context-and-gaps.md).
 
 ## Batch 17 framework-aware architecture lookup
 
-Resolve `architecture.framework-aware` for applying application/feature organization without overriding Next.js App Router, Angular or React Router file conventions. Start with `architecture.application-selection` and `architecture.module-boundaries` for generalized ownership decisions. See [Batch 17 context](../planning/application-architecture-batch-17-context-and-gaps.md).
+Resolve `architecture.framework-aware` for applying application/feature organization without overriding Next.js App Router, Angular or React Router file conventions. Start with `architecture.application-selection` and `architecture.module-boundaries` for generalized ownership decisions. See [Batch 17 context](../archive/planning/application-architecture-batch-17-context-and-gaps.md).
 
 ## Batch 18 architecture-enforcement lookup
 
-Use `architecture.enforcement-ci` for example boundary lint, graph cycle detection, Nx project constraints, exception review and CI rollout. This is distinct from `architecture.module-boundaries`, which owns the application design decisions. [Batch 18 source and gap ledger](../planning/application-architecture-batch-18-context-and-gaps.md).
+Use `architecture.enforcement-ci` for example boundary lint, graph cycle detection, Nx project constraints, exception review and CI rollout. This is distinct from `architecture.module-boundaries`, which owns the application design decisions. [Batch 18 source and gap ledger](../archive/planning/application-architecture-batch-18-context-and-gaps.md).
 
 ## Batch 19 applied architecture examples
 
-Use `architecture.reference-examples` for prototype/MVP/enterprise developer-task-to-file walkthroughs and before/after modularity decisions. Selection and module contracts remain canonical in `architecture.application-selection` and `architecture.module-boundaries`. [Batch 19 context](../planning/application-architecture-batch-19-context-and-gaps.md).
+Use `architecture.reference-examples` for prototype/MVP/enterprise developer-task-to-file walkthroughs and before/after modularity decisions. Selection and module contracts remain canonical in `architecture.application-selection` and `architecture.module-boundaries`. [Batch 19 context](../archive/planning/application-architecture-batch-19-context-and-gaps.md).
 
 ## Batch 20 — architecture coverage and selection
 
-The [architecture index](../architecture/README.md) is the human task-first entrypoint to the seven application architecture concepts introduced in Batches 13–19. The [closure audit](../planning/application-architecture-batch-20-closure-audit.md) documents canonical ownership, lookup coverage, historical context and unverified application outcomes. Prefer existing IDs over creating redundant concept entries.
+The [architecture index](../architecture/README.md) is the human task-first entrypoint to the seven application architecture concepts introduced in Batches 13–19. The [closure audit](../archive/planning/application-architecture-batch-20-closure-audit.md) documents canonical ownership, lookup coverage, historical context and unverified application outcomes. Prefer existing IDs over creating redundant concept entries.
 
 ## Account/settings portal retrieval
 
-Start with `pattern.account-settings-portal` for settings IA, profile management, contact verification and save state. Use `pattern.billing-subscription-settings` for plans, payment and invoices. For credentials use `pattern.authentication-lifecycle`; for privacy rights `guidance.privacy-trust`; for alerts `pattern.notifications-attention`; for user language `guidance.internationalization`; for appearance `foundation.design-tokens`; for authorization `pattern.role-aware-workspaces`. See [three-batch audit ledger](../planning/account-settings-batch-progress.md). All entries are proposed; no live account portal or payment system is asserted.
+Start with `pattern.account-settings-portal` for settings IA, profile management, contact verification and save state. Use `pattern.billing-subscription-settings` for plans, payment and invoices. For credentials use `pattern.authentication-lifecycle`; for privacy rights `guidance.privacy-trust`; for alerts `pattern.notifications-attention`; for user language `guidance.internationalization`; for appearance `foundation.design-tokens`; for authorization `pattern.role-aware-workspaces`. See [three-batch audit ledger](../archive/planning/account-settings-batch-progress.md). All entries are proposed; no live account portal or payment system is asserted.

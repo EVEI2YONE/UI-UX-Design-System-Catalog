@@ -30,4 +30,4 @@ Catalog validator, link checks and lookup tests can prove documentation and regi
 
 ## Related source constraints
 
-The current project/source catalog guidance is the basis for these examples. Next.js, Angular and React Router route layout must be adapted to the *actual version and mode* using [framework-aware guidance](../architecture/framework-aware-application-structure.md), rather than silently assuming one generic routing tree fits all stacks.
+The current project/source catalog guidance is the basis for these examples. Next.js, Angular and React Router route layout must be adapted to the *actual version and mode* using [framework-aware guidance](../../architecture/framework-aware-application-structure.md), rather than silently assuming one generic routing tree fits all stacks.

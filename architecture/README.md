@@ -22,11 +22,11 @@ Choose the **developer task first**, then read its canonical guidance. This sect
 
 ## Source and verification context
 
-- [Batches 13–16: selection, modules, migration, enterprise](../planning/application-architecture-batches-13-16-context-and-gaps.md)
-- [Batch 17: framework routing](../planning/application-architecture-batch-17-context-and-gaps.md)
-- [Batch 18: enforcement and CI](../planning/application-architecture-batch-18-context-and-gaps.md)
-- [Batch 19: applied examples](../planning/application-architecture-batch-19-context-and-gaps.md)
-- [Batch 20: final coverage audit and unresolved evidence](../planning/application-architecture-batch-20-closure-audit.md)
-- Earlier work: [Batch 9 component extraction context](../planning/little-wins-batch-9-context-and-gap-ledger.md); Batch 12 component design-to-code trace is documented in [component contracts](component-contracts.md).
+- [Batches 13–16: selection, modules, migration, enterprise](../archive/planning/application-architecture-batches-13-16-context-and-gaps.md)
+- [Batch 17: framework routing](../archive/planning/application-architecture-batch-17-context-and-gaps.md)
+- [Batch 18: enforcement and CI](../archive/planning/application-architecture-batch-18-context-and-gaps.md)
+- [Batch 19: applied examples](../archive/planning/application-architecture-batch-19-context-and-gaps.md)
+- [Batch 20: final coverage audit and unresolved evidence](../archive/planning/application-architecture-batch-20-closure-audit.md)
+- Earlier work: [Batch 9 component extraction context](../archive/planning/little-wins-batch-9-context-and-gap-ledger.md); Batch 12 component design-to-code trace is documented in [component contracts](component-contracts.md).
 
 For agent retrieval, resolve canonical IDs using [the registry](../catalog/index.json) and [AGENTS.md](../AGENTS.md), then follow `related` and `depends_on` selectively. The [quality gates](../governance/quality-gates.md) distinguish documentation validation from tested accessibility, DX and application behavior. No runtime test can be marked PASS because a Markdown validator succeeded.

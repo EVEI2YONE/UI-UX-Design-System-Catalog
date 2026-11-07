@@ -160,7 +160,7 @@ For an app architecture recommendation, record the repository/ref, framework and
 
 ## Batch 18 — architecture boundary enforcement evidence
 
-For real application releases, document the owner and allowed dependency contract, installed tool/version, alias and relative-import resolution, positive/negative fixture results, existing-versus-new violations, CI check results, approved exception expirations, and cross-feature consumer impact. A green static import check alone does not establish that relative imports, dynamic imports or other languages are covered. The catalog's document validator **cannot** prove application architecture enforcement. Follow [architecture enforcement recipes](../architecture/architecture-enforcement-and-ci.md) and the [Batch 18 context ledger](../planning/application-architecture-batch-18-context-and-gaps.md).
+For real application releases, document the owner and allowed dependency contract, installed tool/version, alias and relative-import resolution, positive/negative fixture results, existing-versus-new violations, CI check results, approved exception expirations, and cross-feature consumer impact. A green static import check alone does not establish that relative imports, dynamic imports or other languages are covered. The catalog's document validator **cannot** prove application architecture enforcement. Follow [architecture enforcement recipes](../architecture/architecture-enforcement-and-ci.md) and the [Batch 18 context ledger](../archive/planning/application-architecture-batch-18-context-and-gaps.md).
 
 
 ## Account/settings acceptance matrix — batch 3 (KG-024)
