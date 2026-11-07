@@ -13,7 +13,7 @@
 | B03 Icon state, focus, sequential workflows | CKG-09–12 | **Documentation committed; verification incomplete** | `pattern.interaction-recovery`, `pattern.task-flows` | Collected 2026-11-07 |
 | B04 Action grouping and effort metrics | CKG-13–14 | **Documentation committed; verification incomplete** | `pattern.advanced-interactions`, `guidance.ux-measurement` | Collected 2026-11-07 |
 | B05 Utility-first styling and anti-duplication | CKG-15–17 | **Documentation committed; verification incomplete** | `foundation.practical-styling`, `architecture.enforcement-ci`, `architecture.component-model` | Collected 2026-11-07 |
-| B06 Consistency, tests and retrieval | CKG-05, 18–19 | Not started | `governance.quality`, registry/tests | Required before B06 |
+| B06 Consistency, tests and retrieval | CKG-05, 18–19 | **Documentation committed; PR CI and manual verification pending** | `foundation.icon-semantics`, `governance.quality`, registry/tests | Collected 2026-11-07 |
 
 ## Before each batch: repeat the context gate
 
@@ -80,3 +80,15 @@ Inspect actual Button, Field, Dialog, Select, Checkbox, navigation/menu patterns
 - **Verification:** source commits and branch-qualified file existence may be checked through GitHub connector. New regression tests are **written but NOT RUN**. GitHub Actions on this repo triggers validation only on PR or `main` pushes; no PR yet. Local Git clone DNS was unavailable during B01; no successful full validator/test execution established. Actual app CSS lint, responsive/browser/AT tests, theme compilation, user success and human approval remain **NOT VERIFIED**.
 - **B06 starting gate:** fresh main/branch context, compare all B01–B05 canonical coverage and aliases; inspect `governance.quality`, validator, tests, link/lookup behavior, icon consistency policy, existing full registry and change diff. Resolve observed QA defects before opening **one PR** after final batch completion.
 - **PR status:** not opened, by request.
+
+## B06 — final batch closure and PR handoff (2026-11-07)
+
+- **Fresh context:** [B06 context gate](icon-interaction-b06-context-2026-11-07.md), main `00df3f2055396e586fbb5ffa07e4a80dc8312e8e`, branch 54 commits ahead/0 behind *before B06 edits*. Inspected `AGENTS.md`, `CONTRIBUTING.md`, `catalog/index.json`, canonical quality/icon contracts, all five batch regression test files, local validator and search scripts. Another attempt to access GitHub from local shell failed at DNS resolution.
+- **CKG-05:** `foundation.icon-semantics` now supplies intent/glyph review schema, collision examples, multiple-context meaning, status timing, RTL/visual consistency, migration and manual evidence requirements.
+- **CKG-18/19:** `governance.quality` now supplies a component/workflow test matrix (keyboard/AT, nested menu, async uncertain write, focus after removal, sequential continuation, responsive/locale) and a canonical task-query crosswalk with explicit documentation vs runtime evidence.
+- **Changed:** `foundations/iconography-and-semantics.md`, `governance/quality-gates.md`, `catalog/index.json`, `foundations/README.md`, `governance/README.md`, `README.md`, `AGENTS.md`, `CHANGELOG.md`, `tests/test_icon_interaction_cumulative_knowledge.py` (new), `archive/planning/icon-interaction-b06-context-2026-11-07.md` (new), and this ledger. Fixed a missing illustrative `MoreHorizontal` import.
+- **Source-level lookup rehearsal:** retrieved branch registry and six B01–B06 Python test sources using GitHub connector; an independent JS implementation of the documented exact-ID/alias/title/term ranking found **zero mismatches** among parsed task/expected-ID query pairs and confirmed 53 distinct canonical IDs. This is **not a Python test execution** and does not prove links or tests pass.
+- **Automated catalog validator and full Python suite:** **NOT RUN / NOT VERIFIED** before PR due to GitHub DNS failure in local runtime. GitHub Actions workflow runs on PR and must be inspected; failures block approval. Do not describe pending checks as green.
+- **Manual implementation/browser/a11y/RTL/visual/usability checks:** **NOT VERIFIED / out of scope** for documentation changes. No product code or real user study was delivered.
+- **Human owner/review:** all changed entries remain `proposed`, owner `unassigned`, review null. Single reviewable PR follows B06; no merge or automatic promotion.
+- **All 19 scoped improvement areas:** CKG-01–19 accounted for across B01–B06; this is documentation coverage, not behavioral certification. Existing concepts were extended and a single icon-semantics canonical concept added, taking branch registry to 53 entries against 52 on main.
