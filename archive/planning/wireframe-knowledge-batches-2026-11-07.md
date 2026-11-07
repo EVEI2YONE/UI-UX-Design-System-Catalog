@@ -20,7 +20,7 @@ Before **each** batch's substantive knowledge commit: fetch the latest branch an
 | B0 | gate | Baseline and canonical inventory | COMPLETE — policy/registry/related-page overlap inspected for B1; ongoing per-batch discovery remains required | registry and repository policy | NOT VERIFIED |
 | B1 | P0 | Fidelity, outcomes and prototype escalation | CONTENT COMMITTED — proposed, pending human review | CREATE `guidance.wireframe-methodology`; REUSE hierarchy/flows/recovery/quality owners | CI PASS: 59 tests; validator PASS (50 IDs, 8 READMEs, 587 links); manual UX NOT VERIFIED |
 | B2 | P0 | Task-to-screen composition and alternatives | CONTENT COMMITTED — proposed, awaiting human review | EXTEND `principle.visual-hierarchy`, `pattern.task-flows`; REUSE `guidance.wireframe-methodology` | CI PASS: 62 tests; validator PASS (50 IDs, 8 READMEs, 598 links); manual UX NOT VERIFIED |
-| B3 | P1 | State annotations and recovery | NOT STARTED | `pattern.interaction-recovery` | NOT VERIFIED |
+| B3 | P1 | State annotations and recovery | CONTENT COMMITTED — proposed, human review pending | EXTEND `pattern.interaction-recovery`; REUSE forms/feedback/offline/accessibility and B1 methodology | CI pending; runtime/manual UX NOT VERIFIED |
 | B4 | P1 | Responsive, reflow, long text and RTL | NOT STARTED | `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization` | NOT VERIFIED |
 | B5 | P1 | Static visual QA and evidence | NOT STARTED | `governance.quality` | NOT VERIFIED |
 | B6 | P2 | Synthetic examples, aliases and lookup regression | NOT STARTED | canonical examples, `catalog/index.json`, tests | NOT VERIFIED |
@@ -57,3 +57,11 @@ Retrieve by task/alias from `catalog/index.json`; read canonical `path`, positiv
 - **Source ledger:** GOV.UK Service Standard user needs (updated 2022-05-30), GOV.UK user-needs research and Home Office designer role standard (checked 2026-11-07); the two-variant rule and brief format are proposed catalog synthesis, not universally mandated standards.
 - **Validation:** GitHub Actions `Validate catalog` run `42367684276` PASSED on commit `83c7a245442d74a943f8cd6fd211f89a84e1d473`: 62 unittest tests (including 3 new composition tests); 50 unique concepts, 8 section READMEs, 598 relative links. Tracker-only follow-up commits were not separately executed at the time of this record; live-image, real-user, keyboard, assistive-tech, responsive and implemented behavior NOT VERIFIED.
 - **Unresolved:** comparisons need real user-task evidence for a winner; sensitive authorization, pricing, and data constraints cannot be assumed as implemented.
+
+## B3 context and decision (2026-11-07)
+
+- **Fresh repository evidence:** `main` still at `6ed00199047488d8d5f42886112a35639fffe3ef`; draft PR #11 head before edit `8ebf048f464c0295df4988a463905ef52e50f194`. Rechecked AGENTS, CONTRIBUTING, schema, 50-entry registry, interaction-recovery page, B1 methodology, B2 composition, accessibility, QA, section indexes, existing test style and source ledger.
+- **Observed overlap:** `pattern.interaction-recovery` already owns pending, empty, error, permission, success and safe retry. Specialized `pattern.forms`, `pattern.feedback` and `pattern.offline-sync` own their detailed behaviors. Gap: a tool-neutral static representation matrix, annotation handoff and explicit depiction-versus-runtime evidence distinction.
+- **Disposition:** EXTEND `pattern.interaction-recovery`; REUSE B1 fidelity and B2 task context; DEFER viewport/RTL stress tests to B4 and image quality to B5; CREATE none.
+- **Sources:** existing proposed repository pages, W3C WCAG 2.2, WAI-ARIA APG and WAI forms validation guidance; latter links are applicability references, not independent current-web verification. Proposed state-to-screen fields and synthetic export example are synthesis, not observed product evidence.
+- **Validation:** CI pending at draft time; actual runtime authorization, data persistence, human task results, keyboard/AT, translated labels and responsive state transitions NOT VERIFIED.
