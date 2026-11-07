@@ -8,7 +8,7 @@
 
 | If you need to... | Start here |
 | --- | --- |
-| Establish visual hierarchy, spacing, and affordances | [Design principles](foundations/design-principles.md) |
+| Select wireframe fidelity or decide when interaction is required | [Wireframe methodology](guidance/wireframe-methodology.md) |\n| Establish visual hierarchy, spacing, and affordances | [Design principles](foundations/design-principles.md) |
 | Create a theme or rationalize raw values | [Tokens and themes](foundations/design-tokens-and-themes.md) |
 | Choose prototype, MVP, growing or enterprise app code structure | [Application architecture selection](architecture/application-architecture.md) |
 | Organize features, domains, and developer navigation | [Module boundaries and developer navigation](architecture/module-boundaries-and-developer-navigation.md) |
@@ -112,6 +112,6 @@ This proposal was derived from the supplied **UI/UX Design System Architect v1.1
 
 ## Current maintenance and historical evidence
 
-The [catalog registry](catalog/index.json) provides the current concept inventory (49 proposed entries at the 2026-11-07 baseline). Do not treat counts in dated archival ledgers as present-day inventory. All canonical pages describe design knowledge rather than published components or verified application behavior.
+The [catalog registry](catalog/index.json) provides the current concept inventory (49 proposed entries at the 2026-11-07 baseline; the shared wireframe PR adds a proposed 50th entry). Do not treat counts in dated archival ledgers as present-day inventory. All canonical pages describe design knowledge rather than published components or verified application behavior.
 
 Detailed batch progress, source audits, PR snapshots and product-specific case studies are preserved in [the historical archive](archive/README.md). The [changelog](CHANGELOG.md) records changes; [contributing](CONTRIBUTING.md) and [agent guidance](AGENTS.md) define the current operating workflow.
