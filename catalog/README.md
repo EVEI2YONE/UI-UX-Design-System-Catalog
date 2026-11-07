@@ -89,3 +89,7 @@ Start with `pattern.account-settings-portal` for settings IA, profile management
 ## Wireframe methodology (proposed, PR #11)
 
 Use `guidance.wireframe-methodology` for low/mid/high visual fidelity, static-image limitations and when to escalate to an interactive prototype. Continue to use `pattern.task-flows` for task composition, `pattern.interaction-recovery` for states, and `governance.quality` for verification. The registry status is **proposed**, not implemented or reviewed.
+
+## Task-to-screen composition (proposed B2)
+
+Use `pattern.task-flows` for minimum design context, screen sequence, action continuity, structurally meaningful alternatives and comparison criteria; use `principle.visual-hierarchy` for within-screen action priority. `guidance.wireframe-methodology` remains the owner of fidelity and escalation. All remain proposed and require verification for real products.
