@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def normalize(text):
     """Casefold and normalize punctuation to spaces without stripping Unicode words."""
-    return ' '.join(re.findall(r'[^\\W_]+', text.casefold(), flags=re.UNICODE))
+    return ' '.join(re.findall(r'[^\W_]+', text.casefold(), flags=re.UNICODE))
 
 
 def score(entry, query):
