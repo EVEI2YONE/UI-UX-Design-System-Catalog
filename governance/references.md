@@ -105,3 +105,11 @@ Sources are decision references as of 2026-11-07, not a claim of implementation/
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (W3C Recommendation; consulted 2026-11-07): implementation-level web criteria; a static wireframe does not prove conformance.
 
 The low/mid/high selection and escalation checklist are proposed catalog synthesis, not universal thresholds or user-tested outcomes.
+
+## Wireframe task-to-screen composition (proposed B2, sources checked 2026-11-07)
+
+- [GOV.UK Service Standard: understand users and their needs](https://www.gov.uk/service-manual/service-standard/point-1-understand-user-needs) (updated 2022-05-30): base prototypes on user problems and test assumptions; public service setting, not a mandated wireframe-count rule.
+- [GOV.UK Service Manual: learning about users and their needs](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs): distinguish evidenced user needs from untested assumptions; research methods need contextual fit.
+- [Home Office UCD designer role standard](https://design.homeoffice.gov.uk/design-and-content/professional-standards/designer-role-standard): multiple design approaches and hypotheses for alpha; not quantitative evidence that one screen structure performs better.
+
+The brief contract, comparison matrix and default two meaningful alternatives are **proposed catalog design conventions**, not externally mandated thresholds or verified product outcomes.
