@@ -109,3 +109,16 @@ Gather the existing schema and deployed persistence contract **before** filling 
 | Value history | Ledger/review integrity and correction trail through archive, restore, deletion, toggle and import | NOT VERIFIED |
 
 Documentation review can PASS while these product gates remain NOT VERIFIED. Do not claim legal compliance or backups solely from database technology or a successful unit suite.
+
+
+## Batch 7 — record-to-modal journey assurance (2026-11-07)
+
+| Scenario | Evidence required | Untested status |
+| --- | --- | --- |
+| Row action semantics | Action is a named native link/button in semantic table; keyboard and screen-reader task path | NOT VERIFIED |
+| Modal focus lifecycle | Actual initial focus, containment, Escape and close-button behavior, background inertness | NOT VERIFIED |
+| Draft protection | Changed field -> cancel/backdrop/Escape -> explicit preservation/discard policy; verified restoration | NOT VERIFIED |
+| Async completion and focus | Server-confirmed result, accessible status, return focus to valid trigger or safe fallback after row disappears | NOT VERIFIED |
+| State/locale/responsive | Error/retry, disabled/busy, long labels, keyboard at narrow/zoom, RTL and supported AT/browser matrix | NOT VERIFIED |
+
+Do not mark a product test PASS based solely on source review or on the presence of a prebuilt accessible component library. Prefer one integrated end-to-end evidence record for the full journey, supplemented by unit/component checks.
