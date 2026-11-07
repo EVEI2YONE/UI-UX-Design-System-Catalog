@@ -82,3 +82,18 @@ All are guidance or standards references, not evidence of an actual tested produ
 | [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) | Web accessibility target; real app evaluation and assistive testing remain necessary. |
 
 **Source interpretation:** normative accessibility criteria, voluntary risk guidance, historical UX research and provider-specific implementation docs have different authority. All are context for proposed knowledge, not tests of an actual product. [Batch 11 ledger](../planning/batch-11-context-and-gap-ledger.md).
+
+## Batch 12: performance, experimentation and design-to-code (research 2026-11-07)
+
+| Source | Applicability and limitations |
+| --- | --- |
+| [web.dev Web Vitals](https://web.dev/articles/vitals) and [threshold methodology](https://web.dev/articles/defining-core-web-vitals-thresholds) | Current web good targets: p75 LCP ≤2.5s, INP ≤200ms, CLS ≤0.1 on real visits, segmented by mobile/desktop; not native-device guarantees or proof of task success. |
+| [web.dev User-centric performance metrics](https://web.dev/articles/user-centric-performance-metrics), [Optimize INP](https://web.dev/articles/optimize-inp), [Optimize CLS](https://web.dev/articles/optimize-cls) | Field vs lab and responsiveness/shift guidance; product telemetry, baseline and controlled tests are still required. |
+| [Microsoft Research diagnosing SRM](https://www.microsoft.com/en-us/research/articles/diagnosing-sample-ratio-mismatch-in-a-b-testing/) and [data quality](https://www.microsoft.com/en-us/research/articles/data-quality-fundamental-building-blocks-for-trustworthy-a-b-testing-analysis/) | Experiment assignment, logging/missingness and sample-ratio mismatch; not a universal power calculator or statistical sign-off. |
+| [Microsoft Research: trustworthy A/B analysis](https://www.microsoft.com/en-us/research/publication/trustworthy-analysis-of-online-a-b-tests-pitfalls-challenges-and-solutions/) | 2017 research on randomization and variance assumptions; select statistical methods for actual design. |
+| [GOV.UK User research in live](https://www.gov.uk/service-manual/user-research/user-research-in-live) | A/B testing is a complement to usability and qualitative research, not a replacement. |
+| [Optimizely statistical methods](https://www.optimizely.com/field-notes/articles/how-to-choose-the-right-stats-engine) | 2026 vendor guidance on fixed-horizon and sequential testing; not independent validation of any product algorithm. |
+| [DTCG Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/) and [format FAQ](https://www.designtokens.org/faq/) | Stable 2025 Community Group token interchange, not W3C Recommendation or the experimental 2026 preview; converter support must be tested. |
+| [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots) and [Storybook tests](https://storybook.js.org/docs/writing-tests/index) | Visual snapshot/stories can support review with pinned environment, but do not replace actual keyboard, AT or user-task tests. |
+
+Sources are decision references as of 2026-11-07, not a claim of implementation/tool installation. See [Batch 12 context ledger](../planning/batch-12-context-and-gap-ledger.md).
