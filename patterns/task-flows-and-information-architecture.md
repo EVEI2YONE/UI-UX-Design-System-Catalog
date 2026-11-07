@@ -87,3 +87,63 @@ This table describes the relevant domain command and UX intent; it does not clai
 **Good:** settings explain “Turning off points pauses new reward requests; previous requests remain available to manage.” **Anti-example:** disabling points silently hides the only path to an outstanding reward request while an API still accepts a stale or unauthorized command.
 
 **Verification:** eight-configuration state table, direct API action for each configuration, pending-work and history preservation, settings confirmation, stale-tab race, re-enable with intact balances, keyboard/read-only affordances, localized labels, mobile navigation and permission differences. Report missing browser/API evidence as **NOT VERIFIED**.
+
+
+## Task-to-screen wireframe composition and meaningful alternatives (proposed Batch 2, 2026-11-07)
+
+**Use when:** a task brief must become a reviewable wireframe screen or small screen sequence, or when comparing structurally distinct layout hypotheses. **Avoid when:** requirements for the user, task or critical constraints are unavailable and cannot be defensibly labeled as assumptions; a decorative reskin is presented as a second concept; or an image is mistaken for working behavior. For fidelity/escalation see [wireframe methodology](../guidance/wireframe-methodology.md). For within-screen emphasis see [visual hierarchy](../foundations/design-principles.md). For runtime state/retry semantics see [interaction recovery](interaction-states-and-recovery.md).
+
+### Minimum context and assumption gate
+
+Before composing, record the following in a **brief contract**, separating evidence from decisions:
+
+| Field | Required for a defensible wireframe | Evidence rule |
+| --- | --- | --- |
+| User and immediate job | Which actor is doing what, and why | Provided/researched = **KNOWN**; otherwise **ASSUMED** and review before commitment |
+| Entry point and current context | How the user gets here and what object/workspace they act on | Do not invent account access, product scope or navigation routes as observed |
+| Desired success and next action | What counts as completion and what action advances it | Product-defined success is **KNOWN** only if documented |
+| Available content/data | Required fields, constraints, useful labels and empty values | Synthetic examples visibly **ILLUSTRATIVE**, not real availability or real user copy |
+| Safety, permission and data constraints | What cannot be omitted, edited, assumed or exposed | Unknown high-risk assumptions block claims of ready-to-implement behavior |
+| Platform and representation | Supported surface, intended viewport(s), fidelity and image/interactive limits | Mark unrepresented viewports, states or locales **NOT SHOWN** |
+
+If an input is missing, continue with a reversible **labeled assumption** only if it cannot alter safety, entitlement, financial terms or the user's ability to complete the core task. Otherwise mark the decision **BLOCKED / NEEDS CONTEXT**, draw neutral placeholders if useful, and do not assert a capability. Do not make up research participants, funnel metrics or application implementation.
+
+### Task-to-screen construction steps
+
+1. **Identify the task slice:** entry → orient → understand choices → act → pending → result → recover/exit. Select only the screen(s) needed to answer the current decision; include the predecessor/successor as annotations where not depicted.
+2. **Order the information:** show task/scope/heading first, then required context and content, choice/input area, primary next action, secondary/back/help actions, and feedback/recovery cues. Preserve disclosed constraints and irreversible consequences.
+3. **Compose using existing patterns:** prefer recognizable navigation, fields, selection, review and feedback components; note borrowed canonical concepts. Do not copy platform-specific behavior without verifying relevance.
+4. **Show continuity:** label what data carries forward, where back/cancel leads, and where the success and failure branches reconnect. A screen image may *annotate* but cannot demonstrate persistence, keyboard order, history or authorization.
+5. **Write evaluation questions:** can the user determine where they are, what they must decide, what happens next, and how to return or recover? Link unknowns to research/interactive prototype needs, not speculative confidence scores.
+
+### Structural alternatives: decision, not decoration
+
+Explore **at least two meaningful approaches when the task has a genuine unresolved structural choice** (if only one safe approach remains, document why variants are deferred). Keep the same audience, task, constraints and representative content across variants. Vary one or more decision-bearing dimensions:
+
+- **Information grouping:** stepwise wizard versus single contextual form; by object versus by task, if each supports the same outcome.
+- **Navigation architecture:** list-to-detail versus in-context detail, while preserving orientation and back behavior.
+- **Choice/progressive disclosure:** show all essential options versus guided progressive selection without hiding safety-critical information.
+- **Review position:** inline review versus separate confirmation for consequential actions; never omit confirmation solely to reduce clicks.
+
+A second image with only colors, typography, rounded corners, or decorative rearrangement is **not** a meaningful task-to-screen alternative. Do not manufacture an intentionally inferior variant to guarantee a favorite wins. Label the **hypothesis**, expected advantage, possible harm and evidence needed for each candidate.
+
+### Decision matrix and synthetic worked example
+
+Score comparatively using **qualitative observations**, not fabricated numeric ratings: task clarity, discoverability, hierarchy, cognitive burden, reversibility/recovery, accessibility and translation risks, scope fit, and prototype/test cost. Record **supported / uncertain / risk** with an explicit reason and whether evidence was expert review or observed user behavior. User task tests should decide contested claims when practical.
+
+**Synthetic task:** a team member needs to select a saved report and export a permitted view. **KNOWN for this example only:** user goal is selecting an existing report; the existence of actual exports and permissions is **NOT VERIFIED**.
+
+| Candidate | Structural choice | Hypothesis | Risk or test question |
+| --- | --- | --- | --- |
+| A: list → details → export review | Separate selection and review steps | Rich context supports accurate report choice | Extra navigation; test whether return keeps the selected report |
+| B: list with inline details and review panel | Same task without leaving list context | Faster comparison of several reports | Dense panel may obscure scope/permission warnings on narrow viewports |
+
+Both must show report identity, selection context, permission unknowns, primary action, back/cancel, and an annotation of result/recovery. **Anti-example:** Variant B is Variant A with a blue button; one mock silently assumes export permission and labels the action “Exported” without implementation. **Decision:** no winner without task evidence; choose what to prototype based on risk and the key unanswered question.
+
+### Handoff and verification contract
+
+For each option deliver: brief contract with KNOWN/ASSUMED/ILLUSTRATIVE/BLOCKED fields; screen ID and flow location; hierarchy annotations; primary/secondary action map; state and data continuity annotations; structural-difference statement; comparison matrix; canonical citations; and an explicit **NOT IMPLEMENTED** statement for static images. Attach actual visual artifacts only where available and label generated text/data for independent copy review.
+
+**Review gates:** (1) all required context accounted for or visibly flagged; (2) no invented rights, data or implementation; (3) action names lead to the stated outcome; (4) at least two non-cosmetic variants when warranted; (5) no critical information or safe exit lost; (6) risk/uncertainty and next validation method stated; (7) readable composition and accessibility expectations identified without conformance claims. Executable keyboard, screen reader, zoom, localization and real-user tests remain **NOT VERIFIED** unless individually performed.
+
+**Sources and interpretation:** [GOV.UK Service Standard, understanding user needs](https://www.gov.uk/service-manual/service-standard/point-1-understand-user-needs) (updated 2022-05-30; checked 2026-11-07) supports grounding the brief in user needs and testing assumptions; [GOV.UK user-needs research](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs) (checked 2026-11-07) distinguishes observed needs from stakeholder assumptions; [Home Office designer role standard](https://design.homeoffice.gov.uk/design-and-content/professional-standards/designer-role-standard) (checked 2026-11-07) describes using multiple design approaches in alpha. The specific brief, comparison rubric and two-variant decision rule above are **proposed catalog synthesis**, not mandated GOV.UK standards or empirically validated thresholds.
