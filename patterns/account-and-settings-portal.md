@@ -410,3 +410,70 @@ A consequential change summary should include: (1) exact setting and affected wo
 **Verification examples:** reversible personal setting (no confirmation), workspace rename (explicit save), feature pause with pending work (impact summary), feature disable with historical records (deep-link preservation), unauthorized change (server rejection), stale version (reconcile), long localized copy and screen reader focus/recovery. All product/runtime scenarios remain **NOT VERIFIED**.
 
 **Provenance and status:** Derived by reconciling existing catalog guidance with the Little Wins F20 Settings user-scenario design; generic accessibility criteria follow [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (references identified 2026-11-07; no new external validation in this batch). Knowledge is **proposed**, owner/reviewer unassigned, no product implementation asserted. Later batches address cross-consumer propagation/integration tests and lifecycle; do not treat this section as evidence they are complete.
+
+
+## Settings knowledge Batch 2 — propagation and integration verification (KG-010, KG-013; proposed 2026-11-07)
+
+**Coverage disposition:** Existing [Settings persistence](#settings-persistence-kg-003) and [workspace save/propagation](#kg-006--save-propagate-and-recover) already specify authoritative saves, conflicts and dependent-view refresh. [Offline synchronization](offline-sync-and-conflicts.md) owns multi-device/queued changes and uncertain write outcomes; [quality gates](../governance/quality-gates.md) owns general release evidence. This batch adds a *configuration-specific consumer update contract and cross-feature verification matrix*, not a new state manager or a replacement for those concepts.
+
+### KG-010 — Configuration propagation and state reconciliation
+
+Before implementation, list for each setting: authoritative scope and version; direct writers; UI consumers; derived capability consumers; historical/report consumers; invalidation mechanism; security boundary; expected behavior after success, failure, stale data or permission change. Model *effective* capabilities separately from stored flags.
+
+| Boundary | Responsibility | Confirmation / failure rule |
+| --- | --- | --- |
+| Section draft | Preserve unsaved edits with explicit scope and base version | Editing never asserts server persistence; navigate-away recovery applies |
+| Command/API | Authorize target and policy, validate dependencies and expected version, perform atomic or explicitly bounded mutation | Return authoritative effective state, new revision and actionable error; do not claim success on request dispatch |
+| Shared client projection/cache | Reconcile only affected scope; invalidate/refresh downstream consumers from confirmed result | Do not spread stale or optimistic policy values between workspaces or users |
+| Derived views/navigation | Recompute effective availability and action affordances against current permissions and dependencies | Direct URLs and commands must still enforce server policy; disabled != empty != unauthorized |
+| History/ledger/report projections | Maintain approved provenance and product-defined temporal policy | A setting change must not silently rewrite prior facts or manufacture backfill |
+| Cross-tab/device readers | Detect stale versions through refetch, subscriptions or foreground refresh *if implemented* | Do not claim real-time synchronization when only eventual/refresh-based behavior exists |
+
+**Update sequence (illustrative):**
+
+1. Resolve workspace/account and read capability, load effective configuration + revision.
+2. Edit a section-owned draft. Compute *preview* impacts without mutating authoritative state.
+3. On Save, submit allowed fields and expected revision; reauthorize the object and revalidate dependencies on the server.
+4. After confirmed commit, replace the authoritative snapshot/version, invalidate named read models and recalculate affected capabilities; avoid broadcasting an unverified success.
+5. If one downstream refresh fails, show an honest “Settings saved; some views may be outdated” state if the core write was verified; offer refetch rather than reissuing a possibly non-idempotent write.
+6. On revision conflict, permission loss or ambiguous timeout, preserve drafts according to privacy policy, fetch current server state, and offer compare/reapply or safe restart. Never silently overwrite.
+
+**Consumer contract example (illustrative, not a Little Wins implementation):**
+
+| Setting family | Direct consumer | Dependent consumer | Invariant to verify |
+| --- | --- | --- | --- |
+| Workspace display name | Settings, workspace selector | Titles, breadcrumb, overview | One effective name for the same workspace after refresh; no cross-workspace leakage |
+| Feature availability | Feature entry and deep link | Contribution/reward/challenge action eligibility | Navigation and server command agree; authorized pending/history work remains discoverable |
+| Review mode | Review/submit controls | Credits, progress and historical decisions | Policy transition effective time honored; no duplicate or retroactive approvals |
+| Device/personal theme | Display preference provider | Token-driven UI components | Personal mode never changes shared workspace policy; failures do not assert persistence |
+
+**Tradeoff:** Revalidation-on-navigation or after mutation can be sufficient for a small application; push/subscription infrastructure should be adopted only when the user task requires lower latency. Choose refresh, normalized cache invalidation, versioned projection, or events from real architectural constraints, not because this catalog mandates a framework or global state library.
+
+**Anti-pattern:** a successful workspace policy POST changes one toggle locally while the Review page still accepts a disallowed direct action; another user's workspace also sees the updated cached value.
+
+### KG-013 — Configuration change integration evidence
+
+Test the *user's configuration intent through all affected consumers*, not just successful control rendering or an isolated API unit test. Build an evidence row for every consequential setting transition: source value/version, action, actor/scope, server outcome, UI consumer state, domain invariants, retry/recovery, verification tool, owner and status.
+
+| Scenario | Minimum expected evidence |
+| --- | --- |
+| Baseline and first save | Default versus effective value, correct target scope, server-confirmed revision, reload/reopen |
+| Changed dependent feature | Navigation, direct deep link, API command and in-flight request agree on capability; existing authorized work remains reachable |
+| Multi-consumer propagation | Settings, selectors, summary/cards and downstream domain views reconcile to the same authoritative revision |
+| Concurrent or stale editors | Two tabs/devices edit conflicting values; no silent last-write-wins when consequential; draft recovery offered |
+| Partial refresh failure | Persisted write reported accurately while outdated consumers are marked/refetched; no double write |
+| Offline/timeout unknown outcome | Verify server status before retry, avoid false “Saved”, preserve drafts within declared storage limits |
+| Permissions/tenant isolation | Unauthorized read and write, cross-workspace identifiers, revoked rights, cache invalidation across identity changes |
+| Historical invariants | Existing approved events, ledger balances, pending requests and audit provenance do not change beyond defined transition policy |
+| Inclusive interaction | Keyboard/screen reader on save/conflict/confirmation, focus restoration, reflow/zoom, themes, long translations and RTL |
+| Release/reversal | Baseline snapshot, change rollout, error monitoring, rollback/restore mechanism and re-enable semantics |
+
+**Practical evidence format:** setting ID → transition (before → after) → direct/derived consumers → expected server invariant → actual test name and environment → PASS/FAIL/NOT VERIFIED → owner → recovery or issue link. Include meaningful flag combinations and policy-change races; never manufacture a testing percentage from a list of scenarios. A document validator's passing result is evidence of catalog integrity only, not deployed behavior.
+
+**Failure severity:** Treat unauthorized writes, cross-tenant leakage, financial/value ledger corruption, historical loss, and blocking accessibility regressions as release blockers. Cosmetic delays in secondary refresh can be handled with explicit stale indicators when server authority remains correct.
+
+**Example:** rename a workspace in one tab; confirm authoritative response and revision, navigate to Home and selector, reload another tab and confirm the same scoped name. Revoke the editor before a second update; verify the server denies it and no stale cache leaks restricted details.
+
+**Anti-example:** a green switch component test is used to claim the policy is enforced while direct API calls and stale tabs have never been exercised.
+
+**Sources and verification boundary:** Reuses [Settings portal](#kg-006--save-propagate-and-recover), [offline synchronization](offline-sync-and-conflicts.md), [feature capability journeys](task-flows-and-information-architecture.md#batch-8--capability-dependencies-and-configuration-state-journeys-2026-11-07), [quality gates](../governance/quality-gates.md), and [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) / [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) for applicable inclusive interactions. Date: 2026-11-07. **Status:** proposed catalog guidance, reviewer unassigned. Product runtime checks and security/a11y/E2E tests are **NOT VERIFIED**.
