@@ -1,5 +1,8 @@
 ## Unreleased
 
+- Visual craftsmanship knowledge Batch 1 (proposed, shared cumulative PR): add canonical guidance for KG-01–05 composition, typography, color, spacing and art direction; extend existing principles/tokens with canonical cross-links and update discovery/index. Documentation-only; no browser, design user study or accessibility conformance verified.
+
+
 - Settings knowledge Batch 5 (proposed, cumulative draft PR #12): refresh catalog/product context, document the KG-001–008 canonical ownership and Little Wins consumer crosswalk, add focused registry/retrieval regression tests, correct malformed Batch 1 Markdown code delimiters and publish a verification ledger. Source and connector structural checks completed; official catalog validator and unit suite not executed in environment, app/browser/a11y/security checks NOT VERIFIED. No new concept or application code.
 
 
