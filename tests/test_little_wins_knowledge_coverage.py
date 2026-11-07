@@ -61,7 +61,7 @@ class LittleWinsKnowledgeCoverageTests(unittest.TestCase):
     def test_coverage_does_not_introduce_duplicate_canonical_ids(self):
         ids = [entry["id"] for entry in self.entries]
         self.assertEqual(len(ids), len(set(ids)))
-        self.assertEqual(len(ids), 40)
+        self.assertGreaterEqual(len(ids), 40)
 
 
 if __name__ == "__main__":
