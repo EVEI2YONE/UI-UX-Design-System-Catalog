@@ -113,3 +113,11 @@ The low/mid/high selection and escalation checklist are proposed catalog synthes
 - [Home Office UCD designer role standard](https://design.homeoffice.gov.uk/design-and-content/professional-standards/designer-role-standard): multiple design approaches and hypotheses for alpha; not quantitative evidence that one screen structure performs better.
 
 The brief contract, comparison matrix and default two meaningful alternatives are **proposed catalog design conventions**, not externally mandated thresholds or verified product outcomes.
+
+## Wireframe B3 — state depictions and accessibility boundary (2026-11-07)
+
+- [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/): actual web implementation criteria for status, errors and usable interaction; static images cannot establish conformance.
+- [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/): implementation design/keyboard behavior examples; it does not make a screenshot interactive.
+- [W3C WAI Forms Validation](https://www.w3.org/WAI/tutorials/forms/validation/): form error communication and accessible recovery; relevant to implemented field validation, not runtime evidence here.
+
+**Provenance:** B3 state taxonomy and handoff labels are derived from existing proposed `pattern.interaction-recovery`, `pattern.forms`, `pattern.feedback`, `pattern.offline-sync`, `guidance.accessibility` and B1 methodology. The annotation fields and synthetic report-export example are catalog synthesis. These URLs are references for applicability, **not** independently tested product behavior, and live external content freshness is NOT VERIFIED in this batch.
