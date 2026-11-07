@@ -2117,6 +2117,53 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "architecture.reference-examples",
+      "title": "Application architecture reference implementations and migrations",
+      "path": "architecture/application-architecture-reference-examples.md",
+      "layer": "cross-cutting",
+      "kind": "example",
+      "status": "proposed",
+      "summary": "Illustrative prototype, modular MVP and multi-app enterprise source layouts with developer tasks, imports and migration checkpoints.",
+      "aliases": [
+        "application architecture examples",
+        "MVP folder structure example",
+        "prototype file structure",
+        "enterprise monorepo example",
+        "feature-first reference implementation",
+        "before and after application refactor",
+        "architecture migration example"
+      ],
+      "domains": [
+        "application-architecture",
+        "developer-experience",
+        "scalability",
+        "migration"
+      ],
+      "use_when": [
+        "locating code for common tasks in prototype MVP and enterprise architectures",
+        "planning a safe feature-first refactor with before and after folder examples",
+        "comparing shared domain packages with app-specific workflows"
+      ],
+      "avoid_when": [
+        "copying illustrative files as a production starter without a framework assessment",
+        "assuming documentation examples were built or accessibility tested"
+      ],
+      "related": [
+        "architecture.application-selection",
+        "architecture.module-boundaries",
+        "architecture.evolution",
+        "architecture.enterprise-multiapp",
+        "architecture.framework-aware",
+        "architecture.enforcement-ci"
+      ],
+      "depends_on": [
+        "architecture.application-selection",
+        "architecture.module-boundaries"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
