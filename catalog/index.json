@@ -2241,7 +2241,7 @@
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
-      "summary": "Account settings information architecture, profile/contact management, save and concurrency state contracts.",
+      "summary": "Account and workspace settings IA, typed configuration scope, server authorization, save and concurrency recovery.",
       "aliases": [
         "account settings",
         "settings portal",
@@ -2252,7 +2252,13 @@
         "account data export",
         "email change verification",
         "settings autosave",
-        "settings save cancel"
+        "settings save cancel",
+        "workspace settings",
+        "settings configuration registry",
+        "configuration scope",
+        "settings permission matrix",
+        "settings save recovery",
+        "configuration save lifecycle"
       ],
       "domains": [
         "account",
@@ -2264,7 +2270,9 @@
       "use_when": [
         "designing account overview and settings navigation",
         "editing account profile and verified contact information",
-        "handling unsaved settings and conflicts across devices"
+        "handling unsaved settings and conflicts across devices",
+        "defining typed workspace settings and effective scope",
+        "authorizing settings changes and handling settings save conflicts"
       ],
       "avoid_when": [
         "using a settings UI as a replacement for backend identity and authorization policy",
@@ -2279,7 +2287,9 @@
         "pattern.billing-subscription-settings",
         "pattern.notifications-attention",
         "guidance.internationalization",
-        "foundation.design-tokens"
+        "foundation.design-tokens",
+        "pattern.interaction-recovery",
+        "pattern.offline-sync"
       ],
       "depends_on": [
         "pattern.task-flows",
