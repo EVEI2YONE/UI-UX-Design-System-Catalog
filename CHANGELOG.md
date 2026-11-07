@@ -172,3 +172,10 @@
 - Identified incomplete framework-specific route/feature placement guidance and added a new proposed canonical page for Next.js, Angular and React Router, citing official documentation.
 - Added route-local versus feature-shared decision criteria, server/client and deep-link migration guardrails, discovery metadata, navigation and lookup tests.
 - All example structures are illustrative; runtime behavior, accessibility and developer performance remain NOT VERIFIED.
+
+## Unreleased — Batch 18: architecture enforcement and CI (2026-11-07)
+
+- Audited prior module-boundary, migration, framework and quality guidance before writing; documented gaps and tool-specific limitations.
+- Added proposed recipes for scoped ESLint static imports, dependency-cruiser path/cycle checks and Nx project tags, including coverage limits and intentional fail/pass examples.
+- Documented context-first installation decisions, legacy-violation baselines, nonblocking-to-blocking CI progression and exception governance.
+- Registered canonical lookup and updated developer/agent navigation, source ledger and retrieval tests. No application linter was installed or executed.
