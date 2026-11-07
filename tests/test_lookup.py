@@ -209,5 +209,40 @@ class LookupTests(unittest.TestCase):
         for ident in graph:
             walk(ident)
 
+
+    def test_batch9_trust_and_resilience_lookup(self):
+        cases = {
+            'privacy UX': 'guidance.privacy-trust',
+            'passkeys': 'pattern.authentication-lifecycle',
+            'notification fatigue': 'pattern.notifications-attention',
+            'sync conflict': 'pattern.offline-sync',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                result = lookup(self.entries, query, limit=1)
+                self.assertTrue(result, f'Missing match for {query}')
+                self.assertEqual(result[0]['id'], expected)
+
+    def test_batch9_canonical_paths_statuses_and_refs(self):
+        paths = {
+            'guidance.privacy-trust': 'guidance/privacy-consent-and-trust.md',
+            'pattern.authentication-lifecycle': 'patterns/authentication-and-account-lifecycle.md',
+            'pattern.notifications-attention': 'patterns/notifications-and-attention.md',
+            'pattern.offline-sync': 'patterns/offline-sync-and-conflicts.md',
+        }
+        ids = {e['id'] for e in self.entries}
+        for ident, path in paths.items():
+            with self.subTest(ident=ident):
+                entry = next(e for e in self.entries if e['id'] == ident)
+                self.assertEqual(entry['path'], path)
+                self.assertTrue((ROOT / path).is_file())
+                self.assertEqual(entry['status'], 'proposed')
+                self.assertEqual(entry['owner'], 'unassigned')
+                self.assertIsNone(entry['reviewed_at'])
+                self.assertTrue(entry['use_when'] and entry['avoid_when'])
+                for target in entry['related'] + entry['depends_on']:
+                    self.assertIn(target, ids)
+                    self.assertNotEqual(target, ident)
+
 if __name__ == '__main__':
     unittest.main()
