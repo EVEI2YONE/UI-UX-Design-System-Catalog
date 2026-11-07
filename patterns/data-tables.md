@@ -61,3 +61,14 @@ Related: [search/filtering](search-and-filter.md), [task flows](task-flows-and-i
 A read-only sortable table should remain a semantic HTML table. Do **not** apply `role=grid` merely because it looks spreadsheet-like. If task research justifies cell navigation and editing, specify keyboard arrows, Enter/F2 behavior, Tab, selection, active descendant, undo/cancel, virtualized row handling and assistive-technology acceptance **as a separately reviewed interactive grid**. The [WAI-ARIA APG grid](https://www.w3.org/WAI/ARIA/apg/patterns/grid/) is an implementation reference, not a license to invent shortcuts.
 
 Related decisions: [advanced interactions and undo](advanced-interactions-and-reversible-actions.md), [visualization](../guidance/data-visualization-and-dashboards.md), [mobile and adaptive layout](../guidance/mobile-and-adaptive-platform-ux.md). Test actual integrated behavior; this is proposed documentation.
+
+
+## Batch 7 — accessible row actions without inventing a grid (2026-11-07)
+
+**Context-first example:** The Little Wins source renders semantic data cells but attaches `onClick`, `tabIndex=0` and Enter handling to the `<tr>`, with a decorative chevron in the final Actions column. This is a code observation, **not** a verified screen-reader failure. Its `components/ui` library also contains accessible control primitives; their mere presence does not establish usage.
+
+**Decision:** keep table semantics for scan-and-compare tasks. Prefer a native `<button>` inside an action cell for opening a review/details task, or a native `<a>` for route navigation. Give the action a record-specific accessible name such as “Review contribution: Garden cleanup”; avoid a row-wide tab stop whose activation semantics, label, and Space behavior are unclear. Do not change the table to `role=grid` simply to make rows clickable. Where an entire-row pointer target is useful, ensure it does not create nested interactive actions or duplicate keyboard stops; the explicit native control remains the primary accessible path.
+
+**Acceptance matrix:** tab reaches the explicit action; Enter/Space activate buttons (Enter for links); action name differentiates repeated rows; status and headers remain understandable in table navigation; focus returns to the triggering action (or logical replacement) after review; newly removed/filtered rows have a safe fallback; mobile/zoom preserves action discoverability without hover; loading/disabled states and errors are announced. Validate with keyboard, at least one supported screen-reader/browser combination, narrow viewport and long labels. Results remain **NOT VERIFIED** until actual product testing.
+
+**Anti-example:** a row receives keyboard focus, responds only to Enter, and shows a chevron under an Actions header without an operable labeled control. **Good:** an Actions column contains an explicitly labeled Review button while the row stays a normal table row.
