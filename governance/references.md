@@ -41,3 +41,17 @@ Added to the research queue on 2026-11-07; individual source publication dates a
 | [GOV.UK user support operations](https://www.gov.uk/service-manual/helping-people-to-use-your-service/set-up-and-manage-user-support) | Cross-channel support and contact metrics; operational guidance, not evidence of this product's support capability. |
 
 These URLs were inspected as research starting points on 2026-11-07; source editions/changes must be rechecked on future reviews. No live product tests or external content endorsements are claimed.
+
+## Batch 9: trust and resilient journeys (source review 2026-11-07)
+
+| Source | Applicability and limit |
+| --- | --- |
+| [UK ICO data protection by design/default](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/data-protection-by-design-and-by-default) | Updated 2026-02-05; UK GDPR-focused, context-specific legal review still required. |
+| [FTC, Bringing Dark Patterns to Light](https://www.ftc.gov/reports/bringing-dark-patterns-light) | 2022 staff report on deceptive design; not a universal prescriptive UX standard. |
+| [NIST SP 800-63B-4](https://csrc.nist.gov/pubs/sp/800/63/b/4/final) | Final July 2025 authentication assurance guidance, particularly relevant to U.S. federal programs; security owner must assess applicability. |
+| [W3C Understanding WCAG 2.2 SC 3.3.8](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html) | Explains accessible authentication at Level AA; not proof of any product's conformance. |
+| [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html) | Maintained engineering guidance; not human-usability study. |
+| [MDN Notifications API](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API) and [Apple web push](https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers) | Browser/platform permission, device and service-worker details; implementation and user preference policies differ. |
+| [MDN Background Synchronization API](https://developer.mozilla.org/en-US/docs/Web/API/Background_Synchronization_API), [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) | Background Sync has limited support; local storage retention and security must be evaluated. |
+
+External pages were checked for research context on 2026-11-07. They do not certify this catalog or a target application.
