@@ -59,7 +59,7 @@ An icon-only control requires: (1) stable purpose and contextual accessible name
 ## Illustrative code: host owns the event
 
 ```tsx
-import { Pencil } from "lucide-react";
+import { Pencil, MoreHorizontal } from "lucide-react";
 
 // Illustrative React markup; not a published catalog component.
 // The icon is decorative because the Button has a clear text label.
