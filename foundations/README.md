@@ -3,7 +3,7 @@
 This section defines consistent design decision-making before component-level styling. Start with [design principles](design-principles.md) to clarify hierarchy, signifiers and user tasks, then use [design tokens and themes](design-tokens-and-themes.md) to encode roles and variants.
 
 - [Design principles](design-principles.md) — hierarchy, consistency, grouping, progressive disclosure, signifiers and recovery.
-- [Visual design craftsmanship](visual-design-craftsmanship.md) — composition, typography, palette construction, spatial rhythm, art-direction briefs and evidence limits (KG-01–05).
+- [Visual design craftsmanship](visual-design-craftsmanship.md) — composition, typography, palette construction, spatial rhythm and art-direction briefs (KG-01–05); reference research, abstraction, direction exploration and tradeoff selection (KG-11–14).
 - [Practical UI styling recipes](practical-ui-styling-recipes.md) — layouts, surfaces, imagery, interface archetypes and purposeful motion (KG-06–10).
 - [Design tokens and themes](design-tokens-and-themes.md) — reference → semantic → component aliases, light/dark/high-contrast mappings and token hygiene.
 
