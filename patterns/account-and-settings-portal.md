@@ -357,3 +357,56 @@ The event illustrates audit semantics only. The specific setting and trusted mod
 **Little Wins F20 evidence boundary:** the inspected product snapshot provides contribution/review/reward history and owner-managed configuration; it is **not proof of an implemented configuration-change event stream, viewer, export, retention policy or undo function**. No event schema, retention duration or audit-authorized role is approved by this guidance.
 
 **Status:** proposed catalog guidance; product/security/legal ownership and implementation choices pending. Source/catalog review completed; validator, security tests, browser/a11y checks, event integrity and actual retention enforcement **NOT VERIFIED**. Batch 5 must gather fresh context, run catalog-wide validation where available, and record the remaining product-specific decisions.
+
+
+## Settings knowledge Batch 1 — interaction composition, availability and impact (KG-009, KG-011, KG-012; proposed 2026-11-07)
+
+**Coverage disposition:** These are *focused extensions*, not three new catalog concepts. The existing [settings persistence table](#settings-persistence-kg-003), [forms](forms.md), [feature/capability matrix](task-flows-and-information-architecture.md#batch-8--capability-dependencies-and-configuration-state-journeys-2026-11-07), and [paused-work recovery](interaction-states-and-recovery.md#batch-8--paused-capabilities-and-work-already-in-progress-2026-11-07) already cover generic saving, dependencies and recovery. This batch makes their **settings-specific composition and presentation decisions** explicit.
+
+### KG-009 — Compose settings without duplicating authority
+
+| Boundary | Owns | Must not own |
+| --- | --- | --- |
+| Reusable Field/Input/Select/Switch | Label, description, keyboard/assistive semantics, value and error presentation | Workspace permissions or server calls |
+| Settings section composition | Grouping, heading, draft/dirty indicators, section-level Save/Discard and focus routing | Hidden cross-section global transaction or business validation |
+| Product configuration feature | Setting schema, local draft, dependent-control UX, effective scope, impact-summary trigger, mutation orchestration | A second canonical copy of server state |
+| Domain/API authority | Permission, accepted values, dependency validation, version/atomic write, effective result | Accessibility presentation or browser-local theme choice |
+
+**Decision rule:** For independent, reversible personal preferences, immediate application may fit if a failed persistence can be detected and reversed. For related fields edited as one intent (e.g. a workspace name and description), prefer an explicit section-level Save/Discard action. For high-impact policy settings, require a separate authoritative server validation before announcing success. Do not attach one global Save button to unrelated storage scopes.
+
+**Illustrative interaction:** open section → load effective scoped values/version → edit local draft → validate input → Save → authorized commit returns effective values/version → reconcile all dependent consumers → announce success at the correct scope. A rejected write leaves the draft recoverable; Discard restores *latest authoritative* state, not an outdated initial prop. Multiple changed sections keep separate dirty indicators and navigation protection.
+
+**Anti-pattern:** a generic `SettingsSection` performs business API calls and clears every section's dirty state after any one field succeeds.
+
+**Acceptance:** keyboard and screen reader can identify the section heading, each field and error; focus is retained after save/retry; loading, invalid, pending, conflict, read-only and offline states are distinguishable; small/zoomed and translated/RTL layouts keep controls and actions reachable.
+
+### KG-011 — Presentation when a feature is unavailable
+
+Choose the representation based on **user intent and data continuity**, not only the stored enable flag:
+
+| Effective condition | User-facing representation | Navigation and deep-link requirement |
+| --- | --- | --- |
+| Feature available to this actor | Normal enabled entry and operations | Preserve standard entry points |
+| Paused by organizer policy | Explain pause; where history or pending work exists, provide a read-only or management path according to policy | Deep links show pause reason and safe alternatives; do not strand outstanding work |
+| Not authorized for actor | Hide sensitive entry or provide a safe no-access state, per privacy policy | Server blocks direct routes/actions; no protected data leak |
+| Feature unsupported in deployment | Omit nonfunctional controls or label a non-actionable capability clearly | Never advertise a working toggle |
+| Feature has no records yet | Reachable empty state with next action where appropriate | Do not confuse empty with disabled |
+| Archived or retired | Historical view only if permitted; explain limitations | Preserve authorized historical access and migration path |
+
+**Recovery and re-enable:** An organizer must be able to find a permitted re-enable control even when the feature's ordinary navigation is hidden. Re-enabling must re-check current policy and must not silently regenerate historical awards or actions. A stored toggle marked "On" is not evidence that effective actions are available when dependencies are off.
+
+**Anti-pattern:** disabling rewards removes all navigation to pending redemptions and leaves a deep link showing a misleading "No rewards" empty state.
+
+### KG-012 — Impact-summary and confirmation contract
+
+Use a compact inline explanation for ordinary reversible changes, an impact summary for changes to dependent workflows, and a confirmation dialog **only when the consequences are material, hard to reverse, destructive, or otherwise require explicit authorization**. Avoid warning fatigue from confirming every edit.
+
+A consequential change summary should include: (1) exact setting and affected workspace/account; (2) current → proposed **effective** state; (3) changes to future actions; (4) treatment of in-flight or pending work; (5) what historical data remains unchanged; (6) effective timing and dependency constraints; (7) whether and how reversal works. Only state guarantees supported by the product contract. If the server rejects the transition, preserve edits and present the actionable reason rather than showing an optimistic success.
+
+**Illustrative example (policy-dependent):** "Turning off challenges stops new progress updates. Previously approved contributions remain in history. You can re-enable challenges in Workspace Settings." This text is suitable **only if those outcomes are guaranteed**; otherwise determine the actual policy before rendering it.
+
+**Dialog behavior:** focus enters the impact heading or first appropriate control, keyboard users can cancel or confirm, Escape/cancel returns focus to the initiating control, and pending confirmation cannot execute twice. Use [Dialog](../components/dialog/spec.md) and [interaction recovery](interaction-states-and-recovery.md) for canonical semantics. Label outcomes as saving/confirmed/failed only after the corresponding server state is known.
+
+**Verification examples:** reversible personal setting (no confirmation), workspace rename (explicit save), feature pause with pending work (impact summary), feature disable with historical records (deep-link preservation), unauthorized change (server rejection), stale version (reconcile), long localized copy and screen reader focus/recovery. All product/runtime scenarios remain **NOT VERIFIED**.
+
+**Provenance and status:** Derived by reconciling existing catalog guidance with the Little Wins F20 Settings user-scenario design; generic accessibility criteria follow [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (references identified 2026-11-07; no new external validation in this batch). Knowledge is **proposed**, owner/reviewer unassigned, no product implementation asserted. Later batches address cross-consumer propagation/integration tests and lifecycle; do not treat this section as evidence they are complete.
