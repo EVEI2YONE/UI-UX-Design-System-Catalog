@@ -41,3 +41,9 @@ Start with the [Batch 17 context and sources ledger](../planning/application-arc
 - [Architecture enforcement and CI guardrails](architecture-enforcement-and-ci.md): compare scoped ESLint import restrictions, dependency-cruiser path/cycle rules and Nx project tags, with known blind spots and staged CI rollout.
 
 Read the [Batch 18 context and source ledger](../planning/application-architecture-batch-18-context-and-gaps.md). These are illustrative implementation recipes; this documentation repository has no application import graph to validate.
+
+## Batch 19 — practical application architecture examples
+
+- [Application architecture reference implementations and migrations](application-architecture-reference-examples.md): prototype, MVP refactoring and enterprise examples with task-to-file maps, import boundaries, migration steps and acceptance evidence.
+
+See the [Batch 19 context and gap ledger](../planning/application-architecture-batch-19-context-and-gaps.md). Examples illustrate placement decisions and are not runnable starter projects.
