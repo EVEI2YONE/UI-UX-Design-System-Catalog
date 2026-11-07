@@ -35,3 +35,9 @@ The [per-batch context and gap ledger](../planning/application-architecture-batc
 - [Framework-aware application structure and route ownership](framework-aware-application-structure.md): preserve Next.js, Angular and React Router conventions while choosing between route-local and feature-owned UI.
 
 Start with the [Batch 17 context and sources ledger](../planning/application-architecture-batch-17-context-and-gaps.md). Routes and module boundaries are different concerns; verify actual framework/version before applying any tree.
+
+## Batch 18 — enforceable architecture boundaries
+
+- [Architecture enforcement and CI guardrails](architecture-enforcement-and-ci.md): compare scoped ESLint import restrictions, dependency-cruiser path/cycle rules and Nx project tags, with known blind spots and staged CI rollout.
+
+Read the [Batch 18 context and source ledger](../planning/application-architecture-batch-18-context-and-gaps.md). These are illustrative implementation recipes; this documentation repository has no application import graph to validate.
