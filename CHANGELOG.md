@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Wireframe knowledge B6 (proposed): add a non-canonical synthetic bank of six positive/negative task-to-wireframe cases and regression checks for existing-owner retrieval, exact aliases, `avoid_when` exclusion, path/lifecycle integrity and explicit NOT VERIFIED boundaries. No new registry ID, licensed imagery or simulated product PASS.
+
 - Wireframe knowledge B5 (proposed): extend existing `governance.quality` with a rendered-image visual inspection rubric (readability, clipping, hierarchy, state consistency, copy accuracy, fabricated functionality, variant consistency, evidence trace), issue severity and validation boundaries. Enrich lookup aliases, navigation, provenance and regression tests; no new concept, no images inspected, no runtime/a11y claims.
 
 - Wireframe knowledge B4 (proposed): extend `guidance.mobile-adaptive`, `guidance.accessibility` and `guidance.internationalization` for representative window transformations, zoom/reflow, long labels, mixed-direction/RTL stress variants, static-image evidence boundaries and deterministic lookup regression. Reused canonical IDs; no runtime tests or compliance claims.
