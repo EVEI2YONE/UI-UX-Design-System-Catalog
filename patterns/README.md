@@ -36,3 +36,8 @@ Use the existing [task-flow](task-flows-and-information-architecture.md) and [in
 **Batch 10 extensions:** [Data tables](data-tables.md) now distinguishes read-only tables from interactive grids and defines bulk operations. [Role-aware workspaces](role-aware-workspaces-and-context-switching.md) now includes enterprise approvals, delegation and authorized audit visibility. For charts see [data visualization](../guidance/data-visualization-and-dashboards.md), and for mobile behavior see [adaptive platform UX](../guidance/mobile-and-adaptive-platform-ux.md).
 
 **Batch 11 boundary:** AI disclosure, source provenance and uncertainty live under [AI experience guidance](../guidance/ai-powered-experiences-and-trust.md). [Agentic actions](agentic-actions-and-approvals.md) governs AI-specific tool approval and action states rather than replacing [advanced interactions](advanced-interactions-and-reversible-actions.md) or [role-aware workspaces](role-aware-workspaces-and-context-switching.md). [Voice and multimodal UX](conversational-voice-and-multimodal-ux.md) uses existing accessibility, content and privacy contracts.
+
+
+## Little Wins context-first extensions (2026-11-07)
+
+For hosted identity and managed-profile boundaries use [authentication](authentication-and-account-lifecycle.md) plus [role-aware workspaces](role-aware-workspaces-and-context-switching.md). For **human** submission reviews, value changes and irreversible history use [interaction recovery](interaction-states-and-recovery.md); AI agent approvals remain a separate pattern. For group/project scope and independently toggled features use [task flows](task-flows-and-information-architecture.md). All extensions remain proposed and require runtime-specific verification.
