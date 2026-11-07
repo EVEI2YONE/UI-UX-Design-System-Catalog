@@ -322,5 +322,45 @@ class LookupTests(unittest.TestCase):
                     self.assertIn(link, ids)
                     self.assertNotEqual(link, ident)
 
+
+    def test_batch12_performance_experiment_and_handoff_lookup(self):
+        cases = {
+            'Core Web Vitals': 'guidance.performance-experience',
+            'performance budget': 'guidance.performance-experience',
+            'perceived speed': 'guidance.performance-experience',
+            'real user monitoring': 'guidance.performance-experience',
+            'A/B testing': 'guidance.experimentation',
+            'sample ratio mismatch': 'guidance.experimentation',
+            'experiment guardrails': 'guidance.experimentation',
+            'sequential testing': 'guidance.experimentation',
+            'component spec': 'architecture.component-contracts',
+            'catalog promotion': 'governance.lifecycle',
+        }
+        for query, expected in cases.items():
+            with self.subTest(query=query):
+                found = lookup(self.entries, query, limit=1)
+                self.assertTrue(found, f'Missing match for {query}')
+                self.assertEqual(found[0]['id'], expected)
+
+    def test_batch12_new_paths_and_integrity(self):
+        paths = {
+            'guidance.performance-experience': 'guidance/performance-and-perceived-speed.md',
+            'guidance.experimentation': 'guidance/experimentation-and-causal-evidence.md',
+        }
+        ids = {entry['id'] for entry in self.entries}
+        for ident, path in paths.items():
+            with self.subTest(ident=ident):
+                entry = next(x for x in self.entries if x['id'] == ident)
+                self.assertEqual(entry['path'], path)
+                self.assertEqual(entry['kind'], 'guideline')
+                self.assertTrue((ROOT / path).is_file())
+                self.assertEqual(entry['status'], 'proposed')
+                self.assertEqual(entry['owner'], 'unassigned')
+                self.assertIsNone(entry['reviewed_at'])
+                self.assertTrue(entry['use_when'] and entry['avoid_when'])
+                for target in entry['related'] + entry['depends_on']:
+                    self.assertIn(target, ids)
+                    self.assertNotEqual(target, ident)
+
 if __name__ == '__main__':
     unittest.main()
