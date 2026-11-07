@@ -2071,6 +2071,52 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "architecture.enforcement-ci",
+      "title": "Application architecture enforcement and CI guardrails",
+      "path": "architecture/architecture-enforcement-and-ci.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Select and stage architectural lint, dependency graph, Nx project constraints and CI without false compliance claims.",
+      "aliases": [
+        "architecture enforcement",
+        "module boundary lint",
+        "architecture CI",
+        "dependency cycle detection",
+        "dependency-cruiser rules",
+        "ESLint no-restricted-imports",
+        "Nx module boundaries",
+        "architecture lint rules"
+      ],
+      "domains": [
+        "application-architecture",
+        "developer-experience",
+        "scalability",
+        "quality"
+      ],
+      "use_when": [
+        "enforcing feature domain and shared import boundaries",
+        "introducing architecture checks into CI",
+        "choosing between ESLint graph checks and Nx rules"
+      ],
+      "avoid_when": [
+        "assuming alias-only lint covers all relative imports",
+        "adding untested blocking architecture checks to a legacy application"
+      ],
+      "related": [
+        "architecture.module-boundaries",
+        "architecture.evolution",
+        "architecture.framework-aware",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "architecture.module-boundaries",
+        "architecture.evolution"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
