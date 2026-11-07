@@ -31,3 +31,8 @@ For changes see [Contributing](../CONTRIBUTING.md) and the [PR template](../.git
 ## Batch 8 — feature dependency validation
 
 [Quality gates](quality-gates.md) now checks flag-combination coverage, server versus UI capability agreement, historical preservation, outstanding requests and toggle races. [Batch 8 evidence ledger](../planning/little-wins-batch-8-context-and-gap-ledger.md) separates code-observed facts from deployment tests.
+
+
+## Batch 9 — refactor safety evidence
+
+[Quality gates](quality-gates.md) now checks existing component adoption, public compatibility, staged CSS/token migration, vertical-slice regressions and rollback before calling an app modernization successful. [Batch 9 evidence](../planning/little-wins-batch-9-context-and-gap-ledger.md) is a source audit, not product test evidence.
