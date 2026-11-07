@@ -77,3 +77,7 @@ Use `architecture.enforcement-ci` for example boundary lint, graph cycle detecti
 ## Batch 19 applied architecture examples
 
 Use `architecture.reference-examples` for prototype/MVP/enterprise developer-task-to-file walkthroughs and before/after modularity decisions. Selection and module contracts remain canonical in `architecture.application-selection` and `architecture.module-boundaries`. [Batch 19 context](../planning/application-architecture-batch-19-context-and-gaps.md).
+
+## Batch 20 — architecture coverage and selection
+
+The [architecture index](../architecture/README.md) is the human task-first entrypoint to the seven application architecture concepts introduced in Batches 13–19. The [closure audit](../planning/application-architecture-batch-20-closure-audit.md) documents canonical ownership, lookup coverage, historical context and unverified application outcomes. Prefer existing IDs over creating redundant concept entries.
