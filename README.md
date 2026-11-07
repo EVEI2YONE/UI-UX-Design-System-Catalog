@@ -24,6 +24,10 @@
 | Choose a UX study or evaluate evidence quality | [UX research methods](guidance/ux-research-methods.md) |
 | Understand expectations and end-to-end journeys | [Mental models and journey mapping](guidance/mental-models-and-journeys.md) |
 | Reduce memory and decision burden | [Cognitive load and decision design](guidance/cognitive-load-and-decisions.md) |
+| Build privacy-respecting choices and account deletion flows | [Privacy, consent and trustworthy UX](guidance/privacy-consent-and-trust.md) |
+| Plan sign-in, passkeys, MFA, expiry and recovery | [Authentication and account lifecycle](patterns/authentication-and-account-lifecycle.md) |
+| Control alert urgency, channels, and user attention | [Notifications and attention](patterns/notifications-and-attention.md) |
+| Handle offline drafts, sync and conflicting edits | [Offline work and synchronization](patterns/offline-sync-and-conflicts.md) |
 | Reuse, extend, merge, deprecate, or review guidance | [Lifecycle and decisions](governance/lifecycle-and-decisions.md) and [quality gates](governance/quality-gates.md) |
 
 **Search by word, synonym, or ID:** [`catalog/index.json`](catalog/index.json) is the canonical machine-readable lookup registry. See [lookup instructions](catalog/README.md). Example:
@@ -57,7 +61,7 @@ Practical UI composition typically follows **foundations/tokens → primitives �
 
 - **Included:** guidance, contracts, reference patterns, decision rules, examples/anti-patterns, evidence expectations, and concept metadata.
 - **Not included yet:** compiled tokens, framework-specific components, Storybook previews, product app code, or independently verified UX research. Do not mistake a specification for a working implementation.
-- **Future candidate domains:** data visualization, trust/privacy UX, platform adaptations, performance resilience, AI interaction patterns, and design-tool interoperability. Add these when a reusable need and owner are identified; do not create empty folders for them.
+- **Future candidate domains:** data visualization, platform adaptations, performance resilience, AI interaction patterns, and design-tool interoperability. Add these when a reusable need and owner are identified; do not create empty folders for them.
 
 ## How to use an entry
 
@@ -124,3 +128,7 @@ The [agent lookup protocol](AGENTS.md), [catalog registry](catalog/README.md), [
 ## Batch 8 — content, discovery and task completion (proposed)
 
 [Content design and UX writing](guidance/content-design-and-ux-writing.md) and [service recovery and support handoff](patterns/service-recovery-and-support.md) are new proposed catalog guidance. Existing [form](patterns/forms.md) and [search/filter](patterns/search-and-filter.md) specifications now include complex data entry, validation, save/resume, facets, sorting, pagination and recovery. No production code, real-user studies or manual accessibility verification are implied. This content follows Batch 7 on the cumulative knowledge-expansion branch and PR #5.
+
+## Batch 9 — trust and resilient journeys (proposed)
+
+[Privacy, consent and trustworthy UX](guidance/privacy-consent-and-trust.md), [authentication and account lifecycle](patterns/authentication-and-account-lifecycle.md), [notifications and attention management](patterns/notifications-and-attention.md), and [offline synchronization and conflict recovery](patterns/offline-sync-and-conflicts.md) are four new **proposed** guidance entries. Reuse the existing [role-aware](patterns/role-aware-workspaces-and-context-switching.md), [feedback](patterns/feedback.md), and [interaction-recovery](patterns/interaction-states-and-recovery.md) patterns instead of duplicating those contracts. The [Batch 9 context and gap ledger](planning/batch-9-context-and-gap-ledger.md) records evidence and decisions. No production code, compliance, or test claims are made.
