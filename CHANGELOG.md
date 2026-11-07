@@ -87,3 +87,11 @@
 - Add `pattern.agentic-actions` for scoped side effects, illustrative approval risk ladder, reviewable agent plans, unknown outcomes and verified completion.
 - Add `pattern.multimodal-conversation` for chat/voice turn-taking, transcript correction, modality switching, non-audio alternatives and recording privacy.
 - Update canonical retrieval/navigation and lookup tests. All remain proposed; no tested model, real agent, production user workflow or accessibility assurance claimed.
+
+## Unreleased — Batch 12: evaluation, performance and delivery (proposed)
+
+- Context-first audit of 38 concepts and existing UX measurement, quality, lifecycle, token and component-contract guidance, with current web.dev, Microsoft Research, DTCG, Playwright and Storybook sources.
+- Added `guidance.performance-experience` for web Core Web Vitals (LCP/INP/CLS), real-user vs lab evidence, loading honesty and resilience.
+- Added `guidance.experimentation` for A/B test design, assignment, sample-ratio mismatch, effect uncertainty, guardrails and safe stopping.
+- Extended existing `guidance.ux-measurement`, `governance.quality`, `governance.lifecycle`, `architecture.component-contracts` and `foundation.design-tokens` for design-to-code handoff, interoperable tokens, visual/AT checks and release evidence. No parallel DesignOps entry.
+- Registered canonical IDs and links, added retrieval tests, and documented sources/gaps. This completes the planned Batches 7–12 scope in cumulative draft PR #5, without merging or claiming product validation.
