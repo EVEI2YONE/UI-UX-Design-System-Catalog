@@ -34,3 +34,7 @@ For agent retrieval, resolve canonical IDs using [the registry](../catalog/index
 ## B02 — component anatomy and event coordination (proposed, 2026-11-07)
 
 [Component contracts](component-contracts.md) now include CKG-04 and CKG-06–08: composite slot/host ownership; local component events versus feature commands versus authoritative outcomes; sibling state coordination; controlled/uncontrolled ownership; and nested interactive anti-patterns. Search canonical ID `architecture.component-contracts` for “component event ownership” or “cross component events”. These are documentation specifications, not runtime behavior verified by tests.
+
+## B05 — visual redundancy and component inventory (proposed, 2026-11-07)
+
+[Architecture enforcement and CI](architecture-enforcement-and-ci.md) covers CKG-16: baseline-aware detection of global selector bleed, duplicated primitives, token drift and variant overload, without hard-coded style-count gates. [Component model](component-model.md) covers CKG-17: inventory installed vs exported vs used components and map them to reuse/compose/extend/keep-local/create/deprecate decisions. These are guidance for target-app checks, not lint already installed in this reference catalog.
