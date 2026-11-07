@@ -44,3 +44,14 @@ For each screen, annotate: **user and task**, entry point, expected next step, c
 **Review example:** In a multi-step settings form, keep Save identifiable, show unsaved edits, preserve input on validation failure and expose a Cancel path. Do not replace evidence from task tests with internal design preference. Compare representative first-time and returning users; record unexpected behavior as a hypothesis for research.
 
 **Acceptance evidence:** annotated states at narrow and wide widths; keyboard order; long-label and translated content; task success definition and baseline availability; design reviewer and review date. A prose review is not a production accessibility test.
+
+
+## Wireframe screen hierarchy and action priority (proposed Batch 2, 2026-11-07)
+
+**Use when** converting a task into a screen or comparing two proposed compositions. **Avoid** starting from a fashionable component layout, treating a large visual element as proof of priority, or imposing one primary CTA when the task genuinely has several equivalent safe choices. This extends `principle.visual-hierarchy`; [task flows](../patterns/task-flows-and-information-architecture.md) own sequence and alternatives, while [wireframe methodology](../guidance/wireframe-methodology.md) owns fidelity and prototype escalation.
+
+For each proposed screen, write a compact **hierarchy contract**: (1) context and location; (2) user goal and the decision required *now*; (3) prerequisite information and risk/price/privacy disclosures; (4) one prominent primary next action where appropriate; (5) secondary/back/cancel/support affordances; (6) resulting state and next screen. Rank content by its role in safe task completion, not visual novelty. Include visible scope and status when data is filtered or permissions matter. Copy and grouping should allow users to predict action consequences. A static drawing only illustrates that order; real affordance and focus behavior still require implementation tests.
+
+**Good synthetic example:** an appointment-selection screen leads with service and date context, then available slots, then “Continue to review”; change service and back remain discoverable. **Anti-example:** promotional cards dominate, “Confirm” appears before a time is chosen, and no exit or recovery route is visible. A visually balanced screen may still be task-incomplete.
+
+**Verification expectation:** review annotation against the user's task brief; compare context-to-action scan order, action label/outcome consistency, safe exit, meaningful grouping and omission of known critical information. Check narrow/reflow and translated labels on rendered implementations when available, recording unexecuted checks as **NOT VERIFIED**. Distinct composition variants must retain the same user/task context for a fair comparison. See [Task-to-screen composition](../patterns/task-flows-and-information-architecture.md).
