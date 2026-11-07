@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Wireframe knowledge B3 (proposed): extend `pattern.interaction-recovery` with image-based state coverage, applicability/depicton labels, state-to-screen annotation contract, synthetic unknown-outcome recovery example and prototype/runtime verification boundaries. Update canonical registry aliases, README discovery, source notes and deterministic lookup tests; no new canonical concept or implementation claim.
+
 - Wireframe knowledge B2 (proposed): extend existing `pattern.task-flows` and `principle.visual-hierarchy` with minimum task brief, assumption labels, screen action hierarchy, structurally different alternatives, comparative review criteria, synthetic examples/anti-examples and retrieval regression tests. No new canonical ID or claims of implemented interactions.
 
 - Wireframe knowledge B1 (proposed): add tool-neutral `guidance.wireframe-methodology` for visual/content/interaction fidelity, representation selection, static-image claims and prototype escalation; update registry, discovery and lookup regression checks. Existing task-flow, state and quality concepts remain canonical. No user studies or runtime checks claimed.
