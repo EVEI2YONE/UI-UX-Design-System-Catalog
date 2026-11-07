@@ -1,6 +1,6 @@
 # Account/settings knowledge expansion — batch progress
 
-**Prepared:** 2026-11-07. **Base:** `main` at `de4a290fc062267fb0ede14f53601036378a4e91`. **Branch:** `docs/account-settings-knowledge-batches`. **Review:** proposed; PR not merged. **Source product:** no specific target application was selected; observations refer to existing catalog, not a tested account portal.
+**Prepared:** 2026-11-07. **Base:** `main` at `de4a290fc062267fb0ede14f53601036378a4e91`. **Branch:** `docs/account-settings-knowledge-batches`. **Review:** [draft PR #9](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/9) open, not merged. **Source product:** no specific target application was selected; observations refer to existing catalog, not a tested account portal.
 
 ## Context-first methodology and batch disposition
 
@@ -49,4 +49,4 @@
 - [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/) — language/RTL considerations; product support depends on locale scope.
 - [PCI SSC document library](https://www.pcisecuritystandards.org/document_library/) — payment security reference requiring expert applicability assessment; no claim of compliance or provider behavior.
 
-**Verification at drafting:** catalog source review PASS; catalog validator/unit/CI checks PENDING; actual product flow, payment, authentication, deletion, browser delivery, keyboard/assistive technology and locale tests NOT VERIFIED. Report real checks and results in PR before review. There is no target-app implementation PR.
+**Verification at drafting:** catalog source review PASS; GitHub Actions [Validate catalog run #152](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42357749419) PASS (index/relative links, lookup smoke, deterministic lookup regression tests); initial run #151 FAILED on heading mismatch and was corrected in `be41c84`; actual product flow, payment, authentication, deletion, browser delivery, keyboard/assistive technology and locale tests NOT VERIFIED. Report real checks and results in PR before review. There is no target-app implementation PR.
