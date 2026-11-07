@@ -477,3 +477,40 @@ Test the *user's configuration intent through all affected consumers*, not just 
 **Anti-example:** a green switch component test is used to claim the policy is enforced while direct API calls and stale tabs have never been exercised.
 
 **Sources and verification boundary:** Reuses [Settings portal](#kg-006--save-propagate-and-recover), [offline synchronization](offline-sync-and-conflicts.md), [feature capability journeys](task-flows-and-information-architecture.md#batch-8--capability-dependencies-and-configuration-state-journeys-2026-11-07), [quality gates](../governance/quality-gates.md), and [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) / [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) for applicable inclusive interactions. Date: 2026-11-07. **Status:** proposed catalog guidance, reviewer unassigned. Product runtime checks and security/a11y/E2E tests are **NOT VERIFIED**.
+
+
+## Settings knowledge Batch 3 — configuration lifecycle and migration (KG-014; proposed 2026-11-07)
+
+**Coverage disposition:** General [catalog lifecycle and decisions](../governance/lifecycle-and-decisions.md) already governs reusable concept ownership, status, deprecation and migration; [versioned aggregate migrations](offline-sync-and-conflicts.md#versioned-aggregate-migrations-and-safe-restore-batch-6--proposed-2026-11-07) covers durable data conversion and concurrency. The focused addition here is the **user-facing and implementation handoff contract for an individual setting** as it is added, renamed, split, merged, retired or moved between scopes. This is not a new canonical component or permission model.
+
+### KG-014 — Per-setting lifecycle decision and compatibility matrix
+
+For each setting record its stable key, documented default and effective value, prior aliases, data type and allowed values, personal/workspace/system scope, authority and storage owner, schema/version, read/write capabilities, affected consumers, migration path, rollback and status (proposed, active, deprecated or removed). **Setting runtime lifecycle status is distinct from catalog concept status.** Before changing the schema or UI, identify whether existing deployments, stored records, deep links, mobile/old browser clients and downstream feature readers can still interpret the value safely.
+
+| Transition | UX / data contract | Release and compatibility check |
+| --- | --- | --- |
+| New setting | Explain intended scope, initial/effective default, when available and why the choice matters | Existing records without the key get a defined effective value; older clients do not corrupt new state |
+| Rename label only | Keep stable storage key and preserve saved value; update accessible name and help | Localized copy, search, help links and documentation stay discoverable |
+| Rename stored key | Versioned read/write migration or explicitly documented compatibility alias, never a silent reset | Old/new fixtures, idempotency, concurrent clients, rollback |
+| Change default | Define whether it affects only new scopes or also previously unset records; distinguish unset from explicit choice | Previously saved user decisions remain intact unless consented migration says otherwise |
+| Split or merge settings | Define precedence when values conflict, explain mapping and controls removed/introduced | Deterministic migration, no invalid combinations or lost express choices |
+| Move personal → workspace (or reverse) | Treat as changed authority/consent, not merely UI relocation; do not leak personal state or silently impose shared policy | Authorization, effective scope disclosure, privacy and cross-tenant tests |
+| Deprecate and replace | Surface replacement or read-only explanation where useful; preserve required historical access | Consumers, links, migrations, disabled states and reversal verified before retiring entry |
+| Remove setting | Remove control only once all supported clients, consumers, stored values and legal/history obligations are addressed | Migration/rollback evidence and sunset owner documented |
+
+**User journey example:** A workspace owner opens a bookmarked old Settings subpage after an option has been replaced. The product redirects to the new section, identifies the current effective value and—where an action is still needed—explains what changed. It does not silently map a previously explicit "Off" selection to a new "On" default.
+
+**Anti-example:** renaming a storage key causes previous values to disappear; legacy clients save the old shape and overwrite new policies; the UI hides a disabled feature together with the only access path to outstanding records.
+
+### Migration handoff and acceptance
+
+1. **Inventory:** record old/current schema, affected keys and defaults, persisted example values, read and write consumers, authorization boundaries, supported app versions, and user-visible routes.
+2. **Decide:** choose preserve-as-is, alias, transform, staged dual-read/single-write, read-only deprecation, or reject unsupported old clients. Specify a cutoff/sunset based on actual product support, not invented dates.
+3. **Prepare:** provide reversible migration or a tested restore plan, representative old-version fixtures, conflict and retry rules, and safe handling when only part of a migration succeeds. Never migrate permissions from untrusted client metadata.
+4. **Communicate:** label moved, replaced or removed settings accurately; help and deep links resolve or explain unavailability; maintain keyboard, screen-reader, long-text and RTL behavior.
+5. **Verify:** compare effective values before/after, saved explicit choices, missing/unset defaults, mixed-version clients, stale tabs, offline drafts, tenant isolation, dependent capabilities and history. Record real tests and responsible owner.
+6. **Retire:** stop writing aliases once supported readers are migrated; remove UI, code and dead styles only with verified consumers and rollback evidence.
+
+**Target-specific boundary:** The catalog does not prescribe Little Wins' timezone default, points/rewards transition policy, or which clients remain supported; those are application decisions. Nor does documentation prove an actual migration, deployment or backup.
+
+**Verification status:** Documentation guidance **proposed**; reviewer unassigned. Real schema fixtures, application upgrades, data safety, accessibility, multi-client behavior and restore tests are **NOT VERIFIED**. Reuse [lifecycle governance](../governance/lifecycle-and-decisions.md), [offline synchronization](offline-sync-and-conflicts.md), [configuration propagation](#settings-knowledge-batch-2--propagation-and-integration-verification-kg-010-kg-013-proposed-2026-11-07), [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (reference date 2026-11-07; external revalidation not performed).
