@@ -17,8 +17,8 @@ Before **each** batch's substantive knowledge commit: fetch the latest branch an
 
 | Batch | Priority | Scope | Status | Initial likely canonical ownership (verify on execution) | Validation |
 | --- | --- | --- | --- | --- | --- |
-| B0 | gate | Baseline and canonical inventory | IN PROGRESS — initial baseline inspected; detailed alias/test inventory pending | registry and repository policy | NOT VERIFIED |
-| B1 | P0 | Fidelity, outcomes and prototype escalation | NOT STARTED | consider new wireframing concept only after overlap audit | NOT VERIFIED |
+| B0 | gate | Baseline and canonical inventory | COMPLETE — policy/registry/related-page overlap inspected for B1; ongoing per-batch discovery remains required | registry and repository policy | NOT VERIFIED |
+| B1 | P0 | Fidelity, outcomes and prototype escalation | CONTENT COMMITTED — proposed, pending human review | CREATE `guidance.wireframe-methodology`; REUSE hierarchy/flows/recovery/quality owners | Repository validation/tests NOT VERIFIED; manual UX NOT VERIFIED |
 | B2 | P0 | Task-to-screen composition and alternatives | NOT STARTED | `principle.visual-hierarchy`, `pattern.task-flows` | NOT VERIFIED |
 | B3 | P1 | State annotations and recovery | NOT STARTED | `pattern.interaction-recovery` | NOT VERIFIED |
 | B4 | P1 | Responsive, reflow, long text and RTL | NOT STARTED | `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization` | NOT VERIFIED |
@@ -40,3 +40,11 @@ Before **each** batch's substantive knowledge commit: fetch the latest branch an
 ## Integration contract for downstream design agents (to complete in B7)
 
 Retrieve by task/alias from `catalog/index.json`; read canonical `path`, positive/negative usage constraints, `related` and `depends_on`; distinguish required design context from labeled assumptions; specify at least two structurally meaningful alternatives when warranted; annotate static states and prototype escalation; evaluate image output without claiming validated implementation. This is a **proposed acceptance target**, not yet implemented canonical authority.
+
+## B1 context and decision (2026-11-07)
+
+- **Observed:** `main` commit `6ed00199047488d8d5f42886112a35639fffe3ef` and PR #11 tracker head were checked. Canonical registry previously had 49 proposed entries. `principle.visual-hierarchy` covers screen priorities; `pattern.task-flows` covers task map and exits; `pattern.interaction-recovery` covers state recovery; `governance.quality` covers evidence. No dedicated registry entry for wireframe fidelity/prototype escalation was present after alias/title scan.
+- **Decision:** CREATE one `guidance.wireframe-methodology` entry for representation fidelity, design question, evidence/assumption labels and static-to-interactive gate. REUSE/DEFER composing alternatives to B2, states to B3, adaptive/RTL to B4, visual QA to B5, retrieval expansion to B6. No plugin-specific operating rules.
+- **External research:** NN/g (2016 fidelity taxonomy; current review 2026-11-07), NN/g Usability 101 and W3C WCAG 2.2 (normative only for applicable implementation), listed in references. Synthesis and examples are proposed rather than observed user outcomes.
+- **Validation:** catalog Python validator and Python test suite NOT VERIFIED because a complete checkout could not be obtained in this runtime. Static registry shape/id/ref check may be performed separately. No interface implementation or visual/a11y testing was performed.
+- **Unresolved:** assign human owner/review; confirm which user-study questions demand working interaction per product; validate image readability and copy in generated assets (B5).
