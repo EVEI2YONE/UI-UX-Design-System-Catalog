@@ -44,3 +44,16 @@ Record a task as **entry → orientation → choose → act → pending → outc
 | Return | Preserved query and prior position | Continue selection | Stale item: refresh without silently discarding context |
 
 **IA acceptance:** primary routes and labels are distinguishable; landmarks and headings form a predictable hierarchy; filter and back behavior are consistent; direct links and narrow/reflowed views function; empty/error branches have recoverable next steps. Validate the model with task observation and task completion, not click count alone.
+
+
+## Multi-scope task context and optional features (2026-11-07)
+
+**Observed example:** Little Wins scopes Overview, Review and History by project, but Members and Rewards by group. Groups own membership/points, while projects own challenges/submissions. Moving a challenge recalculates project progress without moving the submission or point ledger.
+
+**Guidance:** before drawing navigation, make a resource/scope matrix (account -> workspace -> group -> project -> record) with visible scope for every list, aggregate, action and deep link. Keep the active project explicit where data is project-filtered; distinguish global/group-wide views with their own headings and filter affordances. Verify changing project with unsaved forms, old links, return navigation and no-results states. Avoid suggesting a product-wide project filter that misleadingly narrows group-wide rewards.
+
+**Feature flags:** document whether points, challenges and rewards are independent, which actions disappear, what previously earned records remain visible, and what happens after re-enabling. Never delete historical data just because a feature is hidden. Clarify the owner and dependency policy for any derived totals.
+
+**Example:** a Review queue heading says “Reading project”, while Rewards says “All group rewards”. **Anti-example:** the same ambiguous project chip suggests that group-wide balances are filtered to a project.
+
+**Checks:** scope matrix for every route; accessible focus/context announcements; empty and revoked-project states; localized labels; restored history and balances on feature toggle; no unintended mutations when moving a challenge.
