@@ -1,6 +1,6 @@
 # Proposed UI/UX knowledge expansion — Batches 7–12
 
-**Status:** Rolling plan; Batches 7–10 have proposed documentation committed to cumulative PR #5. No human or production verification is implied.  
+**Status:** Rolling plan; Batches 7–11 have proposed documentation committed to cumulative PR #5. No human or production verification is implied.  
 **Base:** `main` (the branch was created from `main`).  
 **Scope:** Reusable design knowledge in this catalog, not target application code.  
 **Existing work:** Batches 1–6 are documented in the root README and remain unchanged.
