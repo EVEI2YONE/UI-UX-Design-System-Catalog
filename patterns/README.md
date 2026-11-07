@@ -86,3 +86,7 @@ For hosted identity and managed-profile boundaries use [authentication](authenti
 ## B03 — icon-state, focus and sequential-task continuity (proposed, 2026-11-07)
 
 [Interaction states and recovery](interaction-states-and-recovery.md) now specifies CKG-09/10: pending versus confirmed/uncertain icon and text timing; focus when records, dialogs or queue selections disappear. [Task flows](task-flows-and-information-architecture.md) owns CKG-11/12: stable action placement, context retention and conditional next-eligible-item progression. Search `pattern.interaction-recovery` for “focus after item removal” and `pattern.task-flows` for “sequential task controller”. No catalog component implementation or keyboard/user verification is claimed.
+
+## B04 — action-consolidation selection (proposed, 2026-11-07)
+
+[Advanced interactions and reversible actions](advanced-interactions-and-reversible-actions.md) now specifies CKG-13: when to keep named actions visible versus grouping them in toolbars, overflow menus or split controls, with consequence and accessibility safeguards. Pair with [UX measurement](../guidance/ux-measurement.md) (CKG-14) to evaluate real task effort; do not infer benefits from fewer visible controls alone. Canonical ID: `pattern.advanced-interactions`.
