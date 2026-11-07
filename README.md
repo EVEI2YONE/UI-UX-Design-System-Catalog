@@ -10,13 +10,13 @@
 | --- | --- |
 | Establish visual hierarchy, spacing, and affordances | [Design principles](foundations/design-principles.md) |
 | Create a theme or rationalize raw values | [Tokens and themes](foundations/design-tokens-and-themes.md) |
-| Explore prototype, MVP and enterprise code-layout examples | [Application architecture reference examples](architecture/application-architecture-reference-examples.md) |
-| Enforce feature/module import boundaries in CI | [Architecture enforcement and CI guardrails](architecture/architecture-enforcement-and-ci.md) |
-| Adapt app structure to Next.js, Angular or React Router | [Framework-aware application structure](architecture/framework-aware-application-structure.md) |
 | Choose prototype, MVP, growing or enterprise app code structure | [Application architecture selection](architecture/application-architecture.md) |
 | Organize features, domains, and developer navigation | [Module boundaries and developer navigation](architecture/module-boundaries-and-developer-navigation.md) |
-| Migrate or measure application modularity | [Architecture evolution and fitness](architecture/architecture-evolution.md) |
+| Adapt app structure to Next.js, Angular or React Router | [Framework-aware application structure](architecture/framework-aware-application-structure.md) |
 | Decide between monorepo, multirepo or microfrontends | [Enterprise and multi-app architecture](architecture/enterprise-and-multiapp.md) |
+| Migrate or measure application modularity | [Architecture evolution and fitness](architecture/architecture-evolution.md) |
+| Enforce feature/module import boundaries in CI | [Architecture enforcement and CI guardrails](architecture/architecture-enforcement-and-ci.md) |
+| Explore prototype, MVP and enterprise code-layout examples | [Application architecture reference examples](architecture/application-architecture-reference-examples.md) |
 | Decide primitive vs component vs pattern vs feature | [Component model](architecture/component-model.md) |
 | Specify a new or changed reusable component | [Component contracts](architecture/component-contracts.md) and [entry template](templates/concept-entry.md) |
 | Design role-based portals, previews or workspace switching | [Role-aware workspaces and context switching](patterns/role-aware-workspaces-and-context-switching.md) |
@@ -219,3 +219,7 @@ The [architecture enforcement guide](architecture/architecture-enforcement-and-c
 ## Batch 19 — practical application architecture examples
 
 [Architecture reference examples](architecture/application-architecture-reference-examples.md) map developer tasks to code ownership across prototype, modular MVP and multi-application contexts, including before/after extraction and verification. The [Batch 19 context ledger](planning/application-architecture-batch-19-context-and-gaps.md) explains overlaps and documentation-only evidence limitations.
+
+## Batch 20 — application architecture knowledge closure
+
+The [task-first architecture index](architecture/README.md) is the recommended starting point for developers. The [Batch 20 audit](planning/application-architecture-batch-20-closure-audit.md) reconciles Batches 13–19, identifies canonical owners and records unverified application-specific outcomes. This closes knowledge development for the initiative, **not** a runtime refactor, empirical DX test or approval to merge the draft PR.
