@@ -17,3 +17,12 @@ Initial concepts are a selective synthesis of the user-provided **UI/UX Design S
 ## Evidence hygiene
 
 New guidance should capture a source URL, edition/date, scope, limitations, last review date and owner. Prefer primary authoritative references for normative claims, and actual user research or telemetry for product outcomes. Label hypotheses as hypotheses. If a source is inaccessible, mark it unverified rather than fabricating a quotation or result.
+## Batch 7 research and cognitive-design sources (proposed guidance)
+
+- [Nielsen Norman Group: When to Use Which UX Research Methods](https://www.nngroup.com/articles/which-ux-research-methods/) — research-purpose and method-selection framework; professional guidance, not universal sampling thresholds.
+- [GOV.UK Service Manual: User Research](https://www.gov.uk/service-manual/user-research) — research planning, recruitment and inclusive service research; contextualize outside government services.
+- [Nielsen Norman Group: Mental Models](https://www.nngroup.com/articles/mental-models/) — explain expectations and conceptual mismatches; do not invent prevalence from examples.
+- [Nielsen Norman Group: Journey Mapping](https://www.nngroup.com/articles/journey-mapping-101/) — map scope, stages and evidence; distinguish inferred from researched journeys.
+- [W3C COGA: Making Content Usable](https://www.w3.org/TR/coga-usable/) — W3C Working Group Note, non-normative supplemental cognitive accessibility guidance, not WCAG conformance criteria.
+
+Added to the research queue on 2026-11-07; individual source publication dates and applicability must be verified in each knowledge review. Human review is not claimed.
