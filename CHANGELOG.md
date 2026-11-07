@@ -1,5 +1,8 @@
 ## Unreleased
 
+- Settings knowledge Batch 5 (proposed, cumulative draft PR #12): refresh catalog/product context, document the KG-001–008 canonical ownership and Little Wins consumer crosswalk, add focused registry/retrieval regression tests, correct malformed Batch 1 Markdown code delimiters and publish a verification ledger. Source and connector structural checks completed; official catalog validator and unit suite not executed in environment, app/browser/a11y/security checks NOT VERIFIED. No new concept or application code.
+
+
 - Settings knowledge Batch 4 (proposed, cumulative draft PR #12): add KG-007 configuration-change event contract, scoped history viewing, retention/redaction ownership and setting-revert vs historical-side-effect distinction in `pattern.account-settings-portal`. Reuse role-aware audit visibility, privacy and recovery guidance; no new concept, runtime event log or automated proof claimed.
 
 
