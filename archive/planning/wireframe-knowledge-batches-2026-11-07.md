@@ -23,7 +23,7 @@ Before **each** batch's substantive knowledge commit: fetch the latest branch an
 | B3 | P1 | State annotations and recovery | CONTENT COMMITTED — proposed, human review pending | EXTEND `pattern.interaction-recovery`; REUSE forms/feedback/offline/accessibility and B1 methodology | CI PASS: 65 tests; validator PASS (50 IDs, 8 READMEs, 606 links); runtime/manual UX NOT VERIFIED |
 | B4 | P1 | Responsive, reflow, long text and RTL | CONTENT COMMITTED — proposed, human review pending | EXTEND `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization`; REUSE B1 and B3 | CI PASS: 69 tests; validator PASS (50 IDs, 8 READMEs, 616 links); manual runtime NOT VERIFIED |
 | B5 | P1 | Static visual QA and evidence | CONTENT COMMITTED — proposed, pending human review | EXTEND `governance.quality`; REUSE visual hierarchy, content and wireframe method owners | CI PASS: 73 tests; validator PASS (50 IDs, 8 READMEs, 624 links); image QA NOT VERIFIED |
-| B6 | P2 | Synthetic examples, aliases and lookup regression | NOT STARTED | canonical examples, `catalog/index.json`, tests | NOT VERIFIED |
+| B6 | P2 | Synthetic examples, aliases and lookup regression | CONTENT COMMITTED — proposed, human review pending | REUSE B1–B5 owners and existing aliases; CREATE non-canonical synthetic example bank + tests | CI pending; actual image QA and usability NOT VERIFIED |
 | B7 | gate | Integrate READMEs, registry, changelog, source ledger, validate and hand off | NOT STARTED | discoverable navigation and quality gates | NOT VERIFIED |
 | B8 | optional | Plugin consumer instruction integration validation | DEFERRED, outside canonical catalog PR | external consumer instructions | NOT VERIFIED |
 
@@ -81,3 +81,11 @@ Retrieve by task/alias from `catalog/index.json`; read canonical `path`, positiv
 - **Added knowledge:** rendered-image visual QA rubric, task/wording alignment, clipped or distorted generated content, false capability/transaction assertions, consistent variant/state presentation, severity, issue log and exact artifact/revision traceability.
 - **Source status:** proposed synthesis from current catalog; W3C WAI Easy Checks and WCAG 2.2 referenced for applicability, not independently fetched in this batch and not image-only conformance proof.
 - **Verification:** GitHub Actions `Validate catalog` run `42368545863` on B5 test/content commit `e38cc2dc7540895eec22c63743b7ec14c664f704` **PASS**: 73 Python tests including four new B5 lookup tests; 50 unique concepts, 8 section READMEs and 624 relative links. Subsequent discovery/source/tracker-only commits were not in that run. No actual wireframe images available/inspected, no live product, human task study, keyboard/screen reader, zoom/RTL or backend check: **NOT VERIFIED**.
+
+## B6 context and disposition (2026-11-07)
+
+- **Fresh context:** `main` at `6ed00199047488d8d5f42886112a35639fffe3ef` and PR #11 head `7d128d50d356af208f926cdb834eae077f572dd8` inspected before new content. Re-read policy, schema, 50-entry registry, B1–B5 owners, existing regression patterns, catalog discovery and resolver.
+- **Overlap:** existing canonical pages contain methodology, alternatives, state matrices, responsive/RTL and visual QA advice. Creating a duplicate examples guideline would fragment retrieval; `archive/planning` is for provenance and synthetic reference fixtures, not authority.
+- **Decision:** REUSE existing canonical IDs; CREATE a non-canonical case bank with WRF-01–06, positives/anti-examples, ownership and evidence limits; EXTEND retrieval regression tests for exact aliases, owner preservation, synthetic scenarios and `avoid_when` negative-only behavior; DEFER any plugin-specific generation benchmarks, image datasets or true visual inspection.
+- **Provenance:** cases are original synthetic text authored for this batch, sourced conceptually from current canonical B1–B5 pages. No third-party asset or external research result is reproduced or claimed.
+- **Verification:** CI pending at this writing. Image quality, user outcomes, keyboard/AT, runtime interaction, permission behavior and translation review remain **NOT VERIFIED**.
