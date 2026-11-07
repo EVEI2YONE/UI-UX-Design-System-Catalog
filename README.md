@@ -18,6 +18,9 @@
 | Design and test keyboard, focus, contrast, touch, or zoom | [Accessibility](guidance/accessibility.md) |
 | Support translations, long labels, and RTL | [Internationalization](guidance/internationalization.md) |
 | Define success beyond aesthetic preference | [UX measurement](guidance/ux-measurement.md) |
+| Write clear labels, instructions, error and status copy | [Content design and UX writing](guidance/content-design-and-ux-writing.md) |
+| Design complex forms, safe search, filtering and sorting | [Form composition](patterns/forms.md) and [search/filtering](patterns/search-and-filter.md) |
+| Recover a failed user task across service and support channels | [Service recovery and support handoff](patterns/service-recovery-and-support.md) |
 | Reuse, extend, merge, deprecate, or review guidance | [Lifecycle and decisions](governance/lifecycle-and-decisions.md) and [quality gates](governance/quality-gates.md) |
 
 **Search by word, synonym, or ID:** [`catalog/index.json`](catalog/index.json) is the canonical machine-readable lookup registry. See [lookup instructions](catalog/README.md). Example:
@@ -110,3 +113,7 @@ Find individually retrievable proposed specifications for [Button, Input, Select
 ## Batch 6 — agent catalog maturity
 
 The [agent lookup protocol](AGENTS.md), [catalog registry](catalog/README.md), [validation script](scripts/validate_catalog.py) and [governance rules](governance/lifecycle-and-decisions.md) now cover complete lookup metadata, deterministic retrieval, cross-references and dependency cycles for all registered concepts. No concept was automatically promoted from `proposed`, and documentation validation is not product accessibility certification.
+
+## Batch 8 — content, discovery and task completion (proposed)
+
+[Content design and UX writing](guidance/content-design-and-ux-writing.md) and [service recovery and support handoff](patterns/service-recovery-and-support.md) are new proposed catalog guidance. Existing [form](patterns/forms.md) and [search/filter](patterns/search-and-filter.md) specifications now include complex data entry, validation, save/resume, facets, sorting, pagination and recovery. No production code, real-user studies or manual accessibility verification are implied. This batch is independent of the open Batch 7 draft PR until merged.
