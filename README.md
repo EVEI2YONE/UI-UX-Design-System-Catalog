@@ -10,6 +10,7 @@
 | --- | --- |
 | Establish visual hierarchy, spacing, and affordances | [Design principles](foundations/design-principles.md) |
 | Create a theme or rationalize raw values | [Tokens and themes](foundations/design-tokens-and-themes.md) |
+| Explore prototype, MVP and enterprise code-layout examples | [Application architecture reference examples](architecture/application-architecture-reference-examples.md) |
 | Enforce feature/module import boundaries in CI | [Architecture enforcement and CI guardrails](architecture/architecture-enforcement-and-ci.md) |
 | Adapt app structure to Next.js, Angular or React Router | [Framework-aware application structure](architecture/framework-aware-application-structure.md) |
 | Choose prototype, MVP, growing or enterprise app code structure | [Application architecture selection](architecture/application-architecture.md) |
@@ -214,3 +215,7 @@ The [framework-aware application structure guide](architecture/framework-aware-a
 ## Batch 18 — application architecture enforcement
 
 The [architecture enforcement guide](architecture/architecture-enforcement-and-ci.md) provides actionable ESLint, dependency-cruiser and Nx approaches, limitations and incremental CI adoption; the [context-first evidence ledger](planning/application-architecture-batch-18-context-and-gaps.md) distinguishes current catalog coverage from new implementation guidance. Configuration fragments are illustrative, not executed checks in a product repository.
+
+## Batch 19 — practical application architecture examples
+
+[Architecture reference examples](architecture/application-architecture-reference-examples.md) map developer tasks to code ownership across prototype, modular MVP and multi-application contexts, including before/after extraction and verification. The [Batch 19 context ledger](planning/application-architecture-batch-19-context-and-gaps.md) explains overlaps and documentation-only evidence limitations.
