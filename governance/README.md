@@ -16,3 +16,8 @@ For changes see [Contributing](../CONTRIBUTING.md) and the [PR template](../.git
 ## Hosted-app assurance extension (2026-11-07)
 
 [Quality gates](quality-gates.md) now describe deployment identity boundary checks, tenant authorization, transactional replay and concurrency, draft recovery, browser accessibility, and negative API tests. A passing isolated domain suite is not equivalent to a production integration test. Checks not run remain **NOT VERIFIED**.
+
+
+## Batch 6 — data lifecycle validation
+
+[Quality gates](quality-gates.md) now defines export/retention, legacy migration, read-side effects, backup/restore and aggregate concurrency acceptance scenarios. The [Batch 6 evidence ledger](../planning/little-wins-batch-6-context-and-gap-ledger.md) distinguishes source observations and unverified deployment requirements.
