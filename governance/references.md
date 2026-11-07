@@ -129,3 +129,10 @@ The brief contract, comparison matrix and default two meaningful alternatives ar
 - [Apple HIG Layout](https://developer.apple.com/design/human-interface-guidelines/layout) and [Android adaptive layouts](https://developer.android.com/design/ui/mobile/guides/layout-and-content/adapt-layout): platform-specific window, safe-area and navigation considerations; not universal fixed breakpoint instructions.
 
 **Evidence boundary:** B4 is a proposed synthesis of existing canonical `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization` and B1 wireframe methodology. No external page re-fetch, real-device, zoom, AT, native SDK or translated-language evaluation was performed for this batch; all such outcomes are **NOT VERIFIED**.
+
+## Wireframe B5 — visual QA evidence (2026-11-07)
+
+- [W3C WAI Easy Checks](https://www.w3.org/WAI/test-evaluate/preliminary/): introductory accessibility inspection guidance; not a complete test or proof of conformance, and not an image-generation benchmark.
+- [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/): applicable implemented-web criteria, not certification from wireframe pixels.
+
+**Source lineage:** B5 synthesizes proposed `governance.quality`, `principle.visual-hierarchy`, `guidance.content-design`, B1 wireframe methodology, B2 task composition, B3 states and B4 inclusive responsive guidance. Proposed reviewer thresholds and synthetic examples are not observed product defects. No generated images or human-user sessions were inspected, and external-page freshness was **NOT VERIFIED** in this batch.
