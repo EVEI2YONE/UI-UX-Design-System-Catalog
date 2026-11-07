@@ -34,7 +34,7 @@ class FrameworkAwareArchitectureKnowledgeTests(unittest.TestCase):
         self.assertEqual(entry["status"], "proposed")
         for path in [
             entry["path"],
-            "planning/application-architecture-batch-17-context-and-gaps.md",
+            "archive/planning/application-architecture-batch-17-context-and-gaps.md",
         ]:
             with self.subTest(path=path):
                 self.assertTrue((ROOT / path).is_file())

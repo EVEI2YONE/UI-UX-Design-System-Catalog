@@ -43,9 +43,9 @@ def main() -> int:
         if ident in seen:
             errors.append(f'duplicate ID: {item["id"]}')
         seen.add(ident)
-        if item['status'] not in statuses:
+        if not isinstance(item['status'], str) or item['status'] not in statuses:
             errors.append(f'{item["id"]}: unknown status {item["status"]}')
-        if item['layer'] not in LAYERS or item['kind'] not in KINDS:
+        if not isinstance(item['layer'], str) or not isinstance(item['kind'], str) or item['layer'] not in LAYERS or item['kind'] not in KINDS:
             errors.append(f'{item["id"]}: unknown layer/kind')
         if not isinstance(item['aliases'], list) or not isinstance(item['domains'], list):
             errors.append(f'{item["id"]}: aliases and domains must be arrays')

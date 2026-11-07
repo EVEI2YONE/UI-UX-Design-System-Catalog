@@ -37,7 +37,7 @@ class ArchitectureReferenceExamplesTests(unittest.TestCase):
         self.assertEqual(self.entry["kind"], "example")
         for path in [
             self.entry["path"],
-            "planning/application-architecture-batch-19-context-and-gaps.md",
+            "archive/planning/application-architecture-batch-19-context-and-gaps.md",
         ]:
             with self.subTest(path=path):
                 self.assertTrue((ROOT / path).is_file())

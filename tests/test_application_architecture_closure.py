@@ -30,11 +30,11 @@ TASKS = {
     "prototype file structure": "architecture.reference-examples",
 }
 CONTEXT_LEDGERS = [
-    "planning/application-architecture-batches-13-16-context-and-gaps.md",
-    "planning/application-architecture-batch-17-context-and-gaps.md",
-    "planning/application-architecture-batch-18-context-and-gaps.md",
-    "planning/application-architecture-batch-19-context-and-gaps.md",
-    "planning/application-architecture-batch-20-closure-audit.md",
+    "archive/planning/application-architecture-batches-13-16-context-and-gaps.md",
+    "archive/planning/application-architecture-batch-17-context-and-gaps.md",
+    "archive/planning/application-architecture-batch-18-context-and-gaps.md",
+    "archive/planning/application-architecture-batch-19-context-and-gaps.md",
+    "archive/planning/application-architecture-batch-20-closure-audit.md",
 ]
 
 
