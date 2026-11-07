@@ -95,3 +95,13 @@
 - Added `guidance.experimentation` for A/B test design, assignment, sample-ratio mismatch, effect uncertainty, guardrails and safe stopping.
 - Extended existing `guidance.ux-measurement`, `governance.quality`, `governance.lifecycle`, `architecture.component-contracts` and `foundation.design-tokens` for design-to-code handoff, interoperable tokens, visual/AT checks and release evidence. No parallel DesignOps entry.
 - Registered canonical IDs and links, added retrieval tests, and documented sources/gaps. This completes the planned Batches 7–12 scope in cumulative draft PR #5, without merging or claiming product validation.
+
+
+## Unreleased — Little Wins knowledge-gap extension (2026-11-07)
+
+- Batch 1: expanded existing authentication guidance with a hosted identity trust-boundary decision and anti-example (no redundant login concept).
+- Batch 2: clarified managed profiles versus authenticated collaborators, and human review/points/reward transaction recovery.
+- Batch 3: added negative authorization, concurrency/replay, value integrity and deployed-runtime assurance scenarios to quality gates.
+- Batch 4: added group/project scope and optional-feature navigation checks, plus review/fulfillment metrics without invented baselines.
+- Batch 5: updated catalog discovery and agent lookup regression guidance; reused existing canonical IDs, no new registry entries.
+- Scope: documentation only, all runtime/host verification NOT VERIFIED; original Little Wins ZIP used as illustrative source, not a claim about live deployment.
