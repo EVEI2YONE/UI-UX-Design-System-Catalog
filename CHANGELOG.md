@@ -52,3 +52,10 @@
 - Improve retrieval with punctuation normalization, status/limit filters and exclusion of negative `avoid_when` from positive matching.
 - Require consistent metadata through the schema and strengthen validator checks for duplicate canonical paths, type/duplicate metadata and dependency cycles.
 - Add lookup and registry regression coverage, governance ownership/review practices and agent documentation. No component implementation or manual UX conformance claims.
+
+## Unreleased — Batch 8: content, discovery and task completion (proposed)
+
+- Inspected canonical index, existing form/search/feedback/recovery entries, component Field contract and contribution conventions before expanding coverage.
+- Add canonical `guidance.content-design` (task language, scannability, error microcopy, lifecycle) and `pattern.service-recovery` (outages, escalation, support handoff and task resumption).
+- Extend existing `pattern.forms` and `pattern.search-filter` rather than creating duplicates; include state tables, decision rules, accessibility/i18n examples and verification.
+- Update canonical retrieval metadata, root/nested indexes, sources and agent guidance. Added concepts remain proposed with unassigned owners; product testing NOT VERIFIED.
