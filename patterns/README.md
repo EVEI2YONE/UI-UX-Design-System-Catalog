@@ -64,3 +64,5 @@ For hosted identity and managed-profile boundaries use [authentication](authenti
 - [Batch progress and gap disposition](../archive/planning/account-settings-batch-progress.md) — three context-first batches, same PR, with known scope boundaries.
 
 **Wireframe Batch 2:** retrieve `pattern.task-flows` for screen sequence and alternatives; `principle.visual-hierarchy` for within-screen priority; `guidance.wireframe-methodology` for fidelity and interactive-prototype escalation. All content is proposed; illustrated screens do not establish implementation.
+
+**Wireframe Batch 3:** use [interaction states and recovery](interaction-states-and-recovery.md) (`pattern.interaction-recovery`) to inventory and annotate applicable ready, empty, loading, validation, error, permission, success and retry states. Mark a still image as intended design rather than verified transition behavior. Use [wireframe methodology](../guidance/wireframe-methodology.md) for interaction escalation and existing forms/feedback/offline concepts for specialized details.
