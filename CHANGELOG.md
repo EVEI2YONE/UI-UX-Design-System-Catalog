@@ -1,4 +1,4 @@
-# Changelog
+## Unreleased\n\n- Propose role-aware workspace and context-switching guidance, separating role switch, tenant switch, customer preview and impersonation; add catalog discovery and source references.\n\n# Changelog
 
 ## Unreleased — proposed catalog scaffold
 

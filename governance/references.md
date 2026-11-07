@@ -5,7 +5,7 @@
 | Source | Version/status | Intended use and limits |
 | --- | --- | --- |
 | [WCAG 2.2](https://www.w3.org/TR/WCAG22/) | W3C Recommendation | Default applicable web accessibility target; AA is a target, not a claim of passing. |
-| [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) | W3C WAI practice guidance | Keyboard and semantic patterns for complex widgets; prefer native HTML where appropriate. |
+| [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) | Maintained security guidance; reviewed 2026-11-07 | Deny by default, least privilege, per-request authorization; not evidence of UI usability. |\n| [AWS IAM role switching](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-console.html) | Product documentation; reviewed 2026-11-07 | Illustrative active-role/switch-back precedent, not a universal UX standard. |\n| [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) | W3C WAI practice guidance | Keyboard and semantic patterns for complex widgets; prefer native HTML where appropriate. |
 | [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/) | W3C guidance | Language metadata, localization, direction and content flexibility. |
 | [Design Tokens Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/) | Final W3C Community Group report, 2025-10-28 | Vendor-neutral typed design-token interchange. **Not** a W3C standards-track Recommendation. |
 | [Design Tokens Community Group FAQ](https://www.designtokens.org/faq/) | Project documentation | Format adoption and status context; verify applicability to toolchain. |
