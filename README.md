@@ -18,6 +18,9 @@
 | Design and test keyboard, focus, contrast, touch, or zoom | [Accessibility](guidance/accessibility.md) |
 | Support translations, long labels, and RTL | [Internationalization](guidance/internationalization.md) |
 | Define success beyond aesthetic preference | [UX measurement](guidance/ux-measurement.md) |
+| Choose a UX study or evaluate evidence quality | [UX research methods](guidance/ux-research-methods.md) |
+| Understand expectations and end-to-end journeys | [Mental models and journey mapping](guidance/mental-models-and-journeys.md) |
+| Reduce memory and decision burden | [Cognitive load and decision design](guidance/cognitive-load-and-decisions.md) |
 | Reuse, extend, merge, deprecate, or review guidance | [Lifecycle and decisions](governance/lifecycle-and-decisions.md) and [quality gates](governance/quality-gates.md) |
 
 **Search by word, synonym, or ID:** [`catalog/index.json`](catalog/index.json) is the canonical machine-readable lookup registry. See [lookup instructions](catalog/README.md). Example:
@@ -110,3 +113,7 @@ Find individually retrievable proposed specifications for [Button, Input, Select
 ## Batch 6 — agent catalog maturity
 
 The [agent lookup protocol](AGENTS.md), [catalog registry](catalog/README.md), [validation script](scripts/validate_catalog.py) and [governance rules](governance/lifecycle-and-decisions.md) now cover complete lookup metadata, deterministic retrieval, cross-references and dependency cycles for all registered concepts. No concept was automatically promoted from `proposed`, and documentation validation is not product accessibility certification.
+
+## Batch 7 — research and product understanding (proposed)
+
+[UX research methods](guidance/ux-research-methods.md), [mental models and journey mapping](guidance/mental-models-and-journeys.md), and [cognitive load](guidance/cognitive-load-and-decisions.md) add evidence-led research and task-design guidance. All three are `proposed`, not user-validated findings or implemented components. The [batch plan](planning/knowledge-expansion-batches-7-12.md) records the expansion scope.
