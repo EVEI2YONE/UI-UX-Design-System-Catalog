@@ -125,3 +125,74 @@ Use stable screen IDs (for example `S2-pending`, `S2-error`, `S2-confirmed`) and
 5. Escalate to a task-complete interactive prototype for transitions and to product/service tests for authorization, idempotence, persistence, focus, announcements and real outcome verification.
 
 **Evidence:** this is repository-derived synthesis from existing proposed state, form, offline, feedback, accessibility and quality concepts, with [WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) as implementation-oriented references. Standards are not proof of any illustration's conformance. Static wireframe state coverage can be *document-reviewed*; user studies, browser testing, server confirmation, keyboard/screen reader, RTL and zoom remain **NOT VERIFIED** unless separately performed. No canonical status or owner is promoted by these additions.
+
+
+## B03 — icon/state synchronization and post-mutation focus continuity (CKG-09/10; proposed 2026-11-07)
+
+**Purpose:** make transitions from component intent to authoritative outcome legible across icons, status text, action availability, selection and focus. Existing [icon semantics](../foundations/iconography-and-semantics.md) owns icon meaning; [component contracts](../architecture/component-contracts.md) owns event emission and sibling-state coordination; this pattern owns *when a workflow may present an outcome and how it recovers focus when content changes*. This is reusable guidance, not a new UI primitive or a claim that any app has implemented it.
+
+### CKG-09 — synchronized icon, label and domain-state contract
+
+| State/source | Icon and adjacent text | Action and data behavior | Do not do |
+| --- | --- | --- | --- |
+| Ready/idle (local) | Action icon and explicit verb/object; no outcome text | Allow an authorized action; preserve selected item | Use a checked/status icon to imply completion |
+| Draft changed (local) | "Unsaved changes" where useful; optional pencil/dot | Keep inputs and dirty state; enable explicit Save as appropriate | Call a draft "submitted" or "synced" |
+| Request pending (workflow) | Stable-width spinner or pending signifier with accessible working status | Prevent duplicate consequential submission; leave context and meaningful cancellation route when supported | Remove focused control without a fallback; swap to a success check on click |
+| Confirmed, reconciled (authoritative) | Verified success text; optional success icon | Update item state, totals and dependent controls from authoritative results; consider continuation | Infer points/approval from previous suggestion or optimistic row styling |
+| Definitely failed | Error text plus optional error icon, actionable correction/retry rule | Retain input, selection and intended object; retry only when known safe | Clear a form, collapse error content or display "No results" |
+| Outcome uncertain / timeout | "Outcome unknown—check status" or equivalent; uncertainty icon secondary | Block blind duplicate write and reconcile by stable identity/version | Treat timeout as definitely failed or definitely committed |
+| Stale/conflicted state | "Changed since you opened it" with current-context explanation | Refresh/reconcile, preserve non-conflicting draft where possible, revalidate permissions | Silently apply stale action or automatically move to another record |
+| Item no longer eligible | Explain state/permission change; status text | Remove unsafe command; provide safe queue/navigation destination | Hide all explanation and strand focus |
+
+**Rules:** visual icon swaps must not trigger data mutations; state changes flow from the owning controller's validated state. A status icon and colored badge are never the sole signal. Keep control dimensions stable across idle/pending/confirmed to avoid pointer-target movement; announce material asynchronous changes sparingly via appropriate status regions without repeatedly stealing focus. An icon-only control retains an accurate accessible name; if its underlying action changes, ensure that new purpose is deliberate and discoverable rather than silently overloading the same target. Recheck server authority before consequential transitions. Status badge typography, accessible labels and icon meaning remain localizable and theme/forced-color resilient.
+
+### CKG-10 — focus and contextual continuity after a changing collection
+
+Before each mutation, identify: **invoking control, active item ID and revision, current list/filters/sort/pagination, editable draft, focus origin and expected focus destination.** Preserve or intentionally revise these based on the observed outcome—not on a guessed successful click.
+
+| Result | Post-transition focus/selection | Feedback/recovery |
+| --- | --- | --- |
+| Validation error, item remains | Usually keep focus or direct to the specific failed field / linked summary as warranted | Retain values and in-context error |
+| Network error or uncertain outcome | Keep current task and stable focused action/error destination; do not auto-advance | Explain safe reconcile vs retry; do not reset selection |
+| Confirmed mutation, original trigger still exists | Preserve focus on meaningful existing control when doing so remains useful | Announce confirmation without forced navigation |
+| Confirmed removal or filtering-out of selected row | Select a logical next eligible item only if workflow contract permits; otherwise focus stable queue heading/status/toolbar | Do not attempt to restore focus to an unmounted or hidden row |
+| Dialog closes while its invoking item disappears | Restore focus to remaining logical task target, stable list heading or explicit return control | Announce changed state; do not trap focus in removed overlay |
+| Queue subset exhausted but more pages may exist | Focus stable "Load more" or queue-summary control, not a false "All done" declaration | Distinguish loaded subset empty from globally complete queue |
+| Permission revoked / scope changed | Focus authorized fallback heading/action; drop disallowed action controls | Explain access change without exposing inaccessible data |
+
+**Pointer and keyboard parity:** a stable action position may reduce mouse movement, but DOM reading order and keyboard focus targets determine whether a layout remains usable. Do not move focus just because background data refreshed, never force focus to a newly appearing toast by default, and test reflow at narrow widths/zoom. When success changes what is currently focused, choose a meaningful announced target and test it using keyboard and assistive technologies. `aria-live` status is for relevant updates; it cannot repair a missing focus destination.
+
+### Worked example — review decision and conditional continuation (illustrative)
+
+```text
+item_selected
+  -> decision_input_ready
+  -> submitting (current item locked; no repeat)
+  -> server_acknowledged
+  -> authoritative_read_reconciled
+  -> confirmed_result_announced
+  -> next_eligible_selected OR queue_navigation OR user_stop
+
+submitting
+  -> validation_error (preserve selection + notes)
+  -> definitely_failed (safe retry if contract allows)
+  -> result_uncertain (reconcile first; never blind replay)
+  -> stale_revision / permission_changed (refresh, revalidate, explain)
+```
+
+A server acknowledgment is not automatically proof that all dependent read models are reconciled; the appropriate consistency contract is application-specific. Only advance when the task's authoritative completion condition is met. Never select a different item merely because a local optimistic cache removed the old one. The [task-flow contract](task-flows-and-information-architecture.md#b03--spatial-continuity-and-sequential-task-progress-ckg-1112-proposed-2026-11-07) owns when and whether to auto-select the next eligible item.
+
+**Counterexample:** a reviewer clicks Approve, spinner instantly becomes a green check, pending item is removed from the DOM and focus disappears; a timeout later leaves the actual decision uncertain, yet the UI opens another contribution. Correct behavior leaves the outcome unsettled, retains context and offers authoritative verification before advancing.
+
+### B03 verification (all application checks NOT VERIFIED)
+
+| Scenario | Required observable evidence | Status |
+| --- | --- | --- |
+| Delayed, failed and ambiguous write | No premature success icon/label or unsafe duplicate; current task remains recoverable | NOT VERIFIED |
+| Authoritative result with changed dependent data | Status, counts, permitted actions and item detail agree | NOT VERIFIED |
+| Row removal and modal trigger disappearance | Logical focus destination for pointer, keyboard and screen reader | NOT VERIFIED |
+| Queue subset/permission changes | No false completion or unauthorized next item; clear recovery and focus | NOT VERIFIED |
+| Narrow/zoom/RTL/long labels and reduced motion | Stable action identity, readable feedback, practical hit targets | NOT VERIFIED |
+| Live-region and focus announcement behavior | Relevant updates announced once without excessive focus jumps | NOT VERIFIED |
+
+**References:** [WAI-ARIA APG Dialog (Modal)](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG patterns](https://www.w3.org/WAI/ARIA/apg/patterns/) (consulted 2026-11-07). Motivating source: [Little Wins B06/B07/B08 proposed interaction knowledge](https://github.com/EVEI2YONE/Little_Wins/tree/main/docs/little-wins/ui-knowledge/); observed source behavior does not certify UX benefit, accessibility or implementation.
