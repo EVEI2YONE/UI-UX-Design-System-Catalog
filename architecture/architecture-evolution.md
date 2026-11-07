@@ -1,4 +1,4 @@
-# Application architecture evolution, refactoring and fitness
+# Application architecture evolution and fitness
 
 **Kind:** guideline · **Status:** proposed · **Owner:** unassigned · **Review:** pending
 
