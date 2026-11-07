@@ -357,3 +357,160 @@ The event illustrates audit semantics only. The specific setting and trusted mod
 **Little Wins F20 evidence boundary:** the inspected product snapshot provides contribution/review/reward history and owner-managed configuration; it is **not proof of an implemented configuration-change event stream, viewer, export, retention policy or undo function**. No event schema, retention duration or audit-authorized role is approved by this guidance.
 
 **Status:** proposed catalog guidance; product/security/legal ownership and implementation choices pending. Source/catalog review completed; validator, security tests, browser/a11y checks, event integrity and actual retention enforcement **NOT VERIFIED**. Batch 5 must gather fresh context, run catalog-wide validation where available, and record the remaining product-specific decisions.
+
+
+## Settings knowledge Batch 1 — interaction composition, availability and impact (KG-009, KG-011, KG-012; proposed 2026-11-07)
+
+**Coverage disposition:** These are *focused extensions*, not three new catalog concepts. The existing [settings persistence table](#settings-persistence-kg-003), [forms](forms.md), [feature/capability matrix](task-flows-and-information-architecture.md#batch-8--capability-dependencies-and-configuration-state-journeys-2026-11-07), and [paused-work recovery](interaction-states-and-recovery.md#batch-8--paused-capabilities-and-work-already-in-progress-2026-11-07) already cover generic saving, dependencies and recovery. This batch makes their **settings-specific composition and presentation decisions** explicit.
+
+### KG-009 — Compose settings without duplicating authority
+
+| Boundary | Owns | Must not own |
+| --- | --- | --- |
+| Reusable Field/Input/Select/Switch | Label, description, keyboard/assistive semantics, value and error presentation | Workspace permissions or server calls |
+| Settings section composition | Grouping, heading, draft/dirty indicators, section-level Save/Discard and focus routing | Hidden cross-section global transaction or business validation |
+| Product configuration feature | Setting schema, local draft, dependent-control UX, effective scope, impact-summary trigger, mutation orchestration | A second canonical copy of server state |
+| Domain/API authority | Permission, accepted values, dependency validation, version/atomic write, effective result | Accessibility presentation or browser-local theme choice |
+
+**Decision rule:** For independent, reversible personal preferences, immediate application may fit if a failed persistence can be detected and reversed. For related fields edited as one intent (e.g. a workspace name and description), prefer an explicit section-level Save/Discard action. For high-impact policy settings, require a separate authoritative server validation before announcing success. Do not attach one global Save button to unrelated storage scopes.
+
+**Illustrative interaction:** open section → load effective scoped values/version → edit local draft → validate input → Save → authorized commit returns effective values/version → reconcile all dependent consumers → announce success at the correct scope. A rejected write leaves the draft recoverable; Discard restores *latest authoritative* state, not an outdated initial prop. Multiple changed sections keep separate dirty indicators and navigation protection.
+
+**Anti-pattern:** a generic `SettingsSection` performs business API calls and clears every section's dirty state after any one field succeeds.
+
+**Acceptance:** keyboard and screen reader can identify the section heading, each field and error; focus is retained after save/retry; loading, invalid, pending, conflict, read-only and offline states are distinguishable; small/zoomed and translated/RTL layouts keep controls and actions reachable.
+
+### KG-011 — Presentation when a feature is unavailable
+
+Choose the representation based on **user intent and data continuity**, not only the stored enable flag:
+
+| Effective condition | User-facing representation | Navigation and deep-link requirement |
+| --- | --- | --- |
+| Feature available to this actor | Normal enabled entry and operations | Preserve standard entry points |
+| Paused by organizer policy | Explain pause; where history or pending work exists, provide a read-only or management path according to policy | Deep links show pause reason and safe alternatives; do not strand outstanding work |
+| Not authorized for actor | Hide sensitive entry or provide a safe no-access state, per privacy policy | Server blocks direct routes/actions; no protected data leak |
+| Feature unsupported in deployment | Omit nonfunctional controls or label a non-actionable capability clearly | Never advertise a working toggle |
+| Feature has no records yet | Reachable empty state with next action where appropriate | Do not confuse empty with disabled |
+| Archived or retired | Historical view only if permitted; explain limitations | Preserve authorized historical access and migration path |
+
+**Recovery and re-enable:** An organizer must be able to find a permitted re-enable control even when the feature's ordinary navigation is hidden. Re-enabling must re-check current policy and must not silently regenerate historical awards or actions. A stored toggle marked "On" is not evidence that effective actions are available when dependencies are off.
+
+**Anti-pattern:** disabling rewards removes all navigation to pending redemptions and leaves a deep link showing a misleading "No rewards" empty state.
+
+### KG-012 — Impact-summary and confirmation contract
+
+Use a compact inline explanation for ordinary reversible changes, an impact summary for changes to dependent workflows, and a confirmation dialog **only when the consequences are material, hard to reverse, destructive, or otherwise require explicit authorization**. Avoid warning fatigue from confirming every edit.
+
+A consequential change summary should include: (1) exact setting and affected workspace/account; (2) current → proposed **effective** state; (3) changes to future actions; (4) treatment of in-flight or pending work; (5) what historical data remains unchanged; (6) effective timing and dependency constraints; (7) whether and how reversal works. Only state guarantees supported by the product contract. If the server rejects the transition, preserve edits and present the actionable reason rather than showing an optimistic success.
+
+**Illustrative example (policy-dependent):** "Turning off challenges stops new progress updates. Previously approved contributions remain in history. You can re-enable challenges in Workspace Settings." This text is suitable **only if those outcomes are guaranteed**; otherwise determine the actual policy before rendering it.
+
+**Dialog behavior:** focus enters the impact heading or first appropriate control, keyboard users can cancel or confirm, Escape/cancel returns focus to the initiating control, and pending confirmation cannot execute twice. Use [Dialog](../components/dialog/spec.md) and [interaction recovery](interaction-states-and-recovery.md) for canonical semantics. Label outcomes as saving/confirmed/failed only after the corresponding server state is known.
+
+**Verification examples:** reversible personal setting (no confirmation), workspace rename (explicit save), feature pause with pending work (impact summary), feature disable with historical records (deep-link preservation), unauthorized change (server rejection), stale version (reconcile), long localized copy and screen reader focus/recovery. All product/runtime scenarios remain **NOT VERIFIED**.
+
+**Provenance and status:** Derived by reconciling existing catalog guidance with the Little Wins F20 Settings user-scenario design; generic accessibility criteria follow [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (references identified 2026-11-07; no new external validation in this batch). Knowledge is **proposed**, owner/reviewer unassigned, no product implementation asserted. Later batches address cross-consumer propagation/integration tests and lifecycle; do not treat this section as evidence they are complete.
+
+
+## Settings knowledge Batch 2 — propagation and integration verification (KG-010, KG-013; proposed 2026-11-07)
+
+**Coverage disposition:** Existing [Settings persistence](#settings-persistence-kg-003) and [workspace save/propagation](#kg-006--save-propagate-and-recover) already specify authoritative saves, conflicts and dependent-view refresh. [Offline synchronization](offline-sync-and-conflicts.md) owns multi-device/queued changes and uncertain write outcomes; [quality gates](../governance/quality-gates.md) owns general release evidence. This batch adds a *configuration-specific consumer update contract and cross-feature verification matrix*, not a new state manager or a replacement for those concepts.
+
+### KG-010 — Configuration propagation and state reconciliation
+
+Before implementation, list for each setting: authoritative scope and version; direct writers; UI consumers; derived capability consumers; historical/report consumers; invalidation mechanism; security boundary; expected behavior after success, failure, stale data or permission change. Model *effective* capabilities separately from stored flags.
+
+| Boundary | Responsibility | Confirmation / failure rule |
+| --- | --- | --- |
+| Section draft | Preserve unsaved edits with explicit scope and base version | Editing never asserts server persistence; navigate-away recovery applies |
+| Command/API | Authorize target and policy, validate dependencies and expected version, perform atomic or explicitly bounded mutation | Return authoritative effective state, new revision and actionable error; do not claim success on request dispatch |
+| Shared client projection/cache | Reconcile only affected scope; invalidate/refresh downstream consumers from confirmed result | Do not spread stale or optimistic policy values between workspaces or users |
+| Derived views/navigation | Recompute effective availability and action affordances against current permissions and dependencies | Direct URLs and commands must still enforce server policy; disabled != empty != unauthorized |
+| History/ledger/report projections | Maintain approved provenance and product-defined temporal policy | A setting change must not silently rewrite prior facts or manufacture backfill |
+| Cross-tab/device readers | Detect stale versions through refetch, subscriptions or foreground refresh *if implemented* | Do not claim real-time synchronization when only eventual/refresh-based behavior exists |
+
+**Update sequence (illustrative):**
+
+1. Resolve workspace/account and read capability, load effective configuration + revision.
+2. Edit a section-owned draft. Compute *preview* impacts without mutating authoritative state.
+3. On Save, submit allowed fields and expected revision; reauthorize the object and revalidate dependencies on the server.
+4. After confirmed commit, replace the authoritative snapshot/version, invalidate named read models and recalculate affected capabilities; avoid broadcasting an unverified success.
+5. If one downstream refresh fails, show an honest “Settings saved; some views may be outdated” state if the core write was verified; offer refetch rather than reissuing a possibly non-idempotent write.
+6. On revision conflict, permission loss or ambiguous timeout, preserve drafts according to privacy policy, fetch current server state, and offer compare/reapply or safe restart. Never silently overwrite.
+
+**Consumer contract example (illustrative, not a Little Wins implementation):**
+
+| Setting family | Direct consumer | Dependent consumer | Invariant to verify |
+| --- | --- | --- | --- |
+| Workspace display name | Settings, workspace selector | Titles, breadcrumb, overview | One effective name for the same workspace after refresh; no cross-workspace leakage |
+| Feature availability | Feature entry and deep link | Contribution/reward/challenge action eligibility | Navigation and server command agree; authorized pending/history work remains discoverable |
+| Review mode | Review/submit controls | Credits, progress and historical decisions | Policy transition effective time honored; no duplicate or retroactive approvals |
+| Device/personal theme | Display preference provider | Token-driven UI components | Personal mode never changes shared workspace policy; failures do not assert persistence |
+
+**Tradeoff:** Revalidation-on-navigation or after mutation can be sufficient for a small application; push/subscription infrastructure should be adopted only when the user task requires lower latency. Choose refresh, normalized cache invalidation, versioned projection, or events from real architectural constraints, not because this catalog mandates a framework or global state library.
+
+**Anti-pattern:** a successful workspace policy POST changes one toggle locally while the Review page still accepts a disallowed direct action; another user's workspace also sees the updated cached value.
+
+### KG-013 — Configuration change integration evidence
+
+Test the *user's configuration intent through all affected consumers*, not just successful control rendering or an isolated API unit test. Build an evidence row for every consequential setting transition: source value/version, action, actor/scope, server outcome, UI consumer state, domain invariants, retry/recovery, verification tool, owner and status.
+
+| Scenario | Minimum expected evidence |
+| --- | --- |
+| Baseline and first save | Default versus effective value, correct target scope, server-confirmed revision, reload/reopen |
+| Changed dependent feature | Navigation, direct deep link, API command and in-flight request agree on capability; existing authorized work remains reachable |
+| Multi-consumer propagation | Settings, selectors, summary/cards and downstream domain views reconcile to the same authoritative revision |
+| Concurrent or stale editors | Two tabs/devices edit conflicting values; no silent last-write-wins when consequential; draft recovery offered |
+| Partial refresh failure | Persisted write reported accurately while outdated consumers are marked/refetched; no double write |
+| Offline/timeout unknown outcome | Verify server status before retry, avoid false “Saved”, preserve drafts within declared storage limits |
+| Permissions/tenant isolation | Unauthorized read and write, cross-workspace identifiers, revoked rights, cache invalidation across identity changes |
+| Historical invariants | Existing approved events, ledger balances, pending requests and audit provenance do not change beyond defined transition policy |
+| Inclusive interaction | Keyboard/screen reader on save/conflict/confirmation, focus restoration, reflow/zoom, themes, long translations and RTL |
+| Release/reversal | Baseline snapshot, change rollout, error monitoring, rollback/restore mechanism and re-enable semantics |
+
+**Practical evidence format:** setting ID → transition (before → after) → direct/derived consumers → expected server invariant → actual test name and environment → PASS/FAIL/NOT VERIFIED → owner → recovery or issue link. Include meaningful flag combinations and policy-change races; never manufacture a testing percentage from a list of scenarios. A document validator's passing result is evidence of catalog integrity only, not deployed behavior.
+
+**Failure severity:** Treat unauthorized writes, cross-tenant leakage, financial/value ledger corruption, historical loss, and blocking accessibility regressions as release blockers. Cosmetic delays in secondary refresh can be handled with explicit stale indicators when server authority remains correct.
+
+**Example:** rename a workspace in one tab; confirm authoritative response and revision, navigate to Home and selector, reload another tab and confirm the same scoped name. Revoke the editor before a second update; verify the server denies it and no stale cache leaks restricted details.
+
+**Anti-example:** a green switch component test is used to claim the policy is enforced while direct API calls and stale tabs have never been exercised.
+
+**Sources and verification boundary:** Reuses [Settings portal](#kg-006--save-propagate-and-recover), [offline synchronization](offline-sync-and-conflicts.md), [feature capability journeys](task-flows-and-information-architecture.md#batch-8--capability-dependencies-and-configuration-state-journeys-2026-11-07), [quality gates](../governance/quality-gates.md), and [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) / [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) for applicable inclusive interactions. Date: 2026-11-07. **Status:** proposed catalog guidance, reviewer unassigned. Product runtime checks and security/a11y/E2E tests are **NOT VERIFIED**.
+
+
+## Settings knowledge Batch 3 — configuration lifecycle and migration (KG-014; proposed 2026-11-07)
+
+**Coverage disposition:** General [catalog lifecycle and decisions](../governance/lifecycle-and-decisions.md) already governs reusable concept ownership, status, deprecation and migration; [versioned aggregate migrations](offline-sync-and-conflicts.md#versioned-aggregate-migrations-and-safe-restore-batch-6--proposed-2026-11-07) covers durable data conversion and concurrency. The focused addition here is the **user-facing and implementation handoff contract for an individual setting** as it is added, renamed, split, merged, retired or moved between scopes. This is not a new canonical component or permission model.
+
+### KG-014 — Per-setting lifecycle decision and compatibility matrix
+
+For each setting record its stable key, documented default and effective value, prior aliases, data type and allowed values, personal/workspace/system scope, authority and storage owner, schema/version, read/write capabilities, affected consumers, migration path, rollback and status (proposed, active, deprecated or removed). **Setting runtime lifecycle status is distinct from catalog concept status.** Before changing the schema or UI, identify whether existing deployments, stored records, deep links, mobile/old browser clients and downstream feature readers can still interpret the value safely.
+
+| Transition | UX / data contract | Release and compatibility check |
+| --- | --- | --- |
+| New setting | Explain intended scope, initial/effective default, when available and why the choice matters | Existing records without the key get a defined effective value; older clients do not corrupt new state |
+| Rename label only | Keep stable storage key and preserve saved value; update accessible name and help | Localized copy, search, help links and documentation stay discoverable |
+| Rename stored key | Versioned read/write migration or explicitly documented compatibility alias, never a silent reset | Old/new fixtures, idempotency, concurrent clients, rollback |
+| Change default | Define whether it affects only new scopes or also previously unset records; distinguish unset from explicit choice | Previously saved user decisions remain intact unless consented migration says otherwise |
+| Split or merge settings | Define precedence when values conflict, explain mapping and controls removed/introduced | Deterministic migration, no invalid combinations or lost express choices |
+| Move personal → workspace (or reverse) | Treat as changed authority/consent, not merely UI relocation; do not leak personal state or silently impose shared policy | Authorization, effective scope disclosure, privacy and cross-tenant tests |
+| Deprecate and replace | Surface replacement or read-only explanation where useful; preserve required historical access | Consumers, links, migrations, disabled states and reversal verified before retiring entry |
+| Remove setting | Remove control only once all supported clients, consumers, stored values and legal/history obligations are addressed | Migration/rollback evidence and sunset owner documented |
+
+**User journey example:** A workspace owner opens a bookmarked old Settings subpage after an option has been replaced. The product redirects to the new section, identifies the current effective value and—where an action is still needed—explains what changed. It does not silently map a previously explicit "Off" selection to a new "On" default.
+
+**Anti-example:** renaming a storage key causes previous values to disappear; legacy clients save the old shape and overwrite new policies; the UI hides a disabled feature together with the only access path to outstanding records.
+
+### Migration handoff and acceptance
+
+1. **Inventory:** record old/current schema, affected keys and defaults, persisted example values, read and write consumers, authorization boundaries, supported app versions, and user-visible routes.
+2. **Decide:** choose preserve-as-is, alias, transform, staged dual-read/single-write, read-only deprecation, or reject unsupported old clients. Specify a cutoff/sunset based on actual product support, not invented dates.
+3. **Prepare:** provide reversible migration or a tested restore plan, representative old-version fixtures, conflict and retry rules, and safe handling when only part of a migration succeeds. Never migrate permissions from untrusted client metadata.
+4. **Communicate:** label moved, replaced or removed settings accurately; help and deep links resolve or explain unavailability; maintain keyboard, screen-reader, long-text and RTL behavior.
+5. **Verify:** compare effective values before/after, saved explicit choices, missing/unset defaults, mixed-version clients, stale tabs, offline drafts, tenant isolation, dependent capabilities and history. Record real tests and responsible owner.
+6. **Retire:** stop writing aliases once supported readers are migrated; remove UI, code and dead styles only with verified consumers and rollback evidence.
+
+**Target-specific boundary:** The catalog does not prescribe Little Wins' timezone default, points/rewards transition policy, or which clients remain supported; those are application decisions. Nor does documentation prove an actual migration, deployment or backup.
+
+**Verification status:** Documentation guidance **proposed**; reviewer unassigned. Real schema fixtures, application upgrades, data safety, accessibility, multi-client behavior and restore tests are **NOT VERIFIED**. Reuse [lifecycle governance](../governance/lifecycle-and-decisions.md), [offline synchronization](offline-sync-and-conflicts.md), [configuration propagation](#settings-knowledge-batch-2--propagation-and-integration-verification-kg-010-kg-013-proposed-2026-11-07), [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (reference date 2026-11-07; external revalidation not performed).
