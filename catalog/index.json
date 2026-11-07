@@ -954,6 +954,127 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "guidance.ux-research",
+      "title": "UX research methods and evidence",
+      "path": "guidance/ux-research-methods.md",
+      "layer": "context",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Method selection, study planning, ethical recruitment, evidence quality and research synthesis.",
+      "aliases": [
+        "UX research",
+        "usability testing",
+        "interview",
+        "contextual inquiry",
+        "user research",
+        "research plan",
+        "research synthesis",
+        "participant recruitment"
+      ],
+      "domains": [
+        "ux-research",
+        "research-methods",
+        "evidence"
+      ],
+      "use_when": [
+        "choosing research methods for a design decision",
+        "planning usability studies and interviews",
+        "validating uncertain user needs"
+      ],
+      "avoid_when": [
+        "treating a small qualitative sample as population prevalence",
+        "running research without a decision to inform"
+      ],
+      "related": [
+        "guidance.ux-measurement",
+        "guidance.journey-mapping",
+        "guidance.accessibility"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.journey-mapping",
+      "title": "Mental models and journey mapping",
+      "path": "guidance/mental-models-and-journeys.md",
+      "layer": "context",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Evidence-led mental models, task analysis, journey maps and service blueprints.",
+      "aliases": [
+        "mental model",
+        "journey map",
+        "experience map",
+        "service blueprint",
+        "task analysis",
+        "jobs to be done",
+        "user expectations"
+      ],
+      "domains": [
+        "ux-research",
+        "journeys",
+        "information-architecture"
+      ],
+      "use_when": [
+        "mapping end to end user experiences",
+        "understanding user expectations and mental model mismatches",
+        "connecting task flow decisions to user evidence"
+      ],
+      "avoid_when": [
+        "treating invented personas as research evidence",
+        "using unvalidated workshop assumptions as observed journeys"
+      ],
+      "related": [
+        "guidance.ux-research",
+        "pattern.task-flows",
+        "guidance.ux-measurement"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.cognitive-load",
+      "title": "Cognitive load and decision design",
+      "path": "guidance/cognitive-load-and-decisions.md",
+      "layer": "principles",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Reduce avoidable recall and decision burden while preserving user control and informed choices.",
+      "aliases": [
+        "cognitive load",
+        "decision complexity",
+        "recognition versus recall",
+        "memory burden",
+        "attention",
+        "cognitive accessibility"
+      ],
+      "domains": [
+        "inclusive-design",
+        "behavioral-design",
+        "usability"
+      ],
+      "use_when": [
+        "reviewing dense decisions and multistep workflows",
+        "minimizing memory and attention demands",
+        "designing clearer reversible choices"
+      ],
+      "avoid_when": [
+        "hiding material information to reduce visible options",
+        "treating UX laws as universal behavior predictions"
+      ],
+      "related": [
+        "principle.visual-hierarchy",
+        "guidance.ux-research",
+        "guidance.accessibility",
+        "guidance.journey-mapping"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
