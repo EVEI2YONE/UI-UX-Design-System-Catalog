@@ -85,3 +85,7 @@ The [architecture index](../architecture/README.md) is the human task-first entr
 ## Account/settings portal retrieval
 
 Start with `pattern.account-settings-portal` for settings IA, profile management, contact verification and save state. Use `pattern.billing-subscription-settings` for plans, payment and invoices. For credentials use `pattern.authentication-lifecycle`; for privacy rights `guidance.privacy-trust`; for alerts `pattern.notifications-attention`; for user language `guidance.internationalization`; for appearance `foundation.design-tokens`; for authorization `pattern.role-aware-workspaces`. See [three-batch audit ledger](../archive/planning/account-settings-batch-progress.md). All entries are proposed; no live account portal or payment system is asserted.
+
+## Wireframe methodology (proposed, PR #11)
+
+Use `guidance.wireframe-methodology` for low/mid/high visual fidelity, static-image limitations and when to escalate to an interactive prototype. Continue to use `pattern.task-flows` for task composition, `pattern.interaction-recovery` for states, and `governance.quality` for verification. The registry status is **proposed**, not implemented or reviewed.
