@@ -167,3 +167,8 @@ A source-based review of a Sites-hosted, owner-operated contribution-tracking pi
 5. [Agent lookup protocol](AGENTS.md) — evidence-first retrieval and correction/regression prevention.
 
 These are documentation proposals only. They do not certify a Sites deployment, imply individual member accounts, or verify a production application. No catalog IDs or registry schema are added because canonical guidance already exists.
+
+
+## Batch 6 — data lifecycle and migration safety (proposed, 2026-11-07)
+
+For archive/retention and trustworthy export/delete journeys, start with [privacy and consent](guidance/privacy-consent-and-trust.md). For revisioned aggregate migrations, concurrent edits and restoration, follow [offline/sync/conflicts](patterns/offline-sync-and-conflicts.md). [Quality gates](governance/quality-gates.md) documents verification scenarios. The [Batch 6 context and gap ledger](planning/little-wins-batch-6-context-and-gap-ledger.md) traces source evidence, limitations and reuse decisions. These are extensions of canonical IDs, not shipped exports, restored backups or new components.
