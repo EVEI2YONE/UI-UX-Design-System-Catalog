@@ -241,7 +241,27 @@
         "multi-tenant",
         "ux",
         "security"
-      ]
+      ],
+      "use_when": [
+        "designing navigation for users with multiple authorized roles",
+        "switching tenants or workspaces while preserving context",
+        "separating customer preview from privileged impersonation"
+      ],
+      "avoid_when": [
+        "treating UI role switching as server authorization",
+        "allowing unlogged privileged impersonation"
+      ],
+      "related": [
+        "pattern.navigation",
+        "pattern.task-flows",
+        "guidance.accessibility",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "pattern.task-flows"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     },
     {
       "id": "pattern.interaction-recovery",
