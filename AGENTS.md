@@ -37,3 +37,7 @@ For “component event ownership”, “cross component events”, “nested int
 ## Batch 3 — action continuation and focus retrieval
 
 Search `pattern.interaction-recovery` for “icon state synchronization”, “post mutation focus”, “focus after item removal” and “pending confirmed icon”. Search `pattern.task-flows` for “sequential task controller”, “next eligible item”, “stable action region” and “pointer travel continuity”. Read `foundation.icon-semantics` for semantic glyph roles and `architecture.component-contracts` for event ownership; neither replaces the workflow's authoritative mutation/reconciliation logic. B03 tests are documentation-level; product UX and accessibility remain NOT VERIFIED.
+
+## Batch 4 — action consolidation and effort retrieval
+
+Resolve `pattern.advanced-interactions` for “action consolidation decision matrix”, “split button safety”, “contextual action toolbar”, “control overloading” or “primary versus overflow actions”. Resolve `guidance.ux-measurement` for “pointer travel distance”, “time to next action”, “keyboard navigation effort” and “interaction cost measurement”. Use B03 `pattern.task-flows` for spatial layout/next-item progression, not to redefine the metric; all UX improvements require actual task evidence.
