@@ -114,3 +114,12 @@
 - Extended offline/sync guidance with versioned aggregate migration, read-side effects, compare-and-swap conflicts, restore and migration idempotency.
 - Added data lifecycle, backup/restore and migration acceptance scenarios to governance quality gates.
 - Updated root, nested and agent indexes and added a per-batch context/decision ledger. No new catalog ID, component implementation or verified product backup/export capability.
+
+
+## Unreleased — Batch 7 (2026-11-07)
+
+- Inspected Little Wins table-row and native-dialog source plus existing catalog guidance before editing.
+- Extended the canonical data-table pattern with named row-action controls and table-versus-grid decision rules.
+- Extended the Dialog component spec for unsaved-change dismissal, native cancel/backdrop behavior, server-confirmed completion and fallback focus.
+- Extended accessibility and quality gates for a connected record-to-dialog-to-updated-list user journey.
+- Added source-first evidence ledger and root/nested discovery links; no new IDs, app changes or verified accessibility claims.
