@@ -123,6 +123,37 @@
       ]
     },
     {
+      "id": "pattern.role-aware-workspaces",
+      "title": "Role-aware workspaces and context switching",
+      "path": "patterns/role-aware-workspaces-and-context-switching.md",
+      "layer": "experiences",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Authorized multi-role portals, workspace selection, customer preview versus impersonation, contextual navigation and security-aware UX.",
+      "aliases": [
+        "multi role",
+        "role switching",
+        "role-based portal",
+        "admin portal",
+        "customer portal",
+        "view as customer",
+        "customer preview",
+        "impersonation",
+        "switch workspace",
+        "tenant switching",
+        "account switching",
+        "RBAC"
+      ],
+      "domains": [
+        "information-architecture",
+        "navigation",
+        "permissions",
+        "multi-tenant",
+        "ux",
+        "security"
+      ]
+    },
+    {
       "id": "pattern.interaction-recovery",
       "title": "Interaction states and recovery",
       "path": "patterns/interaction-states-and-recovery.md",
