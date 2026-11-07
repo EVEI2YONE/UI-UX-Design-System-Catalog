@@ -192,3 +192,7 @@ For large route modules and partially adopted UI libraries, follow the [componen
 ## Batch 10 — knowledge coverage and lookup regression closure (proposed, 2026-11-07)
 
 The [cross-batch coverage and validation ledger](planning/little-wins-batch-10-context-and-gap-ledger.md) maps all ten Little Wins-derived documentation batches to existing canonical IDs, evidence boundaries and unresolved product tests. The [canonical registry](catalog/index.json) now includes task-oriented aliases for hosted identity, human review, feature dependencies, data migrations, table actions and styling migration. [Lookup regression tests](tests/test_little_wins_knowledge_coverage.py) exercise these searches. No new concept IDs or product implementation were introduced, and passing catalog CI does not certify Little Wins UX or security.
+
+## Application code architecture (proposed, Batch 13)
+
+For **how to structure an application repository**, rather than the catalog itself, start with [application architecture selection](architecture/application-architecture.md). Compare prototype, MVP, growing modular product and multi-application profiles using actual team/domain/change evidence. The [component model](architecture/component-model.md) continues to own UI component tiers; the [architecture index](architecture/README.md) links both. Guidance is proposed, not an audited app implementation.
