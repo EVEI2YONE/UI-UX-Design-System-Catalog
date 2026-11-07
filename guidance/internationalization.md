@@ -43,3 +43,20 @@ These are examples of message intent, not a complete message catalog or assuranc
 | Language change | Language metadata, focus context and announced content remain meaningful |
 
 **Disposition:** explicitly record supported locales, whether RTL is supported, pseudolocalization results and unresolved linguistic review. Testing one RTL sample does not prove support for all scripts. See [component contracts](../architecture/component-contracts.md).
+
+
+## Settings language and region journeys — account batch 3 (KG-018–019)
+
+A product language selector must list supported names in a recognizable form, preserve the user's task context and switch interface language only when message resources and accessible document language metadata are ready. If a language is unavailable, do not pretend a browser translation is a supported product locale.
+
+Keep **UI language**, **date/number locale**, **timezone**, **billing currency** and **content translation language** separate when their behavior differs; explain account-synced versus device-local choices. A timezone change should preview a meaningful example and re-evaluate upcoming schedule displays while preserving underlying instants. Never change a purchase price/currency silently on a locale change.
+
+| Scenario | Expected test |
+| --- | --- |
+| Switch language mid-edit | Explicitly preserve or warn about unsaved changes; focus remains meaningful |
+| Long/pseudo-localized strings | Settings navigation, inline controls and dialogs reflow |
+| RTL locale | Direction-aware routes, mixed-direction identifiers, keyboard and focus |
+| Timezone change | DST boundary, locale formatting, activity timestamps and notification schedules |
+| Offline/unknown save | Preserve accurate effective-vs-pending language choice |
+
+**Status:** product checks NOT VERIFIED. Related: [account settings](../patterns/account-and-settings-portal.md), [notification preferences](../patterns/notifications-and-attention.md), [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/) (consulted 2026-11-07).

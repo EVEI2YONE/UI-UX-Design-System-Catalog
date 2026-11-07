@@ -70,3 +70,14 @@ Event -> relevance and audience check -> sensitivity/urgency -> permission + app
 **Canonical ID:** `pattern.notifications-attention` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
 Related: [feedback](feedback.md), [privacy](../guidance/privacy-consent-and-trust.md), [service recovery](service-recovery-and-support.md), [content design](../guidance/content-design-and-ux-writing.md), [authentication](authentication-and-account-lifecycle.md).
+
+
+## Notification preferences inside settings — account batch 3 (KG-014–015)
+
+For each event class, expose only genuinely supported delivery channels and distinguish `on` (effective), `requested` (pending), `blocked` (browser/device permission), `ineligible` (policy), and `failed` (delivery configuration). Explicitly label mandatory security/transactional messages separately from opt-in promotions and configurable reminders.
+
+**Contract:** event/category → user-facing purpose and optional/mandatory classification → channel choice → cadence/digest → quiet hours/timezone if offered → save state → authoritative effective setting. Quiet hours must disclose exceptions for urgent or legally required notifications; use the person's chosen timezone and handle daylight saving transitions. If the product has no digest or quiet-hours service, omit those controls rather than promising them.
+
+**Test cases (NOT VERIFIED):** email unsubscribe scoped to category, revoked push permission, cross-device preference state, one event via multiple channels, quiet-hour boundary/DST, in-app accessibility, service outage and delayed preference propagation. Test actual delivery independently of settings-save success.
+
+**Example:** “Weekly product digest · Email · Fridays, local time,” with the actual effective timezone and clear stop option. **Anti-example:** a universal “Mute all” switch that silently suppresses mandatory security notices or appears effective despite denied OS permission. Related: [account settings](account-and-settings-portal.md), [privacy](../guidance/privacy-consent-and-trust.md).
