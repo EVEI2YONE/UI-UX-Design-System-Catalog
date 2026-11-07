@@ -304,7 +304,8 @@
       "related": [
         "architecture.component-contracts",
         "guidance.accessibility",
-        "pattern.task-flows"
+        "pattern.task-flows",
+        "pattern.service-recovery"
       ],
       "depends_on": [
         "architecture.component-contracts"
@@ -778,7 +779,13 @@
         "form workflow",
         "form composition",
         "form validation",
-        "form submit"
+        "form submit",
+        "multi-step form",
+        "form autosave",
+        "save and resume",
+        "error summary",
+        "validation timing",
+        "autofill"
       ],
       "domains": [
         "patterns",
@@ -787,7 +794,9 @@
       ],
       "use_when": [
         "designing multi-field forms",
-        "handling server validation and submit recovery"
+        "handling server validation and submit recovery",
+        "designing multi step or interruptible data entry",
+        "reviewing form validation timing and state preservation"
       ],
       "avoid_when": [
         "embedding business validation into shared controls"
@@ -797,7 +806,9 @@
         "component.input",
         "component.select",
         "component.checkbox",
-        "component.button"
+        "component.button",
+        "guidance.content-design",
+        "pattern.service-recovery"
       ],
       "depends_on": [
         "architecture.component-contracts",
@@ -854,7 +865,13 @@
         "search filtering",
         "search results",
         "filter panel",
-        "query filters"
+        "query filters",
+        "faceted search",
+        "search sorting",
+        "search pagination",
+        "zero results",
+        "applied filters",
+        "search relevance"
       ],
       "domains": [
         "patterns",
@@ -863,7 +880,9 @@
       ],
       "use_when": [
         "designing searchable result collections",
-        "handling zero results and filter reset"
+        "handling zero results and filter reset",
+        "choosing search filtering and sorting behavior",
+        "preserving discovery context through errors and navigation"
       ],
       "avoid_when": [
         "adding search when direct choice is clearer"
@@ -872,7 +891,9 @@
         "component.input",
         "component.select",
         "component.checkbox",
-        "pattern.task-flows"
+        "pattern.task-flows",
+        "guidance.content-design",
+        "pattern.service-recovery"
       ],
       "depends_on": [
         "pattern.interaction-recovery"
@@ -1073,6 +1094,97 @@
         "guidance.journey-mapping"
       ],
       "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.content-design",
+      "title": "Content design and UX writing",
+      "path": "guidance/content-design-and-ux-writing.md",
+      "layer": "principles",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "User-needs-first interface language, scannable content, error microcopy and content ownership.",
+      "aliases": [
+        "UX writing",
+        "microcopy",
+        "plain language",
+        "content design",
+        "content strategy",
+        "interface copy",
+        "error copy",
+        "content governance",
+        "tone of voice"
+      ],
+      "domains": [
+        "content-design",
+        "information-architecture",
+        "inclusive-design"
+      ],
+      "use_when": [
+        "writing task labels and error messages",
+        "structuring understandable interface content",
+        "setting content review and ownership"
+      ],
+      "avoid_when": [
+        "using short copy to hide material consequences",
+        "inventing user vocabulary without evidence"
+      ],
+      "related": [
+        "pattern.forms",
+        "pattern.search-filter",
+        "pattern.service-recovery",
+        "guidance.internationalization",
+        "guidance.accessibility"
+      ],
+      "depends_on": [],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.service-recovery",
+      "title": "Service recovery and support handoff",
+      "path": "patterns/service-recovery-and-support.md",
+      "layer": "experiences",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Cross-channel escalation, unavailable services, support handoff, safe task resumption and case status.",
+      "aliases": [
+        "service recovery",
+        "support escalation",
+        "customer support",
+        "support handoff",
+        "outage page",
+        "service unavailable",
+        "help contact",
+        "case status",
+        "task resumption"
+      ],
+      "domains": [
+        "service-design",
+        "error-handling",
+        "support",
+        "journeys"
+      ],
+      "use_when": [
+        "designing recovery when self-service fails",
+        "connecting an interrupted product task to support",
+        "explaining planned or unexpected service unavailability"
+      ],
+      "avoid_when": [
+        "replacing fixable validation with a contact support dead end",
+        "claiming a case or support SLA that does not exist"
+      ],
+      "related": [
+        "pattern.interaction-recovery",
+        "pattern.forms",
+        "pattern.feedback",
+        "guidance.content-design",
+        "guidance.ux-measurement"
+      ],
+      "depends_on": [
+        "pattern.interaction-recovery"
+      ],
       "owner": "unassigned",
       "reviewed_at": null
     }

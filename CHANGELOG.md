@@ -58,3 +58,10 @@
 - Gathered context from the catalog registry, existing task-flow/design-principle/measurement pages and external user-research and cognitive accessibility guidance.
 - Added three proposed canonical guidelines for UX research methods, mental models and journey mapping, and cognitive load.
 - Extended root/guidance/agent navigation, source registry and lookup metadata. Real-user studies and manual accessibility checks remain NOT VERIFIED.
+
+## Unreleased — Batch 8: content, discovery and task completion (proposed)
+
+- Inspected canonical index, existing form/search/feedback/recovery entries, component Field contract and contribution conventions before expanding coverage.
+- Add canonical `guidance.content-design` (task language, scannability, error microcopy, lifecycle) and `pattern.service-recovery` (outages, escalation, support handoff and task resumption).
+- Extend existing `pattern.forms` and `pattern.search-filter` rather than creating duplicates; include state tables, decision rules, accessibility/i18n examples and verification.
+- Update canonical retrieval metadata, root/nested indexes, sources and agent guidance. Added concepts remain proposed with unassigned owners; product testing NOT VERIFIED.

@@ -18,6 +18,9 @@
 | Design and test keyboard, focus, contrast, touch, or zoom | [Accessibility](guidance/accessibility.md) |
 | Support translations, long labels, and RTL | [Internationalization](guidance/internationalization.md) |
 | Define success beyond aesthetic preference | [UX measurement](guidance/ux-measurement.md) |
+| Write clear labels, instructions, error and status copy | [Content design and UX writing](guidance/content-design-and-ux-writing.md) |
+| Design complex forms, safe search, filtering and sorting | [Form composition](patterns/forms.md) and [search/filtering](patterns/search-and-filter.md) |
+| Recover a failed user task across service and support channels | [Service recovery and support handoff](patterns/service-recovery-and-support.md) |
 | Choose a UX study or evaluate evidence quality | [UX research methods](guidance/ux-research-methods.md) |
 | Understand expectations and end-to-end journeys | [Mental models and journey mapping](guidance/mental-models-and-journeys.md) |
 | Reduce memory and decision burden | [Cognitive load and decision design](guidance/cognitive-load-and-decisions.md) |
@@ -54,7 +57,7 @@ Practical UI composition typically follows **foundations/tokens → primitives �
 
 - **Included:** guidance, contracts, reference patterns, decision rules, examples/anti-patterns, evidence expectations, and concept metadata.
 - **Not included yet:** compiled tokens, framework-specific components, Storybook previews, product app code, or independently verified UX research. Do not mistake a specification for a working implementation.
-- **Future candidate domains:** content design, data visualization, trust/privacy UX, platform adaptations, performance resilience, AI interaction patterns, and design-tool interoperability. Add these when a reusable need and owner are identified; do not create empty folders for them.
+- **Future candidate domains:** data visualization, trust/privacy UX, platform adaptations, performance resilience, AI interaction patterns, and design-tool interoperability. Add these when a reusable need and owner are identified; do not create empty folders for them.
 
 ## How to use an entry
 
@@ -117,3 +120,7 @@ The [agent lookup protocol](AGENTS.md), [catalog registry](catalog/README.md), [
 ## Batch 7 — research and product understanding (proposed)
 
 [UX research methods](guidance/ux-research-methods.md), [mental models and journey mapping](guidance/mental-models-and-journeys.md), and [cognitive load](guidance/cognitive-load-and-decisions.md) add evidence-led research and task-design guidance. All three are `proposed`, not user-validated findings or implemented components. The [batch plan](planning/knowledge-expansion-batches-7-12.md) records the expansion scope.
+
+## Batch 8 — content, discovery and task completion (proposed)
+
+[Content design and UX writing](guidance/content-design-and-ux-writing.md) and [service recovery and support handoff](patterns/service-recovery-and-support.md) are new proposed catalog guidance. Existing [form](patterns/forms.md) and [search/filter](patterns/search-and-filter.md) specifications now include complex data entry, validation, save/resume, facets, sorting, pagination and recovery. No production code, real-user studies or manual accessibility verification are implied. This content follows Batch 7 on the cumulative knowledge-expansion branch and PR #5.
