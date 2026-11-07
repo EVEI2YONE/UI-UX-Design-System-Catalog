@@ -81,3 +81,7 @@ Query `framework aware architecture`, `Next.js app router structure`, `Angular f
 ## Batch 18 — enforceable module boundaries
 
 Resolve `architecture.enforcement-ci` for queries such as `module boundary lint`, `dependency-cruiser rules`, `Nx module boundaries` or `architecture CI`. Always inspect target language, framework alias resolution and existing lint/CI before recommending tool setup. Check positive/negative fixtures and relative-import escape paths; never claim example rules were executed in a target application. See [Batch 18 context](planning/application-architecture-batch-18-context-and-gaps.md).
+
+## Batch 19 — reference examples and task-to-code lookup
+
+Resolve `architecture.reference-examples` for `prototype file structure`, `MVP folder structure example`, `enterprise monorepo example`, `architecture migration example`, and similar applied tasks. Use the examples for illustration only after selecting a profile and inspecting the target framework and module boundaries. Examples are **not runnable implementations**; consult [the Batch 19 context ledger](planning/application-architecture-batch-19-context-and-gaps.md) for evidence limits.
