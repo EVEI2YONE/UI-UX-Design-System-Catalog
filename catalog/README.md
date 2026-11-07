@@ -105,3 +105,7 @@ Use `pattern.interaction-recovery` for `wireframe state coverage`, `static wiref
 ## Static wireframe visual QA (proposed B5)
 
 Retrieve `governance.quality` for `wireframe visual QA`, `wireframe clipping inspection`, `generated wireframe copy fidelity` or `image based wireframe review`. The quality gate must identify the exact inspected image/revision and classify observed defects; if no image was inspected, image QA is `NOT VERIFIED`. Reuse `principle.visual-hierarchy` and `guidance.content-design` for the underlying design and copy rules.
+
+## Wireframe example and retrieval regressions (proposed B6)
+
+The [synthetic wireframe example bank](../archive/planning/wireframe-synthetic-example-bank-2026-11-07.md) supplies paired positive/negative scenarios WRF-01–06 and expected canonical owners. Run `python3 -m unittest discover -s tests -v`, including `tests/test_wireframe_examples_retrieval.py`, to check deterministic task/alias routing, preserved existing owners and exclusion of `avoid_when`-only terms from positive matches. These checks validate **retrieval metadata**, not generated-image quality, actual usability or implementation behavior.
