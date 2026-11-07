@@ -109,3 +109,7 @@ Retrieve `governance.quality` for `wireframe visual QA`, `wireframe clipping ins
 ## Wireframe example and retrieval regressions (proposed B6)
 
 The [synthetic wireframe example bank](../archive/planning/wireframe-synthetic-example-bank-2026-11-07.md) supplies paired positive/negative scenarios WRF-01–06 and expected canonical owners. Run `python3 -m unittest discover -s tests -v`, including `tests/test_wireframe_examples_retrieval.py`, to check deterministic task/alias routing, preserved existing owners and exclusion of `avoid_when`-only terms from positive matches. These checks validate **retrieval metadata**, not generated-image quality, actual usability or implementation behavior.
+
+## B7 consumer lookup and verification handoff (proposed)
+
+Read the [cumulative wireframe integration handoff](../archive/planning/wireframe-integration-handoff-2026-11-07.md) for the B0–B7 concept ownership map and end-to-end retrieval/annotation/visual-QA contract. It points to the canonical IDs in this registry; it is **not** itself a new canonical entry. CI checks documentation integrity and deterministic retrieval only. Generated-image quality, focus, accessible interaction, responsive runtime behavior and real-user outcomes remain **NOT VERIFIED** without independent evidence.
