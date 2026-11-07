@@ -151,3 +151,9 @@
 - Added regression tests for 12 task-to-concept queries, unique IDs, proposed statuses, and Batch 6–10 evidence ledgers.
 - Added the final cross-batch context, gap and verification ledger and linked it from canonical discovery files.
 - The previous Batch 9 head passed GitHub's Validate catalog workflow run #98. Batch 10 final-head CI is a separate gate; target-app security/UX remain NOT VERIFIED. Keep PR draft pending review.
+
+## Unreleased — Batch 13: application architecture selection (2026-11-07)
+
+- Audited existing component-model, architecture index, governance and quality coverage before writing; existing component tiers were preserved.
+- Added complexity-adaptive application architecture profiles, context collection, selection heuristics, anti-patterns and verification criteria.
+- Registered canonical application-selection guidance and indexed it for people and agents; no application code was modified.
