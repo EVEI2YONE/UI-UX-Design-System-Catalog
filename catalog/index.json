@@ -322,7 +322,7 @@
       "layer": "behavior",
       "kind": "guideline",
       "status": "proposed",
-      "summary": "Loading, errors, confirmation, offline states, retry, focus and recovery.",
+      "summary": "Loading, empty, error, permission, success, confirmation and recovery states, including static wireframe state coverage and verified-behavior limits.",
       "aliases": [
         "focus recovery",
         "error recovery",
@@ -342,7 +342,14 @@
         "human approval workflow",
         "contribution review lifecycle",
         "review correction history",
-        "points reward recovery"
+        "points reward recovery",
+        "wireframe state coverage",
+        "static wireframe state matrix",
+        "state annotation handoff",
+        "wireframe recovery states",
+        "wireframe loading empty error success",
+        "permission denied wireframe",
+        "unknown outcome state"
       ],
       "domains": [
         "interaction",
@@ -356,11 +363,16 @@
         "managing dialog focus and completion feedback",
         "designing human submission approval return and resubmission states",
         "handling points or rewards transaction confirmation and correction",
-        "explaining paused actions and in flight configuration changes"
+        "explaining paused actions and in flight configuration changes",
+        "illustrating state coverage in image based wireframes",
+        "annotating static loading empty validation error permission success and recovery variants",
+        "distinguishing documented state intent from verified interaction behavior"
       ],
       "avoid_when": [
         "retrying a non-idempotent action without confirming outcome",
-        "discarding entered data on an error"
+        "discarding entered data on an error",
+        "treating a static state mockup as proof that transitions or recovery work",
+        "showing unknown transaction outcomes as completed or safe to retry"
       ],
       "related": [
         "architecture.component-contracts",
@@ -370,7 +382,8 @@
         "pattern.offline-sync",
         "pattern.authentication-lifecycle",
         "pattern.agentic-actions",
-        "guidance.performance-experience"
+        "guidance.performance-experience",
+        "guidance.wireframe-methodology"
       ],
       "depends_on": [
         "architecture.component-contracts"
