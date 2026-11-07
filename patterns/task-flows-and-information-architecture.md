@@ -147,3 +147,74 @@ For each option deliver: brief contract with KNOWN/ASSUMED/ILLUSTRATIVE/BLOCKED 
 **Review gates:** (1) all required context accounted for or visibly flagged; (2) no invented rights, data or implementation; (3) action names lead to the stated outcome; (4) at least two non-cosmetic variants when warranted; (5) no critical information or safe exit lost; (6) risk/uncertainty and next validation method stated; (7) readable composition and accessibility expectations identified without conformance claims. Executable keyboard, screen reader, zoom, localization and real-user tests remain **NOT VERIFIED** unless individually performed.
 
 **Sources and interpretation:** [GOV.UK Service Standard, understanding user needs](https://www.gov.uk/service-manual/service-standard/point-1-understand-user-needs) (updated 2022-05-30; checked 2026-11-07) supports grounding the brief in user needs and testing assumptions; [GOV.UK user-needs research](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs) (checked 2026-11-07) distinguishes observed needs from stakeholder assumptions; [Home Office designer role standard](https://design.homeoffice.gov.uk/design-and-content/professional-standards/designer-role-standard) (checked 2026-11-07) describes using multiple design approaches in alpha. The specific brief, comparison rubric and two-variant decision rule above are **proposed catalog synthesis**, not mandated GOV.UK standards or empirically validated thresholds.
+
+
+## B03 — spatial continuity and sequential task progress (CKG-11/12; proposed 2026-11-07)
+
+**Scope:** how a flow keeps the current object, next action, selection and task location predictable across repeated items. This extends the task-first map, not a universal requirement to automate review queues. [Interaction recovery](interaction-states-and-recovery.md#b03--iconstate-synchronization-and-post-mutation-focus-continuity-ckg-0910-proposed-2026-11-07) owns outcome truth and focus fallback. [Component contracts](../architecture/component-contracts.md) owns event boundaries. B04 owns action-control consolidation and effort measurement.
+
+### CKG-11 — spatial continuity before action compression
+
+Map the user task as **last necessary input → decision control → result/status → likely next action** for pointer, touch and keyboard. Preserve stable placement and visual identity of the primary controls when only selected-item content changes. This is a *layout hypothesis* to test against actual work, not a mandatory fixed pixel distance.
+
+| Context | Preferred behavior | Caveat/verification |
+| --- | --- | --- |
+| Repeated list/detail decisions | Keep selected item and decision controls in a predictable region | Do not trap the UI in an inaccessible fixed pane; test screen reader reading order |
+| Form submit and next input | Place submit feedback and continuation near the form result when appropriate | Never hide essential errors outside viewport or behind a persistent bar |
+| Collection filters and detail navigation | Preserve applied filter/sort, selection, scroll or equivalent return context | Do not leak search terms in URLs when sensitive |
+| Narrow mobile / zoom | Move or wrap action area while preserving a usable reading and focus order | Avoid sticky controls overlapping fields, virtual keyboard or safe areas |
+| Async status changes | Keep action target geometry as stable as possible | No shifting destructive target under the pointer on delayed refresh |
+| Context changes | Revalidate active workspace, item eligibility and relevant permissions | Do not silently reuse participant/project identifiers across scopes |
+
+**Review method:** capture representative task start, last input, relevant decision, feedback and next-action locations; record avoidable navigation, scroll changes, target relocations, focus jumps and lost context. Test whether stable placement improves task success and perceived clarity for relevant users. Pointer distance alone does not demonstrate improved usability; keyboard, touch, zoom and safety constraints can justify different placement. The numeric metric definition belongs to [UX measurement](../guidance/ux-measurement.md), not this flow pattern.
+
+### CKG-12 — feature-owned sequential workflow contract
+
+Use a sequential controller only when the user deliberately processes multiple related items and the next item can be selected unambiguously, safely and accessibly. Feature code owns permissions, eligibility, ordering, note/validation requirements and server mutation. It composes existing controls rather than replacing Button, collection, Dialog or menu primitives.
+
+```text
+ready / queue overview
+  -> item selected (identity + revision + context)
+  -> optional note/edit/validation
+  -> decision requested (one explicit outcome)
+  -> pending (disable duplicate consequential action)
+  -> acknowledged by authoritative service
+  -> reconciled with current permitted queue state
+  -> result communicated (status + focus)
+  -> next eligible selected OR user stops / returns / loads more
+
+pending
+  -> validation error: retain item/notes; correct and resubmit
+  -> definite failure: explain and permit safe retry if justified
+  -> unknown outcome: reconcile; DO NOT automatically retry or advance
+  -> stale revision / permission changed: revalidate and explain
+```
+
+| Transition requirement | Feature contract |
+| --- | --- |
+| Eligibility | Select only from current authorized, eligible items at the appropriate scope; do not assume stale client list means permission |
+| Next selection | Confirm outcome and reconcile relevant reads before choosing next; use stable identity/order and avoid silently skipping work |
+| Pending mutation | Lock conflicting commands on the active item; preserve contextual note and selection while result is unknown |
+| Skip/stop | Always provide an explicit non-mutating skip, back-to-queue or stop route as applicable; skip must not imply a decision |
+| Exhausted currently loaded set | Offer Load More/refresh if there could be additional items; distinguish subset exhaustion from all work complete |
+| Confirmation/reason | Preserve distinct actions, their required explanations and consequential review before commit |
+| Focus and announcements | Make next item's heading/identity discoverable, focus logical target after actual transition, announce confirmed outcome sparingly |
+| Changed filter/scope | Revalidate next item in the new context; do not carry subject or authorization from another workspace |
+| No next item | Show truthful completion/empty/loading state with return navigation, not a stalled action bar |
+
+**Good example (illustrative):** after a confirmed and reconciled review decision, the workflow selects the next *currently eligible* record in the same stable pane, updates its heading and actions, and deliberately moves focus to the new record's heading or safe review target; Stop and Skip remain discoverable. **Counterexample:** clicking Reject immediately clears the record and opens the next one even though its required reason was invalid or the network outcome remains unknown.
+
+**Exceptions:** automatic next-item selection is inappropriate where a decision requires a separate review, where the user may wish to inspect the result, when task frequency/ordering is uncertain, or where access/eligibility cannot be confirmed. An explicit Next button may be safer than automatic advancement. Do not claim speed benefits without observed testing.
+
+### B03 task-flow verification — proposed, not product-tested
+
+| Acceptance scenario | Expected evidence | Status |
+| --- | --- | --- |
+| Decision success and valid continuation | Confirm/reconcile first; correct next identity, stable region and focus | NOT VERIFIED |
+| Validation, conflict, uncertain result | Same item/input retained; no unsafe advance or replay | NOT VERIFIED |
+| Permission, scope and pagination changes | Revalidate next eligibility, distinguish loaded subset from total work | NOT VERIFIED |
+| Skip/stop, empty, long queue | Clear non-mutating exits, no phantom completed items | NOT VERIFIED |
+| Keyboard, screen reader, touch and zoom | Navigation/focus predictable across content changes | NOT VERIFIED |
+| User research and task metrics | Recorded task success, errors, context loss and travel with baseline | NOT VERIFIED |
+
+**Sources and applicability:** [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) for relevant focus/keyboard semantics (consulted 2026-11-07); product-inspired examples from [Little Wins UI knowledge](https://github.com/EVEI2YONE/Little_Wins/tree/main/docs/little-wins/ui-knowledge/). These documents do not certify interaction improvements or backend behavior.
