@@ -10,6 +10,8 @@ This repository is a **reference catalog of proposed UI/UX knowledge**, not a sh
 
 For visual reference gathering, reference-to-rule translation or selecting between aesthetic directions, retrieve `foundation.visual-craftsmanship` and its Batch 3 decision packet; use `guidance.ux-research` for participant studies and `guidance.wireframe-methodology` for prototype fidelity. Provisional visual preferences are not tested user outcomes.
 
+For high-fidelity or rendered UI visual critique, retrieve `governance.quality` Batch 4 visual craftsmanship review (KG-15/16), then `foundation.visual-craftsmanship` and `foundation.practical-styling` for rationale and remediations. Use the [synthetic visual refinement example bank](foundations/visual-refinement-examples.md) for KG-17; do not treat its fictional before/after descriptions as inspected artifacts.
+
 ## Current retrieval guidance
 
 Use the canonical index and exact IDs first, then read task-relevant source pages. For application structure use [architecture navigation](architecture/README.md); for component contracts use [component navigation](components/README.md); for tasks and journeys use [patterns](patterns/README.md); for UX research, accessibility and cross-cutting rules use [guidance](guidance/README.md).
