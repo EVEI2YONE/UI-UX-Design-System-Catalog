@@ -154,3 +154,16 @@ New [AI-powered experiences](guidance/ai-powered-experiences-and-trust.md), [age
 ## Batch 12 — evaluation, performance and delivery (proposed)
 
 New [performance and perceived speed](guidance/performance-and-perceived-speed.md) and [UX experimentation](guidance/experimentation-and-causal-evidence.md) guidance complements expanded [UX measurement](guidance/ux-measurement.md), [quality gates](governance/quality-gates.md), [catalog lifecycle](governance/lifecycle-and-decisions.md), [component handoff](architecture/component-contracts.md), and [design-token interchange](foundations/design-tokens-and-themes.md). The [context-first gap ledger](planning/batch-12-context-and-gap-ledger.md) separates current source guidance from real product evidence. This concludes planned Batches 7–12 on cumulative draft PR #5; all newly added concepts are still proposed and require human review before any merge.
+
+
+## Little Wins knowledge-gap batches (proposed, 2026-11-07)
+
+A source-based review of a Sites-hosted, owner-operated contribution-tracking pilot identified reusable extensions to **existing** catalog IDs, without introducing a second component taxonomy or new login requirement:
+
+1. [Authentication and account lifecycle](patterns/authentication-and-account-lifecycle.md) — inventory host identity before recommending new sign-in.
+2. [Role-aware workspaces](patterns/role-aware-workspaces-and-context-switching.md) and [interaction recovery](patterns/interaction-states-and-recovery.md) — managed profiles, human review versions, point/reward outcomes.
+3. [Quality gates](governance/quality-gates.md) — negative authorization, concurrency, replay, and runtime validation.
+4. [Task flows](patterns/task-flows-and-information-architecture.md) and [UX measurement](guidance/ux-measurement.md) — group/project scope, optional features, collaboration measures.
+5. [Agent lookup protocol](AGENTS.md) — evidence-first retrieval and correction/regression prevention.
+
+These are documentation proposals only. They do not certify a Sites deployment, imply individual member accounts, or verify a production application. No catalog IDs or registry schema are added because canonical guidance already exists.
