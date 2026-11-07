@@ -93,3 +93,7 @@ Use `guidance.wireframe-methodology` for low/mid/high visual fidelity, static-im
 ## Task-to-screen composition (proposed B2)
 
 Use `pattern.task-flows` for minimum design context, screen sequence, action continuity, structurally meaningful alternatives and comparison criteria; use `principle.visual-hierarchy` for within-screen action priority. `guidance.wireframe-methodology` remains the owner of fidelity and escalation. All remain proposed and require verification for real products.
+
+## Static state coverage (proposed wireframe B3)
+
+Use `pattern.interaction-recovery` for `wireframe state coverage`, `static wireframe state matrix`, and `state annotation handoff`. Its canonical page owns the state inventory and screenshot/annotation evidence boundary. It does not establish functioning permission checks or real recovery behavior; follow `guidance.wireframe-methodology` for prototype escalation.
