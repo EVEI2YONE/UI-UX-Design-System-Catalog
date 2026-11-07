@@ -70,3 +70,21 @@ Help people continue work safely across network loss, retries, delayed synchroni
 **Canonical ID:** `pattern.offline-sync` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
 Related: [interaction recovery](interaction-states-and-recovery.md), [form composition](forms.md), [service recovery](service-recovery-and-support.md), [authentication lifecycle](authentication-and-account-lifecycle.md), [privacy/trust](../guidance/privacy-consent-and-trust.md).
+
+
+## Versioned aggregate migrations and safe restore (Batch 6 — proposed, 2026-11-07)
+
+**Context:** Some small pilots persist one revisioned aggregate per account rather than normalized rows. Little Wins demonstrates compare-and-swap retries and legacy project normalization; it also performs sample-group archival in a workspace read path. This is evidence of a migration approach, **not** proof of backup, restored history, or production concurrency capacity.
+
+**Decision rules:**
+1. Separate read-time *presentation normalization* from durable schema migration. If GET can cause a write, document why and test revision changes, repeated reads, partial failure, idempotency and concurrent writers; avoid unannounced history changes on apparently read-only navigation.
+2. Define schema version, migration ownership, forward/backward compatibility, backup snapshot and rollback before altering stored historical records. Preserve original IDs, attribution and ledger references; never invent data to satisfy a new UI.
+3. For a revision conflict, explain whether user changes were rejected or retried and whether a refreshed view is authoritative. Do not treat optimistic state as saved until the server confirms its revision.
+4. Treat backup, restore, import and export as different capabilities. A database snapshot alone does not imply a user-facing restore journey; document recovery-point limits and operational responsibility.
+5. Test simultaneous updates to independent projects within one aggregate, payload growth/limits, bounded retries and interrupted migrations. When data volume or collaboration grows, determine whether aggregate contention or export costs justify incremental restructuring, rather than recommending normalization without measurements.
+
+**Example:** show a conflict notice with safely retained user input and a refresh/review option; migration tests confirm two runs produce the same data and no duplicated points.
+
+**Anti-example:** a GET request silently migrates records repeatedly, or a stale tab overwrites a newer group configuration while displaying “Saved”.
+
+**Verification:** old/new fixture comparisons, repeated migration idempotency, no missing/duplicated ledger entries, revision collisions, interrupted restore, authorized cross-scope export, and keyboard/screen-reader conflict recovery. All application verification remains NOT VERIFIED.
