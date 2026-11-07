@@ -2164,6 +2164,108 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "pattern.account-settings-portal",
+      "title": "Account and settings portal",
+      "path": "patterns/account-and-settings-portal.md",
+      "layer": "experiences",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Account settings information architecture, profile/contact management, save and concurrency state contracts.",
+      "aliases": [
+        "account settings",
+        "settings portal",
+        "account portal",
+        "profile settings",
+        "profile edit",
+        "account dashboard",
+        "account data export",
+        "email change verification",
+        "settings autosave",
+        "settings save cancel"
+      ],
+      "domains": [
+        "account",
+        "settings",
+        "profile",
+        "information-architecture",
+        "ux"
+      ],
+      "use_when": [
+        "designing account overview and settings navigation",
+        "editing account profile and verified contact information",
+        "handling unsaved settings and conflicts across devices"
+      ],
+      "avoid_when": [
+        "using a settings UI as a replacement for backend identity and authorization policy",
+        "creating duplicate form and security component behavior"
+      ],
+      "related": [
+        "pattern.task-flows",
+        "pattern.forms",
+        "pattern.authentication-lifecycle",
+        "guidance.privacy-trust",
+        "pattern.role-aware-workspaces",
+        "pattern.billing-subscription-settings",
+        "pattern.notifications-attention",
+        "guidance.internationalization",
+        "foundation.design-tokens"
+      ],
+      "depends_on": [
+        "pattern.task-flows",
+        "pattern.forms"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.billing-subscription-settings",
+      "title": "Billing, plans and subscription settings",
+      "path": "patterns/billing-and-subscription-settings.md",
+      "layer": "experiences",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Payment-method settings, plan changes and cancellations, invoice access and billing recovery states.",
+      "aliases": [
+        "billing settings",
+        "subscription settings",
+        "account billing",
+        "change plan",
+        "cancel subscription",
+        "payment method management",
+        "billing invoices",
+        "subscription downgrade",
+        "receipt download"
+      ],
+      "domains": [
+        "billing",
+        "subscriptions",
+        "payments",
+        "account",
+        "settings"
+      ],
+      "use_when": [
+        "designing subscription or billing management",
+        "showing effective payment and renewal states",
+        "handling cancellation, downgrade and invoice download"
+      ],
+      "avoid_when": [
+        "assuming UI-level payment completion or provider compliance",
+        "offering cancellation or refund states without actual policy and backend status"
+      ],
+      "related": [
+        "pattern.account-settings-portal",
+        "pattern.forms",
+        "pattern.role-aware-workspaces",
+        "pattern.interaction-recovery",
+        "guidance.privacy-trust"
+      ],
+      "depends_on": [
+        "pattern.account-settings-portal"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }

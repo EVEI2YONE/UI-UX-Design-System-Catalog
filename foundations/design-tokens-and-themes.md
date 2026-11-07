@@ -109,3 +109,14 @@ Related: [component contracts](../architecture/component-contracts.md), [quality
 **Illustrative mapping only:** `--ink` might map to a reviewed `color.text.primary` role and `--paper` to `color.surface.canvas`, but do not equate raw colors with roles without checking uses, contrast and theme behavior. CSS variable names and values in the source are not universal standards.
 
 **Verification:** documented before/after selector and token map; light/dark only where implemented; responsive snapshots at supported breakpoints, keyboard focus, dialog/backdrop layering, reduced motion, high zoom, long/RTL copy, font fallback and performance measurements where available. Compare component consumers incrementally and keep a revert path.
+
+
+## Appearance preferences as a product journey — account batch 3 (KG-016–017)
+
+**Boundary:** this source defines semantic tokens and theme capability; an account portal composes those into actual user controls. Offer light, dark and system preference only for implemented modes. Distinguish **device/system preference**, **account-synced preference** and **workspace-controlled appearance**; display the effective result and explain overrides. Persist only after confirmed storage, gracefully apply unsupported-mode fallback, and avoid flashing the incorrect theme during load where practicable.
+
+Optional accessibility adjustments (contrast, density, motion or text) must not substitute for platform/browser accessibility support or WCAG requirements. Respect prefers-reduced-motion and system-level increased contrast, zoom and text resizing; never make a preference toggle the sole accessible path.
+
+**Example:** system theme defaults to OS setting, manual selection clearly overrides and can revert to system. **Anti-example:** a dark-mode toggle is shown while the app still has unreadable dark overlays and hard-coded text colors.
+
+**Verification NOT VERIFIED:** first load/flicker, reload and concurrent device preference, system theme changes, high-contrast/forced colors, reduced motion, keyboard/screen reader, locale text expansion, logged-out behavior. See [account settings](../patterns/account-and-settings-portal.md), [accessibility](../guidance/accessibility.md), and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07).

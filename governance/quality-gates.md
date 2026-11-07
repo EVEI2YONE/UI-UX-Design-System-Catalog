@@ -161,3 +161,22 @@ For an app architecture recommendation, record the repository/ref, framework and
 ## Batch 18 — architecture boundary enforcement evidence
 
 For real application releases, document the owner and allowed dependency contract, installed tool/version, alias and relative-import resolution, positive/negative fixture results, existing-versus-new violations, CI check results, approved exception expirations, and cross-feature consumer impact. A green static import check alone does not establish that relative imports, dynamic imports or other languages are covered. The catalog's document validator **cannot** prove application architecture enforcement. Follow [architecture enforcement recipes](../architecture/architecture-enforcement-and-ci.md) and the [Batch 18 context ledger](../planning/application-architecture-batch-18-context-and-gaps.md).
+
+
+## Account/settings acceptance matrix — batch 3 (KG-024)
+
+The portal's release gate must validate a **real joined journey**, not just isolated component demos:
+
+| Journey | Minimum release evidence |
+| --- | --- |
+| Profile and verified contact | Change, verification pending, expiry, rollback, reload, other session |
+| Security and authorization | Step-up, lost factor, revoked session, denied endpoint and stale deep link |
+| Privacy/data/deletion | Effective purpose choice, asynchronous exports/deletion, legal retention and access boundaries |
+| Notifications and locale | Delivery permission vs preference, quiet-hour/DST, switch locale and long RTL copy |
+| Appearance | System/manual modes, high contrast, reduced motion, load/reload and zoom |
+| Billing and subscription | Trial, card failure, retries, cancellation, downgrade, invoices and account ownership |
+| Universal recovery | Keyboard, screen reader, focus return, 400% zoom/reflow where applicable, offline/timeout, no duplicate billing actions |
+
+Measure task completion, error/recovery, abandonment and support contact by user job with defined denominators and privacy-preserving events. Include compatibility, staged rollout, rollback trigger, security/legal reviewers and baseline gaps. **All app runtime, payment, accessibility, analytics and legal verification currently NOT VERIFIED.** Passing catalog lint/links does not imply implemented capabilities or accessibility conformance.
+
+Related: [account portal](../patterns/account-and-settings-portal.md), [quality gates](quality-gates.md), [measurement](../guidance/ux-measurement.md), [WCAG 2.2](https://www.w3.org/TR/WCAG22/).

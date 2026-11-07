@@ -193,3 +193,10 @@
 - Replaced chronological architecture navigation with a concise task-first index; reordered root discovery to begin with profile selection rather than examples and CI.
 - Added closure ledger and cross-batch tests for unique IDs, proposed ownership, route/link navigation, retrieval intents, history and acyclic dependencies.
 - Kept unresolved framework, runtime enforcement, user-journey, code-reduction and developer metrics explicitly NOT VERIFIED. This closes documentation development only, not a production-app verification or a PR merge.
+
+## Unreleased — Account and settings knowledge batches (proposed, 2026-11-07)
+
+- Batch 1 (KG-001–006): context-first review of account overview/navigation, profile, verified contact and persistence; create `pattern.account-settings-portal` as a cross-domain composition, not a replacement for forms/security.
+- Batch 2 (KG-007–013, KG-023): expand existing authentication, privacy and role-aware workspace guidance for factor/session/provider management, consent/data lifecycle and high-risk settings authorization; no duplicate concepts.
+- Batch 3 (KG-014–022, KG-024): extend notification, token/appearance, i18n and quality guidance; add `pattern.billing-subscription-settings` for payment/plan/invoice decisions. Keep product tests NOT VERIFIED.
+- Register both new IDs, sync root/nested discovery and maintain one shared PR with separate batch commits; no app implementation or validated security/compliance outcomes.

@@ -138,3 +138,16 @@ References: [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org
 **Example:** an owner can submit on behalf of a managed participant while the audit record identifies the owner as actor and participant as subject. **Anti-example:** a reviewer dropdown or profile ID is treated as permission to approve another person's submission.
 
 **Acceptance (implementation NOT VERIFIED):** own versus other workspace, group and project ID tampering; revoked/expired membership; member-versus-reviewer actions; session change during an approval; actor/subject audit labeling; keyboard and localized no-access feedback.
+
+
+## Account-level access and sensitive settings actions — batch 2 (KG-023)
+
+**Owner:** server authorization rules remain with the product, not with a settings component. For each settings operation distinguish **actor**, **subject**, **account/workspace scope**, **permission**, **assurance needed**, **audit visibility** and **effective result**.
+
+- Show the subject and affected scope before any transfer, membership change, administrative override or audit-sensitive action. Denied UI is not proof that an API is protected.
+- For high-risk changes, use server-approved step-up and explicit confirmation; preserve task context, handle expired reauthentication, and explain the result without revealing unauthorized account details.
+- Separate read access, edit rights, approval and execution. A billing admin may view invoices without necessarily being allowed to delete an account; do not derive permission from navigation visibility.
+- Stale deep links, changed membership, two-tab edits and revoked privileges need safe denied/conflict states and no sensitive content leakage.
+- **Tests NOT VERIFIED:** direct endpoint calls without UI, cross-account ID tampering, revoked session, role changes mid-submit, multi-workspace context, accessible denied state and audit actor/subject trail.
+
+**Reference:** [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) (maintained security guidance; consulted 2026-11-07); [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/). See [account portal composition](account-and-settings-portal.md).

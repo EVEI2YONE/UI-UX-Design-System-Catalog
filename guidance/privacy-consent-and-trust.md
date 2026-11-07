@@ -76,3 +76,22 @@ Related: [content design](content-design-and-ux-writing.md), [authentication lif
 **Illustrative trigger:** Little Wins stores an owner-scoped D1 workspace JSON aggregate, preserves legacy unscoped activity by normalizing it to a General project, archives demo groups, and does not document an end-user export/restore flow. These source observations are not evidence that production backup or privacy requests are implemented.
 
 **Acceptance (NOT VERIFIED unless tested):** export consistency against backend records; record-level access/redaction; bulk file size; versioned export schema; duplicate import/idempotency; role revocation during download; deletion and backup-retention boundaries; screen-reader/keyboard export feedback; safe error and interrupted-download recovery.
+
+
+## Account privacy and lifecycle control center — batch 2 (KG-011–013)
+
+**Scope:** extends generic privacy and data lifecycle guidance for a settings portal. Consent and rights options depend on the controller, jurisdiction, policy and processing basis. The interface must not label all processing as optional consent.
+
+| Task | Account-portal UX contract | Owner evidence |
+| --- | --- | --- |
+| Privacy choices (KG-011) | Organize by understandable purpose and effective scope, show current state and changed/pending state, distinguish necessary processing from optional permissions, provide withdrawal where applicable | Data-protection/legal review of choices, defaults, downstream propagation and audit |
+| View/correct/download personal data (KG-012) | Explain eligible data sources, corrections and verification; distinguish requested, verifying, processing, ready, denied, expired and completed; secure access to any export | Data inventory, authorized subject identification, retention and protected export/fulfillment |
+| Deactivate, close or delete account (KG-013) | Distinguish disabling access from deleting data; summarize billing/workspace/ownership/backup consequences; show policy-compliant reauthentication, cancellation/grace window if offered and progress | Actual deletion pipeline, retained legal records, linked services, cancellation and audit policy |
+
+**Workflow:** clear request scope → plain-language consequence/choice → appropriate verification and confirmation → pending vs completed feedback → accessible durable status and help/reversal if supported. Delete a user-facing label only when the backend performs that exact operation; never claim all data is erased before backups or retained records are handled under reviewed policy.
+
+**Example:** a user can review each privacy-purpose switch, request a scoped export, and see its actual ready/expired status. **Anti-example:** a single “Delete everything now” button closes a modal while async deletion is unconfirmed and retained obligations are silently ignored.
+
+**Verification (NOT VERIFIED):** accessible choice parity, consent withdrawal, backend state after reload, lawful retention exclusions, delayed deletion, exports with sensitive and third-party data redaction, ownership transfer, concurrent sessions and support escalation.
+
+**Sources:** [ICO data protection by design and default](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/data-protection-by-design-and-by-default) (UK-specific; consulted 2026-11-07); [FTC Bringing Dark Patterns to Light](https://www.ftc.gov/reports/bringing-dark-patterns-light) (2022 US staff report; deceptive interaction risks); [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) (accessibility criteria); consult counsel before making jurisdictional compliance claims. Related: [Account/settings portal](../patterns/account-and-settings-portal.md).
