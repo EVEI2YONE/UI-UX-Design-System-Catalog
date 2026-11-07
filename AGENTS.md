@@ -55,3 +55,8 @@ Before recommending a table redesign, retrieve `pattern.data-tables`, `component
 ## Batch 8 lookup — configuration-dependent actions
 
 Before recommending new flags or changing feature navigation, inspect the domain command guards, stored configuration, current UI gating and outstanding historical records. Retrieve `pattern.task-flows` for capability truth tables, `pattern.interaction-recovery` for paused states, and `governance.quality` for all-combination and direct-API verification. A hidden nav item is not a security boundary; an independently stored boolean is not necessarily an independent capability. Review [Batch 8 source ledger](planning/little-wins-batch-8-context-and-gap-ledger.md).
+
+
+## Batch 9 lookup — incremental migration of existing app UI
+
+Inspect the source's actual import graph, reused and bespoke controls, styling entrypoints and deployed themes before proposing component extraction or global CSS changes. Retrieve `architecture.component-model` for feature-vs-shared boundaries, `foundation.design-tokens` for selector/token migration, and `governance.quality` for staged verification. Installed components, a shadcn configuration or a Tailwind import alone do **not** establish runtime reuse, conformance or migration necessity. Record a one-feature baseline and compatibility/rollback plan before recommending broad changes. See [Batch 9 ledger](planning/little-wins-batch-9-context-and-gap-ledger.md).
