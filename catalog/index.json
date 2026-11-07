@@ -394,7 +394,14 @@
         "structural wireframe alternatives",
         "screen composition",
         "wireframe comparison matrix",
-        "screen flow wireframe"
+        "screen flow wireframe",
+        "sequential task controller",
+        "next eligible item",
+        "stable action region",
+        "pointer travel continuity",
+        "review queue progression",
+        "task continuation after approval",
+        "load more versus queue complete"
       ],
       "domains": [
         "information-architecture",
@@ -410,7 +417,10 @@
         "mapping optional feature flag combinations and historic task access",
         "turning a user task into a screen sequence",
         "comparing meaningful structural wireframe alternatives",
-        "mapping required design context and explicit assumptions"
+        "mapping required design context and explicit assumptions",
+        "designing a sequential review or item processing workflow",
+        "positioning the next action consistently across repeated tasks",
+        "preserving queue scope during progression"
       ],
       "avoid_when": [
         "optimizing click counts without verifying user task success",
@@ -423,7 +433,10 @@
         "pattern.role-aware-workspaces",
         "guidance.ux-measurement",
         "guidance.accessibility",
-        "guidance.wireframe-methodology"
+        "guidance.wireframe-methodology",
+        "foundation.icon-semantics",
+        "architecture.component-contracts",
+        "pattern.interaction-recovery"
       ],
       "depends_on": [
         "principle.visual-hierarchy"
@@ -532,7 +545,15 @@
         "wireframe recovery states",
         "wireframe loading empty error success",
         "permission denied wireframe",
-        "unknown outcome state"
+        "unknown outcome state",
+        "icon state synchronization",
+        "pending confirmed icon",
+        "focus after item removal",
+        "post mutation focus",
+        "focus after list update",
+        "focus after approval",
+        "next item focus fallback",
+        "authoritative state icon"
       ],
       "domains": [
         "interaction",
@@ -549,7 +570,10 @@
         "explaining paused actions and in flight configuration changes",
         "illustrating state coverage in image based wireframes",
         "annotating static loading empty validation error permission success and recovery variants",
-        "distinguishing documented state intent from verified interaction behavior"
+        "distinguishing documented state intent from verified interaction behavior",
+        "synchronizing pending and confirmed status visuals",
+        "restoring focus after removing or changing a selected item",
+        "handling uncertain outcomes before continuing a task"
       ],
       "avoid_when": [
         "retrying a non-idempotent action without confirming outcome",
@@ -566,7 +590,9 @@
         "pattern.authentication-lifecycle",
         "pattern.agentic-actions",
         "guidance.performance-experience",
-        "guidance.wireframe-methodology"
+        "guidance.wireframe-methodology",
+        "foundation.icon-semantics",
+        "component.dialog"
       ],
       "depends_on": [
         "architecture.component-contracts"
