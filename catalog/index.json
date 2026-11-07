@@ -727,7 +727,7 @@
       "layer": "cross-cutting",
       "kind": "checklist",
       "status": "proposed",
-      "summary": "Design/catalog quality gates, including static wireframe visual inspection, evidence traceability and runtime verification limits.",
+      "summary": "Design/catalog quality gates including wireframe artifact QA, rendered-UI visual craftsmanship critique, screenshot iteration, evidence limits and runtime verification.",
       "aliases": [
         "QA",
         "quality checklist",
@@ -750,7 +750,15 @@
         "generated wireframe copy fidelity",
         "wireframe clipping inspection",
         "static mockup evidence review",
-        "visual artifact QA"
+        "visual artifact QA",
+        "visual craftsmanship critique",
+        "aesthetic review rubric",
+        "render inspect refine",
+        "screenshot refinement",
+        "before after design review",
+        "optical alignment review",
+        "visual design critique",
+        "design polish QA"
       ],
       "domains": [
         "quality",
@@ -765,7 +773,10 @@
         "auditing catalog knowledge coverage and regression test evidence before final review",
         "reviewing readability and clipping in rendered wireframe images",
         "checking generated copy fidelity and invented implementation claims",
-        "logging visual QA evidence tied to a specific image revision"
+        "logging visual QA evidence tied to a specific image revision",
+        "critically reviewing a rendered interface for visual craft",
+        "iterating on screenshot-based layout and styling defects",
+        "checking before-and-after visual corrections with evidence"
       ],
       "avoid_when": [
         "marking unperformed checks as PASS",
@@ -782,7 +793,9 @@
         "guidance.experimentation",
         "architecture.component-contracts",
         "foundation.design-tokens",
-        "guidance.wireframe-methodology"
+        "guidance.wireframe-methodology",
+        "foundation.visual-craftsmanship",
+        "foundation.practical-styling"
       ],
       "depends_on": [],
       "owner": "unassigned",
