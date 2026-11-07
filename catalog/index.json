@@ -1937,6 +1937,49 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "architecture.evolution",
+      "title": "Application architecture evolution and fitness",
+      "path": "architecture/architecture-evolution.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Context-led transitions between architecture profiles, vertical-slice migration, measurable architecture fitness, and rollback.",
+      "aliases": [
+        "architecture migration",
+        "architecture evolution",
+        "refactoring large repositories",
+        "architecture fitness functions",
+        "incremental refactor",
+        "modular monolith migration"
+      ],
+      "domains": [
+        "application-architecture",
+        "scalability",
+        "migration",
+        "developer-experience"
+      ],
+      "use_when": [
+        "planning incremental migration from MVP to modular architecture",
+        "measuring architecture change safety",
+        "refactoring a large feature page"
+      ],
+      "avoid_when": [
+        "rewriting an entire application to satisfy folder aesthetics",
+        "using unmeasured line count thresholds as architectural evidence"
+      ],
+      "related": [
+        "architecture.application-selection",
+        "architecture.module-boundaries",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "architecture.application-selection",
+        "architecture.module-boundaries"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
