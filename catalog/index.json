@@ -1853,6 +1853,49 @@
       "depends_on": [],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "architecture.application-selection",
+      "title": "Application architecture and scalability selection",
+      "path": "architecture/application-architecture.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Choose complexity-adaptive application file structures for prototypes, MVPs, growing products and multi-app platforms.",
+      "aliases": [
+        "application architecture",
+        "application folder structure",
+        "repo size",
+        "prototype architecture",
+        "MVP architecture",
+        "enterprise application structure",
+        "feature-first architecture",
+        "scalable application architecture"
+      ],
+      "domains": [
+        "application-architecture",
+        "developer-experience",
+        "scalability"
+      ],
+      "use_when": [
+        "choosing a scalable application file structure",
+        "comparing prototype MVP enterprise architecture",
+        "deciding when features domains or packages are justified"
+      ],
+      "avoid_when": [
+        "choosing folder trees purely by line count or team size",
+        "requiring enterprise layers for an experimental prototype"
+      ],
+      "related": [
+        "architecture.component-model",
+        "governance.lifecycle",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "architecture.component-model"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
