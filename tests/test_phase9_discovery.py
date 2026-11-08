@@ -79,6 +79,16 @@ class Phase9DiscoveryTests(unittest.TestCase):
                 self.assertEqual(entry["status"],"proposed")
                 self.assertEqual(implementation["status"],"reference")
 
+    def test_safe_source_ref_links_support_reviewed_branch_and_sha(self):
+        branch = site_build.source_repo_url("docs/visual-catalog-refactor-blueprint")
+        sha = site_build.source_repo_url("3b933abea778122dece31af7496f409028ed6198")
+        self.assertIn("/blob/docs/visual-catalog-refactor-blueprint/", branch)
+        self.assertIn("/blob/3b933abea778122dece31af7496f409028ed6198/", sha)
+        for bad in ("", "../main", "/main", ".hidden", "main?x=1", "main#fragment", "https://other"):
+            with self.subTest(ref=bad):
+                with self.assertRaises(ValueError):
+                    site_build.source_repo_url(bad)
+
     def test_website_search_export_is_derived_and_matches_all_entries(self):
         data=json.loads((self.generated/"catalog-search.json").read_text(encoding="utf-8"))
         self.assertEqual(len(data),len(self.entries))
