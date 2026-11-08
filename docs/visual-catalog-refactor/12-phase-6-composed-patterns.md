@@ -2,7 +2,7 @@
 
 **PR:** [#16](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/16) · **Branch:** `docs/visual-catalog-refactor-blueprint`  
 **Scope:** form composition, navigation, search/filter, data tables and safe recovery  
-**Status:** source, scenarios and tests committed; CI and manual browser/a11y status are recorded separately below.
+**Status:** source, scenarios and tests committed; [implementation CI run 42486156044](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42486156044) passed at commit `9776869e44dfdb66be1adf03300b80fd6257ce1a`; manual browser/a11y status remains NOT VERIFIED.
 
 ## Context gathered before authoring
 
@@ -37,11 +37,11 @@ Each implementation has an adjacent `scenarios.js` and matched CSS file. Registe
 
 | Gate | Evidence | Status |
 | --- | --- | --- |
-| Existing canonical registry IDs and search contracts | No new IDs; five optional `implementation` mappings only | Code committed; CI check pending for final head |
-| Five scenario manifests registered and source copied verbatim | `site/tests/test_build.py` additional generated-page parity tests | CI check pending for final head |
-| Core pure state algorithms | `site/tests/patterns-runtime.test.cjs` validates form, search, paging, recovery | CI check pending for final head |
-| JavaScript source syntax | `node --check` in catalog GitHub Action | CI check pending for final head |
-| No missing spec-only fallback | Site test verifies every unregistered entry displays specification only | CI check pending for final head |
+| Existing canonical registry IDs and search contracts | No new IDs; five optional `implementation` mappings only | PASS in implementation CI |
+| Five scenario manifests registered and source copied verbatim | `site/tests/test_build.py` additional generated-page parity tests | PASS in implementation CI |
+| Core pure state algorithms | `site/tests/patterns-runtime.test.cjs` validates form, search, paging, recovery | PASS in implementation CI |
+| JavaScript source syntax | `node --check` in catalog GitHub Action | PASS in implementation CI |
+| No missing spec-only fallback | Site test verifies every unregistered entry displays specification only | PASS in implementation CI |
 | Actual browser keyboard and focus operation | Requires representative browser execution and manual assessment | NOT VERIFIED |
 | Screen reader / AT semantics and announcements | Requires assistive technology tests | NOT VERIFIED |
 | Narrow screens, 200–400% zoom, RTL and high contrast | Requires visual/browser inspection | NOT VERIFIED |
@@ -60,6 +60,6 @@ Each implementation has an adjacent `scenarios.js` and matched CSS file. Registe
 
 ## Gate and rollback
 
-Execute `python3 scripts/validate_catalog.py`, `python3 -m unittest discover -s tests -v`, `python3 site/build.py`, `python3 -m unittest discover -s site/tests -v`, and `node --test site/tests/patterns-runtime.test.cjs` plus the existing Button/core-control source tests and syntax checks. Attach actual workflow conclusion and reviewer notes to PR #16; keep it draft. If a pattern fails, remove only its optional `implementation` mapping and runtime files; the existing Markdown specification remains discoverable.
+Execute `python3 scripts/validate_catalog.py`, `python3 -m unittest discover -s tests -v`, `python3 site/build.py`, `python3 -m unittest discover -s site/tests -v`, and `node --test site/tests/patterns-runtime.test.cjs` plus the existing Button/core-control source tests and syntax checks. Implementation CI [run 42486156044](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42486156044) completed successfully; check the final documentation head's CI separately. Attach reviewer notes to PR #16; keep it draft. If a pattern fails, remove only its optional `implementation` mapping and runtime files; the existing Markdown specification remains discoverable.
 
 **Phase 7 depends on proven composition behavior**, not on claiming synthetic examples are production-ready.
