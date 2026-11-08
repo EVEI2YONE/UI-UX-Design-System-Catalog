@@ -32,8 +32,8 @@ Existing `catalog/schema.json` forbids unexpected entry properties. The standard
 
 | Check | Evidence/result | Status |
 | --- | --- | --- |
-| Legacy 53 IDs and 53 canonical paths remain | Compare identifiers and paths against base registry before final gate | PENDING |
-| Legacy top-ranked queries remain | Agent-context inspection for loading button, modal dialog, component hierarchy, settings | CHECKED IN PROCESS; formal regression NOT VERIFIED |
+| Legacy 53 IDs and 53 canonical paths remain | Direct GitHub JSON compare: 53/53 entries; existing IDs, paths, layers, statuses, aliases, relations and all legacy properties unchanged | PASS — structural comparison |
+| Legacy top-ranked queries remain | Agent-context inspection for loading button, modal dialog, component hierarchy, settings | PASS — in-memory ranking replay; Python test suite NOT VERIFIED |
 | Strict JSON Schema extension | `catalog/schema.json` optional props and strict implementation object | COMMITTED |
 | Validator optional checks | `scripts/validate_catalog.py` new helper | COMMITTED, execution NOT VERIFIED |
 | New unit regression tests | `tests/test_visual_catalog_metadata.py` | COMMITTED, execution NOT VERIFIED |
@@ -51,6 +51,10 @@ python3 -m unittest discover -s tests -v
 python3 scripts/find_concept.py "loading button" --json
 python3 scripts/find_concept.py "component hierarchy" --json
 ```
+
+## Additional verifications executed through the GitHub connector
+
+The base registry and current branch registry were parsed and compared property-by-property for all 53 entries; the entire legacy field set is unchanged, and only six new optional capability lists were found. The strict schema retains its original required properties. An in-memory replay of the published lookup scoring produced the expected top matches for `loading button`, `modal dialog`, `component hierarchy` and `settings`. This is meaningful structural/retrieval evidence but **not** a substitute for running Python tests. GitHub Actions reported the `Validate catalog` workflow was **in progress** at the time of this record; consult the latest run conclusion before declaring CI PASS.
 
 ## Risks and release guardrails
 
