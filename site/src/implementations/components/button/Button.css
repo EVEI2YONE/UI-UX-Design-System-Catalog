@@ -1,0 +1,10 @@
+:root{color-scheme:light;--button-text:#fff;--button-bg:#235b86;--button-bg-hover:#17476b;--button-outline:#99afc1;--button-secondary-bg:#f2f5f8;--button-secondary-text:#183951;--button-danger-bg:#ad2838;--button-danger-hover:#8e1b2b;--button-focus:#d17625}
+[data-theme="dark"]{color-scheme:dark;--button-text:#fff;--button-bg:#316c9b;--button-bg-hover:#4084ba;--button-outline:#8faabe;--button-secondary-bg:#293d52;--button-secondary-text:#edf6ff;--button-danger-bg:#c34352;--button-danger-hover:#dc5262;--button-focus:#eab45e}
+[data-theme="contrast"]{color-scheme:light;--button-bg:#000;--button-bg-hover:#252525;--button-text:#fff;--button-secondary-bg:#fff;--button-secondary-text:#000;--button-danger-bg:#8d0016;--button-danger-hover:#70000f;--button-outline:#000;--button-focus:#000}
+.reference-button{appearance:none;display:inline-flex;align-items:center;justify-content:center;text-align:center;max-width:100%;min-height:44px;border:1px solid transparent;border-radius:9px;padding:11px 18px;font:650 15px/1.45 system-ui,sans-serif;overflow-wrap:anywhere;white-space:normal;background:var(--button-bg);color:var(--button-text);cursor:pointer;transition:background .14s ease}
+.reference-button:hover:not(:disabled){background:var(--button-bg-hover)}.reference-button:focus-visible{outline:3px solid var(--button-focus);outline-offset:3px}
+.reference-button--secondary{background:var(--button-secondary-bg);border-color:var(--button-outline);color:var(--button-secondary-text)}.reference-button--secondary:hover:not(:disabled){filter:brightness(.95);background:var(--button-secondary-bg)}
+.reference-button--danger{background:var(--button-danger-bg)}.reference-button--danger:hover:not(:disabled){background:var(--button-danger-hover)}
+.reference-button--small{font-size:14px;padding:8px 14px}.reference-button--large{font-size:17px;padding:13px 22px}
+.reference-button:disabled{opacity:.56;cursor:not-allowed}.reference-button-status{display:block;font-size:13px;margin-block-start:10px}
+@media(prefers-reduced-motion:reduce){.reference-button{transition:none}}
