@@ -50,3 +50,19 @@ jobs:
             node --check "site/src/implementations/components/$component/$source.js"
             node --check "site/src/implementations/components/$component/scenarios.js"
           done
+
+      - name: Test composed pattern source behaviors
+        run: node --test site/tests/patterns-runtime.test.cjs
+      - name: Parse all composed pattern scripts
+        run: |
+          for pattern in form navigation search-filter data-tables recovery; do
+            case "$pattern" in
+              form) source=Form ;;
+              navigation) source=Navigation ;;
+              search-filter) source=SearchFilter ;;
+              data-tables) source=DataTables ;;
+              recovery) source=Recovery ;;
+            esac
+            node --check "site/src/implementations/patterns/$pattern/$source.js"
+            node --check "site/src/implementations/patterns/$pattern/scenarios.js"
+          done
