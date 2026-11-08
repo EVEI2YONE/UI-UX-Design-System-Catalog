@@ -3,7 +3,7 @@
 **Branch / PR:** `docs/visual-catalog-refactor-blueprint` / draft PR #16  
 **Phase:** 4 — live preview foundation  
 **Scope:** trusted, repository-owned reference implementations and sandboxed previews; no installable packages or product backend  
-**State:** implementation committed, automated gate subject to current head CI, human browser/AT review pending
+**State:** implementation committed; [GitHub Actions run 42485142828](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42485142828) succeeded for implementation/documentation commit `cf757f7bd8bc424b146d38de318d4f5d8099d7a7`; human browser/AT review pending
 
 ## Context gathered before implementation
 
@@ -53,12 +53,12 @@ This is a **trusted code reference** sandbox, not a general multi-tenant code ex
 | --- | --- | --- |
 | Existing canonical IDs and lookup unchanged | Catalog `index.json` adds only Button implementation metadata; existing IDs/paths retained | Structural, subject to CI |
 | Real registered source file and scenarios exist | Source + colocated `scenarios.js`, CSS committed | PRESENT |
-| Preview and source viewer use identical file | Build copies source; site parity test compares bytes and references | Automated test |
-| Safe preview isolation | `sandbox="allow-scripts"` without `allow-same-origin`, deterministic fixture | Code + static test |
+| Preview and source viewer use identical file | Build copies source; site parity test compares bytes and references | PASS in CI |
+| Safe preview isolation | `sandbox="allow-scripts"` without `allow-same-origin`, deterministic fixture | Static checks PASS; browser security review pending |
 | Scenario/theme/reset UI | `preview-runner.js` and host controls | Implemented, real browser QA NOT VERIFIED |
-| Native Button activation and pending/disabled behavior | Node executes the same source in a deterministic DOM fixture | Automated test |
+| Native Button activation and pending/disabled behavior | Node executes the same source in a deterministic DOM fixture | PASS in CI |
 | Remaining 52 entries remain spec-only | Build tests sample Input; no other implementation registered | Static test |
-| Registry validator and old tests | Existing GitHub catalog workflow | Await current head CI evidence |
+| Registry validator and old tests | [GitHub Actions run 42485142828](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42485142828) | PASS for commit `cf757f7` |
 | Manual screen reader, focus and contrast | Actual browser/assistive review | NOT VERIFIED |
 | Mobile/zoom/RTL and forced-colors | Actual browser review | NOT VERIFIED |
 | Web performance, CLS/INP/LCP | Deployment/lab measurement | NOT VERIFIED |
@@ -66,7 +66,7 @@ This is a **trusted code reference** sandbox, not a general multi-tenant code ex
 
 ## Gates and handoff
 
-Run `python3 scripts/validate_catalog.py`, `python3 -m unittest discover -s tests -v`, `python3 site/build.py`, `python3 -m unittest discover -s site/tests -v`, `node --test site/tests/button-runtime.test.cjs`, and the JavaScript syntax checks specified in GitHub Actions. Record the actual resulting commit and workflow conclusion; do not infer test outcomes from file creation.
+GitHub Actions [run 42485142828](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42485142828) succeeded with the commands below on commit `cf757f7`. Run `python3 scripts/validate_catalog.py`, `python3 -m unittest discover -s tests -v`, `python3 site/build.py`, `python3 -m unittest discover -s site/tests -v`, `node --test site/tests/button-runtime.test.cjs`, and the JavaScript syntax checks specified in GitHub Actions. Record the actual resulting commit and workflow conclusion; do not infer test outcomes from file creation.
 
 Before starting broad Phase 5 work, test the running preview in at least one desktop and mobile browser, inspect keyboard focus, zoom, contrast and screen-reader announcements, and confirm the no-write scenario behavior. Record deviations for Phase 8, retaining `reference` status until required evidence is accepted.
 
