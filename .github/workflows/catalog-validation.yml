@@ -66,3 +66,11 @@ jobs:
             node --check "site/src/implementations/patterns/$pattern/$source.js"
             node --check "site/src/implementations/patterns/$pattern/scenarios.js"
           done
+
+      - name: Test review workspace state and synthetic adapter
+        run: node --test site/tests/review-workspace-runtime.test.cjs
+      - name: Parse feature reference source and fixtures
+        run: |
+          node --check site/src/implementations/features/review-workspace/ReviewWorkspace.js
+          node --check site/src/implementations/features/review-workspace/mock-adapter.js
+          node --check site/src/implementations/features/review-workspace/scenarios.js
