@@ -2,7 +2,7 @@
 
 **PR:** [#16](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/16) · **Branch:** `docs/visual-catalog-refactor-blueprint`  
 **Scope:** one generic human Review Workspace with actual source, deterministic synthetic adapter, states, scenarios and tests.  
-**Status:** implementation authored; final GitHub Actions and human review results tracked below.
+**Status:** implementation CI [run 42486596652](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42486596652) **PASSED** at code commit `d44efd435bc17f4ebddea93fd9f647e37a1eff03`; subsequent documentation-only commits require final head CI confirmation. Browser/AT and design review remain NOT VERIFIED.
 
 ## Context and gap audit
 
@@ -53,12 +53,12 @@ The primary reference is a self-contained classic JavaScript example, matching t
 
 | Gate | Evidence | Status |
 | --- | --- | --- |
-| One canonical new concept, existing IDs preserved | Registry validator and index comparison | PENDING CI |
-| Canonical spec and links resolve | Root Markdown link validator | PENDING CI |
-| Source, adapter and scenarios loaded from actual checked-in files | Site build + Python source parity test | PENDING CI |
-| Real synthetic decision/permission/conflict/unknown logic | Node `site/tests/review-workspace-runtime.test.cjs` | PENDING CI |
+| One canonical new concept, existing IDs preserved | Registry validator passed; direct 53-entry property-by-property baseline comparison | PASS |
+| Canonical spec and links resolve | Root Markdown link validator in run 42486596652 | PASS |
+| Source, adapter and scenarios loaded from actual checked-in files | Site build + Python source parity test in run 42486596652 | PASS |
+| Real synthetic decision/permission/conflict/unknown logic | Node `site/tests/review-workspace-runtime.test.cjs` in run 42486596652 | PASS |
 | No outside writes or credentials | Source inspection; no fetch in adapter | SOURCE REVIEW; formal security review NOT VERIFIED |
-| All other unregistered entries remain spec-only | Existing site tests | PENDING CI |
+| All other unregistered entries remain spec-only | Existing site tests in run 42486596652 | PASS |
 | Keyboard/AT, focus, narrow/zoom/RTL/contrast and performance | Representative real browsers/devices | NOT VERIFIED |
 | Human feature/integration contract and reuse approval | Product/design/security owner | PENDING |
 
@@ -73,3 +73,9 @@ The primary reference is a self-contained classic JavaScript example, matching t
 - Additional feature candidates are **not** included in this phase; Phase 8 should use observed review and performance evidence to prioritize deeper component integration.
 
 **Rollback:** remove this entry's optional preview mapping (or the new feature entry if the feature contract is rejected) and its isolated reference files. Existing canonical pattern guidance and 53 legacy entries stay intact. Keep draft PR #16 open until review/quality gates are met.
+
+## Actual baseline compatibility evidence
+
+Using GitHub source reads, the audited base registry at `3b933abea778122dece31af7496f409028ed6198` was compared against the Phase 7 branch. All **53** pre-existing records retain identical prior identity, title, canonical path, layer, kind, review status, summary, aliases, domains, usage guidance, relations, dependencies, owner and review date. One new `feature.review-workspace` entry was added, with a strictly optional reference mapping; **12** of **54** concepts now have executable references, while 42 remain specification-only.
+
+[Workflow 42486596652](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42486596652) completed successfully with the existing Python validator, root tests, static site generation/site tests, all earlier JS source-level tests and the new Review Workspace test. The new source tests do **not** establish browser focus or accessibility conformance.
