@@ -120,3 +120,54 @@ Fix a **task start** and **authoritative completion** event, eligible cohort, ob
 | Controlled/observational interpretation | Study design, uncertainty, consistent comparable tasks | NOT VERIFIED |
 
 **References:** [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/), [Nielsen Norman Group: Measuring UX](https://www.nngroup.com/articles/which-ux-research-methods/) (method-selection starting point, not proof of a specific metric threshold), and [experimentation guidance](experimentation-and-causal-evidence.md) (consulted 2026-11-07). Context: proposed Little Wins B06 effort metrics and B07 action-consolidation patterns; product baselines remain unknown.
+
+
+## Catalog discoverability and source-trust study protocol
+
+The catalog supports *two different journeys*: a person browsing a source-linked visual reference and an agent retrieving a canonical ID with a deterministic lexical ranker. Successful automation for those journeys is not evidence that representative people or independent agents find the right design rule or judge its trust correctly.
+
+### Test questions and hypotheses
+
+| Job | Research question | Acceptable evidence |
+| --- | --- | --- |
+| Find a control contract | Can a user identify the correct canonical owner from a natural-language task? | First chosen concept, correction path and rationale |
+| Understand spec-only status | Can a user tell proposed guidance from runnable reference and from certified library? | User explanation without prompting, misinterpretation notes |
+| Find relevant recovery guidance | Can a participant distinguish unknown outcome, known failure and retry safety? | Selected canonical concept and reason for action |
+| Reuse source safely | Can a developer locate JS, CSS, fixtures, adapter and installation constraints? | Files found, omitted dependencies and unauthorized production assumptions |
+| Distinguish approval workflows | Does a user choose human Review Workspace versus AI-agent delegated approval appropriately? | Correct task-owner selection and reasoning |
+| Search an unfamiliar synonym | Does `synthetic review` reveal a gap that a reasonable user could recover from? | Query sequence, no-result behavior, fallback navigation, candidate synonyms |
+
+### Study design before collecting results
+
+Specify study owner, study date, target roles (designer, frontend engineer, accessibility reviewer, agent/tool integrator), experience level, device/assistive-technology context, number invited/completed and any exclusions. Recruit people who have not authored the catalog where feasible. Use neutral tasks without canonical ID or direct solution terms. Randomize or counterbalance task order across participants to limit learning effects. Record whether participants received training or saw previous solutions.
+
+For a paired human/agent comparison, provide agents the same user intent, allowed tools, repository revision and explicit constraints. Preserve the actual prompts, retrieved IDs, rank, sources inspected, tool version and outcomes. Distinguish ranking correctness from whether the selected guidance actually resolves the user's need. Do not aggregate human and machine "success" into one indistinguishable score.
+
+### Measures and reporting
+
+| Measure | Definition | Watch out for |
+| --- | --- | --- |
+| First-hit relevance | Eligible tasks where first opened/selected result is correct, divided by eligible tasks | Rank one is not always uniquely correct for ambiguous terms |
+| Task completion | Tasks resolved to a suitable canonical source with correct applicability, divided by eligible tasks attempted | A correct clicked URL without comprehension is incomplete |
+| Time to first useful concept | Elapsed time from task start to first suitable source, by task/participant | Include failures/censoring rather than dropping them |
+| Query reformulations | Number and category of edited phrases before a useful result | High counts may mean vague task phrasing, not only a ranking defect |
+| Incorrect maturity inference | Tasks where user treats proposal or mock adapter as production approval | Source preview presentation may amplify misplaced trust |
+| Dependency completeness | Required source/scenario/style/adapter files correctly identified divided by required files | One file found does not prove safe integration |
+| Accessible task recovery | Screen-reader/keyboard user can find an error/empty state and continue | Distinguish information access from a completed workflow |
+
+Use counts and denominators, per-task context, failures, median and spread where sample size supports them; do not invent statistical significance from a tiny exploratory study. Keep qualitative remarks anonymized and separate direct observations from researcher inference. Never collect passwords, production records or sensitive identities for the study.
+
+### Relevance changes and governance
+
+1. Freeze a registry revision and run the existing `tests/fixtures/phase9_retrieval_cases.json` suite as the automated *baseline*.
+2. Record new organic queries, intended task, all plausibly relevant canonical owners and the participant's expectation. A query like `settings` can correctly yield multiple results; no forced winner.
+3. Classify failure: missing concept, poor alias, unclear title/summary, incorrect task hierarchy, source-status confusion, rendering/navigation problem or inadequate user training.
+4. Suggest the smallest remedy: clearer public wording or synonym, navigation signpost, linked related concept, task-specific index alias, or a genuinely missing contract. Avoid changing scoring weights to mask ambiguous data.
+5. Review candidate improvements against the unchanged exact ID/alias ranking, all historical fixtures, known misses and human outcomes. If an alias creates an overlap, record the tradeoff explicitly.
+6. Re-run comparable tasks with a separately documented sample. Report adverse effects and follow-up questions instead of claiming a universal discovery improvement.
+
+### Worked hypothetical analysis (not a study result)
+
+Suppose a developer searches for "synthetic review", sees no result, then finds `feature.review-workspace` through "human approval queue". This would show *recovery through reformulation*, not first-hit success. A candidate alias is only justified if review confirms the phrase refers to that human review workflow rather than an agent approval or testing concept. Record that distinction and test both before changing the index.
+
+**Current evidence:** the deterministic agent lookup has curated acceptance fixtures, and real Chromium confirmed a scripted human approval queue route. No participant cohort, independently observed task completion, source-comprehension baseline or agent/human comparative study has been run. This protocol is documented knowledge; [KG-12 work package](../docs/visual-catalog-refactor/gap-work/kg12-discovery-research.md) remains open for actual research.
