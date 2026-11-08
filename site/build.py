@@ -87,9 +87,9 @@ def inline(text, source, by_path):
 # affect only rendered HTML; the canonical Markdown and its historical anchors
 # stay intact in Git and remain accessible through the source link.
 INTERNAL_REFERENCE_HEADING = re.compile(
-    r"^#{2}\\s+Phase\\s+[4-9]\\s+.*(?:reference|implementation)", re.I)
-INTERNAL_STAGE = re.compile(r"\\b(?:Phase|Batch)\\s*\\d+(?:\\s*[-–]\\s*\\d+)?\\b", re.I)
-INTERNAL_PR = re.compile(r"\\b(?:draft\\s+)?PR\\s*#\\d+\\b", re.I)
+    r"^#{2}\s+Phase\s+[4-9]\s+.*(?:reference|implementation)", re.I)
+INTERNAL_STAGE = re.compile(r"\b(?:Phase|Batch)\s*\d+(?:\s*[-–]\s*\d+)?\b", re.I)
+INTERNAL_PR = re.compile(r"\b(?:draft\s+)?PR\s*#\d+\b", re.I)
 
 
 def public_markdown(content):
@@ -105,16 +105,18 @@ def public_markdown(content):
             suppress = False
         if not suppress:
             kept.append(line)
-    return "\\n".join(kept)
+    return "\n".join(kept)
 
 
 def public_label(value):
     """Convert process-oriented visible labels into lasting subject labels."""
-    value = re.sub(r"^\\s*(?:Batch\\s*\\d+\\s*(?:extension|boundary)?\\s*[-–—:]?\\s*)", "", value, flags=re.I)
-    value = re.sub(r"\\s*[-–—:]?\\s*(?:proposed\\s+)?(?:Batch|Phase)\\s*\\d+\\b(?:\\s+proposal)?", "", value, flags=re.I)
+    value = re.sub(r"^\s*(?:Batch\s*\d+\s*(?:extension|boundary)?\s*[-–—:]?\s*)", "", value, flags=re.I)
+    value = re.sub(r"\s*[-–—:]?\s*(?:proposed\s+)?(?:Batch|Phase)\s*\d+\b(?:\s+proposal)?", "", value, flags=re.I)
     value = INTERNAL_STAGE.sub("catalog update", value)
     value = INTERNAL_PR.sub("repository review", value)
-    return re.sub(r"\\s{2,}", " ", value).strip()
+    leading = " " if value[:1].isspace() else ""
+    trailing = " " if value[-1:].isspace() else ""
+    return leading + re.sub(r"\s{2,}", " ", value).strip() + trailing
 
 
 class PublicCopy(HTMLParser):
