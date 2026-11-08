@@ -2,7 +2,7 @@
 
 **Purpose:** durable, independently reviewable work packages for the gaps that still require observation, product/security decisions or maintainer acceptance. This is **repository documentation only**, not visitor-facing catalog copy and not a new canonical registry.
 
-**Status:** five open work packages; **no reviewer assigned by name**, no approval and no deployment. The [historical KG-01–KG-12 audit](03-knowledge-gap-audit.md) is preserved, and the [current knowledge-gap assessment](17-concept-inventory-and-decisions.md) differentiates recorded, implemented, automated-tested, human-approved and production-adopted states.
+**Status:** all five missing knowledge contracts **authored in existing canonical guidance**, with five open evidence/implementation follow-ups; **no reviewer assigned by name**, no human approval and no deployment. The [historical KG-01–KG-12 audit](03-knowledge-gap-audit.md) is preserved, and the [current knowledge-gap assessment](17-concept-inventory-and-decisions.md) differentiates recorded, implemented, automated-tested, human-approved and production-adopted states.
 
 | Package | Durable record | Owner role needed | Exit evidence |
 | --- | --- | --- | --- |
@@ -23,3 +23,7 @@ The visual catalog presents canonical **design guidance**, live source-linked ex
 When a reviewer completes an item, provide real evidence, a named decision and date, amend the relevant work package, and update the [release risk register](16-phase-10-release-readiness.md). Keep unresolved packages even if a future release deliberately excludes their related feature. Do not add unreviewed candidates to `catalog/index.json`, and do not promote a knowledge lifecycle status solely because CI passes.
 
 **Release remains NO-GO** until the human/security/hosting gates are explicitly cleared. Draft [PR #16](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/16) remains unmerged.
+
+## Canonical knowledge now authored
+
+Each work package links to the substantive new contract in its existing canonical knowledge owner: [maintainability](../../architecture/component-model.md#executable-reference-maintainability-and-composition-contract), [a11y/performance](../../guidance/accessibility.md#reference-state-accessibility-theme-and-performance-acceptance-matrix), [source reuse](../../architecture/component-contracts.md#source-exploration-reuse-and-distribution-contract), [discovery research](../../guidance/ux-measurement.md#catalog-discoverability-and-source-trust-study-protocol), and [security/hosting](../../governance/quality-gates.md#static-visual-catalog-hosting-supply-chain-and-preview-security-gate). See the [fresh-context, source and acceptance ledger](20-knowledge-development-batches.md) for precise existing coverage and the unchanged human verification requirements.
