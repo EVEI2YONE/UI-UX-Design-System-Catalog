@@ -4,3 +4,7 @@ site/dist/
 __pycache__/
 *.py[cod]
 .pytest_cache/
+
+# Generated release/audit evidence (retained in CI artifacts, not source)
+site/artifacts/
+site/node_modules/
