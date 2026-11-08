@@ -44,11 +44,38 @@ class SiteBuildTests(unittest.TestCase):
         self.assertIn('aria-pressed="true"', browse)
 
     def test_unimplemented_entries_advertise_spec_only(self):
-        button = next(e for e in self.entries if e["id"] == "component.button")
+        button = next(e for e in self.entries if e["id"] == "component.input")
         text = (self.out / site_build.route(button).lstrip("/") / "index.html").read_text(encoding="utf-8")
         self.assertIn("Specification only", text)
         self.assertNotIn('class="interactive-preview"', text)
         self.assertIn("View Markdown source", text)
+
+    def test_button_real_preview_matches_registered_source(self):
+        entry = next(e for e in self.entries if e["id"] == "component.button")
+        self.assertEqual(entry["implementation"]["status"], "reference")
+        text = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
+        frame = (self.out / "previews/component.button/index.html").read_text(encoding="utf-8")
+        src = (ROOT / entry["implementation"]["source_path"]).read_text(encoding="utf-8")
+        rendered = (self.out / "reference/component.button/source.js").read_text(encoding="utf-8")
+        scenarios = (self.out / "reference/component.button/scenarios.js").read_text(encoding="utf-8")
+        self.assertIn('sandbox="allow-scripts"', text)
+        self.assertNotIn('allow-same-origin', text)
+        self.assertIn("Inspect implementation source", text)
+        self.assertIn("Interactive example", text)
+        self.assertEqual(src, rendered)
+        self.assertIn("CatalogReference", src)
+        self.assertIn("CatalogScenarios", scenarios)
+        self.assertIn('src="/reference/component.button/source.js"', frame)
+        self.assertIn('src="/reference/component.button/scenarios.js"', frame)
+        self.assertIn('src="/assets/preview-runner.js"', frame)
+
+    def test_preview_runner_assets_and_isolated_host(self):
+        self.assertTrue((self.out / "assets/preview-runner.js").is_file())
+        self.assertTrue((self.out / "assets/preview-host.css").is_file())
+        text = (self.out / "previews/component.button/index.html").read_text(encoding="utf-8")
+        for label in ("Scenario", "Theme", "Reset example", "High contrast"):
+            self.assertIn(label, text)
+        self.assertNotIn("https://", text)
 
     def test_search_export_matches_registry(self):
         records = json.loads((self.out / "catalog-search.json").read_text(encoding="utf-8"))
