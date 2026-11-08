@@ -58,6 +58,8 @@ async function checks(){
   await form.locator('#scenario').selectOption('invalid');
   assert.equal(await form.locator('.pattern-errors').isVisible(),true);
   await form.locator('#scenario').selectOption('unknown');
+  await form.locator('#demo-name').fill('Taylor');
+  await form.locator('#demo-email').fill('taylor@example.test');
   await form.locator('button[type="submit"]').click();
   assert.equal(await form.locator('button[type="submit"]').isDisabled(),true);
   assert.match(await form.locator('.pattern-feedback').innerText(),/unknown/i);
