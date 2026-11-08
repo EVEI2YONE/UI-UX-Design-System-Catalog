@@ -3,7 +3,7 @@
 **Delivery:** draft PR [#16](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/16), branch `docs/visual-catalog-refactor-blueprint` targeting `main`  
 **Phase scope:** retrieval parity, stable canonical identity, source provenance, contribution contracts and Phase 10 readiness  
 **Date:** 2026-11-08  
-**Status:** implementation and automated acceptance gates are committed; final head CI evidence must be read independently. Human review, production security, manual AT and deployment remain **PENDING / NOT VERIFIED**.
+**Status:** automated acceptance **PASS** at commit `0580c5f18bbc416bae0ab5d3179556a313d7621e` — [GitHub Actions run 42488859952](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42488859952). Both catalog/provenance and Chromium jobs passed. Human review, production security, manual AT and deployment remain **PENDING / NOT VERIFIED**.
 
 ## Context gathered
 
@@ -69,13 +69,13 @@ Browser interaction and automated axe checks run in the existing GitHub Actions 
 
 | Gate | Evidence | Status |
 | --- | --- | --- |
-| 54 canonical entries and 12 source-linked references | Derived registry audit and source test | Implemented; check latest CI |
-| Existing ID/alias/title ranking unchanged | `find_concept.py` not modified, old lookup tests retained | Implemented; check latest CI |
-| Curated task retrieval, explicit misses and ambiguity | Phase 9 cases + Python tests | Implemented; check latest CI |
-| Generated website and agent lookup share canonical metadata | Website search export parity test; real browser human approval search | Implemented; check latest CI |
-| Implementation source/scenario/route provenance | Source-byte parity, route checks, fallback coverage | Implemented; check latest CI |
+| 54 canonical entries and 12 source-linked references | Derived registry audit and source test | **PASS** in run 42488859952 |
+| Existing ID/alias/title ranking unchanged | `find_concept.py` not modified, old lookup tests retained | **PASS** in run 42488859952 |
+| Curated task retrieval, explicit misses and ambiguity | Phase 9 cases + Python tests | **PASS** in run 42488859952 |
+| Generated website and agent lookup share canonical metadata | Website search export parity test; real browser human approval search | **PASS** in run 42488859952 |
+| Implementation source/scenario/route provenance | Source-byte parity, route checks, fallback coverage | **PASS** in run 42488859952 |
 | Agent protocol and contributor governance | Updated `AGENTS.md`, `CONTRIBUTING.md`, `catalog/README.md` and root/site navigation | Committed |
-| Reviewable CI evidence | Derived JSON uploaded as workflow artifact | Implemented; inspect latest workflow |
+| Reviewable CI evidence | Derived JSON and browser reports uploaded | **PRESENT:** discovery artifact `13621036004`; browser artifact `13620596346` |
 | Manual UI/UX visual and content review | Named reviewer and findings log | **NOT VERIFIED** |
 | Assistive technology, 200–400% zoom, RTL, forced colors | Actual devices/AT and reviewer evidence | **NOT VERIFIED** |
 | Third-party security/license/CSP review | Named release/security reviewer and decisions | **NOT VERIFIED** |
@@ -102,3 +102,9 @@ Browser interaction and automated axe checks run in the existing GitHub Actions 
 - Confirm no untracked release promises or product integrations; keep PR in **draft** until required human approvals are recorded.
 
 **No default-branch merge, deployment or owner acceptance is implied by completion of this phase.**
+
+## Phase 9 automated evidence snapshot (2026-11-08)
+
+[CI run 42488859952](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42488859952) completed with **SUCCESS** at `0580c5f18bbc416bae0ab5d3179556a313d7621e`: both the `check-catalog` job and the `Chromium interaction and axe smoke` job passed. The run includes the new curated retrieval corpus, 54-entry source and relation verification, 12-reference source parity, safe source-ref URL test, root/site test suites and human approval queue browser journey.
+
+GitHub retained the generated **`catalog-discovery-audit` artifact ID `13621036004`** (derived task and provenance report) and **`catalog-browser-audit` artifact ID `13620596346`** (automated axe reports and screenshots). The artifacts provide inspectable machine evidence but **not** human approval or independently measured field performance. Later documentation-only changes should receive their own final head check before merge.
