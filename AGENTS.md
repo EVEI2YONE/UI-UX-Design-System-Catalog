@@ -49,3 +49,13 @@ For “utility-first styling ownership” or “tailwind shadcn component stylin
 ## Batch 6 — final icon and interaction verification retrieval
 
 Resolve `foundation.icon-semantics` for “icon consistency audit” and “icon intent collision review”. Resolve `governance.quality` for “interaction state test matrix”, “icon interaction testing”, “catalog retrieval regression” and the cumulative B01–B06 evidence gate. Use the canonical owners returned by `scripts/find_concept.py`, not repeated guidance from historical batch ledgers. Automated catalog tests cannot prove screen-reader, keyboard, touch, responsive or live network behavior.
+
+## Visual catalog reference lookup (Phase 2 metadata, 2026-11-08)
+
+Continue to resolve `catalog/index.json` by **canonical ID or task query**, then read the Markdown `path` and existing `related`/`depends_on` IDs before relying on a visual example. The optional `capabilities` array contains functional labels for future filters; the current `find_concept.py` ranking is unchanged and does not automatically consider them.
+
+An `implementation` object appears **only when actual reference code and a scenario manifest are committed under `site/src/implementations/`**. When present, inspect the `source_path` and `scenario_manifest`, then use `preview_path` as a human preview link if the site is actually deployed. No field implies a public deployment, server-side authority, production adoption, or tested accessibility. `status=verified` requires a linked evidence record and reviewer interpretation; metadata itself is not proof.
+
+If `implementation` is absent, treat the entry as **specification only** and do not invent a preview URL or code path. The site browser may show a non-interactive fallback, but the canonical knowledge remains independently readable from Markdown/JSON. The site must not contain a second manually curated identity index.
+
+See [Phase 2 registry contract](docs/visual-catalog-refactor/08-phase-2-registry-compatibility.md).
