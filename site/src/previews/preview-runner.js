@@ -34,6 +34,12 @@
       const config = Object.assign({}, scenario.config, {
         onActivate: function () {
           output.textContent = "Example activated. No server action was performed.";
+        },
+        onChange: function (value) {
+          output.textContent = "Local example changed: " + String(value) + ". Nothing was saved.";
+        },
+        onClose: function (reason) {
+          output.textContent = "Dialog closed (" + String(reason) + "). No server action was performed.";
         }
       });
       reference.mount(stage, config);
