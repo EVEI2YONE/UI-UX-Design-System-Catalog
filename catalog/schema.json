@@ -162,6 +162,53 @@
             "null"
           ],
           "format": "date"
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "implementation": {
+          "type": "object",
+          "required": [
+            "status",
+            "source_path",
+            "scenario_manifest",
+            "preview_path"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "reference",
+                "experimental",
+                "verified"
+              ]
+            },
+            "source_path": {
+              "type": "string",
+              "pattern": "^site/src/implementations/[^.].+\\.(tsx|ts|jsx|js)$"
+            },
+            "scenario_manifest": {
+              "type": "string",
+              "pattern": "^site/src/implementations/[^.].+\\.(tsx|ts|jsx|js)$"
+            },
+            "preview_path": {
+              "type": "string",
+              "pattern": "^/catalog/[a-z0-9-]+/[a-z0-9-]+$"
+            },
+            "evidence_path": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[^/].+\\.md$"
+            }
+          },
+          "additionalProperties": false
         }
       },
       "additionalProperties": false

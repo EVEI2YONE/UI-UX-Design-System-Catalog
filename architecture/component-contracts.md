@@ -177,3 +177,43 @@ The component does **not** equate `draftQuery` with the applied server query; a 
 **Adoption/migration:** keep existing canonical controls; add composition contracts at feature boundaries, remove overlapping parent/child event handlers, and migrate only consumers that need coordinated state. This is not a new universal event bus, state machine library, UI package, or application API.
 
 **Source references (consulted 2026-11-07):** [WAI-ARIA APG patterns](https://www.w3.org/WAI/ARIA/apg/patterns/), [Menu Button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/), [Dialog Modal](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/). The user-task motivation was informed by [Little Wins B03 component architecture](https://github.com/EVEI2YONE/Little_Wins/blob/main/docs/little-wins/ui-knowledge/batch-03-component-architecture.md) and B07 action consolidation, whose application-specific contracts are not automatically universal.
+
+
+## Source exploration, reuse and distribution contract
+
+A visual example is useful only when a reader can determine **which file actually runs**, what else it depends on, and which assurances it does *not* provide. The canonical specification remains the source for design intent; source files demonstrate one implementation choice. A code viewer is not a software distribution agreement.
+
+### Minimum source-inspection experience
+
+| User question | Required visible evidence | Acceptance check |
+| --- | --- | --- |
+| What does this example implement? | Canonical ID, user task and explicit reference/proposed maturity label | A reader can distinguish a real reference from a specification-only page |
+| Is the preview genuinely executable? | Exact checked-in implementation file rendered and loaded by the same preview | Build/test byte parity for registered source and scenarios |
+| How do I exercise difficult states? | Scenario selector, reset semantics, names for pending, denied, conflict, error and unknown where applicable | Each relevant scenario can be reached deterministically; no hidden live API |
+| What must I copy or integrate? | Implementation source path, companion style/fixture/scenario/adapter paths, runtime assumptions | A consumer can identify *all* required files without guessing |
+| What is the license and safe usage? | Repository license reference if established, attribution requirements if applicable, demo/data limitations | No invented license grant; unresolved license blocks a packaged distribution |
+| What must my application implement? | Authentication/authorization, adapter, persistence, status reconciliation, analytics and data privacy boundaries | A user does not mistake a simulated confirmation for server authority |
+| How do I migrate or report a defect? | Canonical source link, version/revision and test evidence / issue workflow | Deep links resolve to the source version being reviewed |
+
+**Source completeness rule:** showing `ReviewWorkspace.js` alone is not a complete distributable feature; the synthetic adapter, scenarios, CSS and host runtime are separately required for its demonstration. The same is true for composed patterns with global preview controls and local CSS. An excerpt can be copied as reference text, but not labeled as a complete installation.
+
+### Copy and download interaction contract
+
+If a copy-source control is later added, use a semantic button labeled with *what* is copied, provide a confirmation or failure status that is perceivable without color, preserve keyboard focus and state, and provide a manual selection fallback if clipboard permission is denied. Do not replace unmodified source with prettified pseudo-code without a visible distinction. The copied payload should exclude ephemeral sandbox host elements while clearly listing the missing dependencies and matching provenance. Downloadable examples need a manifest with exact source/scenario/CSS/adapter files and their revision, and a reviewed license before exposing a downloadable archive.
+
+A source inspector should offer text wrapping or horizontal scrolling with keyboard access for long lines; snippets must preserve indentation, code characters and tab behavior. A details disclosure is valid only if its summary is an operable, descriptive control. Never auto-copy to clipboard when opening a page.
+
+### Reuse decision and package deferral
+
+- **Reference source:** educational and inspectable example, without versioned API support, import-ready structure, distribution or product security guarantees.
+- **Copyable snippet:** exact excerpt for inspection or experimentation, with dependencies and license scope disclosed; not automatically a supported integration.
+- **Downloadable demo:** complete fixture + source + style + host manifest with a declared revision; still synthetic.
+- **Published package:** separate release decision requiring API owner, semantic versioning, compatibility support, dependency/license audit, security hardening, real consumer tests, changelog and a rollback path.
+
+**Default:** do not publish a package just to make an example portable. Promotion to a package needs explicit cross-context demand and maintainer approval. A copy button itself is optional and should be prioritized based on user task evidence, not assumed to solve discoverability.
+
+### Evaluation protocol
+
+Give a developer an unprompted task to find a canonical component, inspect a complex error state, identify required integration files, and explain why the example is not safe to paste into a production app unchanged. Record **correct source path**, **missing dependencies found**, **time to answer**, **incorrect assumptions**, **keyboard/AT operation** and **success/failure**. Compare against a baseline; don't assert ease of reuse from available links alone.
+
+**Current repository evidence:** the static generator displays the actual checked-in JavaScript, provides optional synthetic adapter inspection and source links, and its tests verify byte parity. A one-click source copy/download and installable package do **not** currently exist. **NOT VERIFIED:** human developer task study, source-copy usability, distribution license clearance and package adoption. No human developer task study or license clearance is recorded; [KG-11 work package](../docs/visual-catalog-refactor/gap-work/kg11-source-usability.md) tracks those decisions.

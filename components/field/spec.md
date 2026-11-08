@@ -40,3 +40,7 @@ Use semantic text/muted/error/spacing/focus tokens. Layout uses logical properti
 **Canonical ID:** `component.field` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** consolidate repeated label/help/error wrappers without centralizing validation business rules. Proposed documentation only.
 
 Related: [Input](../input/spec.md), [Select](../select/spec.md), [Checkbox](../checkbox/spec.md), [accessibility](../../guidance/accessibility.md), [interaction recovery](../../patterns/interaction-states-and-recovery.md). Reference: [WCAG 2.2](../../governance/references.md).
+
+## Phase 5 executable reference (2026-11-08; verification scope)
+
+An actual [Field reference implementation](../../site/src/implementations/components/field/Field.js), its [synthetic scenario manifest](../../site/src/implementations/components/field/scenarios.js), and token-aware [preview styles](../../site/src/implementations/components/field/Field.css) now exist in the embedded visual catalog. The catalog renders the checked-in reference source and exposes the same source for inspection. This **does not** promote the specification out of `proposed` or establish production adoption, WCAG conformance, real persistence or business validation. The earlier evidence table records the historical documentation-only state; keyboard/AT, real-browser behavior, long-content and visual performance still require observed review. See [Phase 5 gate](../../docs/visual-catalog-refactor/11-phase-5-core-controls.md).

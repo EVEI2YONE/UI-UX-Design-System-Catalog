@@ -21,3 +21,102 @@ jobs:
 
       - name: Test deterministic agent lookup
         run: python3 -m unittest discover -s tests -v
+
+      - name: Generate agent discovery and provenance audit
+        run: python3 scripts/audit_discovery.py --output site/artifacts/phase9/discovery-audit.json
+      - name: Retain discovery audit as CI evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-discovery-audit
+          path: site/artifacts/phase9/discovery-audit.json
+          if-no-files-found: ignore
+
+      - name: Generate static visual catalog
+        run: python3 site/build.py
+        env:
+          CATALOG_SOURCE_REF: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Test site routes, source and fallback
+        run: python3 -m unittest discover -s site/tests -v
+
+      - name: Test executable Button reference source
+        run: node --test site/tests/button-runtime.test.cjs
+      - name: Parse browser preview scripts
+        run: |
+          node --check site/src/previews/preview-runner.js
+          node --check site/src/implementations/components/button/Button.js
+          node --check site/src/implementations/components/button/scenarios.js
+
+      - name: Test remaining core component references
+        run: node --test site/tests/core-controls-runtime.test.cjs
+      - name: Parse remaining component reference scripts
+        run: |
+          for component in input field select checkbox dialog; do
+            case "$component" in
+              input) source=Input ;;
+              field) source=Field ;;
+              select) source=Select ;;
+              checkbox) source=Checkbox ;;
+              dialog) source=Dialog ;;
+            esac
+            node --check "site/src/implementations/components/$component/$source.js"
+            node --check "site/src/implementations/components/$component/scenarios.js"
+          done
+
+      - name: Test composed pattern source behaviors
+        run: node --test site/tests/patterns-runtime.test.cjs
+      - name: Parse all composed pattern scripts
+        run: |
+          for pattern in form navigation search-filter data-tables recovery; do
+            case "$pattern" in
+              form) source=Form ;;
+              navigation) source=Navigation ;;
+              search-filter) source=SearchFilter ;;
+              data-tables) source=DataTables ;;
+              recovery) source=Recovery ;;
+            esac
+            node --check "site/src/implementations/patterns/$pattern/$source.js"
+            node --check "site/src/implementations/patterns/$pattern/scenarios.js"
+          done
+
+      - name: Test review workspace state and synthetic adapter
+        run: node --test site/tests/review-workspace-runtime.test.cjs
+      - name: Parse feature reference source and fixtures
+        run: |
+          node --check site/src/implementations/features/review-workspace/ReviewWorkspace.js
+          node --check site/src/implementations/features/review-workspace/mock-adapter.js
+          node --check site/src/implementations/features/review-workspace/scenarios.js
+
+
+  browser-check:
+    name: Chromium interaction and axe smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build canonical site
+        run: python3 site/build.py
+        env:
+          CATALOG_SOURCE_REF: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Install browser audit dependencies
+        run: npm install --no-save --no-package-lock --prefix site playwright@1.56.1 axe-core@4.10.3
+      - name: Install Chromium and operating system dependencies
+        run: ./site/node_modules/.bin/playwright install --with-deps chromium
+      - name: Serve static site for real browser tests
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory site/dist > /tmp/catalog-site.log 2>&1 &
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            if curl --fail --silent http://127.0.0.1:8765/catalog/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/catalog-site.log
+          exit 1
+      - name: Test real browser flows and axe serious/critical findings
+        run: node site/tests/browser-audit.cjs
+      - name: Upload browser audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-browser-audit
+          path: site/artifacts/phase8/
+          if-no-files-found: ignore
