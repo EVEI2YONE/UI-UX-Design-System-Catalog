@@ -29,15 +29,15 @@ When these criteria are not met, **extend an existing pattern** or keep the impl
 
 The registry `layer` values already classify *knowledge*, including `experiences`; they do **not** currently represent this one-to-one executable directory hierarchy. Preserve the metadata and existing IDs during Phase 1. Any additional representation mapping belongs to Phase 2.
 
-## Proposed feature candidates (NOT registered)
+## Feature concept records and registration distinction
 
-- **Review workspace:** inspect queue item evidence, choose approve/return/reject, handle uncertain outcome and restore focus. Refer to `patterns/agentic-actions-and-approvals.md` for *agent-initiated* consequential approvals, and `patterns/interaction-states-and-recovery.md` for generic outcome semantics. The human administrative review domain is not equivalent to AI-agent approvals.
-- **Data workspace:** searchable/filterable records, paging, detail view and bounded bulk actions; extend `patterns/data-tables.md` and `patterns/search-and-filter.md`.
-- **Settings center:** executable subset of `patterns/account-and-settings-portal.md`; do **not** duplicate its extensive normative settings lifecycle and section guidance.
-- **Onboarding journey:** configurable progress, recovery and draft steps; reuse `patterns/task-flows-and-information-architecture.md` and forms/recovery contracts.
-- **Analytics overview:** accessible representation of synthetic metrics; reuse `guidance/data-visualization-and-dashboards.md`; no real data accuracy claim.
+- **Review workspace:** [registered canonical specification](review-workspace/spec.md) with a synthetic reference, still `proposed` and not human-approved; human administrative review differs from AI-agent approvals.
+- **Data workspace:** [F-02 durable candidate brief](../docs/visual-catalog-refactor/concepts/f02-data-workspace.md) — deferred; existing table and search/filter owners retained.
+- **Settings center:** [F-03 durable candidate brief](../docs/visual-catalog-refactor/concepts/f03-settings-center.md) — deferred; must not duplicate the canonical account/settings portal.
+- **Onboarding journey:** [F-04 durable candidate brief](../docs/visual-catalog-refactor/concepts/f04-onboarding-flow.md) — deferred; reuse existing task-flow and recovery contracts.
+- **Analytics overview:** [F-05 durable candidate brief](../docs/visual-catalog-refactor/concepts/f05-analytics-overview.md) — deferred; no real data accuracy claim.
 
-**Decision history:** Phase 1 deferred feature registration. Phase 7 registers **only** `feature.review-workspace` after its concept/reuse audit and authoring contract; expansions require separate substantiation and owner review. The other candidates above remain proposals.
+**Decision history:** Phase 1 deferred feature registration. Phase 7 registered **only** `feature.review-workspace` (canonical status still `proposed`); the other four feature concepts and five Stage 2 compositions now have [individual, noncanonical briefs and an auditable decision ledger](../docs/visual-catalog-refactor/17-concept-inventory-and-decisions.md). They are **documented candidates, not registry entries or approved implementations**. Any promotion requires separate substantiation and named owner review.
 
 ## Entry authoring contract
 
