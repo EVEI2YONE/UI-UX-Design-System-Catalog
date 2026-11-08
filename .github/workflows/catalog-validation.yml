@@ -21,3 +21,8 @@ jobs:
 
       - name: Test deterministic agent lookup
         run: python3 -m unittest discover -s tests -v
+
+      - name: Generate static visual catalog
+        run: python3 site/build.py
+      - name: Test site routes, source and fallback
+        run: python3 -m unittest discover -s site/tests -v
