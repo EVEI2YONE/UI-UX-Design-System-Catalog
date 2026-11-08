@@ -1,4 +1,4 @@
-# Embedded visual catalog website (Phases 3–6)
+# Embedded visual catalog website (Phases 3–7)
 
 This directory contains the working **static knowledge browser with isolated live reference previews** for the UI/UX Design System Catalog. It is built from the repository's canonical Markdown and catalog/index.json, not a second manually maintained knowledge database.
 
@@ -11,6 +11,7 @@ Requires **Python 3.10+** to build, using only its standard library; **Node.js 1
     node --test site/tests/button-runtime.test.cjs
     node --test site/tests/core-controls-runtime.test.cjs
     node --test site/tests/patterns-runtime.test.cjs
+    node --test site/tests/review-workspace-runtime.test.cjs
     python3 -m http.server 8000 --directory site/dist
 
 Open http://localhost:8000/ in a browser. Do not open generated pages via file:// because absolute asset URLs assume a server root.
@@ -81,3 +82,11 @@ Five existing canonical pattern concepts now have real source-linked, interactiv
 Form validation and simulated service outcomes preserve values and distinguish a known error from an unknown result; navigation includes active location semantics and disclosure; search/filter exposes honest empty/error states; tables are semantic, paginated and use only local selection; recovery refuses a duplicate submission while the outcome is unknown. All are **synthetic examples**, not product integrations or persisted features. Current pattern references are standalone classic JavaScript using native controls; literal reuse of the individual component runtime scripts remains an explicit architecture follow-up rather than a claim of package-level composition.
 
 `node --test site/tests/patterns-runtime.test.cjs` checks scenario registration and the actual source's form validation, filtering, paging and recovery transition logic. Python site tests check all five source paths and preview frames. Real keyboard, assistive technology, zoom/RTL, visual and performance verification remains pending. Details: [Phase 6 evidence ledger](../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).
+
+## Phase 7 — complete synthetic feature reference
+
+A single new canonical feature, [Review Workspace](../features/review-workspace/spec.md) (`feature.review-workspace`), demonstrates a human review queue with record selection, detail evidence, reason capture, approve/return/reject decisions, explicit pending/confirmed/denied/conflict/error/unknown outcomes, and focus recovery intent. It uses only synthetic fixture records and an in-memory adapter; **no server, authorization enforcement, persistence, audit or real business rules**.
+
+Sources: `site/src/implementations/features/review-workspace/ReviewWorkspace.js`, `mock-adapter.js`, `scenarios.js`, `ReviewWorkspace.css`. The preview build copies the reviewed `mock-adapter.js` before the actual UI source, and exposes both scripts verbatim in source viewers. All scripts remain inside the existing trusted-source iframe sandbox with `allow-scripts` but no `allow-same-origin`. The example's local status verification intentionally remains unresolved after lost acknowledgement; it must not pretend a backend was queried.
+
+The registry is now **54 entries**, with 6 components, 5 patterns and 1 feature linked to actual reference sources; the other 42 entries remain specification-only. Existing canonical IDs and paths are preserved. `node --test site/tests/review-workspace-runtime.test.cjs` tests the adapter decisions and source-level UI state transitions using the same checked-in code. This does not establish actual browser keyboard/focus, assistive-technology compatibility, responsive contrast or production readiness. See [Phase 7 evidence](../docs/visual-catalog-refactor/13-phase-7-review-workspace.md).
