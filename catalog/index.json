@@ -970,6 +970,7 @@
         "components",
         "forms"
       ],
+      "capabilities": ["action","activation","pending-state","keyboard-operation"],
       "use_when": [
         "initiating an action",
         "defining an asynchronous action button"
@@ -1006,6 +1007,7 @@
         "components",
         "forms"
       ],
+      "capabilities": ["text-entry","validation","label-association"],
       "use_when": [
         "collecting short text input",
         "providing accessible editable fields"
@@ -1042,6 +1044,7 @@
         "components",
         "forms"
       ],
+      "capabilities": ["bounded-choice","selection","keyboard-operation"],
       "use_when": [
         "choosing from a bounded list",
         "specifying native versus custom selection"
@@ -1078,6 +1081,7 @@
         "components",
         "forms"
       ],
+      "capabilities": ["independent-selection","mixed-state","keyboard-operation"],
       "use_when": [
         "toggling an independent choice",
         "representing mixed group selection"
@@ -1119,6 +1123,7 @@
         "forms",
         "overlays"
       ],
+      "capabilities": ["modal-dialog","focus-lifecycle","dismissal","confirmation"],
       "use_when": [
         "building focused foreground tasks",
         "managing modal focus and dismissal",
@@ -1157,6 +1162,7 @@
         "components",
         "forms"
       ],
+      "capabilities": ["field-label","help-text","error-association"],
       "use_when": [
         "grouping control labels and errors",
         "displaying accessible validation guidance"
