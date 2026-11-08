@@ -26,6 +26,7 @@ The site is a *reference implementation environment*, not an assurance that a sc
 | [05 — Preview and quality contracts](05-preview-quality-contracts.md) | How does a working example prove its behavior and quality? | Fixture, interaction, performance, readability and a11y contracts |
 | [06 — Migration and PR roadmap](06-migration-pr-roadmap.md) | How is the overhaul delivered within this same PR? | Eleven sequential phase gates, deliverables, acceptance and rollback |
 | [07 — Phase 1 context and decisions](07-phase-1-context-and-decisions.md) | How do existing knowledge concepts map to executable site tiers? | Context audit, source ownership, non-duplication decisions and open questions |
+| [08 — Phase 2 metadata compatibility](08-phase-2-registry-compatibility.md) | How do we add source/preview metadata without disrupting search? | Schema changes, validator coverage, test limitations and release gates |
 
 ## Non-negotiable boundaries
 
