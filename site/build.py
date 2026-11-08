@@ -205,6 +205,18 @@ def reference_preview(entry, out):
     base.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(source, base / "source.js")
     shutil.copyfile(manifest, base / "scenarios.js")
+    # Optional, colocated, reviewed synthetic adapter for multi-step references.
+    adapter = source.parent / "mock-adapter.js"
+    adapter_script = ""
+    adapter_view = ""
+    if adapter.is_file():
+        if not adapter.resolve().is_relative_to(root_impl):
+            raise ValueError("Unsafe mock adapter location")
+        shutil.copyfile(adapter, base / "mock-adapter.js")
+        adapter_script = '<script src="/reference/' + html.escape(name, quote=True) + '/mock-adapter.js"></script>'
+        adapter_view = ('<details class="source-details"><summary>Inspect synthetic adapter source</summary>'
+                        '<p>In-memory fixtures only. No real authorization or persistence.</p>'
+                        '<pre><code>' + html.escape(adapter.read_text(encoding="utf-8")) + '</code></pre></details>')
     stylesheet = source.with_suffix(".css")
     if stylesheet.is_file():
         shutil.copyfile(stylesheet, base / "source.css")
@@ -224,6 +236,7 @@ def reference_preview(entry, out):
              '<div class="stage"><div id="stage"></div></div>'
              '<p class="result" id="preview-result" role="status" aria-live="polite"></p>'
              '<script src="/reference/' + html.escape(name, quote=True) + '/scenarios.js"></script>'
+             + adapter_script +
              '<script src="/reference/' + html.escape(name, quote=True) + '/source.js"></script>'
              '<script src="/assets/preview-runner.js"></script></body></html>')
     write(out, "/previews/" + name + "/", frame)
@@ -239,7 +252,7 @@ def reference_preview(entry, out):
             '<p>This is the same checked-in file loaded by the reference preview. '
             'Scenario definitions are maintained beside it.</p>'
             '<p><code>' + html.escape(impl["source_path"]) + '</code></p>'
-            '<pre><code>' + source_text + '</code></pre></details></section>')
+            '<pre><code>' + source_text + '</code></pre></details>' + adapter_view + '</section>')
 
 
 
