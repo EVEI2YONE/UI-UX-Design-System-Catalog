@@ -26,3 +26,11 @@ jobs:
         run: python3 site/build.py
       - name: Test site routes, source and fallback
         run: python3 -m unittest discover -s site/tests -v
+
+      - name: Test executable Button reference source
+        run: node --test site/tests/button-runtime.test.cjs
+      - name: Parse browser preview scripts
+        run: |
+          node --check site/src/previews/preview-runner.js
+          node --check site/src/implementations/components/button/Button.js
+          node --check site/src/implementations/components/button/scenarios.js
