@@ -8,9 +8,13 @@ const form=container.querySelector("form"),name=form.elements.namedItem("name"),
 name.value=cfg.name;email.value=cfg.email;
 function clearErrors(){summary.hidden=true;summary.replaceChildren();for(const input of [name,email]){input.removeAttribute("aria-invalid");input.removeAttribute("aria-errormessage");const error=container.querySelector("#"+input.id+"-error");if(error)error.remove();}}
 function setErrors(errors){clearErrors();const keys=Object.keys(errors);if(!keys.length)return false;const heading=document.createElement("strong");heading.textContent="Check these fields:";const list=document.createElement("ul");summary.append(heading,list);keys.forEach(function(key){const input=key==="name"?name:email;const li=document.createElement("li");const link=document.createElement("a");link.href="#"+input.id;link.textContent=errors[key];link.addEventListener("click",function(event){event.preventDefault();input.focus();});li.append(link);list.append(li);input.setAttribute("aria-invalid","true");const id=input.id+"-error";input.setAttribute("aria-errormessage",id);let message=container.querySelector("#"+id);if(!message){message=document.createElement("p");message.id=id;message.className="pattern-error";input.insertAdjacentElement("afterend",message);}message.textContent=errors[key];});summary.hidden=false;summary.focus();status.textContent="Form was not submitted. Correct the listed fields.";return true;}
-function finish(kind){submit.disabled=false;status.textContent=kind==="uncertain"?"Status unknown. Do not submit again until the server result has been verified.":kind==="error"?"Simulated service error. Your entries are still here. You may retry.":"Example validated locally. Nothing was saved to a server.";}
+function finish(kind){submit.disabled=kind==="uncertain"||kind==="success";status.textContent=kind==="uncertain"?"Status unknown. Do not submit again until the server result has been verified.":kind==="error"?"Simulated service error. Your entries are still here. You may retry.":"Example validated locally. Nothing was saved to a server.";}
 form.addEventListener("submit",function(e){e.preventDefault();if(setErrors(validate(name.value,email.value)))return;clearErrors();submit.disabled=true;status.textContent="Checking simulated submission…";finish(cfg.state==="unknown"?"uncertain":cfg.state==="server-error"?"error":"success");});
-form.addEventListener("reset",function(){clearErrors();status.textContent="Form cleared. Nothing was saved.";});
+form.addEventListener("reset",function(event){
+  // Resetting form fields must never silently unlock an uncertain mutation.
+  if(cfg.state==="unknown"){event.preventDefault();status.textContent="Outcome still unknown. Verify authoritative status before retrying; clearing the form cannot unlock this request.";return;}
+  clearErrors();submit.disabled=false;status.textContent="Form cleared. Nothing was saved.";
+});
 if(cfg.state==="invalid"){setErrors(validate(name.value,email.value));}
 if(cfg.state==="pending"){submit.disabled=true;status.textContent="Simulated pending request. Duplicate submission unavailable.";}
 return form;
