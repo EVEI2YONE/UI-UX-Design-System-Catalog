@@ -3,6 +3,7 @@
 These are lab/build budgets, not field Web Vitals or accessibility certification.
 """
 import json
+import re
 import sys
 import tempfile
 import unittest
@@ -47,7 +48,11 @@ class QualityBudgets(unittest.TestCase):
             content = (self.output / build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
             with self.subTest(entry=entry["id"]):
                 self.assertNotIn("<script>", content)
-                self.assertNotIn("allow-same-origin", content)
+                # Security guidance may discuss risky iframe options; assert
+                # against the real rendered attributes, not all page prose.
+                for frame in re.findall(r"<iframe\\b[^>]*>", content, flags=re.I):
+                    self.assertIn('sandbox="allow-scripts"', frame)
+                    self.assertNotIn("allow-same-origin", frame)
                 self.assertIn('href="/assets/styles.css"', content)
                 self.assertIn('href="https://github.com/', content)
 
