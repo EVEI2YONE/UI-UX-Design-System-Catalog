@@ -1,4 +1,4 @@
-# Embedded visual catalog website (Phases 3–8)
+# Embedded visual catalog website (Phases 3–9)
 
 This directory contains the working **static knowledge browser with isolated live reference previews** for the UI/UX Design System Catalog. It is built from the repository's canonical Markdown and catalog/index.json, not a second manually maintained knowledge database.
 
@@ -33,8 +33,8 @@ The build emits site/dist/ (generated; do not commit it). Serve at the **site ro
 - Canonical identity, aliases, relationships, and review status: ../catalog/index.json
 - Canonical norms and contracts: existing ../components/, ../patterns/, ../guidance/, etc.
 - Static catalog shell: site/build.py, site/static/
-- Future executable examples: site/src/implementations/ (Phase 4+; not yet present)
-- Future preview isolation and scenarios: site/src/previews/ (Phase 4+; not yet present)
+- Executable reference sources: site/src/implementations/ (12 reviewed-source examples, not released packages)
+- Shared iframe preview isolation/scenarios: site/src/previews/ and colocated implementation scenario manifests
 - Build output: site/dist/ (ignored, generated)
 - Build/regression tests: site/tests/
 
@@ -98,3 +98,16 @@ The repository now runs a separate **Chromium interaction/axe CI job** as well a
 The build also enforces static boot CSS **under 32 KiB**, search JS **under 8 KiB** and each compiled preview source/fixture/style set **under 64 KiB**. These are local engineering budgets, not field Core Web Vitals. Browser testing identified a real form/sandbox interaction issue and a duplicate-submit risk under unknown outcomes; both are fixed, and theme switching no longer remounts the editable example. Manual screen readers, full keyboard task review, 200–400% zoom, RTL, visual screenshot inspection and production performance remain **NOT VERIFIED**; don't claim WCAG conformance based on a green axe job.
 
 Browser audit dependencies are installed only in CI, not needed by a visitor or to build the site. For a local browser run, follow the commands in `catalog-validation.yml` and launch `node site/tests/browser-audit.cjs` with a static server running on port 8765.
+
+## Phase 9 — human and agent discovery parity
+
+The canonical registry and this static site serve the same **54** entries. The website's `catalog-search.json` is **generated**, not a separate registry. The curated [Phase 9 task corpus](../tests/fixtures/phase9_retrieval_cases.json) checks expected first matches for component, pattern, feature and guidance tasks. [Phase 9 tests](../tests/test_phase9_discovery.py) verify all document routes, relationships, 12 implementation/fixture sources, and website search export parity. A contributor can generate a reproducible [provenance report](../scripts/audit_discovery.py):
+
+```sh
+python3 scripts/audit_discovery.py --output site/artifacts/phase9/discovery-audit.json
+python3 -m unittest discover -s tests -v
+```
+
+CI preserves the report as the `catalog-discovery-audit` workflow artifact. Real Chromium also tests that a **human approval queue** task search opens `feature.review-workspace`, matching the canonical agent resolver. The recorded `synthetic review` miss is a discovery gap, **not** grounds to silently rewrite ranking logic. See the [Phase 9 handoff](../docs/visual-catalog-refactor/15-phase-9-agent-governance-handoff.md).
+
+To reuse a reference, start with the canonical spec, source and scenarios; treat code as educational/synthetic until reviewed for the target application. Source links are currently generated for `main`, so newly committed branch-only files will not resolve at those GitHub URLs until the PR merges; preview itself works in the built site. If PR preview hosting is needed, introduce a reviewed ref-aware URL strategy rather than pretending the public deployment exists.
