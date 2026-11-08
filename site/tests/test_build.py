@@ -179,6 +179,33 @@ class SiteBuildTests(unittest.TestCase):
         self.assertNotIn("Phase 6 executable pattern reference", guidance)
         self.assertIn("complex forms", guidance.lower())
 
+    def test_public_pages_contain_no_visible_phase_batch_or_pr_markers(self):
+        import re
+        from html.parser import HTMLParser
+
+        class VisibleText(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.skip = 0
+                self.parts = []
+            def handle_starttag(self, tag, attrs):
+                if tag in ("code", "pre", "script", "style"):
+                    self.skip += 1
+            def handle_endtag(self, tag):
+                if tag in ("code", "pre", "script", "style"):
+                    self.skip = max(0, self.skip - 1)
+            def handle_data(self, text):
+                if self.skip == 0:
+                    self.parts.append(text)
+
+        for entry in self.entries:
+            with self.subTest(entry=entry["id"]):
+                html = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
+                parser = VisibleText()
+                parser.feed(html)
+                text = " ".join(parser.parts)
+                self.assertNotRegex(text, re.compile(r"\\b(?:phase|batch)\\s*\\d+\\b|\\bPR\\s*#\\d+\\b", re.I))
+
     def test_canonical_markdown_and_historical_anchors_are_preserved(self):
         path = ROOT / "components/button/spec.md"
         source = path.read_text(encoding="utf-8")
