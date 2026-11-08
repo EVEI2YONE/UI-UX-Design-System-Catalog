@@ -1,4 +1,4 @@
-# Embedded visual catalog website (Phases 3–5)
+# Embedded visual catalog website (Phases 3–6)
 
 This directory contains the working **static knowledge browser with isolated live reference previews** for the UI/UX Design System Catalog. It is built from the repository's canonical Markdown and catalog/index.json, not a second manually maintained knowledge database.
 
@@ -10,6 +10,7 @@ Requires **Python 3.10+** to build, using only its standard library; **Node.js 1
     python3 -m unittest discover -s site/tests -v
     node --test site/tests/button-runtime.test.cjs
     node --test site/tests/core-controls-runtime.test.cjs
+    node --test site/tests/patterns-runtime.test.cjs
     python3 -m http.server 8000 --directory site/dist
 
 Open http://localhost:8000/ in a browser. Do not open generated pages via file:// because absolute asset URLs assume a server root.
@@ -72,3 +73,11 @@ The live catalog registers all six current canonical component specifications as
 Each new control lives in `site/src/implementations/components/<name>/` as a source `.js` file, colocated `scenarios.js` and matching CSS. `site/build.py` derives the iframe and code viewer directly from the registered files; unregistered concepts remain **Specification only**. The references deliberately have no product-specific APIs or persistence and do not constitute an npm component package.
 
 Node source-level tests in `site/tests/core-controls-runtime.test.cjs` check label/error links, select option states, checkbox mixed state, dialog callback/focus-return intent, and no duplicate business side effects. These tests cannot substitute for real browser/keyboard/screen-reader testing. See [Phase 5 evidence ledger](../docs/visual-catalog-refactor/11-phase-5-core-controls.md).
+
+## Phase 6 — working composed pattern references
+
+Five existing canonical pattern concepts now have real source-linked, interactive examples: [forms](../patterns/forms.md), [navigation](../patterns/navigation.md), [search/filter](../patterns/search-and-filter.md), [data tables](../patterns/data-tables.md), and [interaction recovery](../patterns/interaction-states-and-recovery.md). Their sources live under `site/src/implementations/patterns/` with colocated `scenarios.js` and CSS. The source viewer reads exactly the checked-in file executed inside the existing sandboxed iframe. The pattern viewport is taller than the core component preview to accommodate errors, tables and multiple actions.
+
+Form validation and simulated service outcomes preserve values and distinguish a known error from an unknown result; navigation includes active location semantics and disclosure; search/filter exposes honest empty/error states; tables are semantic, paginated and use only local selection; recovery refuses a duplicate submission while the outcome is unknown. All are **synthetic examples**, not product integrations or persisted features. Current pattern references are standalone classic JavaScript using native controls; literal reuse of the individual component runtime scripts remains an explicit architecture follow-up rather than a claim of package-level composition.
+
+`node --test site/tests/patterns-runtime.test.cjs` checks scenario registration and the actual source's form validation, filtering, paging and recovery transition logic. Python site tests check all five source paths and preview frames. Real keyboard, assistive technology, zoom/RTL, visual and performance verification remains pending. Details: [Phase 6 evidence ledger](../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).
