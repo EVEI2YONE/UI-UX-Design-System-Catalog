@@ -94,7 +94,7 @@ A feature reference may depend on components/patterns and synthetic adapters but
 | Feature acceptance contract available | New template + feature README proposed |
 | Registered IDs and schema unchanged in Phase 1 | Must verify in branch diff |
 | Documentation/reference link integrity | To verify with available checks |
-| Existing Python catalog validator/unit tests | NOT VERIFIED until executed |
+| Existing Python catalog validator/unit tests | PASS on subsequent GitHub Actions commit `6240abf`; [workflow 42484090737](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42484090737) |
 | Manual/browser/assistive technology checks | NOT APPLICABLE to this docs-only phase; future implementation NOT VERIFIED |
 
-**Phase gate:** request review of this ledger and the narrow architecture appendices; do not claim the taxonomy is approved because it is written.
+**Phase gate:** automated catalog tests passed on a subsequent commit; human architecture approval is still pending. This confirms no detected catalog regression but does not establish that the taxonomy is formally approved.
