@@ -1,7 +1,7 @@
 # Source readability and maintainability audit
 
 **Knowledge-gap IDs:** KG-08  
-**Status:** open work package — not completed or approved  
+**Status:** knowledge specification FILLED; verification/implementation follow-up OPEN, no human approval  
 **Origin:** [original gap audit](../03-knowledge-gap-audit.md) and [durable concept / closure ledger](../17-concept-inventory-and-decisions.md)  
 **Recorded:** 2026-11-08 · **Accountability:** Design-system engineering reviewer (role only; no named assignee)
 
@@ -22,3 +22,9 @@ Source audit notes by file, named reviewer, accepted refactor decision and regre
 Do not add duplicate conceptual guidance or claim readability has been human verified because code parses.
 
 This is a **repository-only durable follow-up**, not a live website concept, canonical catalog ID or a new executable implementation. Keep status open until the specified review produces evidence; if the requirement is rejected or waived, record the responsible owner and decision rather than silently deleting the work package. The current [Phase 10 release no-go review](../16-phase-10-release-readiness.md) remains in force.
+
+## Knowledge-development delivery and evidence split
+
+**Canonical knowledge:** [New substantive guidance](../../../architecture/component-model.md#executable-reference-maintainability-and-composition-contract). The reusable source-ownership, readability, extraction, styling and verification decisions have been authored in the canonical component model. Named engineer assessment of every reference and behavior-preserving code improvements remain open.
+
+**Context and research ledger:** [Five context-gathered knowledge packages](../20-knowledge-development-batches.md). This work package remains open only for the outstanding observed evidence, implementation or human decision—not because the guidance is still missing.
