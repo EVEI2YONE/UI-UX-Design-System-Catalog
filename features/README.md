@@ -2,7 +2,7 @@
 
 **Purpose:** define catalog-owned, reusable **reference experiences** that compose existing canonical controls and interaction patterns. This directory holds specifications and safe integration boundaries, **not** production application logic, deployed services or publishable packages.
 
-**Status:** taxonomy approved for proposal within Phase 1; feature entry candidates remain **unregistered and unreviewed** until their own reuse/discovery audit and canonical specification exist. No feature implementation, live preview, or user-validation outcome is claimed by this README.
+**Status:** feature-reference taxonomy proposed in Phase 1. **One canonical feature reference is now registered:** [Review Workspace](review-workspace/spec.md), with an executable *synthetic* preview and unreviewed design contract. Further candidate features remain unregistered. No product adoption, user-validation outcome or production integration is claimed.
 
 ## When a feature deserves its own entry
 
@@ -37,7 +37,7 @@ The registry `layer` values already classify *knowledge*, including `experiences
 - **Onboarding journey:** configurable progress, recovery and draft steps; reuse `patterns/task-flows-and-information-architecture.md` and forms/recovery contracts.
 - **Analytics overview:** accessible representation of synthetic metrics; reuse `guidance/data-visualization-and-dashboards.md`; no real data accuracy claim.
 
-**Decision:** Phase 1 does not register these IDs or create premature `spec.md` placeholders. Phase 7 starts with the first end-to-end audited reference concept; expansions require separate substantiation.
+**Decision history:** Phase 1 deferred feature registration. Phase 7 registers **only** `feature.review-workspace` after its concept/reuse audit and authoring contract; expansions require separate substantiation and owner review. The other candidates above remain proposals.
 
 ## Entry authoring contract
 
@@ -54,3 +54,9 @@ The actual JSX/TSX resides under `site/src/implementations/features/<slug>/`; an
 - [Agentic approvals](../patterns/agentic-actions-and-approvals.md)
 - [Catalog lifecycle policy](../governance/lifecycle-and-decisions.md)
 - [Phase 1 discovery ledger](../docs/visual-catalog-refactor/07-phase-1-context-and-decisions.md)
+
+## Phase 7 registered reference
+
+- [Review Workspace](review-workspace/spec.md) — `feature.review-workspace`, a multi-step human review experience with synthetic adapter, inspection, decision reasons, read-only/denied/conflict/error/unknown outcomes and verification-safe handling. The actual implementation is [ReviewWorkspace.js](../site/src/implementations/features/review-workspace/ReviewWorkspace.js) and the separate in-memory source is [mock-adapter.js](../site/src/implementations/features/review-workspace/mock-adapter.js). See [Phase 7 evidence](../docs/visual-catalog-refactor/13-phase-7-review-workspace.md).
+
+**Boundaries:** no real permissions, backend persistence, live product audit logs or customer data. A source-level preview is not evidence of production behavior or a certified accessible feature.
