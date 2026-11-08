@@ -43,10 +43,16 @@
         }
       });
       reference.mount(stage, config);
+      // Changing the scenario replaces controls; restore focus to the selector
+      // rather than leaving keyboard users on a detached DOM node.
     }
     select.value = scenarios[0].id;
-    select.addEventListener("change", render);
-    theme.addEventListener("change", render);
+    select.addEventListener("change", function () { render(); select.focus(); });
+    theme.addEventListener("change", function () {
+      // Theme switches must not reset a user-editable scenario. Keep the
+      // implementation mounted and update inherited semantic theme tokens.
+      document.documentElement.dataset.theme = theme.value;
+    });
     reset.addEventListener("click", function () {
       select.value = scenarios[0].id;
       theme.value = "light";
