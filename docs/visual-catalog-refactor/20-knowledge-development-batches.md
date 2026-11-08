@@ -1,8 +1,8 @@
-# 20 — Knowledge development: five context-gathered work packages
+# 20 — Knowledge development: five context-gathered knowledge topics
 
 **Recorded:** 2026-11-08 · **Single PR:** [#16](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/16), `docs/visual-catalog-refactor-blueprint` · **Canonical registry:** 54 entries, unchanged · **Status:** all five **guidance authoring** tasks committed; human/production evidence explicitly remains open.
 
-This ledger documents the **fresh-context gate before each package**. It distinguishes *observed repository context*, *external normative reference*, *our added synthesis*, and *unverified acceptance*. It is a review artifact, not a competing catalog ID registry. The implementation's technical source and earlier reviews remain linked in their existing files.
+This ledger documents the **fresh-context gate before each knowledge update**. It distinguishes *observed repository context*, *external normative reference*, *our added synthesis*, and *unverified acceptance*. It is a review artifact, not a competing catalog ID registry. The implementation's technical source and earlier reviews remain linked in their existing files.
 
 ## KG-08 — Maintainability and composition architecture
 
@@ -78,7 +78,7 @@ This ledger documents the **fresh-context gate before each package**. It disting
 | KG-12 | UX measurement | **FILLED — study protocol authored** | Participant and agent research |
 | KG-10 | Quality gates | **FILLED — release governance authored** | Hosting/CSP/SCA/license signoff and deployment decision |
 
-**No new canonical IDs; no change to 54 registered concepts; no deployment or package release; no claimed user research.** Each open work-package file remains as a durable record for actual validation, not a duplicate missing knowledge section. Keep [Phase 10's release NO-GO](16-phase-10-release-readiness.md) until its evidence and owner gates are satisfied.
+**No new canonical IDs; no change to 54 registered concepts; no deployment or package release; no claimed user research.** Any remaining validation must be assessed against the canonical contracts and this ledger; standalone tracking stubs have been retired. Keep [Phase 10's release NO-GO](16-phase-10-release-readiness.md) until its evidence and owner gates are satisfied.
 
 ## Verification plan
 

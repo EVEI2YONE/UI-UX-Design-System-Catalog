@@ -14,19 +14,19 @@ DELIVERY = PACK / "20-knowledge-development-batches.md"
 CASES = {
     "KG-08": ("architecture/component-model.md",
               "## Executable reference maintainability and composition contract",
-              "kg08-source-readability.md", ["state ownership", "token", "readability"]),
+              ["state ownership", "token", "readability"]),
     "KG-07": ("guidance/accessibility.md",
               "## Reference-state accessibility, theme and performance acceptance matrix",
-              "kg07-accessibility-performance.md", ["200%", "RTL", "NOT VERIFIED"]),
+              ["200%", "RTL", "NOT VERIFIED"]),
     "KG-11": ("architecture/component-contracts.md",
               "## Source exploration, reuse and distribution contract",
-              "kg11-source-usability.md", ["Copy and download", "license", "NOT VERIFIED"]),
+              ["Copy and download", "license", "NOT VERIFIED"]),
     "KG-12": ("guidance/ux-measurement.md",
               "## Catalog discoverability and source-trust study protocol",
-              "kg12-discovery-research.md", ["First-hit relevance", "participant", "NOT VERIFIED"]),
+              ["First-hit relevance", "participant", "NOT VERIFIED"]),
     "KG-10": ("governance/quality-gates.md",
               "## Static visual catalog hosting, supply-chain and preview security gate",
-              "kg10-release-security-hosting.md", ["frame-ancestors", "npm ci", "NO", "NOT VERIFIED"]),
+              ["frame-ancestors", "npm ci", "NO", "NOT VERIFIED"]),
 }
 
 class KnowledgeDevelopmentTests(unittest.TestCase):
@@ -37,7 +37,7 @@ class KnowledgeDevelopmentTests(unittest.TestCase):
         cls.index = (PACK / "README.md").read_text(encoding="utf-8")
 
     def test_each_gap_has_a_real_canonical_contract_and_evidence_boundary(self):
-        for gap, (path, heading, work, must_have) in CASES.items():
+        for gap, (path, heading, must_have) in CASES.items():
             with self.subTest(gap=gap):
                 text = (ROOT / path).read_text(encoding="utf-8")
                 self.assertEqual(text.count(heading), 1, path)
@@ -47,10 +47,6 @@ class KnowledgeDevelopmentTests(unittest.TestCase):
                     self.assertIn(phrase.casefold(), block.casefold())
                 self.assertIn(gap, self.delivery)
                 self.assertIn(path, self.delivery)
-                followup = (PACK / "gap-work" / work).read_text(encoding="utf-8")
-                self.assertIn("knowledge specification FILLED", followup)
-                self.assertIn("follow-up OPEN", followup)
-                self.assertIn(path, followup)
 
     def test_all_five_independent_context_snapshots_recorded(self):
         heads = re.findall(r"\*\*Before editing, repository head:\*\* `([a-f0-9]{40})`", self.delivery)

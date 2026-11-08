@@ -80,7 +80,7 @@ This table updates the **2026-11-08 baseline** in [the original gap audit](03-kn
 
 ## Visitor-facing copy and unresolved knowledge follow-up
 
-The site retains canonical subject matter but removes build-phase, batch and PR tracking language from page presentation. Source Markdown keeps its original historical text and anchor IDs for provenance. The open review/release/research evidence gaps are now independently recorded as five role-scoped [durable work packages](19-open-knowledge-work.md), with automated preservation tests, without treating the packages as canonical concepts.
+The site retains canonical subject matter but removes build-phase, batch and PR tracking language from page presentation. Source Markdown keeps its original historical text and anchor IDs for provenance. The remaining review, research and release evidence requirements are documented in the [knowledge-development ledger](20-knowledge-development-batches.md) and the canonical guidance, without treating those requirements as separate catalog concepts.
 
 ## Knowledge-development update
 

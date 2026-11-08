@@ -13,7 +13,7 @@ The site is a *reference implementation environment*, not an assurance that a sc
 
 ## Single-PR execution policy
 
-**All overhaul phases are successive commit groups on draft PR [#16](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/16), not separate implementation PRs.** Keep the PR in draft during implementation and use the phase acceptance matrix in [06 — Migration and PR roadmap](06-migration-pr-roadmap.md). There are **11 numbered phases (0–10)** from baseline inventory through release review. Phases 0–9 contain committed plans, source and automated evidence; Phase 10 release review is documented, but its human approval and deployment gates are not met. Do not equate completed automated checks with human visual/AT approval.
+**All overhaul phases are successive commit groups on draft PR [#16](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/16), not separate implementation PRs.** Keep the PR in draft during implementation and use the phase acceptance matrix in [06 — Migration and PR roadmap](06-migration-pr-roadmap.md). There are **11 numbered phases (0–10)** from baseline inventory through release review. Phases 0–9 contain committed plans, source and automated evidence; Phase 10 release review is documented; its historical evidence gates were not demonstrated as complete. PR #16 has since merged, which does not itself establish production approval. Do not equate completed automated checks with human visual/AT approval.
 
 ## Reading order and decisions
 
@@ -36,7 +36,6 @@ The site is a *reference implementation environment*, not an assurance that a sc
 | [15 — Phase 9 agent discovery and governance](15-phase-9-agent-governance-handoff.md) | Can agents and humans find canonical guidance, implementation sources and evidence reliably? | Retrieval acceptance corpus, provenance audit, contributor/agent protocol and Phase 10 handoff |
 | [16 — Phase 10 release readiness](16-phase-10-release-readiness.md) | Is the single PR safe and authorized to merge or deploy? | Final diff reconciliation, CI evidence, no-go decision, outstanding approval gates and rollback plan |
 | [17 — Durable concepts and decisions](17-concept-inventory-and-decisions.md) | Which concepts were proposed, retained, covered by existing guidance or promoted? | Ten Stage 2/3 concept artifacts, evidence/gates, all 12 KG closure assessments and machine-checked decision manifest |
-| [19 — Open knowledge work](19-open-knowledge-work.md) | What evidence and decisions are still needed to close the remaining knowledge gaps? | Five durable owner-role work packages, acceptance criteria, no-release-claim boundaries |
 | [20 — Knowledge development](20-knowledge-development-batches.md) | How were all five remaining knowledge specifications researched and integrated? | Per-batch fresh-context snapshots, canonical contract links, sources, validation boundaries and open acceptance evidence |
 
 ## Non-negotiable boundaries
