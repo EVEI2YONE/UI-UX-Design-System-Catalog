@@ -11,6 +11,10 @@ Keep the existing knowledge catalog as the **canonical source of design guidance
 
 The site is a *reference implementation environment*, not an assurance that a screenshot represents real behavior or that a simulated feature can enforce product authorization.
 
+## Single-PR execution policy
+
+**All future overhaul phases are planned as successive commit groups on draft PR [#16](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/16), not separate implementation PRs.** Keep the PR in draft during implementation and use the phase acceptance matrix in [06 — Migration and PR roadmap](06-migration-pr-roadmap.md). There are **11 numbered phases (0–10)** from baseline inventory through release review; only planning documents are implemented now. Do not label later phases complete without runtime evidence, review and tests.
+
 ## Reading order and decisions
 
 | Document | Question answered | Output |
@@ -20,7 +24,7 @@ The site is a *reference implementation environment*, not an assurance that a sc
 | [03 — Knowledge gap audit](03-knowledge-gap-audit.md) | What is genuinely missing, incomplete or simply not implemented? | Evidence-backed KG ledger, uncertainty, research priority |
 | [04 — Registry and agent discovery](04-registry-agent-discovery.md) | How do humans and agents find exactly the same references? | Backwards-compatible metadata extension and search contract |
 | [05 — Preview and quality contracts](05-preview-quality-contracts.md) | How does a working example prove its behavior and quality? | Fixture, interaction, performance, readability and a11y contracts |
-| [06 — Migration and PR roadmap](06-migration-pr-roadmap.md) | What should be done first without destabilizing retrieval? | PR-sized sequence, gates, ownership, acceptance and rollback |
+| [06 — Migration and PR roadmap](06-migration-pr-roadmap.md) | How is the overhaul delivered within this same PR? | Eleven sequential phase gates, deliverables, acceptance and rollback |
 
 ## Non-negotiable boundaries
 
