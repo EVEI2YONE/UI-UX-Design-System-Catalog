@@ -7,6 +7,7 @@ import os
 import re
 import shutil
 from pathlib import Path, PurePosixPath
+from html.parser import HTMLParser
 from urllib.parse import quote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -80,6 +81,81 @@ def inline(text, source, by_path):
     for mark, markup in replacements:
         text = text.replace(mark, markup)
     return text
+
+
+# Website copy intentionally omits repository migration history. These filters
+# affect only rendered HTML; the canonical Markdown and its historical anchors
+# stay intact in Git and remain accessible through the source link.
+INTERNAL_REFERENCE_HEADING = re.compile(
+    r"^#{2}\\s+Phase\\s+[4-9]\\s+.*(?:reference|implementation)", re.I)
+INTERNAL_STAGE = re.compile(r"\\b(?:Phase|Batch)\\s*\\d+(?:\\s*[-–]\\s*\\d+)?\\b", re.I)
+INTERNAL_PR = re.compile(r"\\b(?:draft\\s+)?PR\\s*#\\d+\\b", re.I)
+
+
+def public_markdown(content):
+    """Hide implementation-only reference addenda, not substantive batch guidance."""
+    lines = content.splitlines()
+    kept, suppress = [], False
+    for line in lines:
+        heading = HEAD.match(line)
+        if heading and len(heading.group(1)) <= 2:
+            if INTERNAL_REFERENCE_HEADING.match(line):
+                suppress = True
+                continue
+            suppress = False
+        if not suppress:
+            kept.append(line)
+    return "\\n".join(kept)
+
+
+def public_label(value):
+    """Convert process-oriented visible labels into lasting subject labels."""
+    value = re.sub(r"^\\s*(?:Batch\\s*\\d+\\s*(?:extension|boundary)?\\s*[-–—:]?\\s*)", "", value, flags=re.I)
+    value = re.sub(r"\\s*[-–—:]?\\s*(?:proposed\\s+)?(?:Batch|Phase)\\s*\\d+\\b(?:\\s+proposal)?", "", value, flags=re.I)
+    value = INTERNAL_STAGE.sub("catalog update", value)
+    value = INTERNAL_PR.sub("repository review", value)
+    return re.sub(r"\\s{2,}", " ", value).strip()
+
+
+class PublicCopy(HTMLParser):
+    """Edit only visible text, never hrefs, IDs, code or raw examples."""
+    def __init__(self):
+        super().__init__(convert_charrefs=False)
+        self.parts, self.literal_depth = [], 0
+
+    def handle_starttag(self, tag, attrs):
+        self.parts.append(self.get_starttag_text())
+        if tag in ("pre", "code"):
+            self.literal_depth += 1
+
+    def handle_endtag(self, tag):
+        self.parts.append("</" + tag + ">")
+        if tag in ("pre", "code"):
+            self.literal_depth = max(0, self.literal_depth - 1)
+
+    def handle_startendtag(self, tag, attrs):
+        self.parts.append(self.get_starttag_text())
+
+    def handle_data(self, data):
+        self.parts.append(data if self.literal_depth else public_label(data))
+
+    def handle_entityref(self, name):
+        self.parts.append("&" + name + ";")
+
+    def handle_charref(self, name):
+        self.parts.append("&#" + name + ";")
+
+    def handle_comment(self, data):
+        self.parts.append("<!--" + data + "-->")
+
+    def clean(self, markup):
+        self.feed(markup)
+        self.close()
+        return "".join(self.parts)
+
+
+def public_guidance(content, source, by_path):
+    return PublicCopy().clean(render_md(public_markdown(content), source, by_path))
 
 
 def render_md(content, source, by_path):
@@ -311,7 +387,7 @@ def build(out):
         src = REPO + quote(e["path"], safe="/-_.")
         body = ('<p class="breadcrumb"><a href="/catalog/">Catalog</a> / ' + category(e).title() + '</p>' + info + preview +
                 '<div class="doc-grid"><article class="markdown" aria-label="Canonical guidance">' +
-                render_md(canonical.read_text(encoding="utf-8"), e["path"], by_path) +
+                public_guidance(canonical.read_text(encoding="utf-8"), e["path"], by_path) +
                 '</article><aside><h2>Source of truth</h2><p>These contracts are maintained in the repository.</p>'
                 '<a href="' + src + '">View Markdown source ↗</a></aside></div>' + related)
         write(out, route(e), page(e["title"], e["summary"], body))
