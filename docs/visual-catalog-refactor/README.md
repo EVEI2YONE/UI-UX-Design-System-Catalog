@@ -37,6 +37,7 @@ The site is a *reference implementation environment*, not an assurance that a sc
 | [16 — Phase 10 release readiness](16-phase-10-release-readiness.md) | Is the single PR safe and authorized to merge or deploy? | Final diff reconciliation, CI evidence, no-go decision, outstanding approval gates and rollback plan |
 | [17 — Durable concepts and decisions](17-concept-inventory-and-decisions.md) | Which concepts were proposed, retained, covered by existing guidance or promoted? | Ten Stage 2/3 concept artifacts, evidence/gates, all 12 KG closure assessments and machine-checked decision manifest |
 | [19 — Open knowledge work](19-open-knowledge-work.md) | What evidence and decisions are still needed to close the remaining knowledge gaps? | Five durable owner-role work packages, acceptance criteria, no-release-claim boundaries |
+| [20 — Knowledge development](20-knowledge-development-batches.md) | How were all five remaining knowledge specifications researched and integrated? | Per-batch fresh-context snapshots, canonical contract links, sources, validation boundaries and open acceptance evidence |
 
 ## Non-negotiable boundaries
 
