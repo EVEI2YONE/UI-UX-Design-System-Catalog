@@ -74,3 +74,35 @@ jobs:
           node --check site/src/implementations/features/review-workspace/ReviewWorkspace.js
           node --check site/src/implementations/features/review-workspace/mock-adapter.js
           node --check site/src/implementations/features/review-workspace/scenarios.js
+
+
+  browser-check:
+    name: Chromium interaction and axe smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build canonical site
+        run: python3 site/build.py
+      - name: Install browser audit dependencies
+        run: npm install --no-save --no-package-lock --prefix site playwright@1.56.1 axe-core@4.10.3
+      - name: Install Chromium and operating system dependencies
+        run: ./site/node_modules/.bin/playwright install --with-deps chromium
+      - name: Serve static site for real browser tests
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 --directory site/dist > /tmp/catalog-site.log 2>&1 &
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            if curl --fail --silent http://127.0.0.1:8765/catalog/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/catalog-site.log
+          exit 1
+      - name: Test real browser flows and axe serious/critical findings
+        run: node site/tests/browser-audit.cjs
+      - name: Upload browser audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-browser-audit
+          path: site/artifacts/phase8/
+          if-no-files-found: ignore
