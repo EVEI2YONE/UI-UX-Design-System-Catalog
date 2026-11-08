@@ -91,6 +91,24 @@ class SiteBuildTests(unittest.TestCase):
                 self.assertIn('src="/reference/' + entry["id"] + '/source.js"', frame)
                 self.assertTrue((self.out / "reference" / entry["id"] / "source.css").is_file())
 
+    def test_review_workspace_has_real_source_and_synthetic_adapter(self):
+        feature = next(e for e in self.entries if e["id"] == "feature.review-workspace")
+        self.assertEqual(feature["implementation"]["status"], "reference")
+        page = (self.out / site_build.route(feature).lstrip("/") / "index.html").read_text(encoding="utf-8")
+        frame = (self.out / "previews" / feature["id"] / "index.html").read_text(encoding="utf-8")
+        directory = ROOT / "site/src/implementations/features/review-workspace"
+        generated = self.out / "reference" / feature["id"]
+        self.assertIn('sandbox="allow-scripts"', page)
+        self.assertNotIn("allow-same-origin", page)
+        self.assertIn("Inspect implementation source", page)
+        self.assertIn("Inspect synthetic adapter source", page)
+        self.assertEqual((directory / "ReviewWorkspace.js").read_bytes(), (generated / "source.js").read_bytes())
+        self.assertEqual((directory / "mock-adapter.js").read_bytes(), (generated / "mock-adapter.js").read_bytes())
+        self.assertEqual((directory / "scenarios.js").read_bytes(), (generated / "scenarios.js").read_bytes())
+        self.assertIn('src="/reference/feature.review-workspace/mock-adapter.js"', frame)
+        self.assertIn('src="/reference/feature.review-workspace/source.js"', frame)
+        self.assertIn("Synthetic interactive reference", frame)
+
     def test_all_unimplemented_entries_stay_spec_only(self):
         for entry in self.entries:
             if "implementation" in entry:
