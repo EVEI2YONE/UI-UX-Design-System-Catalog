@@ -1,24 +1,38 @@
 # 06 — Migration plan, PR sequence and acceptance matrix
 
-## Strategy
+## Strategy — single PR, phase-gated overhaul
 
-Build a single, small visual vertical slice under the existing catalog. Keep knowledge and registry compatibility intact. Document first, create a minimal executable site second, and only then broaden components and feature references. Do not publish packages, deploy to production or merge without separate review.
+**Delivery vehicle:** existing draft PR #16, branch `docs/visual-catalog-refactor-blueprint`, targeting `main`. The phases below are **sequential commit groups on this same branch and PR**, not independent PRs. Keep the PR draft until the complete scope has passed review and quality gates. Do not merge an intermediate phase; each completed phase should have its own commit(s), evidence note, and an updated PR checklist. Some later phases can be deferred only through an explicit scope decision recorded in the PR, not by calling incomplete work finished.
 
-## Suggested PRs
+This is a substantial PR. Use phase checkpoints to make review tractable, with stable commits and narrow diffs per phase. Do not force-push to hide reviewed changes. The primary site reference implementations are embedded in `site/`, not published as an npm package.
 
-| PR | Scope | Dependency | Exit criteria |
+## Phase plan — all on PR #16
+
+| Phase | Goal and main locations | Dependency | Required completion evidence |
 | --- | --- | --- | --- |
-| 0 — Architecture plan | This documentation pack | Current `main` | Reviewer approves boundaries, taxonomy, schema migration and first vertical slice |
-| 1 — Registry contract | Optional preview/source/capability fields, schema migration, examples, agent instructions and lookup tests | PR0 | Existing ID/alias lookup unchanged; validator + unit tests pass |
-| 2 — Site skeleton | `site/` routing, catalog search, static docs, layout, spec-only fallback | PR1 | Build passes; existing entries show correct specs and routes without previews |
-| 3 — First working component | Token foundation + Button implementation and live scenario viewer | PR2 | Real source rendered; keyboard and source parity tests; visual evidence recorded |
-| 4 — Core components | Input/Field, Select, Checkbox, Dialog and state examples | PR3 | No duplicate primitives; contrast/focus/reflow tests on each |
-| 5 — First composed pattern | Async form + uncertain-result recovery, or navigation pattern | PR4 | Interaction/cancellation/recovery checks pass |
-| 6 — Feature pilot | Generic review workspace spec, adapter and interactive source demo | PR5 | No product APIs; decision context, uncertainty, focus and responsive behavior tested |
-| 7 — QA/retrieval hardening | Cross-browser/a11y/perf benchmarks, agent search scenarios, docs handoff | PR2–6 | Evidence-linked quality matrix; documented deferred issues |
-| 8 — Optional deployment | Hosting and public documentation exposure after owner approval | PR7 | Security, performance, release and rollback approvals |
+| **0. Baseline and inventory** | Lock `main` SHA; inventory registry IDs, links, specs, existing tests and agent lookup results; add gap mapping under `docs/visual-catalog-refactor/` | None | Baseline manifest; paths and links; repeatable lookup queries; risks and decisions |
+| **1. Taxonomy and canonical contracts** | Confirm foundations/primitives/components/patterns/features boundaries; extend `architecture/` guidance and `features/` specs only after catalog-first search | 0 | No duplicated canonical concepts; owner/decision log; feature acceptance contract |
+| **2. Metadata and discovery compatibility** | Add optional preview/source/capability fields to `catalog/schema.json` and `catalog/index.json`; update Python validator/search tests and `AGENTS.md` | 1 | Existing aliases/IDs unchanged; schema strict; lookup regressions pass |
+| **3. Site foundation and static browser** | Create `site/` runtime/build; responsive shell, IA, route resolution, search/filter, static Markdown entry pages and spec-only fallback | 2 | Build/typecheck; keyboard search/navigation; canonical paths resolve with no JS-heavy preview dependency |
+| **4. Design foundation and live preview engine** | Establish semantic tokens/themes, preview isolation, deterministic fixtures, scenario/reset controls, actual source viewer and source-to-render mapping | 3 | Preview imports actual implementation; no duplicated sample code; theme/reflow/source parity tests |
+| **5. Core working controls** | Implement Button, Input/Field, Select, Checkbox, Dialog under `site/src/implementations/components/`, linked to existing specs | 4 | Interaction states, keyboard/focus, async and error handling; screenshots and test logs |
+| **6. Composed patterns** | Implement validated form, navigation, search/filter/data table and recovery demos where justified by canonical patterns | 5 | Loading/empty/partial/error/retry; long text, mobile, accessible table and clear semantics |
+| **7. Feature-complete reference vertical slice** | Add `features/review-workspace/` spec + genuine executable `site/src/implementations/features/review-workspace/` with mock adapter; optionally second data-workspace slice if approved | 6 | End-to-end synthetic review flow, permissions simulation, unknown outcome, conflict and focus recovery; no production writes |
+| **8. Quality, accessibility, performance and readability** | Harden all implemented site and reference surfaces; add browser/a11y/visual/performance CI plus human QA evidence | 3–7 | Measured budgets and environments; browser/AT matrix; source readability review; no P0 blockers |
+| **9. Agent retrieval, governance and handoff** | Verify task-based search, stable IDs, relations and source trace; update README/CONTRIBUTING/AGENTS and adoption examples | 2–8 | Human + agent retrieval scenarios pass; docs accurate; migration and rollback reviewed |
+| **10. Release readiness and PR closeout** | Final diff/code review, dependency/license/security scan, deployment decision (deployment itself optional), branch reconciliation and approval | 0–9 | Complete evidence table, named approvals, no unverified PASS; PR ready-for-review only after gates |
 
-The numbers are **proposed PR units**, not PRs already opened.
+**Recommended first usable milestone:** through phase 5, with a functioning static catalog and working core controls. **Recommended full refactor milestone:** through phase 9, including one fully simulated feature reference and quality evidence. Phase 10 is review/approval, not automatic deployment.
+
+### Phase exit and change-control protocol
+
+For **every** phase: (a) record the commit SHA and changed paths in the PR body or a phase ledger; (b) run the applicable existing Python catalog checks and new site tests when available; (c) capture results as PASS/FAIL/NOT VERIFIED with environment and date; (d) inspect backwards compatibility and preview behavior; (e) log open gaps. A phase marked complete cannot rely on unexecuted tests. Missing manual accessibility or performance evidence remains NOT VERIFIED.
+
+**Phase dependencies are hard gates:** don't index an unbuilt preview; don't present a feature as interactive before the source/viewer is tested; don't claim quality before exercising real browser behavior. Revise scope if a phase exposes a different need, rather than inventing new components to fill an arbitrary quota.
+
+### What stays out of scope
+
+Published packages, replacing the existing knowledge model, live product API integrations, production authentication, user data, dynamic CMS, arbitrary code execution, and automatic deployment/merge. A site feature should remain reproducible using synthetic fixtures and inspectable source.
 
 ## Ownership and approvals
 
@@ -91,9 +105,10 @@ Additional commands for typecheck/build/Playwright/lint are **TBD** until a site
 
 - **Chosen direction (proposed):** one knowledge catalog + embedded visual site + executable reference examples.
 - **Explicitly deferred:** npm packages, separate component registry, hosted code editor, dynamic CMS, general-purpose MCP server.
-- **First implementation pilot:** `component.button` then a generic review workspace after infrastructure and controls have been exercised.
+- **First implementation pilot:** `component.button` after site shell/preview foundations; later generic review workspace after controls/patterns are exercised.
+- **Delivery unit:** One draft PR #16 containing sequential phase commits, with a recorded gate before readiness for merge.
 - **Open decisions:** site host and framework (Next.js suggested, not mandated), preview sandboxing mode, source-viewer licensing, public deployment policy, actual owners and test thresholds.
 
 ## Repository discipline
 
-All implementation PRs must branch from current `main`, use narrowly scoped changes, record real test results, and seek review. This documentation pack is not authorization to merge or deploy.
+For **this initiative**, keep work on the existing PR #16 feature branch and land successive, reviewable phase commits on that branch; do not open a new PR for each phase. Reconcile with `main` before final review and rerun impacted tests. Do not merge or deploy without explicit owner approval. This document alone does not authorize implementation claims.
