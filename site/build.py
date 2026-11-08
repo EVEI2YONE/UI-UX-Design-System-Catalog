@@ -3,6 +3,7 @@
 import argparse
 import html
 import json
+import os
 import re
 import shutil
 from pathlib import Path, PurePosixPath
@@ -10,7 +11,17 @@ from urllib.parse import quote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = Path(__file__).resolve().parent
-REPO = "https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/blob/main/"
+def source_repo_url(reference):
+    """Build a repository source link for a reviewed branch or immutable SHA."""
+    if (not isinstance(reference, str) or not reference or
+            not re.fullmatch(r"[A-Za-z0-9._/-]+", reference) or
+            reference.startswith(("/", ".")) or ".." in PurePosixPath(reference).parts):
+        raise ValueError("Unsafe source revision")
+    return ("https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/blob/" +
+            quote(reference, safe="/-_.") + "/")
+
+
+REPO = source_repo_url(os.environ.get("CATALOG_SOURCE_REF", "main"))
 CATEGORIES = ("components", "patterns", "features", "foundations", "architecture", "guidance", "governance", "other")
 LINK = re.compile(r"\[([^\]\n]+)\]\(([^)\n]+)\)")
 HEAD = re.compile(r"^(#{1,6})\s+(.+)$")
