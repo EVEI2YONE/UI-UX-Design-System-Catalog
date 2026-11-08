@@ -1,7 +1,7 @@
 # Human and agent discovery outcome study
 
 **Knowledge-gap IDs:** KG-12  
-**Status:** open work package — not completed or approved  
+**Status:** knowledge specification FILLED; verification/implementation follow-up OPEN, no human approval  
 **Origin:** [original gap audit](../03-knowledge-gap-audit.md) and [durable concept / closure ledger](../17-concept-inventory-and-decisions.md)  
 **Recorded:** 2026-11-08 · **Accountability:** UX research and agent-discovery reviewer (role only; no named assignee)
 
@@ -22,3 +22,9 @@ Study protocol, participant/environment coverage, anonymized observations, repro
 Automated matching is not evidence that real users find or understand the right guidance.
 
 This is a **repository-only durable follow-up**, not a live website concept, canonical catalog ID or a new executable implementation. Keep status open until the specified review produces evidence; if the requirement is rejected or waived, record the responsible owner and decision rather than silently deleting the work package. The current [Phase 10 release no-go review](../16-phase-10-release-readiness.md) remains in force.
+
+## Knowledge-development delivery and evidence split
+
+**Canonical knowledge:** [New substantive guidance](../../../guidance/ux-measurement.md#catalog-discoverability-and-source-trust-study-protocol). An independently usable human/agent study protocol, measures, denominators and ranking change gate are now authored. Participant observations and real task baseline are still absent.
+
+**Context and research ledger:** [Five context-gathered knowledge packages](../20-knowledge-development-batches.md). This work package remains open only for the outstanding observed evidence, implementation or human decision—not because the guidance is still missing.
