@@ -585,6 +585,12 @@
         "accessibility",
         "error-handling"
       ],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/patterns/recovery/Recovery.js",
+        "scenario_manifest": "site/src/implementations/patterns/recovery/scenarios.js",
+        "preview_path": "/catalog/patterns/interaction-recovery"
+      },
       "use_when": [
         "designing loading error and empty states",
         "defining recoverable form validation",
@@ -1242,6 +1248,12 @@
         "ux",
         "forms"
       ],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/patterns/form/Form.js",
+        "scenario_manifest": "site/src/implementations/patterns/form/scenarios.js",
+        "preview_path": "/catalog/patterns/forms"
+      },
       "use_when": [
         "designing multi-field forms",
         "handling server validation and submit recovery",
@@ -1288,6 +1300,12 @@
         "ux",
         "navigation"
       ],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/patterns/navigation/Navigation.js",
+        "scenario_manifest": "site/src/implementations/patterns/navigation/scenarios.js",
+        "preview_path": "/catalog/patterns/navigation"
+      },
       "use_when": [
         "designing app navigation",
         "preserving deep links and active location"
@@ -1331,6 +1349,12 @@
         "ux",
         "search"
       ],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/patterns/search-filter/SearchFilter.js",
+        "scenario_manifest": "site/src/implementations/patterns/search-filter/scenarios.js",
+        "preview_path": "/catalog/patterns/search-filter"
+      },
       "use_when": [
         "designing searchable result collections",
         "handling zero results and filter reset",
@@ -1380,6 +1404,12 @@
         "ux",
         "data"
       ],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/patterns/data-tables/DataTables.js",
+        "scenario_manifest": "site/src/implementations/patterns/data-tables/scenarios.js",
+        "preview_path": "/catalog/patterns/data-tables"
+      },
       "use_when": [
         "comparing rows and columns",
         "reviewing row actions and sorting",
