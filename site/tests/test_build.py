@@ -44,11 +44,28 @@ class SiteBuildTests(unittest.TestCase):
         self.assertIn('aria-pressed="true"', browse)
 
     def test_unimplemented_entries_advertise_spec_only(self):
-        button = next(e for e in self.entries if e["id"] == "component.input")
+        button = next(e for e in self.entries if e["id"] == "pattern.forms")
         text = (self.out / site_build.route(button).lstrip("/") / "index.html").read_text(encoding="utf-8")
         self.assertIn("Specification only", text)
         self.assertNotIn('class="interactive-preview"', text)
         self.assertIn("View Markdown source", text)
+
+    def test_all_six_registered_control_previews(self):
+        controls = [e for e in self.entries if e["id"].startswith("component.")]
+        self.assertEqual(len(controls), 6)
+        for entry in controls:
+            with self.subTest(entry=entry["id"]):
+                detail = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
+                frame = (self.out / "previews" / entry["id"] / "index.html").read_text(encoding="utf-8")
+                original = (ROOT / entry["implementation"]["source_path"]).read_text(encoding="utf-8")
+                copied = (self.out / "reference" / entry["id"] / "source.js").read_text(encoding="utf-8")
+                self.assertIn('sandbox="allow-scripts"', detail)
+                self.assertNotIn('sandbox="allow-scripts allow-same-origin"', detail)
+                self.assertEqual(original, copied)
+                self.assertIn("Inspect implementation source", detail)
+                self.assertIn('src="/reference/' + entry["id"] + '/source.js"', frame)
+                self.assertIn('src="/reference/' + entry["id"] + '/scenarios.js"', frame)
+                self.assertTrue((self.out / "reference" / entry["id"] / "source.css").is_file())
 
     def test_button_real_preview_matches_registered_source(self):
         entry = next(e for e in self.entries if e["id"] == "component.button")
