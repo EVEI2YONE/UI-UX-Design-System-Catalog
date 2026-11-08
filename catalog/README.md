@@ -117,3 +117,20 @@ Read the [cumulative wireframe integration handoff](../archive/planning/wirefram
 ## Settings knowledge retrieval and verification (draft PR #12)
 
 Retrieve `pattern.account-settings-portal` for configuration registry, server-authorized scope, save lifecycle, feature dependencies, review-policy transitions, timezone decision guidance, personal display preferences and change-event auditability. See the [Batch 1–5 closure ledger](../archive/planning/little-wins-settings-batches-1-5-closure-2026-11-07.md) for source/product crosswalk and checks. The canonical registry remains the single lookup owner; no new Settings ID. Run `python3 -m unittest tests.test_settings_knowledge_coverage` or the full test discovery suite before review; tests are not product conformance evidence.
+
+
+## Visual catalog metadata (Phase 2 proposal, 2026-11-08)
+
+The registry remains the **only canonical identity and agent discovery index**. Existing required fields, layer classifications, review statuses, IDs and Markdown paths are unchanged. New fields are **optional**:
+
+- `capabilities`: short, distinct task/function labels, not a duplicate prose summary or synonym dump. Current six core `component.*` entries are enriched; lookup ranking is unchanged.
+- `implementation`: **omit** until a real trusted implementation, scenario manifest and route are committed. Once present it requires `status` (`reference`, `experimental`, `verified`), `source_path`, `scenario_manifest` and `preview_path`, plus optional `evidence_path`. A `verified` entry requires an evidence document, but the document still needs human assessment; the validator cannot certify quality.
+- `source_path` and `scenario_manifest` must reference existing code files under `site/src/implementations/`. The scenario manifest is colocated with its actual source. The `preview_path` is an internal canonical catalog route. No remote user-controlled code or arbitrary filesystem path is allowed.
+
+**Spec-only behavior:** absence of the `implementation` field means the source is a canonical specification, **not a live preview**. It must stay discoverable in the website and through `scripts/find_concept.py`. The site may generate a *derived* renderer mapping keyed by canonical ID, but it must not duplicate titles/aliases/status and must not infer that a preview exists from a folder name.
+
+**Agent retrieval:** the existing lookup algorithm still scores exact IDs and aliases first and does not positively match `avoid_when`. Phase 2 does **not** rank `capabilities` in `find_concept.py`; that is a separately measurable search-relevance decision after observing query coverage. Original queries must keep their established match order.
+
+**Validation boundary:** `python3 scripts/validate_catalog.py` checks metadata shape, path existence and relations. `tests/test_visual_catalog_metadata.py` tests optional fields and lookup compatibility. Real browser behavior, application performance, accessible focus and visual quality remain NOT VERIFIED until a site implementation exists.
+
+See [Phase 2 evidence and decision ledger](../docs/visual-catalog-refactor/08-phase-2-registry-compatibility.md).
