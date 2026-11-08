@@ -344,3 +344,60 @@ Do not infer a successful run merely from the presence of these commands in docu
 **Illustrative positive:** a catalog PR updates an existing owner and retrieval aliases, then logs actual passing validator/tests and separately marks unperformed screen-reader interaction checks NOT VERIFIED. **Anti-example:** write a retrieval unit test that only asserts a phrase exists in Markdown, mark "Accessible PASS" without rendering a control, then auto-promote every changed entry to stable.
 
 **Review and ownership:** Proposed knowledge, owner unassigned. Human review, observed consumer accessibility, production release and UX metrics remain **NOT VERIFIED** until supported by separate evidence. References (consulted 2026-11-07): [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [Playwright testing](https://playwright.dev/docs/intro), [Storybook interaction tests](https://storybook.js.org/docs/writing-tests/interaction-testing), and the catalog's own `scripts/validate_catalog.py` and `scripts/find_concept.py`.
+
+
+## Static visual catalog hosting, supply-chain and preview security gate
+
+This checklist applies to a potential **public release** of the source-derived visual catalog. It extends the existing documentation and product quality gates; it does not assert a deployment, provide a security certification or set an unreviewed production hosting policy.
+
+### Hosting decisions before publication
+
+| Decision | Required contract | Current catalog limitation |
+| --- | --- | --- |
+| Origin/base path | Decide root versus repository subpath; verify every page, search URL, CSS/JS asset, iframe, source URL and redirect on the target host | Generated links and assets currently assume origin-root hosting |
+| Immutable provenance | Bind published source links to a reviewed branch/tag/commit, ideally an immutable commit | CI already supports validated `CATALOG_SOURCE_REF`; default local builds use `main` |
+| Build artifact and release | Name artifact digest, build commit, verification status, responsible approver, deploy/revert commands | No public deployment exists |
+| Cache and indexability | Define cache invalidation, redirects, robots/indexing, sitemap and handling of removed/deprecated concepts | No deployment-specific cache/header controls are evidenced |
+| Privacy and telemetry | Declare any analytics, consent, data retention, no production user records in synthetic preview, artifact access | CI-generated accessibility reports and screenshots should be reviewed for accidental sensitive content |
+
+For root-to-subpath publishing, tests must exercise `/catalog/`, `/search/`, all references and `/previews/` from that *actual path*. Changing a host configuration alone does not rewrite root-absolute URLs. Do not ship to GitHub Pages subpath unless a verified base-path strategy exists.
+
+### Threat boundaries and CSP review
+
+The site must use **trusted, checked-in** reference source—not code typed by visitors or unreviewed remote scripts. The compiler verifies source paths under `site/src/implementations/` and copies them into a sandboxed iframe. The iframe's `allow-scripts` permission supports the demo; its omission of `allow-same-origin` makes its origin opaque and blocks ordinary access to parent-origin cookies/storage. Do not add `allow-same-origin`, `allow-top-navigation`, `allow-popups` or `allow-forms` for convenience without a threat-model review. **This isolation is defense in depth**, not authorization or proof that every JS source is secure.
+
+Before choosing any CSP, enumerate all necessary assets/scripts/styles/iframes, then test a server-delivered **enforcing** policy plus a reporting rollout. The policy must distinguish top-level pages from preview routes where needed; do not copy a globally strict `frame-ancestors 'none'` rule onto preview documents that intentionally need to be embedded. A possible *review starting point*, **not a ready-to-deploy header**, is:
+
+```text
+Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'
+```
+
+Validate whether `data:` is necessary and remove it if not; limit frame ancestry and resource origins to actual host needs. The real server sets headers; a Markdown document or static HTML meta tag does not establish them. Check CSP enforcement and console violations in Chromium, Firefox and Safari, and explicitly test iframe bootstrap, scenario selection and source disclosure. Keep any approval tied to a tested host/environment.
+
+### Supply chain, dependency and license gate
+
+The Python static builder uses the standard library, while **CI only** currently installs Playwright and axe with pinned top-level versions through `npm install --no-package-lock`. That does *not* guarantee transitive resolution reproducibility. Before release:
+
+1. Record a reviewed toolchain version and project-level package manifest with exact direct dependencies and a committed integrity-bearing lockfile.
+2. Change CI to `npm ci` using that lockfile; verify clean installation from scratch. The npm documentation specifies that `npm ci` requires a matching lock and does not rewrite dependency declarations.
+3. Run dependency vulnerability and license review on the locked tree; record reviewed advisories, exceptions, affected paths and decision owners. `npm audit` alone does not constitute license clearance or a full threat model.
+4. Pin or review third-party GitHub Actions usage and their transitive dependencies; keep minimum workflow permissions and avoid secrets in preview sources.
+5. Verify no vendored fonts, customer data, unknown image licenses or runtime network requests are silently introduced. If including third-party code, record license and attribution requirements.
+6. Repeat after any material dependency/host change; do not re-use old approvals for new revisions.
+
+### Decision, acceptance and rollback
+
+| Gate | PASS evidence | FAIL / NOT VERIFIED handling |
+| --- | --- | --- |
+| Site routes under actual host | Automated crawl plus manual navigation at deployment path | No publication; fix and rerun |
+| CSP/framing | Enforcing response headers, no unexpected blocked assets, iframe isolation tests | No publication; document policy adjustment |
+| Dependencies/licenses | Lockfile, reproducible install, audit and approved license inventory | Do not describe site as supply-chain reviewed |
+| Data/privacy | Synthetic-only fixture inspection, artifact/access review, no secret leakage | Remove or replace unsafe evidence before publishing |
+| Accessibility | Human task + AT evidence and automated reports, clear scope | No WCAG certification without applicable evidence |
+| Performance | Lab and production field metrics with environment/cohort/percentile | Do not replace real-user measurements with static size budgets |
+| Approval | Named design, security and maintainer decision plus release SHA | Keep PR draft/no-go; never treat Git mergeability as approval |
+| Rollback | Previous artifact/source revision, reversible switch, owner and verification | Stop release until an executable revert path exists |
+
+**Provenance:** [OWASP Content Security Policy Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html) describes CSP as defense in depth and host-specific framing rules; [MDN iframe sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe#sandbox) warns against combining `allow-scripts` and `allow-same-origin` for same-origin embedders; [npm ci](https://docs.npmjs.com/cli/commands/npm-ci/) documents reproducible clean installs with a lockfile. These are reference sources, not evidence that this repository has satisfied the controls.
+
+**Current disposition:** the release checklist is authored knowledge, but hosting, CSP enforcement, locked CI dependencies, license review and named security signoff remain **NOT VERIFIED**. The [KG-10 work package](../docs/visual-catalog-refactor/gap-work/kg10-release-security-hosting.md) and [release decision](../docs/visual-catalog-refactor/16-phase-10-release-readiness.md) remain open; no merge/deploy is authorized.
