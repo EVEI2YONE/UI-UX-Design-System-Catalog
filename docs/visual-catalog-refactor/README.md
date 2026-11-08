@@ -25,6 +25,7 @@ The site is a *reference implementation environment*, not an assurance that a sc
 | [04 — Registry and agent discovery](04-registry-agent-discovery.md) | How do humans and agents find exactly the same references? | Backwards-compatible metadata extension and search contract |
 | [05 — Preview and quality contracts](05-preview-quality-contracts.md) | How does a working example prove its behavior and quality? | Fixture, interaction, performance, readability and a11y contracts |
 | [06 — Migration and PR roadmap](06-migration-pr-roadmap.md) | How is the overhaul delivered within this same PR? | Eleven sequential phase gates, deliverables, acceptance and rollback |
+| [07 — Phase 1 context and decisions](07-phase-1-context-and-decisions.md) | How do existing knowledge concepts map to executable site tiers? | Context audit, source ownership, non-duplication decisions and open questions |
 
 ## Non-negotiable boundaries
 
