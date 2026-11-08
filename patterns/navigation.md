@@ -38,3 +38,7 @@ Mark navigation landmarks clearly when multiple are present. Maintain meaningful
 **Canonical ID:** `pattern.navigation` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** preserve old links and task completion when changing IA. This is a documentation contract, not an implemented router.
 
 Related: [task-flow guidance](task-flows-and-information-architecture.md), [workspaces](role-aware-workspaces-and-context-switching.md), [accessibility](../guidance/accessibility.md), [design principles](../foundations/design-principles.md). Standards: [WCAG 2.2](../governance/references.md).
+
+## Phase 6 executable pattern reference (2026-11-08)
+
+The visual catalog now includes an actual [Navigation implementation](../site/src/implementations/patterns/navigation/Navigation.js), its [deterministic synthetic scenarios](../site/src/implementations/patterns/navigation/scenarios.js), and [scoped demonstration styles](../site/src/implementations/patterns/navigation/Navigation.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests. See the [Phase 6 evidence ledger](../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).
