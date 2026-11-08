@@ -77,3 +77,7 @@ This table updates the **2026-11-08 baseline** in [the original gap audit](03-kn
 **Human concept disposition signoff:** **NOT RECORDED**. `owner=unassigned` is not approval.  
 **Production release:** remains **NO-GO** under [Phase 10 review](16-phase-10-release-readiness.md), draft PR #16.  
 **No canonical mutation:** the 54 registry entries and lookup ranking remain unchanged by this inventory.
+
+## Visitor-facing copy and unresolved knowledge follow-up
+
+The site retains canonical subject matter but removes build-phase, batch and PR tracking language from page presentation. Source Markdown keeps its original historical text and anchor IDs for provenance. The open review/release/research evidence gaps are now independently recorded as five role-scoped [durable work packages](19-open-knowledge-work.md), with automated preservation tests, without treating the packages as canonical concepts.
