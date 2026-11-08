@@ -22,6 +22,16 @@ jobs:
       - name: Test deterministic agent lookup
         run: python3 -m unittest discover -s tests -v
 
+      - name: Generate agent discovery and provenance audit
+        run: python3 scripts/audit_discovery.py --output site/artifacts/phase9/discovery-audit.json
+      - name: Retain discovery audit as CI evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: catalog-discovery-audit
+          path: site/artifacts/phase9/discovery-audit.json
+          if-no-files-found: ignore
+
       - name: Generate static visual catalog
         run: python3 site/build.py
       - name: Test site routes, source and fallback
