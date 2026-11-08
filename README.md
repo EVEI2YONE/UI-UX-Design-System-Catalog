@@ -190,3 +190,7 @@ The [Phase 9 discovery and governance handoff](docs/visual-catalog-refactor/15-p
 ## Preserved concept candidates (post-Phase-10 knowledge follow-up)
 
 The [durable concept inventory and decision ledger](docs/visual-catalog-refactor/17-concept-inventory-and-decisions.md) explicitly tracks all five proposed Stage 3 feature concepts and five Stage 2 composition ideas, including [nine individual unregistered concept briefs](docs/visual-catalog-refactor/concepts/decision-manifest.json) and the implemented Review Workspace specification. Deferred candidates are recorded **without** allocating new `catalog/index.json` IDs or implying human approval. The ledger separately reassesses all 12 original knowledge gaps as implemented, partly verified, already covered or still open.
+
+## Knowledge-gap specification coverage
+
+The five follow-up knowledge subjects — maintainability, accessibility/performance, source reuse, discoverability research and secure hosting — now have substantive, source-aware contracts in their **existing canonical guidance documents**. The [context-gathered development ledger](docs/visual-catalog-refactor/20-knowledge-development-batches.md) distinguishes what was authored from the human accessibility tests, user studies, optional copy/download controls, dependency audit and hosting approvals still outstanding. No new canonical registry ID, published component package or product deployment was introduced.
