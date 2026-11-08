@@ -116,7 +116,8 @@ def public_label(value):
     value = INTERNAL_PR.sub("repository review", value)
     leading = " " if value[:1].isspace() else ""
     trailing = " " if value[-1:].isspace() else ""
-    return leading + re.sub(r"\s{2,}", " ", value).strip() + trailing
+    cleaned = re.sub(r"\s{2,}", " ", value).strip()
+    return leading + cleaned + trailing if cleaned else value
 
 
 class PublicCopy(HTMLParser):
@@ -288,7 +289,7 @@ def reference_preview(entry, out):
     if not source.is_file() or not manifest.is_file() or not source.is_relative_to(root_impl) or not manifest.is_relative_to(root_impl):
         raise ValueError("Missing/unsafe registered source or scenario manifest")
     if source.parent != manifest.parent or source.suffix != ".js" or manifest.suffix != ".js":
-        raise ValueError("Phase 4 preview runner supports colocated classic JavaScript references only")
+        raise ValueError("Preview runner requires colocated classic JavaScript references")
     name = entry["id"]
     base = out / "reference" / name
     base.mkdir(parents=True, exist_ok=True)
@@ -367,10 +368,10 @@ def build(out):
     grid = '<section id="entry-grid" class="grid" aria-label="Catalog entries">' + cards + '</section><p id="empty-results" hidden>No matching concepts.</p>'
     write(out, "/catalog/", page("Explore the catalog", "Browse the canonical components, patterns and design guidance.", tools + grid))
     write(out, "/search/", page("Find the right guidance", "Search by name, user task or canonical ID.", tools + '<p class="hint">Without JavaScript, all entries remain listed below. Agents can search the JSON registry directly.</p>' + grid, "search"))
-    write(out, "/", page("Make better interfaces, deliberately.", "A visual, searchable and agent-readable design knowledge base. Live examples will appear only when actually implemented.",
+    write(out, "/", page("Make better interfaces, deliberately.", "A visual, searchable design reference with interactive examples backed by real source code.",
         '<div class="actions"><a class="primary" href="/catalog/">Browse ' + str(len(entries)) + ' concepts →</a><a href="/search/">Search by task</a></div>'
         '<section class="benefits"><div><h2>Canonical knowledge</h2><p>One registry and source of design guidance.</p></div>'
-        '<div><h2>Real reference source</h2><p>Future previews render source-controlled examples.</p></div>'
+        '<div><h2>Real reference source</h2><p>Explore interactive examples and inspect the code behind them.</p></div>'
         '<div><h2>Agent-friendly</h2><p>Stable IDs, readable pages and source links.</p></div></section>', "home"))
     records = []
     for e in entries:
