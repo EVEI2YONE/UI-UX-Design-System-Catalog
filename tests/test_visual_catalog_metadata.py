@@ -25,15 +25,12 @@ class VisualMetadataContractTests(unittest.TestCase):
         self.assertFalse({"implementation", "capabilities"} & required)
         self.assertFalse(self.schema["$defs"]["entry"]["additionalProperties"])
 
-    def test_six_controls_have_capabilities_and_only_button_has_reference(self):
+    def test_six_controls_have_capabilities_and_real_references(self):
         controls = [x for x in self.index["entries"] if x["id"].startswith("component.")]
         self.assertEqual(len(controls), 6)
         for entry in controls:
             self.assertTrue(entry["capabilities"])
-            if entry["id"] == "component.button":
-                self.assertEqual(entry["implementation"]["status"], "reference")
-            else:
-                self.assertNotIn("implementation", entry)
+            self.assertEqual(entry["implementation"]["status"], "reference")
             self.assertEqual(validate_visual_metadata(entry, ROOT), [])
 
     def test_existing_lookup_order_remains(self):
