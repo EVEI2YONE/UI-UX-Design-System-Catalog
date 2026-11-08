@@ -23,7 +23,7 @@ An empty query lists all entries. Search matches partial text across titles, IDs
 The registry is intended for discoverability, not an implementation API. If a concept moves, preserve its ID, update the canonical path, and provide redirects/migration where old links were published. See [Contributing](../CONTRIBUTING.md).
 ## Agent-oriented lookup
 
-The [JSON Schema](schema.json) describes the registry record. Every current entry requires `use_when`, `avoid_when`, `related`, `depends_on`, `owner`, and nullable `reviewed_at`; this applies to all 49 entries, including those introduced after the scaffold batches. The registry remains the only machine-readable metadata source. Related references are canonical IDs, not duplicate Markdown files.
+The [JSON Schema](schema.json) describes the registry record. Every current entry requires `use_when`, `avoid_when`, `related`, `depends_on`, `owner`, and nullable `reviewed_at`; this applies to all 54 current entries, including those introduced after the scaffold batches. The registry remains the only machine-readable metadata source. Related references are canonical IDs, not duplicate Markdown files.
 
 ```bash
 python3 scripts/find_concept.py 'loading button' --json
@@ -60,7 +60,7 @@ The [schema](schema.json) specifies the complete metadata contract; the standard
 
 ## Batch 10 — task-based retrieval coverage
 
-At the historical Batch 10 snapshot, 40 concepts were canonical (the current registry contains 49); retrieval metadata now maps user task phrases such as `hosted authentication`, `human approval workflow`, `feature flags`, `data migration`, `clickable row`, `dialog focus return` and `global CSS` to their owning pages. This is alias and `use_when` enrichment, not concept creation or promotion. See [Batch 10 evidence ledger](../archive/planning/little-wins-batch-10-context-and-gap-ledger.md) and [regression tests](../tests/test_little_wins_knowledge_coverage.py). Rank indicates retrieval relevance, not implementation correctness.
+At the historical Batch 10 snapshot, 40 concepts were canonical (the current registry contains 54); retrieval metadata now maps user task phrases such as `hosted authentication`, `human approval workflow`, `feature flags`, `data migration`, `clickable row`, `dialog focus return` and `global CSS` to their owning pages. This is alias and `use_when` enrichment, not concept creation or promotion. See [Batch 10 evidence ledger](../archive/planning/little-wins-batch-10-context-and-gap-ledger.md) and [regression tests](../tests/test_little_wins_knowledge_coverage.py). Rank indicates retrieval relevance, not implementation correctness.
 
 ## Application architecture task lookup (Batches 13–16)
 
@@ -134,3 +134,13 @@ The registry remains the **only canonical identity and agent discovery index**. 
 **Validation boundary:** `python3 scripts/validate_catalog.py` checks metadata shape, path existence and relations. `tests/test_visual_catalog_metadata.py` tests optional fields and lookup compatibility. Real browser behavior, application performance, accessible focus and visual quality remain NOT VERIFIED until a site implementation exists.
 
 See [Phase 2 evidence and decision ledger](../docs/visual-catalog-refactor/08-phase-2-registry-compatibility.md).
+
+## Phase 9 — discovery and source traceability
+
+**Current branch state (2026-11-08):** 54 canonical records, 12 actually registered source-linked reference implementations and 42 specification-only entries. All 54 canonical entry lifecycle statuses are still `proposed`; implementation-level `reference` is not approval or production adoption.
+
+Use `python3 scripts/find_concept.py "human approval queue" --json` to discover the human Review Workspace, and then read `features/review-workspace/spec.md` before inspecting its checked-in preview source and synthetic adapter. For AI-agent delegated tool approval, retrieve the distinct `pattern.agentic-actions` concept instead. To check task search and source/route provenance in one repeatable pass, run `python3 scripts/audit_discovery.py --output site/artifacts/phase9/discovery-audit.json`. The audit derives its records from this index; it does **not** introduce another canonical metadata store.
+
+The [Phase 9 task fixture](../tests/fixtures/phase9_retrieval_cases.json) locks expected top results for relevant positive queries, records a known no-result query (`synthetic review`), and permits legitimately ambiguous `settings` matches. Changing a search alias or algorithm requires deliberate acceptance updates and review, not silent ranking changes.
+
+See [agent lookup rules](../AGENTS.md), [contribution and preview rules](../CONTRIBUTING.md), and [Phase 9 handoff](../docs/visual-catalog-refactor/15-phase-9-agent-governance-handoff.md). Never infer public preview deployment, product API functionality or validated accessibility from optional source metadata.
