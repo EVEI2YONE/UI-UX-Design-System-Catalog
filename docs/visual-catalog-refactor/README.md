@@ -30,6 +30,7 @@ The site is a *reference implementation environment*, not an assurance that a sc
 | [09 — Phase 3 site foundation](09-phase-3-site-foundation.md) | How is the website generated from canonical knowledge? | Working static site architecture, CI evidence, visual QA and deployment limitations |
 | [10 — Phase 4 preview runtime](10-phase-4-preview-runtime.md) | How do source, scenarios and preview controls stay identical and isolated? | Actual Button reference, safe runner, test and manual QA gates |
 | [11 — Phase 5 core controls](11-phase-5-core-controls.md) | How do the remaining five canonical controls become executable references? | Native Input, Field, Select, Checkbox, Dialog demos and CI evidence |
+| [12 — Phase 6 composed patterns](12-phase-6-composed-patterns.md) | How are existing interaction patterns represented by real examples? | Forms, navigation, search/filter, tables and safe recovery demos with test gates |
 
 ## Non-negotiable boundaries
 
