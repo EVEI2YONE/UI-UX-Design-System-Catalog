@@ -130,3 +130,48 @@ A **pattern** states reusable interaction rules and compositions (e.g., sorting,
 **Promotion checklist:** require a distinct multi-step user job; two credible reuse contexts or documented strategic need; concept/alias search; a bounded data/command interface; state, keyboard/focus and recovery contract; no real-product mutations; owner and evidence. Prefer **reuse/extend/compose** before assigning a new `feature.*` ID. Unimplemented candidates remain unregistered and must not advertise live previews. Use [feature reference navigation](../features/README.md), [authoring template](../templates/feature-reference-spec.md) and [Phase 1 evidence ledger](../docs/visual-catalog-refactor/07-phase-1-context-and-decisions.md).
 
 **Dependency invariant:** tokens/primitives ← components ← composed patterns ← feature references, with domain integration only in consuming apps. A reference implementation must import lower-tier controls and fixtures, never a product API client, auth authority or private business state. Keep code/status evidence separate from concept lifecycle; a stable written guideline does not certify an implementation.
+
+
+## Executable reference maintainability and composition contract
+
+This section applies the existing reuse/extend/compose decision to **actual source-linked examples**. It does not create a parallel component taxonomy or require all reference patterns to be rewritten as package dependencies.
+
+### Source organization and boundaries
+
+| Layer | May own | Must not silently own | Change-review signal |
+| --- | --- | --- | --- |
+| Catalog renderer | Navigation, registry-derived routes, safe Markdown, preview isolation, source inspection | Implementation-specific domain rules, another canonical concept index | A change to a component must not require editing unrelated navigation chrome |
+| Reference control | Semantic element, supported variants, focus/disabled behavior, state-specific markup, scoped styles | Product identity, API calls, persistence, authorization | Public options, events and invalid combinations remain documented/testable |
+| Composed pattern | Interaction choreography, local form/collection state, validation presentation, focus recovery | Parallel implementations of all primitive semantics, real server outcome guarantees | Reuse existing contracts where compatible; explicitly document deliberate native control use |
+| Feature reference | Multi-step task, view selection, status presentation, synthetic adapter boundary | Real data ownership, access policy or security assertions | Adapter outcome semantics remain inspectable and independently testable |
+| Consuming application | Actual adapters, authorization, domain policies, storage and monitoring | Mutation of canonical guidance or unreviewed shared API | Explicit integration acceptance and version plan |
+
+A reference can use native HTML without importing the corresponding catalog component's implementation. That is **not** proof of production component reuse. In particular, the present form, navigation and table patterns demonstrate compositions but do not share a packaged Button/Field runtime. Do not advertise a dependency graph that the code does not have.
+
+### Readability and state ownership
+
+1. Prefer named, single-purpose helpers for state transitions, validation and DOM rendering. Keep pure checks and display wiring independently inspectable; compressing a full workflow onto one line is not a quality goal.
+2. Establish a single owner for each mutable state item. For asynchronous decisions, distinguish `idle`, `pending`, `confirmed`, `known failure` and `unknown outcome`; only the authoritative adapter can reconcile uncertainty.
+3. Define inputs/outputs and failures for every reference entry point. Reject invalid options deliberately; document whether remounting resets state. Theme changes must preserve the existing task where feasible.
+4. Prefer native semantics, explicit names and data-bound text construction over building HTML from untrusted strings. Review `innerHTML` boundaries; synthetic fixture content is not automatically safe to use for production input.
+5. Use *semantic* tokens with per-example scoping. Extract shared styling only after identifying actual repetition with stable meaning across two references; avoid global selectors that leak into catalog navigation or other previews.
+6. Use fixed deterministic fixtures and explicit pending/error/empty/denied/conflict states, with one reproducible scenario per material branch. A synthetic success announcement must not imply real persistence.
+7. Keep reference source, scenario manifest, optional adapter, CSS and tests discoverable in one local subtree; generate inspector text from those same checked-in files rather than rewriting demonstration snippets.
+
+### Change and extraction decision
+
+| Situation | Default choice | Evidence needed to change default |
+| --- | --- | --- |
+| Two examples merely look alike | Keep scoped implementations | Shared behavior and lifecycle verified, not only identical CSS |
+| Two examples share an event contract | Consider composed helper | Tests for keyboard, asynchronous errors, focus and event ownership in both consumers |
+| A feature needs an app-specific API | Inject an adapter at the feature boundary | Explicit auth, idempotency and data minimization contract; no UI-only privilege check |
+| A new token alias is suggested | Reuse existing semantic role | Demonstrated intent difference, light/dark/contrast mapping and migration compatibility |
+| A general reference is proposed as a package | Keep it as source-linked reference | Two actual adopters, public API/version owner, tests, license and support policy |
+
+### Review checklist and performance of maintenance
+
+Record the source path, review commit, owner/reviewer, state coverage, imports and known duplication. Review one ordinary path and at least one error/unknown path before accepting a refactor. Require a source-parity build, syntax/unit tests and browser task test after changes. If actual developer comprehension is the claim, measure a developer lookup/change task rather than treating shorter code or passing CI as proof. Avoid inventing a fixed time-to-change threshold without a baseline.
+
+**Observed baseline:** six controls, five patterns and one feature are registered as source-linked references. The source-level form example currently uses dense inline DOM and validation logic and deserves human readability review; that is an audit candidate, not a demonstrated defect in all twelve sources. Shared theme and token behavior is covered separately by [Design tokens and themes](../foundations/design-tokens-and-themes.md); implementation contract evidence is owned by [Component contracts](component-contracts.md), and module import rules are owned by [Module boundaries](module-boundaries-and-developer-navigation.md).
+
+**Evidence state:** This contract is authored guidance. It does **not** mean that a named engineer has inspected all 12 sources, that duplicate styling was removed, or that any component package is production-ready.
