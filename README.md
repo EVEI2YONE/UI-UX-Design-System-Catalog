@@ -144,3 +144,27 @@ Settings Batch 3: [timezone/reporting configuration and personal preference scop
 Settings Batch 4: [configuration audit events, access and safe reversals](patterns/account-and-settings-portal.md#settings-knowledge-batch-4--configuration-governance-and-audit-proposed-2026-11-07) extend the existing settings portal. Privacy/retention and delegated-access rules remain with their canonical guidance.
 
 **Settings knowledge Batches 1–5:** [closure, gap coverage and validation handoff](archive/planning/little-wins-settings-batches-1-5-closure-2026-11-07.md) records the eight-gap crosswalk, evidence limits, product decisions and outstanding tests. Read the [canonical settings portal](patterns/account-and-settings-portal.md) for reusable rules; the closure ledger is not an additional concept.
+
+## Batch 1 — Icon semantics and accessible controls (proposed, 2026-11-07)
+
+For an [icon intent registry, accessible icon-only action and state/target guidance](foundations/iconography-and-semantics.md), use `foundation.icon-semantics`. For appearance alone (stroke, optical sizing, icon and illustration craftsmanship), keep using `foundation.practical-styling`. The [Button contract](components/button/spec.md) specifies how its host activates and handles pending/disabled states. These are proposed knowledge specifications, not published UI assets.
+
+## Batch 2 — component events and coordination (proposed, 2026-11-07)
+
+The [canonical component contract](architecture/component-contracts.md#batch-2--composite-anatomy-and-event-coordination-ckg-04-ckg-0608-proposed-2026-11-07) now covers host/slot ownership, local events versus feature commands versus domain outcomes, sibling coordination, controlled state and nested-interaction pitfalls. Retrieve `architecture.component-contracts`; do not infer an implemented component library or measured behavior.
+
+## Batch 3 — state and sequential workflow handoffs (proposed, 2026-11-07)
+
+For icon/status timing and focus when a selected item is updated or removed, see [interaction recovery](patterns/interaction-states-and-recovery.md) (`pattern.interaction-recovery`). For stable actions and selecting the next eligible task only after an authoritative outcome, see [task flows](patterns/task-flows-and-information-architecture.md) (`pattern.task-flows`). These are proposed contracts, not measured reductions in pointer travel or an implemented review controller.
+
+## Batch 4 — action choice and interaction-cost evidence (proposed, 2026-11-07)
+
+See [advanced interactions](patterns/advanced-interactions-and-reversible-actions.md) for when to prefer explicit Buttons, toolbars, overflow, split actions, shortcuts or confirmations (`pattern.advanced-interactions`); use [UX measurement](guidance/ux-measurement.md) for input-specific effort measures and task-success guardrails (`guidance.ux-measurement`). Both extend existing proposed concepts, not a new packaged component or validated efficiency improvement.
+
+## Batch 5 — styling architecture and reuse inventory (proposed, 2026-11-07)
+
+Use [practical styling](foundations/practical-ui-styling-recipes.md) (`foundation.practical-styling`) for utility-first styling ownership, [architecture enforcement](architecture/architecture-enforcement-and-ci.md) (`architecture.enforcement-ci`) for baseline-aware CSS/variant drift checks, and [component model](architecture/component-model.md) (`architecture.component-model`) for component inventory-to-contract mapping. These extend three existing concepts; no packaged Tailwind theme, automated code linter or product accessibility result is claimed.
+
+## Batch 6 — icon consistency, interaction verification and discovery (proposed, 2026-11-07)
+
+Use [icon semantics](foundations/iconography-and-semantics.md) for icon-intent collision and consistency review (CKG-05), and [quality gates](governance/quality-gates.md) for real interaction-state test scenarios and task-based canonical retrieval (CKG-18/19). The shared B01–B06 branch adds catalog guidance and regression tests only; human review, actual browser accessibility, user outcomes and production adoption require separate evidence.

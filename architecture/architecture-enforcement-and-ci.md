@@ -150,3 +150,53 @@ For every enforcing change, record a pinned tool/version and resolved paths; sou
 ## Sources and status
 
 Official tool documentation consulted 2026-11-07 (links above). These configurations are **illustrative**, require adaptation to actual resolver/project versions, and have **not been executed in a target application**. This proposed guide extends [module boundaries](module-boundaries-and-developer-navigation.md), [evolution](architecture-evolution.md) and existing [quality gates](../governance/quality-gates.md) without claiming shipped enforcement.
+
+## B05 — visual redundancy and utility-style enforcement (CKG-16; proposed 2026-11-07)
+
+**Use** only after reviewing the real styling stack, current selectors, imported components, token formats, existing CI and duplicated *semantics*. [Practical styling](../foundations/practical-ui-styling-recipes.md) owns the visual recipes; [design tokens](../foundations/design-tokens-and-themes.md) owns token validity; [component model](component-model.md) owns reuse and retirement decisions. This section owns **how to detect and enforce ownership drift** in actual consuming applications. The reference catalog itself has no target app CSS compiler or Tailwind configuration to lint.
+
+### Guardrail selection and false-positive budget
+
+| Candidate check | Evidence and implementation strategy | Exceptions / limits |
+| --- | --- | --- |
+| Repeated hard-coded color/space/motion | Review AST/CSS values and class tokens for repeated values with **same semantic purpose**; propose an established token or documented new role | Isolated values, external widgets, SVG art, dynamic geometry and unrelated meanings are not automatic errors |
+| Duplicated UI primitives | Resolve imports/exports and used components; flag multiple semantically equivalent Button/Dialog/Input implementations for manual review | Installed shadcn templates not imported are not duplicate production consumers |
+| Global scope bleed | Detect broad selectors targeting feature markup and suspicious `!important` usage; test cascade under states/themes | Legitimate document reset, accessibility/forced-color rules and vetted third-party integration may be global |
+| Excessive variant combinations | Inventory public variants, Boolean toggles, consumers and invalid combinations; require API review when semantics explode | A small well-defined mode set is acceptable; do not enforce arbitrary maximum prop counts |
+| Repeated long utility sequences | Normalize utility strings and inspect repeated *stateful visual semantics* across actual consumer contexts | Repeated `flex`, `items-center` and simple layout are not grounds for a component |
+| Inline static styling | Flag recurring static style values where token/variant role exists; document owner and replacement | Measured runtime overlay coordinates, transforms and controlled CSS variables can be justified |
+| Unused/deprecated styles | Build source import/selector graph, compare compiled output and consumer coverage, remove only after evidence | Generated classes, data-attribute selectors and dynamic class composition require careful resolution |
+
+### Adoption and CI workflow
+
+1. **Inventory first:** pin repository/framework/Tailwind version; collect style entrypoints, theme roles, class generators, imported/exported controls and actual variant consumers. Establish a baseline of *verified* collisions and false positives.
+2. **Choose a limited rule:** start with direct, high-confidence errors (unauthorized global selector; duplicate primitive export) and a scoped warning for uncertain cases (repeated utility strings). Existing ESLint, Stylelint, custom source checks or build tools may be used—do not prescribe/install every tool.
+3. **Create positive and negative fixtures:** valid shared tokens and intentionally local layout must pass; a prohibited global feature selector or a duplicated canonical control must fail. Validate dynamic utility construction, CSS nesting and generated selectors; no regex-only rule should be claimed comprehensive.
+4. **Roll out incrementally:** warn on baseline debt with owner/reason/sunset; fail new high-confidence violations; upgrade only after measurement of actual rule precision and migration impact. Do not impose invented universal line counts or class repetition thresholds.
+5. **Preserve behavior:** run source/import validation, theme and alias checks, build/typecheck, representative visual snapshots and keyboard/focus, zoom, RTL and reduced-motion checks. Style lint **cannot prove** WCAG conformance, semantic correctness or task success.
+6. **Document rollout:** owner, exception record, exact files/scope, new violations, false positives, compatible migration, rollback and evidence. Unavailable tool/runtime results stay `NOT VERIFIED`.
+
+**Illustrative source check, pseudocode (not production-ready):**
+
+```text
+for each application-owned stylesheet:
+    parse selectors with the app's actual CSS parser
+    if selector is global and targets feature-specific implementation markup:
+        report REVIEW with owner, consumer list and authorized exception
+for each candidate repeated literal or class sequence:
+    compare semantic role, consumers, themes and states
+    report REUSE_CANDIDATE, not automatic failure
+```
+
+**Good:** a project uses its existing linter to prevent *new* global feature selectors after a reviewed baseline, and flags duplicated Button implementations for human ownership review. **Bad:** CI rejects any stylesheet above 200 lines, any repeated `gap-2`, or all inline style objects without reading intent; accessibility-safe styles and dynamic placement are broken to satisfy metrics.
+
+### B05 enforcement verification (not executed in this catalog)
+
+| Check | Evidence required | Current status |
+| --- | --- | --- |
+| Baseline false positives / legitimate exceptions | Real app rule execution and reviewed fixtures | NOT VERIFIED |
+| Token and selector drift | Actual compiler/linter output and affected consumer list | NOT VERIFIED |
+| UI visual, keyboard and locale regressions | Browser/AT/viewport/theme comparison on changed flows | NOT VERIFIED |
+| CI rollout or blocking status | Real target repository workflow/PR result | NOT VERIFIED |
+
+**References:** [ESLint custom rules](https://eslint.org/docs/latest/extend/custom-rules), [Stylelint rule catalog](https://stylelint.io/user-guide/rules/), [Tailwind theme variables](https://tailwindcss.com/docs/theme/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07). These tools are optional depending on target stack, and reference syntax must be checked against installed versions.

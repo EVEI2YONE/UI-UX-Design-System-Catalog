@@ -25,3 +25,27 @@ Before contributions, validate the registry and run the Python test suite. Prese
 ## Image-based wireframe consumer lookup (proposed PR #11)
 
 For task-to-screen wireframing, retrieve `guidance.wireframe-methodology` first for fidelity and static-image boundaries, then `pattern.task-flows` and `principle.visual-hierarchy` for composition. Use `pattern.interaction-recovery`, `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization` and `governance.quality` only where relevant. See the [cumulative wireframe integration handoff](archive/planning/wireframe-integration-handoff-2026-11-07.md) for B0–B7 disposition and [synthetic cases](archive/planning/wireframe-synthetic-example-bank-2026-11-07.md) for positive/negative retrieval rehearsal. Canonical registry pages, not the handoff, own the design rules. Do not treat static images as working behavior or claim actual product testing from catalog CI.
+
+## Icon-bearing control retrieval (proposed Batch 1)
+
+Search `foundation.icon-semantics` for icon meanings, decorative/informative roles, icon-only button naming, target geometry and RTL. Search `component.button` for button activation and its state contract. Prefer the canonical entry to copying a product-specific Lucide mapping; the catalog specifies meaning and contracts, not a production icon package. No human/component verification was performed by a documentation-only batch.
+
+## Batch 2 — composite interaction lookup
+
+For “component event ownership”, “cross component events”, “nested interactive controls” or “controlled uncontrolled state”, retrieve **existing** canonical ID `architecture.component-contracts`. Use `component.button` and `foundation.icon-semantics` for host activation and icon meaning, respectively; use `pattern.interaction-recovery` for server-outcome uncertainty and focus recovery. B02 does not introduce a second concept ID, global event bus or verified production behavior.
+
+## Batch 3 — action continuation and focus retrieval
+
+Search `pattern.interaction-recovery` for “icon state synchronization”, “post mutation focus”, “focus after item removal” and “pending confirmed icon”. Search `pattern.task-flows` for “sequential task controller”, “next eligible item”, “stable action region” and “pointer travel continuity”. Read `foundation.icon-semantics` for semantic glyph roles and `architecture.component-contracts` for event ownership; neither replaces the workflow's authoritative mutation/reconciliation logic. B03 tests are documentation-level; product UX and accessibility remain NOT VERIFIED.
+
+## Batch 4 — action consolidation and effort retrieval
+
+Resolve `pattern.advanced-interactions` for “action consolidation decision matrix”, “split button safety”, “contextual action toolbar”, “control overloading” or “primary versus overflow actions”. Resolve `guidance.ux-measurement` for “pointer travel distance”, “time to next action”, “keyboard navigation effort” and “interaction cost measurement”. Use B03 `pattern.task-flows` for spatial layout/next-item progression, not to redefine the metric; all UX improvements require actual task evidence.
+
+## Batch 5 — styling and component ownership retrieval
+
+For “utility-first styling ownership” or “tailwind shadcn component styling”, retrieve `foundation.practical-styling`; for “visual redundancy enforcement”, “CSS ownership lint” or “variant explosion lint”, retrieve `architecture.enforcement-ci`; for “component inventory to contract mapping”, “installed versus used components” or “duplicate primitive audit”, retrieve `architecture.component-model`. Retain `foundation.design-tokens` for token definitions and modes. B05 is documentation-only; do not infer actual CI linting or visual QA.
+
+## Batch 6 — final icon and interaction verification retrieval
+
+Resolve `foundation.icon-semantics` for “icon consistency audit” and “icon intent collision review”. Resolve `governance.quality` for “interaction state test matrix”, “icon interaction testing”, “catalog retrieval regression” and the cumulative B01–B06 evidence gate. Use the canonical owners returned by `scripts/find_concept.py`, not repeated guidance from historical batch ledgers. Automated catalog tests cannot prove screen-reader, keyboard, touch, responsive or live network behavior.

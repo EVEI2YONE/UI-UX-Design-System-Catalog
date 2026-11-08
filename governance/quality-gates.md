@@ -286,3 +286,61 @@ Record an observation, why it matters, a specific proposed correction and the ar
 ## Integrated visual craftsmanship workflow — Batch 5 (KG-18, proposed)
 
 To apply visual direction, styling and critique as a connected process, use the [end-to-end visual craftsmanship workflow](visual-craftsmanship-workflow.md). This document remains the canonical owner of review and evidence requirements; the linked guide is **non-canonical orchestration** only. It maps KG-01–18 to existing owners, defines proportionate intake and handoff, and requires accurate `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` checks. Do not infer visual quality or accessibility from documentation alone.
+
+## B06 — interaction-state test evidence and catalog retrieval assurance (CKG-18/19; proposed 2026-11-07)
+
+**Scope:** define what a reviewer must observe for proposed component/interaction contracts and how an agent must retrieve their canonical owner. This extends existing quality gates rather than shipping a test framework or replacing actual end-user trials. A passing Markdown validator can verify only catalog structure; **it cannot verify accessibility, implemented interactions or task outcomes.**
+
+### CKG-18 — interaction-state test matrix
+
+Tests must exercise **trigger → component state → workflow coordinator → user-visible response**, including keyboard/pointer/touch paths and error branches where relevant. Prefer the existing consumer application's test toolchain; the names below are test *scenarios*, not imports or a required Playwright/Storybook dependency.
+
+| Scenario | Assertions in a real implementing application | Minimum evidence |
+| --- | --- | --- |
+| Named icon-only action | Contextual accessible name; focus-visible; native Enter/Space; target geometry; no duplicate SVG activation | Browser keyboard/AT and touch check, target-size applicability |
+| Icon status vs task action | Decorative icon hidden from AT when labeled; status meaning visible in text; glyph role not confused with actionable check | Screen-reader and visual/icon registry audit |
+| Compound card, overflow and dialog | Row actions identify current record, trigger only once, menu follows appropriate keyboard model and Escape/return focus; no nested interactive conflict | Keyboard, pointer, focus lifecycle and item identity tests |
+| Controlled form/select/filter | Parent is state source when controlled; changes, resets and refreshes do not desynchronize visible value, results or errors | Component integration tests, translated/long labels |
+| Pending/uncertain consequential command | Pending prevents duplicate activation, failed/unknown status never displays confirmed icon; reconcile by authoritative ID and revision | Service-mocked delay/timeout/conflict plus real API contract review |
+| Removed selected row / dialog invoker | Focus moves to a valid logical target; important status announced without stealing focus on every refresh | DOM/focus checks and AT manual inspection |
+| Sequential next eligible task | Only advance after confirmed/reconciled result and current authorization; preserve note on failure; Skip/Stop/Load More truthful | End-to-end workflow and server-state tests |
+| Responsive, theme and locale matrix | Visible action region remains discoverable at narrow/zoomed widths, RTL, forced-colors, reduced motion and long labels | Rendered state screenshots plus manual keyboard/AT checks |
+
+**Evidence format per test:** `canonicalId`, component/feature consumer, source revision, environment (browser/OS/device/AT/locale/theme/zoom), scenario/trigger, expected result, *observed* result, status `PASS|FAIL|NOT VERIFIED|NOT APPLICABLE`, run timestamp, owner, screenshot/log reference and known limitation. Do not mark PASS from pseudocode or a text assertion alone. For high-impact writes, record backend eligibility, revision, idempotency and reconciliation evidence separately from visible UI testing.
+
+**Negative fixtures matter:** a bare clickable SVG must fail an interactive semantic review; an overflow menu that only opens on hover must fail discoverability; a pending spinner that appears as confirmed success must fail authoritative result correctness; a row removal that strands focus must fail navigation continuity. Do not use CSS-only focus snapshots as proof of actual keyboard operability.
+
+### CKG-19 — retrieval and documentation regression
+
+**Canonical retrieval owner:** `catalog/index.json` declares the unique ID/path/status/aliases; Markdown pages own detailed guidance; `scripts/find_concept.py` supplies deterministic exact-ID/alias priority. Do not duplicate normative contracts as agent-local instructions.
+
+| Retrieval task (example) | Expected canonical owner | Boundary |
+| --- | --- | --- |
+| `icon consistency audit`, `semantic icon registry` | `foundation.icon-semantics` | Icon meaning/review, not business activation |
+| `icon-only button` | `foundation.icon-semantics` + `component.button` | Host Button owns activation |
+| `cross component events`, `nested interactive controls` | `architecture.component-contracts` | Feature owns domain outcome |
+| `focus after item removal`, `pending confirmed icon` | `pattern.interaction-recovery` | Reconciliation vs optimistic updates |
+| `sequential task controller`, `stable action region` | `pattern.task-flows` | No automatic submission |
+| `split button safety`, `action consolidation decision matrix` | `pattern.advanced-interactions` | Prefer visible peer decisions when high-risk |
+| `pointer travel distance`, `time to next action` | `guidance.ux-measurement` | Measurement, not click-only optimization |
+| `utility-first styling ownership`, `visual redundancy enforcement`, `component inventory to contract mapping` | `foundation.practical-styling`, `architecture.enforcement-ci`, `architecture.component-model` respectively | Existing canonical architecture owners |
+| `interaction state test matrix`, `catalog retrieval regression` | `governance.quality` | Documentation vs actual browser evidence |
+
+**Required automated catalog checks:** registry/schema validity, unique IDs/paths and no broken internal references; exact ID and task-alias lookup for both legacy and new knowledge; test for inappropriate owner collisions (an icon semantic query should not accidentally resolve to an app-specific workflow). For each affected entry verify its `status`, `owner` and `reviewed_at` metadata rather than automatically promoting proposed guidance. Preserve an intentional alias redirect if a concept ID moves.
+
+**Coverage and evidence matrix:** distinguish (1) repository content verified via GitHub, (2) Python validator/test run completed with actual exit/output, (3) real consumer implementation or manual keyboard/screen-reader/browser checks, and (4) observed user-efficiency evidence. Each has a separate status. The PR should explicitly name any missing category; an unrun test is **NOT VERIFIED**, never PASS.
+
+**Catalog commands when an executable working tree is available:**
+
+```bash
+python3 scripts/validate_catalog.py
+python3 -m unittest discover -s tests -v
+python3 scripts/find_concept.py "icon consistency audit" --json
+python3 scripts/find_concept.py "interaction state test matrix" --json
+```
+
+Do not infer a successful run merely from the presence of these commands in documentation. On a GitHub PR, inspect the actual workflow checks before reporting green.
+
+**Illustrative positive:** a catalog PR updates an existing owner and retrieval aliases, then logs actual passing validator/tests and separately marks unperformed screen-reader interaction checks NOT VERIFIED. **Anti-example:** write a retrieval unit test that only asserts a phrase exists in Markdown, mark "Accessible PASS" without rendering a control, then auto-promote every changed entry to stable.
+
+**Review and ownership:** Proposed knowledge, owner unassigned. Human review, observed consumer accessibility, production release and UX metrics remain **NOT VERIFIED** until supported by separate evidence. References (consulted 2026-11-07): [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [Playwright testing](https://playwright.dev/docs/intro), [Storybook interaction tests](https://storybook.js.org/docs/writing-tests/interaction-testing), and the catalog's own `scripts/validate_catalog.py` and `scripts/find_concept.py`.

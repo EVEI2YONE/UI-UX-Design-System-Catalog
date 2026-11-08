@@ -132,7 +132,11 @@
         "interface styling",
         "microinteractions",
         "motion design",
-        "reduced motion styling"
+        "reduced motion styling",
+        "utility-first styling ownership",
+        "tailwind shadcn component styling",
+        "token-backed utility classes",
+        "scoped feature CSS"
       ],
       "domains": [
         "visual-design",
@@ -143,7 +147,9 @@
       "use_when": [
         "implementing a coherent visual direction in component or page CSS",
         "choosing layout and surface styling for a UI archetype",
-        "reviewing image/icon consistency and purposeful feedback motion"
+        "reviewing image/icon consistency and purposeful feedback motion",
+        "implementing styling boundaries in a utility-first application",
+        "reusing an existing shadcn-style component library"
       ],
       "avoid_when": [
         "using recipes without task and accessibility requirements",
@@ -157,10 +163,72 @@
         "guidance.mobile-adaptive",
         "guidance.data-visualization",
         "guidance.accessibility",
-        "governance.quality"
+        "governance.quality",
+        "architecture.component-model",
+        "architecture.enforcement-ci"
       ],
       "depends_on": [
         "foundation.visual-craftsmanship"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "foundation.icon-semantics",
+      "title": "Icon semantics and accessible icon controls",
+      "path": "foundations/iconography-and-semantics.md",
+      "layer": "foundations",
+      "kind": "contract",
+      "status": "proposed",
+      "summary": "Semantic icon intent registry, decorative/informative/action roles, and accessible icon-only action states and target rules.",
+      "aliases": [
+        "icon semantics",
+        "iconography registry",
+        "semantic icon registry",
+        "icon-only button",
+        "icon action",
+        "accessible icon controls",
+        "icon button loading state",
+        "decorative status icon",
+        "icon accessibility",
+        "icon consistency audit",
+        "icon intent collision review",
+        "icon visual consistency",
+        "icon glyph registry review",
+        "inconsistent action icons"
+      ],
+      "domains": [
+        "iconography",
+        "accessibility",
+        "components",
+        "interaction-states",
+        "visual-design"
+      ],
+      "use_when": [
+        "selecting icons for reusable UI controls",
+        "defining semantic icon intent and action labels",
+        "designing icon-only buttons and state transitions",
+        "auditing decorative versus informative icons",
+        "reviewing conflicting icon meanings and duplicate glyphs",
+        "auditing icon usage across actual product components"
+      ],
+      "avoid_when": [
+        "adding icons merely to decorate every control",
+        "replacing an existing button or menu implementation with a new icon component"
+      ],
+      "related": [
+        "foundation.practical-styling",
+        "component.button",
+        "architecture.component-contracts",
+        "guidance.accessibility",
+        "guidance.internationalization",
+        "pattern.feedback",
+        "pattern.interaction-recovery",
+        "governance.quality"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "guidance.accessibility"
       ],
       "owner": "unassigned",
       "reviewed_at": null
@@ -226,7 +294,12 @@
         "reuse",
         "component migration",
         "incremental component extraction",
-        "unused component library"
+        "unused component library",
+        "component inventory to contract mapping",
+        "installed versus used components",
+        "component reuse inventory",
+        "duplicate primitive audit",
+        "component promotion worksheet"
       ],
       "domains": [
         "architecture",
@@ -238,14 +311,18 @@
         "placing a primitive or feature",
         "promoting shared components",
         "extracting presentation from large page modules in vertical slices",
-        "distinguishing present UI-library files from components actually adopted in the app"
+        "distinguishing present UI-library files from components actually adopted in the app",
+        "auditing existing UI controls before creating new components",
+        "mapping component inventory to canonical reusable contracts"
       ],
       "avoid_when": [
         "moving unstable one-off workflows into shared components"
       ],
       "related": [
         "architecture.component-contracts",
-        "governance.lifecycle"
+        "governance.lifecycle",
+        "foundation.practical-styling",
+        "architecture.enforcement-ci"
       ],
       "depends_on": [
         "foundation.design-tokens"
@@ -268,7 +345,15 @@
         "API",
         "state matrix",
         "contract",
-        "focus lifecycle"
+        "focus lifecycle",
+        "component event ownership",
+        "cross component events",
+        "composite component anatomy",
+        "nested interactive controls",
+        "controlled uncontrolled state",
+        "component event propagation",
+        "event contract matrix",
+        "feature workflow command"
       ],
       "domains": [
         "components",
@@ -278,7 +363,11 @@
       "use_when": [
         "specifying reusable controls",
         "defining component states",
-        "reviewing a loading button or dialog"
+        "reviewing a loading button or dialog",
+        "coordinating sibling UI state",
+        "specifying composite component event semantics",
+        "preventing nested interactive event collisions",
+        "designing controlled versus uncontrolled components"
       ],
       "avoid_when": [
         "embedding product APIs in reusable controls"
@@ -287,7 +376,12 @@
         "pattern.interaction-recovery",
         "guidance.accessibility",
         "governance.quality",
-        "governance.lifecycle"
+        "governance.lifecycle",
+        "foundation.icon-semantics",
+        "component.field",
+        "component.dialog",
+        "pattern.search-filter",
+        "pattern.data-tables"
       ],
       "depends_on": [
         "architecture.component-model",
@@ -325,7 +419,14 @@
         "structural wireframe alternatives",
         "screen composition",
         "wireframe comparison matrix",
-        "screen flow wireframe"
+        "screen flow wireframe",
+        "sequential task controller",
+        "next eligible item",
+        "stable action region",
+        "pointer travel continuity",
+        "review queue progression",
+        "task continuation after approval",
+        "load more versus queue complete"
       ],
       "domains": [
         "information-architecture",
@@ -341,7 +442,10 @@
         "mapping optional feature flag combinations and historic task access",
         "turning a user task into a screen sequence",
         "comparing meaningful structural wireframe alternatives",
-        "mapping required design context and explicit assumptions"
+        "mapping required design context and explicit assumptions",
+        "designing a sequential review or item processing workflow",
+        "positioning the next action consistently across repeated tasks",
+        "preserving queue scope during progression"
       ],
       "avoid_when": [
         "optimizing click counts without verifying user task success",
@@ -354,7 +458,10 @@
         "pattern.role-aware-workspaces",
         "guidance.ux-measurement",
         "guidance.accessibility",
-        "guidance.wireframe-methodology"
+        "guidance.wireframe-methodology",
+        "foundation.icon-semantics",
+        "architecture.component-contracts",
+        "pattern.interaction-recovery"
       ],
       "depends_on": [
         "principle.visual-hierarchy"
@@ -463,7 +570,15 @@
         "wireframe recovery states",
         "wireframe loading empty error success",
         "permission denied wireframe",
-        "unknown outcome state"
+        "unknown outcome state",
+        "icon state synchronization",
+        "pending confirmed icon",
+        "focus after item removal",
+        "post mutation focus",
+        "focus after list update",
+        "focus after approval",
+        "next item focus fallback",
+        "authoritative state icon"
       ],
       "domains": [
         "interaction",
@@ -480,7 +595,10 @@
         "explaining paused actions and in flight configuration changes",
         "illustrating state coverage in image based wireframes",
         "annotating static loading empty validation error permission success and recovery variants",
-        "distinguishing documented state intent from verified interaction behavior"
+        "distinguishing documented state intent from verified interaction behavior",
+        "synchronizing pending and confirmed status visuals",
+        "restoring focus after removing or changing a selected item",
+        "handling uncertain outcomes before continuing a task"
       ],
       "avoid_when": [
         "retrying a non-idempotent action without confirming outcome",
@@ -497,7 +615,9 @@
         "pattern.authentication-lifecycle",
         "pattern.agentic-actions",
         "guidance.performance-experience",
-        "guidance.wireframe-methodology"
+        "guidance.wireframe-methodology",
+        "foundation.icon-semantics",
+        "component.dialog"
       ],
       "depends_on": [
         "architecture.component-contracts"
@@ -639,7 +759,14 @@
         "usability metrics",
         "funnel measurement",
         "event schema",
-        "survey score"
+        "survey score",
+        "interaction cost measurement",
+        "pointer travel distance",
+        "time to next action",
+        "keyboard navigation effort",
+        "repeat selection effort",
+        "action efficiency guardrails",
+        "task reentry count"
       ],
       "domains": [
         "ux-research",
@@ -650,7 +777,10 @@
         "defining task success and eligible attempts",
         "measuring error rates or step abandonment",
         "designing privacy-respecting UX event instrumentation",
-        "interpreting SUS CES and NPS scores"
+        "interpreting SUS CES and NPS scores",
+        "measuring pointer, keyboard or touch effort during a user task",
+        "evaluating task efficiency and safe action consolidation",
+        "comparing time to next eligible action without sacrificing correctness"
       ],
       "avoid_when": [
         "treating SUS as a percentage of users",
@@ -664,7 +794,8 @@
         "guidance.ai-experiences",
         "pattern.multimodal-conversation",
         "guidance.performance-experience",
-        "guidance.experimentation"
+        "guidance.experimentation",
+        "pattern.advanced-interactions"
       ],
       "depends_on": [
         "pattern.task-flows"
@@ -764,7 +895,13 @@
         "visual design delivery pipeline",
         "design to render review",
         "visual style implementation checklist",
-        "KG-18 workflow integration"
+        "KG-18 workflow integration",
+        "interaction state test matrix",
+        "icon interaction testing",
+        "catalog retrieval regression",
+        "icon interaction QA",
+        "cross component interaction tests",
+        "six batch knowledge audit"
       ],
       "domains": [
         "quality",
@@ -784,7 +921,10 @@
         "iterating on screenshot-based layout and styling defects",
         "checking before-and-after visual corrections with evidence",
         "integrating visual direction styling and rendered QA in one design-to-delivery workflow",
-        "auditing visual craftsmanship knowledge coverage and evidence handoff"
+        "auditing visual craftsmanship knowledge coverage and evidence handoff",
+        "planning interaction-state tests across component and workflow boundaries",
+        "verifying agent task retrieval maps to canonical concept owners",
+        "reviewing icon and interaction documentation acceptance"
       ],
       "avoid_when": [
         "marking unperformed checks as PASS",
@@ -803,7 +943,10 @@
         "foundation.design-tokens",
         "guidance.wireframe-methodology",
         "foundation.visual-craftsmanship",
-        "foundation.practical-styling"
+        "foundation.practical-styling",
+        "foundation.icon-semantics",
+        "pattern.advanced-interactions",
+        "pattern.task-flows"
       ],
       "depends_on": [],
       "owner": "unassigned",
@@ -1796,7 +1939,14 @@
         "undo redo",
         "item reorder",
         "batch operations",
-        "reversible actions"
+        "reversible actions",
+        "action consolidation decision matrix",
+        "split button safety",
+        "contextual action toolbar",
+        "primary versus overflow actions",
+        "action grouping",
+        "control overloading",
+        "contextual overflow menu"
       ],
       "domains": [
         "interaction",
@@ -1807,7 +1957,10 @@
       "use_when": [
         "designing bulk actions on records",
         "adding keyboard command palettes and shortcuts",
-        "providing reorder and undo behavior"
+        "providing reorder and undo behavior",
+        "deciding whether to group actions in a split button, toolbar or menu",
+        "comparing visible actions with overflow alternatives",
+        "preventing ambiguous consolidated controls"
       ],
       "avoid_when": [
         "making dragging or gesture the only way to complete a task",
@@ -1819,7 +1972,10 @@
         "pattern.interaction-recovery",
         "guidance.accessibility",
         "guidance.mobile-adaptive",
-        "pattern.agentic-actions"
+        "pattern.agentic-actions",
+        "guidance.ux-measurement",
+        "architecture.component-contracts",
+        "foundation.icon-semantics"
       ],
       "depends_on": [
         "pattern.interaction-recovery"
@@ -2292,7 +2448,12 @@
         "dependency-cruiser rules",
         "ESLint no-restricted-imports",
         "Nx module boundaries",
-        "architecture lint rules"
+        "architecture lint rules",
+        "visual redundancy enforcement",
+        "CSS ownership lint",
+        "duplicate utility style detection",
+        "global CSS selector guardrails",
+        "variant explosion lint"
       ],
       "domains": [
         "application-architecture",
@@ -2303,7 +2464,9 @@
       "use_when": [
         "enforcing feature domain and shared import boundaries",
         "introducing architecture checks into CI",
-        "choosing between ESLint graph checks and Nx rules"
+        "choosing between ESLint graph checks and Nx rules",
+        "detecting duplicate primitive and feature styles",
+        "introducing baseline-aware CSS and utility lint safeguards"
       ],
       "avoid_when": [
         "assuming alias-only lint covers all relative imports",
@@ -2313,7 +2476,9 @@
         "architecture.module-boundaries",
         "architecture.evolution",
         "architecture.framework-aware",
-        "governance.quality"
+        "governance.quality",
+        "foundation.practical-styling",
+        "architecture.component-model"
       ],
       "depends_on": [
         "architecture.module-boundaries",

@@ -248,3 +248,41 @@
 - Batch 2 (KG-007–013, KG-023): expand existing authentication, privacy and role-aware workspace guidance for factor/session/provider management, consent/data lifecycle and high-risk settings authorization; no duplicate concepts.
 - Batch 3 (KG-014–022, KG-024): extend notification, token/appearance, i18n and quality guidance; add `pattern.billing-subscription-settings` for payment/plan/invoice decisions. Keep product tests NOT VERIFIED.
 - Register both new IDs, sync root/nested discovery and maintain one shared PR with separate batch commits; no app implementation or validated security/compliance outcomes.
+
+## Unreleased — icon and interaction system, Batch 1 (2026-11-07)
+
+- Added proposed `foundation.icon-semantics` guidance for semantic icon intent, accessible icon-only action controls, host state and verification.
+- Extended Button and styling docs with canonical ownership boundaries and updated index/agent lookup paths.
+- No shipped component, human review, or manual accessibility conformance is implied. Batches 2–6 remain pending on the shared branch.
+
+## Unreleased — icon and interaction system, Batch 2 (2026-11-07)
+
+- Expanded canonical `architecture.component-contracts` with composite part/slot ownership, local UI events vs feature commands vs domain outcomes, sibling coordination, controlled state and invalid nested activation (CKG-04, CKG-06–08).
+- Updated canonical retrieval aliases, root/architecture/components indexes, examples and regression tests; retained all existing component IDs and application-specific business logic boundaries.
+- Captured [pre-edit context](archive/planning/icon-interaction-b02-context-2026-11-07.md). Human review and product/browser/accessibility verification remain NOT VERIFIED. Shared PR waits until B06.
+
+## Unreleased — icon and interaction system, Batch 3 (2026-11-07)
+
+- Extended `pattern.interaction-recovery` (CKG-09/10) with icon/status timing, authoritative outcome semantics, focus fallback after removed records and a recovery acceptance matrix.
+- Extended `pattern.task-flows` (CKG-11/12) with stable action zones, preserved queue context and a guarded next-eligible-item state model including skip/stop, unknown writes, permissions and pagination.
+- Updated canonical registry aliases and root/pattern/agent discovery; added knowledge retrieval tests and a [pre-edit context ledger](archive/planning/icon-interaction-b03-context-2026-11-07.md).
+- No new component package, tested task-efficiency improvement or verified accessibility conformance. Shared PR remains deferred until B06.
+
+## Unreleased — icon and interaction system, Batch 4 (2026-11-07)
+
+- Expanded `pattern.advanced-interactions` (CKG-13) with explicit-button/toolbar/overflow/split/shortcut choice matrix, consequence, focus and accessibility constraints.
+- Expanded `guidance.ux-measurement` (CKG-14) with task-scoped pointer/keyboard/scroll/re-entry/time-to-next metrics, privacy handling and task-success guardrails.
+- Updated existing registry aliases and source indexes; saved [B04 context review](archive/planning/icon-interaction-b04-context-2026-11-07.md). No new canonical IDs or observed user-efficiency claims.
+
+## Unreleased — icon and interaction system, Batch 5 (2026-11-07)
+
+- Extended `foundation.practical-styling` (CKG-15) with utility-first token/component/feature ownership and a bounded Tailwind/shadcn-style example.
+- Extended `architecture.enforcement-ci` (CKG-16) with baseline-aware global CSS, raw-token, duplicate-primitive and variant drift guardrails plus exception and false-positive handling.
+- Extended `architecture.component-model` (CKG-17) with installed/exported/imported/used inventory distinctions and reuse/compose/extend/keep-local/create/deprecate decision worksheet.
+- Added [B05 context review](archive/planning/icon-interaction-b05-context-2026-11-07.md), index aliases, retrieval tests and progress tracking. No new canonical concept or target-app linter installed.
+
+## Unreleased — icon and interaction system, Batch 6 (2026-11-07)
+
+- Extended `foundation.icon-semantics` (CKG-05) with semantic icon collision/consistency review, versioned migration and actual UI verification requirements.
+- Extended `governance.quality` (CKG-18/19) with interaction-state test cases, canonical task lookup matrix, positive/negative documentation checks and evidence separation.
+- Updated registry aliases and discovery indexes, added B06 context and cumulative retrieval tests; B01–B06 shared PR follows documentation completion. Do not infer human-approved standards or verified runtime accessibility from docs-only commits.

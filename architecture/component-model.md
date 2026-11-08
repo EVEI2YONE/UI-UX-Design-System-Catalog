@@ -63,3 +63,58 @@ Before promoting an app-local piece, identify at least two credible usage contex
 **Positive example:** move one contribution-review dialog to a feature module, reuse a shared Dialog shell and retain the existing command and validation behavior with keyboard and visual comparison evidence. **Anti-example:** replace every modal and table in one commit, change CSS global selectors and mutate domain commands while claiming the work is a visual-only refactor.
 
 **Verification:** source import graph, public API consumers, feature route smoke paths, state transition fixture comparisons, keyboard and screen reader focus, mobile/zoom, locale growth, visual snapshots, bundle/layout effects if measured, and rollback rehearsal. Without an implemented baseline, mark runtime outcomes NOT VERIFIED. See [component contracts](component-contracts.md), [tokens](../foundations/design-tokens-and-themes.md), and [quality gates](../governance/quality-gates.md).
+
+## B05 — component inventory to canonical contract mapping (CKG-17; proposed 2026-11-07)
+
+**Purpose:** decide what to **reuse, compose, extend, keep local, create or retire** before a clean-slate visual implementation. The existing reuse model and incremental extraction sequence above remain authoritative; this section supplies a compact, evidence-led inventory worksheet. Similar names or appearances are not proof of interchangeable semantics.
+
+### Inventory fields and evidence levels
+
+For each observed component or repeated UI pattern, record:
+
+| Inventory field | Evidence / decision required |
+| --- | --- |
+| Source identity | File and export path, known version, owning package/feature and tested consumer |
+| Availability | Distinguish **installed**, **exported**, **imported**, **rendered/used**, and **documented only**; do not count all template files as active UI |
+| Semantics and interaction | Native role; keyboard/focus behavior; names/labels; component event; async/error states |
+| Visual and layout contract | Tokens, variants/sizes, light/dark/high-contrast, responsive composition, styling owner |
+| Consumers and scope | Actual import graph, route/workflow, same semantics or merely similar geometry |
+| Duplication risk | Equivalent behavior implemented twice, uncontrolled variants, near-identical status labels or conflicting focus handling |
+| Decision | Reuse, compose, extend, keep-local, create, deprecate/remove or defer |
+| Implementation/review gate | Owner, tests needed, compatibility, migration plan, rollout evidence and rollback |
+
+### Reuse/compose/extend decision table
+
+| What the evidence shows | Default disposition | Why |
+| --- | --- | --- |
+| Existing Button/Dialog/Input with matching semantics and reliable accessibility | **Reuse** canonical primitive | Avoid a second focus/keyboard implementation |
+| Distinct feature data with shared surface and predictable slots | **Compose** existing primitives/patterns | Keep domain commands, permissions and text at feature level |
+| One stable semantic difference needed by credible multiple consumers | **Extend** controlled variant/slot contract | Preserve small public API and state-test matrix |
+| One task-specific layout or uncommon localized variation | **Keep local** with token-backed styling | Similar CSS alone does not justify a public component |
+| Meaningful missing reusable behavior with no existing owner | **Create** a component *after* catalog lookup, contract and consumer proof | Prevent premature abstraction and megacomponents |
+| Older competing implementation has mapped equivalent replacement and consumers migrated | **Deprecate/retire** with compatibility and reversal plan | Remove debt without breaking hidden consumers |
+| No current backend, authorization, runtime or consumer evidence | **Defer** or document proposal | Avoid claiming a feature or action exists because a design mentions it |
+
+**Example inventory, illustrative (not an audit of the target application):**
+
+| Candidate | Observed evidence required | Decision hypothesis |
+| --- | --- | --- |
+| Save action with spinner | Existing shared Button supports pending and focus | Reuse Button + feature-owned `saving` state |
+| Review decision bar | Several review-specific outcomes, notes and reconciliation | Compose buttons in feature; do not create `approve` prop on Button |
+| Status label with icon | Shared status Badge plus consistent pending/approved semantics | Extend generic Badge only if cross-feature needs agree; see [icon semantics](../foundations/iconography-and-semantics.md) |
+| Dashboard card and project list item | Both happen to have borders/padding | Keep task-owned unless content, event and layout contracts genuinely match |
+
+### Mapping workflow and anti-patterns
+
+1. **Search existing exports and aliases** via actual imports, public facades and canonical registry before inventing names. Include feature-local wrappers and unused installed packages as separate categories.
+2. **Map behavior and state first:** distinguish navigation/link, action/button, form input, role-aware outcome and domain-specific orchestration. Do not equate CSS similarity with semantic equivalence.
+3. **Classify scope:** theme token vs primitive vs composed pattern vs feature task vs page shell; document owner and consumers.
+4. **Choose the smallest safe change** and identify any variants/slots needing a versioned contract. Avoid a `UniversalCard` or a `MegaDashboard` with dozens of Boolean switches.
+5. **Test a vertical slice** for behavior, focus/keyboard, screen reader, pending/error, RTL, responsive, themes and integration correctness. Do not treat documentation or screenshot review as application QA.
+6. **Record migration** for every rename/deprecation: old→new API, affected imports, transitional alias, test evidence, owner and removal trigger.
+
+**Acceptance:** the inventory covers relevant *actual* consumers, each promoted component has a coherent reusable behavior and owner, and feature-specific authorization/network rules remain outside shared UI. No arbitrary component count or file-length threshold is a substitute for semantics.
+
+**Verification status:** inventory of the real target app, duplicate usage counts, browser and AT checks, token and theme builds, import graph, promotion effects and human sign-off are **NOT VERIFIED** by this catalog-only documentation.
+
+**Related:** [component contracts](component-contracts.md), [module boundaries](module-boundaries-and-developer-navigation.md), [styling recipes](../foundations/practical-ui-styling-recipes.md), [CI guardrails](architecture-enforcement-and-ci.md), [lifecycle policy](../governance/lifecycle-and-decisions.md). Motivating proposals: [Little Wins B03 component architecture](https://github.com/EVEI2YONE/Little_Wins/blob/main/docs/little-wins/ui-knowledge/batch-03-component-architecture.md).

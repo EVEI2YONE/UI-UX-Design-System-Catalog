@@ -82,3 +82,11 @@ For hosted identity and managed-profile boundaries use [authentication](authenti
 **Settings knowledge Batch 2 (PR #13):** [configuration propagation and integration verification](account-and-settings-portal.md#settings-knowledge-batch-2--propagation-and-integration-verification-kg-010-kg-013-proposed-2026-11-07) add a consumer reconciliation contract and setting-transition evidence matrix; reuse [offline synchronization](offline-sync-and-conflicts.md) for cross-tab/conflict fundamentals. Knowledge proposed; application checks NOT VERIFIED.
 
 **Settings knowledge Batch 3 (PR #13):** [per-setting lifecycle, defaults, compatibility and deprecation](account-and-settings-portal.md#settings-knowledge-batch-3--configuration-lifecycle-and-migration-kg-014-proposed-2026-11-07) extends [catalog lifecycle policy](../governance/lifecycle-and-decisions.md) and [versioned aggregate migration](offline-sync-and-conflicts.md#versioned-aggregate-migrations-and-safe-restore-batch-6--proposed-2026-11-07). Knowledge proposed; real migrations NOT VERIFIED.
+
+## B03 — icon-state, focus and sequential-task continuity (proposed, 2026-11-07)
+
+[Interaction states and recovery](interaction-states-and-recovery.md) now specifies CKG-09/10: pending versus confirmed/uncertain icon and text timing; focus when records, dialogs or queue selections disappear. [Task flows](task-flows-and-information-architecture.md) owns CKG-11/12: stable action placement, context retention and conditional next-eligible-item progression. Search `pattern.interaction-recovery` for “focus after item removal” and `pattern.task-flows` for “sequential task controller”. No catalog component implementation or keyboard/user verification is claimed.
+
+## B04 — action-consolidation selection (proposed, 2026-11-07)
+
+[Advanced interactions and reversible actions](advanced-interactions-and-reversible-actions.md) now specifies CKG-13: when to keep named actions visible versus grouping them in toolbars, overflow menus or split controls, with consequence and accessibility safeguards. Pair with [UX measurement](../guidance/ux-measurement.md) (CKG-14) to evaluate real task effort; do not infer benefits from fewer visible controls alone. Canonical ID: `pattern.advanced-interactions`.

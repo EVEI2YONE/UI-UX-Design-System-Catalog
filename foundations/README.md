@@ -19,3 +19,15 @@ Related: [component model](../architecture/component-model.md), [accessibility](
 [Design tokens and themes](design-tokens-and-themes.md) now gives a staged selector, value and consumer migration plan for large global stylesheets, with compatibility and reflow checks. The [Batch 9 context ledger](../archive/planning/little-wins-batch-9-context-and-gap-ledger.md) documents the motivating source. No framework replacement or actual token export is claimed.
 
 **Wireframe hierarchy (proposed B2):** [Design principles](design-principles.md) define context, content hierarchy and primary/secondary actions in a screen. Use [task flows](../patterns/task-flows-and-information-architecture.md) for structurally meaningful alternatives and evaluation, and [wireframe methodology](../guidance/wireframe-methodology.md) for fidelity.
+
+## Batch 1 — semantic icon controls (proposed, 2026-11-07)
+
+[Icon semantics and accessible icon controls](iconography-and-semantics.md) defines an intent registry, decorative/informative/interactive icon roles, icon-only button states, target-size distinctions, RTL rules and verification requirements. It extends—not duplicates—the icon styling guidance above. Canonical ID: `foundation.icon-semantics`; proposed, no component implementation or human review claimed.
+
+## B05 — utility-first styling ownership (proposed, 2026-11-07)
+
+[Practical UI styling recipes](practical-ui-styling-recipes.md) now provides CKG-15: a bounded Tailwind/shadcn-style ownership matrix and illustrative token-backed composition without prescribing a new framework or file-tree migration. [Design tokens](design-tokens-and-themes.md) retain semantic role and theme authority. Real visual/browser verification remains NOT VERIFIED.
+
+## B06 — icon consistency audit (proposed, 2026-11-07)
+
+The [canonical icon-semantics contract](iconography-and-semantics.md) now includes CKG-05: a versioned intent/glyph registry audit for duplicated meanings, host accessible names, pending/confirmed status, RTL, theme and visual consistency, with migration/verification gates. [Quality gates](../governance/quality-gates.md) own interaction test evidence; no rendered UI or icon library has been verified by this documentation change.
