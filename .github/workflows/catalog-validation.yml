@@ -34,3 +34,19 @@ jobs:
           node --check site/src/previews/preview-runner.js
           node --check site/src/implementations/components/button/Button.js
           node --check site/src/implementations/components/button/scenarios.js
+
+      - name: Test remaining core component references
+        run: node --test site/tests/core-controls-runtime.test.cjs
+      - name: Parse remaining component reference scripts
+        run: |
+          for component in input field select checkbox dialog; do
+            case "$component" in
+              input) source=Input ;;
+              field) source=Field ;;
+              select) source=Select ;;
+              checkbox) source=Checkbox ;;
+              dialog) source=Dialog ;;
+            esac
+            node --check "site/src/implementations/components/$component/$source.js"
+            node --check "site/src/implementations/components/$component/scenarios.js"
+          done
