@@ -1,4 +1,4 @@
-# Embedded visual catalog website (Phases 3–7)
+# Embedded visual catalog website (Phases 3–8)
 
 This directory contains the working **static knowledge browser with isolated live reference previews** for the UI/UX Design System Catalog. It is built from the repository's canonical Markdown and catalog/index.json, not a second manually maintained knowledge database.
 
@@ -90,3 +90,11 @@ A single new canonical feature, [Review Workspace](../features/review-workspace/
 Sources: `site/src/implementations/features/review-workspace/ReviewWorkspace.js`, `mock-adapter.js`, `scenarios.js`, `ReviewWorkspace.css`. The preview build copies the reviewed `mock-adapter.js` before the actual UI source, and exposes both scripts verbatim in source viewers. All scripts remain inside the existing trusted-source iframe sandbox with `allow-scripts` but no `allow-same-origin`. The example's local status verification intentionally remains unresolved after lost acknowledgement; it must not pretend a backend was queried.
 
 The registry is now **54 entries**, with 6 components, 5 patterns and 1 feature linked to actual reference sources; the other 42 entries remain specification-only. Existing canonical IDs and paths are preserved. `node --test site/tests/review-workspace-runtime.test.cjs` tests the adapter decisions and source-level UI state transitions using the same checked-in code. This does not establish actual browser keyboard/focus, assistive-technology compatibility, responsive contrast or production readiness. See [Phase 7 evidence](../docs/visual-catalog-refactor/13-phase-7-review-workspace.md).
+
+## Phase 8 — automated real-browser and accessibility gates
+
+The repository now runs a separate **Chromium interaction/axe CI job** as well as the existing catalog/static/source tests. The browser job serves the generated `site/dist/`, checks search/no-JS, browse-shell reflow at 320/375/768/1440px, real Button and form interactions, synthetic Review Workspace unknown-outcome behavior and automated `axe-core` WCAG-tagged tests in **all 12 sandboxed preview frames**. It uploads machine-readable accessibility reports and desktop/mobile screenshots as the `catalog-browser-audit` GitHub Actions artifact. See [Phase 8 gate/results](../docs/visual-catalog-refactor/14-phase-8-quality-gates.md) and [successful run 42487307587](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42487307587).
+
+The build also enforces static boot CSS **under 32 KiB**, search JS **under 8 KiB** and each compiled preview source/fixture/style set **under 64 KiB**. These are local engineering budgets, not field Core Web Vitals. Browser testing identified a real form/sandbox interaction issue and a duplicate-submit risk under unknown outcomes; both are fixed, and theme switching no longer remounts the editable example. Manual screen readers, full keyboard task review, 200–400% zoom, RTL, visual screenshot inspection and production performance remain **NOT VERIFIED**; don't claim WCAG conformance based on a green axe job.
+
+Browser audit dependencies are installed only in CI, not needed by a visitor or to build the site. For a local browser run, follow the commands in `catalog-validation.yml` and launch `node site/tests/browser-audit.cjs` with a static server running on port 8765.
