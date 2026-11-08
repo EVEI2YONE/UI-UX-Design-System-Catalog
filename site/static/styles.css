@@ -30,3 +30,7 @@
 /* Phase 6 compositional previews need room for errors, tables and task flows. */
 .live-preview iframe[src*="pattern."]{height:650px}
 @media(max-width:600px){.live-preview iframe[src*="pattern."]{height:740px}}
+
+/* Feature references reserve more height for actual multi-step workspaces. */
+.live-preview iframe[src*="feature.review-workspace"]{height:780px}
+@media(max-width:600px){.live-preview iframe[src*="feature.review-workspace"]{height:1080px}}
