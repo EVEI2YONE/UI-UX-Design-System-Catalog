@@ -44,7 +44,7 @@ class SiteBuildTests(unittest.TestCase):
         self.assertIn('aria-pressed="true"', browse)
 
     def test_unimplemented_entries_advertise_spec_only(self):
-        button = next(e for e in self.entries if e["id"] == "pattern.forms")
+        button = next(e for e in self.entries if e["id"] == "pattern.task-flows")
         text = (self.out / site_build.route(button).lstrip("/") / "index.html").read_text(encoding="utf-8")
         self.assertIn("Specification only", text)
         self.assertNotIn('class="interactive-preview"', text)
@@ -66,6 +66,39 @@ class SiteBuildTests(unittest.TestCase):
                 self.assertIn('src="/reference/' + entry["id"] + '/source.js"', frame)
                 self.assertIn('src="/reference/' + entry["id"] + '/scenarios.js"', frame)
                 self.assertTrue((self.out / "reference" / entry["id"] / "source.css").is_file())
+
+    def test_five_composed_pattern_previews_match_canonical_registration(self):
+        expected = {
+            "pattern.forms", "pattern.navigation", "pattern.search-filter",
+            "pattern.data-tables", "pattern.interaction-recovery"
+        }
+        actual = [e for e in self.entries if e["id"] in expected]
+        self.assertEqual(len(actual), 5)
+        for entry in actual:
+            with self.subTest(entry=entry["id"]):
+                impl = entry["implementation"]
+                self.assertEqual(impl["status"], "reference")
+                page = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
+                frame = (self.out / "previews" / entry["id"] / "index.html").read_text(encoding="utf-8")
+                source = (ROOT / impl["source_path"]).read_text(encoding="utf-8")
+                copied = (self.out / "reference" / entry["id"] / "source.js").read_text(encoding="utf-8")
+                scenarios = (self.out / "reference" / entry["id"] / "scenarios.js").read_text(encoding="utf-8")
+                self.assertEqual(source, copied)
+                self.assertIn('sandbox="allow-scripts"', page)
+                self.assertNotIn("allow-same-origin", page)
+                self.assertIn("Inspect implementation source", page)
+                self.assertIn("CatalogScenarios", scenarios)
+                self.assertIn('src="/reference/' + entry["id"] + '/source.js"', frame)
+                self.assertTrue((self.out / "reference" / entry["id"] / "source.css").is_file())
+
+    def test_all_unimplemented_entries_stay_spec_only(self):
+        for entry in self.entries:
+            if "implementation" in entry:
+                continue
+            with self.subTest(entry=entry["id"]):
+                page = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
+                self.assertIn("Specification only", page)
+                self.assertNotIn('sandbox="allow-scripts"', page)
 
     def test_button_real_preview_matches_registered_source(self):
         entry = next(e for e in self.entries if e["id"] == "component.button")
