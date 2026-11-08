@@ -971,6 +971,12 @@
         "forms"
       ],
       "capabilities": ["action","activation","pending-state","keyboard-operation"],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/components/button/Button.js",
+        "scenario_manifest": "site/src/implementations/components/button/scenarios.js",
+        "preview_path": "/catalog/components/button"
+      },
       "use_when": [
         "initiating an action",
         "defining an asynchronous action button"
