@@ -1014,6 +1014,12 @@
         "forms"
       ],
       "capabilities": ["text-entry","validation","label-association"],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/components/input/Input.js",
+        "scenario_manifest": "site/src/implementations/components/input/scenarios.js",
+        "preview_path": "/catalog/components/input"
+      },
       "use_when": [
         "collecting short text input",
         "providing accessible editable fields"
@@ -1051,6 +1057,12 @@
         "forms"
       ],
       "capabilities": ["bounded-choice","selection","keyboard-operation"],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/components/select/Select.js",
+        "scenario_manifest": "site/src/implementations/components/select/scenarios.js",
+        "preview_path": "/catalog/components/select"
+      },
       "use_when": [
         "choosing from a bounded list",
         "specifying native versus custom selection"
@@ -1088,6 +1100,12 @@
         "forms"
       ],
       "capabilities": ["independent-selection","mixed-state","keyboard-operation"],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/components/checkbox/Checkbox.js",
+        "scenario_manifest": "site/src/implementations/components/checkbox/scenarios.js",
+        "preview_path": "/catalog/components/checkbox"
+      },
       "use_when": [
         "toggling an independent choice",
         "representing mixed group selection"
@@ -1130,6 +1148,12 @@
         "overlays"
       ],
       "capabilities": ["modal-dialog","focus-lifecycle","dismissal","confirmation"],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/components/dialog/Dialog.js",
+        "scenario_manifest": "site/src/implementations/components/dialog/scenarios.js",
+        "preview_path": "/catalog/components/dialog"
+      },
       "use_when": [
         "building focused foreground tasks",
         "managing modal focus and dismissal",
@@ -1169,6 +1193,12 @@
         "forms"
       ],
       "capabilities": ["field-label","help-text","error-association"],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/components/field/Field.js",
+        "scenario_manifest": "site/src/implementations/components/field/scenarios.js",
+        "preview_path": "/catalog/components/field"
+      },
       "use_when": [
         "grouping control labels and errors",
         "displaying accessible validation guidance"
