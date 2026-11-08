@@ -40,3 +40,7 @@ Use text, surface, border, error and focus semantic tokens. Accommodate autofill
 **Canonical ID:** `component.input` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** consolidate ad hoc text inputs only where semantics match; retain feature validation at feature level. Documentation-only, not implemented.
 
 Related: [Field and error](../field/spec.md), [component contracts](../../architecture/component-contracts.md), [accessibility](../../guidance/accessibility.md), [internationalization](../../guidance/internationalization.md). Primary standards starting point: [WCAG 2.2](../../governance/references.md).
+
+## Phase 5 executable reference (2026-11-08; verification scope)
+
+An actual [Input reference implementation](../../site/src/implementations/components/input/Input.js), its [synthetic scenario manifest](../../site/src/implementations/components/input/scenarios.js), and token-aware [preview styles](../../site/src/implementations/components/input/Input.css) now exist in the embedded visual catalog. The catalog renders the checked-in reference source and exposes the same source for inspection. This **does not** promote the specification out of `proposed` or establish production adoption, WCAG conformance, real persistence or business validation. The earlier evidence table records the historical documentation-only state; keyboard/AT, real-browser behavior, long-content and visual performance still require observed review. See [Phase 5 gate](../../docs/visual-catalog-refactor/11-phase-5-core-controls.md).
