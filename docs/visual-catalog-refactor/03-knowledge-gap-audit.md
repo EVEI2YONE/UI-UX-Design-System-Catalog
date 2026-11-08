@@ -68,3 +68,7 @@ No site screenshots, interaction benchmarks, real-user study, production metrics
 ## Acceptance before declaring knowledge gap resolved
 
 A proposal may be marked **documented** when a canonical source is linked and reviewed. It may be marked **implemented** only when the site path and actual code resolve, and **verified** only when required runtime tests/evidence are recorded. Do not use a single `status` string to conceal these separate dimensions.
+
+## Evidence-based reassessment and durable concept preservation (2026-11-08)
+
+This page is the **historical baseline audit**. The separate [KG-01–KG-12 closure matrix and ten-concept decision inventory](17-concept-inventory-and-decisions.md) records current implementation evidence and remaining human/security/measurement gaps. Four deferred feature candidates and five Stage 2 compositions now have individual, **noncanonical** Markdown briefs, linked from the ledger and [machine-readable decision manifest](concepts/decision-manifest.json). That closes the *documentation-preservation* omission, **not** the unverified release/accessibility/research requirements. The 54-entry canonical registry and ranker are unchanged.
