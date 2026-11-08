@@ -1,9 +1,9 @@
 # Visual Catalog Refactor — documentation pack
 
-**Status:** proposal / awaiting review  
+**Status:** Phases 0–9 delivered on draft PR #16; automated acceptance recorded per phase, final human/release approval pending  
 **Source repository:** [UI-UX-Design-System-Catalog](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog)  
 **Audited main SHA:** `3b933abea778122dece31af7496f409028ed6198` (2026-11-08)  
-**Delivery boundary:** planning documentation only; no website, runtime component, feature, registry migration, or release implemented.
+**Delivery boundary:** the website and 12 interactive references are implemented on the draft PR branch. No public deployment, package release, main-branch merge, real product integration or final reviewer approval is claimed.
 
 ## Executive decision
 
@@ -13,7 +13,7 @@ The site is a *reference implementation environment*, not an assurance that a sc
 
 ## Single-PR execution policy
 
-**All future overhaul phases are planned as successive commit groups on draft PR [#16](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/16), not separate implementation PRs.** Keep the PR in draft during implementation and use the phase acceptance matrix in [06 — Migration and PR roadmap](06-migration-pr-roadmap.md). There are **11 numbered phases (0–10)** from baseline inventory through release review; only planning documents are implemented now. Do not label later phases complete without runtime evidence, review and tests.
+**All overhaul phases are successive commit groups on draft PR [#16](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/pull/16), not separate implementation PRs.** Keep the PR in draft during implementation and use the phase acceptance matrix in [06 — Migration and PR roadmap](06-migration-pr-roadmap.md). There are **11 numbered phases (0–10)** from baseline inventory through release review. Phases 0–9 contain committed plans, source and automated evidence; Phase 10 final release review is not complete. Do not equate completed automated checks with human visual/AT approval.
 
 ## Reading order and decisions
 
@@ -33,6 +33,7 @@ The site is a *reference implementation environment*, not an assurance that a sc
 | [12 — Phase 6 composed patterns](12-phase-6-composed-patterns.md) | How are existing interaction patterns represented by real examples? | Forms, navigation, search/filter, tables and safe recovery demos with test gates |
 | [13 — Phase 7 Review Workspace](13-phase-7-review-workspace.md) | How is one complete feature implemented with a safe synthetic service boundary? | Canonical feature contract, in-memory adapter, working queue/decision states and CI evidence |
 | [14 — Phase 8 quality gates](14-phase-8-quality-gates.md) | What does real Chromium, axe and build-budget CI actually prove? | QA findings, fixed defects, browser artifacts, manual review requirements |
+| [15 — Phase 9 agent discovery and governance](15-phase-9-agent-governance-handoff.md) | Can agents and humans find canonical guidance, implementation sources and evidence reliably? | Retrieval acceptance corpus, provenance audit, contributor/agent protocol and Phase 10 handoff |
 
 ## Non-negotiable boundaries
 
