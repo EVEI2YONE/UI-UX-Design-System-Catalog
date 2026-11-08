@@ -50,7 +50,7 @@ class QualityBudgets(unittest.TestCase):
                 self.assertNotIn("<script>", content)
                 # Security guidance may discuss risky iframe options; assert
                 # against the real rendered attributes, not all page prose.
-                for frame in re.findall(r"<iframe\\b[^>]*>", content, flags=re.I):
+                for frame in re.findall(r"<iframe\b[^>]*>", content, flags=re.I):
                     self.assertIn('sandbox="allow-scripts"', frame)
                     self.assertNotIn("allow-same-origin", frame)
                 self.assertIn('href="/assets/styles.css"', content)
