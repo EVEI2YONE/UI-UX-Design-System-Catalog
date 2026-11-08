@@ -81,7 +81,7 @@ async function checks(){
    const iframe=await page.locator('iframe').elementHandle();
    assert.ok(iframe,'preview iframe exists for '+entry.id);
    const content=await iframe.contentFrame();
-   await content.waitForSelector('#scenario option');
+   await content.waitForSelector('#scenario option',{state:'attached'});
    await content.addScriptTag({content:axe.source});
    const report=await content.evaluate(async()=>window.axe.run(document,{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']}}));
    const serious=report.violations.filter(v=>['critical','serious'].includes(v.impact));
