@@ -3,7 +3,7 @@
 **Phase:** 2 — metadata and discovery compatibility  
 **Delivery:** successive commits on draft PR #16  
 **Source baseline:** `main` at `3b933abea778122dece31af7496f409028ed6198`  
-**Status:** schema and docs committed; direct Python test execution NOT VERIFIED
+**Status:** schema and docs committed; GitHub Actions CI passed for implementation commit `6240abfa9b6209166aa2f76aa7595e660ca17857`
 
 ## Context gathered
 
@@ -35,15 +35,15 @@ Existing `catalog/schema.json` forbids unexpected entry properties. The standard
 | Legacy 53 IDs and 53 canonical paths remain | Direct GitHub JSON compare: 53/53 entries; existing IDs, paths, layers, statuses, aliases, relations and all legacy properties unchanged | PASS — structural comparison |
 | Legacy top-ranked queries remain | Agent-context inspection for loading button, modal dialog, component hierarchy, settings | PASS — in-memory ranking replay; Python test suite NOT VERIFIED |
 | Strict JSON Schema extension | `catalog/schema.json` optional props and strict implementation object | COMMITTED |
-| Validator optional checks | `scripts/validate_catalog.py` new helper | COMMITTED, execution NOT VERIFIED |
-| New unit regression tests | `tests/test_visual_catalog_metadata.py` | COMMITTED, execution NOT VERIFIED |
-| Existing full Python unittest suite | `python3 -m unittest discover -s tests -v` | NOT VERIFIED |
-| Existing catalog validator | `python3 scripts/validate_catalog.py` | NOT VERIFIED |
+| Validator optional checks | `scripts/validate_catalog.py` new helper | PASS in GitHub Actions on `6240abf` |
+| New unit regression tests | `tests/test_visual_catalog_metadata.py` | PASS in GitHub Actions on `6240abf` |
+| Existing full Python unittest suite | `python3 -m unittest discover -s tests -v` | PASS in GitHub Actions on `6240abf` |
+| Existing catalog validator | `python3 scripts/validate_catalog.py` | PASS in GitHub Actions on `6240abf` |
 | Runtime visual/a11y/performance tests | Not applicable until site is built | NOT APPLICABLE |
 
 ## Environmental limitation
 
-GitHub connector can read and edit repository content, but a direct container Git clone failed with DNS resolution for github.com. Accordingly, **do not claim the Python validator, unittest suite or build ran** from the working checkout. GitHub metadata/readback checks are separate from executable CI evidence. Before promoting Phase 2 as gated, use a working checkout/CI runner to execute the commands below and attach actual output to PR #16.
+GitHub connector can read and edit repository content, but a direct container Git clone failed with DNS resolution for github.com. Accordingly, **do not claim the Python validator, unittest suite or build ran** from the working checkout. GitHub Actions supplied executable CI evidence on commit `6240abfa9b6209166aa2f76aa7595e660ca17857` via successful workflow run [42484090737](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42484090737). This workflow's `catalog-validation.yml` runs the catalog validator, a lookup smoke test and the Python unittest discovery suite. A local container execution is still unavailable, and the latest documentation-only follow-up commit requires its own CI completion before final review.
 
 ```bash
 python3 scripts/validate_catalog.py
@@ -54,7 +54,7 @@ python3 scripts/find_concept.py "component hierarchy" --json
 
 ## Additional verifications executed through the GitHub connector
 
-The base registry and current branch registry were parsed and compared property-by-property for all 53 entries; the entire legacy field set is unchanged, and only six new optional capability lists were found. The strict schema retains its original required properties. An in-memory replay of the published lookup scoring produced the expected top matches for `loading button`, `modal dialog`, `component hierarchy` and `settings`. This is meaningful structural/retrieval evidence but **not** a substitute for running Python tests. GitHub Actions reported the `Validate catalog` workflow was **in progress** at the time of this record; consult the latest run conclusion before declaring CI PASS.
+The base registry and current branch registry were parsed and compared property-by-property for all 53 entries; the entire legacy field set is unchanged, and only six new optional capability lists were found. The strict schema retains its original required properties. An in-memory replay of the published lookup scoring produced the expected top matches for `loading button`, `modal dialog`, `component hierarchy` and `settings`. This is meaningful structural/retrieval evidence but **not** a substitute for running Python tests. GitHub Actions workflow [42484090737](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/actions/runs/42484090737) completed **successfully** for `6240abf`, including validation and unittests. Later documentation edits require an updated head check.
 
 ## Risks and release guardrails
 
@@ -66,4 +66,4 @@ The base registry and current branch registry were parsed and compared property-
 
 ## Phase gate
 
-**Prepared pending executable validation and maintainer review.** Phase 3 site implementation should not be described as approved on this document alone.
+**Automated validation passed for the Phase 2 code commit; maintainer architecture/retrieval approval remains pending.** Phase 3 site implementation should not be described as approved on this document alone.
