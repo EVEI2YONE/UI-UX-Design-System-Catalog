@@ -168,3 +168,7 @@ Use [practical styling](foundations/practical-ui-styling-recipes.md) (`foundatio
 ## Batch 6 — icon consistency, interaction verification and discovery (proposed, 2026-11-07)
 
 Use [icon semantics](foundations/iconography-and-semantics.md) for icon-intent collision and consistency review (CKG-05), and [quality gates](governance/quality-gates.md) for real interaction-state test scenarios and task-based canonical retrieval (CKG-18/19). The shared B01–B06 branch adds catalog guidance and regression tests only; human review, actual browser accessibility, user outcomes and production adoption require separate evidence.
+
+## Visual catalog refactor proposal (2026-11-08)
+
+The [visual catalog documentation pack](docs/visual-catalog-refactor/README.md) proposes an embedded reference website with real interactive component and feature examples, backed by the existing canonical registry and Markdown guidance. It includes a [folder and file blueprint](docs/visual-catalog-refactor/01-folder-file-blueprint.md), [concept backlog](docs/visual-catalog-refactor/02-concepts-and-content-plan.md), [knowledge-gap audit](docs/visual-catalog-refactor/03-knowledge-gap-audit.md), [agent search compatibility contract](docs/visual-catalog-refactor/04-registry-agent-discovery.md), [preview quality gates](docs/visual-catalog-refactor/05-preview-quality-contracts.md), and [migration roadmap](docs/visual-catalog-refactor/06-migration-pr-roadmap.md). All are proposals: no site, component runtime, published package or verified interactive preview is asserted.
