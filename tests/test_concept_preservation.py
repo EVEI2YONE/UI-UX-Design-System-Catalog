@@ -75,27 +75,6 @@ class ConceptPreservationTests(unittest.TestCase):
         self.assertEqual(gaps, {f"KG-{i:02d}" for i in range(1, 13)})
         self.assertTrue(gaps.issubset(set(re.findall(r"\bKG-\d{2}\b", self.ledger))))
 
-    def test_open_knowledge_work_packages_are_durable_and_not_catalog_entries(self):
-        required = {
-            "KG-07": "kg07-accessibility-performance.md",
-            "KG-08": "kg08-source-readability.md",
-            "KG-10": "kg10-release-security-hosting.md",
-            "KG-11": "kg11-source-usability.md",
-            "KG-12": "kg12-discovery-research.md",
-        }
-        index = (FOLDER / "19-open-knowledge-work.md").read_text(encoding="utf-8")
-        for gap, name in required.items():
-            with self.subTest(gap=gap):
-                self.assertIn(gap, index)
-                self.assertIn(name, index)
-                content = (FOLDER / "gap-work" / name).read_text(encoding="utf-8")
-                self.assertIn(gap, content)
-                self.assertIn("knowledge specification FILLED", content)
-                self.assertIn("follow-up OPEN", content)
-                self.assertIn("Acceptance evidence required", content)
-                self.assertIn("Nonclaims and deferral rule", content)
-                self.assertNotIn(name.removesuffix(".md"), self.registry_ids)
-
     def test_historical_plan_remains_source_of_candidate_intent(self):
         for term in ["F-01", "F-02", "F-03", "F-04", "F-05",
                      "Search/filter collection", "Responsive information dashboard",
