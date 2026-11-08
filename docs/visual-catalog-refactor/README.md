@@ -31,6 +31,7 @@ The site is a *reference implementation environment*, not an assurance that a sc
 | [10 — Phase 4 preview runtime](10-phase-4-preview-runtime.md) | How do source, scenarios and preview controls stay identical and isolated? | Actual Button reference, safe runner, test and manual QA gates |
 | [11 — Phase 5 core controls](11-phase-5-core-controls.md) | How do the remaining five canonical controls become executable references? | Native Input, Field, Select, Checkbox, Dialog demos and CI evidence |
 | [12 — Phase 6 composed patterns](12-phase-6-composed-patterns.md) | How are existing interaction patterns represented by real examples? | Forms, navigation, search/filter, tables and safe recovery demos with test gates |
+| [13 — Phase 7 Review Workspace](13-phase-7-review-workspace.md) | How is one complete feature implemented with a safe synthetic service boundary? | Canonical feature contract, in-memory adapter, working queue/decision states and CI evidence |
 
 ## Non-negotiable boundaries
 
