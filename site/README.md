@@ -1,6 +1,6 @@
-# Embedded visual catalog website (Phases 3–4)
+# Embedded visual catalog website (Phases 3–5)
 
-This directory contains the working **static knowledge browser and an isolated live reference preview** for the UI/UX Design System Catalog. It is built from the repository's canonical Markdown and catalog/index.json, not a second manually maintained knowledge database.
+This directory contains the working **static knowledge browser with isolated live reference previews** for the UI/UX Design System Catalog. It is built from the repository's canonical Markdown and catalog/index.json, not a second manually maintained knowledge database.
 
 ## Build and serve locally
 
@@ -9,6 +9,7 @@ Requires **Python 3.10+** to build, using only its standard library; **Node.js 1
     python3 site/build.py
     python3 -m unittest discover -s site/tests -v
     node --test site/tests/button-runtime.test.cjs
+    node --test site/tests/core-controls-runtime.test.cjs
     python3 -m http.server 8000 --directory site/dist
 
 Open http://localhost:8000/ in a browser. Do not open generated pages via file:// because absolute asset URLs assume a server root.
@@ -63,3 +64,11 @@ The catalog's canonical `implementation` metadata is authoritative for preview i
 `node --test site/tests/button-runtime.test.cjs` tests button activation, pending/disabled behavior and the fixture contract using the *same real source*, without implying browser focus, layout or screen-reader verification. The Python site suite checks registration, sandboxing, generated source parity, routes and spec-only fallback. The iframe is a reference sandbox, not a robust security boundary for arbitrary untrusted code: only repository-reviewed, trusted examples are permitted.
 
 See [Phase 4 evidence ledger](../docs/visual-catalog-refactor/10-phase-4-preview-runtime.md).
+
+## Phase 5 — core controls now demonstrated
+
+The live catalog registers all six current canonical component specifications as **reference** implementations (Button, Input, Select, Checkbox, Dialog and Field). The five newly added references use native platform controls and provide synthetic state cases for default/filled, invalid/help, readonly/disabled, loading or long content as applicable. Dialog uses the native `showModal()` API; the preview runner supports `onChange` and `onClose` for local feedback.
+
+Each new control lives in `site/src/implementations/components/<name>/` as a source `.js` file, colocated `scenarios.js` and matching CSS. `site/build.py` derives the iframe and code viewer directly from the registered files; unregistered concepts remain **Specification only**. The references deliberately have no product-specific APIs or persistence and do not constitute an npm component package.
+
+Node source-level tests in `site/tests/core-controls-runtime.test.cjs` check label/error links, select option states, checkbox mixed state, dialog callback/focus-return intent, and no duplicate business side effects. These tests cannot substitute for real browser/keyboard/screen-reader testing. See [Phase 5 evidence ledger](../docs/visual-catalog-refactor/11-phase-5-core-controls.md).
