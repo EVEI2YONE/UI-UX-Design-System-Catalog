@@ -114,6 +114,8 @@ def public_label(value):
     value = re.sub(r"\s*[-–—:]?\s*(?:proposed\s+)?(?:Batch|Phase)\s*\d+\b(?:\s+proposal)?", "", value, flags=re.I)
     value = INTERNAL_STAGE.sub("catalog update", value)
     value = INTERNAL_PR.sub("repository review", value)
+    value = re.sub(r"^\\s*B\\d{2}\\s*[-–—:]\\s*", "", value, flags=re.I)
+    value = re.sub(r"\\b(?:CKG|KG)-\\d+(?:[-–]\\d+)?\\b", "", value, flags=re.I)
     leading = " " if value[:1].isspace() else ""
     trailing = " " if value[-1:].isspace() else ""
     cleaned = re.sub(r"\s{2,}", " ", value).strip()
