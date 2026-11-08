@@ -976,7 +976,12 @@
         "components",
         "forms"
       ],
-      "capabilities": ["action","activation","pending-state","keyboard-operation"],
+      "capabilities": [
+        "action",
+        "activation",
+        "pending-state",
+        "keyboard-operation"
+      ],
       "implementation": {
         "status": "reference",
         "source_path": "site/src/implementations/components/button/Button.js",
@@ -1019,7 +1024,11 @@
         "components",
         "forms"
       ],
-      "capabilities": ["text-entry","validation","label-association"],
+      "capabilities": [
+        "text-entry",
+        "validation",
+        "label-association"
+      ],
       "implementation": {
         "status": "reference",
         "source_path": "site/src/implementations/components/input/Input.js",
@@ -1062,7 +1071,11 @@
         "components",
         "forms"
       ],
-      "capabilities": ["bounded-choice","selection","keyboard-operation"],
+      "capabilities": [
+        "bounded-choice",
+        "selection",
+        "keyboard-operation"
+      ],
       "implementation": {
         "status": "reference",
         "source_path": "site/src/implementations/components/select/Select.js",
@@ -1105,7 +1118,11 @@
         "components",
         "forms"
       ],
-      "capabilities": ["independent-selection","mixed-state","keyboard-operation"],
+      "capabilities": [
+        "independent-selection",
+        "mixed-state",
+        "keyboard-operation"
+      ],
       "implementation": {
         "status": "reference",
         "source_path": "site/src/implementations/components/checkbox/Checkbox.js",
@@ -1153,7 +1170,12 @@
         "forms",
         "overlays"
       ],
-      "capabilities": ["modal-dialog","focus-lifecycle","dismissal","confirmation"],
+      "capabilities": [
+        "modal-dialog",
+        "focus-lifecycle",
+        "dismissal",
+        "confirmation"
+      ],
       "implementation": {
         "status": "reference",
         "source_path": "site/src/implementations/components/dialog/Dialog.js",
@@ -1198,7 +1220,11 @@
         "components",
         "forms"
       ],
-      "capabilities": ["field-label","help-text","error-association"],
+      "capabilities": [
+        "field-label",
+        "help-text",
+        "error-association"
+      ],
       "implementation": {
         "status": "reference",
         "source_path": "site/src/implementations/components/field/Field.js",
@@ -2785,6 +2811,71 @@
       ],
       "depends_on": [
         "pattern.task-flows"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "feature.review-workspace",
+      "title": "Review Workspace",
+      "path": "features/review-workspace/spec.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Generic human review queue with record inspection, reasoned decisions, confirmed/denied/conflict/error/unknown outcomes and safe reconciliation.",
+      "aliases": [
+        "human approval queue",
+        "review queue",
+        "moderation workflow",
+        "review dashboard",
+        "review decisions",
+        "review workbench",
+        "administrative approvals"
+      ],
+      "domains": [
+        "features",
+        "workflow",
+        "review",
+        "moderation",
+        "accessibility"
+      ],
+      "capabilities": [
+        "queue-selection",
+        "record-inspection",
+        "decision-reasons",
+        "simulated-authorization",
+        "conflict-recovery",
+        "unknown-outcome-verification"
+      ],
+      "implementation": {
+        "status": "reference",
+        "source_path": "site/src/implementations/features/review-workspace/ReviewWorkspace.js",
+        "scenario_manifest": "site/src/implementations/features/review-workspace/scenarios.js",
+        "preview_path": "/catalog/features/review-workspace"
+      },
+      "use_when": [
+        "reviewing submitted records before accepting, returning or rejecting",
+        "building a reusable human review workspace with explicit decision states",
+        "showing safe handling of lost acknowledgements and revision conflicts"
+      ],
+      "avoid_when": [
+        "confusing human editorial review with an AI agent's tool approval",
+        "implementing production authorization or backend persistence in the visual catalog",
+        "a single confirmation button is sufficient"
+      ],
+      "related": [
+        "pattern.forms",
+        "pattern.data-tables",
+        "pattern.search-filter",
+        "pattern.interaction-recovery",
+        "pattern.agentic-actions",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "component.button",
+        "component.field",
+        "pattern.data-tables",
+        "pattern.interaction-recovery"
       ],
       "owner": "unassigned",
       "reviewed_at": null
