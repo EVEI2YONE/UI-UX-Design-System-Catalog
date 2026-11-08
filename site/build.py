@@ -104,6 +104,8 @@ def public_markdown(content):
                 continue
             suppress = False
         if not suppress:
+            if re.match(r"^\\s*(?:This section is Batch\\s+\\d+|\\*\\*Fresh-context check:|\\*\\*Status:\\*\\* proposed knowledge on draft PR)", line, re.I):
+                continue
             kept.append(line)
     return "\n".join(kept)
 
