@@ -84,3 +84,7 @@ Identify *new visualized assets and feature-level reference contracts* without r
 ## Definition of sufficient catalog coverage
 
 Prefer *one canonical control*, *one composed pattern per reusable task*, and *one representative feature reference per independently reusable job*. Count quality and demonstrated applicability, not the number of cards or folders. Expansion requires a justified gap, named reviewer and a way to validate its runtime behavior.
+
+## Durable disposition follow-up (2026-11-08)
+
+This document preserves the **original proposal context**. Each Stage 2 composition and Stage 3 feature now has a durable cross-linked record in [the concept inventory and decisions](17-concept-inventory-and-decisions.md), with [machine-checkable manifest](concepts/decision-manifest.json), non-duplication reasoning, an original F/C ID, explicit disposition and promotion requirements. Only F-01 is registered; the remaining F-02–F-05 concepts and Stage 2 ideas are not newly minted canonical IDs. No record implies review approval or adoption.
