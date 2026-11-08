@@ -181,6 +181,68 @@ def card(e):
             '</p><span class="card-foot"><code>' + html.escape(e["id"]) + '</code><span aria-hidden="true">↗</span></span></a></article>')
 
 
+
+def reference_preview(entry, out):
+    """Render the exact checked-in trusted JS implementation, source, and scenarios."""
+    impl = entry.get("implementation")
+    if impl is None:
+        return ('<section class="spec"><span class="spec-icon" aria-hidden="true">▧</span>'
+                '<div><h2>Specification only</h2><p>No working reference implementation is registered. '
+                'This content documents design guidance, not tested UI.</p></div></section>')
+    if impl["preview_path"].rstrip("/") != route(entry).rstrip("/"):
+        raise ValueError("Preview URL must match canonical entry route: " + entry["id"])
+    if impl["status"] not in ("reference", "experimental", "verified"):
+        raise ValueError("Unsupported preview status")
+    root_impl = (ROOT / "site/src/implementations").resolve()
+    source = (ROOT / impl["source_path"]).resolve()
+    manifest = (ROOT / impl["scenario_manifest"]).resolve()
+    if not source.is_file() or not manifest.is_file() or not source.is_relative_to(root_impl) or not manifest.is_relative_to(root_impl):
+        raise ValueError("Missing/unsafe registered source or scenario manifest")
+    if source.parent != manifest.parent or source.suffix != ".js" or manifest.suffix != ".js":
+        raise ValueError("Phase 4 preview runner supports colocated classic JavaScript references only")
+    name = entry["id"]
+    base = out / "reference" / name
+    base.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(source, base / "source.js")
+    shutil.copyfile(manifest, base / "scenarios.js")
+    stylesheet = source.with_suffix(".css")
+    if stylesheet.is_file():
+        shutil.copyfile(stylesheet, base / "source.css")
+    else:
+        raise ValueError("Preview requires colocated source CSS: " + str(stylesheet))
+    frame = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
+             '<meta name="viewport" content="width=device-width,initial-scale=1">'
+             '<title>Interactive reference: ' + html.escape(entry["title"]) + '</title>'
+             '<link rel="stylesheet" href="/assets/preview-host.css">'
+             '<link rel="stylesheet" href="/reference/' + html.escape(name, quote=True) + '/source.css">'
+             '</head><body><p class="note">Synthetic interactive reference · no network writes or backend authorization</p>'
+             '<div class="controls"><div class="control"><label for="scenario">Scenario</label><select id="scenario"></select></div>'
+             '<div class="control"><label for="theme">Theme</label>'
+             '<select id="theme"><option value="light">Light</option><option value="dark">Dark</option>'
+             '<option value="contrast">High contrast</option></select></div>'
+             '<div class="control"><button id="reset" type="button">Reset example</button></div></div>'
+             '<div class="stage"><div id="stage"></div></div>'
+             '<p class="result" id="preview-result" role="status" aria-live="polite"></p>'
+             '<script src="/reference/' + html.escape(name, quote=True) + '/scenarios.js"></script>'
+             '<script src="/reference/' + html.escape(name, quote=True) + '/source.js"></script>'
+             '<script src="/assets/preview-runner.js"></script></body></html>')
+    write(out, "/previews/" + name + "/", frame)
+    source_text = html.escape(source.read_text(encoding="utf-8"))
+    return ('<section class="live-preview" aria-label="Working reference preview">'
+            '<div class="preview-heading"><div><p class="preview-kicker">LIVE REFERENCE · SYNTHETIC DATA</p>'
+            '<h2>Interactive example</h2><p>Rendered from the actual reference source. '
+            'Not a certified production component.</p></div></div>'
+            '<iframe title="' + html.escape(entry["title"], quote=True) +
+            ' — isolated interactive reference" src="/previews/' + html.escape(name, quote=True) +
+            '/" sandbox="allow-scripts" loading="lazy" referrerpolicy="no-referrer"></iframe>'
+            '<details class="source-details"><summary>Inspect implementation source</summary>'
+            '<p>This is the same checked-in file loaded by the reference preview. '
+            'Scenario definitions are maintained beside it.</p>'
+            '<p><code>' + html.escape(impl["source_path"]) + '</code></p>'
+            '<pre><code>' + source_text + '</code></pre></details></section>')
+
+
+
 def build(out):
     entries = json.loads((ROOT / "catalog/index.json").read_text(encoding="utf-8"))["entries"]
     by_path = {e["path"]: e for e in entries}
@@ -190,6 +252,8 @@ def build(out):
         shutil.rmtree(out)
     out.mkdir(parents=True)
     shutil.copytree(SITE / "static", out / "assets")
+    shutil.copyfile(SITE / "src/previews/preview-runner.js", out / "assets/preview-runner.js")
+    shutil.copyfile(SITE / "src/previews/preview-host.css", out / "assets/preview-host.css")
     ordered = sorted(entries, key=lambda e: (CATEGORIES.index(category(e)), e["title"]))
     cards = "".join(card(e) for e in ordered)
     chips = "".join('<button class="chip" type="button" data-filter="' + cat + '" aria-pressed="' +
@@ -214,10 +278,7 @@ def build(out):
         info = ('<section class="meta" aria-label="Concept metadata"><div><span>Canonical ID</span><code>' + html.escape(e["id"]) +
                 '</code></div><div><span>Knowledge layer</span>' + html.escape(e["layer"]) + '</div><div><span>Artifact type</span>' +
                 html.escape(e["kind"]) + '</div><div><span>Review status</span><strong>' + html.escape(e["status"]) + '</strong></div></section>')
-        preview = ('<section class="spec"><span class="spec-icon" aria-hidden="true">▧</span><div><h2>' +
-                   ("Reference registered" if e.get("implementation") else "Specification only") + '</h2><p>' +
-                   ("This Phase 3 site does not render interactive examples yet." if e.get("implementation") else
-                    "No working reference implementation is registered. This content documents design guidance, not tested UI.") + '</p></div></section>')
+        preview = reference_preview(e, out)
         refs = set(e.get("related", []) + e.get("depends_on", []))
         rel = [r for r in entries if r["id"] in refs]
         related = ('<section class="related"><h2>Related guidance</h2><div>' +
