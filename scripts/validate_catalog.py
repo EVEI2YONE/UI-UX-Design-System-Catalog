@@ -13,6 +13,58 @@ LAYERS = {'context','principles','behavior','tokens','foundations','primitives',
 KINDS = {'guideline', 'contract', 'policy', 'checklist', 'specification', 'example'}
 
 
+
+def validate_visual_metadata(entry, root):
+    """Validate optional reference metadata; never infer a live implementation."""
+    errors = []
+    ident = entry.get('id', '<missing>')
+    capabilities = entry.get('capabilities')
+    if capabilities is not None:
+        if (not isinstance(capabilities, list) or
+                not all(isinstance(x, str) and x.strip() for x in capabilities) or
+                len({x.casefold() for x in capabilities}) != len(capabilities)):
+            errors.append(f'{ident}: capabilities must be unique nonempty strings')
+
+    implementation = entry.get('implementation')
+    if implementation is None:
+        return errors
+    if not isinstance(implementation, dict):
+        return errors + [f'{ident}: implementation must be an object']
+    allowed = {'status', 'source_path', 'scenario_manifest', 'preview_path', 'evidence_path'}
+    required = {'status', 'source_path', 'scenario_manifest', 'preview_path'}
+    if (set(implementation) - allowed) or (required - set(implementation)):
+        errors.append(f'{ident}: implementation has unknown or missing fields')
+    if implementation.get('status') not in {'reference', 'experimental', 'verified'}:
+        errors.append(f'{ident}: invalid implementation status')
+    source_parent = None
+    for key in ('source_path', 'scenario_manifest'):
+        candidate = implementation.get(key)
+        if (not isinstance(candidate, str) or not candidate.startswith('site/src/implementations/') or
+                not candidate.endswith(('.ts', '.tsx', '.js', '.jsx')) or
+                '..' in Path(candidate).parts):
+            errors.append(f'{ident}: invalid {key}')
+            continue
+        resolved = (root / candidate).resolve()
+        if not resolved.is_relative_to(root.resolve()) or not resolved.is_file():
+            errors.append(f'{ident}: missing or unsafe {key} {candidate}')
+        if key == 'source_path':
+            source_parent = Path(candidate).parent
+        elif source_parent is not None and Path(candidate).parent != source_parent:
+            errors.append(f'{ident}: scenario_manifest must be colocated with source_path')
+    route = implementation.get('preview_path')
+    if not isinstance(route, str) or not re.fullmatch(r'/catalog/[a-z0-9-]+/[a-z0-9-]+', route):
+        errors.append(f'{ident}: invalid preview_path')
+    evidence = implementation.get('evidence_path')
+    if evidence is not None:
+        if not isinstance(evidence, str) or not evidence.endswith('.md') or '..' in Path(evidence).parts:
+            errors.append(f'{ident}: invalid evidence_path')
+        elif not (root / evidence).resolve().is_relative_to(root.resolve()) or not (root / evidence).is_file():
+            errors.append(f'{ident}: missing or unsafe evidence_path')
+    if implementation.get('status') == 'verified' and evidence is None:
+        errors.append(f'{ident}: verified implementation requires an evidence_path')
+    return errors
+
+
 def main() -> int:
     errors = []
     registry = json.loads(INDEX.read_text(encoding='utf-8'))
@@ -74,6 +126,7 @@ def main() -> int:
         if not isinstance(entry, dict):
             continue
         ident = entry.get('id', '<missing id>')
+        errors.extend(validate_visual_metadata(entry, ROOT))
         unknown = set(entry) - allowed
         if unknown:
             errors.append(f'{ident}: unknown registry fields {sorted(unknown)}')
