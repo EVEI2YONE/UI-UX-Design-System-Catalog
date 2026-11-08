@@ -23,6 +23,7 @@ The baseline `main` commit audited at Phase 0 was `3b933abea778122dece31af7496f4
 | P9-D06 | Separate normative guidance claims from source-code and observed verification claims | `AGENTS.md`, `CONTRIBUTING.md`, `catalog/README.md` |
 | P9-D07 | Record known misses without silently retuning search weights | `synthetic review` query intentionally recorded as a gap |
 | P9-D08 | Keep PR draft through Phase 10 human/release and external-review gates | No default-branch changes or deployment approved |
+| P9-D09 | Pin generated GitHub source URLs to a validated review revision in CI | `CATALOG_SOURCE_REF` is validated; GitHub Actions uses PR head SHA, local builds default to `main` unless explicitly configured |
 
 ## Human and agent journeys and provenance
 
@@ -84,7 +85,7 @@ Browser interaction and automated axe checks run in the existing GitHub Actions 
 ## Known gaps and release risks
 
 1. **Semantic ranking limitations.** Task search is lexical, exact ID/alias weighted; the phrase `synthetic review` remains a documented miss. Do not solve this by indiscriminately ranking capability keywords or polluting aliases; evaluate a relevance corpus and owner intent first.
-2. **Preview/source link branch mismatch.** Static source URLs default to GitHub `main`, which does not include the PR's new source until merge. Local preview/source inspection works; publishing a PR-specific preview requires reviewed source-ref URL handling.
+2. **Preview/source link revision handling — addressed for CI.** Static source links are now generated using validated `CATALOG_SOURCE_REF` (CI pins the PR head SHA); ordinary local builds default to `main` unless a reviewed branch/SHA is supplied. Public hosting, route base paths and CSP are still Phase 10 decisions.
 3. **Review status not promoted.** All guidance remains proposed and reference status does not mean enterprise support, production-ready API, WCAG-certified accessibility, tested localization or real permission enforcement.
 4. **Manual gates pending.** Phase 8 generated screenshots and axe reports, but visual approval, AT walkthroughs and zoom/RTL/forced-color checks have not been completed.
 5. **Preview runtime constraints.** Browser examples are trusted classic JavaScript, not a generic TSX/React bundler, installable design-system library or untrusted code sandbox.
@@ -96,7 +97,7 @@ Browser interaction and automated axe checks run in the existing GitHub Actions 
 - Confirm scope and canonical taxonomy; approve or reject the new `feature.review-workspace` concept and its reuse claim. Resolve ownership (records currently say `unassigned`), and whether any entry should remain proposed or be promoted after actual review.
 - Inspect the Phase 8 screenshots and all axe reports, triage non-critical findings, and complete manual browser/AT/keyboard/zoom/RTL/forced-color and long-text tests. Record reviewer, date, environment, observation and fix.
 - Verify the final PR comparison with `main`, full Python/Node/Chromium CI and task retrieval report; don't merge if a required gate fails.
-- Decide static hosting and base path. Current generated route/asset paths assume root hosting; resolve PR-branch source URLs, CSP, trusted preview isolation and license/dependency review.
+- Decide static hosting and base path. Current generated route/asset paths assume root hosting; ensure published builds use an appropriate source revision, CSP, trusted preview isolation and license/dependency review.
 - Preserve the 53 original IDs and all canonical links. If an isolated implementation fails, remove optional source metadata and revert its preview files while retaining the spec; only remove the new feature entry through a separately reviewed decision.
 - Confirm no untracked release promises or product integrations; keep PR in **draft** until required human approvals are recorded.
 
