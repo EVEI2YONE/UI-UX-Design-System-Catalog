@@ -81,3 +81,7 @@ This table updates the **2026-11-08 baseline** in [the original gap audit](03-kn
 ## Visitor-facing copy and unresolved knowledge follow-up
 
 The site retains canonical subject matter but removes build-phase, batch and PR tracking language from page presentation. Source Markdown keeps its original historical text and anchor IDs for provenance. The open review/release/research evidence gaps are now independently recorded as five role-scoped [durable work packages](19-open-knowledge-work.md), with automated preservation tests, without treating the packages as canonical concepts.
+
+## Knowledge-development update
+
+The five evidence gaps (KG-07, KG-08, KG-10, KG-11, KG-12) now have **substantive canonical guidance authored**, mapped to existing owners in [the fresh-context knowledge development ledger](20-knowledge-development-batches.md). Their follow-up records remain open for human evaluation, optional new functionality or release decisions. This documentary completion does not change the original twelve-gap classification into a claim of empirically verified outcomes.
