@@ -145,6 +145,50 @@ class SiteBuildTests(unittest.TestCase):
             self.assertIn(label, text)
         self.assertNotIn("https://", text)
 
+    def test_public_site_hides_project_phase_and_batch_labels(self):
+        import re
+        from html.parser import HTMLParser
+
+        class Headings(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.depth = 0
+                self.headings = []
+            def handle_starttag(self, tag, attrs):
+                if tag in ("h2", "h3", "h4", "h5", "h6"):
+                    self.depth += 1
+            def handle_endtag(self, tag):
+                if tag in ("h2", "h3", "h4", "h5", "h6"):
+                    self.depth = max(0, self.depth - 1)
+            def handle_data(self, data):
+                if self.depth:
+                    self.headings.append(data)
+
+        for entry in self.entries:
+            with self.subTest(entry=entry["id"]):
+                text = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
+                parser = Headings()
+                parser.feed(text)
+                self.assertNotRegex(" ".join(parser.headings), re.compile(r"\\b(?:batch|phase)\\s*\\d+\\b", re.I))
+
+        button = (self.out / "catalog/components/button/index.html").read_text(encoding="utf-8")
+        self.assertNotIn("Phase 4 reference implementation", button)
+        self.assertIn("Interactive example", button)
+        self.assertIn("icon-only", button.lower())
+        guidance = (self.out / "catalog/patterns/forms/index.html").read_text(encoding="utf-8")
+        self.assertNotIn("Phase 6 executable pattern reference", guidance)
+        self.assertIn("complex forms", guidance.lower())
+
+    def test_canonical_markdown_and_historical_anchors_are_preserved(self):
+        path = ROOT / "components/button/spec.md"
+        source = path.read_text(encoding="utf-8")
+        self.assertIn("## Batch 1 extension", source)
+        self.assertIn("## Phase 4 reference", source)
+        rendered = site_build.public_guidance(source, "components/button/spec.md", {})
+        self.assertIn("icon-only", rendered.lower())
+        self.assertIn('id="batch-1-extension', rendered)
+        self.assertNotIn("Phase 4 reference implementation", rendered)
+
     def test_search_export_matches_registry(self):
         records = json.loads((self.out / "catalog-search.json").read_text(encoding="utf-8"))
         self.assertEqual({r["id"] for r in records}, {e["id"] for e in self.entries})
