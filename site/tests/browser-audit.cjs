@@ -24,6 +24,15 @@ async function checks(){
   assert.equal(await page.locator('article.card').count(),registry.length);
   await page.locator('#catalog-filter').fill('loading button');
   assert.ok(await page.locator('article.card:visible').count()>0,'task search returns at least one result');
+  // Human-facing discovery should resolve the same canonical task as agent lookup.
+  await page.locator('#catalog-filter').fill('human approval queue');
+  assert.equal(await page.locator('article.card:visible').count(),1);
+  assert.equal(await page.locator('article.card:visible a').getAttribute('href'),'/catalog/features/review-workspace/');
+  await page.locator('article.card:visible a').click();
+  assert.equal(await page.locator('h1').innerText(),'Review Workspace');
+  assert.equal(await page.locator('.meta code').first().innerText(),'feature.review-workspace');
+  assert.ok(await page.getByRole('link',{name:/View Markdown source/}).count()>0);
+  await page.goto(base+'/catalog/',{waitUntil:'load'});
   await page.locator('#catalog-filter').fill('unmatchable_query_xzy');
   assert.equal(await page.locator('article.card:visible').count(),0);
   assert.equal(await page.locator('#empty-results').isVisible(),true);
