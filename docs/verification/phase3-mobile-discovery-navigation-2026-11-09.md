@@ -32,3 +32,23 @@ Status: **planning / evidence collection**. This document opens a reviewable Pha
 - Focus order, keyboard and screen-reader behavior explicitly assessed where tools permit; manual items marked NOT VERIFIED otherwise.
 - No new canonical registry entries or dependency/platform changes without separate approval.
 - PR remains draft until code, tests and visual verification are reviewed. No auto-merge.
+
+## Source inspection findings — after PR creation
+
+Context source: live `main` at `13d8292850db76e5435f81cc74f5f6b7fc869762`; no Phase 3 UI change has been made.
+
+- **Mobile filter layout (F4):** `site/build.py` emits search, then nine always-visible category chips, then interactive-only checkbox and results count inside a padded `.tools` section. `site/static/styles.css` retains 24px tool padding, 18px chip top margin, 54px desktop container top padding (36px at <=600px), and no mobile chip disclosure. A semantic `<details>` disclosure or accessible button/panel needs a specific no-JS policy; keep category choices usable without JavaScript.
+- **URL state (F9):** `site/static/search.js` initializes only `q` from location.search; `category` always starts at `all`, interactive-only starts unchecked, and changes only update the DOM. Plan bounded `q`, `category`, `interactive` parameters, validation of category values against the rendered chips, `replaceState` for typing and `pushState` for deliberate filter actions if practical, and a `popstate` restore path. Check both `/catalog/` and `/search/`.
+- **Detail navigation (F8):** `site/build.py` currently renders breadcrumb, metadata, preview/spec notice and canonical markdown `article` plus source aside, but no page-level jump navigation. `render_md` produces heading anchors; section links should reference actual present headings, avoid duplicate IDs, and distinguish preview section from markdown sections. Tables are wrapped by `<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table">`; CSS enforces `min-width:480px` and overflow:auto; add a visible scroll hint and confirm focus/reflow rather than removing access.
+- **Existing tests:** `site/tests/browser-audit.cjs` already checks 320/375/768/1440 widths for page-level horizontal overflow, task search, filter combination, clear reset and sandboxed reference previews. It does **not** yet test mobile first-result position, collapsed filter operability, URL reload/history persistence, section jump links or table-scroll discovery.
+- **Constraints:** Existing catalog uses stdlib-generated static pages, lightweight JS, and sandboxed iframes. Maintain progressive enhancement and canonical content. The original audit's 390px captures were desktop Chromium responsive viewports, not physical-device tests.
+
+## Proposed acceptance test matrix
+| Area | Test |
+| --- | --- |
+| 320 / 390px | first card title and availability visible above fold; active filters discoverable and operable by keyboard |
+| 768 / 1440px | tools and grid keep readable density and no page overflow |
+| URL | direct deep link, reload, copy/paste, clear, Back and Forward preserve query/category/interactive state |
+| Details | top jump links reach existing Example, Guidance, States and Source regions; no missing targets or duplicated IDs |
+| Tables | all columns reachable with keyboard, horizontal-scroll affordance visible, no document-wide horizontal scroll |
+| Accessibility | focus order, labels, dark mode, reduced motion, 200/400% zoom manually verified where available; otherwise explicitly NOT VERIFIED |
