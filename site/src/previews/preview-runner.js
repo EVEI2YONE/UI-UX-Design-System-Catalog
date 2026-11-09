@@ -26,7 +26,8 @@
       const scenario = scenarios.find(function (item) { return item.id === select.value; });
       if (!scenario) throw new Error("Unknown scenario");
       document.documentElement.dataset.theme = theme.value;
-      output.textContent = scenario.config.loading
+      output.hidden = reference.managesStatus === true;
+      output.textContent = output.hidden ? "" : scenario.config.loading
         ? "Simulated pending state. No request was sent."
         : scenario.config.disabled
           ? "Action unavailable in this example."

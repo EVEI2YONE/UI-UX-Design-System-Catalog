@@ -16,6 +16,7 @@ function node(tag) {
     attributes, listeners, children: [], open: false, isConnected: true,
     setAttribute(key, value) { attributes[key] = String(value); },
     getAttribute(key) { return attributes[key]; },
+    removeAttribute(key) { delete attributes[key]; },
     append(...children) { this.children.push(...children); },
     appendChild(child) { this.children.push(child); return child; },
     insertBefore(child) { this.children.push(child); return child; },
@@ -97,4 +98,23 @@ test('Dialog disabled confirm cannot send action while pending', () => {
   const actions=dialog.children.find(c=>c.className==='reference-dialog-actions');
   const confirm=actions.children[1];assert.equal(confirm.disabled,true);
   confirm.click();assert.equal(activated,0);
+});
+
+test('consumer validation corrects Input/Field errors without replacing the editing control', () => {
+  for (const name of ['input','field']) {
+    const context=load(name), container=node('div');
+    const invalid=context.CatalogScenarios.find(s=>s.id==='invalid');
+    const control=context.CatalogReference.mount(container,invalid.config);
+    const error=container.children[0].children.find(n=>n.className==='reference-error');
+    control.focus();
+    control.value=name==='input'?'still invalid':'!';control.dispatch('input');
+    assert.equal(control.getAttribute('aria-invalid'),'true');assert.equal(error.hidden,false);
+    control.value=name==='input'?'person@example.test':'Research team';control.dispatch('input');
+    assert.equal(control.getAttribute('aria-invalid'),undefined);
+    assert.equal(error.hidden,true);assert.equal(error.textContent,'');
+    assert.equal(control.getAttribute('aria-describedby'),control.id+'-hint');
+    assert.equal(container.children[0].children[1],control);assert.equal(control.focused,true);
+    control.value='';control.dispatch('input');
+    assert.equal(control.getAttribute('aria-invalid'),'true');assert.equal(error.hidden,false);
+  }
 });
