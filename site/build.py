@@ -273,8 +273,7 @@ def card(e):
     return ('<article class="card" data-interactive="' + str(is_interactive).lower() + '" data-category="' + category(e) + '" data-search="' + html.escape(terms, quote=True) +
             '"><a href="' + route(e) + '"><span class="category">' + category(e).title() + '</span><h3>' +
             html.escape(e["title"]) + '</h3><p>' + html.escape(e["summary"]) +
-            '</p><span class="availability">' + ('Interactive reference' if is_interactive else 'Specification only') + '</span><p class="card-detail">' + ('Try the live example and inspect its source' if is_interactive else 'Read the design guidance and usage contract') +
-            '</p><span class="card-foot"><code>' + html.escape(e["id"]) + '</code><span aria-hidden="true">↗</span></span></a></article>')
+            '</p><span class="availability">' + ('Interactive reference' if is_interactive else 'Specification only') + '</span><span class="card-foot"><code>' + html.escape(e["id"]) + '</code><span aria-hidden="true">↗</span></span></a></article>')
 
 
 
