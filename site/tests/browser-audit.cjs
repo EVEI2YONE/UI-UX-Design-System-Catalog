@@ -33,10 +33,18 @@ async function checks(){
   assert.equal(await page.locator('.meta code').first().innerText(),'feature.review-workspace');
   assert.ok(await page.getByRole('link',{name:/View Markdown source/}).count()>0);
   await page.goto(base+'/catalog/',{waitUntil:'load'});
+  // Distinguish executable references and keep their status separate from review maturity.
+  assert.equal(await page.locator('article.card[data-interactive="true"]').count(),interactive.length);
+  await page.locator('#interactive-only').check();
+  assert.equal(await page.locator('article.card:visible').count(),interactive.length);
+  assert.ok(await page.locator('article.card:visible .availability').first().innerText().then(s=>s.includes('Interactive reference')));
   await page.locator('#catalog-filter').fill('unmatchable_query_xzy');
   assert.equal(await page.locator('article.card:visible').count(),0);
   assert.equal(await page.locator('#empty-results').isVisible(),true);
-  await page.locator('#catalog-filter').fill('');
+  await page.locator('#clear-filters').click();
+  assert.equal(await page.locator('#catalog-filter').inputValue(),'');
+  assert.equal(await page.locator('#interactive-only').isChecked(),false);
+  assert.equal(await page.locator('article.card:visible').count(),registry.length);
   const noJS=await browser.newPage({javaScriptEnabled:false});
   await noJS.goto(base+'/catalog/',{waitUntil:'load'});
   assert.equal(await noJS.locator('article.card').count(),registry.length,'browse stays usable without JS');
