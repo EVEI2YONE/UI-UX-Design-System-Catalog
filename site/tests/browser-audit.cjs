@@ -33,10 +33,18 @@ async function checks(){
   assert.equal(await page.locator('.meta code').first().innerText(),'feature.review-workspace');
   assert.ok(await page.getByRole('link',{name:/View Markdown source/}).count()>0);
   await page.goto(base+'/catalog/',{waitUntil:'load'});
+  // Distinguish executable references and keep their status separate from review maturity.
+  assert.equal(await page.locator('article.card[data-interactive="true"]').count(),interactive.length);
+  await page.locator('#interactive-only').check();
+  assert.equal(await page.locator('article.card:visible').count(),interactive.length);
+  assert.ok(await page.locator('article.card:visible .availability').first().innerText().then(s=>s.includes('Interactive reference')));
   await page.locator('#catalog-filter').fill('unmatchable_query_xzy');
   assert.equal(await page.locator('article.card:visible').count(),0);
   assert.equal(await page.locator('#empty-results').isVisible(),true);
-  await page.locator('#catalog-filter').fill('');
+  await page.locator('#clear-filters').click();
+  assert.equal(await page.locator('#catalog-filter').inputValue(),'');
+  assert.equal(await page.locator('#interactive-only').isChecked(),false);
+  assert.equal(await page.locator('article.card:visible').count(),registry.length);
   const noJS=await browser.newPage({javaScriptEnabled:false});
   await noJS.goto(base+'/catalog/',{waitUntil:'load'});
   assert.equal(await noJS.locator('article.card').count(),registry.length,'browse stays usable without JS');
@@ -62,6 +70,21 @@ async function checks(){
   assert.equal(await frame.locator('#scenario').inputValue(),'default');
   assert.equal(await frame.locator('#theme').inputValue(),'light');
 
+  // A correction is an interaction in the current scenario, not a scenario reset.
+  for(const [component,value] of [['input','person@example.test'],['field','Research team']]){
+   await page.goto(base+'/catalog/components/'+component+'/',{waitUntil:'load'});
+   const control=page.frameLocator('iframe');
+   await control.locator('#scenario').selectOption('invalid');
+   await control.locator('.reference-control').fill(value);
+   assert.equal(await control.locator('.reference-error').isVisible(),false);
+   assert.equal(await control.locator('.reference-control').getAttribute('aria-invalid'),null);
+   assert.equal(await control.locator('.reference-control').evaluate(el=>el===document.activeElement),true);
+   await control.locator('#theme').selectOption('dark');
+   assert.equal(await control.locator('.reference-control').inputValue(),value);
+   await control.locator('.reference-control').fill('');
+   assert.equal(await control.locator('.reference-error').isVisible(),true);
+  }
+
   await page.goto(base+'/catalog/patterns/forms/',{waitUntil:'load'});
   const form=page.frameLocator('iframe');
   await form.locator('#scenario').selectOption('invalid');
@@ -75,6 +98,29 @@ async function checks(){
 
   await page.goto(base+'/catalog/features/review-workspace/',{waitUntil:'load'});
   const review=page.frameLocator('iframe');
+  await review.getByRole('button',{name:'Return for changes',exact:true}).click();
+  await review.getByRole('textbox',{name:'Decision reason'}).fill('Please add a date.');
+  assert.equal(await review.locator('#review-reason-error').isVisible(),false);
+  assert.equal(await review.locator('#review-reason').getAttribute('aria-invalid'),null);
+  await review.getByRole('button',{name:'Return for changes',exact:true}).click();
+  await review.getByRole('button',{name:'Resolve simulated request'}).click();
+  assert.equal(await review.locator('button[data-record]').count(),3);
+  assert.equal(await review.getByRole('button',{name:'Community garden update · REV-101',exact:true}).count(),0);
+  assert.equal(await review.getByRole('button',{name:'Approve',exact:true}).count(),0);
+  assert.equal(await review.getByRole('button',{name:'Next pending item'}).evaluate(el=>el===document.activeElement),true);
+  assert.equal(await review.locator('#preview-result').isVisible(),false);
+  await review.getByRole('button',{name:'Next pending item'}).click();
+  assert.equal(await review.locator('.review-detail h3').innerText(),'Accessible event announcement');
+  assert.equal(await review.locator('.review-detail h3').evaluate(el=>el===document.activeElement),true);
+  for(let count=3;count>0;count--){
+   await review.getByRole('button',{name:'Approve',exact:true}).click();
+   await review.getByRole('button',{name:'Resolve simulated request'}).click();
+   assert.equal(await review.locator('button[data-record]').count(),count-1);
+   if(count>1)await review.getByRole('button',{name:'Next pending item'}).click();
+  }
+  assert.match(await review.locator('.review-detail').innerText(),/All caught up/);
+  assert.equal(await review.getByRole('button',{name:'Approve',exact:true}).count(),0);
+  await page.screenshot({path:path.join(output,'review-completed.png'),fullPage:true});
   await review.locator('#scenario').selectOption('unknown');
   await review.getByRole('button',{name:'Approve',exact:true}).click();
   await review.getByRole('button',{name:'Resolve simulated request'}).click();

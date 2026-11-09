@@ -10,11 +10,20 @@ function mount(container, options) {
   input.value=cfg.value;input.disabled=Boolean(cfg.disabled);input.readOnly=Boolean(cfg.readOnly);input.required=Boolean(cfg.required);
   input.className="reference-control";if(cfg.type==="email")input.autocomplete="email";
   const help=document.createElement("p");help.id=cfg.id+"-hint";help.className="reference-help";help.textContent=cfg.hint;
-  const desc=[help.id];
-  if(cfg.error){const err=document.createElement("p");err.id=cfg.id+"-error";err.className="reference-error";err.textContent=cfg.error;input.setAttribute("aria-invalid","true");desc.push(err.id);group.append(label,input,help,err);}
-  else group.append(label,input,help);
-  input.setAttribute("aria-describedby",desc.join(" "));
-  input.addEventListener("input",function(){cfg.onChange(input.value);});
+  const error=document.createElement("p");error.id=cfg.id+"-error";error.className="reference-error";
+  group.append(label,input,help,error);
+  function showError(message){
+    error.textContent=message||"";error.hidden=!message;
+    input.setAttribute("aria-describedby",help.id+(message?" "+error.id:""));
+    if(message)input.setAttribute("aria-invalid","true");
+    else input.removeAttribute("aria-invalid");
+  }
+  showError(cfg.error);
+  input.addEventListener("input",function(){
+    // The caller supplies the rule. Updating feedback never remounts the control.
+    if(typeof cfg.validate==="function")showError(cfg.validate(input.value));
+    cfg.onChange(input.value);
+  });
   container.replaceChildren(group);return input;
 }
 scope.CatalogReference=Object.freeze({mount:mount});

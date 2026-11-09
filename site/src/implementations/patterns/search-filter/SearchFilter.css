@@ -1,5 +1,5 @@
-:root{color-scheme:light;--p-ink:#173148;--p-bg:#fff;--p-muted:#506378;--p-line:#8fa4b6;--p-surface:#f4f8fb;--p-action:#235b86;--p-error:#a01d2b;--p-focus:#c87524}
-[data-theme="dark"]{color-scheme:dark;--p-ink:#ecf4fc;--p-bg:#182d41;--p-muted:#c3d5e2;--p-line:#879eaf;--p-surface:#263e52;--p-action:#387fb3;--p-error:#ffabb5;--p-focus:#f0b65e}
+:root{color-scheme:light;--p-ink:#173148;--p-bg:#fff;--p-muted:#506378;--p-line:#637f94;--p-surface:#f4f8fb;--p-action:#235b86;--p-error:#a01d2b;--p-focus:#c87524}
+[data-theme="dark"]{color-scheme:dark;--p-ink:#ecf4fc;--p-bg:#182d41;--p-muted:#c3d5e2;--p-line:#879eaf;--p-surface:#263e52;--p-action:#2f709d;--p-error:#ffabb5;--p-focus:#f0b65e}
 [data-theme="contrast"]{color-scheme:light;--p-ink:#000;--p-bg:#fff;--p-muted:#000;--p-line:#000;--p-surface:#fff;--p-action:#000;--p-error:#820014;--p-focus:#000}
 .pattern-card{box-sizing:border-box;width:min(100%,650px);max-width:100%;color:var(--p-ink);font:14px/1.5 system-ui,sans-serif}
 .pattern-card h3{font:700 19px/1.3 system-ui,sans-serif;margin:0 0 10px}.pattern-note,.pattern-help{color:var(--p-muted);font-size:12px;margin:5px 0 12px;overflow-wrap:anywhere}
@@ -13,3 +13,5 @@
 .pattern-table-wrap{max-width:100%;overflow-x:auto;border:1px solid var(--p-line);border-radius:8px}.pattern-card table{border-collapse:collapse;width:100%;min-width:440px;font-size:13px}.pattern-card caption{text-align:left;padding:8px;font-weight:650}.pattern-card th,.pattern-card td{text-align:start;padding:7px 9px;border-top:1px solid var(--p-line)}.pattern-card th{background:var(--p-surface)}.pattern-card input[type=checkbox]{width:19px;height:19px;accent-color:var(--p-action)}.pattern-page{font-size:13px;color:var(--p-muted)}
 @media(max-width:460px){.pattern-filters{grid-template-columns:1fr}.pattern-card .pattern-actions>*{flex:1 1 auto}.pattern-nav{flex-direction:column}}
 @media(prefers-reduced-motion:reduce){.pattern-card *{transition:none!important;animation:none!important}}
+
+[data-theme="dark"] .pattern-card button{border-color:var(--p-line)}

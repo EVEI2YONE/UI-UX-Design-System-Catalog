@@ -29,11 +29,11 @@ function mount(container,options){
     const b=make("button",secondary?"review-button review-button-secondary":"review-button",label);
     b.type="button";b.addEventListener("click",onClick);return b;
   }
-  function setSelected(id){if(state.locked)return;state.selected=id;state.phase="idle";state.action=null;state.note="";render();const detailHeading=right.querySelector("h3");if(detailHeading)detailHeading.focus();}
+  function setSelected(id){if(state.locked)return;state.selected=id;state.phase="idle";state.action=null;state.note="";render();const detailHeading=right.querySelector("h3");if(detailHeading)detailHeading.focus();notice("Selected a pending item. Inspect it before deciding.");}
   function request(action){
     if(state.locked)return;
     if(!cfg.canDecide||cfg.mode==="readonly"){notice("Read only: decision actions are unavailable.");return;}
-    const record=adapter.get(state.selected);if(!record)return;
+    const record=adapter.get(state.selected);if(!record||record.status!=="pending")return;
     if(action!=="approve"&&!state.note.trim()){state.phase="validation";state.action=action;render();const input=right.querySelector("textarea");if(input)input.focus();return;}
     state.action=action;state.phase="pending";state.locked=true;render();
     // Intentional explicit pending step. No simulated server response until the user resolves it.
@@ -45,7 +45,7 @@ function mount(container,options){
     const result=adapter.decide({id:record.id,revision:record.revision,action:state.action,reason:state.note});
     state.locked=result.kind==="unknown";
     state.phase=result.kind;render();notice(result.message);
-    if(result.kind==="confirmed"){const next=left.querySelector("button[data-record]");if(next)next.focus();else heading.focus();}
+    if(result.kind==="confirmed"){const next=right.querySelector("button[data-next]");if(next)next.focus();else {const title=right.querySelector("h3");if(title)title.focus();}}
     else if(result.kind==="unknown"){const verify=right.querySelector('button[data-verify]');if(verify)verify.focus();}
     else {const details=right.querySelector("h3");if(details)details.focus();}
   }
@@ -60,8 +60,9 @@ function mount(container,options){
     const queueHeading=make("h3","","Items to inspect");left.append(queueHeading);
     if(cfg.mode==="loading"){left.append(make("p","review-note","Loading synthetic records…"));right.append(make("p","review-note","Select a record when loading finishes."));return;}
     if(cfg.mode==="queue-error"){left.append(make("p","review-error","Unable to load the simulated queue. This is not an empty queue."));right.append(make("p","","Retry requires a new scenario or a real service adapter."));return;}
-    const records=cfg.mode==="empty"?[]:adapter.list();
-    if(!records.length){left.append(make("p","review-note","There are no records awaiting review."));right.append(make("p","review-note","Nothing selected."));return;}
+    const records=cfg.mode==="empty"?[]:adapter.list().filter(function(record){return record.status==="pending";});
+    queueHeading.textContent="Items to inspect ("+records.length+")";
+    if(!records.length){left.append(make("p","review-note","There are no records awaiting review."));if(state.phase!=="confirmed"){right.append(make("p","review-note","Nothing selected."));return;}}
     const list=make("ul","review-records");
     const visible=records.slice(0,12); // explicit bounded reference size
     visible.forEach(function(record){
@@ -78,18 +79,36 @@ function mount(container,options){
     const title=make("h3","",record.title);title.tabIndex=-1;right.append(title);
     const meta=make("p","review-meta","Record "+record.id+" · Revision "+record.revision+" · "+record.status);
     const description=make("p","review-summary",record.summary);right.append(meta,description);
+    if(record.status!=="pending"){
+      if(state.note)right.append(make("p","review-note","Decision reason: "+state.note));
+      right.append(make("p","review-success","Simulated decision confirmed: "+record.status+". No real backend changed."));
+      if(records.length){
+        const next=button("Next pending item",function(){setSelected(records[0].id);});
+        next.dataset.next="true";right.append(next);
+      }else right.append(make("p","review-note","All caught up. Every item in this synthetic queue has been reviewed."));
+      return;
+    }
+
     const label=make("label","","Decision reason");label.htmlFor="review-reason";
     const textarea=make("textarea","review-reason");textarea.id="review-reason";textarea.rows=3;textarea.value=state.note;textarea.disabled=state.locked;
     textarea.setAttribute("aria-describedby","review-reason-help");
-    textarea.addEventListener("input",function(){state.note=textarea.value;});
+    textarea.addEventListener("input",function(){
+      state.note=textarea.value;
+      if(state.phase==="validation"){
+        const invalid=!state.note.trim();
+        reasonError.hidden=!invalid;
+        if(invalid)textarea.setAttribute("aria-invalid","true");else textarea.removeAttribute("aria-invalid");
+        textarea.setAttribute("aria-describedby","review-reason-help"+(invalid?" review-reason-error":""));
+      }
+    });
     const help=make("p","review-note","Required to return or reject; optional to approve.");
     help.id="review-reason-help";right.append(label,textarea,help);
-    if(state.phase==="validation"){textarea.setAttribute("aria-invalid","true");const error=make("p","review-error","Enter a reason before returning or rejecting.");error.id="review-reason-error";textarea.setAttribute("aria-describedby","review-reason-help review-reason-error");right.append(error);}
+    const reasonError=make("p","review-error","Enter a reason before returning or rejecting.");reasonError.id="review-reason-error";reasonError.hidden=state.phase!=="validation";right.append(reasonError);
+    if(state.phase==="validation"){textarea.setAttribute("aria-invalid","true");textarea.setAttribute("aria-describedby","review-reason-help review-reason-error");}
     const actions=make("div","review-actions");
     if(state.phase==="pending"){actions.append(button("Resolve simulated request",resolve));right.append(actions,make("p","review-warning","Simulated pending outcome; duplicate decisions are locked."));return;}
     if(state.phase==="unknown"){const v=button("Verify record status",verify);v.dataset.verify="true";actions.append(v);right.append(actions,make("p","review-warning","Outcome unknown. Decision controls remain locked; do not resubmit."));return;}
-    if(state.phase==="confirmed"){right.append(make("p","review-success","Simulated decision confirmed. No real backend changed."));}
-    else if(state.phase==="denied"){right.append(make("p","review-error","Permission denied by synthetic adapter. Only an authoritative service can grant access."));}
+    if(state.phase==="denied"){right.append(make("p","review-error","Permission denied by synthetic adapter. Only an authoritative service can grant access."));}
     else if(state.phase==="conflict"){right.append(make("p","review-warning","The record revision is stale. Reinspect current evidence; this reference cannot override it."));}
     else if(state.phase==="error"){right.append(make("p","review-error","Known simulated service failure. Your reason and selection are preserved."));}
     const denied=cfg.mode==="readonly"||cfg.canDecide===false||state.phase==="denied"||state.phase==="conflict"||state.locked;
@@ -106,5 +125,5 @@ function mount(container,options){
   else notice("Select a record, inspect its details, then choose a simulated decision.");
   return Object.freeze({root:root,adapter:adapter,diagnostics:adapter.diagnostics});
 }
-scope.CatalogReference=Object.freeze({mount:mount});
+scope.CatalogReference=Object.freeze({mount:mount,managesStatus:true});
 })(globalThis);

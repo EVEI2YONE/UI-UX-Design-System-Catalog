@@ -5,10 +5,13 @@
   const search = document.getElementById("catalog-filter");
   const count = document.getElementById("result-count");
   const empty = document.getElementById("empty-results");
+  const interactive = document.getElementById("interactive-only");
+  const clear = document.getElementById("clear-filters");
   if (!root || !search) return;
   const cards = Array.from(root.querySelectorAll(".card"));
   const chips = Array.from(document.querySelectorAll("[data-filter]"));
   let category = "all";
+
   function update() {
     const terms = search.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
     let visible = 0;
@@ -16,19 +19,31 @@
       const content = card.dataset.search || "";
       const matches = terms.every((term) => content.includes(term));
       const matchesCategory = category === "all" || category === card.dataset.category;
-      const show = matches && matchesCategory;
+      const matchesPreview = !interactive?.checked || card.dataset.interactive === "true";
+      const show = matches && matchesCategory && matchesPreview;
       card.hidden = !show;
       if (show) visible += 1;
     });
     if (count) count.textContent = String(visible) + " of " + String(cards.length) + " concepts";
     if (empty) empty.hidden = visible !== 0;
   }
+
   search.addEventListener("input", update);
+  interactive?.addEventListener("change", update);
   chips.forEach((button) => button.addEventListener("click", () => {
     category = button.dataset.filter || "all";
     chips.forEach((chip) => chip.setAttribute("aria-pressed", String(chip === button)));
     update();
   }));
+  clear?.addEventListener("click", () => {
+    search.value = "";
+    if (interactive) interactive.checked = false;
+    category = "all";
+    chips.forEach((chip) => chip.setAttribute("aria-pressed", String(chip.dataset.filter === "all")));
+    update();
+    search.focus();
+  });
+
   const params = new URLSearchParams(window.location.search);
   const initial = params.get("q");
   if (initial) search.value = initial.slice(0, 200);
