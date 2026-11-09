@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Phase 3 site navigation (draft PR #20): F4 compact mobile discovery (native category disclosure, visible active-filter summary and reset, first 390x844 result above the fold), F9 URL-backed `q`/`category`/`interactive` state with replaceState-for-typing and pushState-for-toggles history policy, and F8 detail-page "On this page" jump links plus visible table-scroll hints and keyboard-scrollable code blocks. Developer-run build, Python, Node, Chromium/axe checks only; independent QA, screen reader, touch, real zoom and hosted embeds NOT VERIFIED. No registry, dependency or sandbox change.
+
 - Visual craftsmanship knowledge Batch 5 (proposed, cumulative draft PR #14): add the noncanonical KG-18 integration workflow with stage-by-stage retrieval, design-to-review handoff, honest evidence gates and KG-01–18 ownership map. Update root/section/agent discovery, quality-gate cross-link and registry metadata. Full catalog test suite and real UI/AT testing require separate execution; do not claim production validation from documentation.
 
 

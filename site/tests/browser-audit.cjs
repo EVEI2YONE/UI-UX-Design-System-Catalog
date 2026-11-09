@@ -48,6 +48,10 @@ async function checks(){
   const noJS=await browser.newPage({javaScriptEnabled:false});
   await noJS.goto(base+'/catalog/',{waitUntil:'load'});
   assert.equal(await noJS.locator('article.card').count(),registry.length,'browse stays usable without JS');
+  assert.equal(await noJS.locator('#filter-controls').isVisible(),false,'JS-only filter controls are not shown as dead controls');
+  assert.equal(await noJS.locator('article.card:visible').count(),registry.length);
+  await noJS.setViewportSize({width:390,height:844});
+  await noJS.screenshot({path:path.join(output,'phase3-catalog-nojs-mobile.png')});
   await noJS.close();
 
   for(const width of [320,375,768,1440]){
@@ -56,6 +60,7 @@ async function checks(){
    const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
    if(overflow>2)note('Catalog overflows viewport '+width+'px by '+overflow+'px');
   }
+  await phase3(browser,errors);
   await page.setViewportSize({width:1440,height:900});
   await page.goto(base+'/catalog/components/button/',{waitUntil:'load'});
   const frame=page.frameLocator('iframe[title*="isolated interactive reference"]');
@@ -151,6 +156,182 @@ async function checks(){
   if(errors.length)note('Page errors: '+errors.join(' | '));
   await page.close();
  } finally {await browser.close();}
+}
+
+/* Phase 3 regressions: F4 compact mobile filters, F9 URL-backed state, F8 detail navigation.
+ * Viewports are CSS-pixel emulation in desktop Chromium; not physical-device or screen reader testing. */
+const visibleCard=()=>{const c=document.querySelector('article.card:not([hidden])');if(!c)return null;
+ const t=c.querySelector('h3').getBoundingClientRect();const b=c.querySelector('.availability').getBoundingClientRect();return {top:t.top,badge:b.bottom};};
+const pageOverflow=p=>p.evaluate(()=>document.documentElement.scrollWidth-document.documentElement.clientWidth);
+async function state(p){return p.evaluate(()=>({q:document.getElementById('catalog-filter').value,
+ interactive:document.getElementById('interactive-only').checked,
+ category:document.querySelector('[data-filter][aria-pressed="true"]').dataset.filter,
+ pressed:document.querySelectorAll('[data-filter][aria-pressed="true"]').length,
+ visible:document.querySelectorAll('article.card:not([hidden])').length,
+ count:document.getElementById('result-count').textContent,search:location.search,history:history.length}));}
+async function phase3(browser,errors){
+ const total=registry.length;
+ // F4 — first result within the audit target at 390x844, categories collapsed, availability toggle visible.
+ const mobile=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});
+ mobile.on('pageerror',e=>errors.push(e.message));
+ for(const route of ['/catalog/','/search/']){
+  await mobile.goto(base+route,{waitUntil:'load'});
+  const first=await mobile.evaluate(visibleCard);
+  if(first.top>640)note(route+' first result title top '+first.top+'px exceeds 640px at 390x844');
+  if(first.badge>844)note(route+' first availability badge below the 844px fold');
+  assert.equal(await mobile.locator('#category-panel').evaluate(el=>el.open),false,'categories collapse on narrow screens');
+  assert.equal(await mobile.locator('#interactive-only').isVisible(),true);
+  assert.equal(await mobile.locator('#result-count').isVisible(),true);
+ }
+ await mobile.screenshot({path:path.join(output,'phase3-search-mobile.png')});
+ await mobile.goto(base+'/catalog/',{waitUntil:'load'});
+ await mobile.locator('#category-panel summary').focus();
+ await mobile.keyboard.press('Enter');
+ assert.equal(await mobile.locator('#category-panel').evaluate(el=>el.open),true,'Enter opens category disclosure');
+ await mobile.locator('[data-filter="patterns"]').focus();
+ await mobile.keyboard.press('Space');
+ assert.equal(await mobile.locator('[data-filter="patterns"]').getAttribute('aria-pressed'),'true');
+ await mobile.locator('#category-panel summary').focus();
+ await mobile.keyboard.press('Enter');
+ assert.equal(await mobile.locator('#category-panel').evaluate(el=>el.open),false);
+ assert.equal(await mobile.locator('#category-summary').innerText(),'Patterns','collapsed summary keeps active category');
+ assert.match(await mobile.locator('#active-filters').innerText(),/1 filter active: Patterns/);
+ assert.equal(await mobile.locator('#reset-filters').isVisible(),true);
+ for(const [width,height] of [[320,700],[375,812],[768,900]]){
+  await mobile.setViewportSize({width,height});
+  for(const route of ['/catalog/','/search/']){
+   await mobile.goto(base+route+'?category=patterns&interactive=1',{waitUntil:'load'});
+   const overflow=await pageOverflow(mobile);
+   if(overflow>2)note(route+' with filters overflows '+width+'px by '+overflow+'px');
+  }
+ }
+ await mobile.close();
+
+ // F9 — deep links, reload, fresh session, history policy, invalid input, clear on both routes.
+ for(const route of ['/catalog/','/search/']){
+  const u=await browser.newPage({reducedMotion:'reduce'});
+  u.on('pageerror',e=>errors.push(e.message));
+  const deep=base+route+'?utm=keep&q=button&category=components&interactive=1';
+  await u.goto(deep,{waitUntil:'load'});
+  let s=await state(u);
+  assert.equal(s.q,'button');assert.equal(s.category,'components');assert.equal(s.pressed,1);assert.equal(s.interactive,true);
+  assert.ok(s.visible>0&&s.visible<total,route+' deep link filters results');
+  assert.equal(s.count,s.visible+' of '+total+' concepts');
+  assert.match(s.search,/utm=keep/,'unrelated parameters are preserved');
+  const deepState=s;
+  await u.reload({waitUntil:'load'});
+  s=await state(u);
+  for(const key of ['q','category','interactive','visible','count'])assert.equal(s[key],deepState[key],'reload keeps '+key);
+  const ctx=await browser.newContext();const shared=await ctx.newPage();
+  await shared.goto(u.url(),{waitUntil:'load'});
+  s=await state(shared);
+  for(const key of ['q','category','interactive','visible','count'])assert.equal(s[key],deepState[key],'shared URL keeps '+key);
+  await ctx.close();
+
+  await u.goto(base+route,{waitUntil:'load'});
+  const start=(await state(u)).history;
+  await u.evaluate(()=>{window.__announcements=0;new MutationObserver(()=>{window.__announcements+=1;})
+   .observe(document.getElementById('result-status'),{childList:true,characterData:true,subtree:true});});
+  await u.locator('#catalog-filter').pressSequentially('dialog',{delay:40});
+  await u.waitForTimeout(1300);
+  s=await state(u);
+  assert.equal(s.q,'dialog');assert.match(s.search,/q=dialog/);
+  assert.equal(s.history,start,'typing replaces the history entry instead of adding one per keystroke');
+  assert.ok(await u.evaluate(()=>window.__announcements)<=1,'status announces once after typing settles');
+  assert.equal(await u.locator('#catalog-filter').evaluate(el=>el===document.activeElement),true,'focus stays in search');
+  await u.locator('[data-filter="components"]').click();
+  assert.equal((await state(u)).history,start+1);
+  await u.locator('#interactive-only').check();
+  s=await state(u);
+  assert.equal(s.history,start+2);assert.match(s.search,/interactive=1/);assert.match(s.search,/category=components/);
+  await u.goBack();
+  s=await state(u);
+  assert.equal(s.interactive,false);assert.equal(s.category,'components');assert.equal(s.q,'dialog');
+  await u.goBack();
+  s=await state(u);
+  assert.equal(s.category,'all');assert.equal(s.q,'dialog');assert.equal(s.pressed,1);
+  await u.goForward();
+  s=await state(u);
+  assert.equal(s.category,'components');assert.equal(s.count,s.visible+' of '+total+' concepts');
+  assert.equal(new URL(u.url()).pathname,route,'no unintended route change');
+
+  await u.goto(base+route+'?category=%3Cscript%3E&interactive=yes&q='+'x'.repeat(500),{waitUntil:'load'});
+  s=await state(u);
+  assert.equal(s.category,'all');assert.equal(s.interactive,false);assert.equal(s.q.length,200);
+  assert.doesNotMatch(s.search,/category=|interactive=/,'invalid values are dropped from the canonical URL');
+  assert.equal(await u.locator('script:not([src])').count(),0);
+
+  await u.goto(base+route+'?q=unmatchable_query_xzy&category=patterns&interactive=1',{waitUntil:'load'});
+  assert.equal(await u.locator('#empty-results').isVisible(),true);
+  await u.locator('#clear-filters').click();
+  s=await state(u);
+  assert.equal(s.q,'');assert.equal(s.interactive,false);assert.equal(s.category,'all');assert.equal(s.visible,total);
+  assert.equal(s.count,total+' of '+total+' concepts');assert.equal(s.search,'','clear returns URL to defaults');
+  assert.equal(await u.locator('#catalog-filter').evaluate(el=>el===document.activeElement),true,'focus returns to search');
+  assert.equal(await u.locator('#reset-filters').isVisible(),false);
+  await u.close();
+ }
+
+ // F8 — jump navigation targets, keyboard activation, table scroll affordance, no page overflow.
+ for(const [width,height] of [[390,844],[1440,900]]){
+  const d=await browser.newPage({viewport:{width,height},reducedMotion:'reduce'});
+  d.on('pageerror',e=>errors.push(e.message));
+  await d.goto(base+'/catalog/components/button/',{waitUntil:'load'});
+  assert.deepEqual(await d.locator('.jump-nav a').allInnerTexts(),['Example','Guidance','States','Source']);
+  for(const link of await d.locator('.jump-nav a').all()){
+   const hash=await link.getAttribute('href');
+   await d.goto(base+'/catalog/components/button/',{waitUntil:'load'});
+   await d.locator('.jump-nav a[href="'+hash+'"]').focus();
+   await d.keyboard.press('Enter');
+   await d.waitForFunction(h=>location.hash===h,hash);
+   const top=await d.locator(hash).evaluate(el=>el.getBoundingClientRect().top);
+   if(top<-1||top>height/2)note('jump '+hash+' did not bring its section into view at '+width+'px (top '+top+')');
+  }
+  if(width<600){
+   await d.goto(base+'/catalog/components/button/#doc-states',{waitUntil:'load'});
+   await d.screenshot({path:path.join(output,'phase3-button-states-mobile.png')});
+   const wrap=d.locator('#doc-states');
+   assert.equal(await wrap.getAttribute('data-overflow'),'true');
+   assert.equal(await wrap.locator('.table-hint').isVisible(),true,'scroll hint visible on narrow screens');
+   const region=wrap.locator('.table-scroll');
+   assert.equal(await region.getAttribute('tabindex'),'0');
+   await region.focus();
+   for(let i=0;i<20;i++){await d.keyboard.press('ArrowRight');await d.waitForTimeout(40);}
+   await region.evaluate(el=>new Promise(r=>setTimeout(r,300)));
+   const reach=await region.evaluate(el=>{const last=el.querySelector('th:last-child').getBoundingClientRect();return last.right-el.getBoundingClientRect().right;});
+   if(reach>2)note('rightmost table column not reachable by keyboard scrolling ('+reach+'px hidden)');
+  } else {
+   assert.equal(await d.locator('#doc-states').getAttribute('data-overflow'),'false');
+   assert.equal(await d.locator('#doc-states .table-hint').isVisible(),false,'no hint when the table fits');
+  }
+  await d.goto(base+'/catalog/foundations/design-tokens/',{waitUntil:'load'});
+  const spec=await d.locator('.jump-nav a').allInnerTexts();
+  assert.ok(!spec.includes('Example')&&spec.includes('Guidance')&&spec.at(-1)==='Source','spec-only pages link no example');
+  await d.close();
+ }
+ // Axe serious/critical on the changed shell pages (preview iframes are scanned separately above).
+ for(const [width,height] of [[390,844],[1440,900]]){
+  const a=await browser.newPage({viewport:{width,height}});
+  for(const route of ['/catalog/','/search/?q=button&category=components&interactive=1','/catalog/components/button/','/catalog/foundations/design-tokens/']){
+   await a.goto(base+route,{waitUntil:'load'});
+   await a.addScriptTag({content:axe.source});
+   const report=await a.evaluate(async()=>window.axe.run({exclude:[['iframe']]},{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']}}));
+   const serious=report.violations.filter(v=>['critical','serious'].includes(v.impact));
+   if(serious.length)note(route+' at '+width+'px axe serious/critical: '+serious.map(v=>v.id+' ('+v.nodes.length+')').join(', '));
+  }
+  await a.close();
+ }
+ // 320px approximates 400% zoom of a 1280px window (reflow), not browser zoom itself.
+ const narrow=await browser.newPage({viewport:{width:320,height:700},reducedMotion:'reduce'});
+ await narrow.goto(base+'/catalog/',{waitUntil:'load'});
+ const routes=await narrow.evaluate(()=>Array.from(document.querySelectorAll('article.card a'),a=>a.getAttribute('href')));
+ assert.equal(routes.length,registry.length);
+ for(const route of routes){
+  await narrow.goto(base+route,{waitUntil:'domcontentloaded'});
+  const overflow=await pageOverflow(narrow);
+  if(overflow>2)note(route+' overflows 320px by '+overflow+'px');
+ }
+ await narrow.close();
 }
 checks().then(()=>{
  if(issues.length){console.error(issues.length+' browser/a11y failures');process.exitCode=1;}

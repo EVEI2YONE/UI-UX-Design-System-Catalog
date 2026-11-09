@@ -182,7 +182,8 @@ def render_md(content, source, by_path):
                 code.append(lines[i])
                 i += 1
             i += 1
-            out.append('<pre><code class="language-' + language + '">' + html.escape("\n".join(code)) + "</code></pre>")
+            # Focusable so long code lines can be scrolled with the keyboard on narrow screens.
+            out.append('<pre tabindex="0"><code class="language-' + language + '">' + html.escape("\n".join(code)) + "</code></pre>")
             continue
         heading = HEAD.match(line)
         if heading:
@@ -209,7 +210,8 @@ def render_md(content, source, by_path):
             continue
         if line.lstrip().startswith("|") and i + 1 < len(lines) and re.fullmatch(r"[\s:|\-]+", lines[i + 1]) and "---" in lines[i + 1]:
             headers = [c.strip() for c in line.strip().strip("|").split("|")]
-            out.append('<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr>')
+            out.append('<div class="table-wrap"><p class="table-hint" aria-hidden="true">Scroll sideways for more columns <span>→</span></p>'
+                       '<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table><thead><tr>')
             out.extend('<th scope="col">' + inline(h, source, by_path) + "</th>" for h in headers)
             out.append("</tr></thead><tbody>")
             i += 2
@@ -219,7 +221,7 @@ def render_md(content, source, by_path):
                 out.extend("<td>" + inline(cells[j] if j < len(cells) else "", source, by_path) + "</td>" for j in range(len(headers)))
                 out.append("</tr>")
                 i += 1
-            out.append("</tbody></table></div>")
+            out.append("</tbody></table></div></div>")
             continue
         m = ITEM.match(line)
         if m:
@@ -336,7 +338,7 @@ def reference_preview(entry, out):
              '<script src="/assets/preview-runner.js"></script></body></html>')
     write(out, "/previews/" + name + "/", frame)
     source_text = html.escape(source.read_text(encoding="utf-8"))
-    return ('<section class="live-preview" aria-label="Working reference preview">'
+    return ('<section class="live-preview" id="doc-example" aria-label="Working reference preview">'
             '<div class="preview-heading"><div><p class="preview-kicker">LIVE REFERENCE · SYNTHETIC DATA</p>'
             '<h2>Interactive example</h2><p>Rendered from the actual reference source. '
             'Not a certified production component.</p></div></div>'
@@ -349,6 +351,36 @@ def reference_preview(entry, out):
             '<p><code>' + html.escape(impl["source_path"]) + '</code></p>'
             '<pre><code>' + source_text + '</code></pre></details>' + adapter_view + '</section>')
 
+
+
+STATES_HEADING = re.compile(
+    r"^state\b|\bstates\b|\bstate\s+(?:model|matrix|contract|lifecycle|inventory)\b|\bstate$", re.I)
+GENERATED_IDS = ("doc-example", "doc-guidance", "doc-states", "doc-source")
+
+
+def section_navigation(guidance, has_example):
+    """Return (guidance_html, nav_html) linking only sections that exist on the page."""
+    ids = re.findall(r'\bid="([^"]+)"', guidance)
+    clash = set(ids) & set(GENERATED_IDS)
+    if clash or len(ids) != len(set(ids)):
+        raise ValueError("Duplicate or reserved guidance anchor: " + ", ".join(sorted(clash) or ids))
+    states = None
+    for match in re.finditer(r'<h([23]) id="([^"]+)">(.*?)</h\1>', guidance):
+        if STATES_HEADING.search(re.sub(r"<[^>]+>", "", html.unescape(match.group(3))).strip()):
+            states = match.group(2)  # reuse the existing Markdown heading anchor
+            break
+    if states is None:
+        table = re.search(r'<div class="table-wrap">(?=(?:(?!</thead>).)*?<th scope="col">States?</th>)', guidance, re.S)
+        if table:
+            states = "doc-states"
+            guidance = guidance[:table.start()] + '<div class="table-wrap" id="doc-states">' + guidance[table.end():]
+    links = ([("doc-example", "Example")] if has_example else []) + [("doc-guidance", "Guidance")]
+    links += [(states, "States")] if states else []
+    links.append(("doc-source", "Source"))
+    nav = ('<nav class="jump-nav" aria-label="On this page"><span class="jump-label" aria-hidden="true">On this page</span><ul>' +
+           "".join('<li><a href="#' + html.escape(anchor, quote=True) + '">' + label + '</a></li>' for anchor, label in links) +
+           '</ul></nav>')
+    return guidance, nav
 
 
 def build(out):
@@ -366,11 +398,18 @@ def build(out):
     cards = "".join(card(e) for e in ordered)
     chips = "".join('<button class="chip" type="button" data-filter="' + cat + '" aria-pressed="' +
                     ("true" if cat == "all" else "false") + '">' + cat.title() + "</button>" for cat in ("all", *CATEGORIES))
-    tools = ('<section class="tools"><label for="catalog-filter">Search concepts</label>'
-             '<input id="catalog-filter" type="search" placeholder="Search by task, name or capability" autocomplete="off">'
-             '<div class="chips" aria-label="Filter categories">' + chips + '</div>'
-             '<label class="preview-filter"><input id="interactive-only" type="checkbox"> Interactive examples only</label>'
-             '<p class="count" id="result-count" role="status">' + str(len(entries)) + ' concepts</p></section>')
+    tools = ('<section class="tools" aria-label="Search and filter concepts"><label for="catalog-filter">Search concepts</label>'
+             '<input id="catalog-filter" type="search" placeholder="Search by task, name or capability" autocomplete="off" maxlength="200">'
+             # Filter controls need the enhancement script; they stay hidden (not dead) without JS.
+             '<div class="filter-row" id="filter-controls" hidden>'
+             '<details class="filter-panel" id="category-panel" open><summary>Category: <span id="category-summary">All</span></summary>'
+             '<div class="chips" role="group" aria-label="Filter categories">' + chips + '</div></details>'
+             '<label class="preview-filter"><input id="interactive-only" type="checkbox"> Interactive examples only</label></div>'
+             '<div class="tools-status"><p class="count" id="result-count">' + str(len(entries)) + ' concepts</p>'
+             '<p class="active-filters" id="active-filters" hidden></p>'
+             '<button type="button" class="reset-filters" id="reset-filters" hidden>Reset filters</button></div>'
+             '<p class="visually-hidden" id="result-status" role="status" aria-live="polite" aria-atomic="true"></p>'
+             '<noscript><p class="count">Filtering needs JavaScript; all ' + str(len(entries)) + ' entries are listed below.</p></noscript></section>')
     grid = ('<section id="entry-grid" class="grid" aria-label="Catalog entries">' + cards + '</section>'
             '<div id="empty-results" hidden><p>No matching concepts. Try a different task or category.</p>'
             '<button type="button" id="clear-filters">Clear search and filters</button></div>')
@@ -396,10 +435,12 @@ def build(out):
                    "".join('<a href="' + route(r) + '">' + html.escape(r["title"]) + ' ↗</a>' for r in rel) +
                    '</div></section>') if rel else ""
         src = REPO + quote(e["path"], safe="/-_.")
-        body = ('<p class="breadcrumb"><a href="/catalog/">Catalog</a> / ' + category(e).title() + '</p>' + info + preview +
-                '<div class="doc-grid"><article class="markdown" aria-label="Canonical guidance">' +
-                public_guidance(canonical.read_text(encoding="utf-8"), e["path"], by_path) +
-                '</article><aside><h2>Source of truth</h2><p>These contracts are maintained in the repository.</p>'
+        guidance, jump = section_navigation(public_guidance(canonical.read_text(encoding="utf-8"), e["path"], by_path),
+                                            e.get("implementation") is not None)
+        body = ('<p class="breadcrumb"><a href="/catalog/">Catalog</a> / ' + category(e).title() + '</p>' + jump + info + preview +
+                '<div class="doc-grid"><article class="markdown" id="doc-guidance" aria-label="Canonical guidance">' + guidance +
+                '</article><aside id="doc-source" aria-labelledby="doc-source-title"><h2 id="doc-source-title">Source of truth</h2>'
+                '<p>These contracts are maintained in the repository.</p>'
                 '<a href="' + src + '">View Markdown source ↗</a></aside></div>' + related)
         write(out, route(e), page(e["title"], e["summary"], body))
         records.append({"id": e["id"], "title": e["title"], "path": e["path"], "url": route(e),

@@ -1,6 +1,6 @@
 # Phase 3 — Mobile discovery and navigation
 
-Status: **planning / evidence collection**. This document opens a reviewable Phase 3 workstream; it does **not** claim the UI changes have been implemented.
+Status: **implemented on draft PR #20, awaiting independent QA**. Developer self-checks are recorded below; they are **not** QA signoff. The immutable implementation SHA is recorded in the PR #20 description and the developer-to-QA handoff (a commit cannot contain its own SHA).
 
 ## Source baseline
 - Canonical catalog repository: `EVEI2YONE/UI-UX-Design-System-Catalog`
@@ -52,3 +52,34 @@ Context source: live `main` at `13d8292850db76e5435f81cc74f5f6b7fc869762`; no Ph
 | Details | top jump links reach existing Example, Guidance, States and Source regions; no missing targets or duplicated IDs |
 | Tables | all columns reachable with keyboard, horizontal-scroll affordance visible, no document-wide horizontal scroll |
 | Accessibility | focus order, labels, dark mode, reduced motion, 200/400% zoom manually verified where available; otherwise explicitly NOT VERIFIED |
+
+## Implementation record (developer, 2026-11-09)
+
+Baseline reconciled before editing: PR #20 head `c506228a6826e88597d4e0f2a728087d29de50b0`, `main` `13d8292850db76e5435f81cc74f5f6b7fc869762` — both matched the handoff; no Phase 3 UI code existed, so nothing was duplicated or overwritten.
+
+### F4 — compact mobile discovery
+- `site/build.py` tools markup: search label/input, then a native `<details id="category-panel">` whose `<summary>` reads **Category: <current>**, containing all nine `aria-pressed` category chips (`role="group"`), followed by the always-visible **Interactive examples only** checkbox.
+- Status row: visible count (`#result-count`), active-filter summary (`#active-filters`, e.g. "1 filter active: Patterns") and a **Reset filters** button shown only when state differs from default. The existing empty-state `#clear-filters` is unchanged and shares the same reset routine.
+- `search.js` collapses the disclosure at `max-width: 600px` and opens it on wider screens until the person toggles it. CSS tightens intro/tools spacing at <= 600px only.
+- No-JS policy: the filter row (`#filter-controls`) is rendered `hidden` and revealed by the script, so JS-less visitors are not shown inert chips; all 54 cards remain listed and a `<noscript>` line says filtering needs JavaScript.
+- Developer measurement (desktop Chromium 141 headless, CSS-pixel viewports): first card title top at 390x844 — `/catalog/` **559px** (was 743), `/search/` **596px** (was 826); availability badge bottom 698 / 734px (<= 844). 320x700: 559 / 641px. No page-level horizontal overflow at 320/375/390/768/1440.
+- Accepted trade-off: at 768px and 1440px the first title moves ~10-50px lower than before because the disclosure summary occupies a row (768: 715px vs 663px; 1440: 661px vs 652px); it remains within the 900px viewport. Flagged for reviewer judgement.
+
+### F9 — URL-backed state
+- Schema: `q` (trimmed, max 200 chars), `category` (must equal a rendered chip value; `all` default is omitted), `interactive=1`. Unknown/invalid values fall back to defaults and are removed from the URL with `replaceState` on load; unrelated query parameters and the hash are preserved.
+- History policy: typing -> debounced (300 ms) `replaceState`; category chip, interactive toggle, Reset/Clear -> one `pushState` (only when the URL changes); `popstate` restores controls, `aria-pressed`, count and cards without writing history or moving focus.
+- Announcements: the visible count is no longer a live region; a single visually hidden `role="status"` (`#result-status`, polite, atomic) is updated 900 ms after typing settles or 150 ms after a deliberate toggle.
+- Clear/Reset returns controls and URL to defaults and focuses search. Behaviour is identical on `/catalog/` and `/search/`.
+
+### F8 — detail navigation and tables
+- Every concept page gets `<nav aria-label="On this page">` before metadata, linking only sections that exist: **Example** (`#doc-example`, the sandboxed live preview — 12 reference pages only), **Guidance** (`#doc-guidance`, the canonical article), **States** (reuses an existing Markdown heading anchor such as `#task-flow-and-states`; otherwise the first table whose first column header is "State(s)" gets `#doc-states`; present on 24 of 54 pages), **Source** (`#doc-source`, the "Source of truth" aside, now `aria-labelledby` its heading).
+- `section_navigation()` fails the build on duplicate guidance IDs or collisions with the reserved `doc-*` IDs. Heading levels are unchanged.
+- Tables are wrapped in `.table-wrap` with a visible "Scroll sideways for more columns" hint (`aria-hidden`; shown at <= 600px without JS, and exactly when the table overflows with JS) plus edge scroll shadows. The focusable `role="region"` / `tabindex="0"` scroll container is unchanged.
+- Fenced code blocks render as `<pre tabindex="0">` so overflowing code is keyboard-scrollable (fixes a pre-existing axe `scrollable-region-focusable` finding on spec pages at 390px).
+
+### Regression coverage added
+- `site/tests/test_build.py`: compact filter markup, single live region, jump links resolve to unique existing IDs on all 54 pages, no Example link on spec-only pages, States anchor reuse, reserved-ID collision fails closed, table hint/region and focusable code markup.
+- `site/tests/browser-audit.cjs` (`phase3()`): 390x844 first-result/badge position on both routes, collapsed disclosure keyboard operation and summary, overflow with filters at 320/375/768, deep link/reload/fresh-context share, history (no per-keystroke entries; push per toggle; Back/Forward), invalid/oversized params, zero-result clear + focus, both routes, live-region announcement count, jump-link keyboard activation and target scroll at 390/1440, table hint + keyboard scroll reaching the last column, spec-only nav, axe serious/critical on changed shell pages (iframes excluded; previews keep their own scan), no-JS hidden filter controls, and page overflow on all 54 detail pages at 320px (approximates 400% zoom reflow of a 1280px window; not true browser zoom).
+
+### Not verified by the developer
+Screen reader output, physical touch devices, real browser zoom at 200%/400%, forced-colors/high-contrast OS modes, RTL, non-Chromium browsers and hosted/deployed embeds. These remain for independent QA (TEST_MATRIX A01/A02/G01) and must be reported as NOT_RUN/BLOCKED if not executed.
