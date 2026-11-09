@@ -41,6 +41,8 @@ jobs:
 
       - name: Test executable Button reference source
         run: node --test site/tests/button-runtime.test.cjs
+      - name: Test reference color contrast
+        run: node --test site/tests/contrast.test.cjs
       - name: Parse browser preview scripts
         run: |
           node --check site/src/previews/preview-runner.js

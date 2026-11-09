@@ -21,6 +21,7 @@ function makeAdapter(options) {
     if(!settings.canDecide||settings.outcome==="denied")return {kind:"denied",message:"You cannot decide this record in the simulated role."};
     const record=records.find(x=>x.id===request.id);
     if(!record)return {kind:"conflict",message:"This review item is no longer available."};
+    if(record.status!=="pending")return {kind:"conflict",message:"This review item already has a confirmed decision."};
     if(record.revision!==request.revision||settings.outcome==="conflict")return {kind:"conflict",message:"This record changed since it was opened. Inspect a fresh version."};
     if(settings.outcome==="error")return {kind:"error",message:"The simulated service failed before confirming a change."};
     if(settings.outcome==="unknown"){
