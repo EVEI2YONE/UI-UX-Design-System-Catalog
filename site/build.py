@@ -269,9 +269,11 @@ def write(out, url, content):
 
 def card(e):
     terms = " ".join([e["id"], e["title"], e["summary"], *e["aliases"], *e["domains"], *e.get("capabilities", [])]).lower()
-    return ('<article class="card" data-category="' + category(e) + '" data-search="' + html.escape(terms, quote=True) +
+    is_interactive = e.get("implementation") is not None
+    return ('<article class="card" data-interactive="' + str(is_interactive).lower() + '" data-category="' + category(e) + '" data-search="' + html.escape(terms, quote=True) +
             '"><a href="' + route(e) + '"><span class="category">' + category(e).title() + '</span><h3>' +
             html.escape(e["title"]) + '</h3><p>' + html.escape(e["summary"]) +
+            '</p><span class="availability">' + ('Interactive reference' if is_interactive else 'Specification only') + '</span><p class="card-detail">' + ('Try the live example and inspect its source' if is_interactive else 'Read the design guidance and usage contract') +
             '</p><span class="card-foot"><code>' + html.escape(e["id"]) + '</code><span aria-hidden="true">↗</span></span></a></article>')
 
 
@@ -368,8 +370,11 @@ def build(out):
     tools = ('<section class="tools"><label for="catalog-filter">Search concepts</label>'
              '<input id="catalog-filter" type="search" placeholder="Search by task, name or capability" autocomplete="off">'
              '<div class="chips" aria-label="Filter categories">' + chips + '</div>'
+             '<label class="preview-filter"><input id="interactive-only" type="checkbox"> Interactive examples only</label>'
              '<p class="count" id="result-count" role="status">' + str(len(entries)) + ' concepts</p></section>')
-    grid = '<section id="entry-grid" class="grid" aria-label="Catalog entries">' + cards + '</section><p id="empty-results" hidden>No matching concepts.</p>'
+    grid = ('<section id="entry-grid" class="grid" aria-label="Catalog entries">' + cards + '</section>'
+            '<div id="empty-results" hidden><p>No matching concepts. Try a different task or category.</p>'
+            '<button type="button" id="clear-filters">Clear search and filters</button></div>')
     write(out, "/catalog/", page("Explore the catalog", "Browse the canonical components, patterns and design guidance.", tools + grid))
     write(out, "/search/", page("Find the right guidance", "Search by name, user task or canonical ID.", tools + '<p class="hint">Without JavaScript, all entries remain listed below. Agents can search the JSON registry directly.</p>' + grid, "search"))
     write(out, "/", page("Make better interfaces, deliberately.", "A visual, searchable design reference with interactive examples backed by real source code.",
