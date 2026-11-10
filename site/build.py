@@ -279,6 +279,21 @@ def card(e):
 
 
 
+def inline_script(path):
+    """Embed reviewed classic JS without letting HTML close its script element."""
+    source = path.read_text(encoding="utf-8")
+    source = re.sub(r"</script", lambda m: "<\\/" + m.group(0)[2:], source, flags=re.I)
+    return '<script>' + source + '</script>'
+
+
+def inline_style(path):
+    source = path.read_text(encoding="utf-8")
+    # Reviewed CSS is not arbitrary HTML; reject raw-text element breakouts.
+    if re.search(r"</style", source, re.I):
+        raise ValueError("Preview CSS must not contain an HTML style terminator")
+    return '<style>' + source + '</style>'
+
+
 def reference_preview(entry, out):
     """Render the exact checked-in trusted JS implementation, source, and scenarios."""
     impl = entry.get("implementation")
@@ -310,7 +325,7 @@ def reference_preview(entry, out):
         if not adapter.resolve().is_relative_to(root_impl):
             raise ValueError("Unsafe mock adapter location")
         shutil.copyfile(adapter, base / "mock-adapter.js")
-        adapter_script = '<script src="/reference/' + html.escape(name, quote=True) + '/mock-adapter.js"></script>'
+        adapter_script = inline_script(adapter)
         adapter_view = ('<details class="source-details"><summary>Inspect synthetic adapter source</summary>'
                         '<p>In-memory fixtures only. No real authorization or persistence.</p>'
                         '<pre><code>' + html.escape(adapter.read_text(encoding="utf-8")) + '</code></pre></details>')
@@ -322,8 +337,8 @@ def reference_preview(entry, out):
     frame = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
              '<meta name="viewport" content="width=device-width,initial-scale=1">'
              '<title>Interactive reference: ' + html.escape(entry["title"]) + '</title>'
-             '<link rel="stylesheet" href="/assets/preview-host.css">'
-             '<link rel="stylesheet" href="/reference/' + html.escape(name, quote=True) + '/source.css">'
+             + inline_style(SITE / "src/previews/preview-host.css")
+             + inline_style(stylesheet) +
              '</head><body><p class="note">Synthetic interactive reference · no network writes or backend authorization</p>'
              '<div class="controls"><div class="control"><label for="scenario">Scenario</label><select id="scenario"></select></div>'
              '<div class="control"><label for="theme">Theme</label>'
@@ -332,10 +347,9 @@ def reference_preview(entry, out):
              '<div class="control"><button id="reset" type="button">Reset example</button></div></div>'
              '<div class="stage"><div id="stage"></div></div>'
              '<p class="result" id="preview-result" role="status" aria-live="polite"></p>'
-             '<script src="/reference/' + html.escape(name, quote=True) + '/scenarios.js"></script>'
-             + adapter_script +
-             '<script src="/reference/' + html.escape(name, quote=True) + '/source.js"></script>'
-             '<script src="/assets/preview-runner.js"></script></body></html>')
+             + inline_script(manifest) + adapter_script
+             + inline_script(source)
+             + inline_script(SITE / "src/previews/preview-runner.js") + '</body></html>')
     write(out, "/previews/" + name + "/", frame)
     source_text = html.escape(source.read_text(encoding="utf-8"))
     return ('<section class="live-preview" id="doc-example" aria-label="Working reference preview">'
@@ -344,7 +358,8 @@ def reference_preview(entry, out):
             'Not a certified production component.</p></div></div>'
             '<iframe title="' + html.escape(entry["title"], quote=True) +
             ' — isolated interactive reference" src="/previews/' + html.escape(name, quote=True) +
-            '/" sandbox="allow-scripts" loading="lazy" referrerpolicy="no-referrer"></iframe>'
+            '/" srcdoc="' + html.escape(frame, quote=True) +
+            '" sandbox="allow-scripts" loading="lazy" referrerpolicy="no-referrer"></iframe>'
             '<details class="source-details"><summary>Inspect implementation source</summary>'
             '<p>This is the same checked-in file loaded by the reference preview. '
             'Scenario definitions are maintained beside it.</p>'
