@@ -249,6 +249,92 @@ class SiteBuildTests(unittest.TestCase):
         duplicate = {"id": "other.button", "path": "components/another/spec.md"}
         self.assertEqual(site_build.route(existing), site_build.route(duplicate))
 
+    def test_phase3_compact_filter_markup(self):
+        import re
+        for name in ("catalog", "search"):
+            with self.subTest(page=name):
+                text = (self.out / name / "index.html").read_text(encoding="utf-8")
+                # Native disclosure keeps every category chip; JS-only controls are hidden, not dead, without JS.
+                self.assertIn('<details class="filter-panel" id="category-panel" open>', text)
+                self.assertIn('<div class="filter-row" id="filter-controls" hidden>', text)
+                self.assertEqual(len(re.findall(r'data-filter="([a-z]+)"', text)), 1 + len(site_build.CATEGORIES))
+                self.assertIn('id="interactive-only" type="checkbox"', text)
+                self.assertIn('id="category-summary">All<', text)
+                self.assertIn('<span class="category-chevron" aria-hidden="true"></span>', text)
+                self.assertIn('id="active-filters" hidden', text)
+                self.assertIn('id="clear-filters"', text)
+                # A single polite, atomic status region; the visible count is not itself live.
+                self.assertEqual(text.count('role="status"'), 1)
+                self.assertIn('id="result-status" role="status" aria-live="polite" aria-atomic="true"', text)
+                self.assertIn("<noscript>", text)
+
+    def test_phase3_jump_navigation_targets_existing_unique_sections(self):
+        import re
+        with_states = 0
+        for entry in self.entries:
+            with self.subTest(entry=entry["id"]):
+                text = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
+                ids = re.findall(r'\bid="([^"]+)"', text)
+                self.assertEqual(len(ids), len(set(ids)), "duplicate IDs")
+                nav = re.search(r'<nav class="jump-nav" aria-label="On this page">(.*?)</nav>', text)
+                self.assertIsNotNone(nav)
+                links = re.findall(r'<a href="#([^"]+)">([^<]+)</a>', nav.group(1))
+                labels = [label for _, label in links]
+                for anchor, _ in links:
+                    self.assertIn(anchor, ids, "dead jump link #" + anchor)
+                self.assertEqual(labels[-1], "Source")
+                self.assertIn("Guidance", labels)
+                if entry.get("implementation"):
+                    self.assertEqual(labels[0], "Example")
+                    self.assertIn('id="doc-example"', text)
+                else:
+                    self.assertNotIn("Example", labels)
+                    self.assertNotIn('id="doc-example"', text)
+                with_states += "States" in labels
+                # Jump navigation precedes metadata and the example/spec notice.
+                self.assertLess(text.index('class="jump-nav"'), text.index('class="meta"'))
+        self.assertGreater(with_states, 0)
+        button = (self.out / "catalog/components/button/index.html").read_text(encoding="utf-8")
+        self.assertIn('<a href="#doc-states">States</a>', button)
+        forms = (self.out / "catalog/patterns/forms/index.html").read_text(encoding="utf-8")
+        self.assertIn('<a href="#task-flow-and-states">States</a>', forms, "reuses Markdown heading anchor")
+
+    def test_phase3_states_table_jump_has_specific_named_region(self):
+        table_pages = []
+        for entry in self.entries:
+            page = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
+            if '<a href="#doc-states">States</a>' not in page:
+                continue
+            table_pages.append(entry["id"])
+            with self.subTest(entry=entry["id"]):
+                self.assertEqual(page.count('id="doc-states"'), 1)
+                self.assertIn(
+                    '<div class="table-wrap" id="doc-states" tabindex="-1" role="region" aria-label="States">',
+                    page)
+                target = page.split('id="doc-states"', 1)[1].split('</div></div>', 1)[0]
+                self.assertIn('aria-label="States table"', target)
+        self.assertEqual(len(table_pages), 11, table_pages)
+
+        sample = site_build.render_md(
+            "| State | Behavior |\n| --- | --- |\n| Idle | Ready |\n",
+            "components/button/spec.md", {})
+        output, links = site_build.section_navigation(sample, False)
+        self.assertIn('href="#doc-states"', links)
+        self.assertIn('aria-label="States table"', output)
+        self.assertNotIn('aria-label="Scrollable table"', output)
+
+    def test_phase3_reserved_anchor_collision_fails_closed(self):
+        with self.assertRaises(ValueError):
+            site_build.section_navigation('<h2 id="doc-source">Source</h2>', False)
+
+    def test_phase3_tables_keep_focusable_region_and_scroll_hint(self):
+        body = site_build.render_md("| A | B |\n| --- | --- |\n| 1 | 2 |\n", "components/button/spec.md", {})
+        self.assertIn('<div class="table-wrap"><p class="table-hint" aria-hidden="true">', body)
+        self.assertIn('<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>', body)
+        self.assertTrue(body.endswith("</table></div></div>"))
+        code = site_build.render_md("```text\n" + "x" * 300 + "\n```\n", "components/button/spec.md", {})
+        self.assertIn('<pre tabindex="0"><code class="language-text">', code)
+
 
 if __name__ == "__main__":
     unittest.main()
