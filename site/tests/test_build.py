@@ -1,4 +1,6 @@
 """Build and static catalog contract tests (no browser conformance claims)."""
+import html
+from html.parser import HTMLParser
 import importlib.util
 import json
 import sys
@@ -63,8 +65,8 @@ class SiteBuildTests(unittest.TestCase):
                 self.assertNotIn('sandbox="allow-scripts allow-same-origin"', detail)
                 self.assertEqual(original, copied)
                 self.assertIn("Inspect implementation source", detail)
-                self.assertIn('src="/reference/' + entry["id"] + '/source.js"', frame)
-                self.assertIn('src="/reference/' + entry["id"] + '/scenarios.js"', frame)
+                self.assertIn(site_build.inline_script(ROOT / entry['implementation']['source_path']), frame)
+                self.assertIn(site_build.inline_script(ROOT / entry['implementation']['scenario_manifest']), frame)
                 self.assertTrue((self.out / "reference" / entry["id"] / "source.css").is_file())
 
     def test_five_composed_pattern_previews_match_canonical_registration(self):
@@ -88,7 +90,7 @@ class SiteBuildTests(unittest.TestCase):
                 self.assertNotIn("allow-same-origin", page)
                 self.assertIn("Inspect implementation source", page)
                 self.assertIn("CatalogScenarios", scenarios)
-                self.assertIn('src="/reference/' + entry["id"] + '/source.js"', frame)
+                self.assertIn(site_build.inline_script(ROOT / entry['implementation']['source_path']), frame)
                 self.assertTrue((self.out / "reference" / entry["id"] / "source.css").is_file())
 
     def test_review_workspace_has_real_source_and_synthetic_adapter(self):
@@ -105,8 +107,8 @@ class SiteBuildTests(unittest.TestCase):
         self.assertEqual((directory / "ReviewWorkspace.js").read_bytes(), (generated / "source.js").read_bytes())
         self.assertEqual((directory / "mock-adapter.js").read_bytes(), (generated / "mock-adapter.js").read_bytes())
         self.assertEqual((directory / "scenarios.js").read_bytes(), (generated / "scenarios.js").read_bytes())
-        self.assertIn('src="/reference/feature.review-workspace/mock-adapter.js"', frame)
-        self.assertIn('src="/reference/feature.review-workspace/source.js"', frame)
+        self.assertIn(site_build.inline_script(directory / 'mock-adapter.js'), frame)
+        self.assertIn(site_build.inline_script(directory / 'ReviewWorkspace.js'), frame)
         self.assertIn("Synthetic interactive reference", frame)
 
     def test_all_unimplemented_entries_stay_spec_only(self):
@@ -133,9 +135,9 @@ class SiteBuildTests(unittest.TestCase):
         self.assertEqual(src, rendered)
         self.assertIn("CatalogReference", src)
         self.assertIn("CatalogScenarios", scenarios)
-        self.assertIn('src="/reference/component.button/source.js"', frame)
-        self.assertIn('src="/reference/component.button/scenarios.js"', frame)
-        self.assertIn('src="/assets/preview-runner.js"', frame)
+        self.assertIn(site_build.inline_script(ROOT / entry['implementation']['source_path']), frame)
+        self.assertIn(site_build.inline_script(ROOT / entry['implementation']['scenario_manifest']), frame)
+        self.assertIn(site_build.inline_script(SITE / 'src/previews/preview-runner.js'), frame)
 
     def test_preview_runner_assets_and_isolated_host(self):
         self.assertTrue((self.out / "assets/preview-runner.js").is_file())
@@ -144,6 +146,41 @@ class SiteBuildTests(unittest.TestCase):
         for label in ("Scenario", "Theme", "Reset example", "High contrast"):
             self.assertIn(label, text)
         self.assertNotIn("https://", text)
+
+    def test_embedded_previews_need_no_authenticated_subresource_requests(self):
+        class Elements(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.tags = []
+            def handle_starttag(self, tag, attrs):
+                self.tags.append((tag, dict(attrs)))
+        for entry in self.entries:
+            if "implementation" not in entry:
+                continue
+            with self.subTest(entry=entry["id"]):
+                page = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text()
+                parsed = Elements()
+                parsed.feed(page)
+                frames = [attrs for tag, attrs in parsed.tags if tag == "iframe"]
+                self.assertEqual(len(frames), 1)
+                self.assertEqual(frames[0]["sandbox"], "allow-scripts")
+                document = frames[0]["srcdoc"]
+                self.assertEqual(document, (self.out / "previews" / entry["id"] / "index.html").read_text())
+                child = Elements()
+                child.feed(document)
+                for tag, attrs in child.tags:
+                    if tag in {"script", "link", "img", "iframe"}:
+                        self.assertNotIn("src", attrs)
+                        self.assertNotIn("href", attrs)
+                self.assertIn(site_build.inline_script(ROOT / entry["implementation"]["source_path"]), document)
+
+    def test_script_terminator_cannot_escape_embedded_document(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "example.js"
+            path.write_text('const label = "</ScRiPt><p>not markup</p>";')
+            result = site_build.inline_script(path)
+            self.assertEqual(result.lower().count("</script>"), 1)
+            self.assertIn("<\\/ScRiPt>", result)
 
     def test_public_site_hides_project_phase_and_batch_labels(self):
         import re
