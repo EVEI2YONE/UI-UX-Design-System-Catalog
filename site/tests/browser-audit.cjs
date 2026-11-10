@@ -54,6 +54,30 @@ async function checks(){
   await noJS.screenshot({path:path.join(output,'phase3-catalog-nojs-mobile.png')});
   await noJS.close();
 
+  // Private hosts may reject asset requests from opaque-origin sandboxes.
+  // Exercise embedded previews with every preview document/asset request blocked.
+  const bundled=await browser.newPage();
+  const previewRequests=[];
+  await bundled.route('**/*',route=>{
+   const pathname=new URL(route.request().url()).pathname;
+   if(pathname.startsWith('/previews/')||pathname.startsWith('/reference/')||
+      pathname.startsWith('/assets/preview-')){
+    previewRequests.push(pathname);
+    return route.abort();
+   }
+   return route.continue();
+  });
+  for(const entry of interactive){
+   await bundled.goto(base+entry.implementation.preview_path+'/',{waitUntil:'load'});
+   assert.equal(await bundled.locator('iframe').getAttribute('sandbox'),'allow-scripts');
+   assert.ok(await bundled.locator('iframe').getAttribute('srcdoc'));
+   const embedded=bundled.frameLocator('iframe');
+   await embedded.locator('#scenario option').first().waitFor({state:'attached'});
+   assert.ok(await embedded.locator('#stage > *').count()>0,entry.id+' mounts without asset access');
+  }
+  assert.deepEqual(previewRequests,[],'embedded examples must not request preview dependencies');
+  await bundled.close();
+
   for(const width of [320,375,768,1440]){
    await page.setViewportSize({width,height:900});
    await page.goto(base+'/catalog/',{waitUntil:'load'});
