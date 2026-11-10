@@ -61,6 +61,7 @@ async function checks(){
    if(overflow>2)note('Catalog overflows viewport '+width+'px by '+overflow+'px');
   }
   await phase3(browser,errors);
+  await phase3CorrectionRegressions(browser);
   await page.setViewportSize({width:1440,height:900});
   await page.goto(base+'/catalog/components/button/',{waitUntil:'load'});
   const frame=page.frameLocator('iframe[title*="isolated interactive reference"]');
@@ -333,6 +334,109 @@ async function phase3(browser,errors){
  }
  await narrow.close();
 }
+
+/* History and disclosure corrections: full-page Chromium coverage. */
+async function phase3CorrectionRegressions(browser){
+ const results=[];
+ const snap=async p=>p.evaluate(()=>({
+  url:location.pathname+location.search,
+  q:document.querySelector('#catalog-filter').value,
+  category:document.querySelector('[data-filter][aria-pressed="true"]').dataset.filter,
+  interactive:document.querySelector('#interactive-only').checked,
+  visible:document.querySelectorAll('article.card:not([hidden])').length,
+  history:history.length
+ }));
+ for(const route of ['/catalog/','/search/']){
+  for(const action of ['patterns','checkbox','keyboard','reset']){
+   for(const delay of (['patterns','checkbox'].includes(action)?[0,100,230]:[0])){
+    const p=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});
+    try{
+     await p.goto(base+route);
+     const h=(await snap(p)).history;
+     await p.locator('#catalog-filter').fill('form');
+     if(delay)await p.waitForTimeout(delay);
+     if(action==='patterns')await p.locator('[data-filter="patterns"]').click();
+     else if(action==='checkbox')await p.locator('#interactive-only').check();
+     else if(action==='keyboard'){await p.locator('[data-filter="patterns"]').focus();await p.keyboard.press('Enter');}
+     else await p.locator('#reset-filters').click();
+     const pushed=await snap(p);
+     assert.equal(pushed.history,h+1);
+     await p.goBack();
+     const previous=await snap(p);
+     assert.equal(previous.url,route+'?q=form',route+action+' previous URL');
+     assert.equal(previous.q,'form');
+     assert.equal(previous.category,'all');
+     assert.equal(previous.interactive,false);
+     await p.waitForTimeout(400);
+     assert.deepEqual(await snap(p),previous,'late timer rewrote browser Back state');
+     await p.goForward();
+     assert.deepEqual(await snap(p),pushed,'Forward did not restore filters');
+     if(route==='/catalog/'&&action==='patterns'&&delay===0){
+      await p.goBack();
+      await p.screenshot({path:path.join(output,'phase3-D01-back-preserves-query.png')});
+     }
+     results.push({route,action,delay,status:'PASS',pushed,previous});
+    }finally{await p.close();}
+   }
+  }
+  const p=await browser.newPage();
+  try{
+   await p.goto(base+route+'?q=form');
+   await p.locator('[data-filter="patterns"]').click();
+   await p.locator('#catalog-filter').fill('table');
+   await p.goBack();
+   await p.waitForTimeout(450);
+   assert.equal((await snap(p)).url,route+'?q=form','popstate must cancel stale debounce');
+   await p.goto(base+route);
+   await p.locator('#catalog-filter').fill('table');
+   await p.locator('[data-filter="components"]').click();
+   await p.locator('#interactive-only').check();
+   const full=await snap(p);
+   await p.goBack();
+   const cat=await snap(p);
+   assert.equal(cat.url,route+'?q=table&category=components');
+   await p.goBack();
+   assert.equal((await snap(p)).url,route+'?q=table');
+   await p.goForward();
+   assert.deepEqual(await snap(p),cat);
+   await p.goForward();
+   assert.deepEqual(await snap(p),full);
+   results.push({route,action:'two toggles + stale popstate',status:'PASS'});
+  }finally{await p.close();}
+ }
+ const m=await browser.newPage({viewport:{width:390,height:844},reducedMotion:'reduce'});
+ try{
+  await m.goto(base+'/catalog/');
+  const ax=async()=>{
+   const cdp=await m.context().newCDPSession(m);
+   try{
+    const {root}=await cdp.send('DOM.getDocument');
+    const {nodeId}=await cdp.send('DOM.querySelector',{nodeId:root.nodeId,selector:'#category-panel summary'});
+    const {nodes}=await cdp.send('Accessibility.queryAXTree',{nodeId});
+    const el=nodes.find(n=>n.role?.value==='DisclosureTriangle');
+    return {name:el?.name?.value,expanded:el?.properties?.find(x=>x.name==='expanded')?.value?.value};
+   }finally{await cdp.detach();}
+  };
+  await m.locator('#category-panel summary').focus();
+  assert.deepEqual(await ax(),{name:'Category: All',expanded:false});
+  await m.screenshot({path:path.join(output,'phase3-D02-category-390.png')});
+  await m.keyboard.press('Enter');
+  assert.deepEqual(await ax(),{name:'Category: All',expanded:true});
+  await m.locator('[data-filter="patterns"]').click();
+  assert.deepEqual(await ax(),{name:'Category: Patterns',expanded:true});
+  results.push({action:'D02 disclosure AX name+expanded',status:'PASS'});
+  await m.setViewportSize({width:768,height:900});
+  await m.goto(base+'/search/');
+  const pos=await m.evaluate(visibleCard);
+  await m.screenshot({path:path.join(output,'phase3-D04-search-768x900.png')});
+  assert.ok(pos.badge<=900,'768px first badge ends at '+pos.badge);
+  assert.ok(await pageOverflow(m)<=2);
+  results.push({action:'D04 768px search badge',status:'PASS developer Chromium only',pos});
+ }finally{await m.close();}
+ fs.writeFileSync(path.join(output,'phase3-QA-corrections.json'),JSON.stringify(results,null,2)+'\n');
+ console.log('PASS '+results.length+' Phase 3 QA correction cases');
+}
+
 checks().then(()=>{
  if(issues.length){console.error(issues.length+' browser/a11y failures');process.exitCode=1;}
  else console.log('PASS: Chromium smoke, all preview frames axe serious/critical, screenshots and responsive shell');

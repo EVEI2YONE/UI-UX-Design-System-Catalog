@@ -53,8 +53,8 @@
 .filter-panel[open]{flex-basis:100%}
 .filter-panel summary{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:6px 14px;border:1px solid var(--control-border);border-radius:999px;font-size:14px;font-weight:650;cursor:pointer;list-style:none;color:var(--ink)}
 .filter-panel summary::-webkit-details-marker{display:none}
-.filter-panel summary::after{content:"▾";font-size:12px;color:var(--muted)}
-.filter-panel[open] summary::after{content:"▴"}
+.filter-panel summary .category-chevron::after{content:"▾";font-size:12px;color:var(--muted)}
+.filter-panel[open] summary .category-chevron::after{content:"▴"}
 .filter-panel summary:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .filter-panel .chips{margin-block-start:10px}
 .tools .filter-row label.preview-filter{margin:0;min-height:40px}
@@ -84,3 +84,6 @@
 }
 .table-wrap[data-overflow=false] .table-hint{display:none}
 @media(min-width:601px){.filter-panel[open]{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}.filter-panel[open]::details-content{display:contents}.filter-panel[open] .chips{margin-block-start:0}}
+
+/* Keep the first search-card badge visible at the 768px tablet audit viewport. */
+@media(min-width:601px) and (max-width:960px){.tools + .hint{margin-bottom:20px}}

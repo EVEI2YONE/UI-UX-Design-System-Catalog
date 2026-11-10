@@ -260,6 +260,7 @@ class SiteBuildTests(unittest.TestCase):
                 self.assertEqual(len(re.findall(r'data-filter="([a-z]+)"', text)), 1 + len(site_build.CATEGORIES))
                 self.assertIn('id="interactive-only" type="checkbox"', text)
                 self.assertIn('id="category-summary">All<', text)
+                self.assertIn('<span class="category-chevron" aria-hidden="true"></span>', text)
                 self.assertIn('id="active-filters" hidden', text)
                 self.assertIn('id="clear-filters"', text)
                 # A single polite, atomic status region; the visible count is not itself live.
@@ -297,6 +298,30 @@ class SiteBuildTests(unittest.TestCase):
         self.assertIn('<a href="#doc-states">States</a>', button)
         forms = (self.out / "catalog/patterns/forms/index.html").read_text(encoding="utf-8")
         self.assertIn('<a href="#task-flow-and-states">States</a>', forms, "reuses Markdown heading anchor")
+
+    def test_phase3_states_table_jump_has_specific_named_region(self):
+        table_pages = []
+        for entry in self.entries:
+            page = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
+            if '<a href="#doc-states">States</a>' not in page:
+                continue
+            table_pages.append(entry["id"])
+            with self.subTest(entry=entry["id"]):
+                self.assertEqual(page.count('id="doc-states"'), 1)
+                self.assertIn(
+                    '<div class="table-wrap" id="doc-states" tabindex="-1" role="region" aria-label="States">',
+                    page)
+                target = page.split('id="doc-states"', 1)[1].split('</div></div>', 1)[0]
+                self.assertIn('aria-label="States table"', target)
+        self.assertEqual(len(table_pages), 11, table_pages)
+
+        sample = site_build.render_md(
+            "| State | Behavior |\n| --- | --- |\n| Idle | Ready |\n",
+            "components/button/spec.md", {})
+        output, links = site_build.section_navigation(sample, False)
+        self.assertIn('href="#doc-states"', links)
+        self.assertIn('aria-label="States table"', output)
+        self.assertNotIn('aria-label="Scrollable table"', output)
 
     def test_phase3_reserved_anchor_collision_fails_closed(self):
         with self.assertRaises(ValueError):

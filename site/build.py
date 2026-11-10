@@ -373,7 +373,14 @@ def section_navigation(guidance, has_example):
         table = re.search(r'<div class="table-wrap">(?=(?:(?!</thead>).)*?<th scope="col">States?</th>)', guidance, re.S)
         if table:
             states = "doc-states"
-            guidance = guidance[:table.start()] + '<div class="table-wrap" id="doc-states">' + guidance[table.end():]
+            # Keep the existing fragment on the wrapper; name its target and the focusable
+            # scroll region without changing the document's other table landmarks.
+            table_html = guidance[table.end():].replace(
+                'role="region" aria-label="Scrollable table"',
+                'role="region" aria-label="States table"', 1)
+            guidance = (guidance[:table.start()] +
+                        '<div class="table-wrap" id="doc-states" tabindex="-1" role="region" aria-label="States">' +
+                        table_html)
     links = ([("doc-example", "Example")] if has_example else []) + [("doc-guidance", "Guidance")]
     links += [(states, "States")] if states else []
     links.append(("doc-source", "Source"))
@@ -402,7 +409,7 @@ def build(out):
              '<input id="catalog-filter" type="search" placeholder="Search by task, name or capability" autocomplete="off" maxlength="200">'
              # Filter controls need the enhancement script; they stay hidden (not dead) without JS.
              '<div class="filter-row" id="filter-controls" hidden>'
-             '<details class="filter-panel" id="category-panel" open><summary>Category: <span id="category-summary">All</span></summary>'
+             '<details class="filter-panel" id="category-panel" open><summary>Category: <span id="category-summary">All</span><span class="category-chevron" aria-hidden="true"></span></summary>'
              '<div class="chips" role="group" aria-label="Filter categories">' + chips + '</div></details>'
              '<label class="preview-filter"><input id="interactive-only" type="checkbox"> Interactive examples only</label></div>'
              '<div class="tools-status"><p class="count" id="result-count">' + str(len(entries)) + ' concepts</p>'

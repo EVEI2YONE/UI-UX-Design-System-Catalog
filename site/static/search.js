@@ -45,26 +45,38 @@
     };
   }
 
-  function stateUrl() {
+  function stateUrl(previousInteractive) {
     const params = new URLSearchParams(window.location.search);
     ["q", "category", "interactive"].forEach((key) => params.delete(key));
     const q = search.value.trim();
     if (q) params.set("q", q.slice(0, MAX_QUERY));
     if (category !== "all") params.set("category", category);
-    if (interactive && interactive.checked) params.set("interactive", "1");
+    const only = previousInteractive === undefined ? interactive?.checked : previousInteractive;
+    if (only) params.set("interactive", "1");
     const query = params.toString();
     return window.location.pathname + (query ? "?" + query : "") + window.location.hash;
   }
 
   /* History policy: typing replaces the current entry (debounced); deliberate actions
      (category, interactive toggle, reset) push one entry; popstate restores without writing. */
-  function writeUrl(mode) {
+  function cancelTyping() {
     window.clearTimeout(typingTimer);
-    const next = stateUrl();
+    typingTimer = 0;
+  }
+
+  function writeUrl(mode, previousInteractive) {
+    cancelTyping();
+    const next = stateUrl(previousInteractive);
     if (next === window.location.pathname + window.location.search + window.location.hash) return;
     try {
       window.history[mode === "push" ? "pushState" : "replaceState"]({catalogFilters: true}, "", next);
     } catch (error) { /* Some sandboxed or file contexts reject history writes; filtering still works. */ }
+  }
+
+  // A deliberate action must preserve pending typing in the entry *before* the push.
+  // The checkbox has already toggled when its change event fires, so pass its old value.
+  function flushTyping(previousInteractive) {
+    if (typingTimer) writeUrl("replace", previousInteractive);
   }
 
   function apply(state) {
@@ -113,6 +125,7 @@
   }
 
   function resetAll() {
+    flushTyping();
     apply({q: "", category: "all", interactive: false});
     update("now");
     writeUrl("push");
@@ -121,11 +134,16 @@
 
   search.addEventListener("input", () => {
     update("typing");
-    window.clearTimeout(typingTimer);
+    cancelTyping();
     typingTimer = window.setTimeout(() => writeUrl("replace"), 300);
   });
-  interactive?.addEventListener("change", () => { update("now"); writeUrl("push"); });
+  interactive?.addEventListener("change", () => {
+    flushTyping(!interactive.checked);
+    update("now");
+    writeUrl("push");
+  });
   chips.forEach((button) => button.addEventListener("click", () => {
+    flushTyping();
     category = valid.has(button.dataset.filter) ? button.dataset.filter : "all";
     chips.forEach((chip) => chip.setAttribute("aria-pressed", String(chip === button)));
     update("now");
@@ -133,7 +151,7 @@
   }));
   clear?.addEventListener("click", resetAll);
   reset?.addEventListener("click", resetAll);
-  window.addEventListener("popstate", () => { apply(readUrl()); update("now"); });
+  window.addEventListener("popstate", () => { cancelTyping(); apply(readUrl()); update("now"); });
 
   // Compact mobile disclosure: categories start collapsed on narrow screens, open on wide ones,
   // until the person toggles the panel themselves.
