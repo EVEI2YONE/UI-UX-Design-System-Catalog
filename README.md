@@ -5,6 +5,19 @@
 
 **Purpose.** Make UI/UX decisions easy to find, explain, review, implement, and validate. The catalog is for designers, engineers, researchers, accessibility reviewers, product teams, and AI agents. Entries specify *why and when* to use a concept, *how* it affects components and product journeys, and *what evidence* is needed before adoption.
 
+## Choose how to explore
+
+| Start from | Best for | Entry |
+| --- | --- | --- |
+| **A user task** | Find, compare, complete, confirm, recover, manage and onboard | [Task-based design discovery](tasks/README.md) |
+| **Design knowledge** | Principles, accessibility, UX writing, styling, architecture and methods | [Knowledge](knowledge/README.md) |
+| **Design specifications** | Component behavior contracts, patterns and experiences | [Specifications](specifications/README.md) |
+| **A working example** | Inspect sandboxed, synthetic interactive references | [Visual catalog](site/README.md) |
+| **Research evidence** | Examine sources, methods and limits | [Research](research/README.md) |
+| **A reusable package** | Versioned installable UI/tokens, if one is eventually released | [Packages — not yet available](packages/README.md) |
+
+**Important distinction:** specifications and live references are not installable, production-certified components. The only canonical identity and discovery metadata source is [catalog/index.json](catalog/index.json).
+
 ## Find the right guidance
 
 | If you need to... | Start here |

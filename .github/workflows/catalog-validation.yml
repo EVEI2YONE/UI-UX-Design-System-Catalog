@@ -10,12 +10,14 @@ permissions:
 
 jobs:
   check-catalog:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out source
         uses: actions/checkout@v4
       - name: Validate index, sections, and links
         run: python3 scripts/validate_catalog.py
+      - name: Verify structure migration
+        run: python3 scripts/migrate_structure.py --check --final
       - name: Smoke-test lookup
         run: python3 scripts/find_concept.py dialog
 
@@ -92,7 +94,7 @@ jobs:
 
   browser-check:
     name: Chromium interaction and axe smoke
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4

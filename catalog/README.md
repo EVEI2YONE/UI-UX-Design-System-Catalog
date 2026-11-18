@@ -4,6 +4,9 @@
 
 ## Search
 
+For user-goal discovery, start with [task families](../tasks/README.md), then resolve related canonical IDs through this registry. Task navigation does not create a second registry.
+
+
 ```bash
 python3 scripts/find_concept.py focus
 python3 scripts/find_concept.py "error recovery"

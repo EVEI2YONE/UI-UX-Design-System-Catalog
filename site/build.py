@@ -260,7 +260,7 @@ def render_md(content, source, by_path):
 
 def page(title, subtitle, content, active="browse"):
     nav = "".join('<a href="' + url + '"' + (' aria-current="page" class="active"' if name == active else "") + ">" + label + "</a>"
-                  for url, label, name in (("/", "Home", "home"), ("/catalog/", "Browse", "browse"), ("/search/", "Search", "search")))
+                  for url, label, name in (("/", "Home", "home"), ("/tasks/", "Tasks", "tasks"), ("/catalog/", "Browse", "browse"), ("/search/", "Search", "search")))
     return ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             '<meta name="color-scheme" content="light dark"><title>' + html.escape(title) + ' | UI/UX Design Catalog</title>'
             '<link rel="stylesheet" href="/assets/styles.css"><script defer src="/assets/search.js"></script></head><body>'
@@ -445,10 +445,12 @@ def build(out):
     grid = ('<section id="entry-grid" class="grid" aria-label="Catalog entries">' + cards + '</section>'
             '<div id="empty-results" hidden><p>No matching concepts. Try a different task or category.</p>'
             '<button type="button" id="clear-filters">Clear search and filters</button></div>')
+    write(out, "/tasks/", page("Start with a user task", "Browse by what a user needs to accomplish.",
+        '<article class="markdown">' + render_md((ROOT / "tasks/README.md").read_text(encoding="utf-8"), "tasks/README.md", by_path) + "</article>", "tasks"))
     write(out, "/catalog/", page("Explore the catalog", "Browse the canonical components, patterns and design guidance.", tools + grid))
     write(out, "/search/", page("Find the right guidance", "Search by name, user task or canonical ID.", tools + '<p class="hint">Without JavaScript, all entries remain listed below. Agents can search the JSON registry directly.</p>' + grid, "search"))
     write(out, "/", page("Make better interfaces, deliberately.", "A visual, searchable design reference with interactive examples backed by real source code.",
-        '<div class="actions"><a class="primary" href="/catalog/">Browse ' + str(len(entries)) + ' concepts →</a><a href="/search/">Search by task</a></div>'
+        '<div class="actions"><a class="primary" href="/tasks/">Start with a task →</a><a href="/catalog/">Browse ' + str(len(entries)) + ' concepts</a><a href="/search/">Search the catalog</a></div>'
         '<section class="benefits"><div><h2>Canonical knowledge</h2><p>One registry and source of design guidance.</p></div>'
         '<div><h2>Real reference source</h2><p>Explore interactive examples and inspect the code behind them.</p></div>'
         '<div><h2>Agent-friendly</h2><p>Stable IDs, readable pages and source links.</p></div></section>', "home"))
