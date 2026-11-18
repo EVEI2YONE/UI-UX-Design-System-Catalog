@@ -54,7 +54,7 @@ class StylingArchitectureKnowledgeTests(unittest.TestCase):
 
     def test_context_and_indexes_are_present(self):
         self.assertTrue((ROOT / "archive/planning/icon-interaction-b05-context-2026-11-07.md").is_file())
-        for p in ("foundations/README.md", "architecture/README.md", "AGENTS.md"):
+        for p in ("knowledge/foundations/README.md", "knowledge/architecture/README.md", "AGENTS.md"):
             self.assertIn("B05" if p.endswith("README.md") else "Batch 5",
                           (ROOT / p).read_text(encoding="utf-8"))
 
