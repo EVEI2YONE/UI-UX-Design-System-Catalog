@@ -113,7 +113,7 @@ This does **not** mean client-side validation replaces server-side authorization
 5. Run typecheck, feature tests, route integration, keyboard/screen-reader and locale/theme checks; record what was actually executed.
 6. Remove obsolete duplicated functions/components after confirming imports and behavior; retain compatibility re-exports temporarily if needed.
 
-**Example policy violations:** importing `features/projects/components/ProjectEditor` directly from a sibling feature, or importing project state into `shared/ui/TextField`. Those conflict with [module-boundary guidance](module-boundaries-and-developer-navigation.md). Use [enforcement recipes](architecture-enforcement-and-ci.md) to implement tests against the target's actual aliases.
+**Example policy violations:** importing `specifications/experiences/projects/components/ProjectEditor` directly from a sibling feature, or importing project state into `shared/ui/TextField`. Those conflict with [module-boundary guidance](module-boundaries-and-developer-navigation.md). Use [enforcement recipes](architecture-enforcement-and-ci.md) to implement tests against the target's actual aliases.
 
 ## Reference C: enterprise / multi-application — share stable contracts, not entire screens
 
@@ -162,8 +162,8 @@ The shared domain package holds stable, platform-independent project types/rules
 
 | Requested change | Prototype | Modular MVP | Multi-application platform |
 | --- | --- | --- | --- |
-| Rename a project field | Local screen and storage adapter | `features/projects` model/editor | App feature plus shared domain rule only if both apps use it |
-| Update focus ring on a reusable button | Existing `components/Button` | `shared/ui` and semantic tokens | `packages/design-system` with consumer checks |
+| Rename a project field | Local screen and storage adapter | `specifications/experiences/projects` model/editor | App feature plus shared domain rule only if both apps use it |
+| Update focus ring on a reusable button | Existing `specifications/components/Button` | `shared/ui` and semantic tokens | `packages/design-system` with consumer checks |
 | Fix authorization for moderation | Not assumed to exist | Owning feature plus trusted server-side service | Admin service/authorization boundary, never a generic UI package |
 | Add a new project dashboard route | Framework route/screen | Framework route adapter + feature | Owning app's routes + optional packages |
 | Add an import-boundary check | Usually not needed | Scoped lint/graph checks if observed coupling | Project/package graph constraints with owners and CI |
@@ -183,4 +183,4 @@ The shared domain package holds stable, platform-independent project types/rules
 
 ### Avoid claiming an implementation from this document
 
-All trees and code fragments are **illustrative**, deliberately small and not runnable standalone applications. They are reference decisions, not executable templates, validated benchmarks or published production packages. A real code migration must follow the installed framework rules and its security/data contracts. The canonical concept IDs and ownership decisions live in [selection](application-architecture.md), [module boundaries](module-boundaries-and-developer-navigation.md), [evolution](architecture-evolution.md), [enterprise choices](enterprise-and-multiapp.md) and [quality gates](../governance/quality-gates.md).
+All trees and code fragments are **illustrative**, deliberately small and not runnable standalone applications. They are reference decisions, not executable templates, validated benchmarks or published production packages. A real code migration must follow the installed framework rules and its security/data contracts. The canonical concept IDs and ownership decisions live in [selection](application-architecture.md), [module boundaries](module-boundaries-and-developer-navigation.md), [evolution](architecture-evolution.md), [enterprise choices](enterprise-and-multiapp.md) and [quality gates](../../governance/quality-gates.md).

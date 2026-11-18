@@ -10,13 +10,13 @@ This repository is a **reference catalog of proposed UI/UX knowledge**, not a sh
 
 For visual reference gathering, reference-to-rule translation or selecting between aesthetic directions, retrieve `foundation.visual-craftsmanship` and its Batch 3 decision packet; use `guidance.ux-research` for participant studies and `guidance.wireframe-methodology` for prototype fidelity. Provisional visual preferences are not tested user outcomes.
 
-For high-fidelity or rendered UI visual critique, retrieve `governance.quality` Batch 4 visual craftsmanship review (KG-15/16), then `foundation.visual-craftsmanship` and `foundation.practical-styling` for rationale and remediations. Use the [synthetic visual refinement example bank](foundations/visual-refinement-examples.md) for KG-17; do not treat its fictional before/after descriptions as inspected artifacts.
+For high-fidelity or rendered UI visual critique, retrieve `governance.quality` Batch 4 visual craftsmanship review (KG-15/16), then `foundation.visual-craftsmanship` and `foundation.practical-styling` for rationale and remediations. Use the [synthetic visual refinement example bank](knowledge/foundations/visual-refinement-examples.md) for KG-17; do not treat its fictional before/after descriptions as inspected artifacts.
 
 For end-to-end visual design or KG-18 handoff requests, start with [visual craftsmanship workflow](governance/visual-craftsmanship-workflow.md) and use its stage-to-canonical-ID map. That guide is non-canonical; actual normative ownership remains with registry IDs `foundation.visual-craftsmanship`, `foundation.practical-styling`, `governance.quality`, and platform/accessibility owners. Check implementation and manual evidence before claiming completion.
 
 ## Current retrieval guidance
 
-Use the canonical index and exact IDs first, then read task-relevant source pages. For application structure use [architecture navigation](architecture/README.md); for component contracts use [component navigation](components/README.md); for tasks and journeys use [patterns](patterns/README.md); for UX research, accessibility and cross-cutting rules use [guidance](guidance/README.md).
+Use the canonical index and exact IDs first, then read task-relevant source pages. For application structure use [architecture navigation](knowledge/architecture/README.md); for component contracts use [component navigation](specifications/components/README.md); for tasks and journeys use [patterns](specifications/patterns/README.md); for UX research, accessibility and cross-cutting rules use [guidance](knowledge/guidance/README.md).
 
 All catalog entries are currently proposed. Do not infer a published component, tested deployment, accessibility certification or approved standard from registry metadata or the documentation validator. Product-specific case studies and historical batch context live in the [archive](archive/README.md); follow the current canonical pages instead of applying historic PR assumptions.
 

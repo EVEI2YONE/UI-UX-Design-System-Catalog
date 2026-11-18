@@ -149,7 +149,7 @@ For every enforcing change, record a pinned tool/version and resolved paths; sou
 
 ## Sources and status
 
-Official tool documentation consulted 2026-11-07 (links above). These configurations are **illustrative**, require adaptation to actual resolver/project versions, and have **not been executed in a target application**. This proposed guide extends [module boundaries](module-boundaries-and-developer-navigation.md), [evolution](architecture-evolution.md) and existing [quality gates](../governance/quality-gates.md) without claiming shipped enforcement.
+Official tool documentation consulted 2026-11-07 (links above). These configurations are **illustrative**, require adaptation to actual resolver/project versions, and have **not been executed in a target application**. This proposed guide extends [module boundaries](module-boundaries-and-developer-navigation.md), [evolution](architecture-evolution.md) and existing [quality gates](../../governance/quality-gates.md) without claiming shipped enforcement.
 
 ## B05 — visual redundancy and utility-style enforcement (CKG-16; proposed 2026-11-07)
 

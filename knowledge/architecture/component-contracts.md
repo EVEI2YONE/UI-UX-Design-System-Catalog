@@ -18,7 +18,7 @@ A shared component needs a stable, inspectable contract before it is marked read
 
 ## Example: Dialog shell versus destructive task
 
-**Shared Dialog contract:** role/modality, focus entry and containment as appropriate, Escape/close, focus return, accessible name and description, backdrop behavior, resize and scroll. Refer to the [WAI-ARIA Authoring Practices Guide](../governance/references.md) for tested interaction patterns.
+**Shared Dialog contract:** role/modality, focus entry and containment as appropriate, Escape/close, focus return, accessible name and description, backdrop behavior, resize and scroll. Refer to the [WAI-ARIA Authoring Practices Guide](../../governance/references.md) for tested interaction patterns.
 
 **Account deletion flow (not shared Dialog contract):** account context, destructive action, confirmation copy, user-specific validation, service call, recovery alternatives, and domain metrics.
 
@@ -32,7 +32,7 @@ A shared component needs a stable, inspectable contract before it is marked read
 | Zoom, narrow container, touch | Layout reflows; targets operable | NOT VERIFIED |
 | Theme variants | Contrast and focus across applicable modes | NOT VERIFIED |
 
-Use [the entry template](../templates/concept-entry.md) to record an actual component specification. Do not mark this sample matrix as tested.
+Use [the entry template](../../templates/concept-entry.md) to record an actual component specification. Do not mark this sample matrix as tested.
 
 ## Example contract: asynchronous action button (illustrative)
 
@@ -50,7 +50,7 @@ Use [the entry template](../templates/concept-entry.md) to record an actual comp
 | Failed | Error explains recovery; entered content retained | Screen reader and retry |
 | Disabled | Reason discoverable from adjacent content where needed | Alternative instructions |
 
-**Scope boundary:** the button does not own payment, account deletion, telemetry payloads, or network retries. A feature decides if retries are safe. Test a real implementation before marking any row PASS. Related: [interaction recovery](../patterns/interaction-states-and-recovery.md).
+**Scope boundary:** the button does not own payment, account deletion, telemetry payloads, or network retries. A feature decides if retries are safe. Test a real implementation before marking any row PASS. Related: [interaction recovery](../../specifications/patterns/interaction-states-and-recovery.md).
 
 ## Batch 12 extension — versioned design-to-code handoff
 
@@ -71,12 +71,12 @@ Every real implementation should be traceable to a versioned canonical component
 
 **Anti-example:** An engineer guesses a new focus state from a design screenshot, updates golden images in bulk and assumes the component is semantically correct. Automated image diffs cannot prove focus or authorization.
 
-This is a contract template, not a code implementation or a declared Storybook/Playwright dependency. Related: [quality gates](../governance/quality-gates.md), [tokens](../foundations/design-tokens-and-themes.md), [lifecycle policy](../governance/lifecycle-and-decisions.md). Sources (consulted 2026-11-07): [Storybook UI testing](https://storybook.js.org/docs/writing-tests/index), [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots).
+This is a contract template, not a code implementation or a declared Storybook/Playwright dependency. Related: [quality gates](../../governance/quality-gates.md), [tokens](../foundations/design-tokens-and-themes.md), [lifecycle policy](../../governance/lifecycle-and-decisions.md). Sources (consulted 2026-11-07): [Storybook UI testing](https://storybook.js.org/docs/writing-tests/index), [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots).
 
 
 ## Batch 2 — composite anatomy and event coordination (CKG-04, CKG-06–08; proposed 2026-11-07)
 
-**Scope:** reusable platform-neutral contracts for events *within* and *between* UI components. This extends the existing state/interaction checklist; it does not define application commands, invent a transport API, or require a custom framework state manager. The [icon semantics contract](../foundations/iconography-and-semantics.md) owns icon meanings, [interaction recovery](../patterns/interaction-states-and-recovery.md) owns authoritative result/uncertainty and later focus continuation, and [accessibility](../guidance/accessibility.md) owns inclusive requirements.
+**Scope:** reusable platform-neutral contracts for events *within* and *between* UI components. This extends the existing state/interaction checklist; it does not define application commands, invent a transport API, or require a custom framework state manager. The [icon semantics contract](../foundations/iconography-and-semantics.md) owns icon meanings, [interaction recovery](../../specifications/patterns/interaction-states-and-recovery.md) owns authoritative result/uncertainty and later focus continuation, and [accessibility](../guidance/accessibility.md) owns inclusive requirements.
 
 ### CKG-04 — composite anatomy and icon/event ownership
 

@@ -98,7 +98,7 @@ Use only when multiple applications have proven shared contracts and benefit fro
 
 ## Verification and unknowns
 
-Measure path-to-change discoverability (task-to-owner lookup), dependency cycles and forbidden imports, duplicate implementation consolidation (with semantics checked), change locality, build/test performance, accessibility keyboard/focus and locale/theme regression on representative workflows. Compare measured baselines, not assumed percentage improvements. Document rollback and compatibility exports. Use [quality gates](../governance/quality-gates.md), [lifecycle](../governance/lifecycle-and-decisions.md), and [component model](component-model.md).
+Measure path-to-change discoverability (task-to-owner lookup), dependency cycles and forbidden imports, duplicate implementation consolidation (with semantics checked), change locality, build/test performance, accessibility keyboard/focus and locale/theme regression on representative workflows. Compare measured baselines, not assumed percentage improvements. Document rollback and compatibility exports. Use [quality gates](../../governance/quality-gates.md), [lifecycle](../../governance/lifecycle-and-decisions.md), and [component model](component-model.md).
 
 ## Source status
 
