@@ -9,7 +9,7 @@
       "origin_id": "F-01",
       "proposed_id": "feature.review-workspace",
       "disposition": "registered-reference",
-      "artifact_path": "features/review-workspace/spec.md",
+      "artifact_path": "specifications/experiences/review-workspace/spec.md",
       "canonical_id": "feature.review-workspace",
       "existing_owners": [
         "pattern.forms",
