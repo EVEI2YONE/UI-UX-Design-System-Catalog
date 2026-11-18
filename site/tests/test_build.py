@@ -244,11 +244,11 @@ class SiteBuildTests(unittest.TestCase):
                 self.assertNotRegex(text, re.compile(r"\\b(?:phase|batch)\\s*\\d+\\b|\\bPR\\s*#\\d+\\b", re.I))
 
     def test_canonical_markdown_and_historical_anchors_are_preserved(self):
-        path = ROOT / "components/button/spec.md"
+        path = ROOT / "specifications/components/button/spec.md"
         source = path.read_text(encoding="utf-8")
         self.assertIn("## Batch 1 extension", source)
         self.assertIn("## Phase 4 reference", source)
-        rendered = site_build.public_guidance(source, "components/button/spec.md", {})
+        rendered = site_build.public_guidance(source, "specifications/components/button/spec.md", {})
         self.assertIn("icon-only", rendered.lower())
         self.assertIn('id="batch-1-extension', rendered)
         self.assertNotIn("Phase 4 reference implementation", rendered)
@@ -265,10 +265,10 @@ class SiteBuildTests(unittest.TestCase):
         self.assertTrue((self.out / "index.html").is_file())
 
     def test_markdown_escaping_and_safe_url(self):
-        docs = {"components/button/spec.md": {"id": "component.button", "path": "components/button/spec.md"}}
+        docs = {"specifications/components/button/spec.md": {"id": "component.button", "path": "specifications/components/button/spec.md"}}
         body = site_build.render_md(
             "# Heading\n\nUnsafe <script>alert(1)</script>\n\n[unsafe](javascript:alert(1))\n\n[button](spec.md)\n\n| A | B |\n| --- | --- |\n| 1 | 2 |\n",
-            "components/button/spec.md", docs
+            "specifications/components/button/spec.md", docs
         )
         self.assertNotIn("<script>", body)
         self.assertNotIn('href="javascript:', body)
@@ -277,13 +277,13 @@ class SiteBuildTests(unittest.TestCase):
         self.assertIn("<table>", body)
 
     def test_routes_use_canonical_ids_not_titles(self):
-        control = {"id": "component.button", "path": "components/button/spec.md", "title": "Renamed!?"}
+        control = {"id": "component.button", "path": "specifications/components/button/spec.md", "title": "Renamed!?"}
         self.assertEqual(site_build.route(control), "/catalog/components/button/")
-        self.assertEqual(site_build.category({"id": "pattern.settings", "path": "patterns/settings.md"}), "patterns")
+        self.assertEqual(site_build.category({"id": "pattern.settings", "path": "specifications/patterns/settings.md"}), "patterns")
 
     def test_duplicate_routes_fail_closed(self):
-        existing = {"id": "component.button", "path": "components/button/spec.md"}
-        duplicate = {"id": "other.button", "path": "components/another/spec.md"}
+        existing = {"id": "component.button", "path": "specifications/components/button/spec.md"}
+        duplicate = {"id": "other.button", "path": "specifications/components/another/spec.md"}
         self.assertEqual(site_build.route(existing), site_build.route(duplicate))
 
     def test_phase3_compact_filter_markup(self):
@@ -354,7 +354,7 @@ class SiteBuildTests(unittest.TestCase):
 
         sample = site_build.render_md(
             "| State | Behavior |\n| --- | --- |\n| Idle | Ready |\n",
-            "components/button/spec.md", {})
+            "specifications/components/button/spec.md", {})
         output, links = site_build.section_navigation(sample, False)
         self.assertIn('href="#doc-states"', links)
         self.assertIn('aria-label="States table"', output)
@@ -365,11 +365,11 @@ class SiteBuildTests(unittest.TestCase):
             site_build.section_navigation('<h2 id="doc-source">Source</h2>', False)
 
     def test_phase3_tables_keep_focusable_region_and_scroll_hint(self):
-        body = site_build.render_md("| A | B |\n| --- | --- |\n| 1 | 2 |\n", "components/button/spec.md", {})
+        body = site_build.render_md("| A | B |\n| --- | --- |\n| 1 | 2 |\n", "specifications/components/button/spec.md", {})
         self.assertIn('<div class="table-wrap"><p class="table-hint" aria-hidden="true">', body)
         self.assertIn('<div class="table-scroll" tabindex="0" role="region" aria-label="Scrollable table"><table>', body)
         self.assertTrue(body.endswith("</table></div></div>"))
-        code = site_build.render_md("```text\n" + "x" * 300 + "\n```\n", "components/button/spec.md", {})
+        code = site_build.render_md("```text\n" + "x" * 300 + "\n```\n", "specifications/components/button/spec.md", {})
         self.assertIn('<pre tabindex="0"><code class="language-text">', code)
 
 
