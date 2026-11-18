@@ -4,7 +4,7 @@
 
 ## Catalog intake
 
-Before authoring, reviewed `catalog/index.json` (28 concepts after Batches 7–8), root and nested indexes, `CONTRIBUTING.md`, `patterns/interaction-states-and-recovery.md`, `patterns/feedback.md`, `patterns/role-aware-workspaces-and-context-switching.md`, `patterns/forms.md`, `patterns/service-recovery-and-support.md`, `guidance/accessibility.md`, `guidance/internationalization.md`, `guidance/content-design-and-ux-writing.md`, and source/entry conventions.
+Before authoring, reviewed `catalog/index.json` (28 concepts after Batches 7–8), root and nested indexes, `CONTRIBUTING.md`, `specifications/patterns/interaction-states-and-recovery.md`, `specifications/patterns/feedback.md`, `specifications/patterns/role-aware-workspaces-and-context-switching.md`, `specifications/patterns/forms.md`, `specifications/patterns/service-recovery-and-support.md`, `knowledge/guidance/accessibility.md`, `knowledge/guidance/internationalization.md`, `knowledge/guidance/content-design-and-ux-writing.md`, and source/entry conventions.
 
 | Candidate | Existing knowledge | Gap classification | Decision |
 | --- | --- | --- | --- |

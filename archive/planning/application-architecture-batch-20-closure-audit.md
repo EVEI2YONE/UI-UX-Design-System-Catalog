@@ -4,7 +4,7 @@
 
 ## Audit context collected before edits
 
-Reviewed current branch `catalog/index.json` (47 concepts, including 7 new application-architecture entries), `architecture/README.md`, root/agent/catalog indexes, quality gates, relevant architecture chapters, Batch 13–19 context ledgers, and corresponding retrieval tests. Prior Batch 19 head passed GitHub Actions run #143. Each later change requires its own final-head CI result.
+Reviewed current branch `catalog/index.json` (47 concepts, including 7 new application-architecture entries), `knowledge/architecture/README.md`, root/agent/catalog indexes, quality gates, relevant architecture chapters, Batch 13–19 context ledgers, and corresponding retrieval tests. Prior Batch 19 head passed GitHub Actions run #143. Each later change requires its own final-head CI result.
 
 ### Gap reconciliation and canonical ownership
 
@@ -24,7 +24,7 @@ Reviewed current branch `catalog/index.json` (47 concepts, including 7 new appli
 
 ## Duplication and navigation review
 
-- Existing `architecture/README.md` starts with component tier guidance then appends chronological batch sections; newcomers must scan Batch 9, 12 and 13–19 history to find architecture tasks.
+- Existing `knowledge/architecture/README.md` starts with component tier guidance then appends chronological batch sections; newcomers must scan Batch 9, 12 and 13–19 history to find architecture tasks.
 - Root README includes the needed architecture links but places examples/enforcement before the profile selection decision. Reorder the application architecture rows from selection → boundaries → framework → topology → migration → enforcement → examples.
 - Per-batch ledgers already preserve historical context; do not repeat all history in navigation. Replace the architecture section README with a task-to-concept table and one compact evidence/history index.
 - Prior pages share standard reminders about unknown tests. This is necessary scope signaling, not evidence of duplicate canonical ownership; avoid risky bulk rewriting of reviewed pages.

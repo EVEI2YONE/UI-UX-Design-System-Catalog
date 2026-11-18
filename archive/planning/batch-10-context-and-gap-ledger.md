@@ -4,7 +4,7 @@
 
 ## Catalog context inspected first
 
-Inspected the **32 registered entries** on the cumulative PR branch before Batch 10, including `catalog/index.json`, root/nested indexes, `CONTRIBUTING.md`, `patterns/data-tables.md`, `patterns/role-aware-workspaces-and-context-switching.md`, `patterns/navigation.md`, `guidance/accessibility.md`, `guidance/cognitive-load-and-decisions.md`, `guidance/internationalization.md`, and the current batch plan. No target app or real-user data was supplied.
+Inspected the **32 registered entries** on the cumulative PR branch before Batch 10, including `catalog/index.json`, root/nested indexes, `CONTRIBUTING.md`, `specifications/patterns/data-tables.md`, `specifications/patterns/role-aware-workspaces-and-context-switching.md`, `specifications/patterns/navigation.md`, `knowledge/guidance/accessibility.md`, `knowledge/guidance/cognitive-load-and-decisions.md`, `knowledge/guidance/internationalization.md`, and the current batch plan. No target app or real-user data was supplied.
 
 | Candidate | Existing coverage | Gap classification | Reuse/extend/create decision |
 | --- | --- | --- | --- |

@@ -6,9 +6,9 @@
 
 | Existing source | What it already owns | Distinct unresolved decision |
 | --- | --- | --- |
-| `architecture/module-boundaries-and-developer-navigation.md` (Batch 14) | Feature/domain/shared responsibility, one-way imports and public interfaces | Says to enforce boundaries, but gives no tested mechanism or known blind spots |
-| `architecture/architecture-evolution.md` (Batch 15) | Migration strategy, architecture fitness and rollback | Needs a staged legacy-violation to blocking-CI transition |
-| `architecture/framework-aware-application-structure.md` (Batch 17) | Framework route ownership and preserved special files | Requires resolver- and route-aware enforcement rather than generic alias assumptions |
+| `knowledge/architecture/module-boundaries-and-developer-navigation.md` (Batch 14) | Feature/domain/shared responsibility, one-way imports and public interfaces | Says to enforce boundaries, but gives no tested mechanism or known blind spots |
+| `knowledge/architecture/architecture-evolution.md` (Batch 15) | Migration strategy, architecture fitness and rollback | Needs a staged legacy-violation to blocking-CI transition |
+| `knowledge/architecture/framework-aware-application-structure.md` (Batch 17) | Framework route ownership and preserved special files | Requires resolver- and route-aware enforcement rather than generic alias assumptions |
 | `governance/quality-gates.md` | Documentation versus runtime test status and architecture acceptance | No tool-specific validation matrix for false negatives, exceptions or CI rollout |
 | `catalog/index.json` + retrieval suite | Canonical metadata, lookup and tests | Needs an explicit entry for hands-on architecture enforcement knowledge |
 

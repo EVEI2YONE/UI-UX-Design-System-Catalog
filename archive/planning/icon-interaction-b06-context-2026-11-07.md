@@ -4,7 +4,7 @@
 
 ## Inspected source and existing owners
 
-- `AGENTS.md`, `CONTRIBUTING.md`, `catalog/index.json` (53 entries in branch vs 52 in main; exactly one B01 addition), `scripts/validate_catalog.py`, `scripts/find_concept.py`, `governance/quality-gates.md`, `foundations/iconography-and-semantics.md`, `architecture/component-contracts.md`, `components/button/spec.md`, and B01–B05 regression tests and progress ledger.
+- `AGENTS.md`, `CONTRIBUTING.md`, `catalog/index.json` (53 entries in branch vs 52 in main; exactly one B01 addition), `scripts/validate_catalog.py`, `scripts/find_concept.py`, `governance/quality-gates.md`, `knowledge/foundations/iconography-and-semantics.md`, `knowledge/architecture/component-contracts.md`, `specifications/components/button/spec.md`, and B01–B05 regression tests and progress ledger.
 - Canonical `governance.quality` already owns documentation validation, actual evidence status, interaction/accessibility/locale acceptance, and lookup integrity. Extend it for CKG-18/19 instead of introducing a second QA concept.
 - Canonical `foundation.icon-semantics` already owns semantic roles, glyph context, labels, host states, RTL and target size. Extend it for CKG-05 icon consistency review; no universal brand glyph catalogue or Lucide dependency.
 - B01–B05 contracts cover CKG-01–04 and CKG-06–17; B06 should **not rewrite** their guidance. Existing tests assert retrieval and text semantics only, not browser conformance.
