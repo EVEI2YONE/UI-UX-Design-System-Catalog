@@ -39,7 +39,7 @@
 - Form patterns: validation timing, required/optional conventions, multi-step progress, autosave/resume, autofill, corrections and partial submissions.
 - Search/discovery: query entry, results relevance, filters, sorting, empty/zero-result states, pagination and accessibility.
 - Help/service recovery: contextual guidance, escalation, support status, complaint and failed-workflow recovery.
-- **Deliverable:** extend existing `patterns/forms*`, search/filtering and interaction-recovery concepts where available; add reusable content guidance only when absent.
+- **Deliverable:** extend existing `specifications/patterns/forms*`, search/filtering and interaction-recovery concepts where available; add reusable content guidance only when absent.
 
 ### Batch 9 — Trust and resilient journeys
 - Transparent consent, data minimization, permission prompts, deletion, dark-pattern avoidance and trustworthy defaults.
@@ -53,7 +53,7 @@
 - Mobile/native: platform conventions, touch gestures and alternatives, safe areas, deep links and adaptive layouts.
 - Advanced interactions: bulk operations, drag/drop alternatives, shortcuts, menus, command palettes, undo/redo.
 - Enterprise: permissions, multi-role workspaces, approvals, audit trails and dense operations.
-- **Deliverable:** extend `patterns/data-tables*` and `patterns/role-aware-workspaces-and-context-switching.md` when appropriate, not duplicates.
+- **Deliverable:** extend `specifications/patterns/data-tables*` and `specifications/patterns/role-aware-workspaces-and-context-switching.md` when appropriate, not duplicates.
 
 ### Batch 11 — AI and multimodal experiences
 - AI expectations, disclosure, provenance, uncertainty and fallback.
@@ -66,7 +66,7 @@
 - Operational UX: loading strategies, latency budgets, Core Web Vitals, network/device constraints and progressive enhancement.
 - Experimentation: hypothesis, unit of randomization, segmentation, guardrails, sample considerations and avoiding false causal claims.
 - Design-to-code/DesignOps: design-token interchange, specs, review gates, screenshot/visual regression, ownership and adoption.
-- **Deliverable:** strengthen existing `guidance/ux-measurement.md`, governance checks and compatible architecture pages.
+- **Deliverable:** strengthen existing `knowledge/guidance/ux-measurement.md`, governance checks and compatible architecture pages.
 
 ## Reference research queue (verify freshness while implementing)
 

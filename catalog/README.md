@@ -46,7 +46,7 @@ These resolve to canonical guidance, lifecycle policy and quality checklist entr
 
 ## Batch 6 — consistent agent retrieval
 
-All entries, including [role-aware workspaces](../patterns/role-aware-workspaces-and-context-switching.md), now provide owner, review date, use/avoid guidance, related IDs and dependencies. The resolver normalizes case/punctuation, ranks exact IDs and aliases first, supports `--status` and `--limit`, and excludes `avoid_when` from positive search scoring. That field still appears in JSON results so agents can interpret contraindications.
+All entries, including [role-aware workspaces](../specifications/patterns/role-aware-workspaces-and-context-switching.md), now provide owner, review date, use/avoid guidance, related IDs and dependencies. The resolver normalizes case/punctuation, ranks exact IDs and aliases first, supports `--status` and `--limit`, and excludes `avoid_when` from positive search scoring. That field still appears in JSON results so agents can interpret contraindications.
 
 ```bash
 python3 scripts/find_concept.py 'role switching' --json --limit 3
@@ -80,7 +80,7 @@ Use `architecture.reference-examples` for prototype/MVP/enterprise developer-tas
 
 ## Batch 20 — architecture coverage and selection
 
-The [architecture index](../architecture/README.md) is the human task-first entrypoint to the seven application architecture concepts introduced in Batches 13–19. The [closure audit](../archive/planning/application-architecture-batch-20-closure-audit.md) documents canonical ownership, lookup coverage, historical context and unverified application outcomes. Prefer existing IDs over creating redundant concept entries.
+The [architecture index](../knowledge/architecture/README.md) is the human task-first entrypoint to the seven application architecture concepts introduced in Batches 13–19. The [closure audit](../archive/planning/application-architecture-batch-20-closure-audit.md) documents canonical ownership, lookup coverage, historical context and unverified application outcomes. Prefer existing IDs over creating redundant concept entries.
 
 ## Account/settings portal retrieval
 
@@ -139,7 +139,7 @@ See [Phase 2 evidence and decision ledger](../docs/visual-catalog-refactor/08-ph
 
 **Current branch state (2026-11-08):** 54 canonical records, 12 actually registered source-linked reference implementations and 42 specification-only entries. All 54 canonical entry lifecycle statuses are still `proposed`; implementation-level `reference` is not approval or production adoption.
 
-Use `python3 scripts/find_concept.py "human approval queue" --json` to discover the human Review Workspace, and then read `features/review-workspace/spec.md` before inspecting its checked-in preview source and synthetic adapter. For AI-agent delegated tool approval, retrieve the distinct `pattern.agentic-actions` concept instead. To check task search and source/route provenance in one repeatable pass, run `python3 scripts/audit_discovery.py --output site/artifacts/phase9/discovery-audit.json`. The audit derives its records from this index; it does **not** introduce another canonical metadata store.
+Use `python3 scripts/find_concept.py "human approval queue" --json` to discover the human Review Workspace, and then read `specifications/experiences/review-workspace/spec.md` before inspecting its checked-in preview source and synthetic adapter. For AI-agent delegated tool approval, retrieve the distinct `pattern.agentic-actions` concept instead. To check task search and source/route provenance in one repeatable pass, run `python3 scripts/audit_discovery.py --output site/artifacts/phase9/discovery-audit.json`. The audit derives its records from this index; it does **not** introduce another canonical metadata store.
 
 The [Phase 9 task fixture](../tests/fixtures/phase9_retrieval_cases.json) locks expected top results for relevant positive queries, records a known no-result query (`synthetic review`), and permits legitimately ambiguous `settings` matches. Changing a search alias or algorithm requires deliberate acceptance updates and review, not silent ranking changes.
 

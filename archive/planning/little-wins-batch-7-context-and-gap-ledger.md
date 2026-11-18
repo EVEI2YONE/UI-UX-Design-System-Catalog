@@ -4,9 +4,9 @@
 
 ## Context gathered before authoring
 
-**Product source:** user-provided `Little_Wins_Source.zip`; snapshot without a verified target GitHub SHA. `Little_Wins/app/page.tsx` defines `submissionRows`, `Dialog`, and `SubmissionForm`. `submissionRows` renders `<tr onClick ... tabIndex={0} onKeyDown={Enter}>`, while its last column contains a visual chevron. `Dialog` calls `showModal()`, handles backdrop clicks and `onCancel`, and delegates close to parent state; `SubmissionForm` contains locally controlled input and save/submit actions. The ZIP includes `components/ui/dialog.tsx`, other UI primitives and a large global stylesheet. No browser/AT execution was performed in this batch.
+**Product source:** user-provided `Little_Wins_Source.zip`; snapshot without a verified target GitHub SHA. `Little_Wins/app/page.tsx` defines `submissionRows`, `Dialog`, and `SubmissionForm`. `submissionRows` renders `<tr onClick ... tabIndex={0} onKeyDown={Enter}>`, while its last column contains a visual chevron. `Dialog` calls `showModal()`, handles backdrop clicks and `onCancel`, and delegates close to parent state; `SubmissionForm` contains locally controlled input and save/submit actions. The ZIP includes `specifications/components/ui/dialog.tsx`, other UI primitives and a large global stylesheet. No browser/AT execution was performed in this batch.
 
-**Catalog context read before writing:** `catalog/index.json`, `CONTRIBUTING.md`, `patterns/data-tables.md`, `components/dialog/spec.md`, `guidance/accessibility.md`, `patterns/advanced-interactions-and-reversible-actions.md`, `governance/quality-gates.md`, and existing root/nested indexes. Existing canonical guidance already covers native semantics, tables versus grids, dialog focus and manual accessibility checks; no new catalog concept is justified.
+**Catalog context read before writing:** `catalog/index.json`, `CONTRIBUTING.md`, `specifications/patterns/data-tables.md`, `specifications/components/dialog/spec.md`, `knowledge/guidance/accessibility.md`, `specifications/patterns/advanced-interactions-and-reversible-actions.md`, `governance/quality-gates.md`, and existing root/nested indexes. Existing canonical guidance already covers native semantics, tables versus grids, dialog focus and manual accessibility checks; no new catalog concept is justified.
 
 ## Gap classification and dispositions
 
