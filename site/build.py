@@ -488,7 +488,7 @@ def build(out):
                         "category": category(e), "summary": e["summary"], "status": e["status"],
                         "aliases": e["aliases"], "capabilities": e.get("capabilities", [])})
     (out / "catalog-search.json").write_text(json.dumps(records, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print("PASS:", len(entries), "canonical pages and 3 index pages generated")
+    print("PASS:", len(entries), "canonical pages and 4 index pages generated")
     return len(entries)
 
 

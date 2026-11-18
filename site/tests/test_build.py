@@ -45,6 +45,16 @@ class SiteBuildTests(unittest.TestCase):
             self.assertIn('id="entry-grid"', content)
         self.assertIn('aria-pressed="true"', browse)
 
+    def test_task_first_page_exposes_canonical_task_routes(self):
+        tasks = (self.out / "tasks/index.html").read_text(encoding="utf-8")
+        home = (self.out / "index.html").read_text(encoding="utf-8")
+        self.assertIn("Start with a user task", tasks)
+        self.assertIn("Narrow a long list", tasks)
+        self.assertIn("/catalog/patterns/search-filter/", tasks)
+        self.assertIn("/catalog/components/dialog/", tasks)
+        self.assertIn('href="/tasks/"', home)
+        self.assertIn('class="skip"', tasks)
+
     def test_unimplemented_entries_advertise_spec_only(self):
         button = next(e for e in self.entries if e["id"] == "pattern.task-flows")
         text = (self.out / site_build.route(button).lstrip("/") / "index.html").read_text(encoding="utf-8")
