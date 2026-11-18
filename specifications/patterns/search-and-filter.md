@@ -40,7 +40,7 @@ Label search and filter groups, expose active selections beyond color, support k
 
 **Canonical ID:** `pattern.search-filter` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** preserve query/deep-link semantics and avoid unnecessary custom widgets. Documentation-only.
 
-Related: [task flows](task-flows-and-information-architecture.md), [recovery](interaction-states-and-recovery.md), [measurement](../guidance/ux-measurement.md), [accessibility](../guidance/accessibility.md). Standards: [WCAG 2.2](../governance/references.md).
+Related: [task flows](task-flows-and-information-architecture.md), [recovery](interaction-states-and-recovery.md), [measurement](../../knowledge/guidance/ux-measurement.md), [accessibility](../../knowledge/guidance/accessibility.md). Standards: [WCAG 2.2](../../governance/references.md).
 
 ## Batch 8 extension — discovery, sorting and result semantics
 
@@ -81,8 +81,8 @@ Each result should show enough safe distinguishing context to support selection,
 
 **Sources (reviewed 2026-11-07):** [USWDS search](https://designsystem.digital.gov/components/search/) and [pagination](https://designsystem.digital.gov/components/pagination/); [DWP filters design notes](https://design-system.dwp.gov.uk/contribute/filters/design-notes) is contextual and research in progress, not universal policy; [Scottish Government search filters](https://designsystem.gov.scot/patterns/search-results/search-filters) demonstrates applied criteria and mobile options.
 
-Related guidance: [content design](../guidance/content-design-and-ux-writing.md), [service recovery](service-recovery-and-support.md).
+Related guidance: [content design](../../knowledge/guidance/content-design-and-ux-writing.md), [service recovery](service-recovery-and-support.md).
 
 ## Phase 6 executable pattern reference (2026-11-08)
 
-The visual catalog now includes an actual [Search and filtering implementation](../site/src/implementations/patterns/search-filter/SearchFilter.js), its [deterministic synthetic scenarios](../site/src/implementations/patterns/search-filter/scenarios.js), and [scoped demonstration styles](../site/src/implementations/patterns/search-filter/SearchFilter.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests. See the [Phase 6 evidence ledger](../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).
+The visual catalog now includes an actual [Search and filtering implementation](../../site/src/implementations/patterns/search-filter/SearchFilter.js), its [deterministic synthetic scenarios](../../site/src/implementations/patterns/search-filter/scenarios.js), and [scoped demonstration styles](../../site/src/implementations/patterns/search-filter/SearchFilter.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests. See the [Phase 6 evidence ledger](../../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).

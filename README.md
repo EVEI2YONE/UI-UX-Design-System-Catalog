@@ -10,52 +10,52 @@
 | If you need to... | Start here |
 | --- | --- |
 | Deliver an end-to-end visual design from brief through styling, rendering, critique and evidence | [Visual craftsmanship workflow](governance/visual-craftsmanship-workflow.md) |
-| Select wireframe fidelity or decide when interaction is required | [Wireframe methodology](guidance/wireframe-methodology.md) |
-| Critique a rendered UI, iterate screenshots and study before/after styling examples | [Visual craftsmanship quality gates](governance/quality-gates.md#visual-craftsmanship-review-and-corrective-iteration--batch-4-kg-15-and-kg-16-proposed-2026-11-07) and [synthetic refinement examples](foundations/visual-refinement-examples.md) |
-| Review image-based wireframe QA, states and consumer retrieval | [Quality gates](governance/quality-gates.md), [interaction recovery](patterns/interaction-states-and-recovery.md), [wireframe integration handoff](archive/planning/wireframe-integration-handoff-2026-11-07.md) |
-| Gather visual references, compare art directions and select a style with documented tradeoffs | [Visual design craftsmanship — Batch 3](foundations/visual-design-craftsmanship.md#batch-3--art-direction-research-exploration-and-selection-kg-1114-proposed) |
-| Choose a coherent aesthetic direction, typography, color and layout rhythm | [Visual design craftsmanship](foundations/visual-design-craftsmanship.md) |
-| Apply layout, card, image, icon and motion styling recipes | [Practical UI styling recipes](foundations/practical-ui-styling-recipes.md) |
-| Establish visual hierarchy, spacing, and affordances | [Design principles](foundations/design-principles.md) |
-| Create a theme or rationalize raw values | [Tokens and themes](foundations/design-tokens-and-themes.md) |
-| Choose prototype, MVP, growing or enterprise app code structure | [Application architecture selection](architecture/application-architecture.md) |
-| Organize features, domains, and developer navigation | [Module boundaries and developer navigation](architecture/module-boundaries-and-developer-navigation.md) |
-| Adapt app structure to Next.js, Angular or React Router | [Framework-aware application structure](architecture/framework-aware-application-structure.md) |
-| Decide between monorepo, multirepo or microfrontends | [Enterprise and multi-app architecture](architecture/enterprise-and-multiapp.md) |
-| Migrate or measure application modularity | [Architecture evolution and fitness](architecture/architecture-evolution.md) |
-| Enforce feature/module import boundaries in CI | [Architecture enforcement and CI guardrails](architecture/architecture-enforcement-and-ci.md) |
-| Explore prototype, MVP and enterprise code-layout examples | [Application architecture reference examples](architecture/application-architecture-reference-examples.md) |
-| Decide primitive vs component vs pattern vs feature | [Component model](architecture/component-model.md) |
-| Specify a new or changed reusable component | [Component contracts](architecture/component-contracts.md) and [entry template](templates/concept-entry.md) |
-| Organize profile, security and personal preferences in a settings portal | [Account and settings portal](patterns/account-and-settings-portal.md) |
-| Design billing details, subscription changes or invoices | [Billing and subscription settings](patterns/billing-and-subscription-settings.md) |
-| Design role-based portals, previews or workspace switching | [Role-aware workspaces and context switching](patterns/role-aware-workspaces-and-context-switching.md) |
-| Compose task-specific wireframe screens and compare structural alternatives | [Task flows and information architecture](patterns/task-flows-and-information-architecture.md) and [visual hierarchy](foundations/design-principles.md) |
-| Simplify navigation or a critical task | [Task flows and information architecture](patterns/task-flows-and-information-architecture.md) |
-| Design loading, error, or destructive states | [Interaction states and recovery](patterns/interaction-states-and-recovery.md) |
-| Design and test keyboard, focus, contrast, touch, or zoom | [Accessibility](guidance/accessibility.md) |
-| Support translations, long labels, and RTL | [Internationalization](guidance/internationalization.md) |
-| Define success beyond aesthetic preference | [UX measurement](guidance/ux-measurement.md) |
-| Write clear labels, instructions, error and status copy | [Content design and UX writing](guidance/content-design-and-ux-writing.md) |
-| Design complex forms, safe search, filtering and sorting | [Form composition](patterns/forms.md) and [search/filtering](patterns/search-and-filter.md) |
-| Recover a failed user task across service and support channels | [Service recovery and support handoff](patterns/service-recovery-and-support.md) |
-| Choose a UX study or evaluate evidence quality | [UX research methods](guidance/ux-research-methods.md) |
-| Understand expectations and end-to-end journeys | [Mental models and journey mapping](guidance/mental-models-and-journeys.md) |
-| Reduce memory and decision burden | [Cognitive load and decision design](guidance/cognitive-load-and-decisions.md) |
-| Design perceived speed, loading and field performance evidence | [Performance and perceived speed](guidance/performance-and-perceived-speed.md) |
-| Design controlled A/B studies and trustworthy causal analysis | [UX experimentation](guidance/experimentation-and-causal-evidence.md) |
-| Hand off design tokens and components for real releases | [Lifecycle and decisions](governance/lifecycle-and-decisions.md) and [component contracts](architecture/component-contracts.md) |
-| Explain AI capabilities, uncertainty, evidence and correction | [AI-powered experiences](guidance/ai-powered-experiences-and-trust.md) |
-| Design AI tools with scoped approval and verified outcomes | [Agentic actions and approvals](patterns/agentic-actions-and-approvals.md) |
-| Support accessible voice, chat and multimodal workflows | [Conversational, voice and multimodal UX](patterns/conversational-voice-and-multimodal-ux.md) |
-| Present accessible KPIs, charts and dashboard data | [Data visualization and dashboards](guidance/data-visualization-and-dashboards.md) |
-| Adapt navigation and tasks for mobile/native windows | [Mobile and adaptive platform UX](guidance/mobile-and-adaptive-platform-ux.md) |
-| Design bulk actions, drag alternatives, command palettes and undo | [Advanced interactions](patterns/advanced-interactions-and-reversible-actions.md) |
-| Define enterprise approval and audit-view journeys | [Role-aware workspaces](patterns/role-aware-workspaces-and-context-switching.md) |
-| Build privacy-respecting choices and account deletion flows | [Privacy, consent and trustworthy UX](guidance/privacy-consent-and-trust.md) |
-| Plan sign-in, passkeys, MFA, expiry and recovery | [Authentication and account lifecycle](patterns/authentication-and-account-lifecycle.md) |
-| Control alert urgency, channels, and user attention | [Notifications and attention](patterns/notifications-and-attention.md) |
-| Handle offline drafts, sync and conflicting edits | [Offline work and synchronization](patterns/offline-sync-and-conflicts.md) |
+| Select wireframe fidelity or decide when interaction is required | [Wireframe methodology](knowledge/guidance/wireframe-methodology.md) |
+| Critique a rendered UI, iterate screenshots and study before/after styling examples | [Visual craftsmanship quality gates](governance/quality-gates.md#visual-craftsmanship-review-and-corrective-iteration--batch-4-kg-15-and-kg-16-proposed-2026-11-07) and [synthetic refinement examples](knowledge/foundations/visual-refinement-examples.md) |
+| Review image-based wireframe QA, states and consumer retrieval | [Quality gates](governance/quality-gates.md), [interaction recovery](specifications/patterns/interaction-states-and-recovery.md), [wireframe integration handoff](archive/planning/wireframe-integration-handoff-2026-11-07.md) |
+| Gather visual references, compare art directions and select a style with documented tradeoffs | [Visual design craftsmanship — Batch 3](knowledge/foundations/visual-design-craftsmanship.md#batch-3--art-direction-research-exploration-and-selection-kg-1114-proposed) |
+| Choose a coherent aesthetic direction, typography, color and layout rhythm | [Visual design craftsmanship](knowledge/foundations/visual-design-craftsmanship.md) |
+| Apply layout, card, image, icon and motion styling recipes | [Practical UI styling recipes](knowledge/foundations/practical-ui-styling-recipes.md) |
+| Establish visual hierarchy, spacing, and affordances | [Design principles](knowledge/foundations/design-principles.md) |
+| Create a theme or rationalize raw values | [Tokens and themes](knowledge/foundations/design-tokens-and-themes.md) |
+| Choose prototype, MVP, growing or enterprise app code structure | [Application architecture selection](knowledge/architecture/application-architecture.md) |
+| Organize features, domains, and developer navigation | [Module boundaries and developer navigation](knowledge/architecture/module-boundaries-and-developer-navigation.md) |
+| Adapt app structure to Next.js, Angular or React Router | [Framework-aware application structure](knowledge/architecture/framework-aware-application-structure.md) |
+| Decide between monorepo, multirepo or microfrontends | [Enterprise and multi-app architecture](knowledge/architecture/enterprise-and-multiapp.md) |
+| Migrate or measure application modularity | [Architecture evolution and fitness](knowledge/architecture/architecture-evolution.md) |
+| Enforce feature/module import boundaries in CI | [Architecture enforcement and CI guardrails](knowledge/architecture/architecture-enforcement-and-ci.md) |
+| Explore prototype, MVP and enterprise code-layout examples | [Application architecture reference examples](knowledge/architecture/application-architecture-reference-examples.md) |
+| Decide primitive vs component vs pattern vs feature | [Component model](knowledge/architecture/component-model.md) |
+| Specify a new or changed reusable component | [Component contracts](knowledge/architecture/component-contracts.md) and [entry template](templates/concept-entry.md) |
+| Organize profile, security and personal preferences in a settings portal | [Account and settings portal](specifications/patterns/account-and-settings-portal.md) |
+| Design billing details, subscription changes or invoices | [Billing and subscription settings](specifications/patterns/billing-and-subscription-settings.md) |
+| Design role-based portals, previews or workspace switching | [Role-aware workspaces and context switching](specifications/patterns/role-aware-workspaces-and-context-switching.md) |
+| Compose task-specific wireframe screens and compare structural alternatives | [Task flows and information architecture](specifications/patterns/task-flows-and-information-architecture.md) and [visual hierarchy](knowledge/foundations/design-principles.md) |
+| Simplify navigation or a critical task | [Task flows and information architecture](specifications/patterns/task-flows-and-information-architecture.md) |
+| Design loading, error, or destructive states | [Interaction states and recovery](specifications/patterns/interaction-states-and-recovery.md) |
+| Design and test keyboard, focus, contrast, touch, or zoom | [Accessibility](knowledge/guidance/accessibility.md) |
+| Support translations, long labels, and RTL | [Internationalization](knowledge/guidance/internationalization.md) |
+| Define success beyond aesthetic preference | [UX measurement](knowledge/guidance/ux-measurement.md) |
+| Write clear labels, instructions, error and status copy | [Content design and UX writing](knowledge/guidance/content-design-and-ux-writing.md) |
+| Design complex forms, safe search, filtering and sorting | [Form composition](specifications/patterns/forms.md) and [search/filtering](specifications/patterns/search-and-filter.md) |
+| Recover a failed user task across service and support channels | [Service recovery and support handoff](specifications/patterns/service-recovery-and-support.md) |
+| Choose a UX study or evaluate evidence quality | [UX research methods](knowledge/guidance/ux-research-methods.md) |
+| Understand expectations and end-to-end journeys | [Mental models and journey mapping](knowledge/guidance/mental-models-and-journeys.md) |
+| Reduce memory and decision burden | [Cognitive load and decision design](knowledge/guidance/cognitive-load-and-decisions.md) |
+| Design perceived speed, loading and field performance evidence | [Performance and perceived speed](knowledge/guidance/performance-and-perceived-speed.md) |
+| Design controlled A/B studies and trustworthy causal analysis | [UX experimentation](knowledge/guidance/experimentation-and-causal-evidence.md) |
+| Hand off design tokens and components for real releases | [Lifecycle and decisions](governance/lifecycle-and-decisions.md) and [component contracts](knowledge/architecture/component-contracts.md) |
+| Explain AI capabilities, uncertainty, evidence and correction | [AI-powered experiences](knowledge/guidance/ai-powered-experiences-and-trust.md) |
+| Design AI tools with scoped approval and verified outcomes | [Agentic actions and approvals](specifications/patterns/agentic-actions-and-approvals.md) |
+| Support accessible voice, chat and multimodal workflows | [Conversational, voice and multimodal UX](specifications/patterns/conversational-voice-and-multimodal-ux.md) |
+| Present accessible KPIs, charts and dashboard data | [Data visualization and dashboards](knowledge/guidance/data-visualization-and-dashboards.md) |
+| Adapt navigation and tasks for mobile/native windows | [Mobile and adaptive platform UX](knowledge/guidance/mobile-and-adaptive-platform-ux.md) |
+| Design bulk actions, drag alternatives, command palettes and undo | [Advanced interactions](specifications/patterns/advanced-interactions-and-reversible-actions.md) |
+| Define enterprise approval and audit-view journeys | [Role-aware workspaces](specifications/patterns/role-aware-workspaces-and-context-switching.md) |
+| Build privacy-respecting choices and account deletion flows | [Privacy, consent and trustworthy UX](knowledge/guidance/privacy-consent-and-trust.md) |
+| Plan sign-in, passkeys, MFA, expiry and recovery | [Authentication and account lifecycle](specifications/patterns/authentication-and-account-lifecycle.md) |
+| Control alert urgency, channels, and user attention | [Notifications and attention](specifications/patterns/notifications-and-attention.md) |
+| Handle offline drafts, sync and conflicting edits | [Offline work and synchronization](specifications/patterns/offline-sync-and-conflicts.md) |
 | Reuse, extend, merge, deprecate, or review guidance | [Lifecycle and decisions](governance/lifecycle-and-decisions.md) and [quality gates](governance/quality-gates.md) |
 
 **Search by word, synonym, or ID:** [`catalog/index.json`](catalog/index.json) is the canonical machine-readable lookup registry. See [lookup instructions](catalog/README.md). Example:
@@ -70,11 +70,11 @@ python3 scripts/find_concept.py --layer components
 
 | Section | What lives there |
 | --- | --- |
-| [Foundations](foundations/README.md) | Principles, semantic tokens, theme architecture, visual rules |
-| [Core components](components/README.md) | Proposed contracts for Button, Input, Select, Checkbox, Dialog and Field/Error |
-| [Architecture](architecture/README.md) | Primitive/component/pattern boundaries, shared contracts |
-| [Patterns](patterns/README.md) | IA, task flows, interaction states, recovery |
-| [Guidance](guidance/README.md) | Accessibility, internationalization, research and metrics |
+| [Foundations](knowledge/foundations/README.md) | Principles, semantic tokens, theme architecture, visual rules |
+| [Core components](specifications/components/README.md) | Proposed contracts for Button, Input, Select, Checkbox, Dialog and Field/Error |
+| [Architecture](knowledge/architecture/README.md) | Primitive/component/pattern boundaries, shared contracts |
+| [Patterns](specifications/patterns/README.md) | IA, task flows, interaction states, recovery |
+| [Guidance](knowledge/guidance/README.md) | Accessibility, internationalization, research and metrics |
 | [Governance](governance/README.md) | Decision policy, ownership, quality gates, references |
 | [Templates](templates/README.md) | Standard entry format for expanding the catalog |
 | [Catalog index](catalog/README.md) | Stable concept IDs, titles, aliases, domains, levels, status |
@@ -135,39 +135,39 @@ The [B0–B7 cumulative handoff](archive/planning/wireframe-integration-handoff-
 
 ## Settings configuration knowledge (cumulative draft)
 
-For workspace-scoped configuration contracts, server-side authorization, and safe save/recovery behavior, begin with [Account and settings portal — Batch 1](patterns/account-and-settings-portal.md#workspace-configuration-foundation--settings-knowledge-batch-1-proposed-2026-11-07). Continue using [role-aware workspaces](patterns/role-aware-workspaces-and-context-switching.md) for authorization context and [forms](patterns/forms.md) for shared control behavior. This is proposed guidance, not a shipped Little Wins Settings page.
+For workspace-scoped configuration contracts, server-side authorization, and safe save/recovery behavior, begin with [Account and settings portal — Batch 1](specifications/patterns/account-and-settings-portal.md#workspace-configuration-foundation--settings-knowledge-batch-1-proposed-2026-11-07). Continue using [role-aware workspaces](specifications/patterns/role-aware-workspaces-and-context-switching.md) for authorization context and [forms](specifications/patterns/forms.md) for shared control behavior. This is proposed guidance, not a shipped Little Wins Settings page.
 
-Settings Batch 2: [feature dependency disclosures and review-policy transitions](patterns/account-and-settings-portal.md#settings-knowledge-batch-2--feature-and-policy-configuration-proposed-2026-11-07) extend the existing settings portal; capability truth tables and paused-work recovery remain in their existing canonical patterns.
+Settings Batch 2: [feature dependency disclosures and review-policy transitions](specifications/patterns/account-and-settings-portal.md#settings-knowledge-batch-2--feature-and-policy-configuration-proposed-2026-11-07) extend the existing settings portal; capability truth tables and paused-work recovery remain in their existing canonical patterns.
 
-Settings Batch 3: [timezone/reporting configuration and personal preference scope](patterns/account-and-settings-portal.md#settings-knowledge-batch-3--time-and-personal-preferences-proposed-2026-11-07) reuse the canonical [theme system](foundations/design-tokens-and-themes.md) and [internationalization](guidance/internationalization.md) guidance. A selectable timezone is a product decision, not a shipped default.
+Settings Batch 3: [timezone/reporting configuration and personal preference scope](specifications/patterns/account-and-settings-portal.md#settings-knowledge-batch-3--time-and-personal-preferences-proposed-2026-11-07) reuse the canonical [theme system](knowledge/foundations/design-tokens-and-themes.md) and [internationalization](knowledge/guidance/internationalization.md) guidance. A selectable timezone is a product decision, not a shipped default.
 
-Settings Batch 4: [configuration audit events, access and safe reversals](patterns/account-and-settings-portal.md#settings-knowledge-batch-4--configuration-governance-and-audit-proposed-2026-11-07) extend the existing settings portal. Privacy/retention and delegated-access rules remain with their canonical guidance.
+Settings Batch 4: [configuration audit events, access and safe reversals](specifications/patterns/account-and-settings-portal.md#settings-knowledge-batch-4--configuration-governance-and-audit-proposed-2026-11-07) extend the existing settings portal. Privacy/retention and delegated-access rules remain with their canonical guidance.
 
-**Settings knowledge Batches 1–5:** [closure, gap coverage and validation handoff](archive/planning/little-wins-settings-batches-1-5-closure-2026-11-07.md) records the eight-gap crosswalk, evidence limits, product decisions and outstanding tests. Read the [canonical settings portal](patterns/account-and-settings-portal.md) for reusable rules; the closure ledger is not an additional concept.
+**Settings knowledge Batches 1–5:** [closure, gap coverage and validation handoff](archive/planning/little-wins-settings-batches-1-5-closure-2026-11-07.md) records the eight-gap crosswalk, evidence limits, product decisions and outstanding tests. Read the [canonical settings portal](specifications/patterns/account-and-settings-portal.md) for reusable rules; the closure ledger is not an additional concept.
 
 ## Batch 1 — Icon semantics and accessible controls (proposed, 2026-11-07)
 
-For an [icon intent registry, accessible icon-only action and state/target guidance](foundations/iconography-and-semantics.md), use `foundation.icon-semantics`. For appearance alone (stroke, optical sizing, icon and illustration craftsmanship), keep using `foundation.practical-styling`. The [Button contract](components/button/spec.md) specifies how its host activates and handles pending/disabled states. These are proposed knowledge specifications, not published UI assets.
+For an [icon intent registry, accessible icon-only action and state/target guidance](knowledge/foundations/iconography-and-semantics.md), use `foundation.icon-semantics`. For appearance alone (stroke, optical sizing, icon and illustration craftsmanship), keep using `foundation.practical-styling`. The [Button contract](specifications/components/button/spec.md) specifies how its host activates and handles pending/disabled states. These are proposed knowledge specifications, not published UI assets.
 
 ## Batch 2 — component events and coordination (proposed, 2026-11-07)
 
-The [canonical component contract](architecture/component-contracts.md#batch-2--composite-anatomy-and-event-coordination-ckg-04-ckg-0608-proposed-2026-11-07) now covers host/slot ownership, local events versus feature commands versus domain outcomes, sibling coordination, controlled state and nested-interaction pitfalls. Retrieve `architecture.component-contracts`; do not infer an implemented component library or measured behavior.
+The [canonical component contract](knowledge/architecture/component-contracts.md#batch-2--composite-anatomy-and-event-coordination-ckg-04-ckg-0608-proposed-2026-11-07) now covers host/slot ownership, local events versus feature commands versus domain outcomes, sibling coordination, controlled state and nested-interaction pitfalls. Retrieve `architecture.component-contracts`; do not infer an implemented component library or measured behavior.
 
 ## Batch 3 — state and sequential workflow handoffs (proposed, 2026-11-07)
 
-For icon/status timing and focus when a selected item is updated or removed, see [interaction recovery](patterns/interaction-states-and-recovery.md) (`pattern.interaction-recovery`). For stable actions and selecting the next eligible task only after an authoritative outcome, see [task flows](patterns/task-flows-and-information-architecture.md) (`pattern.task-flows`). These are proposed contracts, not measured reductions in pointer travel or an implemented review controller.
+For icon/status timing and focus when a selected item is updated or removed, see [interaction recovery](specifications/patterns/interaction-states-and-recovery.md) (`pattern.interaction-recovery`). For stable actions and selecting the next eligible task only after an authoritative outcome, see [task flows](specifications/patterns/task-flows-and-information-architecture.md) (`pattern.task-flows`). These are proposed contracts, not measured reductions in pointer travel or an implemented review controller.
 
 ## Batch 4 — action choice and interaction-cost evidence (proposed, 2026-11-07)
 
-See [advanced interactions](patterns/advanced-interactions-and-reversible-actions.md) for when to prefer explicit Buttons, toolbars, overflow, split actions, shortcuts or confirmations (`pattern.advanced-interactions`); use [UX measurement](guidance/ux-measurement.md) for input-specific effort measures and task-success guardrails (`guidance.ux-measurement`). Both extend existing proposed concepts, not a new packaged component or validated efficiency improvement.
+See [advanced interactions](specifications/patterns/advanced-interactions-and-reversible-actions.md) for when to prefer explicit Buttons, toolbars, overflow, split actions, shortcuts or confirmations (`pattern.advanced-interactions`); use [UX measurement](knowledge/guidance/ux-measurement.md) for input-specific effort measures and task-success guardrails (`guidance.ux-measurement`). Both extend existing proposed concepts, not a new packaged component or validated efficiency improvement.
 
 ## Batch 5 — styling architecture and reuse inventory (proposed, 2026-11-07)
 
-Use [practical styling](foundations/practical-ui-styling-recipes.md) (`foundation.practical-styling`) for utility-first styling ownership, [architecture enforcement](architecture/architecture-enforcement-and-ci.md) (`architecture.enforcement-ci`) for baseline-aware CSS/variant drift checks, and [component model](architecture/component-model.md) (`architecture.component-model`) for component inventory-to-contract mapping. These extend three existing concepts; no packaged Tailwind theme, automated code linter or product accessibility result is claimed.
+Use [practical styling](knowledge/foundations/practical-ui-styling-recipes.md) (`foundation.practical-styling`) for utility-first styling ownership, [architecture enforcement](knowledge/architecture/architecture-enforcement-and-ci.md) (`architecture.enforcement-ci`) for baseline-aware CSS/variant drift checks, and [component model](knowledge/architecture/component-model.md) (`architecture.component-model`) for component inventory-to-contract mapping. These extend three existing concepts; no packaged Tailwind theme, automated code linter or product accessibility result is claimed.
 
 ## Batch 6 — icon consistency, interaction verification and discovery (proposed, 2026-11-07)
 
-Use [icon semantics](foundations/iconography-and-semantics.md) for icon-intent collision and consistency review (CKG-05), and [quality gates](governance/quality-gates.md) for real interaction-state test scenarios and task-based canonical retrieval (CKG-18/19). The shared B01–B06 branch adds catalog guidance and regression tests only; human review, actual browser accessibility, user outcomes and production adoption require separate evidence.
+Use [icon semantics](knowledge/foundations/iconography-and-semantics.md) for icon-intent collision and consistency review (CKG-05), and [quality gates](governance/quality-gates.md) for real interaction-state test scenarios and task-based canonical retrieval (CKG-18/19). The shared B01–B06 branch adds catalog guidance and regression tests only; human review, actual browser accessibility, user outcomes and production adoption require separate evidence.
 
 ## Visual catalog refactor proposal (2026-11-08)
 

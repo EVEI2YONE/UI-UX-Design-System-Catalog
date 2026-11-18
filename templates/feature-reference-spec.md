@@ -41,7 +41,7 @@ Specify cancel, retry, stale versions, double activation, lost acknowledgement, 
 
 ## Preview and implementation binding (Phase 2+)
 
-- **Documentation:** `features/[slug]/spec.md` (normative)
+- **Documentation:** `specifications/experiences/[slug]/spec.md` (normative)
 - **Implementation:** `site/src/implementations/features/[slug]/` (only when real)
 - **Scenarios:** [deterministic data, synthetic adapter; reset and failure modes]
 - **URL:** [optional future preview path, not claimed live]

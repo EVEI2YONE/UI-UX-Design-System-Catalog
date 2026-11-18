@@ -28,7 +28,7 @@ Record user cohort, context, success condition, primary action, safe exit, and f
 
 ## Verification
 
-Test representative first-time and returning tasks, navigate with keyboard, inspect narrow and zoomed layouts, and compare task completion and step abandonment with a documented baseline. See [UX measurement](../guidance/ux-measurement.md).
+Test representative first-time and returning tasks, navigate with keyboard, inspect narrow and zoomed layouts, and compare task completion and step abandonment with a documented baseline. See [UX measurement](../../knowledge/guidance/ux-measurement.md).
 
 ## Flow specification and acceptance example
 
@@ -91,7 +91,7 @@ This table describes the relevant domain command and UX intent; it does not clai
 
 ## Task-to-screen wireframe composition and meaningful alternatives (proposed Batch 2, 2026-11-07)
 
-**Use when:** a task brief must become a reviewable wireframe screen or small screen sequence, or when comparing structurally distinct layout hypotheses. **Avoid when:** requirements for the user, task or critical constraints are unavailable and cannot be defensibly labeled as assumptions; a decorative reskin is presented as a second concept; or an image is mistaken for working behavior. For fidelity/escalation see [wireframe methodology](../guidance/wireframe-methodology.md). For within-screen emphasis see [visual hierarchy](../foundations/design-principles.md). For runtime state/retry semantics see [interaction recovery](interaction-states-and-recovery.md).
+**Use when:** a task brief must become a reviewable wireframe screen or small screen sequence, or when comparing structurally distinct layout hypotheses. **Avoid when:** requirements for the user, task or critical constraints are unavailable and cannot be defensibly labeled as assumptions; a decorative reskin is presented as a second concept; or an image is mistaken for working behavior. For fidelity/escalation see [wireframe methodology](../../knowledge/guidance/wireframe-methodology.md). For within-screen emphasis see [visual hierarchy](../../knowledge/foundations/design-principles.md). For runtime state/retry semantics see [interaction recovery](interaction-states-and-recovery.md).
 
 ### Minimum context and assumption gate
 
@@ -151,7 +151,7 @@ For each option deliver: brief contract with KNOWN/ASSUMED/ILLUSTRATIVE/BLOCKED 
 
 ## B03 — spatial continuity and sequential task progress (CKG-11/12; proposed 2026-11-07)
 
-**Scope:** how a flow keeps the current object, next action, selection and task location predictable across repeated items. This extends the task-first map, not a universal requirement to automate review queues. [Interaction recovery](interaction-states-and-recovery.md#b03--iconstate-synchronization-and-post-mutation-focus-continuity-ckg-0910-proposed-2026-11-07) owns outcome truth and focus fallback. [Component contracts](../architecture/component-contracts.md) owns event boundaries. B04 owns action-control consolidation and effort measurement.
+**Scope:** how a flow keeps the current object, next action, selection and task location predictable across repeated items. This extends the task-first map, not a universal requirement to automate review queues. [Interaction recovery](interaction-states-and-recovery.md#b03--iconstate-synchronization-and-post-mutation-focus-continuity-ckg-0910-proposed-2026-11-07) owns outcome truth and focus fallback. [Component contracts](../../knowledge/architecture/component-contracts.md) owns event boundaries. B04 owns action-control consolidation and effort measurement.
 
 ### CKG-11 — spatial continuity before action compression
 
@@ -166,7 +166,7 @@ Map the user task as **last necessary input → decision control → result/stat
 | Async status changes | Keep action target geometry as stable as possible | No shifting destructive target under the pointer on delayed refresh |
 | Context changes | Revalidate active workspace, item eligibility and relevant permissions | Do not silently reuse participant/project identifiers across scopes |
 
-**Review method:** capture representative task start, last input, relevant decision, feedback and next-action locations; record avoidable navigation, scroll changes, target relocations, focus jumps and lost context. Test whether stable placement improves task success and perceived clarity for relevant users. Pointer distance alone does not demonstrate improved usability; keyboard, touch, zoom and safety constraints can justify different placement. The numeric metric definition belongs to [UX measurement](../guidance/ux-measurement.md), not this flow pattern.
+**Review method:** capture representative task start, last input, relevant decision, feedback and next-action locations; record avoidable navigation, scroll changes, target relocations, focus jumps and lost context. Test whether stable placement improves task success and perceived clarity for relevant users. Pointer distance alone does not demonstrate improved usability; keyboard, touch, zoom and safety constraints can justify different placement. The numeric metric definition belongs to [UX measurement](../../knowledge/guidance/ux-measurement.md), not this flow pattern.
 
 ### CKG-12 — feature-owned sequential workflow contract
 
