@@ -30,6 +30,16 @@ ITEM = re.compile(r"^\s*([-*+]|\d+\.)\s+(.+)$")
 
 
 def category(item):
+    """Keep public catalog routes stable when Markdown sources move directories."""
+    prefix = item["id"].split(".", 1)[0]
+    by_id = {
+        "component": "components", "pattern": "patterns", "feature": "features",
+        "foundation": "foundations", "principle": "foundations",
+        "architecture": "architecture", "guidance": "guidance",
+        "governance": "governance",
+    }
+    if prefix in by_id:
+        return by_id[prefix]
     first = PurePosixPath(item["path"]).parts[0]
     return first if first in CATEGORIES else "other"
 

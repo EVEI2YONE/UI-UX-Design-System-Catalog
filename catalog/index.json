@@ -12,7 +12,7 @@
     {
       "id": "principle.visual-hierarchy",
       "title": "Design principles",
-      "path": "foundations/design-principles.md",
+      "path": "knowledge/foundations/design-principles.md",
       "layer": "principles",
       "kind": "guideline",
       "status": "proposed",
@@ -54,7 +54,7 @@
     {
       "id": "foundation.visual-craftsmanship",
       "title": "Visual design craftsmanship",
-      "path": "foundations/visual-design-craftsmanship.md",
+      "path": "knowledge/foundations/visual-design-craftsmanship.md",
       "layer": "foundations",
       "kind": "guideline",
       "status": "proposed",
@@ -115,7 +115,7 @@
     {
       "id": "foundation.practical-styling",
       "title": "Practical UI styling recipes",
-      "path": "foundations/practical-ui-styling-recipes.md",
+      "path": "knowledge/foundations/practical-ui-styling-recipes.md",
       "layer": "foundations",
       "kind": "guideline",
       "status": "proposed",
@@ -176,7 +176,7 @@
     {
       "id": "foundation.icon-semantics",
       "title": "Icon semantics and accessible icon controls",
-      "path": "foundations/iconography-and-semantics.md",
+      "path": "knowledge/foundations/iconography-and-semantics.md",
       "layer": "foundations",
       "kind": "contract",
       "status": "proposed",
@@ -236,7 +236,7 @@
     {
       "id": "foundation.design-tokens",
       "title": "Design tokens and themes",
-      "path": "foundations/design-tokens-and-themes.md",
+      "path": "knowledge/foundations/design-tokens-and-themes.md",
       "layer": "tokens",
       "kind": "guideline",
       "status": "proposed",
@@ -280,7 +280,7 @@
     {
       "id": "architecture.component-model",
       "title": "Component model",
-      "path": "architecture/component-model.md",
+      "path": "knowledge/architecture/component-model.md",
       "layer": "components",
       "kind": "guideline",
       "status": "proposed",
@@ -333,7 +333,7 @@
     {
       "id": "architecture.component-contracts",
       "title": "Component contracts",
-      "path": "architecture/component-contracts.md",
+      "path": "knowledge/architecture/component-contracts.md",
       "layer": "components",
       "kind": "contract",
       "status": "proposed",
@@ -393,7 +393,7 @@
     {
       "id": "pattern.task-flows",
       "title": "Task flows and information architecture",
-      "path": "patterns/task-flows-and-information-architecture.md",
+      "path": "specifications/patterns/task-flows-and-information-architecture.md",
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
@@ -472,7 +472,7 @@
     {
       "id": "pattern.role-aware-workspaces",
       "title": "Role-aware workspaces and context switching",
-      "path": "patterns/role-aware-workspaces-and-context-switching.md",
+      "path": "specifications/patterns/role-aware-workspaces-and-context-switching.md",
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
@@ -539,7 +539,7 @@
     {
       "id": "pattern.interaction-recovery",
       "title": "Interaction states and recovery",
-      "path": "patterns/interaction-states-and-recovery.md",
+      "path": "specifications/patterns/interaction-states-and-recovery.md",
       "layer": "behavior",
       "kind": "guideline",
       "status": "proposed",
@@ -634,7 +634,7 @@
     {
       "id": "guidance.accessibility",
       "title": "Accessibility",
-      "path": "guidance/accessibility.md",
+      "path": "knowledge/guidance/accessibility.md",
       "layer": "cross-cutting",
       "kind": "guideline",
       "status": "proposed",
@@ -693,7 +693,7 @@
     {
       "id": "guidance.internationalization",
       "title": "Internationalization and bidirectional support",
-      "path": "guidance/internationalization.md",
+      "path": "knowledge/guidance/internationalization.md",
       "layer": "cross-cutting",
       "kind": "guideline",
       "status": "proposed",
@@ -746,7 +746,7 @@
     {
       "id": "guidance.ux-measurement",
       "title": "UX measurement",
-      "path": "guidance/ux-measurement.md",
+      "path": "knowledge/guidance/ux-measurement.md",
       "layer": "intelligence",
       "kind": "guideline",
       "status": "proposed",
@@ -961,7 +961,7 @@
     {
       "id": "component.button",
       "title": "Button",
-      "path": "components/button/spec.md",
+      "path": "specifications/components/button/spec.md",
       "layer": "components",
       "kind": "specification",
       "status": "proposed",
@@ -1009,7 +1009,7 @@
     {
       "id": "component.input",
       "title": "Input",
-      "path": "components/input/spec.md",
+      "path": "specifications/components/input/spec.md",
       "layer": "components",
       "kind": "specification",
       "status": "proposed",
@@ -1056,7 +1056,7 @@
     {
       "id": "component.select",
       "title": "Select",
-      "path": "components/select/spec.md",
+      "path": "specifications/components/select/spec.md",
       "layer": "components",
       "kind": "specification",
       "status": "proposed",
@@ -1103,7 +1103,7 @@
     {
       "id": "component.checkbox",
       "title": "Checkbox",
-      "path": "components/checkbox/spec.md",
+      "path": "specifications/components/checkbox/spec.md",
       "layer": "components",
       "kind": "specification",
       "status": "proposed",
@@ -1150,7 +1150,7 @@
     {
       "id": "component.dialog",
       "title": "Dialog",
-      "path": "components/dialog/spec.md",
+      "path": "specifications/components/dialog/spec.md",
       "layer": "components",
       "kind": "specification",
       "status": "proposed",
@@ -1204,7 +1204,7 @@
     {
       "id": "component.field",
       "title": "Field and error",
-      "path": "components/field/spec.md",
+      "path": "specifications/components/field/spec.md",
       "layer": "components",
       "kind": "specification",
       "status": "proposed",
@@ -1252,7 +1252,7 @@
     {
       "id": "pattern.forms",
       "title": "Form composition and validation",
-      "path": "patterns/forms.md",
+      "path": "specifications/patterns/forms.md",
       "layer": "patterns",
       "kind": "specification",
       "status": "proposed",
@@ -1310,7 +1310,7 @@
     {
       "id": "pattern.navigation",
       "title": "Navigation and wayfinding",
-      "path": "patterns/navigation.md",
+      "path": "specifications/patterns/navigation.md",
       "layer": "patterns",
       "kind": "specification",
       "status": "proposed",
@@ -1353,7 +1353,7 @@
     {
       "id": "pattern.search-filter",
       "title": "Search and filtering",
-      "path": "patterns/search-and-filter.md",
+      "path": "specifications/patterns/search-and-filter.md",
       "layer": "patterns",
       "kind": "specification",
       "status": "proposed",
@@ -1407,7 +1407,7 @@
     {
       "id": "pattern.data-tables",
       "title": "Data tables and collection actions",
-      "path": "patterns/data-tables.md",
+      "path": "specifications/patterns/data-tables.md",
       "layer": "patterns",
       "kind": "specification",
       "status": "proposed",
@@ -1463,7 +1463,7 @@
     {
       "id": "pattern.feedback",
       "title": "Feedback and status messaging",
-      "path": "patterns/feedback.md",
+      "path": "specifications/patterns/feedback.md",
       "layer": "patterns",
       "kind": "specification",
       "status": "proposed",
@@ -1504,7 +1504,7 @@
     {
       "id": "guidance.ux-research",
       "title": "UX research methods and evidence",
-      "path": "guidance/ux-research-methods.md",
+      "path": "knowledge/guidance/ux-research-methods.md",
       "layer": "context",
       "kind": "guideline",
       "status": "proposed",
@@ -1546,7 +1546,7 @@
     {
       "id": "guidance.journey-mapping",
       "title": "Mental models and journey mapping",
-      "path": "guidance/mental-models-and-journeys.md",
+      "path": "knowledge/guidance/mental-models-and-journeys.md",
       "layer": "context",
       "kind": "guideline",
       "status": "proposed",
@@ -1586,7 +1586,7 @@
     {
       "id": "guidance.cognitive-load",
       "title": "Cognitive load and decision design",
-      "path": "guidance/cognitive-load-and-decisions.md",
+      "path": "knowledge/guidance/cognitive-load-and-decisions.md",
       "layer": "principles",
       "kind": "guideline",
       "status": "proposed",
@@ -1627,7 +1627,7 @@
     {
       "id": "guidance.content-design",
       "title": "Content design and UX writing",
-      "path": "guidance/content-design-and-ux-writing.md",
+      "path": "knowledge/guidance/content-design-and-ux-writing.md",
       "layer": "principles",
       "kind": "guideline",
       "status": "proposed",
@@ -1675,7 +1675,7 @@
     {
       "id": "pattern.service-recovery",
       "title": "Service recovery and support handoff",
-      "path": "patterns/service-recovery-and-support.md",
+      "path": "specifications/patterns/service-recovery-and-support.md",
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
@@ -1724,7 +1724,7 @@
     {
       "id": "guidance.privacy-trust",
       "title": "Privacy, consent and trustworthy UX",
-      "path": "guidance/privacy-consent-and-trust.md",
+      "path": "knowledge/guidance/privacy-consent-and-trust.md",
       "layer": "cross-cutting",
       "kind": "guideline",
       "status": "proposed",
@@ -1776,7 +1776,7 @@
     {
       "id": "pattern.authentication-lifecycle",
       "title": "Authentication and account lifecycle",
-      "path": "patterns/authentication-and-account-lifecycle.md",
+      "path": "specifications/patterns/authentication-and-account-lifecycle.md",
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
@@ -1827,7 +1827,7 @@
     {
       "id": "pattern.notifications-attention",
       "title": "Notifications and attention management",
-      "path": "patterns/notifications-and-attention.md",
+      "path": "specifications/patterns/notifications-and-attention.md",
       "layer": "patterns",
       "kind": "guideline",
       "status": "proposed",
@@ -1873,7 +1873,7 @@
     {
       "id": "pattern.offline-sync",
       "title": "Offline work, synchronization and conflict recovery",
-      "path": "patterns/offline-sync-and-conflicts.md",
+      "path": "specifications/patterns/offline-sync-and-conflicts.md",
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
@@ -1925,7 +1925,7 @@
     {
       "id": "guidance.data-visualization",
       "title": "Data visualization and dashboards",
-      "path": "guidance/data-visualization-and-dashboards.md",
+      "path": "knowledge/guidance/data-visualization-and-dashboards.md",
       "layer": "intelligence",
       "kind": "guideline",
       "status": "proposed",
@@ -1969,7 +1969,7 @@
     {
       "id": "guidance.mobile-adaptive",
       "title": "Mobile and adaptive platform UX",
-      "path": "guidance/mobile-and-adaptive-platform-ux.md",
+      "path": "knowledge/guidance/mobile-and-adaptive-platform-ux.md",
       "layer": "cross-cutting",
       "kind": "guideline",
       "status": "proposed",
@@ -2023,7 +2023,7 @@
     {
       "id": "pattern.advanced-interactions",
       "title": "Advanced interactions and reversible actions",
-      "path": "patterns/advanced-interactions-and-reversible-actions.md",
+      "path": "specifications/patterns/advanced-interactions-and-reversible-actions.md",
       "layer": "patterns",
       "kind": "guideline",
       "status": "proposed",
@@ -2084,7 +2084,7 @@
     {
       "id": "guidance.ai-experiences",
       "title": "AI-powered experiences, transparency and calibrated trust",
-      "path": "guidance/ai-powered-experiences-and-trust.md",
+      "path": "knowledge/guidance/ai-powered-experiences-and-trust.md",
       "layer": "intelligence",
       "kind": "guideline",
       "status": "proposed",
@@ -2129,7 +2129,7 @@
     {
       "id": "pattern.agentic-actions",
       "title": "Agentic actions, approvals and reversible workflows",
-      "path": "patterns/agentic-actions-and-approvals.md",
+      "path": "specifications/patterns/agentic-actions-and-approvals.md",
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
@@ -2177,7 +2177,7 @@
     {
       "id": "pattern.multimodal-conversation",
       "title": "Conversational, voice and multimodal UX",
-      "path": "patterns/conversational-voice-and-multimodal-ux.md",
+      "path": "specifications/patterns/conversational-voice-and-multimodal-ux.md",
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
@@ -2223,7 +2223,7 @@
     {
       "id": "guidance.performance-experience",
       "title": "Performance, perceived speed and resilient task feedback",
-      "path": "guidance/performance-and-perceived-speed.md",
+      "path": "knowledge/guidance/performance-and-perceived-speed.md",
       "layer": "intelligence",
       "kind": "guideline",
       "status": "proposed",
@@ -2269,7 +2269,7 @@
     {
       "id": "guidance.experimentation",
       "title": "UX experimentation and causal evidence",
-      "path": "guidance/experimentation-and-causal-evidence.md",
+      "path": "knowledge/guidance/experimentation-and-causal-evidence.md",
       "layer": "intelligence",
       "kind": "guideline",
       "status": "proposed",
@@ -2315,7 +2315,7 @@
     {
       "id": "architecture.application-selection",
       "title": "Application architecture and scalability selection",
-      "path": "architecture/application-architecture.md",
+      "path": "knowledge/architecture/application-architecture.md",
       "layer": "cross-cutting",
       "kind": "guideline",
       "status": "proposed",
@@ -2358,7 +2358,7 @@
     {
       "id": "architecture.module-boundaries",
       "title": "Application module boundaries and developer navigation",
-      "path": "architecture/module-boundaries-and-developer-navigation.md",
+      "path": "knowledge/architecture/module-boundaries-and-developer-navigation.md",
       "layer": "cross-cutting",
       "kind": "guideline",
       "status": "proposed",
@@ -2399,7 +2399,7 @@
     {
       "id": "architecture.evolution",
       "title": "Application architecture evolution and fitness",
-      "path": "architecture/architecture-evolution.md",
+      "path": "knowledge/architecture/architecture-evolution.md",
       "layer": "cross-cutting",
       "kind": "guideline",
       "status": "proposed",
@@ -2442,7 +2442,7 @@
     {
       "id": "architecture.enterprise-multiapp",
       "title": "Enterprise and multi-application architecture",
-      "path": "architecture/enterprise-and-multiapp.md",
+      "path": "knowledge/architecture/enterprise-and-multiapp.md",
       "layer": "cross-cutting",
       "kind": "guideline",
       "status": "proposed",
@@ -2488,7 +2488,7 @@
     {
       "id": "architecture.framework-aware",
       "title": "Framework-aware application structure and route ownership",
-      "path": "architecture/framework-aware-application-structure.md",
+      "path": "knowledge/architecture/framework-aware-application-structure.md",
       "layer": "cross-cutting",
       "kind": "guideline",
       "status": "proposed",
@@ -2533,7 +2533,7 @@
     {
       "id": "architecture.enforcement-ci",
       "title": "Application architecture enforcement and CI guardrails",
-      "path": "architecture/architecture-enforcement-and-ci.md",
+      "path": "knowledge/architecture/architecture-enforcement-and-ci.md",
       "layer": "cross-cutting",
       "kind": "guideline",
       "status": "proposed",
@@ -2588,7 +2588,7 @@
     {
       "id": "architecture.reference-examples",
       "title": "Application architecture reference implementations and migrations",
-      "path": "architecture/application-architecture-reference-examples.md",
+      "path": "knowledge/architecture/application-architecture-reference-examples.md",
       "layer": "cross-cutting",
       "kind": "example",
       "status": "proposed",
@@ -2635,7 +2635,7 @@
     {
       "id": "pattern.account-settings-portal",
       "title": "Account and settings portal",
-      "path": "patterns/account-and-settings-portal.md",
+      "path": "specifications/patterns/account-and-settings-portal.md",
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
@@ -2723,7 +2723,7 @@
     {
       "id": "pattern.billing-subscription-settings",
       "title": "Billing, plans and subscription settings",
-      "path": "patterns/billing-and-subscription-settings.md",
+      "path": "specifications/patterns/billing-and-subscription-settings.md",
       "layer": "experiences",
       "kind": "guideline",
       "status": "proposed",
@@ -2771,7 +2771,7 @@
     {
       "id": "guidance.wireframe-methodology",
       "title": "Wireframe methodology and prototype escalation",
-      "path": "guidance/wireframe-methodology.md",
+      "path": "knowledge/guidance/wireframe-methodology.md",
       "layer": "cross-cutting",
       "kind": "guideline",
       "status": "proposed",
@@ -2818,7 +2818,7 @@
     {
       "id": "feature.review-workspace",
       "title": "Review Workspace",
-      "path": "features/review-workspace/spec.md",
+      "path": "specifications/experiences/review-workspace/spec.md",
       "layer": "experiences",
       "kind": "specification",
       "status": "proposed",
