@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "UI/UX design system catalog index",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "catalog_version",
+    "status_model",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "catalog_version": {
+      "type": "string"
+    },
+    "status_model": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "entry": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "path",
+        "layer",
+        "kind",
+        "status",
+        "summary",
+        "aliases",
+        "domains",
+        "use_when",
+        "avoid_when",
+        "related",
+        "depends_on",
+        "owner",
+        "reviewed_at"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "pattern": "^[^/].*\\.md$"
+        },
+        "layer": {
+          "type": "string",
+          "enum": [
+            "context",
+            "principles",
+            "behavior",
+            "tokens",
+            "foundations",
+            "primitives",
+            "components",
+            "patterns",
+            "experiences",
+            "intelligence",
+            "cross-cutting"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "guideline",
+            "contract",
+            "policy",
+            "checklist",
+            "specification",
+            "example"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "proposed",
+            "experimental",
+            "stable",
+            "deprecated",
+            "removed"
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "domains": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "use_when": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "avoid_when": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "related": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "depends_on": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "owner": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date"
+        },
+        "capabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "implementation": {
+          "type": "object",
+          "required": [
+            "status",
+            "source_path",
+            "scenario_manifest",
+            "preview_path"
+          ],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "reference",
+                "experimental",
+                "verified"
+              ]
+            },
+            "source_path": {
+              "type": "string",
+              "pattern": "^site/src/implementations/[^.].+\\.(tsx|ts|jsx|js)$"
+            },
+            "scenario_manifest": {
+              "type": "string",
+              "pattern": "^site/src/implementations/[^.].+\\.(tsx|ts|jsx|js)$"
+            },
+            "preview_path": {
+              "type": "string",
+              "pattern": "^/catalog/[a-z0-9-]+/[a-z0-9-]+$"
+            },
+            "evidence_path": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^[^/].+\\.md$"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

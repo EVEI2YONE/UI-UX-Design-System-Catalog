@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "kind": "noncanonical-concept-decision-inventory",
+  "scope": "Stage 2 and Stage 3 proposals from docs/visual-catalog-refactor/02-concepts-and-content-plan.md",
+  "review_approval": "not-recorded",
+  "notice": "Do not merge candidate IDs into catalog/index.json without explicit owner review; only registered-reference points to a canonical ID.",
+  "records": [
+    {
+      "origin_id": "F-01",
+      "proposed_id": "feature.review-workspace",
+      "disposition": "registered-reference",
+      "artifact_path": "features/review-workspace/spec.md",
+      "canonical_id": "feature.review-workspace",
+      "existing_owners": [
+        "pattern.forms",
+        "pattern.data-tables",
+        "pattern.interaction-recovery"
+      ]
+    },
+    {
+      "origin_id": "F-02",
+      "proposed_id": "feature.data-workspace",
+      "disposition": "deferred",
+      "artifact_path": "docs/visual-catalog-refactor/concepts/f02-data-workspace.md",
+      "canonical_id": null,
+      "existing_owners": [
+        "pattern.data-tables",
+        "pattern.search-filter",
+        "pattern.advanced-interactions"
+      ]
+    },
+    {
+      "origin_id": "F-03",
+      "proposed_id": "feature.settings-center",
+      "disposition": "deferred",
+      "artifact_path": "docs/visual-catalog-refactor/concepts/f03-settings-center.md",
+      "canonical_id": null,
+      "existing_owners": [
+        "pattern.account-settings-portal",
+        "pattern.forms",
+        "pattern.offline-sync"
+      ]
+    },
+    {
+      "origin_id": "F-04",
+      "proposed_id": "feature.onboarding-flow",
+      "disposition": "deferred",
+      "artifact_path": "docs/visual-catalog-refactor/concepts/f04-onboarding-flow.md",
+      "canonical_id": null,
+      "existing_owners": [
+        "pattern.task-flows",
+        "pattern.forms",
+        "pattern.interaction-recovery"
+      ]
+    },
+    {
+      "origin_id": "F-05",
+      "proposed_id": "feature.analytics-overview",
+      "disposition": "deferred",
+      "artifact_path": "docs/visual-catalog-refactor/concepts/f05-analytics-overview.md",
+      "canonical_id": null,
+      "existing_owners": [
+        "guidance.data-visualization",
+        "pattern.data-tables",
+        "guidance.ux-measurement"
+      ]
+    },
+    {
+      "origin_id": "C-01",
+      "proposed_id": "composition.search-filter-collection",
+      "disposition": "covered-existing",
+      "artifact_path": "docs/visual-catalog-refactor/concepts/c01-search-filter-collection.md",
+      "canonical_id": null,
+      "existing_owners": [
+        "pattern.search-filter",
+        "pattern.data-tables"
+      ]
+    },
+    {
+      "origin_id": "C-02",
+      "proposed_id": "composition.responsive-dashboard",
+      "disposition": "deferred",
+      "artifact_path": "docs/visual-catalog-refactor/concepts/c02-responsive-information-dashboard.md",
+      "canonical_id": null,
+      "existing_owners": [
+        "guidance.data-visualization",
+        "guidance.mobile-adaptive"
+      ]
+    },
+    {
+      "origin_id": "C-03",
+      "proposed_id": "composition.feedback-center",
+      "disposition": "deferred",
+      "artifact_path": "docs/visual-catalog-refactor/concepts/c03-feedback-center.md",
+      "canonical_id": null,
+      "existing_owners": [
+        "pattern.feedback",
+        "pattern.interaction-recovery",
+        "pattern.notifications-attention"
+      ]
+    },
+    {
+      "origin_id": "C-04",
+      "proposed_id": "composition.workspace-navigation-shell",
+      "disposition": "covered-existing",
+      "artifact_path": "docs/visual-catalog-refactor/concepts/c04-workspace-navigation-shell.md",
+      "canonical_id": null,
+      "existing_owners": [
+        "pattern.navigation",
+        "pattern.role-aware-workspaces"
+      ]
+    },
+    {
+      "origin_id": "C-05",
+      "proposed_id": "composition.onboarding-steps",
+      "disposition": "deferred",
+      "artifact_path": "docs/visual-catalog-refactor/concepts/c05-onboarding-composition.md",
+      "canonical_id": null,
+      "existing_owners": [
+        "pattern.task-flows",
+        "pattern.forms",
+        "pattern.interaction-recovery"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "description": "Curated task-to-canonical-ID acceptance queries. First match must be the expected owner. Cases are behavioral assertions, not evidence of user research.",
+  "positive": [
+    {
+      "query": "component hierarchy",
+      "expected_id": "architecture.component-model",
+      "intent": "find ownership taxonomy"
+    },
+    {
+      "query": "loading button",
+      "expected_id": "component.button",
+      "intent": "native action state"
+    },
+    {
+      "query": "email input",
+      "expected_id": "component.input",
+      "intent": "named editable control"
+    },
+    {
+      "query": "field error",
+      "expected_id": "component.field",
+      "intent": "input feedback composition"
+    },
+    {
+      "query": "native select",
+      "expected_id": "component.select",
+      "intent": "select native behavior"
+    },
+    {
+      "query": "indeterminate checkbox",
+      "expected_id": "component.checkbox",
+      "intent": "mixed selection"
+    },
+    {
+      "query": "modal dialog",
+      "expected_id": "component.dialog",
+      "intent": "dialog focus"
+    },
+    {
+      "query": "form composition",
+      "expected_id": "pattern.forms",
+      "intent": "form flow"
+    },
+    {
+      "query": "primary navigation",
+      "expected_id": "pattern.navigation",
+      "intent": "semantic navigation"
+    },
+    {
+      "query": "search filtering",
+      "expected_id": "pattern.search-filter",
+      "intent": "search/filter pattern"
+    },
+    {
+      "query": "data tables",
+      "expected_id": "pattern.data-tables",
+      "intent": "tabular review data"
+    },
+    {
+      "query": "network timeout",
+      "expected_id": "pattern.interaction-recovery",
+      "intent": "recover from failure"
+    },
+    {
+      "query": "human approval queue",
+      "expected_id": "feature.review-workspace",
+      "intent": "human moderation and decisions"
+    },
+    {
+      "query": "moderation workflow",
+      "expected_id": "feature.review-workspace",
+      "intent": "human moderation"
+    },
+    {
+      "query": "lost acknowledgement",
+      "expected_id": "feature.review-workspace",
+      "intent": "uncertain review decision"
+    },
+    {
+      "query": "keyboard navigation",
+      "expected_id": "guidance.accessibility",
+      "intent": "keyboard rules"
+    },
+    {
+      "query": "text expansion",
+      "expected_id": "guidance.internationalization",
+      "intent": "translated content"
+    },
+    {
+      "query": "task completion rate",
+      "expected_id": "guidance.ux-measurement",
+      "intent": "measurement"
+    },
+    {
+      "query": "catalog promotion",
+      "expected_id": "governance.lifecycle",
+      "intent": "review lifecycle"
+    },
+    {
+      "query": "component.button",
+      "expected_id": "component.button",
+      "intent": "exact canonical ID"
+    },
+    {
+      "query": "feature.review-workspace",
+      "expected_id": "feature.review-workspace",
+      "intent": "exact feature ID"
+    }
+  ],
+  "negative": [
+    {
+      "query": "quasar pineapple nebula",
+      "reason": "out-of-catalog nonsense must not fabricate a concept"
+    },
+    {
+      "query": "synthetic review",
+      "reason": "known discoverability gap; related feature must be located through explicit ID or task synonyms until reviewed"
+    }
+  ],
+  "ambiguous": [
+    {
+      "query": "settings",
+      "expected_contains": "pattern.account-settings-portal",
+      "reason": "multiple settings concepts are legitimate; only containment is asserted"
+    }
+  ]
+}

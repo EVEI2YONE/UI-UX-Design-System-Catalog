@@ -1,0 +1,146 @@
+# Catalog lookup registry
+
+[`index.json`](index.json) is the **canonical metadata inventory**. Each entry has a stable ID, canonical path, summary, synonyms (`aliases`), primary conceptual layer, content kind, status, and multiple topical `domains`.
+
+## Search
+
+```bash
+python3 scripts/find_concept.py focus
+python3 scripts/find_concept.py "error recovery"
+python3 scripts/find_concept.py --layer intelligence
+python3 scripts/find_concept.py --domain accessibility
+```
+
+An empty query lists all entries. Search matches partial text across titles, IDs, summaries, aliases and domains. Multiple entries may share an alias: this is useful when the same task spans concepts. Registry results point to one canonical page per entry.
+
+## Levels and categories
+
+- `layer` represents the concept's primary position in the **10-layer conceptual taxonomy** (`context`, `principles`, `behavior`, `tokens`, `foundations`, `primitives`, `components`, `patterns`, `experiences`, `intelligence`, or `cross-cutting`).
+- `kind` describes the artifact, such as `guideline`, `contract`, `policy`, or `checklist`.
+- `domains` are cross-cutting topical search terms; they do not force duplicate copies of a page.
+- `status` describes the **catalog entry's review lifecycle**, not a claim that code exists.
+
+The registry is intended for discoverability, not an implementation API. If a concept moves, preserve its ID, update the canonical path, and provide redirects/migration where old links were published. See [Contributing](../CONTRIBUTING.md).
+## Agent-oriented lookup
+
+The [JSON Schema](schema.json) describes the registry record. Every current entry requires `use_when`, `avoid_when`, `related`, `depends_on`, `owner`, and nullable `reviewed_at`; this applies to all 54 current entries, including those introduced after the scaffold batches. The registry remains the only machine-readable metadata source. Related references are canonical IDs, not duplicate Markdown files.
+
+```bash
+python3 scripts/find_concept.py 'loading button' --json
+python3 scripts/find_concept.py architecture.component-model
+python3 -m unittest discover -s tests -v
+```
+
+Results are ranked by exact ID, exact alias, exact title, then partial text matches. Read and verify the returned entry; rank is not a recommendation or quality certification. See [agent protocol](../AGENTS.md).
+
+
+## Measurement and governance queries
+
+```bash
+python3 scripts/find_concept.py 'task completion rate' --json
+python3 scripts/find_concept.py 'catalog promotion' --json
+python3 scripts/find_concept.py 'documentation checks' --json
+```
+
+These resolve to canonical guidance, lifecycle policy and quality checklist entries. All remain `proposed`; no observed UX outcomes or implementation conformance are implied.
+
+## Batch 6 — consistent agent retrieval
+
+All entries, including [role-aware workspaces](../patterns/role-aware-workspaces-and-context-switching.md), now provide owner, review date, use/avoid guidance, related IDs and dependencies. The resolver normalizes case/punctuation, ranks exact IDs and aliases first, supports `--status` and `--limit`, and excludes `avoid_when` from positive search scoring. That field still appears in JSON results so agents can interpret contraindications.
+
+```bash
+python3 scripts/find_concept.py 'role switching' --json --limit 3
+python3 scripts/find_concept.py 'modal-dialog' --status proposed
+python3 scripts/validate_catalog.py
+python3 -m unittest discover -s tests -v
+```
+
+The [schema](schema.json) specifies the complete metadata contract; the standard-library validator checks selected structural and reference invariants but does not implement a complete JSON Schema engine. Documentation checks do not establish verified accessibility or implemented component quality.
+
+
+## Batch 10 — task-based retrieval coverage
+
+At the historical Batch 10 snapshot, 40 concepts were canonical (the current registry contains 54); retrieval metadata now maps user task phrases such as `hosted authentication`, `human approval workflow`, `feature flags`, `data migration`, `clickable row`, `dialog focus return` and `global CSS` to their owning pages. This is alias and `use_when` enrichment, not concept creation or promotion. See [Batch 10 evidence ledger](../archive/planning/little-wins-batch-10-context-and-gap-ledger.md) and [regression tests](../tests/test_little_wins_knowledge_coverage.py). Rank indicates retrieval relevance, not implementation correctness.
+
+## Application architecture task lookup (Batches 13–16)
+
+Use `architecture.application-selection` for profiles and example trees, `architecture.module-boundaries` for feature/domain/shared ownership and developer findability, `architecture.evolution` for migration/fitness, and `architecture.enterprise-multiapp` for monorepo/multirepo/microfrontend selection. These are proposed application-code guidelines rather than a restructuring of the catalog itself. [Batch context and coverage](../archive/planning/application-architecture-batches-13-16-context-and-gaps.md).
+
+## Batch 17 framework-aware architecture lookup
+
+Resolve `architecture.framework-aware` for applying application/feature organization without overriding Next.js App Router, Angular or React Router file conventions. Start with `architecture.application-selection` and `architecture.module-boundaries` for generalized ownership decisions. See [Batch 17 context](../archive/planning/application-architecture-batch-17-context-and-gaps.md).
+
+## Batch 18 architecture-enforcement lookup
+
+Use `architecture.enforcement-ci` for example boundary lint, graph cycle detection, Nx project constraints, exception review and CI rollout. This is distinct from `architecture.module-boundaries`, which owns the application design decisions. [Batch 18 source and gap ledger](../archive/planning/application-architecture-batch-18-context-and-gaps.md).
+
+## Batch 19 applied architecture examples
+
+Use `architecture.reference-examples` for prototype/MVP/enterprise developer-task-to-file walkthroughs and before/after modularity decisions. Selection and module contracts remain canonical in `architecture.application-selection` and `architecture.module-boundaries`. [Batch 19 context](../archive/planning/application-architecture-batch-19-context-and-gaps.md).
+
+## Batch 20 — architecture coverage and selection
+
+The [architecture index](../architecture/README.md) is the human task-first entrypoint to the seven application architecture concepts introduced in Batches 13–19. The [closure audit](../archive/planning/application-architecture-batch-20-closure-audit.md) documents canonical ownership, lookup coverage, historical context and unverified application outcomes. Prefer existing IDs over creating redundant concept entries.
+
+## Account/settings portal retrieval
+
+Start with `pattern.account-settings-portal` for settings IA, profile management, contact verification and save state. Use `pattern.billing-subscription-settings` for plans, payment and invoices. For credentials use `pattern.authentication-lifecycle`; for privacy rights `guidance.privacy-trust`; for alerts `pattern.notifications-attention`; for user language `guidance.internationalization`; for appearance `foundation.design-tokens`; for authorization `pattern.role-aware-workspaces`. See [three-batch audit ledger](../archive/planning/account-settings-batch-progress.md). All entries are proposed; no live account portal or payment system is asserted.
+
+## Wireframe methodology (proposed, PR #11)
+
+Use `guidance.wireframe-methodology` for low/mid/high visual fidelity, static-image limitations and when to escalate to an interactive prototype. Continue to use `pattern.task-flows` for task composition, `pattern.interaction-recovery` for states, and `governance.quality` for verification. The registry status is **proposed**, not implemented or reviewed.
+
+## Task-to-screen composition (proposed B2)
+
+Use `pattern.task-flows` for minimum design context, screen sequence, action continuity, structurally meaningful alternatives and comparison criteria; use `principle.visual-hierarchy` for within-screen action priority. `guidance.wireframe-methodology` remains the owner of fidelity and escalation. All remain proposed and require verification for real products.
+
+## Static state coverage (proposed wireframe B3)
+
+Use `pattern.interaction-recovery` for `wireframe state coverage`, `static wireframe state matrix`, and `state annotation handoff`. Its canonical page owns the state inventory and screenshot/annotation evidence boundary. It does not establish functioning permission checks or real recovery behavior; follow `guidance.wireframe-methodology` for prototype escalation.
+
+## Responsive and inclusive wireframe lookup (proposed B4)
+
+`guidance.mobile-adaptive` owns responsive wireframe composition and viewport matrix queries; `guidance.accessibility` owns inclusive static design review and annotated zoom/focus expectations; `guidance.internationalization` owns long-text, RTL and bidi wireframe stress review. These extend existing proposed IDs and do not certify responsive behavior or WCAG conformance.
+
+## Static wireframe visual QA (proposed B5)
+
+Retrieve `governance.quality` for `wireframe visual QA`, `wireframe clipping inspection`, `generated wireframe copy fidelity` or `image based wireframe review`. The quality gate must identify the exact inspected image/revision and classify observed defects; if no image was inspected, image QA is `NOT VERIFIED`. Reuse `principle.visual-hierarchy` and `guidance.content-design` for the underlying design and copy rules.
+
+## Wireframe example and retrieval regressions (proposed B6)
+
+The [synthetic wireframe example bank](../archive/planning/wireframe-synthetic-example-bank-2026-11-07.md) supplies paired positive/negative scenarios WRF-01–06 and expected canonical owners. Run `python3 -m unittest discover -s tests -v`, including `tests/test_wireframe_examples_retrieval.py`, to check deterministic task/alias routing, preserved existing owners and exclusion of `avoid_when`-only terms from positive matches. These checks validate **retrieval metadata**, not generated-image quality, actual usability or implementation behavior.
+
+## B7 consumer lookup and verification handoff (proposed)
+
+Read the [cumulative wireframe integration handoff](../archive/planning/wireframe-integration-handoff-2026-11-07.md) for the B0–B7 concept ownership map and end-to-end retrieval/annotation/visual-QA contract. It points to the canonical IDs in this registry; it is **not** itself a new canonical entry. CI checks documentation integrity and deterministic retrieval only. Generated-image quality, focus, accessible interaction, responsive runtime behavior and real-user outcomes remain **NOT VERIFIED** without independent evidence.
+
+## Settings knowledge retrieval and verification (draft PR #12)
+
+Retrieve `pattern.account-settings-portal` for configuration registry, server-authorized scope, save lifecycle, feature dependencies, review-policy transitions, timezone decision guidance, personal display preferences and change-event auditability. See the [Batch 1–5 closure ledger](../archive/planning/little-wins-settings-batches-1-5-closure-2026-11-07.md) for source/product crosswalk and checks. The canonical registry remains the single lookup owner; no new Settings ID. Run `python3 -m unittest tests.test_settings_knowledge_coverage` or the full test discovery suite before review; tests are not product conformance evidence.
+
+
+## Visual catalog metadata (Phase 2 proposal, 2026-11-08)
+
+The registry remains the **only canonical identity and agent discovery index**. Existing required fields, layer classifications, review statuses, IDs and Markdown paths are unchanged. New fields are **optional**:
+
+- `capabilities`: short, distinct task/function labels, not a duplicate prose summary or synonym dump. Current six core `component.*` entries are enriched; lookup ranking is unchanged.
+- `implementation`: **omit** until a real trusted implementation, scenario manifest and route are committed. Once present it requires `status` (`reference`, `experimental`, `verified`), `source_path`, `scenario_manifest` and `preview_path`, plus optional `evidence_path`. A `verified` entry requires an evidence document, but the document still needs human assessment; the validator cannot certify quality.
+- `source_path` and `scenario_manifest` must reference existing code files under `site/src/implementations/`. The scenario manifest is colocated with its actual source. The `preview_path` is an internal canonical catalog route. No remote user-controlled code or arbitrary filesystem path is allowed.
+
+**Spec-only behavior:** absence of the `implementation` field means the source is a canonical specification, **not a live preview**. It must stay discoverable in the website and through `scripts/find_concept.py`. The site may generate a *derived* renderer mapping keyed by canonical ID, but it must not duplicate titles/aliases/status and must not infer that a preview exists from a folder name.
+
+**Agent retrieval:** the existing lookup algorithm still scores exact IDs and aliases first and does not positively match `avoid_when`. Phase 2 does **not** rank `capabilities` in `find_concept.py`; that is a separately measurable search-relevance decision after observing query coverage. Original queries must keep their established match order.
+
+**Validation boundary:** `python3 scripts/validate_catalog.py` checks metadata shape, path existence and relations. `tests/test_visual_catalog_metadata.py` tests optional fields and lookup compatibility. Real browser behavior, application performance, accessible focus and visual quality remain NOT VERIFIED until a site implementation exists.
+
+See [Phase 2 evidence and decision ledger](../docs/visual-catalog-refactor/08-phase-2-registry-compatibility.md).
+
+## Phase 9 — discovery and source traceability
+
+**Current branch state (2026-11-08):** 54 canonical records, 12 actually registered source-linked reference implementations and 42 specification-only entries. All 54 canonical entry lifecycle statuses are still `proposed`; implementation-level `reference` is not approval or production adoption.
+
+Use `python3 scripts/find_concept.py "human approval queue" --json` to discover the human Review Workspace, and then read `features/review-workspace/spec.md` before inspecting its checked-in preview source and synthetic adapter. For AI-agent delegated tool approval, retrieve the distinct `pattern.agentic-actions` concept instead. To check task search and source/route provenance in one repeatable pass, run `python3 scripts/audit_discovery.py --output site/artifacts/phase9/discovery-audit.json`. The audit derives its records from this index; it does **not** introduce another canonical metadata store.
+
+The [Phase 9 task fixture](../tests/fixtures/phase9_retrieval_cases.json) locks expected top results for relevant positive queries, records a known no-result query (`synthetic review`), and permits legitimately ambiguous `settings` matches. Changing a search alias or algorithm requires deliberate acceptance updates and review, not silent ranking changes.
+
+See [agent lookup rules](../AGENTS.md), [contribution and preview rules](../CONTRIBUTING.md), and [Phase 9 handoff](../docs/visual-catalog-refactor/15-phase-9-agent-governance-handoff.md). Never infer public preview deployment, product API functionality or validated accessibility from optional source metadata.
