@@ -76,4 +76,4 @@ Do not universalize a fixed participant number; method, risk, variability and re
 - [GOV.UK, Plan a round of user research](https://www.gov.uk/service-manual/user-research/plan-round-of-user-research) (2016; consulted 2026-11-07): objectives, consent, participant logistics and analysis.
 
 **Canonical ID:** `guidance.ux-research` · **Owner:** unassigned · **Last human review:** none; proposed on 2026-11-07.  
-**Related:** [UX measurement](ux-measurement.md), [journey mapping](mental-models-and-journeys.md), [task flows](../patterns/task-flows-and-information-architecture.md), [accessibility](accessibility.md).
+**Related:** [UX measurement](ux-measurement.md), [journey mapping](mental-models-and-journeys.md), [task flows](../../specifications/patterns/task-flows-and-information-architecture.md), [accessibility](accessibility.md).

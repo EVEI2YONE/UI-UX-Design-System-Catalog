@@ -67,4 +67,4 @@ Use an **A/A dry run** when instrumenting a new experimentation system to catch 
 
 **Canonical ID:** `guidance.experimentation` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
-Related: [UX measurement](ux-measurement.md), [UX research](ux-research-methods.md), [quality gates](../governance/quality-gates.md), [privacy/trust](privacy-consent-and-trust.md), [performance experience](performance-and-perceived-speed.md).
+Related: [UX measurement](ux-measurement.md), [UX research](ux-research-methods.md), [quality gates](../../governance/quality-gates.md), [privacy/trust](privacy-consent-and-trust.md), [performance experience](performance-and-perceived-speed.md).

@@ -6,7 +6,7 @@
 
 Help people understand what an AI feature can and cannot do, judge its results appropriately, correct mistakes, and remain in control. **Use when** a product generates, classifies, summarizes, recommends, searches with AI, or provides predictive output. **Avoid when** using a model's confident tone, a decorative AI badge, or unverifiable numeric confidence as evidence of correctness.
 
-This entry owns **AI-specific expectation setting, uncertainty, output provenance and correction**. [Content design](content-design-and-ux-writing.md) owns general wording, [privacy and trust](privacy-consent-and-trust.md) owns personal-data choices, [interaction recovery](../patterns/interaction-states-and-recovery.md) owns generic failures, and [agentic actions](../patterns/agentic-actions-and-approvals.md) owns tool-use side effects and approval.
+This entry owns **AI-specific expectation setting, uncertainty, output provenance and correction**. [Content design](content-design-and-ux-writing.md) owns general wording, [privacy and trust](privacy-consent-and-trust.md) owns personal-data choices, [interaction recovery](../../specifications/patterns/interaction-states-and-recovery.md) owns generic failures, and [agentic actions](../../specifications/patterns/agentic-actions-and-approvals.md) owns tool-use side effects and approval.
 
 ## Expectations, evidence and output contract
 
@@ -69,4 +69,4 @@ A person requests a summary of uploaded project notes. The experience discloses 
 
 **Canonical ID:** `guidance.ai-experiences` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
-Related: [privacy and trust](privacy-consent-and-trust.md), [content design](content-design-and-ux-writing.md), [research methods](ux-research-methods.md), [agentic actions](../patterns/agentic-actions-and-approvals.md), [multimodal conversations](../patterns/conversational-voice-and-multimodal-ux.md).
+Related: [privacy and trust](privacy-consent-and-trust.md), [content design](content-design-and-ux-writing.md), [research methods](ux-research-methods.md), [agentic actions](../../specifications/patterns/agentic-actions-and-approvals.md), [multimodal conversations](../../specifications/patterns/conversational-voice-and-multimodal-ux.md).

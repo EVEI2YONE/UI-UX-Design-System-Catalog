@@ -27,7 +27,7 @@ Define the user problem, target segment, success event/denominator, primary outc
 
 ## Verification
 
-Record instrumentation quality and missing baselines as **unknown**, not zero. State which testing actually happened. Related: [task flows](../patterns/task-flows-and-information-architecture.md) and [quality gates](../governance/quality-gates.md).
+Record instrumentation quality and missing baselines as **unknown**, not zero. State which testing actually happened. Related: [task flows](../../specifications/patterns/task-flows-and-information-architecture.md) and [quality gates](../../governance/quality-gates.md).
 
 ## Journey measurement worksheet
 
@@ -77,7 +77,7 @@ For toggled-off features, mark related metrics **NOT APPLICABLE** to the disable
 
 ## B04 — interaction-effort measurement without click-count tunnel vision (CKG-14; proposed 2026-11-07)
 
-**Purpose:** test whether an interaction consolidation or stable action region improves real user tasks while protecting comprehension, safety and inclusive access. This extends the existing [TCR, time, errors and privacy contract](#core-metrics); [advanced interactions](../patterns/advanced-interactions-and-reversible-actions.md) owns choosing buttons, toolbars, menus, split actions and shortcuts. [Task flows](../patterns/task-flows-and-information-architecture.md) owns spatial/next-action layout and scope.
+**Purpose:** test whether an interaction consolidation or stable action region improves real user tasks while protecting comprehension, safety and inclusive access. This extends the existing [TCR, time, errors and privacy contract](#core-metrics); [advanced interactions](../../specifications/patterns/advanced-interactions-and-reversible-actions.md) owns choosing buttons, toolbars, menus, split actions and shortcuts. [Task flows](../../specifications/patterns/task-flows-and-information-architecture.md) owns spatial/next-action layout and scope.
 
 ### Operational task-cost worksheet
 

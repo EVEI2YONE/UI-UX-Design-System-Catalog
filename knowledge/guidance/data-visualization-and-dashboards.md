@@ -4,7 +4,7 @@
 
 ## Purpose and boundary
 
-Make chart and dashboard choices around the question users need to answer, data integrity, and accessible equivalent understanding. **Use** for trends, category comparisons, relationships, KPIs and monitoring. **Avoid** a chart when a sentence or [data table](../patterns/data-tables.md) better serves the task. Product/data teams own values, data rights, validity and alert thresholds; this entry describes presentation and verification.
+Make chart and dashboard choices around the question users need to answer, data integrity, and accessible equivalent understanding. **Use** for trends, category comparisons, relationships, KPIs and monitoring. **Avoid** a chart when a sentence or [data table](../../specifications/patterns/data-tables.md) better serves the task. Product/data teams own values, data rights, validity and alert thresholds; this entry describes presentation and verification.
 
 ## Match representation to the question
 
@@ -55,4 +55,4 @@ Interactive charts must not require hover, precise pointing or color recognition
 
 **Canonical ID:** `guidance.data-visualization` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
-Related: [Data tables](../patterns/data-tables.md), [UX measurement](ux-measurement.md), [accessibility](accessibility.md), [internationalization](internationalization.md), [cognitive load](cognitive-load-and-decisions.md).
+Related: [Data tables](../../specifications/patterns/data-tables.md), [UX measurement](ux-measurement.md), [accessibility](accessibility.md), [internationalization](internationalization.md), [cognitive load](cognitive-load-and-decisions.md).

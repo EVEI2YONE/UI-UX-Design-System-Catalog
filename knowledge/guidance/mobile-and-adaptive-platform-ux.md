@@ -27,7 +27,7 @@ Native SDK/API behavior, permission handling and navigation are owned by each pl
 - Choose navigation suited to actual window size and hierarchy. For example, a compact nav bar may become an expanded rail on large Android screens; this is an example, not a mandate for web or iOS.
 - Define responsive transitions including selected item, keyboard focus and route history. When switching one- to two-pane views, preserve task state and screen-reader context.
 - Avoid placing primary actions behind the virtual keyboard or under system gesture areas. Respect safe areas and provide content scroll affordances.
-- Use native semantics and controls where suitable. For drag, swipe, long press or multi-pointer interactions, offer pointer/keyboard-accessible alternatives; [advanced interactions](../patterns/advanced-interactions-and-reversible-actions.md) owns that contract.
+- Use native semantics and controls where suitable. For drag, swipe, long press or multi-pointer interactions, offer pointer/keyboard-accessible alternatives; [advanced interactions](../../specifications/patterns/advanced-interactions-and-reversible-actions.md) owns that contract.
 - Do not truncate safety, privacy, cost, or permission information to fit compact screens. Keep warnings and confirmations understandable.
 
 **Illustrative good:** A records app uses a single list/details flow on a compact screen and a two-pane layout in a resized tablet window, retaining the selected record and an accessible back path. After dynamic text scaling, labels wrap and actions stay visible.
@@ -54,7 +54,7 @@ Test: minimum and maximum supported windows; intermediate resize; orientation an
 
 **Canonical ID:** `guidance.mobile-adaptive` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
-Related: [accessibility](accessibility.md), [internationalization](internationalization.md), [task flows](../patterns/task-flows-and-information-architecture.md), [advanced interactions](../patterns/advanced-interactions-and-reversible-actions.md), [offline sync](../patterns/offline-sync-and-conflicts.md).
+Related: [accessibility](accessibility.md), [internationalization](internationalization.md), [task flows](../../specifications/patterns/task-flows-and-information-architecture.md), [advanced interactions](../../specifications/patterns/advanced-interactions-and-reversible-actions.md), [offline sync](../../specifications/patterns/offline-sync-and-conflicts.md).
 
 
 ## Responsive wireframe composition contract (proposed Batch 4, 2026-11-07)

@@ -22,7 +22,7 @@ Understand users' expectations, goals and end-to-end experiences **before** deci
    - **Service blueprint** only when backstage support, organizational handoffs or policies meaningfully affect the journey.
 4. Decide **current-state vs future-state**, and **evidence-first vs assumption-first**. Label assumptions until tested; keep ideal-state promises separate from current observations.
 5. Segment when users differ by role, access needs, frequency, language or task context; avoid false precision about how common a path is.
-6. Link the map to design decisions, owners, open questions and the [task-flow specification](../patterns/task-flows-and-information-architecture.md).
+6. Link the map to design decisions, owners, open questions and the [task-flow specification](../../specifications/patterns/task-flows-and-information-architecture.md).
 
 ## A reusable map contract
 
@@ -49,7 +49,7 @@ The table is **illustrative, not participant data**. A real map must preserve tr
 - Record sources for each stage (observations, interviews, existing analytics or assumptions), study date, participant context, exclusions, conflicts and confidence.
 - Verify maps with users where feasible, including people with relevant assistive technologies, novice and expert cohorts, different languages and constrained-device contexts.
 - Assess the steps that cross devices, sessions, organizations or access-control boundaries; preserve consent, focus, translated content, deep links and task context.
-- Tie the map to a specific decision: [navigation](../patterns/navigation.md), [interaction recovery](../patterns/interaction-states-and-recovery.md), or [UX measurement](ux-measurement.md).
+- Tie the map to a specific decision: [navigation](../../specifications/patterns/navigation.md), [interaction recovery](../../specifications/patterns/interaction-states-and-recovery.md), or [UX measurement](ux-measurement.md).
 - **Real-user mapping, task analysis and validation:** NOT VERIFIED for this proposed catalog entry.
 
 ## Sources and related concepts
@@ -60,4 +60,4 @@ The table is **illustrative, not participant data**. A real map must preserve tr
 - [Nielsen Norman Group, Journey-Mapping Approaches](https://www.nngroup.com/articles/journey-mapping-approaches/) (2020): current/future and assumption/research first decisions.
 
 **Canonical ID:** `guidance.journey-mapping` · **Owner:** unassigned · **Last human review:** none; proposed on 2026-11-07.  
-**Related:** [research methods](ux-research-methods.md), [task flows](../patterns/task-flows-and-information-architecture.md), [design principles](../foundations/design-principles.md), [UX measurement](ux-measurement.md).
+**Related:** [research methods](ux-research-methods.md), [task flows](../../specifications/patterns/task-flows-and-information-architecture.md), [design principles](../foundations/design-principles.md), [UX measurement](ux-measurement.md).

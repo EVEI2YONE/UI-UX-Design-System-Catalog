@@ -60,7 +60,7 @@ A browser/device permission is not the same thing as an app-category preference.
 
 **Canonical ID:** `guidance.privacy-trust` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
-Related: [content design](content-design-and-ux-writing.md), [authentication lifecycle](../patterns/authentication-and-account-lifecycle.md), [notifications](../patterns/notifications-and-attention.md), [accessibility](accessibility.md), [service recovery](../patterns/service-recovery-and-support.md).
+Related: [content design](content-design-and-ux-writing.md), [authentication lifecycle](../../specifications/patterns/authentication-and-account-lifecycle.md), [notifications](../../specifications/patterns/notifications-and-attention.md), [accessibility](accessibility.md), [service recovery](../../specifications/patterns/service-recovery-and-support.md).
 
 
 ## Data lifecycle, portability and archived records (Batch 6 — proposed, 2026-11-07)
@@ -94,4 +94,4 @@ Related: [content design](content-design-and-ux-writing.md), [authentication lif
 
 **Verification (NOT VERIFIED):** accessible choice parity, consent withdrawal, backend state after reload, lawful retention exclusions, delayed deletion, exports with sensitive and third-party data redaction, ownership transfer, concurrent sessions and support escalation.
 
-**Sources:** [ICO data protection by design and default](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/data-protection-by-design-and-by-default) (UK-specific; consulted 2026-11-07); [FTC Bringing Dark Patterns to Light](https://www.ftc.gov/reports/bringing-dark-patterns-light) (2022 US staff report; deceptive interaction risks); [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) (accessibility criteria); consult counsel before making jurisdictional compliance claims. Related: [Account/settings portal](../patterns/account-and-settings-portal.md).
+**Sources:** [ICO data protection by design and default](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/accountability-and-governance/guide-to-accountability-and-governance/data-protection-by-design-and-by-default) (UK-specific; consulted 2026-11-07); [FTC Bringing Dark Patterns to Light](https://www.ftc.gov/reports/bringing-dark-patterns-light) (2022 US staff report; deceptive interaction risks); [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) (accessibility criteria); consult counsel before making jurisdictional compliance claims. Related: [Account/settings portal](../../specifications/patterns/account-and-settings-portal.md).

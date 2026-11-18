@@ -6,7 +6,7 @@
 
 Design experiences that respond predictably while real page loading, interaction work and network outcomes occur. **Use when** choosing loading states, progressive rendering, task-level feedback, performance budgets and performance evidence. **Avoid when** treating visual animation, skeletons or perceived speed as proof the service completed a request. This is a UX decision contract; engineering owns measurement instrumentation, rendering, back-end reliability, caching, security and platform performance.
 
-[Interaction recovery](../patterns/interaction-states-and-recovery.md) owns generic pending, error and retry semantics; [offline synchronization](../patterns/offline-sync-and-conflicts.md) owns local versus server-confirmed persistence; [UX measurement](ux-measurement.md) owns outcome definitions and denominators.
+[Interaction recovery](../../specifications/patterns/interaction-states-and-recovery.md) owns generic pending, error and retry semantics; [offline synchronization](../../specifications/patterns/offline-sync-and-conflicts.md) owns local versus server-confirmed persistence; [UX measurement](ux-measurement.md) owns outcome definitions and denominators.
 
 ## Measurement: distinguish field from lab and web vitals from task outcomes
 
@@ -80,4 +80,4 @@ Use **progressive enhancement** when possible: essential content, navigation and
 
 **Canonical ID:** `guidance.performance-experience` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
-Related: [UX measurement](ux-measurement.md), [interaction recovery](../patterns/interaction-states-and-recovery.md), [offline synchronization](../patterns/offline-sync-and-conflicts.md), [quality gates](../governance/quality-gates.md), [experimentation](experimentation-and-causal-evidence.md).
+Related: [UX measurement](ux-measurement.md), [interaction recovery](../../specifications/patterns/interaction-states-and-recovery.md), [offline synchronization](../../specifications/patterns/offline-sync-and-conflicts.md), [quality gates](../../governance/quality-gates.md), [experimentation](experimentation-and-causal-evidence.md).

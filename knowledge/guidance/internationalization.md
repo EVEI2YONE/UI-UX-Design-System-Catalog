@@ -59,7 +59,7 @@ Keep **UI language**, **date/number locale**, **timezone**, **billing currency**
 | Timezone change | DST boundary, locale formatting, activity timestamps and notification schedules |
 | Offline/unknown save | Preserve accurate effective-vs-pending language choice |
 
-**Status:** product checks NOT VERIFIED. Related: [account settings](../patterns/account-and-settings-portal.md), [notification preferences](../patterns/notifications-and-attention.md), [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/) (consulted 2026-11-07).
+**Status:** product checks NOT VERIFIED. Related: [account settings](../../specifications/patterns/account-and-settings-portal.md), [notification preferences](../../specifications/patterns/notifications-and-attention.md), [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/) (consulted 2026-11-07).
 
 
 ## Text-expansion and RTL wireframe composition review (proposed Batch 4, 2026-11-07)
@@ -77,4 +77,4 @@ For each representative wireframe, specify **content language/locale and directi
 
 **Synthetic example:** A right-to-left account-settings mock keeps a long translated section heading and mixed-direction account ID readable, while the return affordance is direction-aware; mark all language as illustrative unless reviewed by a qualified speaker. **Anti-example:** a fixed-width tab silently truncates the only security-setting description, and an English label is overlaid on an RTL screenshot with no content direction plan.
 
-**Verification:** compare translated resources and real typography at representative windows; test bidi controls, focus order, mixed-direction data, zoom and validation with supported locales and assistive technologies. A wireframe alone remains **NOT VERIFIED** for localization support or accessibility. Related: [adaptive UX](mobile-and-adaptive-platform-ux.md), [accessibility](accessibility.md), [task flow composition](../patterns/task-flows-and-information-architecture.md).
+**Verification:** compare translated resources and real typography at representative windows; test bidi controls, focus order, mixed-direction data, zoom and validation with supported locales and assistive technologies. A wireframe alone remains **NOT VERIFIED** for localization support or accessibility. Related: [adaptive UX](mobile-and-adaptive-platform-ux.md), [accessibility](accessibility.md), [task flow composition](../../specifications/patterns/task-flows-and-information-architecture.md).
