@@ -87,3 +87,9 @@
 
 /* Keep the first search-card badge visible at the 768px tablet audit viewport. */
 @media(min-width:601px) and (max-width:960px){.tools + .hint{margin-bottom:20px}}
+
+/* Task-first navigation: four destinations must fit 320px without horizontal overflow. */
+@media (max-width: 600px) {
+  .topbar nav { flex-wrap: wrap; gap: 4px; min-width: 0; }
+  .topbar nav a { padding: 7px 8px; font-size: 13px; }
+}
