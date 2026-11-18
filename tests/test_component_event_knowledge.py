@@ -48,7 +48,7 @@ class ComponentEventKnowledgeTests(unittest.TestCase):
 
     def test_index_and_context_are_discoverable(self):
         self.assertTrue((ROOT / "archive/planning/icon-interaction-b02-context-2026-11-07.md").is_file())
-        for file in ("README.md", "architecture/README.md", "components/README.md", "AGENTS.md"):
+        for file in ("README.md", "knowledge/architecture/README.md", "specifications/components/README.md", "AGENTS.md"):
             with self.subTest(file=file):
                 s = (ROOT / file).read_text(encoding="utf-8")
                 self.assertIn("component-contracts", s)

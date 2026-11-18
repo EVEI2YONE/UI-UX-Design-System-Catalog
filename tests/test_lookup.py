@@ -108,7 +108,7 @@ class LookupTests(unittest.TestCase):
         ids = {e['id'] for e in self.entries}
         for component in ('button', 'input', 'select', 'checkbox', 'dialog', 'field'):
             e = next(x for x in self.entries if x['id'] == 'component.' + component)
-            self.assertEqual(e['path'], f'components/{component}/spec.md')
+            self.assertEqual(e['path'], f'specifications/components/{component}/spec.md')
             self.assertTrue((ROOT / e['path']).is_file())
             self.assertEqual(e['kind'], 'specification')
             self.assertEqual(e['status'], 'proposed')
@@ -134,11 +134,11 @@ class LookupTests(unittest.TestCase):
     def test_batch5_pattern_contracts(self):
         ids = {entry['id'] for entry in self.entries}
         expected_paths = {
-            'forms': 'patterns/forms.md',
-            'navigation': 'patterns/navigation.md',
-            'search-filter': 'patterns/search-and-filter.md',
-            'data-tables': 'patterns/data-tables.md',
-            'feedback': 'patterns/feedback.md',
+            'forms': 'specifications/patterns/forms.md',
+            'navigation': 'specifications/patterns/navigation.md',
+            'search-filter': 'specifications/patterns/search-and-filter.md',
+            'data-tables': 'specifications/patterns/data-tables.md',
+            'feedback': 'specifications/patterns/feedback.md',
         }
         for item, path in expected_paths.items():
             with self.subTest(item=item):
@@ -225,10 +225,10 @@ class LookupTests(unittest.TestCase):
 
     def test_batch9_canonical_paths_statuses_and_refs(self):
         paths = {
-            'guidance.privacy-trust': 'guidance/privacy-consent-and-trust.md',
-            'pattern.authentication-lifecycle': 'patterns/authentication-and-account-lifecycle.md',
-            'pattern.notifications-attention': 'patterns/notifications-and-attention.md',
-            'pattern.offline-sync': 'patterns/offline-sync-and-conflicts.md',
+            'guidance.privacy-trust': 'knowledge/guidance/privacy-consent-and-trust.md',
+            'pattern.authentication-lifecycle': 'specifications/patterns/authentication-and-account-lifecycle.md',
+            'pattern.notifications-attention': 'specifications/patterns/notifications-and-attention.md',
+            'pattern.offline-sync': 'specifications/patterns/offline-sync-and-conflicts.md',
         }
         ids = {e['id'] for e in self.entries}
         for ident, path in paths.items():
@@ -264,9 +264,9 @@ class LookupTests(unittest.TestCase):
 
     def test_batch10_new_guidance_paths_and_refs(self):
         expected = {
-            'guidance.data-visualization': 'guidance/data-visualization-and-dashboards.md',
-            'guidance.mobile-adaptive': 'guidance/mobile-and-adaptive-platform-ux.md',
-            'pattern.advanced-interactions': 'patterns/advanced-interactions-and-reversible-actions.md',
+            'guidance.data-visualization': 'knowledge/guidance/data-visualization-and-dashboards.md',
+            'guidance.mobile-adaptive': 'knowledge/guidance/mobile-and-adaptive-platform-ux.md',
+            'pattern.advanced-interactions': 'specifications/patterns/advanced-interactions-and-reversible-actions.md',
         }
         ids = {x['id'] for x in self.entries}
         for ident, path in expected.items():
@@ -303,9 +303,9 @@ class LookupTests(unittest.TestCase):
 
     def test_batch11_canonical_guards_and_related_concepts(self):
         expected = {
-            'guidance.ai-experiences': 'guidance/ai-powered-experiences-and-trust.md',
-            'pattern.agentic-actions': 'patterns/agentic-actions-and-approvals.md',
-            'pattern.multimodal-conversation': 'patterns/conversational-voice-and-multimodal-ux.md',
+            'guidance.ai-experiences': 'knowledge/guidance/ai-powered-experiences-and-trust.md',
+            'pattern.agentic-actions': 'specifications/patterns/agentic-actions-and-approvals.md',
+            'pattern.multimodal-conversation': 'specifications/patterns/conversational-voice-and-multimodal-ux.md',
         }
         ids = {e['id'] for e in self.entries}
         for ident, path in expected.items():
@@ -344,8 +344,8 @@ class LookupTests(unittest.TestCase):
 
     def test_batch12_new_paths_and_integrity(self):
         paths = {
-            'guidance.performance-experience': 'guidance/performance-and-perceived-speed.md',
-            'guidance.experimentation': 'guidance/experimentation-and-causal-evidence.md',
+            'guidance.performance-experience': 'knowledge/guidance/performance-and-perceived-speed.md',
+            'guidance.experimentation': 'knowledge/guidance/experimentation-and-causal-evidence.md',
         }
         ids = {entry['id'] for entry in self.entries}
         for ident, path in paths.items():

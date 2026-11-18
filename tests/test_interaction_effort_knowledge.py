@@ -52,8 +52,8 @@ class InteractionEffortKnowledgeTests(unittest.TestCase):
 
     def test_context_and_section_indexes(self):
         self.assertTrue((ROOT / "archive/planning/icon-interaction-b04-context-2026-11-07.md").is_file())
-        self.assertIn("CKG-13", (ROOT / "patterns/README.md").read_text(encoding="utf-8"))
-        self.assertIn("CKG-14", (ROOT / "guidance/README.md").read_text(encoding="utf-8"))
+        self.assertIn("CKG-13", (ROOT / "specifications/patterns/README.md").read_text(encoding="utf-8"))
+        self.assertIn("CKG-14", (ROOT / "knowledge/guidance/README.md").read_text(encoding="utf-8"))
 
     def test_no_duplicate_canonical_ids(self):
         ids = [e["id"] for e in self.entries]
