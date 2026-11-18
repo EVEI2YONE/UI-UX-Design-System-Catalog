@@ -37,7 +37,7 @@ test('all core references keep enabled borders distinct and text readable across
  }
 });
 test('review workspace and pattern controls meet sampled border and text contrast targets',()=>{
- const files=[['specifications/experiences/review-workspace/ReviewWorkspace.css','rw','bg','fg','border'],...['form/Form','navigation/Navigation','search-filter/SearchFilter','data-tables/DataTables','recovery/Recovery'].map(f=>['specifications/patterns/'+f+'.css','p','bg','ink','line'])];
+ const files=[['features/review-workspace/ReviewWorkspace.css','rw','bg','fg','border'],...['form/Form','navigation/Navigation','search-filter/SearchFilter','data-tables/DataTables','recovery/Recovery'].map(f=>['patterns/'+f+'.css','p','bg','ink','line'])];
  for(const [file,p,bg,fg,border] of files){
   const css=fs.readFileSync(path.join(root,'src','implementations',file),'utf8');
   for(const mode of ['light','dark','contrast']){
