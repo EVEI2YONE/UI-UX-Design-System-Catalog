@@ -8,22 +8,22 @@ Identify *new visualized assets and feature-level reference contracts* without r
 
 | Tier | Catalog owner | Website content | Promotion trigger |
 | --- | --- | --- | --- |
-| Foundations | `foundations/` | Token/theme/typography demonstration | Reusable roles, readable and tested examples |
-| Primitives | `architecture/component-model.md` plus future specs if justified | Stack/Container/Text implementations | Repeated stable layout need |
-| Controls | `components/*/spec.md` | Real Button/Input/Select/Checkbox/Dialog/Field state previews | Clear contract, semantics, testable behavior |
-| Patterns | `patterns/*.md` | Working composed scenarios | Cross-feature recurrence, no product services |
-| Feature references | new `features/*/spec.md` | Multi-step reference flows and adapters | Specific reusable job with credible reuse |
+| Foundations | `knowledge/foundations/` | Token/theme/typography demonstration | Reusable roles, readable and tested examples |
+| Primitives | `knowledge/architecture/component-model.md` plus future specs if justified | Stack/Container/Text implementations | Repeated stable layout need |
+| Controls | `specifications/components/*/spec.md` | Real Button/Input/Select/Checkbox/Dialog/Field state previews | Clear contract, semantics, testable behavior |
+| Patterns | `specifications/patterns/*.md` | Working composed scenarios | Cross-feature recurrence, no product services |
+| Feature references | new `specifications/experiences/*/spec.md` | Multi-step reference flows and adapters | Specific reusable job with credible reuse |
 | Product pages | consuming app | Optional case study only | Never promote product-specific permissions or domain logic |
 
 ## Stage 1 — highest-value demonstrations
 
 | ID / linkage | Existing guidance | Reference implementation | Acceptance |
 | --- | --- | --- | --- |
-| `component.button` | `components/button/spec.md` | Variants, pending, disabled reasoning, icons, focus | Native action semantics; no duplicate activation |
+| `component.button` | `specifications/components/button/spec.md` | Variants, pending, disabled reasoning, icons, focus | Native action semantics; no duplicate activation |
 | `component.input` / `component.field` | existing specs | Labels, help, inline validation, long text, focus | Programmatic association and error recovery |
 | `component.dialog` | existing spec | Confirmation, unsaved edits, async close, return focus | Escape, modality and restored focus tested |
-| `pattern.forms` | `patterns/forms.md` | Small validated async form with retry and save-uncertain scenario | No false success, values preserved |
-| `pattern.navigation` | `patterns/navigation.md` | Mobile and desktop labeled nav | Keyboard, active page, reflow |
+| `pattern.forms` | `specifications/patterns/forms.md` | Small validated async form with retry and save-uncertain scenario | No false success, values preserved |
+| `pattern.navigation` | `specifications/patterns/navigation.md` | Mobile and desktop labeled nav | Keyboard, active page, reflow |
 | `pattern.interaction-recovery` | existing guidance | Pending/unknown result, read-only verify then proceed | Safe failure state and status announcement |
 | `foundation.design-tokens` | existing guidance | Token/theme playground | Legible light/high-contrast; no raw divergence |
 
@@ -41,7 +41,7 @@ Identify *new visualized assets and feature-level reference contracts* without r
 
 ### F-01: Review and approval workspace (first feature candidate)
 
-**New knowledge entry only if missing after registry search:** `feature.review-workspace`, under `features/review-workspace/spec.md`. Link rather than replace `pattern.agentic-actions`, `pattern.interaction-recovery`, `pattern.data-tables`, `architecture.component-contracts`.
+**New knowledge entry only if missing after registry search:** `feature.review-workspace`, under `specifications/experiences/review-workspace/spec.md`. Link rather than replace `pattern.agentic-actions`, `pattern.interaction-recovery`, `pattern.data-tables`, `architecture.component-contracts`.
 
 **Reference implementation:** collection -> detail evidence -> reason capture -> approve/return/reject -> pending -> server-like verification -> advance/restore focus. Fake adapters must support loaded, empty, failure, uncertain outcome, permission-denied, stale revision and long-item scenarios. **Not included:** real auth, ledger, points or backend mutation guarantees.
 

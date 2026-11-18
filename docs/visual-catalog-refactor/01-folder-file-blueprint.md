@@ -9,12 +9,12 @@ The site is **the working visual demonstration of the existing catalog**, not a 
 | Current root | Evidence of existing role | Decision |
 | --- | --- | --- |
 | `catalog/index.json`, `catalog/schema.json` | Canonical IDs, relations, aliases, statuses and strict metadata schema | **Keep**, add optional display bindings compatibly |
-| `components/{button,input,select,checkbox,dialog,field}/spec.md` | Six platform-neutral contracts | **Keep** specifications; link each to site implementation when real |
-| `patterns/*.md` | Task flow, navigation, forms, search, data tables, recovery etc. | **Keep** normative guidance |
-| `foundations/`, `architecture/`, `guidance/`, `governance/` | Tokens, visual principles, contracts, quality and performance | **Keep** canonical knowledge |
+| `specifications/components/{button,input,select,checkbox,dialog,field}/spec.md` | Six platform-neutral contracts | **Keep** specifications; link each to site implementation when real |
+| `specifications/patterns/*.md` | Task flow, navigation, forms, search, data tables, recovery etc. | **Keep** normative guidance |
+| `knowledge/foundations/`, `knowledge/architecture/`, `knowledge/guidance/`, `governance/` | Tokens, visual principles, contracts, quality and performance | **Keep** canonical knowledge |
 | `AGENTS.md`, `scripts/find_concept.py`, `scripts/validate_catalog.py` | Agent lookup / integrity gates | **Keep**; extend regression coverage |
 | `templates/`, `archive/`, section READMEs | Contribution entrypoints and historical provenance | **Keep** and add links when navigation changes |
-| `site/`, `features/` | Not established as implementation directories in the reviewed tree | **Add gradually**, do not move existing pattern guidance indiscriminately |
+| `site/`, `specifications/experiences/` | Not established as implementation directories in the reviewed tree | **Add gradually**, do not move existing pattern guidance indiscriminately |
 
 ## Target tree (proposed additions are annotated `+`)
 
@@ -123,12 +123,12 @@ UI-UX-Design-System-Catalog/
 3. **Implementation:** `site/src/implementations/` owns executable UI; no product-specific API, authorization rule, or real credential.
 4. **Catalog chrome:** `site/src/catalog-ui/` owns browsing UI; it can consume a shared button internally but must not silently override the button's reference behavior.
 5. **Preview isolation:** `site/src/previews/` owns fixture determinism, reset, theme, viewport and error scenario control.
-6. **Styles:** semantic tokens derive from `foundations/design-tokens-and-themes.md`; no second ungoverned token ontology. Keep site chrome and showcased UI styling isolated.
+6. **Styles:** semantic tokens derive from `knowledge/foundations/design-tokens-and-themes.md`; no second ungoverned token ontology. Keep site chrome and showcased UI styling isolated.
 7. **Quality:** root Python catalog checks remain authoritative for metadata; site checks add browser/runtime evidence. Neither substitutes for the other.
 
 ## Do not move yet
 
-Do **not** move existing `patterns/*.md` into `features/` merely to match folder symmetry. A feature requires a concrete, multi-step, configurable workflow with a spec and integration boundary. The pattern documents already cover many related concepts; link them, don't duplicate. Also do not move `components/*/spec.md` under `site/`; source guidance should survive a frontend rewrite.
+Do **not** move existing `specifications/patterns/*.md` into `specifications/experiences/` merely to match folder symmetry. A feature requires a concrete, multi-step, configurable workflow with a spec and integration boundary. The pattern documents already cover many related concepts; link them, don't duplicate. Also do not move `specifications/components/*/spec.md` under `site/`; source guidance should survive a frontend rewrite.
 
 ## Site entry contract
 
