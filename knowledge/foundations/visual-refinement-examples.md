@@ -1,6 +1,6 @@
 # Synthetic visual refinement example bank — KG-17
 
-**Status:** proposed illustrative documentation, **not a canonical concept**, rendered screenshots, or measured UX evidence. **Owner:** unassigned. Guidance lives in [quality gates](../governance/quality-gates.md#visual-craftsmanship-review-and-corrective-iteration--batch-4-kg-15-and-kg-16-proposed-2026-11-07) and [visual foundations](visual-design-craftsmanship.md). This file provides worked **written** before/after scenarios to help reviewers practice precise criticism and correction.
+**Status:** proposed illustrative documentation, **not a canonical concept**, rendered screenshots, or measured UX evidence. **Owner:** unassigned. Guidance lives in [quality gates](../../governance/quality-gates.md#visual-craftsmanship-review-and-corrective-iteration--batch-4-kg-15-and-kg-16-proposed-2026-11-07) and [visual foundations](visual-design-craftsmanship.md). This file provides worked **written** before/after scenarios to help reviewers practice precise criticism and correction.
 
 ## Repeatable practice method
 
@@ -47,4 +47,4 @@ Accessibility and user-task evidence:
 Reviewer and disposition:
 ```
 
-**Known limitations:** No images, licensed assets, code changes or user studies were created for this example bank. The examples teach disciplined critique—not a validated universal visual style. See [quality gates](../governance/quality-gates.md), [styling recipes](practical-ui-styling-recipes.md), [design tokens](design-tokens-and-themes.md), [accessibility](../guidance/accessibility.md) and [UX research](../guidance/ux-research-methods.md).
+**Known limitations:** No images, licensed assets, code changes or user studies were created for this example bank. The examples teach disciplined critique—not a validated universal visual style. See [quality gates](../../governance/quality-gates.md), [styling recipes](practical-ui-styling-recipes.md), [design tokens](design-tokens-and-themes.md), [accessibility](../guidance/accessibility.md) and [UX research](../guidance/ux-research-methods.md).

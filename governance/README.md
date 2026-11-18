@@ -4,14 +4,14 @@ The catalog needs stable identity, accountable decisions, evidence and planned d
 
 - [Lifecycle and decisions](lifecycle-and-decisions.md): reuse/extend/create/merge/deprecate, ownership, review status and version notes.
 - [Visual craftsmanship workflow](visual-craftsmanship-workflow.md): end-to-end KG-18 intake → references → art direction → styling → rendered critique → verified delivery, with KG-01–18 traceability.
-- [Quality gates](quality-gates.md): contract completeness, accessibility, localization, responsive, token, testing and catalog checks; Batch 4 visual craftsmanship critique and render–inspect–refine protocol (KG-15–16), with [illustrative before/after scenarios](../foundations/visual-refinement-examples.md) (KG-17).
+- [Quality gates](quality-gates.md): contract completeness, accessibility, localization, responsive, token, testing and catalog checks; Batch 4 visual craftsmanship critique and render–inspect–refine protocol (KG-15–16), with [illustrative before/after scenarios](../knowledge/foundations/visual-refinement-examples.md) (KG-17).
 - [References](references.md): authoritative standards starting points and source status.
 
 For changes see [Contributing](../CONTRIBUTING.md) and the [PR template](../.github/pull_request_template.md).
 
 **Agent retrieval:** use `governance.lifecycle` for reuse decisions, ownership, promotion or deprecation; use `governance.quality` for evidence, review and release checks. Their canonical IDs, lifecycle statuses and references live in the [registry](../catalog/index.json). Documentation checks are not proof of a production component or accessible UX. See [AGENTS.md](../AGENTS.md).
 
-**Batch 12 DesignOps delivery:** reuse [lifecycle and decisions](lifecycle-and-decisions.md) for ownership/versioning, [quality gates](quality-gates.md) for release evidence, [component contracts](../architecture/component-contracts.md) for design-to-code handoff, and [design tokens](../foundations/design-tokens-and-themes.md) for DTCG interchange. No parallel governance ID is created. See [Batch 12 context and gap audit](../archive/planning/batch-12-context-and-gap-ledger.md).
+**Batch 12 DesignOps delivery:** reuse [lifecycle and decisions](lifecycle-and-decisions.md) for ownership/versioning, [quality gates](quality-gates.md) for release evidence, [component contracts](../knowledge/architecture/component-contracts.md) for design-to-code handoff, and [design tokens](../knowledge/foundations/design-tokens-and-themes.md) for DTCG interchange. No parallel governance ID is created. See [Batch 12 context and gap audit](../archive/planning/batch-12-context-and-gap-ledger.md).
 
 
 ## Hosted-app assurance extension (2026-11-07)
@@ -43,8 +43,8 @@ For changes see [Contributing](../CONTRIBUTING.md) and the [PR template](../.git
 
 The [Batch 10 ledger](../archive/planning/little-wins-batch-10-context-and-gap-ledger.md) maps Batches 1–10 to canonical IDs, evidence and outstanding product verification. Registry lookup [regression tests](../tests/test_little_wins_knowledge_coverage.py) cover ambiguous human-versus-agent approval and other task queries; the full catalog validator remains the source of documentation-integrity results.
 
-**Wireframe Batch 5:** [Quality gates](quality-gates.md) (`governance.quality`) now owns visual inspection of rendered wireframe imagery, including legibility, clipping, source-copy accuracy, hierarchy, invented capabilities and artifact-specific issue logs. This does not establish runtime or WCAG conformance; see [wireframe methodology](../guidance/wireframe-methodology.md) for prototype escalation.
+**Wireframe Batch 5:** [Quality gates](quality-gates.md) (`governance.quality`) now owns visual inspection of rendered wireframe imagery, including legibility, clipping, source-copy accuracy, hierarchy, invented capabilities and artifact-specific issue logs. This does not establish runtime or WCAG conformance; see [wireframe methodology](../knowledge/guidance/wireframe-methodology.md) for prototype escalation.
 
 ## B06 — component interaction verification and retrieval (proposed, 2026-11-07)
 
-[Design and catalog quality gates](quality-gates.md) now include CKG-18 and CKG-19: a practical UI interaction-state test matrix, authoritative outcome/focus assertions, deterministic task-to-canonical-ID lookup, negative cases and evidence classification. These are **test requirements**, not observed browser tests or an implementation package. See [icon semantics](../foundations/iconography-and-semantics.md) for CKG-05 consistency.
+[Design and catalog quality gates](quality-gates.md) now include CKG-18 and CKG-19: a practical UI interaction-state test matrix, authoritative outcome/focus assertions, deterministic task-to-canonical-ID lookup, negative cases and evidence classification. These are **test requirements**, not observed browser tests or an implementation package. See [icon semantics](../knowledge/foundations/iconography-and-semantics.md) for CKG-05 consistency.

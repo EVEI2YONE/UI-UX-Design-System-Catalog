@@ -6,7 +6,7 @@
 
 Give design systems a consistent, inspectable decision rule for icons inside controls, navigation and feedback. **Use when** selecting a reusable icon family, assigning an action or status symbol, or building an icon-only control. **Avoid when** a symbol adds no recognition value, replaces an essential visible label, or is used to hide a consequential action.
 
-This is a **platform-neutral specification**, not an icon package, approved glyph mapping, automated accessibility guarantee or universal brand style. A product chooses and verifies its own installed exports and semantics. [Practical UI styling recipes](practical-ui-styling-recipes.md) owns broader visual craftsmanship and imagery. [Button](../components/button/spec.md) owns activation; [component contracts](../architecture/component-contracts.md) own general states; [feedback](../patterns/feedback.md) owns communicating domain results. This page owns the *semantic relationship between an icon, its host component and user meaning*.
+This is a **platform-neutral specification**, not an icon package, approved glyph mapping, automated accessibility guarantee or universal brand style. A product chooses and verifies its own installed exports and semantics. [Practical UI styling recipes](practical-ui-styling-recipes.md) owns broader visual craftsmanship and imagery. [Button](../../specifications/components/button/spec.md) owns activation; [component contracts](../architecture/component-contracts.md) own general states; [feedback](../../specifications/patterns/feedback.md) owns communicating domain results. This page owns the *semantic relationship between an icon, its host component and user meaning*.
 
 ## CKG-01 — Semantic icon registry: one meaning, explicit context
 
@@ -109,7 +109,7 @@ Motivating example: [Little Wins icon knowledge B05](https://github.com/EVEI2YON
 
 ## B06 — icon-consistency audit and evolution (CKG-05; proposed 2026-11-07)
 
-**Scope:** review whether a product's chosen icon family and semantic intent registry remain coherent as new components are added. This is a **decision and audit contract**, not a universal glyph set, a Lucide export list, or evidence of implementation. General visual craftsmanship stays with [practical styling](practical-ui-styling-recipes.md); controls own actual activation through their [component contracts](../architecture/component-contracts.md); verification ownership is [quality gates](../governance/quality-gates.md).
+**Scope:** review whether a product's chosen icon family and semantic intent registry remain coherent as new components are added. This is a **decision and audit contract**, not a universal glyph set, a Lucide export list, or evidence of implementation. General visual craftsmanship stays with [practical styling](practical-ui-styling-recipes.md); controls own actual activation through their [component contracts](../architecture/component-contracts.md); verification ownership is [quality gates](../../governance/quality-gates.md).
 
 ### A reviewable semantic icon registry entry
 

@@ -87,7 +87,7 @@ Explore **two or three meaningfully different directions** at the same content f
 
 This is synthesis of the catalog's existing design principles, tokens, accessibility and UX measurement policies; composition and art-direction prescriptions are **design heuristics**, not normative W3C standards or proven conversion gains. Validate against context and representative users. For normative accessibility criteria see [WCAG 2.2](https://www.w3.org/TR/WCAG22/); for language and bidirectional layout see [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/); for token interchange see [DTCG 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/), a Community Group report rather than W3C Recommendation. External reference availability and rendered UI behavior were not verified in this documentation-only batch.
 
-**Related:** [design principles](design-principles.md), [tokens and themes](design-tokens-and-themes.md), [component contracts](../architecture/component-contracts.md), [accessibility](../guidance/accessibility.md), [quality gates](../governance/quality-gates.md).
+**Related:** [design principles](design-principles.md), [tokens and themes](design-tokens-and-themes.md), [component contracts](../architecture/component-contracts.md), [accessibility](../guidance/accessibility.md), [quality gates](../../governance/quality-gates.md).
 
 ## Practical styling continuation — Batch 2 (proposed)
 
@@ -187,7 +187,7 @@ For each actual design request, produce a compact **art-direction decision packe
 - [ ] Observations and hypotheses distinguished from real user research.
 - [ ] Candidate screens share task, content, hierarchy and comparable fidelity.
 - [ ] Selection includes accessibility, i18n/RTL, responsive, performance and implementation tradeoffs.
-- [ ] Relevant [token architecture](design-tokens-and-themes.md), [styling recipes](practical-ui-styling-recipes.md), [UX research](../guidance/ux-research-methods.md) and [quality gates](../governance/quality-gates.md) identified.
+- [ ] Relevant [token architecture](design-tokens-and-themes.md), [styling recipes](practical-ui-styling-recipes.md), [UX research](../guidance/ux-research-methods.md) and [quality gates](../../governance/quality-gates.md) identified.
 - [ ] Visual, prototype, user and manual accessibility tests remain **NOT VERIFIED** unless actually run.
 
 **Source scope and applicability (reviewed as references 2026-11-07):** [GOV.UK Service Manual — Making prototypes](https://www.gov.uk/service-manual/design/making-prototypes) and [How the alpha phase works](https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works) support exploring alternatives and testing uncertain design decisions, not the aesthetic value of any specific palette. [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) provides applicable normative web accessibility criteria, not a measure of attractiveness. Reference-card fields and the direction-comparison rubric above are proposed catalog heuristics, not a claimed W3C or GOV.UK requirement.

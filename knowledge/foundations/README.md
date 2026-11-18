@@ -8,17 +8,17 @@ This section defines consistent design decision-making before component-level st
 - [Synthetic visual refinement examples](visual-refinement-examples.md) — six written before/after critique cases for KG-17; not rendered or user-tested.
 - [Design tokens and themes](design-tokens-and-themes.md) — reference → semantic → component aliases, light/dark/high-contrast mappings and token hygiene.
 
-Related: [component model](../architecture/component-model.md), [accessibility](../guidance/accessibility.md), and [quality gates](../governance/quality-gates.md).
-**For agents:** resolve the registry IDs `principle.visual-hierarchy`, `foundation.visual-craftsmanship`, `foundation.practical-styling` and `foundation.design-tokens` using [the lookup registry](../catalog/index.json) before reading these canonical pages; see [AGENTS.md](../AGENTS.md).
+Related: [component model](../architecture/component-model.md), [accessibility](../guidance/accessibility.md), and [quality gates](../../governance/quality-gates.md).
+**For agents:** resolve the registry IDs `principle.visual-hierarchy`, `foundation.visual-craftsmanship`, `foundation.practical-styling` and `foundation.design-tokens` using [the lookup registry](../../catalog/index.json) before reading these canonical pages; see [AGENTS.md](../../AGENTS.md).
 
 **Batch 12 token delivery:** [Design tokens and themes](design-tokens-and-themes.md) now specifies versioned DTCG interchange, alias/theme checks, platform transforms and migration evidence. The 2025.10 format is a stable Community Group report, not a W3C Recommendation or evidence that a platform exporter is installed.
 
 
 ## Batch 9 — global CSS to semantic tokens
 
-[Design tokens and themes](design-tokens-and-themes.md) now gives a staged selector, value and consumer migration plan for large global stylesheets, with compatibility and reflow checks. The [Batch 9 context ledger](../archive/planning/little-wins-batch-9-context-and-gap-ledger.md) documents the motivating source. No framework replacement or actual token export is claimed.
+[Design tokens and themes](design-tokens-and-themes.md) now gives a staged selector, value and consumer migration plan for large global stylesheets, with compatibility and reflow checks. The [Batch 9 context ledger](../../archive/planning/little-wins-batch-9-context-and-gap-ledger.md) documents the motivating source. No framework replacement or actual token export is claimed.
 
-**Wireframe hierarchy (proposed B2):** [Design principles](design-principles.md) define context, content hierarchy and primary/secondary actions in a screen. Use [task flows](../patterns/task-flows-and-information-architecture.md) for structurally meaningful alternatives and evaluation, and [wireframe methodology](../guidance/wireframe-methodology.md) for fidelity.
+**Wireframe hierarchy (proposed B2):** [Design principles](design-principles.md) define context, content hierarchy and primary/secondary actions in a screen. Use [task flows](../../specifications/patterns/task-flows-and-information-architecture.md) for structurally meaningful alternatives and evaluation, and [wireframe methodology](../guidance/wireframe-methodology.md) for fidelity.
 
 ## Batch 1 — semantic icon controls (proposed, 2026-11-07)
 
@@ -30,4 +30,4 @@ Related: [component model](../architecture/component-model.md), [accessibility](
 
 ## B06 — icon consistency audit (proposed, 2026-11-07)
 
-The [canonical icon-semantics contract](iconography-and-semantics.md) now includes CKG-05: a versioned intent/glyph registry audit for duplicated meanings, host accessible names, pending/confirmed status, RTL, theme and visual consistency, with migration/verification gates. [Quality gates](../governance/quality-gates.md) own interaction test evidence; no rendered UI or icon library has been verified by this documentation change.
+The [canonical icon-semantics contract](iconography-and-semantics.md) now includes CKG-05: a versioned intent/glyph registry audit for duplicated meanings, host accessible names, pending/confirmed status, RTL, theme and visual consistency, with migration/verification gates. [Quality gates](../../governance/quality-gates.md) own interaction test evidence; no rendered UI or icon library has been verified by this documentation change.
