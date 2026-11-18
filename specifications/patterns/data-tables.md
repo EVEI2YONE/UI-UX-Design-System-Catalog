@@ -38,11 +38,11 @@ Prefer responsive overflow or alternate summaries that preserve essential compar
 
 **Canonical ID:** `pattern.data-tables` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** preserve row action paths, sort state and data correctness. Proposed documentation, not a table library.
 
-Related: [search/filtering](search-and-filter.md), [task flows](task-flows-and-information-architecture.md), [accessibility](../guidance/accessibility.md), [internationalization](../guidance/internationalization.md). Standards: [WCAG 2.2](../governance/references.md).
+Related: [search/filtering](search-and-filter.md), [task flows](task-flows-and-information-architecture.md), [accessibility](../../knowledge/guidance/accessibility.md), [internationalization](../../knowledge/guidance/internationalization.md). Standards: [WCAG 2.2](../../governance/references.md).
 
 ## Batch 10 extension — dense records, editing and visualization
 
-**Representation choice:** Use a semantic data table for row/column comparison; use a [chart and narrative](../guidance/data-visualization-and-dashboards.md) for trends and distributions; use a detailed edit flow when validation, permission or explanation would become confusing in a compact grid. Do not substitute a visual dashboard for needed record-level actions.
+**Representation choice:** Use a semantic data table for row/column comparison; use a [chart and narrative](../../knowledge/guidance/data-visualization-and-dashboards.md) for trends and distributions; use a detailed edit flow when validation, permission or explanation would become confusing in a compact grid. Do not substitute a visual dashboard for needed record-level actions.
 
 ### Dense table decision matrix
 
@@ -60,12 +60,12 @@ Related: [search/filtering](search-and-filter.md), [task flows](task-flows-and-i
 
 A read-only sortable table should remain a semantic HTML table. Do **not** apply `role=grid` merely because it looks spreadsheet-like. If task research justifies cell navigation and editing, specify keyboard arrows, Enter/F2 behavior, Tab, selection, active descendant, undo/cancel, virtualized row handling and assistive-technology acceptance **as a separately reviewed interactive grid**. The [WAI-ARIA APG grid](https://www.w3.org/WAI/ARIA/apg/patterns/grid/) is an implementation reference, not a license to invent shortcuts.
 
-Related decisions: [advanced interactions and undo](advanced-interactions-and-reversible-actions.md), [visualization](../guidance/data-visualization-and-dashboards.md), [mobile and adaptive layout](../guidance/mobile-and-adaptive-platform-ux.md). Test actual integrated behavior; this is proposed documentation.
+Related decisions: [advanced interactions and undo](advanced-interactions-and-reversible-actions.md), [visualization](../../knowledge/guidance/data-visualization-and-dashboards.md), [mobile and adaptive layout](../../knowledge/guidance/mobile-and-adaptive-platform-ux.md). Test actual integrated behavior; this is proposed documentation.
 
 
 ## Batch 7 — accessible row actions without inventing a grid (2026-11-07)
 
-**Context-first example:** The Little Wins source renders semantic data cells but attaches `onClick`, `tabIndex=0` and Enter handling to the `<tr>`, with a decorative chevron in the final Actions column. This is a code observation, **not** a verified screen-reader failure. Its `components/ui` library also contains accessible control primitives; their mere presence does not establish usage.
+**Context-first example:** The Little Wins source renders semantic data cells but attaches `onClick`, `tabIndex=0` and Enter handling to the `<tr>`, with a decorative chevron in the final Actions column. This is a code observation, **not** a verified screen-reader failure. Its `specifications/components/ui` library also contains accessible control primitives; their mere presence does not establish usage.
 
 **Decision:** keep table semantics for scan-and-compare tasks. Prefer a native `<button>` inside an action cell for opening a review/details task, or a native `<a>` for route navigation. Give the action a record-specific accessible name such as “Review contribution: Garden cleanup”; avoid a row-wide tab stop whose activation semantics, label, and Space behavior are unclear. Do not change the table to `role=grid` simply to make rows clickable. Where an entire-row pointer target is useful, ensure it does not create nested interactive actions or duplicate keyboard stops; the explicit native control remains the primary accessible path.
 
@@ -75,4 +75,4 @@ Related decisions: [advanced interactions and undo](advanced-interactions-and-re
 
 ## Phase 6 executable pattern reference (2026-11-08)
 
-The visual catalog now includes an actual [Data tables implementation](../site/src/implementations/patterns/data-tables/DataTables.js), its [deterministic synthetic scenarios](../site/src/implementations/patterns/data-tables/scenarios.js), and [scoped demonstration styles](../site/src/implementations/patterns/data-tables/DataTables.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests. See the [Phase 6 evidence ledger](../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).
+The visual catalog now includes an actual [Data tables implementation](../../site/src/implementations/patterns/data-tables/DataTables.js), its [deterministic synthetic scenarios](../../site/src/implementations/patterns/data-tables/scenarios.js), and [scoped demonstration styles](../../site/src/implementations/patterns/data-tables/DataTables.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests. See the [Phase 6 evidence ledger](../../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).

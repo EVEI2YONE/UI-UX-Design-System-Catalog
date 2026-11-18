@@ -6,7 +6,7 @@
 
 Design AI and non-AI conversational experiences that remain understandable, interruptible and accessible when people switch between text, speech, images and graphical controls. **Use when** a task supports chat, dictation, spoken assistants, speech output, multimodal attachments or cross-channel handoff. **Avoid when** a simple labeled form, search, or command is more reliable or when speech is the only viable access route without an equivalent supported option.
 
-This pattern owns **turn-taking, speech/text continuity, transcript/edit affordances, interruption and modality transitions**. [AI experience guidance](../guidance/ai-powered-experiences-and-trust.md) owns disclosure and output uncertainty; [agentic actions](agentic-actions-and-approvals.md) owns permissions/approvals for consequential tool use. Voice recognition or synthesis is not proof of a model's understanding or task completion.
+This pattern owns **turn-taking, speech/text continuity, transcript/edit affordances, interruption and modality transitions**. [AI experience guidance](../../knowledge/guidance/ai-powered-experiences-and-trust.md) owns disclosure and output uncertainty; [agentic actions](agentic-actions-and-approvals.md) owns permissions/approvals for consequential tool use. Voice recognition or synthesis is not proof of a model's understanding or task completion.
 
 ## Modality choice and task context
 
@@ -77,4 +77,4 @@ For voice interactions, measure task outcome **separately** from recognition err
 
 **Canonical ID:** `pattern.multimodal-conversation` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
-Related: [AI experiences](../guidance/ai-powered-experiences-and-trust.md), [agentic actions](agentic-actions-and-approvals.md), [accessibility](../guidance/accessibility.md), [mobile adaptation](../guidance/mobile-and-adaptive-platform-ux.md), [content design](../guidance/content-design-and-ux-writing.md).
+Related: [AI experiences](../../knowledge/guidance/ai-powered-experiences-and-trust.md), [agentic actions](agentic-actions-and-approvals.md), [accessibility](../../knowledge/guidance/accessibility.md), [mobile adaptation](../../knowledge/guidance/mobile-and-adaptive-platform-ux.md), [content design](../../knowledge/guidance/content-design-and-ux-writing.md).

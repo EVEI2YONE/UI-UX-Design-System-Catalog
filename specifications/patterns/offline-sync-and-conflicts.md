@@ -69,7 +69,7 @@ Help people continue work safely across network loss, retries, delayed synchroni
 
 **Canonical ID:** `pattern.offline-sync` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
-Related: [interaction recovery](interaction-states-and-recovery.md), [form composition](forms.md), [service recovery](service-recovery-and-support.md), [authentication lifecycle](authentication-and-account-lifecycle.md), [privacy/trust](../guidance/privacy-consent-and-trust.md).
+Related: [interaction recovery](interaction-states-and-recovery.md), [form composition](forms.md), [service recovery](service-recovery-and-support.md), [authentication lifecycle](authentication-and-account-lifecycle.md), [privacy/trust](../../knowledge/guidance/privacy-consent-and-trust.md).
 
 
 ## Versioned aggregate migrations and safe restore (Batch 6 — proposed, 2026-11-07)

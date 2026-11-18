@@ -62,7 +62,7 @@ Identity/security owners define authentication assurance, session timeouts, perm
 
 **Canonical ID:** `pattern.authentication-lifecycle` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
-Related: [role-aware workspaces](role-aware-workspaces-and-context-switching.md), [forms](forms.md), [interaction recovery](interaction-states-and-recovery.md), [privacy](../guidance/privacy-consent-and-trust.md), [offline and sync](offline-sync-and-conflicts.md).
+Related: [role-aware workspaces](role-aware-workspaces-and-context-switching.md), [forms](forms.md), [interaction recovery](interaction-states-and-recovery.md), [privacy](../../knowledge/guidance/privacy-consent-and-trust.md), [offline and sync](offline-sync-and-conflicts.md).
 
 
 ## Hosted-platform identity boundary — Little Wins evidence-led extension (2026-11-07)

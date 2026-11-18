@@ -4,7 +4,7 @@
 
 ## Purpose and decision boundary
 
-Help users safely delegate multi-step work to an AI agent, understand what it will access and change, intervene before consequential actions, and verify final outcomes. **Use when** an AI feature can invoke tools, manipulate files, communicate externally, change records, purchase, schedule, or make other side-effecting decisions. **Avoid when** the feature only proposes text for human copying; apply [AI experience guidance](../guidance/ai-powered-experiences-and-trust.md) instead.
+Help users safely delegate multi-step work to an AI agent, understand what it will access and change, intervene before consequential actions, and verify final outcomes. **Use when** an AI feature can invoke tools, manipulate files, communicate externally, change records, purchase, schedule, or make other side-effecting decisions. **Avoid when** the feature only proposes text for human copying; apply [AI experience guidance](../../knowledge/guidance/ai-powered-experiences-and-trust.md) instead.
 
 The AI may propose actions; the application owns **authorization, permission scope, approval enforcement, execution, audit and idempotency**. A visible approval dialog is insufficient without a real server-side gate. Existing [advanced interactions](advanced-interactions-and-reversible-actions.md) owns generic undo and bulk-selection presentation; [role-aware workspaces](role-aware-workspaces-and-context-switching.md) owns identity/tenant context.
 
@@ -84,4 +84,4 @@ Approval screens need semantic labels, keyboard and screen-reader operation, foc
 
 **Canonical ID:** `pattern.agentic-actions` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
-Related: [AI experiences](../guidance/ai-powered-experiences-and-trust.md), [advanced interactions](advanced-interactions-and-reversible-actions.md), [role-aware workspaces](role-aware-workspaces-and-context-switching.md), [privacy/trust](../guidance/privacy-consent-and-trust.md), [recovery](interaction-states-and-recovery.md), [voice and multimodal](conversational-voice-and-multimodal-ux.md).
+Related: [AI experiences](../../knowledge/guidance/ai-powered-experiences-and-trust.md), [advanced interactions](advanced-interactions-and-reversible-actions.md), [role-aware workspaces](role-aware-workspaces-and-context-switching.md), [privacy/trust](../../knowledge/guidance/privacy-consent-and-trust.md), [recovery](interaction-states-and-recovery.md), [voice and multimodal](conversational-voice-and-multimodal-ux.md).

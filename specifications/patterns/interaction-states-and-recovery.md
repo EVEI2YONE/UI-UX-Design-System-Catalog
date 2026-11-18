@@ -21,7 +21,7 @@ Make system status and user control clear during input, asynchronous work, empty
 
 ## Dialog/focus example
 
-On opening a modal dialog, define an appropriate initial focus target; keep background interaction inaccessible when truly modal; provide an understandable close path. On close, restore focus to a sensible invoking element or next workflow target. Test special cases such as the invoker being removed. Consult [accessibility guidance](../guidance/accessibility.md).
+On opening a modal dialog, define an appropriate initial focus target; keep background interaction inaccessible when truly modal; provide an understandable close path. On close, restore focus to a sensible invoking element or next workflow target. Test special cases such as the invoker being removed. Consult [accessibility guidance](../../knowledge/guidance/accessibility.md).
 
 **Avoid:** losing form data after a server error; spinners without status; a disabled button with no explanation; trapping focus after modal closure.
 
@@ -76,7 +76,7 @@ For feature-sensitive transactions, verify the authoritative configuration again
 
 **Use when:** preparing a static wireframe, screen sequence or design review of a task with async operations, empty data, permission limits, errors, success or reversible/irreversible actions. **Avoid when:** a polished default-state image is treated as the complete flow, state changes are implied to execute in an image, or speculative server permissions/outcomes are presented as observed behavior.
 
-This is the canonical owner of **generic state and recovery semantics**. [Wireframe methodology](../guidance/wireframe-methodology.md) owns fidelity and static-to-interactive escalation; [task flows](task-flows-and-information-architecture.md) owns screen sequence and meaningful alternatives; [feedback](feedback.md) owns persistent/inline/transient message presentation; [forms](forms.md) owns field validation details; [offline/sync](offline-sync-and-conflicts.md) owns device/server sync states; [accessibility](../guidance/accessibility.md) owns implementation-level semantic and assistive checks. Avoid duplicate policy or invented application capabilities.
+This is the canonical owner of **generic state and recovery semantics**. [Wireframe methodology](../../knowledge/guidance/wireframe-methodology.md) owns fidelity and static-to-interactive escalation; [task flows](task-flows-and-information-architecture.md) owns screen sequence and meaningful alternatives; [feedback](feedback.md) owns persistent/inline/transient message presentation; [forms](forms.md) owns field validation details; [offline/sync](offline-sync-and-conflicts.md) owns device/server sync states; [accessibility](../../knowledge/guidance/accessibility.md) owns implementation-level semantic and assistive checks. Avoid duplicate policy or invented application capabilities.
 
 ### Minimum state inventory: select by task, not a fixed count
 
@@ -129,7 +129,7 @@ Use stable screen IDs (for example `S2-pending`, `S2-error`, `S2-confirmed`) and
 
 ## B03 — icon/state synchronization and post-mutation focus continuity (CKG-09/10; proposed 2026-11-07)
 
-**Purpose:** make transitions from component intent to authoritative outcome legible across icons, status text, action availability, selection and focus. Existing [icon semantics](../foundations/iconography-and-semantics.md) owns icon meaning; [component contracts](../architecture/component-contracts.md) owns event emission and sibling-state coordination; this pattern owns *when a workflow may present an outcome and how it recovers focus when content changes*. This is reusable guidance, not a new UI primitive or a claim that any app has implemented it.
+**Purpose:** make transitions from component intent to authoritative outcome legible across icons, status text, action availability, selection and focus. Existing [icon semantics](../../knowledge/foundations/iconography-and-semantics.md) owns icon meaning; [component contracts](../../knowledge/architecture/component-contracts.md) owns event emission and sibling-state coordination; this pattern owns *when a workflow may present an outcome and how it recovers focus when content changes*. This is reusable guidance, not a new UI primitive or a claim that any app has implemented it.
 
 ### CKG-09 — synchronized icon, label and domain-state contract
 
@@ -199,4 +199,4 @@ A server acknowledgment is not automatically proof that all dependent read model
 
 ## Phase 6 executable pattern reference (2026-11-08)
 
-The visual catalog now includes an actual [Interaction recovery implementation](../site/src/implementations/patterns/recovery/Recovery.js), its [deterministic synthetic scenarios](../site/src/implementations/patterns/recovery/scenarios.js), and [scoped demonstration styles](../site/src/implementations/patterns/recovery/Recovery.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests. See the [Phase 6 evidence ledger](../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).
+The visual catalog now includes an actual [Interaction recovery implementation](../../site/src/implementations/patterns/recovery/Recovery.js), its [deterministic synthetic scenarios](../../site/src/implementations/patterns/recovery/scenarios.js), and [scoped demonstration styles](../../site/src/implementations/patterns/recovery/Recovery.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests. See the [Phase 6 evidence ledger](../../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).

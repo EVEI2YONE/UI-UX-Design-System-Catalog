@@ -38,7 +38,7 @@ Use text, icon and structure rather than color alone; test contrast, zoom/reflow
 
 **Canonical ID:** `pattern.feedback` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** unify messaging semantics while preserving critical persistent feedback. This is proposed guidance, not a shipped toast implementation.
 
-Related: [interaction recovery](interaction-states-and-recovery.md), [form composition](forms.md), [accessibility](../guidance/accessibility.md), [UX measurement](../guidance/ux-measurement.md). Standards: [WCAG 2.2 and WAI-ARIA APG](../governance/references.md).
+Related: [interaction recovery](interaction-states-and-recovery.md), [form composition](forms.md), [accessibility](../../knowledge/guidance/accessibility.md), [UX measurement](../../knowledge/guidance/ux-measurement.md). Standards: [WCAG 2.2 and WAI-ARIA APG](../../governance/references.md).
 
 ## Batch 9 boundary — notification delivery vs in-task feedback
 

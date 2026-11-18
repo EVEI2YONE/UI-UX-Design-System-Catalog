@@ -48,6 +48,6 @@ Use accessible provider-hosted fields where appropriate; label errors and next a
 - [FTC Bringing Dark Patterns to Light](https://www.ftc.gov/reports/bringing-dark-patterns-light) (2022 staff report; consulted 2026-11-07): deceptive subscription UX concerns; not legal clearance.
 - [PCI Security Standards Council](https://www.pcisecuritystandards.org/document_library/) (consulted 2026-11-07): scope and current standards require provider/security validation; this page does not prescribe a compliance path.
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (Recommendation; consulted 2026-11-07): accessibility criteria, not product conformance.
-- [Account/settings portal](account-and-settings-portal.md) for navigation and saving, [role-aware workspaces](role-aware-workspaces-and-context-switching.md) for actor/tenant authorization, [forms](forms.md) for validation, [privacy](../guidance/privacy-consent-and-trust.md) for data rights.
+- [Account/settings portal](account-and-settings-portal.md) for navigation and saving, [role-aware workspaces](role-aware-workspaces-and-context-switching.md) for actor/tenant authorization, [forms](forms.md) for validation, [privacy](../../knowledge/guidance/privacy-consent-and-trust.md) for data rights.
  
 **Canonical ID:** `pattern.billing-subscription-settings`.
