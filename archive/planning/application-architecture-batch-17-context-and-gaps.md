@@ -6,11 +6,11 @@
 
 | Source | Existing coverage | Gap classification |
 | --- | --- | --- |
-| `architecture/application-architecture.md` (Batch 13) | Context-first selection and example prototype/MVP/modular/enterprise trees | incomplete: examples are generic and routing conventions are explicitly deferred |
-| `architecture/module-boundaries-and-developer-navigation.md` (Batch 14) | Feature/domain/shared ownership and developer navigation | incomplete: no decision rules for router-owned vs feature-owned files |
-| `architecture/architecture-evolution.md` (Batch 15) | Incremental migration and architecture fitness | incomplete: no framework-specific route preservation scenarios |
-| `architecture/enterprise-and-multiapp.md` (Batch 16) | Repository topology and multi-app ownership | already covered at topology level; do not duplicate |
-| `patterns/navigation.md` / `pattern.navigation` | User-facing navigation semantics | adjacent knowledge, not source folder or framework rules |
+| `knowledge/architecture/application-architecture.md` (Batch 13) | Context-first selection and example prototype/MVP/modular/enterprise trees | incomplete: examples are generic and routing conventions are explicitly deferred |
+| `knowledge/architecture/module-boundaries-and-developer-navigation.md` (Batch 14) | Feature/domain/shared ownership and developer navigation | incomplete: no decision rules for router-owned vs feature-owned files |
+| `knowledge/architecture/architecture-evolution.md` (Batch 15) | Incremental migration and architecture fitness | incomplete: no framework-specific route preservation scenarios |
+| `knowledge/architecture/enterprise-and-multiapp.md` (Batch 16) | Repository topology and multi-app ownership | already covered at topology level; do not duplicate |
+| `specifications/patterns/navigation.md` / `pattern.navigation` | User-facing navigation semantics | adjacent knowledge, not source folder or framework rules |
 
 ## Primary source ledger (consulted 2026-11-07)
 

@@ -18,18 +18,18 @@ Choose the **developer task first**, then read its canonical guidance. This sect
 
 **Fast path:** select an [architecture profile](application-architecture.md) → assign [module owners](module-boundaries-and-developer-navigation.md) → inspect [framework conventions](framework-aware-application-structure.md) → consult [examples](application-architecture-reference-examples.md). Use [enterprise topology](enterprise-and-multiapp.md), [migration](architecture-evolution.md) and [enforcement](architecture-enforcement-and-ci.md) only when the actual task needs them.
 
-**Component versus application boundary:** the [component model](component-model.md) owns reusable component tiers (foundations/tokens → primitives → components → patterns/features → pages/modal flows). A shared `Dialog` owns keyboard and focus semantics, while an account-deletion flow owns its user-facing confirmation, authorization, mutation and telemetry. See [interaction recovery](../patterns/interaction-states-and-recovery.md) and [lifecycle governance](../governance/lifecycle-and-decisions.md). [Core control specifications](../components/README.md) are not runtime implementations.
+**Component versus application boundary:** the [component model](component-model.md) owns reusable component tiers (foundations/tokens → primitives → components → patterns/features → pages/modal flows). A shared `Dialog` owns keyboard and focus semantics, while an account-deletion flow owns its user-facing confirmation, authorization, mutation and telemetry. See [interaction recovery](../../specifications/patterns/interaction-states-and-recovery.md) and [lifecycle governance](../../governance/lifecycle-and-decisions.md). [Core control specifications](../../specifications/components/README.md) are not runtime implementations.
 
 ## Source and verification context
 
-- [Batches 13–16: selection, modules, migration, enterprise](../archive/planning/application-architecture-batches-13-16-context-and-gaps.md)
-- [Batch 17: framework routing](../archive/planning/application-architecture-batch-17-context-and-gaps.md)
-- [Batch 18: enforcement and CI](../archive/planning/application-architecture-batch-18-context-and-gaps.md)
-- [Batch 19: applied examples](../archive/planning/application-architecture-batch-19-context-and-gaps.md)
-- [Batch 20: final coverage audit and unresolved evidence](../archive/planning/application-architecture-batch-20-closure-audit.md)
-- Earlier work: [Batch 9 component extraction context](../archive/planning/little-wins-batch-9-context-and-gap-ledger.md); Batch 12 component design-to-code trace is documented in [component contracts](component-contracts.md).
+- [Batches 13–16: selection, modules, migration, enterprise](../../archive/planning/application-architecture-batches-13-16-context-and-gaps.md)
+- [Batch 17: framework routing](../../archive/planning/application-architecture-batch-17-context-and-gaps.md)
+- [Batch 18: enforcement and CI](../../archive/planning/application-architecture-batch-18-context-and-gaps.md)
+- [Batch 19: applied examples](../../archive/planning/application-architecture-batch-19-context-and-gaps.md)
+- [Batch 20: final coverage audit and unresolved evidence](../../archive/planning/application-architecture-batch-20-closure-audit.md)
+- Earlier work: [Batch 9 component extraction context](../../archive/planning/little-wins-batch-9-context-and-gap-ledger.md); Batch 12 component design-to-code trace is documented in [component contracts](component-contracts.md).
 
-For agent retrieval, resolve canonical IDs using [the registry](../catalog/index.json) and [AGENTS.md](../AGENTS.md), then follow `related` and `depends_on` selectively. The [quality gates](../governance/quality-gates.md) distinguish documentation validation from tested accessibility, DX and application behavior. No runtime test can be marked PASS because a Markdown validator succeeded.
+For agent retrieval, resolve canonical IDs using [the registry](../../catalog/index.json) and [AGENTS.md](../../AGENTS.md), then follow `related` and `depends_on` selectively. The [quality gates](../../governance/quality-gates.md) distinguish documentation validation from tested accessibility, DX and application behavior. No runtime test can be marked PASS because a Markdown validator succeeded.
 
 ## B02 — component anatomy and event coordination (proposed, 2026-11-07)
 

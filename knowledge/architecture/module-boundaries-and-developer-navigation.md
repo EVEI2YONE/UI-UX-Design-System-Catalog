@@ -4,7 +4,7 @@
 
 ## Context collected at batch start
 
-Existing [component-model](component-model.md) defines the primitive/component/feature boundary, public contracts and incremental extraction. [Component contracts](component-contracts.md) document reusable UI behavior; [lifecycle](../governance/lifecycle-and-decisions.md) covers ownership. Missing at application level: feature vs domain ownership, imports and navigation by developer task. This page extends rather than duplicates component-specific requirements.
+Existing [component-model](component-model.md) defines the primitive/component/feature boundary, public contracts and incremental extraction. [Component contracts](component-contracts.md) document reusable UI behavior; [lifecycle](../../governance/lifecycle-and-decisions.md) covers ownership. Missing at application level: feature vs domain ownership, imports and navigation by developer task. This page extends rather than duplicates component-specific requirements.
 
 Before applying it to a target: record framework/routing, the most-changed user journeys, module imports, repeated behavior vs visual similarity, current file ownership, cross-team changes, testing infrastructure and meaningful examples of slow code lookup. Report unknowns.
 
@@ -30,9 +30,9 @@ A feature often starts as three colocated files. Add components/api/model/hooks 
 - Module public entrypoints are preferred for cross-boundary imports; internal relative imports remain fine within a module.
 - When domain-to-domain relationships are required, identify a direction or explicit integration contract and reject dependency cycles.
 
-**Example:** `features/projects/index.ts` exports `ProjectsPage` and a stable query hook only when an external consumer genuinely needs it. `features/projects/components/EditProjectDialog.tsx` remains private. `shared/ui/Dialog` owns accessible focus behavior; project validation and save/retry belong in the projects feature/domain.
+**Example:** `specifications/experiences/projects/index.ts` exports `ProjectsPage` and a stable query hook only when an external consumer genuinely needs it. `specifications/experiences/projects/components/EditProjectDialog.tsx` remains private. `shared/ui/Dialog` owns accessible focus behavior; project validation and save/retry belong in the projects feature/domain.
 
-**Anti-example:** `shared/lib/helpers.ts` imports `features/projects/api`, and a settings feature deep-imports a project modal, making changes propagate unpredictably.
+**Anti-example:** `shared/lib/helpers.ts` imports `specifications/experiences/projects/api`, and a settings feature deep-imports a project modal, making changes propagate unpredictably.
 
 ## Promoting reuse without creating a dumping ground
 
@@ -48,6 +48,6 @@ Evaluate with a small task lookup exercise: ask a developer unfamiliar with the 
 
 ## Enforcement and acceptance
 
-Document allowed imports and owners, then implement boundary lint rules, dependency graph cycle checks and module contract tests in the target's existing tooling. Avoid imposing a specific lint plugin without framework/toolchain assessment. Confirm that route deep links, state/error/loading and keyboard/focus/RTL flows survive extraction. Capture before/after import graph, search-to-edit path and duplicate-code reduction. See [selection](application-architecture.md), [component hierarchy](component-model.md), and [quality gates](../governance/quality-gates.md).
+Document allowed imports and owners, then implement boundary lint rules, dependency graph cycle checks and module contract tests in the target's existing tooling. Avoid imposing a specific lint plugin without framework/toolchain assessment. Confirm that route deep links, state/error/loading and keyboard/focus/RTL flows survive extraction. Capture before/after import graph, search-to-edit path and duplicate-code reduction. See [selection](application-architecture.md), [component hierarchy](component-model.md), and [quality gates](../../governance/quality-gates.md).
 
 **Scope:** reusable guidance only; no app has been refactored or tested.

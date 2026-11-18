@@ -4,7 +4,7 @@
 
 ## Context and prior-knowledge audit (Batch 16)
 
-The [application selection guide](application-architecture.md) distinguishes a multi-app profile from a modular single app; [module boundaries](module-boundaries-and-developer-navigation.md) defines feature/domain/shared ownership, and [evolution](architecture-evolution.md) defines migration and fitness. Existing [lifecycle](../governance/lifecycle-and-decisions.md) already covers component contracts and deprecation. This page adds multi-application topology and multi-team delivery decisions, not a duplicate component lifecycle.
+The [application selection guide](application-architecture.md) distinguishes a multi-app profile from a modular single app; [module boundaries](module-boundaries-and-developer-navigation.md) defines feature/domain/shared ownership, and [evolution](architecture-evolution.md) defines migration and fitness. Existing [lifecycle](../../governance/lifecycle-and-decisions.md) already covers component contracts and deprecation. This page adds multi-application topology and multi-team delivery decisions, not a duplicate component lifecycle.
 
 Collect evidence before choosing: app count and platform differences, independent deploy frequency, common consumers, authentication/session and data boundaries, accessibility/brand consistency, API contracts, repository access control, CI/build graph, team ownership, release governance, test and rollback capacity. Never infer a monorepo is needed because an organization calls itself enterprise.
 
@@ -58,4 +58,4 @@ When splitting an existing app or package, begin with stable high-value consumer
 
 ## Evidence and applicability
 
-Consult the target stack's current workspace/build/deployment and browser/platform documentation before prescribing libraries. This is proposed general guidance, not a claim that a monorepo, microfrontend or a specific tool is universally superior. Follow [quality gates](../governance/quality-gates.md) and [lifecycle](../governance/lifecycle-and-decisions.md).
+Consult the target stack's current workspace/build/deployment and browser/platform documentation before prescribing libraries. This is proposed general guidance, not a claim that a monorepo, microfrontend or a specific tool is universally superior. Follow [quality gates](../../governance/quality-gates.md) and [lifecycle](../../governance/lifecycle-and-decisions.md).

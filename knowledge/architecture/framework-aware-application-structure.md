@@ -39,7 +39,7 @@ src/
     ui/
 ```
 
-The App Router uses filesystem-defined route segments and special files. Parenthesized route groups organize routes without adding segments to URLs; they can also influence layout boundaries. Next.js permits colocating project files within route segments, so `features/` outside `app/` is an **option**, not a Next.js requirement. Choose route colocation for route-only code, and an external feature when multiple routes actually share an owner. Keep server-only code out of client imports; check current Next.js official runtime and file conventions before moving components. Do not suggest moving `page.tsx` into an arbitrary feature tree or treating `(group)` as a URL segment.
+The App Router uses filesystem-defined route segments and special files. Parenthesized route groups organize routes without adding segments to URLs; they can also influence layout boundaries. Next.js permits colocating project files within route segments, so `specifications/experiences/` outside `app/` is an **option**, not a Next.js requirement. Choose route colocation for route-only code, and an external feature when multiple routes actually share an owner. Keep server-only code out of client imports; check current Next.js official runtime and file conventions before moving components. Do not suggest moving `page.tsx` into an arbitrary feature tree or treating `(group)` as a URL segment.
 
 Source: [Next.js App Router route groups](https://nextjs.org/docs/app/api-reference/file-conventions/route-groups) and [Next.js project organization](https://nextjs.org/docs/app/getting-started/project-structure).
 
@@ -60,7 +60,7 @@ src/
       ui/
 ```
 
-Angular's official style guide favors organizing by feature area, colocating related component files and tests, and avoiding large top-level folders grouped only by code type. Do not force a React-style `features/projects/hooks/` tree onto Angular; respect Angular's component, template and dependency-injection conventions. Keep files named consistently with the project's prevailing style and the Angular guide.
+Angular's official style guide favors organizing by feature area, colocating related component files and tests, and avoiding large top-level folders grouped only by code type. Do not force a React-style `specifications/experiences/projects/hooks/` tree onto Angular; respect Angular's component, template and dependency-injection conventions. Keep files named consistently with the project's prevailing style and the Angular guide.
 
 Source: [Angular style guide](https://angular.dev/style-guide).
 
