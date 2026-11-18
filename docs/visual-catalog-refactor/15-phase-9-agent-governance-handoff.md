@@ -29,7 +29,7 @@ The baseline `main` commit audited at Phase 0 was `3b933abea778122dece31af7496f4
 
 **Human journey:** open locally generated `/catalog/`, search for `human approval queue`, open `/catalog/features/review-workspace/`, read the canonical specification, inspect the code, scenarios and synthetic adapter, and follow cross-reference links. Chromium checks the search-to-canonical-detail route as a real interaction.
 
-**Agent journey:** execute `python3 scripts/find_concept.py "human approval queue" --json --limit 5`, select canonical `feature.review-workspace`, inspect `features/review-workspace/spec.md`, then inspect `site/src/implementations/features/review-workspace/ReviewWorkspace.js`, colocated `scenarios.js` and `mock-adapter.js` if the task concerns executable behavior. Check `avoid_when`, related IDs, review status, and supporting test evidence. Never assume synthetic authorization or server persistence.
+**Agent journey:** execute `python3 scripts/find_concept.py "human approval queue" --json --limit 5`, select canonical `feature.review-workspace`, inspect `specifications/experiences/review-workspace/spec.md`, then inspect `site/src/implementations/features/review-workspace/ReviewWorkspace.js`, colocated `scenarios.js` and `mock-adapter.js` if the task concerns executable behavior. Check `avoid_when`, related IDs, review status, and supporting test evidence. Never assume synthetic authorization or server persistence.
 
 **Distinct authority case:** human record moderation is `feature.review-workspace`; AI-agent delegated tool approval is `pattern.agentic-actions`. These are related but not interchangeable. The exact phrase `synthetic review` currently has no lookup result and is a known search-coverage gap. Ambiguous `settings` may return several valid concepts; don't force one owner without disambiguation.
 
@@ -37,7 +37,7 @@ The baseline `main` commit audited at Phase 0 was `3b933abea778122dece31af7496f4
 
 | Claim type | Required source | Example |
 | --- | --- | --- |
-| Normative guidance | Canonical ID + Markdown `path` | `component.dialog` → `components/dialog/spec.md` |
+| Normative guidance | Canonical ID + Markdown `path` | `component.dialog` → `specifications/components/dialog/spec.md` |
 | Executable reference | `implementation.source_path`, scenario and preview route | `feature.review-workspace` → checked-in `ReviewWorkspace.js` + fixtures |
 | Synthetic backend boundary | Colocated mock adapter and spec | `mock-adapter.js` cannot enforce production authorization |
 | Verified source behavior | Named test, workflow SHA and result | Node review-workspace behavioral tests |

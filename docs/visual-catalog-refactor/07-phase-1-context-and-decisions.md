@@ -9,21 +9,21 @@
 
 The actual repository has **53 registered canonical concepts**, `schema_version: 0.1.0`, and existing catalog `layer` values: `principles`, `foundations`, `tokens`, `components`, `experiences`, `behavior`, `cross-cutting`, `intelligence`, `patterns` and `context`. The registry schema defines additional possible layers, including `primitives`. **These values classify knowledge and need not map one-to-one to source folders or the site's visual tabs.** Phase 1 must not rename them in bulk.
 
-Six specification owners already exist in `components/`: Button, Input, Select, Checkbox, Dialog and Field. These are proposed specifications, not runtime controls. Canonical owners for existing foundation, architecture, task patterns and settings-related experiences must be reused. Site-based visual examples have not been verified.
+Six specification owners already exist in `specifications/components/`: Button, Input, Select, Checkbox, Dialog and Field. These are proposed specifications, not runtime controls. Canonical owners for existing foundation, architecture, task patterns and settings-related experiences must be reused. Site-based visual examples have not been verified.
 
 ### Sources examined
 
 | Source | Context and consequence |
 | --- | --- |
 | `catalog/index.json`, `catalog/schema.json` | Current identity layer and strict schema; defer additions to Phase 2 |
-| `architecture/component-model.md` | Already defines foundations → primitives → components → patterns/features → pages; clarify feature reference distinction without wholesale rewrite |
-| `architecture/component-contracts.md` | States, semantics, API, performance-related and evidence requirements; extend by reference, don't restate |
-| `architecture/module-boundaries-and-developer-navigation.md` | Product feature/domain vs shared UI separation; keep no backend in site |
+| `knowledge/architecture/component-model.md` | Already defines foundations → primitives → components → patterns/features → pages; clarify feature reference distinction without wholesale rewrite |
+| `knowledge/architecture/component-contracts.md` | States, semantics, API, performance-related and evidence requirements; extend by reference, don't restate |
+| `knowledge/architecture/module-boundaries-and-developer-navigation.md` | Product feature/domain vs shared UI separation; keep no backend in site |
 | `governance/lifecycle-and-decisions.md` | Reuse decision order, lifecycle, owner and evidence gates |
-| `components/README.md` | Six controls and no executable implementation assertion |
-| `patterns/account-and-settings-portal.md` | Extensive existing settings composition; don't create duplicate normative settings guidance |
-| `patterns/agentic-actions-and-approvals.md` | Human/AI approval separation and consequences; generic human-review feature is not automatically identical to agentic tool approval |
-| `patterns/data-tables.md`, `patterns/search-and-filter.md` | Data management task building blocks already addressed |
+| `specifications/components/README.md` | Six controls and no executable implementation assertion |
+| `specifications/patterns/account-and-settings-portal.md` | Extensive existing settings composition; don't create duplicate normative settings guidance |
+| `specifications/patterns/agentic-actions-and-approvals.md` | Human/AI approval separation and consequences; generic human-review feature is not automatically identical to agentic tool approval |
+| `specifications/patterns/data-tables.md`, `specifications/patterns/search-and-filter.md` | Data management task building blocks already addressed |
 | `templates/concept-entry.md`, `AGENTS.md`, `CONTRIBUTING.md` | Existing canonical publication and retrieval rules |
 | `docs/visual-catalog-refactor/01–06` | Prior architecture options, scope and single-PR execution plan |
 
@@ -69,8 +69,8 @@ A feature reference may depend on components/patterns and synthetic adapters but
 | ID | Decision | Status | Rationale | Revisit trigger |
 | --- | --- | --- | --- | --- |
 | P1-D01 | Preserve canonical registry IDs, paths and current layers | Proposed | Avoid agent lookup regressions | Phase 2 schema requirements |
-| P1-D02 | Maintain `components/*/spec.md` and `patterns/*.md` as normative owners | Proposed | Existing contracts are extensive | Evidence of duplicate/obsolete owner |
-| P1-D03 | Add `features/README.md` as **classification/navigation only** | Proposed | Clarifies reusable feature vs app-specific page | Phase 7 feature spec |
+| P1-D02 | Maintain `specifications/components/*/spec.md` and `specifications/patterns/*.md` as normative owners | Proposed | Existing contracts are extensive | Evidence of duplicate/obsolete owner |
+| P1-D03 | Add `specifications/experiences/README.md` as **classification/navigation only** | Proposed | Clarifies reusable feature vs app-specific page | Phase 7 feature spec |
 | P1-D04 | Add an unregistered feature reference authoring template | Proposed | Makes completeness/adapter boundary explicit without false implementation status | Phase 7 pilot |
 | P1-D05 | Use `site/src/implementations/` for executable examples, separate from site chrome | Proposed | One rendered source, no packages | Actual site build |
 | P1-D06 | Keep app credentials, backend auth, domain mutations and persistence outside the site | Proposed | Safe and portable examples | Scope/security review |

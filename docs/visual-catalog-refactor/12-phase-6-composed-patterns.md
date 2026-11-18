@@ -6,7 +6,7 @@
 
 ## Context gathered before authoring
 
-The repository already had canonical [form](../../patterns/forms.md), [navigation](../../patterns/navigation.md), [search/filter](../../patterns/search-and-filter.md), [data table](../../patterns/data-tables.md), and [interaction recovery](../../patterns/interaction-states-and-recovery.md) contracts. Each was already indexed. Phase 5 added six native component references and an iframe runner that can display a source-controlled classic JavaScript implementation with synthetic scenarios, source parity and light/dark/high-contrast theme controls.
+The repository already had canonical [form](../../specifications/patterns/forms.md), [navigation](../../specifications/patterns/navigation.md), [search/filter](../../specifications/patterns/search-and-filter.md), [data table](../../specifications/patterns/data-tables.md), and [interaction recovery](../../specifications/patterns/interaction-states-and-recovery.md) contracts. Each was already indexed. Phase 5 added six native component references and an iframe runner that can display a source-controlled classic JavaScript implementation with synthetic scenarios, source parity and light/dark/high-contrast theme controls.
 
 **Taxonomy decision:** introduce **no new pattern IDs**, no product services or backend adapters. Attach actual composed examples to the existing five pattern concepts. The website remains statically readable without JS; only the preview frames need JS.
 
