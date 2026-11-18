@@ -23,6 +23,7 @@ PREFIXES = {
     "features": "specifications/experiences",
 }
 STAGING = ROOT / "temp" / "legacy"
+MANIFEST = ROOT / "docs" / "restructure" / "migration-map.json"
 
 
 def destination(relative_path):
@@ -36,8 +37,10 @@ def files_under(base):
 
 
 def plan():
+    if MANIFEST.is_file():
+        return json.loads(MANIFEST.read_text(encoding="utf-8"))["entries"]
     if not STAGING.is_dir():
-        raise FileNotFoundError("No temp/legacy snapshot; use the staging commit or --check.")
+        raise FileNotFoundError("No migration manifest or temp/legacy snapshot.")
     return [{"source": name, "destination": destination(name)}
             for name in files_under(STAGING)]
 
@@ -50,11 +53,11 @@ def validate(final=False):
     inventory = STAGING.is_dir()
     if final and inventory:
         issues.append("Remove temp/legacy from final tree after verifying its staging commit.")
-    if inventory:
-        expected = {destination(name) for name in files_under(STAGING)}
+    if MANIFEST.is_file() or inventory:
+        expected = {e["destination"] for e in plan()}
         current = {name for name in files_under(ROOT) if not name.startswith("temp/legacy/")}
         missing = sorted(expected - current)
-        issues += ["Staged file has no migrated destination: " + name for name in missing]
+        issues += ["Original file has no migrated destination: " + name for name in missing]
     registry_path = ROOT / "catalog/index.json"
     if not registry_path.is_file():
         issues.append("Missing catalog/index.json")
