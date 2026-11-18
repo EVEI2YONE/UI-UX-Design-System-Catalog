@@ -22,7 +22,7 @@ light: color.action.primary.background = reference.blue.600
 dark:  color.action.primary.background = reference.blue.300
 ```
 
-For interoperable exports, consider the [DTCG 2025.10 typed format](../governance/references.md) with `$type`, `$value` and aliases. It is a W3C Community Group report, **not a W3C Recommendation**.
+For interoperable exports, consider the [DTCG 2025.10 typed format](../../governance/references.md) with `$type`, `$value` and aliases. It is a W3C Community Group report, **not a W3C Recommendation**.
 
 ## Design rules
 
@@ -93,7 +93,7 @@ Keep **one reviewed semantic token source** with explicit schema version, types,
 
 Sources consulted 2026-11-07: [DTCG Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/), [DTCG spec status and caveats](https://www.designtokens.org/faq/) and [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots). No actual token transform or test occurred as part of this docs-only addition.
 
-Related: [component contracts](../architecture/component-contracts.md), [quality gates](../governance/quality-gates.md), [lifecycle](../governance/lifecycle-and-decisions.md).
+Related: [component contracts](../architecture/component-contracts.md), [quality gates](../../governance/quality-gates.md), [lifecycle](../../governance/lifecycle-and-decisions.md).
 
 
 ## Batch 9 — legacy global CSS to scoped semantic styling (proposed, 2026-11-07)
@@ -119,7 +119,7 @@ Optional accessibility adjustments (contrast, density, motion or text) must not 
 
 **Example:** system theme defaults to OS setting, manual selection clearly overrides and can revert to system. **Anti-example:** a dark-mode toggle is shown while the app still has unreadable dark overlays and hard-coded text colors.
 
-**Verification NOT VERIFIED:** first load/flicker, reload and concurrent device preference, system theme changes, high-contrast/forced colors, reduced motion, keyboard/screen reader, locale text expansion, logged-out behavior. See [account settings](../patterns/account-and-settings-portal.md), [accessibility](../guidance/accessibility.md), and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07).
+**Verification NOT VERIFIED:** first load/flicker, reload and concurrent device preference, system theme changes, high-contrast/forced colors, reduced motion, keyboard/screen reader, locale text expansion, logged-out behavior. See [account settings](../../specifications/patterns/account-and-settings-portal.md), [accessibility](../guidance/accessibility.md), and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07).
 
 ## Aesthetic palette and typography decisions — craftsmanship Batch 1 (proposed)
 

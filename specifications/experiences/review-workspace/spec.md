@@ -76,7 +76,7 @@ Loaded queue, empty, loading, read-only, denied, stale conflict, known failure, 
 - [Interaction recovery](../../patterns/interaction-states-and-recovery.md) — pending/unknown/retry semantics.
 - [Role-aware workspaces](../../patterns/role-aware-workspaces-and-context-switching.md) — context signaling; no UI-only access control.
 - [Agentic approvals](../../patterns/agentic-actions-and-approvals.md) — related but different delegation/authorization workflow; **do not duplicate**.
-- [Accessibility](../../guidance/accessibility.md), [internationalization](../../guidance/internationalization.md), [performance](../../guidance/performance-and-perceived-speed.md).
+- [Accessibility](../../../knowledge/guidance/accessibility.md), [internationalization](../../../knowledge/guidance/internationalization.md), [performance](../../../knowledge/guidance/performance-and-perceived-speed.md).
 
 ## UX, accessibility, readability, responsiveness and performance
 
@@ -86,13 +86,13 @@ Bound rendered rows or paginate larger queues instead of rendering unbounded lis
 
 ## Reference and evidence
 
-- **Implementation:** [ReviewWorkspace.js](../../site/src/implementations/features/review-workspace/ReviewWorkspace.js)
-- **Synthetic adapter:** [mock-adapter.js](../../site/src/implementations/features/review-workspace/mock-adapter.js)
-- **Scenarios:** [scenarios.js](../../site/src/implementations/features/review-workspace/scenarios.js)
-- **Styles:** [ReviewWorkspace.css](../../site/src/implementations/features/review-workspace/ReviewWorkspace.css)
+- **Implementation:** [ReviewWorkspace.js](../../../site/src/implementations/features/review-workspace/ReviewWorkspace.js)
+- **Synthetic adapter:** [mock-adapter.js](../../../site/src/implementations/features/review-workspace/mock-adapter.js)
+- **Scenarios:** [scenarios.js](../../../site/src/implementations/features/review-workspace/scenarios.js)
+- **Styles:** [ReviewWorkspace.css](../../../site/src/implementations/features/review-workspace/ReviewWorkspace.css)
 - **Preview route:** `/catalog/features/review-workspace/` when generated and served from the site root. No deployment is claimed.
-- **Tests:** [reference source-level tests](../../site/tests/review-workspace-runtime.test.cjs) plus static site/registry tests.
-- **Evidence ledger:** [Phase 7](../../docs/visual-catalog-refactor/13-phase-7-review-workspace.md).
+- **Tests:** [reference source-level tests](../../../site/tests/review-workspace-runtime.test.cjs) plus static site/registry tests.
+- **Evidence ledger:** [Phase 7](../../../docs/visual-catalog-refactor/13-phase-7-review-workspace.md).
 
 | Check | Status |
 | --- | --- |
