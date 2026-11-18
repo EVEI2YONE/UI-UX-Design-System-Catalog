@@ -40,7 +40,14 @@ def category(item):
     }
     if prefix in by_id:
         return by_id[prefix]
-    first = PurePosixPath(item["path"]).parts[0]
+    parts = PurePosixPath(item["path"]).parts
+    if len(parts) > 1 and parts[0] == "specifications":
+        return {"components": "components", "patterns": "patterns",
+                "experiences": "features"}.get(parts[1], "other")
+    if len(parts) > 1 and parts[0] == "knowledge":
+        return {"foundations": "foundations", "architecture": "architecture",
+                "guidance": "guidance"}.get(parts[1], "other")
+    first = parts[0]
     return first if first in CATEGORIES else "other"
 
 
