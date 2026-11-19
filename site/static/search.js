@@ -25,6 +25,7 @@
   const summary = document.getElementById("category-summary");
   const active = document.getElementById("active-filters");
   const cards = Array.from(root.querySelectorAll(".card"));
+  const originalOrder = new Map(cards.map((card, index) => [card, index]));
   const chips = Array.from(document.querySelectorAll("[data-filter]"));
   const valid = new Set(chips.map((chip) => chip.dataset.filter));
   const MAX_QUERY = 200;
@@ -86,16 +87,26 @@
   }
 
   function update(announce) {
-    const terms = window.CatalogQuery.terms(search.value);
     let visible = 0;
-    cards.forEach((card) => {
-      const content = card.dataset.search || "";
-      const matches = window.CatalogQuery.matches(content, terms);
-      const matchesCategory = category === "all" || category === card.dataset.category;
-      const show = matches && matchesCategory;
+    const rankings = cards.map((card) => ({
+      card,
+      rank: window.CatalogQuery.rank({
+        id: card.dataset.id,
+        title: card.dataset.title,
+        aliases: card.dataset.aliases,
+        primaryTasks: card.dataset.primaryTasks,
+        relatedTasks: card.dataset.relatedTasks,
+        search: card.dataset.search
+      }, search.value)
+    }));
+    rankings.forEach(({card, rank}) => {
+      const show = rank >= 0 && (category === "all" || category === card.dataset.category);
       card.hidden = !show;
       if (show) visible += 1;
     });
+    // Restore canonical order for empty search; otherwise put exact task/alias matches first.
+    rankings.sort((a, b) => b.rank - a.rank || originalOrder.get(a.card) - originalOrder.get(b.card));
+    rankings.forEach(({card}) => root.appendChild(card));
     const text = String(visible) + " of " + String(cards.length) + " concepts";
     if (count) count.textContent = text;
     if (empty) empty.hidden = visible !== 0;

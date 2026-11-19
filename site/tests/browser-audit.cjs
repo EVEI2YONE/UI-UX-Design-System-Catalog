@@ -47,6 +47,12 @@ async function run() {
     assert.equal(await page.locator('iframe').count(),0);
     await page.locator('#catalog-filter').fill('recover from a failed submission');
     assert.ok(await page.locator('article.card:visible a[href="/catalog/patterns/forms/"]').count()>0);
+    assert.equal(await page.locator('article.card:visible').first().locator('a').getAttribute('href'),
+      '/catalog/patterns/forms/', 'primary user task should outrank related guidance');
+    await page.locator('#catalog-filter').fill('component.dialog');
+    assert.equal(await page.locator('article.card:visible').first().locator('a').getAttribute('href'),
+      '/catalog/components/dialog/', 'exact canonical ID should win');
+    await page.locator('#catalog-filter').fill('recover from a failed submission');
     await page.locator('#catalog-filter').fill('human approval queue');
     assert.equal(await page.locator('article.card:visible').count(),1);
     assert.equal(await page.locator('article.card:visible a').getAttribute('href'),

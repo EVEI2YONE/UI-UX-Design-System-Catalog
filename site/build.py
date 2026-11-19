@@ -192,11 +192,16 @@ def write(out, url, content):
     file.write_text(content, encoding="utf-8")
 
 
+TASK_LOOKUP = []
+
+
 def card(e, task_terms=None):
     """Generate an accessible resource card using semantic kind and task aliases."""
     terms = " ".join([e["id"], e["title"], e["summary"], *e["aliases"], *e["domains"],
                       *e.get("capabilities", []), *(task_terms or {}).get(e["id"], [])]).lower()
-    return concept_card(e, category(e), route(e), terms)
+    return concept_card(e, category(e), route(e), terms,
+                        [v for task in TASK_LOOKUP for v in [task["title"], *task["intent_phrases"]] if task["primary_id"] == e["id"]],
+                        [v for task in TASK_LOOKUP for v in [task["title"], *task["intent_phrases"]] if e["id"] in task.get("related_ids", [])])
 
 
 STATES_HEADING = re.compile(
@@ -239,6 +244,8 @@ def section_navigation(guidance):
 def build(out):
     entries = json.loads((ROOT / "catalog/index.json").read_text(encoding="utf-8"))["entries"]
     tasks = load_tasks(ROOT)
+    global TASK_LOOKUP
+    TASK_LOOKUP = tasks
     validate_tasks(tasks, entries)
     task_terms = terms_by_concept(tasks)
     by_path = {e["path"]: e for e in entries}

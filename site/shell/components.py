@@ -35,9 +35,9 @@ def concept_metadata(entry):
     return '<section class="meta" aria-label="Concept metadata">' + "".join(cells) + "</section>"
 
 
-def concept_card(entry, category, url, terms):
+def concept_card(entry, category, url, terms, primary_tasks=None, related_tasks=None):
     return ('<article class="card" data-category="' +
-            html.escape(category, quote=True) + '" data-search="' + html.escape(terms, quote=True) +
+            html.escape(category, quote=True) + '" data-id="' + html.escape(entry["id"], quote=True) + '" data-title="' + html.escape(entry["title"], quote=True) + '" data-aliases="' + html.escape(" | ".join(entry.get("aliases", [])), quote=True) + '" data-primary-tasks="' + html.escape(" | ".join(primary_tasks or []), quote=True) + '" data-related-tasks="' + html.escape(" | ".join(related_tasks or []), quote=True) + '" data-search="' + html.escape(terms, quote=True) +
             '"><a href="' + html.escape(url, quote=True) + '"><span class="category">' +
             html.escape(category.title()) + '</span><h3>' + html.escape(entry["title"]) +
             '</h3><p>' + html.escape(entry["summary"]) +
