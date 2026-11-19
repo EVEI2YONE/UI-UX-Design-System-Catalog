@@ -80,3 +80,10 @@ Start from a user task, the minimum information truly needed and why each answer
 
 **Sources (reviewed 2026-11-07):** [GOV.UK recover from validation errors](https://design-system.service.gov.uk/patterns/validation/) and [Error summary](https://design-system.service.gov.uk/components/error-summary/) present a UK public-service reference pattern, not an unconditional prescription for every product; [W3C WAI form instructions](https://www.w3.org/WAI/tutorials/forms/instructions/) and [Validating input](https://www.w3.org/WAI/tutorials/forms/validation/) describe accessible input guidance. Server-side validation remains essential for integrity/security.
 Related content: [content design](../../knowledge/guidance/content-design-and-ux-writing.md).
+
+## Decision application and acceptance example
+
+**Illustrative task, not a completed study:** Test one failed submission and recovery flow with representative users. Interpret this as a scenario to specify, not as a claim that a product test occurred. Identify the initiating user, preconditions, intended action, authoritative outcome, error/unknown outcome, keyboard/focus behavior and safe recovery. Preserve task context, permissions and valid input; choose an existing canonical component rather than duplicating its contract.
+
+**Verification and source boundary:** For the described case, record a reproducible acceptance check with expected/actual results, owner, environment, localization and inclusive interaction coverage. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) applies where relevant to web UI; it is not evidence that the concept was independently reviewed or implemented. Keep runtime checks **NOT VERIFIED** until observed and connect any specialized source by its applicable criterion.
+

@@ -207,3 +207,10 @@ A server acknowledgment is not automatically proof that all dependent read model
 | Live-region and focus announcement behavior | Relevant updates announced once without excessive focus jumps | — |
 
 **References:** [WAI-ARIA APG Dialog (Modal)](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG patterns](https://www.w3.org/WAI/ARIA/apg/patterns/) (consulted 2026-11-07). Motivating source: [Little Wins // proposed interaction knowledge](https://github.com/EVEI2YONE/Little_Wins/tree/main/docs/little-wins/ui-knowledge/); observed source behavior does not certify UX benefit, accessibility or implementation.
+
+## Decision application and acceptance example
+
+**Illustrative task, not a completed study:** Test loss-of-acknowledgement and focus recovery in a real flow, then consolidate redundant examples and state notes. Interpret this as a scenario to specify, not as a claim that a product test occurred. Identify the initiating user, preconditions, intended action, authoritative outcome, error/unknown outcome, keyboard/focus behavior and safe recovery. Preserve task context, permissions and valid input; choose an existing canonical component rather than duplicating its contract.
+
+**Verification and source boundary:** For the described case, record a reproducible acceptance check with expected/actual results, owner, environment, localization and inclusive interaction coverage. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) applies where relevant to web UI; it is not evidence that the concept was independently reviewed or implemented. Keep runtime checks **NOT VERIFIED** until observed and connect any specialized source by its applicable criterion.
+

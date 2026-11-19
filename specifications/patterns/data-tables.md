@@ -71,3 +71,10 @@ Related decisions: [advanced interactions and undo](advanced-interactions-and-re
 **Acceptance matrix:** tab reaches the explicit action; Enter/Space activate buttons (Enter for links); action name differentiates repeated rows; status and headers remain understandable in table navigation; focus returns to the triggering action (or logical replacement) after review; newly removed/filtered rows have a safe fallback; mobile/zoom preserves action discoverability without hover; loading/disabled states and errors are announced. Validate with keyboard, at least one supported screen-reader/browser combination, narrow viewport and long labels. Results remain **NOT VERIFIED** until actual product testing.
 
 **Anti-example:** a row receives keyboard focus, responds only to Enter, and shows a chevron under an Actions header without an operable labeled control. **Good:** an Actions column contains an explicitly labeled Review button while the row stays a normal table row.
+
+## Decision application and acceptance example
+
+**Illustrative task, not a completed study:** Verify row actions, sorting and a narrow layout in a real table example. Interpret this as a scenario to specify, not as a claim that a product test occurred. Identify the initiating user, preconditions, intended action, authoritative outcome, error/unknown outcome, keyboard/focus behavior and safe recovery. Preserve task context, permissions and valid input; choose an existing canonical component rather than duplicating its contract.
+
+**Verification and source boundary:** For the described case, record a reproducible acceptance check with expected/actual results, owner, environment, localization and inclusive interaction coverage. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) applies where relevant to web UI; it is not evidence that the concept was independently reviewed or implemented. Keep runtime checks **NOT VERIFIED** until observed and connect any specialized source by its applicable criterion.
+

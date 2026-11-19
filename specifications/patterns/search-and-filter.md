@@ -88,3 +88,10 @@ Each result should show enough safe distinguishing context to support selection,
 **Sources (reviewed 2026-11-07):** [USWDS search](https://designsystem.digital.gov/components/search/) and [pagination](https://designsystem.digital.gov/components/pagination/); [DWP filters design notes](https://design-system.dwp.gov.uk/contribute/filters/design-notes) is contextual and research in progress, not universal policy; [Scottish Government search filters](https://designsystem.gov.scot/patterns/search-results/search-filters) demonstrates applied criteria and mobile options.
 
 Related guidance: [content design](../../knowledge/guidance/content-design-and-ux-writing.md), [service recovery](service-recovery-and-support.md).
+
+## Decision application and acceptance example
+
+**Illustrative task, not a completed study:** Conduct a small task-based findability check with representative vocabulary, keyboard navigation and zero-results recovery; retain ranked-search regression tests. Interpret this as a scenario to specify, not as a claim that a product test occurred. Identify the initiating user, preconditions, intended action, authoritative outcome, error/unknown outcome, keyboard/focus behavior and safe recovery. Preserve task context, permissions and valid input; choose an existing canonical component rather than duplicating its contract.
+
+**Verification and source boundary:** For the described case, record a reproducible acceptance check with expected/actual results, owner, environment, localization and inclusive interaction coverage. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) applies where relevant to web UI; it is not evidence that the concept was independently reviewed or implemented. Keep runtime checks **NOT VERIFIED** until observed and connect any specialized source by its applicable criterion.
+
