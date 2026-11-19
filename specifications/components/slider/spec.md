@@ -59,3 +59,12 @@ The contract is guidance only: no runnable implementation, tested cross-browser 
 - Behavior reference: [platform or WAI guidance](https://www.w3.org/WAI/ARIA/apg/patterns/slider/); confirm edition, browser support and applicability before adopting custom semantics.
 - Accessibility target: [WCAG 2.2](https://www.w3.org/TR/WCAG22/), not an assertion of conformance.
 - Related canonical sources: [Component contracts](../../../knowledge/architecture/component-contracts.md), [Accessibility](../../../knowledge/guidance/accessibility.md), [Design tokens](../../../knowledge/foundations/design-tokens-and-themes.md), [Interaction recovery](../../patterns/interaction-states-and-recovery.md).
+
+## Decision example and verification boundary
+
+**Illustrative scenario (not a user study):** Set a coarse value with arrow keys and switch to explicit numeric entry for precision beyond the slider step. The consumer owns product data and permissions; the shared specification owns semantic behavior, presentation and focus. Choose simpler native controls where they satisfy the user task.
+
+**Acceptance evidence to collect:** Check range/value text, increment semantics, Home/End, touch alternative, number entry and error states. Record tool/browser, owner, expected versus observed behavior, locale and unresolved cases; actual runtime results remain **NOT VERIFIED** until executed.
+
+**Source applicability:** [Relevant W3C guidance](https://www.w3.org/WAI/ARIA/apg/patterns/slider/) informs the interaction choices, not production conformance or independent review. Keep implementation-specific details with the consumer.
+

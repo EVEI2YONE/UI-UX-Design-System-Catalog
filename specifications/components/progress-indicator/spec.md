@@ -75,3 +75,12 @@ This document defines a proposed conceptual contract. It does not supply executa
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — normative or reference context; verify which behavior applies to the chosen native/custom implementation.
 - Related canonical sources: [Interaction states and recovery](../../patterns/interaction-states-and-recovery.md), [Data export and background jobs](../../patterns/data-export-and-background-jobs.md), [File upload](../../patterns/file-upload-and-attachments.md), [Accessibility](../../../knowledge/guidance/accessibility.md).
 - **Scope limit:** Product data, permission enforcement, persistence and backend lifecycle remain feature-owned, not component-owned.
+
+## Decision example and verification boundary
+
+**Illustrative scenario (not a user study):** A background export moves between indeterminate stages and known completion; announce material transitions without invented percentages. The consumer owns product data and permissions; the shared specification owns semantic behavior, presentation and focus. Choose simpler native controls where they satisfy the user task.
+
+**Acceptance evidence to collect:** Check semantic progress/status use, announcements, cancellation, reduced motion and completion recovery. Record tool/browser, owner, expected versus observed behavior, locale and unresolved cases; actual runtime results remain **NOT VERIFIED** until executed.
+
+**Source applicability:** [Relevant W3C guidance](https://www.w3.org/WAI/ARIA/apg/) informs the interaction choices, not production conformance or independent review. Keep implementation-specific details with the consumer.
+

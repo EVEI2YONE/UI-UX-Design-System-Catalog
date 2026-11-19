@@ -59,3 +59,12 @@ No executable component, browser test result, product user study or accessibilit
 - Accessibility target: [WCAG 2.2](https://www.w3.org/TR/WCAG22/); compatibility and conformance require independent checks.
 - Existing canonical guidance: [Component contracts](../../../knowledge/architecture/component-contracts.md), [Accessibility](../../../knowledge/guidance/accessibility.md), [Design tokens](../../../knowledge/foundations/design-tokens-and-themes.md), and [Forms](../../patterns/forms.md).
 - Review applicability, browser/assistive technology support, and any documented APG variants before implementing. Guidance is proposed and may change after expert review.
+
+## Decision example and verification boundary
+
+**Illustrative scenario (not a user study):** Toggle a server-backed preference while saving, then reject the save and visibly roll back to the authoritative value. The consumer owns product data and permissions; the shared specification owns semantic behavior, presentation and focus. Choose simpler native controls where they satisfy the user task.
+
+**Acceptance evidence to collect:** Check keyboard toggle, semantic checked state, error announcement, failed-save rollback and authorization. Record tool/browser, owner, expected versus observed behavior, locale and unresolved cases; actual runtime results remain **NOT VERIFIED** until executed.
+
+**Source applicability:** [Relevant W3C guidance](https://www.w3.org/WAI/ARIA/apg/patterns/switch/) informs the interaction choices, not production conformance or independent review. Keep implementation-specific details with the consumer.
+

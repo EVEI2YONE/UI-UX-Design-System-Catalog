@@ -75,3 +75,12 @@ This document defines a proposed conceptual contract. It does not supply executa
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — normative or reference context; verify which behavior applies to the chosen native/custom implementation.
 - Related canonical sources: [Select](../select/spec.md), [Combobox](../combobox/spec.md), [Radio group](../radio-group/spec.md), [Checkbox](../checkbox/spec.md), [Accessibility](../../../knowledge/guidance/accessibility.md).
 - **Scope limit:** Product data, permission enforcement, persistence and backend lifecycle remain feature-owned, not component-owned.
+
+## Decision example and verification boundary
+
+**Illustrative scenario (not a user study):** Choose multiple items with a defined selection model, type ahead and refresh options without silently changing selection. The consumer owns product data and permissions; the shared specification owns semantic behavior, presentation and focus. Choose simpler native controls where they satisfy the user task.
+
+**Acceptance evidence to collect:** Check typeahead, roving focus, modifier rules, disabled options, selection/focus distinction and announcements. Record tool/browser, owner, expected versus observed behavior, locale and unresolved cases; actual runtime results remain **NOT VERIFIED** until executed.
+
+**Source applicability:** [Relevant W3C guidance](https://www.w3.org/WAI/ARIA/apg/patterns/listbox/) informs the interaction choices, not production conformance or independent review. Keep implementation-specific details with the consumer.
+
