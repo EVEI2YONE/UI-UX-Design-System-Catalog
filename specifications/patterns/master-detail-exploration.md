@@ -12,6 +12,8 @@ Let people move between a collection and item details while preserving selection
 
 **Ownership:** The pattern owns composed collection/detail presentation and selection semantics. Each feature owns record retrieval, authorization, mutations and route state.
 
+**One-minute task-surface chooser:** (1) If the action is brief, low risk and needs no new destination, favor inline edit; (2) if the person inspects peer Overview/Edit/History views, retain one stable detail context; (3) if a brief interruption truly needs exclusive attention, use a single Dialog; (4) if a supporting side task must preserve surrounding context, consider a drawer only after zoom/focus checks; (5) if work is long, high stakes, resumable or shareable by URL, choose a named route. **Then** specify save outcome, draft lifetime, Back/Cancel/Escape and return focus before implementation. This ordering is a proposed cross-source decision model, not a platform mandate.
+
 ## Journey and state contract
 
 | Stage | User-visible decisions and states | Recovery / evidence requirement |
@@ -66,24 +68,54 @@ Let people move between a collection and item details while preserving selection
 
 **Anti-example:** Collection -> Details modal -> Manage modal -> Edit modal creates three independent Escape paths, conflicting focus traps and unclear draft ownership. If the parent list refresh unmounts the editor while Save is pending, the last changes disappear. **Repair:** keep the related work in one stable detail surface, or route to a named edit page; interrupt separately only for a justified consequential confirmation and return to the preserved parent task.
 
-### Source limits and acceptance checks
+### Source-to-decision provenance and scope
 
-- [WAI-ARIA APG Modal Dialog](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) describes modal focus containment, initial focus and logical return when an invoker no longer exists. It does **not** prescribe which task surface to choose or prohibit every nested dialog.
-- [WAI-ARIA APG Tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) applies when peer tabs are the selected control, not to sequential tasks.
-- [WCAG 2.2 Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) informs narrow/zoom checks. Choosing a surface, browser-history policy and draft lifetime are proposed catalog synthesis, not empirically established standards.
+These sources justify **specific parts** of the choice; no single external source establishes a universal hierarchy of inline edits, drawers, tabs and routes. The composite chooser is a **proposed catalog synthesis** and must be validated for a particular application's tasks, platform and users.
 
-| Representative consuming-product test | Expected outcome | Status |
+| Source (consulted 2026-11-19) | Supported decision | Limit / product-owned judgment |
 | --- | --- | --- |
-| Keyboard + screen reader: list -> detail -> edit -> history -> return | Controls and headings named, no inaccessible layer, clear selected view and meaningful return focus | NOT VERIFIED |
-| Dirty draft: internal Back, browser Back, Escape, Cancel and backdrop | No silent input loss; only the owning surface dismisses and the choice is understandable | NOT VERIFIED |
-| Save pending/error/unknown; invoker removed; permission revoked | Editor lifetime and honest outcomes preserved, safe focus fallback and no duplicate mutation | NOT VERIFIED |
-| Direct link, refresh, compact/320px, zoom, long translation, RTL, touch and theme | No unreachable action or clipped content; route and recovery semantics consistent | NOT VERIFIED |
+| [USWDS Modal](https://designsystem.digital.gov/components/modal/) | A modal intentionally interrupts; consider non-modal alternatives, especially for multi-step or complex forms | USWDS guidance is for its design-system context, not a prohibition on all modal editing |
+| [WAI-ARIA APG Dialog (Modal)](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) | The active modal contains keyboard focus; on close, use the invoker or a logical workflow fallback when removed | APG defines dialog semantics, not which task deserves a dialog or whether a route is preferable |
+| [WAI-ARIA APG Tabs](https://www.w3.org/WAI/ARIA/apg/patterns/tabs/) | Use tabs for peer panels with a defined keyboard/selection model; avoid automatic activation when remote loading causes noticeable latency | Tabs are not an arbitrary back stack, stepper or answer to unsaved data ownership |
+| [GOV.UK Back link](https://design-system.service.gov.uk/components/back-link/) and [Check answers](https://design-system.service.gov.uk/patterns/check-answers/) | Give multi-page tasks a predictable route back, preserve earlier form values and allow targeted editing without replaying subsequent steps | These are government service patterns; route model, local drafts and browser history remain feature decisions |
+| [WCAG 2.2, Understanding Reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) | Check content at 320 CSS px equivalent without loss of function or two-dimensional scrolling except justified exceptions | Reflow does not require drawers or forbid split panes at other widths; content and user agent must be tested |
 
-For any executed test, record task, browser/OS, assistive technology, locale, viewport/zoom, exact product revision, expected and observed result, owner and limitations. **Runtime behavior, user-task success and accessibility conformance remain NOT VERIFIED** in this catalog.
+**Source-to-claim boundary:** WAI-ARIA and WCAG address applicable interaction/accessibility conditions; USWDS and GOV.UK provide design-system guidance and tradeoffs. None of them demonstrates that this catalog's synthetic workflow improved user outcomes. Permission, server truth, transactional integrity, undo and draft persistence are owned by consuming products and their relevant canonical patterns.
+
+### Worked decision and expected task observations
+
+**Synthetic scenario (NOT VERIFIED):** From a collection filtered to `status: active`, open record A, edit related record B, view its history, return to record A and then to the collection. The design **chooses a shared detail subview** on wide screens because overview/edit/history are peers and list context should remain visible. It **chooses a detail route** on a compact viewport when dual panes cannot reflow. If record B requires a resumable multi-page edit or deep link, a named edit route wins on either width. This is a decision illustration, **not** observed user research.
+
+| Step / condition | Expected visible result and explicit focus/return target |
+| --- | --- |
+| 1. Open A from a filtered collection | A's stable identity and heading appear; filter, sort, scroll anchor and source identity are retained. Keyboard focus moves to the detail heading or deliberate first control |
+| 2. Open B's Edit in the same surface | Edit heading/peer view is identified; a related record does not create a second independent modal. Draft is scoped to B's stable ID |
+| 3. Inspect History, then return to Edit | No unsaved fields are silently lost; restore edit context, cursor/section where appropriate; do not confuse the History peer view with a required step |
+| 4. Save confirmed, or save pending/unknown | Remain in edit until authoritative reconciliation; announce pending or unknown. Never duplicate a non-idempotent request on lost acknowledgement. On success, focus a stable detail target |
+| 5. Cancel / Escape / Back on a dirty edit | Keep editing or explicitly discard via a comprehensible choice; browser Back and internal Back follow documented, distinct policies; no invisible editor is left holding focus |
+| 6. Return, or A/B becomes unavailable | Show the collection with preserved query and meaningful scroll. If the invoker is removed or permission is revoked, explain the change and focus the nearest surviving item or collection heading, never another item by array index |
+
+**Anti-example and repair:** Three modal layers—Details -> Manage -> Edit—disagree about Escape, Save and the focus owner; the parent list remount silently deletes B's draft. Replace them with **one** stable detail task context (or directly linked routes) and put an exceptional consequential confirmation in an explicitly controlled interruption, retaining the parent draft and an unambiguous return.
+
+### Executable acceptance specification (tests NOT VERIFIED in a consuming product)
+
+Run these checks against an **actual** consumer revision, not a Markdown render. For each case capture the build/route, role, record IDs, initial data, interaction sequence, expected/observed result, browser/OS, viewport/zoom, language/direction, assistive technology where applicable, owner and evidence URL. Mark each PASS, FAIL or NOT VERIFIED individually; do not infer a product pass from catalog CI.
+
+| Case | Setup and action | Expected result | Status |
+| --- | --- | --- | --- |
+| MD-01 / keyboard navigation | With two visible records, Tab/Enter to open A, switch Edit/History and return | No nested active focus trap; correct headings/selected peer view; focus survives return | NOT VERIFIED |
+| MD-02 / compact and reflow | Repeat MD-01 at 320 CSS px equivalent, 400% zoom where applicable, long translated labels and RTL | No required action clipped or unreachable; detail route works; Back reaches the filtered collection | NOT VERIFIED |
+| MD-03 / dirty draft | Change B, invoke internal Back, browser Back, Escape, Cancel and backdrop where present | Each exit has a defined keep/discard policy; input remains intact unless explicitly discarded | NOT VERIFIED |
+| MD-04 / save recovery | Delay acknowledgement; simulate validation failure, timeout-after-commit and revision conflict | Pending/unknown/errors are distinguishable; draft retained; reconcile truth before retry; no duplicate command | NOT VERIFIED |
+| MD-05 / absent invoker | Archive A, filter A out or revoke access while B's edit or return is pending | Explain unavailable context; no focus on a removed node; fallback chooses a surviving record or collection heading | NOT VERIFIED |
+| MD-06 / direct URL and history | Open A's deep link from a new tab, refresh, navigate Edit and browser Back | No assumption of prior invoker; direct route and safe return remain meaningful; authorization rechecked | NOT VERIFIED |
+| MD-07 / screen reader and touch | Repeat the edit and return using screen reader+keyboard, touch, high contrast and reduced motion | Labels, status, instructions, focus, actions and close paths remain usable without hover or color alone | NOT VERIFIED |
+
+**Evidence maturity:** These are expected observations only. Real application/server, assistive technology, locale and usability tests are **NOT VERIFIED**; no independent human review is logged. Standards sources do not certify the catalog or any consumer.
 
 ## Inclusive operation, content, theming and locale
 
-Provide keyboard and assistive-technology routes through each stage, visible headings and state feedback, and deliberate focus restoration after context changes. Support zoom/reflow, localized labels and units, RTL and high-contrast themes, touch alternatives and reduced motion. Use semantic tokens and make unavailable or irreversible outcomes understandable beyond color. Never treat a mock preview as proof of a real service outcome.
+Apply the MD-01–MD-07 checks to keyboard, screen reader, mobile, high zoom, long translations, RTL, high contrast and reduced motion. Preserve clear headings, user-visible current view, status beyond color, focus and real return paths; a static example does not validate interaction behavior.
 
 ## Example and anti-example
 
@@ -93,26 +125,9 @@ Provide keyboard and assistive-technology routes through each stage, visible hea
 
 For a worked cross-pattern composition using a card, detail, related-record editor, classification, recovery and return, see the [illustrative collection-to-related-record journey](../../examples/collection-to-related-record-journey.md). Use the canonical card, form, lifecycle and recovery contracts for normative decisions; the reference journey is **NOT VERIFIED** in a consuming product.
 
-## Verification and research handoff
-
-| Scenario | Expected evidence | Current status |
-| --- | --- | --- |
-| Deep link, browser back and responsive list-detail transitions | Record actual observed result, relevant cohort and environment | NOT VERIFIED |
-| Filter/sort/selection stability, record deletion and empty states | Record actual observed result, relevant cohort and environment | NOT VERIFIED |
-| Keyboard/assistive focus, RTL reading order, long details and data privacy | Record actual observed result, relevant cohort and environment | NOT VERIFIED |
-
-Measure task completion, user error severity, abandonment and comprehension before asserting improvement. No baseline study, real back-end behavior or accessibility conformance is supplied by this concept.
-
 ## Sources, related concepts and limitations
 
 - [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/patterns/) — contextual reference, not a universal implementation prescription.
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — contextual reference, not a universal implementation prescription.
 - Related canonical guidance: [Task flows](task-flows-and-information-architecture.md), [Forms](forms.md), [Interaction recovery](interaction-states-and-recovery.md), [Accessibility](../../knowledge/guidance/accessibility.md), and [UX measurement](../../knowledge/guidance/ux-measurement.md).
 - Review domain, locale, security, legal and service constraints separately before adoption.
-
-## Applied decision and verification case
-
-**Illustrative decision case (not observed):** Add an item-to-list return and focus restoration scenario. Name the initiating task, what becomes unavailable or uncertain, how the user learns the truthful state and which continuation is safe. Distinguish user-visible feedback from server authority and explain when the simpler existing pattern should be reused.
-
-**Acceptance boundary:** Specify an observable expected result for primary action, keyboard/focus recovery, relevant locale/RTL and small-screen conditions and a negative or failure state. Link the selected test to the concept's existing canonical owner instead of introducing an overlapping shared control. A [WCAG 2.2](https://www.w3.org/TR/WCAG22/) reference supports applicable web accessibility criteria but does not verify an implementation, independent review or actual task completion. Unexecuted checks remain **NOT VERIFIED**.
-
