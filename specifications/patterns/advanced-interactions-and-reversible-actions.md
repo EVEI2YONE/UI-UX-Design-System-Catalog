@@ -44,6 +44,28 @@ Define discoverable, accessible and reversible behavior for reorder, bulk action
 
 **Anti-example:** A drag-only reorder surface has no move controls; a “Delete selected” action silently targets hidden results after filters change, and an Undo toast promises reversal after the records are irreversibly removed.
 
+## Record lifecycle: archive, trash, restore and truthful Undo
+
+Choose a domain transition before choosing the action label or its icon. This decision applies to records with parents, children or historical references; it is not a reusable menu component.
+
+| Intent | Domain effect and discoverability | Reversal and safe wording |
+| --- | --- | --- |
+| Hide/dismiss | Presentation preference only; record stays active and discoverable elsewhere | "Show again"; never say "deleted" |
+| Archive | Remains stored and referencable, usually excluded from active work; define whether children remain actionable | "Archive" / "Unarchive" only when the domain supports both |
+| Move to trash / soft-delete | Persist a trashed state; exclude from normal active results but offer a discoverable recovery route and retention policy | "Move to trash" / "Restore" while retention and authorization permit |
+| Restore | Persist a new active or previously permitted state; validate workspace, parent and referenced entities before confirming | "Restored" only after authoritative confirmation |
+| Permanently delete | Irreversible removal under an explicit data-retention and dependent-record policy | Do not offer "Undo" without an implemented, durable reversal |
+
+**State and dependency contract:** `active -> archive pending -> archived -> unarchive pending -> active`; `active/archived -> trash pending -> trashed -> restore pending -> allowed restored state`; `trashed -> delete pending -> permanently removed` only when authorized. Any pending transition can become `failed` or `outcome unknown`; reconcile identity and authoritative state before presenting a terminal result. A confirmed transition is not equivalent to closing a menu, removing a card or showing a toast. An archived parent may still own active children; archived categories may still label historical entries. The domain must specify whether child writes are blocked, references remain visible, and which missing/archived parent prevents restore. Never silently cascade a destructive action.
+
+**Action surface:** Name each command by its actual effect, explain scope and children when consequential, condition actions on authorization and retention, and require stronger confirmation for irreversible operations. Keep durable restore access in a predictable location; a time-limited toast may offer a convenience reversal but cannot be the only recovery route when restoration is promised. When a record leaves the collection, put focus on a surviving row, the list heading or a status message rather than a removed menu trigger; preserve applied filters and distinguish no records from no matching records.
+
+**Illustrative correct path:** An organizer archives a record with two related items; the archive confirmation states whether those items remain available, the server confirms the state, and a link to archived records supports later unarchive. **Anti-example:** Remove the card immediately, display "Deleted — Undo" without a persisted restore operation, and strand keyboard focus on the disappeared card.
+
+**Acceptance scenarios (NOT VERIFIED in consuming products):** (1) archive with active children and reopen a historical deep link; (2) trash, sign out/in and restore within retention; (3) restore after a parent becomes unavailable; (4) permission revocation before confirmation; (5) lost acknowledgement followed by read-back without blind retry; (6) keyboard/menu focus after item removal; (7) narrow, 200% zoom, long translated labels and RTL. For each record expected domain result, user-facing wording, persisted state, focus destination, environment, actual result and owner. Implementations must enforce object authorization and retention independently of UI labels.
+
+**Ownership and sources:** Feature/domain service owns transitions, authorization, retention, related-record effects and authoritative read-back; [interaction recovery](interaction-states-and-recovery.md) owns truthful pending/unknown/error presentation; [activity history](activity-timelines-and-history.md) owns audit legibility; [master-detail](master-detail-exploration.md) owns return context; [Menu button](../components/menu-button/spec.md) owns menu keyboard behavior. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) informs applicable focus, status and target requirements; [OWASP authorization guidance](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) informs server-side object checks. Neither source defines a universal archive retention policy. This table is proposed synthesis, not tested product behavior.
+
 ## Verification and acceptance
 
 | Check | Status | Evidence needed |
