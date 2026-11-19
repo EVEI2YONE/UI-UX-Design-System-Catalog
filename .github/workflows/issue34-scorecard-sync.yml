@@ -1,0 +1,37 @@
+name: Temporary scorecard artifact sync for PR 42
+on:
+  push:
+    branches:
+      - docs/task-surface-choice-issue34-20261119
+    paths:
+      - catalog/concept-scorecard.json
+permissions:
+  contents: write
+jobs:
+  refresh-generated-views:
+    if: github.repository == 'EVEI2YONE/UI-UX-Design-System-Catalog'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install workbook dependency
+        run: python3 -m pip install 'openpyxl>=3.1,<4'
+      - name: Build and verify all scorecard views
+        run: |
+          python3 scripts/build_concept_scorecard.py --write
+          python3 scripts/build_concept_scorecard_workbook.py
+          python3 scripts/build_concept_scorecard.py --check
+          python3 scripts/build_concept_scorecard_workbook.py --check
+      - name: Commit generated report and workbook to PR branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add CONCEPT_SCORECARD.md CONCEPT_SCORECARD.xlsx
+          if ! git diff --cached --quiet; then
+            git commit -m "docs(scorecard): synchronize Markdown and workbook with targeted 100 rating"
+            git push origin HEAD:docs/task-surface-choice-issue34-20261119
+          fi
