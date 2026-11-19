@@ -8,6 +8,17 @@ The [architecture selection guide](application-architecture.md) defines four pro
 
 For an actual repository, first gather a pinned commit, installed framework and routing mode, user journeys, import/dependency graph, team ownership, existing tests, deployment boundaries, performance and accessibility requirements. Treat paths as examples rather than required naming.
 
+## Choosing the right reference
+
+| Verified situation | Use | First test before adopting |
+| --- | --- | --- |
+| One task, uncertain requirements, one owner | Reference A: prototype | Keep data and UI local; avoid an invented package/release burden |
+| Several routes reuse stable interaction but not domain transactions | Reference B: modular MVP | Public entrypoint, feature ownership and focus/state preservation |
+| Two real applications share domain or UI contracts | Reference C: enterprise | Multiple consumers, versioning, integration tests and rollback |
+| Unknown framework/router or no source snapshot | Do **not** copy a tree | Inspect current source and [framework-aware structure](framework-aware-application-structure.md) |
+
+**Authority boundary:** these are **synthetic reference architectures**, not deployable starters. The tables illustrate allowed responsibility; [module boundaries](module-boundaries-and-developer-navigation.md) owns import constraints, [component contracts](component-contracts.md) owns UI behavior and [architecture evolution](architecture-evolution.md) owns migration risks. Do not reuse example paths as actual repository evidence.
+
 ## Reference A: prototype — route-local workflow, minimal abstraction
 
 **User task:** test whether people can create and rename a project. One screen, one engineer, uncertain requirements. No proven sharing.
@@ -158,6 +169,30 @@ The shared domain package holds stable, platform-independent project types/rules
 
 **Migration approach:** identify one truly shared domain invariant and two real consuming apps; define public API, owner and version/compatibility contract; extract an adapter-backed package; migrate one consumer at a time; run cross-app contract, integration, and critical accessibility tests; retain rollback and supported-version policies.
 
+## Acceptance experiment: detect the wrong owner before migration
+
+A reference example becomes useful when it predicts *where a change belongs* and makes a wrong placement observable. Exercise all three example topologies with these **illustrative** assertions:
+
+| Sample request | Correct owner | Incorrect placement to reject |
+| --- | --- | --- |
+| Add field-level validation and recovery in a project editor | Projects feature form, with reusable Field semantics | Shared Button contains project API or authorization |
+| Change shared Dialog keyboard behavior | Generic Dialog contract and each consuming app's integration tests | Route-local CSS overrides focus handling per app |
+| Restrict who can approve a payment | Backend/domain permission owner and feature representation | Published design-system component asserts authorization |
+| Change a theme semantic alias | Token owner plus affected consumer snapshots | Direct feature hex overrides that silently break dark mode |
+
+**Verification method:** make a reviewer list the exact file, responsible owner, expected tests, allowed import and forbidden import for each task *before* showing the suggested mapping. Log lookup time, incorrect owner choices, missing paths and stated uncertainty; only call a measured result "faster" when comparing representative attempts with a controlled baseline. Use the import-boundary checks in [architecture enforcement](architecture-enforcement-and-ci.md) and public-interface rules in [module boundaries](module-boundaries-and-developer-navigation.md).
+
+### Negative contract fixture (source-level only)
+
+| Simulated import edge | Expected | Why |
+| --- | --- | --- |
+| `app/routes/projects` → `features/projects` | ALLOW | Route composes feature entry |
+| `features/projects` → `shared/ui/Dialog` | ALLOW | Feature consumes generic contract |
+| `shared/ui/Dialog` → `features/projects/projectApi` | REJECT | Shared control must not own feature service |
+| `features/settings` → `features/projects/ProjectForm` | REJECT | Sibling feature internals are private |
+
+A source-level regression test can check that these fixture expectations and canonical references remain present. It **cannot** prove a live application's import graph follows them. For such proof, execute an actual project's lint/dependency graph and feature integration tests, and log the repo SHA, tool version, runtime and result.
+
 ## Task → file location exercises
 
 | Requested change | Prototype | Modular MVP | Multi-application platform |
@@ -182,5 +217,10 @@ The shared domain package holds stable, platform-independent project types/rules
 | Developer navigation | Repeated, task-based file-location exercise and observed outcome | NOT VERIFIED |
 
 ### Avoid claiming an implementation from this document
+
+**Source relevance:** [Node.js package entry points](https://nodejs.org/api/packages.html#package-entry-points) defines supported public exports; [TypeScript project references](https://www.typescriptlang.org/docs/handbook/project-references.html) constrains compiler projects when that tooling is in use; [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) informs accessible shared component behavior. These are scoped platform references, not evidence that the listed folder trees work in a user's application.
+
+The examples are **not runnable standalone applications**, and they have not been tested against a consuming app. An implementation review requires exact framework/router, consumers, build and keyboard/RTL/zoom/async results with explicit `NOT VERIFIED` for unrun checks. **A synthetic negative fixture is not a passing customer journey.**
+
 
 All trees and code fragments are **illustrative**, deliberately small and not runnable standalone applications. They are reference decisions, not executable templates, validated benchmarks or published production packages. A real code migration must follow the installed framework rules and its security/data contracts. The canonical concept IDs and ownership decisions live in [selection](application-architecture.md), [module boundaries](module-boundaries-and-developer-navigation.md), [evolution](architecture-evolution.md), [enterprise choices](enterprise-and-multiapp.md) and [quality gates](../../governance/quality-gates.md).
