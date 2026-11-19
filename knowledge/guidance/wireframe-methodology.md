@@ -71,3 +71,10 @@ An annotated story or manually facilitated paper prototype **can** support early
 - [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) (W3C Recommendation). Applies to actual web content as appropriate; a screenshot cannot establish conformance.
 
 Related: [task flows](../../specifications/patterns/task-flows-and-information-architecture.md), [visual hierarchy](../foundations/design-principles.md), [interaction recovery](../../specifications/patterns/interaction-states-and-recovery.md), [accessibility](accessibility.md), [mobile/adaptive UX](mobile-and-adaptive-platform-ux.md), [quality gates](../../governance/quality-gates.md). No existing concept is deprecated; downstream plugin-specific tool execution remains outside this page.
+
+## Practical decision and validation boundary
+
+**Illustrative decision question:** Apply the static-versus-interactive fidelity decision to a representative task and record observed limitations rather than inferring tested behavior. State when to apply the guidance, what alternative would better serve a different context and which actual user or developer task would change the decision. Do not infer successful usability, accessibility or business outcomes from a well-worded scenario.
+
+**Acceptance:** Trace applicable claims to current primary/platform sources and specify their limitations; for behavioral claims, record eligible cohort, observation method, expected success/error state, measurement context and review owner. For interactive web surfaces, [WCAG 2.2](https://www.w3.org/TR/WCAG22/) informs relevant inclusive design checks; the guideline alone does not establish conformance. Any missing applied evidence stays **NOT VERIFIED**.
+
