@@ -42,6 +42,12 @@ Label search and filter groups, expose active selections beyond color, support k
 
 Related: [task flows](task-flows-and-information-architecture.md), [recovery](interaction-states-and-recovery.md), [measurement](../../knowledge/guidance/ux-measurement.md), [accessibility](../../knowledge/guidance/accessibility.md). Standards: [WCAG 2.2](../../governance/references.md).
 
+### Task-aware catalog retrieval example (documentation browser only)
+
+When a person searches for “recover from a failed submission”, the **primary** forms pattern should appear ahead of related interaction-recovery and field guidance. An exact canonical ID or alias should remain highest-confidence. When the query is cleared, restore the stable default catalog order, not a previous relevance sort. Preserve direct links, keyboard focus and announce settled result counts. An implementation should test case, punctuation and translated phrases rather than promising universal natural-language understanding.
+
+The generated catalog website is a read-only discovery surface; relevance ranking there does not imply a full-text search service or a product data backend. See [the task discovery index](../../tasks/README.md) for canonical task pointers and [the search shell](../../site/README.md) for browser validation.
+
 ## Discovery, sorting and result semantics
 
 ### Choose the discovery model

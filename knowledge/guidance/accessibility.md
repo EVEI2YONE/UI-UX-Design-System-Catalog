@@ -66,40 +66,36 @@ A static wireframe may record *intended* reading order, focus sequence, labels, 
 
 Record the target standard/scope per product (for web, evaluate applicable [WCAG 2.2](https://www.w3.org/TR/WCAG22/) criteria; for native, use relevant platform expectations). Document product-specific exclusions with rationale rather than silently asserting `NOT APPLICABLE`. This guidance does not certify a screenshot or product. Related: [adaptive composition](mobile-and-adaptive-platform-ux.md), [internationalization](internationalization.md), [wireframe methodology](wireframe-methodology.md) and [quality gates](../../governance/quality-gates.md).
 
-## Reference-state accessibility, theme and performance acceptance matrix
+## Documentation browser versus consuming-product verification
 
-This matrix specializes the existing accessibility contract for a **source-linked visual catalog**. It is normative *guidance for verification*, not evidence that all reference scenarios pass. The live examples run under a restricted iframe and use in-memory fixtures; automated axe results address only configured rules and tested states.
+The catalog website is a **static knowledge browser**, not a runnable component gallery or proof of product accessibility. Apply the appropriate check to the surface being evaluated; a Markdown or build pass cannot establish WCAG conformance in an unrelated application.
 
-| Scenario / mode | Semantics and interaction | Evidence to collect | Failure handling |
-| --- | --- | --- | --- |
-| Default interactive state | Native role/name/value, visible labels, focus order matching visual task | Accessibility tree, keyboard walkthrough, contrast sampling | Repair wrong accessible name/role before adding custom ARIA |
-| Loading/pending | State accurately announced once; duplicate action blocked without losing orientation | Speech output and repeated-key test; whether focus remains findable | Preserve inputs; do not announce success early |
-| Invalid input and known error | Programmatic field association, actionable error summary, focused recovery point | Keyboard entry, screen reader announcement and corrected resubmit | Keep entered values, don't move focus to hidden fields |
-| Empty and no matches | Differentiate zero records from filtered zero results and connectivity errors | Screen reader headings/status, filter count, reset path | Provide reversible next step |
-| Permission denied/readonly | Semantics distinguish actual readonly from unavailable controls | Keyboard inspection with unavailable action and explanation | Never imply a visual control is a server permission check |
-| Unknown outcome | Explicitly unconfirmed result; no blind retry; status verification action when available | Human walkthrough of lost acknowledgement and focus | Preserve context and require authoritative reconciliation |
-| Dialog/opening menu | Focus moves into content, Escape/close contract, focus returns to a meaningful surviving trigger | Keyboard-only and NVDA/VoiceOver observed sequences | Avoid focus to detached elements and keyboard traps |
-| Light/dark/contrast modes | Text, nontext components, focus rings and errors contrast appropriately in each mode | Measured color pairs and visual screenshots in each mode | Don't infer contrast from color token names |
-| Reflow/text growth | 320 CSS-pixel equivalent without lost functionality; exceptions for legitimately two-dimensional tables | 200% and 400% zoom, line wrapping, 320/375 CSS-pixel checks, long labels | Allow logical scrolling within actual tables, not whole-page horizontal scrolling |
-| RTL/mixed direction | Logical reading/navigation order and nonmirrored data or logos | Arabic/Hebrew-like long text and LTR number/code samples, focus order | Change logical CSS and direction-aware icons, not every symbol |
-| Reduced motion/forced colors | No animation-only status, system colors preserved, no invisible action outline | Operating-system preference and forced-colors screenshots | Keep visible focus and meaningful status without motion |
+| Surface | What can be verified | What it does **not** establish |
+| --- | --- | --- |
+| Catalog source and generated pages | Canonical links, headings, semantic navigation, search/filter interaction, keyboard navigation, reflow and contrast **of the browser itself** | Behavior of a proposed Button, Dialog, workflow, account setting or other consuming-product implementation |
+| Static design, wireframe or written component contract | Intended task order, accessible labels, state coverage, expected focus transitions and test criteria | Runtime focus, actual screen-reader speech, service outcomes or device adaptation |
+| Implemented component in a consuming product | Names, roles, values, focus order/return, keyboard/touch equivalence, errors, zoom, RTL and contrast in actual supported states | Completeness of an end-to-end journey, authorization or backend correctness without integration checks |
+| Connected user journey | Entry through confirmation/recovery and resumption, including permissions, session changes, failure and data preservation | Universal compliance outside tested browsers, assistive technologies and contexts |
 
-### Theme and token verification procedure
+### Task-based accessibility acceptance scenarios
 
-A semantic token role is not proof that its foreground/background combination meets contrast requirements. Test actual rendered foreground against its effective background for each mode and interactive state, including focus and disabled explanatory text. For WCAG 2.2 AA, normal text generally needs 4.5:1, large text 3:1, and many meaningful nontext UI boundaries/graphics 3:1; inspect applicable exceptions in the criterion before asserting pass. Test on both the catalog chrome and iframe content because their theme inheritance is distinct. Record token pair, resolved CSS values, surface/state, measurement method, browser, date and reviewer.
+Select relevant rows for each real product; mark results with device, browser, OS, assistive technology, scenario and reviewer. The entries below are **test plans**, not executed results.
 
-Choose an explicit theme state policy: changing a theme should not silently remount a form and erase edits; expose the active mode and retain meaningful selected state. If a future standalone token playground is proposed, register it only with a real source file, deterministic mode/state scenarios and contrast/test evidence. The current theme dropdown on previews does **not** by itself demonstrate a reusable token tooling product.
+| Scenario | Observable acceptance | Failure/recovery expectation |
+| --- | --- | --- |
+| First action and navigation | Landmarks and headings orient the user; actionable names describe destinations; keyboard order follows task meaning | Focus stays visible and no essential action requires a gesture |
+| Loading, error and retry | Pending, invalid, confirmed and unknown outcomes have truthful status; errors identify affected fields and corrections | Preserve entered data, prevent unsafe duplicate activation and provide a recoverable next step |
+| Dialog or composite interaction | Keyboard model matches native semantics or the relevant WAI-ARIA APG pattern; opening and closing focus are predictable | Return focus to a meaningful surviving destination; no keyboard trap |
+| Empty, filtered empty and permission-denied states | Different causes and available actions are distinguishable without color alone | Offer a meaningful reset, request or explanation without misleading authorization claims |
+| Themes, zoom and text expansion | Measure effective contrast in supported modes, focus visibility, reflow and 200%/400% zoom where applicable | Do not clip actions or infer compliance from semantic token names |
+| Language, RTL and motion preferences | Meaningful order, localized labels, bidirectional text, translated expansion, reduced motion and forced colors work in scope | Keep essential feedback available without animation or a particular visual direction |
 
-### Performance measurement and evidence boundary
+For web, determine applicable [WCAG 2.2](https://www.w3.org/TR/WCAG22/) success criteria, including exceptions: normal text contrast is generally 4.5:1, large text 3:1 and applicable non-text UI/graphics 3:1. WCAG 2.2 **Focus Not Obscured (Minimum)** (2.4.11) is AA; **Focus Appearance** (2.4.13) is AAA. Use the [WAI-ARIA Authoring Practices Guide](https://www.w3.org/WAI/ARIA/apg/) for complex widget interaction patterns while preferring native semantics when sufficient. These references define expectations, not an automatic pass.
 
-Separate **build payload size** (local file bytes), **lab rendering** (device/network/throttling), **field Web Vitals** (real users), and **task outcome** (time to complete a meaningful action). Label each measurement's environment, units, tool, median/percentile and scenario. A passing 32 KiB stylesheet cap, 8 KiB search script cap or 64 KiB reference resource cap is a static budget, not LCP/INP/CLS evidence.
+### Evidence and performance boundaries
 
-For a planned public deployment, collect 75th-percentile field LCP, INP and CLS by appropriate page cohort, with consent/privacy-safe instrumentation and sufficient samples. Use the then-current Core Web Vitals definitions and good/needs-improvement thresholds from [web.dev](https://web.dev/articles/vitals); do not extrapolate synthetic localhost results. For source previews, also measure selection and confirmation latency under a bounded many-record fixture; record if a long table, Markdown source inspector or synchronous render causes noticeable interaction delay. Do not define an arbitrary "good" interaction budget without measurement context.
+For the catalog browser, record source revision, route, viewport/zoom, browser/OS, input method, automated-scan scope, manual observations and actual failures. Automated axe-type checks cover only evaluated rules and states. For a product, additionally record its implementation revision and assistive-technology versions; do not reuse the catalog browser's test result as product evidence.
 
-### Manual review record template
+Keep **static bundle size**, **lab rendering**, **field Web Vitals** and **task completion** separate. A stylesheet-size budget is not LCP/INP/CLS evidence. Measure in context and use [web.dev's current Web Vitals definitions](https://web.dev/articles/vitals) when applicable; report cohorts, units, percentile, environment and sampling limitations. Never substitute illustrative source examples for measured performance.
 
-Record **reference ID / scenario / theme / viewport and zoom / browser and OS / assistive technology and version / input method / expected result / observed result / severity / reviewer / date / evidence link / disposition**. Use `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` with reason. Submit one record per meaningful failed scenario, not one blanket pass for twelve references. Automated axe scan coverage must be listed separately from manual results.
-
-**Standards and provenance:** [WCAG 2.2](https://www.w3.org/TR/WCAG22/) covers reflow (1.4.10) and focus not obscured (2.4.11); focus appearance (2.4.13) is AAA, not part of an unqualified AA claim. [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) provides patterns, not authorization for nonsemantic widgets. [Design Tokens Community Group 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/) is a final *Community Group* report, not a W3C Recommendation; token exchange compliance does not demonstrate UI accessibility.
-
-**Evidence state:** the checklist is now **documented**; a human-reviewed matrix and deployed performance remain **NOT VERIFIED**. The human/field verification requirements remain open and are summarized in the .
+**Record template:** concept ID; consuming product (or catalog browser); scenario/state; expected versus observed result; theme, locale and viewport; input/assistive technology; method/tool/version; date; owner; evidence link; severity; disposition. Use `PASS`, `FAIL`, `NOT VERIFIED` or `NOT APPLICABLE` with a reason. A proposed contract remains proposed until independently reviewed; the existence of this checklist is not a completed evaluation.

@@ -2,6 +2,28 @@
 
 **Kind:** guideline · **Status:** proposed · **Owner:** unassigned · **Review:** pending
 
+## Purpose and use boundary
+
+Use module boundaries where distinct features must evolve without importing private implementation or duplicating stable interaction contracts. Start with the smallest ownership structure that makes a real task easy to locate. Do not treat directories, frameworks or import graphs alone as proof of user success.
+
+### Checkable module example — illustrative
+
+```text
+app/routes/projects.tsx              # route composition
+features/projects/index.ts           # feature public entry point
+features/projects/ProjectForm.tsx    # submission and input composition
+features/projects/projectApi.ts      # feature service adapter
+shared/ui/Dialog/                    # accessible generic overlay
+shared/ui/Field/                     # label, help and error composition
+domain/project/validation.ts         # only if shared by several feature contexts
+```
+
+A route imports a feature's public entry point; the feature imports shared UI and stable domain contracts. Shared UI must not import the project service adapter; a settings feature must not deep-import the project form. Adapt file names to the chosen framework.
+
+**Developer task-location exercise:** Give a developer unfamiliar with the codebase four changes: field help text, a permission invariant, failed-save retry and a theme token. Ask them to identify the owning file and relevant tests. Record time and incorrect locations as actual observations, not assumed benchmarks.
+
+**Sources and limitations:** [TypeScript project references](https://www.typescriptlang.org/docs/handbook/project-references.html) document compiler project boundaries for TypeScript monorepos, not a mandatory folder scheme. [Node.js package exports](https://nodejs.org/api/packages.html#package-entry-points) documents public Node package entry points, not product layering. Use a repo-appropriate import enforcement tool and validate actual paths.
+
 ## Single-owner module responsibilities
 
 | Module | Owns | Should not own |

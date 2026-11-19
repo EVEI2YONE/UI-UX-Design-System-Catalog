@@ -27,7 +27,7 @@ Open `http://localhost:8000/`. Generated output lives under ignored `site/dist/`
 | `site/static/search.js` | Progressive client-side filtering and URL/history state; the full catalog remains available without JavaScript |
 | `site/tests/` | Static build, source consistency, browser navigation and automated accessibility smoke checks |
 
-The [catalog shell](../catalog/core/README.md) separately owns route stability and task-intent resolution. The website uses those helpers; it does not create a second authoritative copy of guidance.
+The [catalog shell](../catalog/core/README.md) separately owns route stability and task-intent resolution. The website uses those helpers; it does not create a second authoritative copy of guidance. The browser prioritizes exact canonical ID, alias, title and primary task-intent matches over related or broad matches; clear/reset and URL history remain unchanged. Validate ranking with `node --test site/tests/shell-query.test.cjs` and the browser audit.
 
 ## Reading an entry
 

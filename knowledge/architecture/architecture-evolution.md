@@ -13,6 +13,21 @@
 
 An enterprise team can use an MVP-style tree if its product complexity remains low. A small team may need strict contracts when it handles sensitive data or a complex regulated domain.
 
+## Worked fitness record — illustrative, not observed
+
+Before extracting a shared package, compare incremental feature-boundary changes against the status quo. Baselines remain **unknown** until a team measures them; this is a decision worksheet, not benchmark data.
+
+| Fitness question | Baseline to capture | Proposed transition | Acceptance and rollback |
+| --- | --- | --- | --- |
+| Is ownership findable? | Where an unfamiliar maintainer looks for an “edit project” task, lookup time, incorrect locations | One feature owner and public entry point | Retest on equivalent tasks; revert if common changes become harder |
+| Are dependencies directional? | Forbidden-import/cycle counts and tool/repo revision | Extract a stable shared control | CI boundary checks pass; compatibility exports during migration |
+| Is duplication real? | Actual consumers and semantic differences of similar controls | Share stable behavior; keep domain rules local | No regression in the representative workflow |
+| Is the refactor safe? | Task completion/errors, keyboard, locale, viewport and rollback | One vertical slice without simultaneous redesign | Critical task and persisted state remain intact; rollback on severe regressions |
+
+**Example decision:** Two features duplicate an accessible Dialog shell but have different authorization and submit logic. Share the shell only after comparing focus and close contracts; retain authorization in each feature. A package is justified only if ownership, consumers and delivery boundaries support it; no numerical benefit is assumed.
+
+**Sources and applicability:** [Martin Fowler, Strangler Fig Application](https://martinfowler.com/bliki/StranglerFigApplication.html) describes incremental replacement; [Martin Fowler, Fitness Function](https://martinfowler.com/bliki/FitnessFunction.html) describes periodically checked architecture characteristics. These are practitioner references, not universal mandates or evidence of an outcome in this repository.
+
 ## Migration playbook
 
 1. **Baseline**: identify one high-value vertical user journey and capture entry, loading/empty/error/success, keyboard/focus, deep link, viewport, theme, locale, permissions and data contract.
