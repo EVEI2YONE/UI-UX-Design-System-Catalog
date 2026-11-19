@@ -6,7 +6,7 @@ on:
     branches: [main]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   check-catalog:
@@ -83,31 +83,3 @@ jobs:
           name: catalog-browser-audit
           path: site/artifacts/browser/
           if-no-files-found: ignore
-
-  one-time-scorecard-sync:
-    if: github.event_name == 'pull_request' && github.head_ref == 'review/reassess-editorial-scorecard-20261119' && github.actor != 'github-actions[bot]'
-    runs-on: ubuntu-24.04
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
-          persist-credentials: true
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - name: Generate the canonical scorecard views
-        run: |
-          python3 -m pip install openpyxl==3.1.5
-          python3 scripts/build_concept_scorecard.py --write
-          python3 scripts/build_concept_scorecard_workbook.py
-          python3 scripts/build_concept_scorecard.py --check
-          python3 scripts/build_concept_scorecard_workbook.py --check
-      - name: Commit verified outputs, restore CI policy and remove temporary workflow
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git show origin/main:.github/workflows/catalog-validation.yml > .github/workflows/catalog-validation.yml
-          rm .github/workflows/scorecard-rebuild-once.yml
-          git add CONCEPT_SCORECARD.md CONCEPT_SCORECARD.xlsx .github/workflows/catalog-validation.yml .github/workflows/scorecard-rebuild-once.yml
-          git commit -m "build(scorecard): synchronize generated reports and restore CI" || exit 0
-          git push origin HEAD:review/reassess-editorial-scorecard-20261119
