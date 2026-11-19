@@ -9,6 +9,7 @@ const {chromium}=require('playwright');
 const axe=require('axe-core');
 const base=process.env.CATALOG_BASE_URL||'http://127.0.0.1:8765';
 const entries=require('../../catalog/index.json').entries;
+const tasks=require('../../tasks/index.json').tasks;
 const out=path.join(__dirname,'..','artifacts','browser');
 fs.mkdirSync(out,{recursive:true});
 
@@ -36,7 +37,8 @@ async function run() {
     const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});
     page.on('pageerror',err=>jsErrors.push(err.message));
     await page.goto(base+'/tasks/',{waitUntil:'load'});
-    assert.equal(await page.locator('article.task-card').count(),7);
+    assert.equal(await page.locator('article.task-card').count(),tasks.length);
+    assert.equal(await page.getByRole('link',{name:'Manage an item from a card'}).count(),1);
     assert.equal(await page.getByRole('link',{name:'Narrow a long list'}).getAttribute('href'),
       '/catalog/patterns/search-filter/');
     await page.goto(base+'/catalog/',{waitUntil:'load'});
