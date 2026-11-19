@@ -229,6 +229,28 @@
         "pattern.collection-views",
         "pattern.activity-history"
       ]
+    },
+    {
+      "id": "choose-one-record-task-surface",
+      "group": "Enter and complete",
+      "title": "Edit a related record without nested dialogs",
+      "summary": "Choose inline, detail subview, single dialog, drawer or route while preserving back navigation, draft and focus.",
+      "intent_phrases": [
+        "edit a related record without opening nested dialogs",
+        "choose between dialog drawer and route for editing",
+        "keep edit history in one detail surface",
+        "preserve draft when moving between detail and edit",
+        "restore focus after closing a nested record task",
+        "choose a task surface for mobile and desktop"
+      ],
+      "primary_id": "pattern.master-detail",
+      "related_ids": [
+        "pattern.task-flows",
+        "component.dialog",
+        "component.tabs",
+        "pattern.navigation",
+        "pattern.interaction-recovery"
+      ]
     }
   ]
 }
