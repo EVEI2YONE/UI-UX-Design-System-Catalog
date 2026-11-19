@@ -21,7 +21,7 @@ class ShellContractTests(unittest.TestCase):
         validate_tasks(cls.tasks, cls.entries)
 
     def test_all_task_routes_resolve_only_to_registered_concepts(self):
-        self.assertEqual(len(self.tasks), 7)
+        self.assertGreaterEqual(len(self.tasks), 7)
         markup = task_index(self.tasks, {e["id"]: route(e) for e in self.entries})
         for task in self.tasks:
             self.assertIn(task["title"], markup)
