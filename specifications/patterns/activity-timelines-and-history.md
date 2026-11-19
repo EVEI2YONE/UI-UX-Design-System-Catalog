@@ -63,3 +63,10 @@ This documentation does not verify real users, moderation outcomes, backend acce
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — supporting context; verify applicability and current edition.
 - Related canonical sources: [Role-aware workspaces](role-aware-workspaces-and-context-switching.md), [Collaboration and sharing](collaboration-and-sharing.md), [Review Workspace](../experiences/review-workspace/spec.md), [Interaction recovery](interaction-states-and-recovery.md).
 - **Scope limit:** This is a proposed UX contract, not a complete backend or security design.
+
+## Representative task verification case
+
+**Scenario to specify (illustrative, not tested):** Test grouped events and a keyboard navigable change history. Define user intent, initial and resulting authoritative state, invalid/unknown outcomes and an explicit recovery path. Preserve permission boundaries, reversible actions and the meaning of existing canonical components.
+
+**Evidence rule:** State the success/failure observation, keyboard focus return, error announcement, small screen, text expansion and locale/RTL requirements that are relevant to the task. Collect actual environment, reviewer, observable results and limitations before marking a real implementation check complete. See [WCAG 2.2](https://www.w3.org/TR/WCAG22/) for applicable accessibility criteria; this source alone is not product or research evidence. No unexecuted check is PASS.
+

@@ -84,3 +84,10 @@ No backend contract, human evaluation, released component, security guarantee, p
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — contextual reference; confirm current edition and applicability.
 - Related canonical concepts: [Collaboration and sharing](collaboration-and-sharing.md), [Content publishing](content-creation-and-publishing.md), [Notifications](notifications-and-attention.md), [Interaction recovery](interaction-states-and-recovery.md).
 - **Scope limit:** Authoritative business rules and real integrations remain product-owned. Maintain a human review record before raising status beyond proposed.
+
+## Representative task verification case
+
+**Scenario to specify (illustrative, not tested):** Evaluate a representative dense-document task, including permission isolation, screen-reader navigation, filter recovery and detached anchors. Define user intent, initial and resulting authoritative state, invalid/unknown outcomes and an explicit recovery path. Preserve permission boundaries, reversible actions and the meaning of existing canonical components.
+
+**Evidence rule:** State the success/failure observation, keyboard focus return, error announcement, small screen, text expansion and locale/RTL requirements that are relevant to the task. Collect actual environment, reviewer, observable results and limitations before marking a real implementation check complete. See [WCAG 2.2](https://www.w3.org/TR/WCAG22/) for applicable accessibility criteria; this source alone is not product or research evidence. No unexecuted check is PASS.
+

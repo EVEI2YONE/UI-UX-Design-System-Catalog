@@ -63,3 +63,10 @@ This is a proposed conceptual pattern. No released editor, live data service, pr
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — reference context; verify current edition and applicability.
 - Related canonical concepts: [Textarea](../components/textarea/spec.md), [Content publishing](content-creation-and-publishing.md), [Commenting and annotations](commenting-and-annotations.md), [Interaction recovery](interaction-states-and-recovery.md).
 - **Scope limit:** A product-specific feature must own real data persistence, authorization and performance verification.
+
+## Representative task verification case
+
+**Scenario to specify (illustrative, not tested):** Exercise paste sanitization and draft restore after failure. Define user intent, initial and resulting authoritative state, invalid/unknown outcomes and an explicit recovery path. Preserve permission boundaries, reversible actions and the meaning of existing canonical components.
+
+**Evidence rule:** State the success/failure observation, keyboard focus return, error announcement, small screen, text expansion and locale/RTL requirements that are relevant to the task. Collect actual environment, reviewer, observable results and limitations before marking a real implementation check complete. See [WCAG 2.2](https://www.w3.org/TR/WCAG22/) for applicable accessibility criteria; this source alone is not product or research evidence. No unexecuted check is PASS.
+
