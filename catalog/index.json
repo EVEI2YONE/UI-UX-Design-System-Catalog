@@ -3837,6 +3837,472 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "pattern.data-import",
+      "title": "Data import and migration",
+      "path": "specifications/patterns/data-import-and-migration.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Map, validate, preview and reconcile structured imports without unintended data changes.",
+      "aliases": [
+        "data import",
+        "import data",
+        "import preview",
+        "CSV field mapping",
+        "migration import"
+      ],
+      "domains": [
+        "data-management",
+        "workflow",
+        "migration"
+      ],
+      "use_when": [
+        "Importing records requires field mapping, duplicate handling or consequential preview."
+      ],
+      "avoid_when": [
+        "A user simply attaches a file without changing structured records."
+      ],
+      "related": [
+        "pattern.file-upload",
+        "pattern.interaction-recovery",
+        "pattern.offline-sync",
+        "component.progress-indicator"
+      ],
+      "depends_on": [
+        "pattern.file-upload",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.access-requests",
+      "title": "Permissions and access requests",
+      "path": "specifications/patterns/permissions-and-access-requests.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Request, track and understand task-specific access without equating requests with grants.",
+      "aliases": [
+        "access request",
+        "request access",
+        "permission request",
+        "access approval request",
+        "requesting permissions"
+      ],
+      "domains": [
+        "authorization",
+        "workflow",
+        "trust"
+      ],
+      "use_when": [
+        "A blocked user has a legitimate path to request a capability or resource."
+      ],
+      "avoid_when": [
+        "The resource must remain undiscoverable or sign-in recovery alone solves the issue."
+      ],
+      "related": [
+        "pattern.role-aware-workspaces",
+        "pattern.collaboration-sharing",
+        "pattern.service-recovery",
+        "guidance.privacy-trust"
+      ],
+      "depends_on": [
+        "pattern.role-aware-workspaces",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.data-export",
+      "title": "Data export and background jobs",
+      "path": "specifications/patterns/data-export-and-background-jobs.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Request and track long-running exports with true job states, scope and secure retrieval.",
+      "aliases": [
+        "data export",
+        "background export",
+        "background job",
+        "report export",
+        "download job"
+      ],
+      "domains": [
+        "data-management",
+        "workflow",
+        "privacy"
+      ],
+      "use_when": [
+        "Large or sensitive outputs require asynchronous processing or later retrieval."
+      ],
+      "avoid_when": [
+        "A small immediate download is enough and no durable job exists."
+      ],
+      "related": [
+        "pattern.data-tables",
+        "pattern.search-filter",
+        "pattern.interaction-recovery",
+        "component.progress-indicator"
+      ],
+      "depends_on": [
+        "pattern.interaction-recovery",
+        "component.progress-indicator"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.commenting-annotations",
+      "title": "Commenting and annotations",
+      "path": "specifications/patterns/commenting-and-annotations.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Attach threaded comments to stable content anchors with mentions, resolution and privacy.",
+      "aliases": [
+        "comment thread",
+        "inline comments",
+        "anchored feedback",
+        "annotation threads",
+        "content annotation"
+      ],
+      "domains": [
+        "collaboration",
+        "content",
+        "workflow"
+      ],
+      "use_when": [
+        "Reviewers discuss an identifiable document segment, record or shared artifact."
+      ],
+      "avoid_when": [
+        "Feedback has no anchor and a simple submission or conversation suffices."
+      ],
+      "related": [
+        "pattern.collaboration-sharing",
+        "pattern.content-publishing",
+        "pattern.notifications-attention",
+        "pattern.interaction-recovery"
+      ],
+      "depends_on": [
+        "pattern.collaboration-sharing",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.reporting-appeals",
+      "title": "Reporting, moderation and appeals",
+      "path": "specifications/patterns/reporting-moderation-and-appeals.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Report harmful content or conduct, receive privacy-aware outcomes and appeal eligible decisions.",
+      "aliases": [
+        "report abuse",
+        "content reporting",
+        "reporting and appeals",
+        "appeal moderation decision",
+        "moderation appeal"
+      ],
+      "domains": [
+        "safety",
+        "trust",
+        "workflow"
+      ],
+      "use_when": [
+        "Affected users can submit policy reports or eligible appeals."
+      ],
+      "avoid_when": [
+        "The task is purely internal case review or generic technical support."
+      ],
+      "related": [
+        "feature.review-workspace",
+        "pattern.service-recovery",
+        "guidance.privacy-trust",
+        "pattern.file-upload"
+      ],
+      "depends_on": [
+        "pattern.forms",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.activity-history",
+      "title": "Activity timelines and history",
+      "path": "specifications/patterns/activity-timelines-and-history.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Read contextual event histories with actors, accurate time, revision detail and redaction.",
+      "aliases": [
+        "activity timeline",
+        "change history",
+        "revision history",
+        "audit visibility",
+        "activity log"
+      ],
+      "domains": [
+        "collaboration",
+        "data-management",
+        "trust"
+      ],
+      "use_when": [
+        "Users need to understand what changed, by whom and when."
+      ],
+      "avoid_when": [
+        "A last-updated label suffices or an exclusive security audit service is needed."
+      ],
+      "related": [
+        "pattern.role-aware-workspaces",
+        "pattern.collaboration-sharing",
+        "feature.review-workspace",
+        "guidance.internationalization"
+      ],
+      "depends_on": [
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.rich-text-editing",
+      "title": "Rich-text editing",
+      "path": "specifications/patterns/rich-text-editing.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Compose formatted documents with semantic structure, safe paste, selection and draft recovery.",
+      "aliases": [
+        "rich text editor",
+        "WYSIWYG editor",
+        "formatted text editing",
+        "structured editor",
+        "editing toolbar"
+      ],
+      "domains": [
+        "content",
+        "editing",
+        "accessibility"
+      ],
+      "use_when": [
+        "The user must author headings, lists, links or other meaningful structured content."
+      ],
+      "avoid_when": [
+        "A native multiline text field or simple Markdown source editor meets the task."
+      ],
+      "related": [
+        "component.textarea",
+        "pattern.content-publishing",
+        "pattern.commenting-annotations",
+        "pattern.offline-sync"
+      ],
+      "depends_on": [
+        "pattern.interaction-recovery",
+        "pattern.content-publishing"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.live-updates",
+      "title": "Real-time data and live updates",
+      "path": "specifications/patterns/real-time-data-and-live-updates.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Present incoming changes, freshness and reconnecting states without disrupting focused tasks.",
+      "aliases": [
+        "live updates",
+        "real time updates",
+        "realtime data",
+        "live feed freshness",
+        "unseen changes"
+      ],
+      "domains": [
+        "real-time",
+        "data-management",
+        "accessibility"
+      ],
+      "use_when": [
+        "Visible records change independently of the viewer's actions."
+      ],
+      "avoid_when": [
+        "Only explicit refresh or local write synchronization matters."
+      ],
+      "related": [
+        "pattern.offline-sync",
+        "pattern.notifications-attention",
+        "pattern.data-tables",
+        "pattern.interaction-recovery"
+      ],
+      "depends_on": [
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.workflow-automation",
+      "title": "Workflow automation and rule builders",
+      "path": "specifications/patterns/workflow-automation-and-rule-builders.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Configure and test triggers, conditions and actions with observable execution and safe pause.",
+      "aliases": [
+        "rule builder",
+        "workflow automation",
+        "automation rules",
+        "event trigger",
+        "conditional automation"
+      ],
+      "domains": [
+        "automation",
+        "workflow",
+        "trust"
+      ],
+      "use_when": [
+        "Users author recurring or event-driven actions."
+      ],
+      "avoid_when": [
+        "A fixed workflow or simple notification preference solves the problem."
+      ],
+      "related": [
+        "pattern.agentic-actions",
+        "pattern.advanced-interactions",
+        "pattern.scheduling-availability",
+        "pattern.interaction-recovery"
+      ],
+      "depends_on": [
+        "pattern.advanced-interactions",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.collection-views",
+      "title": "Collection and feed views",
+      "path": "specifications/patterns/collection-and-feed-views.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Choose lists, cards, galleries and feeds with stable focus, selection, loading and item context.",
+      "aliases": [
+        "collection view",
+        "feed view",
+        "card grid",
+        "content feed",
+        "infinite feed"
+      ],
+      "domains": [
+        "collections",
+        "navigation",
+        "data-management"
+      ],
+      "use_when": [
+        "People scan, browse or act on many repeated items beyond a data table."
+      ],
+      "avoid_when": [
+        "Tabular comparison, a simple single record or tree navigation better fits."
+      ],
+      "related": [
+        "pattern.data-tables",
+        "pattern.search-filter",
+        "pattern.master-detail",
+        "pattern.live-updates"
+      ],
+      "depends_on": [
+        "pattern.search-filter",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.progress-indicator",
+      "title": "Progress indicator",
+      "path": "specifications/components/progress-indicator/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Communicate measured or unknown task progress without suggesting unconfirmed completion.",
+      "aliases": [
+        "progress indicator",
+        "progressbar",
+        "determinate progress",
+        "indeterminate progress",
+        "task progress bar"
+      ],
+      "domains": [
+        "components",
+        "feedback",
+        "accessibility"
+      ],
+      "use_when": [
+        "A waiting task needs a truthful measurable, stage-based or indeterminate progress display."
+      ],
+      "avoid_when": [
+        "A static score or generic transient feedback is being displayed."
+      ],
+      "related": [
+        "pattern.interaction-recovery",
+        "pattern.data-export",
+        "pattern.file-upload",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.listbox",
+      "title": "Listbox and multi-select options",
+      "path": "specifications/components/listbox/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Choose one or more options with distinct focus, selection and coherent listbox keyboard semantics.",
+      "aliases": [
+        "listbox",
+        "multi select listbox",
+        "multi-select options",
+        "aria listbox",
+        "multiple selection list"
+      ],
+      "domains": [
+        "components",
+        "selection",
+        "accessibility"
+      ],
+      "use_when": [
+        "A composite selectable list has a justified interaction need beyond native controls."
+      ],
+      "avoid_when": [
+        "Native Select, Radio Group, Checkboxes or Combobox already meet the task."
+      ],
+      "related": [
+        "component.select",
+        "component.combobox",
+        "component.radio-group",
+        "component.checkbox"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
