@@ -20,6 +20,9 @@ Conceptual relationships: `Workspace -> Collection -> Record -> Related item`; `
 
 **Decision before rendering:** The user must distinguish **navigation** (title link), **selection** (select control), **expansion** (preview button) and **commands** (Add, Edit, more menu). A card-wide clickable wrapper must not contain nested links or controls. Don't duplicate an "Open" action beside an already clear title link. Use one coherent foreground task surface instead of stacking dialogs for detail, edit and history.
 
+**Task-surface decision:** This reference journey may remain in one stable detail surface with Overview, Edit and History peer subviews, or move to named detail/edit routes when deep links, task length or draft durability require them. A drawer/sheet is conditional on context, zoom and focus remaining usable. The [Master-detail task-surface chooser](../specifications/patterns/master-detail-exploration.md#choose-one-task-surface-across-detail-edit-and-history) owns the modality, Back/Escape and focus decision; this journey does not repeat Dialog/Tabs interaction contracts. A Details -> Manage -> Edit modal stack is an anti-example, **NOT VERIFIED** as a usable experience.
+
+
 ## End-to-end journey with confirmation and recovery
 
 | Step | Trigger and primary path | Branch, failure and return invariant |
