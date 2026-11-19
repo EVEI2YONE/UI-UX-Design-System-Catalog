@@ -51,3 +51,10 @@ Use accessible provider-hosted fields where appropriate; label errors and next a
 - [Account/settings portal](account-and-settings-portal.md) for navigation and saving, [role-aware workspaces](role-aware-workspaces-and-context-switching.md) for actor/tenant authorization, [forms](forms.md) for validation, [privacy](../../knowledge/guidance/privacy-consent-and-trust.md) for data rights.
 
 **Canonical ID:** `pattern.billing-subscription-settings`.
+
+## Applied decision and verification case
+
+**Illustrative decision case (not observed):** Add a provider-neutral failed-payment scenario and a policy applicability check. Name the initiating task, what becomes unavailable or uncertain, how the user learns the truthful state and which continuation is safe. Distinguish user-visible feedback from server authority and explain when the simpler existing pattern should be reused.
+
+**Acceptance boundary:** Specify an observable expected result for primary action, keyboard/focus recovery, relevant locale/RTL and small-screen conditions and a negative or failure state. Link the selected test to the concept's existing canonical owner instead of introducing an overlapping shared control. A [WCAG 2.2](https://www.w3.org/TR/WCAG22/) reference supports applicable web accessibility criteria but does not verify an implementation, independent review or actual task completion. Unexecuted checks remain **NOT VERIFIED**.
+
