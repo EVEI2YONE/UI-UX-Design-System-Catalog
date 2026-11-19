@@ -109,7 +109,7 @@ After selecting a coherent visual direction, use [Practical UI styling recipes](
 
 ## Art-direction research, exploration and selection
 
-### Observe, abstract and document sources
+### Inspiration gathering: observe, abstract and document sources
 
 Gather a **small contrasting set** of references: comparable task, different density/personality, and one transferable pattern. For every reference record creator/URL, capture date, intended audience/platform, rights, observed typography/color/spacing, inferred purpose, transfer decision, counterexample and evidence level. A screenshot is evidence of **appearance**, not of task completion, conversion or accessibility.
 
