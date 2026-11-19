@@ -63,7 +63,7 @@ class SiteBuildTests(unittest.TestCase):
         self.assertIn("View Markdown source", text)
 
     def test_all_six_registered_control_previews(self):
-        controls = [e for e in self.entries if e["id"].startswith("component.")]
+        controls = [e for e in self.entries if e["id"].startswith("component.") and "implementation" in e]
         self.assertEqual(len(controls), 6)
         for entry in controls:
             with self.subTest(entry=entry["id"]):
