@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "source_repository": "EVEI2YONE/UI-UX-Design-System-Catalog",
-  "source_commit": "7ba706381d31adb7c95d96ab3be2399e53d7b868",
+  "source_commit": "82c1563bff957801f493c72091a858c3999e5320",
   "assessment_date_utc": "2026-11-19",
-  "assessment_type": "source-only editorial assessment; not an independent human review, usability study, or accessibility conformance evaluation",
+  "assessment_type": "source-only editorial reassessment of revised canonical concept guidance and site discovery; not an independent human review, usability study, or accessibility conformance evaluation",
   "weights_percent": {
     "purpose": 15,
     "actionability": 20,
@@ -158,13 +158,13 @@
         "research": 3,
         "discoverability": 3,
         "verification": 4,
-        "signal_to_noise": 1
+        "signal_to_noise": 2
       },
-      "score": 79,
-      "priority": "P1",
-      "issue_flag": "noise-overload",
-      "explanation": "Public APIs, event ownership and contract matrices are specific; repeated evidence warnings obscure the minimum contract.",
-      "next_action": "Put required fields and state rules first; move evidence caveats to one section.",
+      "score": 84,
+      "priority": "P2",
+      "issue_flag": "residual-specialized-detail",
+      "explanation": "A minimum component contract and fast path now make state, API, event and evidence ownership easier to find; extensive specialist sections still add reading cost.",
+      "next_action": "Validate the minimum contract with one real Button or Dialog adoption and reduce repeated specialist details that do not change a decision.",
       "evidence_level": "E0"
     },
     {
@@ -218,13 +218,13 @@
         "research": 3,
         "discoverability": 3,
         "verification": 4,
-        "signal_to_noise": 1
+        "signal_to_noise": 2
       },
-      "score": 79,
-      "priority": "P1",
-      "issue_flag": "noise-overload",
-      "explanation": "Unknown outcomes, focus continuity and async states are well handled; many repeated NOT VERIFIED labels drown the recovery choices.",
-      "next_action": "Collapse repeated status notes and front-load the recovery decision table.",
+      "score": 84,
+      "priority": "P2",
+      "issue_flag": "residual-document-density",
+      "explanation": "A recovery chooser now puts failed, partial and uncertain outcomes before specialized flows, and status tables use one evidence convention; the long reference still needs trimming.",
+      "next_action": "Test loss-of-acknowledgement and focus recovery in a real flow, then consolidate redundant examples and state notes.",
       "evidence_level": "E0"
     },
     {
@@ -232,19 +232,19 @@
       "path": "knowledge/guidance/accessibility.md",
       "title": "Accessibility",
       "dimensions": {
-        "purpose": 3,
-        "actionability": 3,
+        "purpose": 4,
+        "actionability": 4,
         "coverage": 4,
-        "research": 2,
+        "research": 3,
         "discoverability": 3,
-        "verification": 3,
-        "signal_to_noise": 1
+        "verification": 4,
+        "signal_to_noise": 3
       },
-      "score": 64,
-      "priority": "P1",
-      "issue_flag": "contradiction",
-      "explanation": "Useful keyboard and inclusive testing contracts coexist with preview and iframe claims not supported by the current site.",
-      "next_action": "Remove the obsolete preview and iframe assumptions; separate site checks from consuming-app checks.",
+      "score": 89,
+      "priority": "P2",
+      "issue_flag": "runtime-evidence-needed",
+      "explanation": "The obsolete iframe and preview claims are gone; a WCAG-scoped catalog-versus-product matrix and task acceptance scenarios now lead the guidance. Real consuming-product checks remain unperformed.",
+      "next_action": "Carry out keyboard, screen-reader, reflow, theme and RTL checks on a real consuming journey; record browser, assistive technology, product version and results.",
       "evidence_level": "E0"
     },
     {
@@ -318,13 +318,13 @@
         "research": 3,
         "discoverability": 3,
         "verification": 4,
-        "signal_to_noise": 1
+        "signal_to_noise": 2
       },
-      "score": 75,
-      "priority": "P1",
-      "issue_flag": "noise-overload",
-      "explanation": "The acceptance coverage is extensive; 61 NOT VERIFIED repetitions and numerous unrelated matrices bury critical gates.",
-      "next_action": "Build a short gate index and replace repeated warnings with one evidence legend.",
+      "score": 80,
+      "priority": "P2",
+      "issue_flag": "residual-document-length",
+      "explanation": "A short decision-oriented gate index and shared evidence legend reduce repeated status-cell noise, but the long collection of specialized matrices still slows scanning.",
+      "next_action": "Review whether remaining specialized matrices can be linked or condensed without losing release-critical coverage; test reviewer task lookup.",
       "evidence_level": "E0"
     },
     {
@@ -496,15 +496,15 @@
         "actionability": 4,
         "coverage": 4,
         "research": 3,
-        "discoverability": 3,
-        "verification": 3,
+        "discoverability": 4,
+        "verification": 4,
         "signal_to_noise": 3
       },
-      "score": 86,
-      "priority": "P1",
-      "issue_flag": "implementation-gap",
-      "explanation": "Query, filtering and recovery guidance is sound; the catalog browser search is less capable than the stated discovery model.",
-      "next_action": "Test natural-language queries and align browser ranking with task-oriented retrieval.",
+      "score": 91,
+      "priority": "P3",
+      "issue_flag": "findability-study-needed",
+      "explanation": "The documentation browser now ranks exact identities, aliases and primary task phrases before related results, with deterministic and Chromium checks; user findability is unmeasured.",
+      "next_action": "Conduct a small task-based findability check with representative vocabulary, keyboard navigation and zero-results recovery; retain ranked-search regression tests.",
       "evidence_level": "E0"
     },
     {
@@ -912,19 +912,19 @@
       "path": "knowledge/architecture/module-boundaries-and-developer-navigation.md",
       "title": "Application module boundaries and developer navigation",
       "dimensions": {
-        "purpose": 3,
-        "actionability": 3,
+        "purpose": 4,
+        "actionability": 4,
         "coverage": 3,
-        "research": 1,
+        "research": 2,
         "discoverability": 3,
         "verification": 3,
         "signal_to_noise": 4
       },
-      "score": 73,
+      "score": 85,
       "priority": "P2",
-      "issue_flag": "framing-gap",
-      "explanation": "Import direction and module ownership are concrete; the entry starts at implementation rules with little framing or cited basis.",
-      "next_action": "Lead with a purpose and use boundary; add a checkable module ownership example.",
+      "issue_flag": "developer-task-validation",
+      "explanation": "A clear purpose boundary, public-entrypoint example and developer task-location exercise make ownership decisions practical; sources remain platform-scoped and untested here.",
+      "next_action": "Test the import rules and task-to-file lookup with unfamiliar contributors in a representative repository and report observed errors and time.",
       "evidence_level": "E0"
     },
     {
@@ -933,18 +933,18 @@
       "title": "Application architecture evolution and fitness",
       "dimensions": {
         "purpose": 3,
-        "actionability": 3,
+        "actionability": 4,
         "coverage": 3,
-        "research": 1,
+        "research": 2,
         "discoverability": 2,
         "verification": 3,
         "signal_to_noise": 4
       },
-      "score": 70,
+      "score": 79,
       "priority": "P2",
-      "issue_flag": "evidence-gap",
-      "explanation": "Migration triggers and rollback are useful; there is little research traceability or demonstrated fitness measurement.",
-      "next_action": "Add an illustrative before-and-after fitness record with clear unknowns.",
+      "issue_flag": "unmeasured-fitness",
+      "explanation": "An explicit fitness worksheet and incremental extraction example now connect architecture transitions to verifiable measures and practitioner sources; no actual baseline is supplied.",
+      "next_action": "Document one real before-and-after task-location, import-boundary and regression record, with the measured environment and rollback outcome.",
       "evidence_level": "E0"
     },
     {
@@ -1038,13 +1038,13 @@
         "research": 3,
         "discoverability": 3,
         "verification": 4,
-        "signal_to_noise": 1
+        "signal_to_noise": 2
       },
-      "score": 79,
-      "priority": "P1",
-      "issue_flag": "noise-overload",
-      "explanation": "Settings authority, scope and save recovery are exhaustive; the nearly 7,000-word entry hides the core user journey.",
-      "next_action": "Add a one-page settings decision map and split specialized configuration cases.",
+      "score": 84,
+      "priority": "P2",
+      "issue_flag": "residual-scope-overlap",
+      "explanation": "The settings decision map makes navigation, authority, save and recovery choices immediately accessible; the many configuration subsections remain lengthy and partially overlapping.",
+      "next_action": "Review and consolidate specialized configuration cases against their canonical owners; run one scope-change and unknown-save task scenario.",
       "evidence_level": "E0"
     },
     {
@@ -1081,10 +1081,10 @@
         "signal_to_noise": 3
       },
       "score": 86,
-      "priority": "P1",
-      "issue_flag": "broken-reference",
-      "explanation": "Fidelity gates and honest annotation labels are explicit; a few malformed cross-references weaken editorial trust.",
-      "next_action": "Repair link fragments and keep evidence labels outside example screens when possible.",
+      "priority": "P3",
+      "issue_flag": "prototype-evidence-needed",
+      "explanation": "The malformed task-flows reference was repaired, while fidelity and evidence boundaries remain clear. A one-link correction does not justify an unearned dimension increase.",
+      "next_action": "Apply the static-versus-interactive fidelity decision to a representative task and record observed limitations rather than inferring tested behavior.",
       "evidence_level": "E0"
     },
     {
@@ -1693,18 +1693,18 @@
       "title": "Commenting and annotations",
       "dimensions": {
         "purpose": 3,
-        "actionability": 3,
-        "coverage": 3,
+        "actionability": 4,
+        "coverage": 4,
         "research": 2,
-        "discoverability": 2,
-        "verification": 3,
+        "discoverability": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 74,
-      "priority": "P1",
-      "issue_flag": "coverage-gap",
-      "explanation": "Anchor stability, threading, mentions and resolution are clear; there is no explicit triage for dense or noisy annotations.",
-      "next_action": "Add priority and unresolved filters, marker clustering, and an accessible thread list.",
+      "score": 86,
+      "priority": "P2",
+      "issue_flag": "applied-validation-needed",
+      "explanation": "Dense-review filtering, marker clustering, an accessible thread-list alternative and permission-sensitive counts now cover the missing decision; research and observed behavior remain limited.",
+      "next_action": "Evaluate a representative dense-document task, including permission isolation, screen-reader navigation, filter recovery and detached anchors.",
       "evidence_level": "E0"
     },
     {
