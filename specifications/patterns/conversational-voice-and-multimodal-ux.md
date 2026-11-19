@@ -78,3 +78,10 @@ For voice interactions, measure task outcome **separately** from recognition err
 **Canonical ID:** `pattern.multimodal-conversation` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
 Related: [AI experiences](../../knowledge/guidance/ai-powered-experiences-and-trust.md), [agentic actions](agentic-actions-and-approvals.md), [accessibility](../../knowledge/guidance/accessibility.md), [mobile adaptation](../../knowledge/guidance/mobile-and-adaptive-platform-ux.md), [content design](../../knowledge/guidance/content-design-and-ux-writing.md).
+
+## Task-level decision example and evidence scope
+
+**Illustrative task condition:** Validate interruption and non-audio completion with representative input methods. Describe the observable starting state, the user's actual choice, authoritative success or unknown/failed outcome, and safe repeat or cancellation. When the pattern crosses authorization, privacy or state ownership boundaries, explicitly defer those decisions to the consuming system rather than changing shared component semantics.
+
+**Verification:** Make the expected visible and accessible result testable across keyboard/pointer, relevant small-screen and locale cases, plus permission and failure states. Record the actual browser, environment, observed behavior, owner and limitations before marking an implementation test passed; until then, status is **NOT VERIFIED**. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) is applicable only to relevant web accessibility criteria and cannot substitute for user-task evidence.
+

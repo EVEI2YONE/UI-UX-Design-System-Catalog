@@ -500,3 +500,10 @@ For each setting record its stable key, documented default and effective value, 
 **Application-specific boundary:** A reusable settings contract cannot choose the product's timezone defaults, feature-transition policies or supported clients. These decisions require domain ownership and must not be inferred from documentation alone.
 
 **Verification status:** Documentation guidance **proposed**; reviewer unassigned. Real schema fixtures, application upgrades, data safety, accessibility, multi-client behavior and restore tests are **NOT VERIFIED**. Reuse [lifecycle governance](../../governance/lifecycle-and-decisions.md), [offline synchronization](offline-sync-and-conflicts.md), configuration propagation, [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (reference date 2026-11-07; external revalidation not performed).
+
+## Task-level decision example and evidence scope
+
+**Illustrative task condition:** Review and consolidate specialized configuration cases against their canonical owners; run one scope-change and unknown-save task scenario. Describe the observable starting state, the user's actual choice, authoritative success or unknown/failed outcome, and safe repeat or cancellation. When the pattern crosses authorization, privacy or state ownership boundaries, explicitly defer those decisions to the consuming system rather than changing shared component semantics.
+
+**Verification:** Make the expected visible and accessible result testable across keyboard/pointer, relevant small-screen and locale cases, plus permission and failure states. Record the actual browser, environment, observed behavior, owner and limitations before marking an implementation test passed; until then, status is **NOT VERIFIED**. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) is applicable only to relevant web accessibility criteria and cannot substitute for user-task evidence.
+

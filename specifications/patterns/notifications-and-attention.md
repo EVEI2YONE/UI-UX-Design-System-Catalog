@@ -80,3 +80,10 @@ For each event class, expose only genuinely supported delivery channels and dist
 **Test cases (NOT VERIFIED):** email unsubscribe scoped to category, revoked push permission, cross-device preference state, one event via multiple channels, quiet-hour boundary/DST, in-app accessibility, service outage and delayed preference propagation. Test actual delivery independently of settings-save success.
 
 **Example:** “Weekly product digest · Email · Fridays, local time,” with the actual effective timezone and clear stop option. **Anti-example:** a universal “Mute all” switch that silently suppresses mandatory security notices or appears effective despite denied OS permission. Related: [account settings](account-and-settings-portal.md), [privacy](../../knowledge/guidance/privacy-consent-and-trust.md).
+
+## Task-level decision example and evidence scope
+
+**Illustrative task condition:** Add review-thread priority and digest linkage without creating a new concept. Describe the observable starting state, the user's actual choice, authoritative success or unknown/failed outcome, and safe repeat or cancellation. When the pattern crosses authorization, privacy or state ownership boundaries, explicitly defer those decisions to the consuming system rather than changing shared component semantics.
+
+**Verification:** Make the expected visible and accessible result testable across keyboard/pointer, relevant small-screen and locale cases, plus permission and failure states. Record the actual browser, environment, observed behavior, owner and limitations before marking an implementation test passed; until then, status is **NOT VERIFIED**. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) is applicable only to relevant web accessibility criteria and cannot substitute for user-task evidence.
+

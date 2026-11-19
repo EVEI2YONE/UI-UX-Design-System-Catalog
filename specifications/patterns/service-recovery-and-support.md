@@ -68,3 +68,10 @@ Use clear, respectful labels such as “Get help with this request.” If the pr
 
 **Canonical ID:** `pattern.service-recovery` · **Owner:** unassigned · **Human review date:** null. Guidance proposed 2026-11-07; no support-system tests or participant outcomes.
 **Related:** [interaction recovery](interaction-states-and-recovery.md), [form composition](forms.md), [content design](../../knowledge/guidance/content-design-and-ux-writing.md), [feedback](feedback.md), [UX measurement](../../knowledge/guidance/ux-measurement.md).
+
+## Task-level decision example and evidence scope
+
+**Illustrative task condition:** Run one self-service-to-support handoff and task-resumption test. Describe the observable starting state, the user's actual choice, authoritative success or unknown/failed outcome, and safe repeat or cancellation. When the pattern crosses authorization, privacy or state ownership boundaries, explicitly defer those decisions to the consuming system rather than changing shared component semantics.
+
+**Verification:** Make the expected visible and accessible result testable across keyboard/pointer, relevant small-screen and locale cases, plus permission and failure states. Record the actual browser, environment, observed behavior, owner and limitations before marking an implementation test passed; until then, status is **NOT VERIFIED**. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) is applicable only to relevant web accessibility criteria and cannot substitute for user-task evidence.
+
