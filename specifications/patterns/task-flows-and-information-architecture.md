@@ -18,6 +18,14 @@ Record user cohort, context, success condition, primary action, safe exit, and f
 
 **Task-to-flow quick check:** Identify the user and success event; map entry, decision, pending, success, unknown outcome, recovery and exit; verify a keyboard and small-screen path. Use specialized flow sections only for states present in this task.
 
+## Map task depth before choosing a surface
+
+Before selecting inline editing, a dialog, drawer or route, draw the task's **view/edit/history/return** structure. Distinguish peer views, required sequential steps, exceptional interruptions and durable/deep-linked destinations. Choose one foreground task context and define which transitions change browser history rather than opening another overlay.
+
+**Quick decision:** A small correction may stay inline; repeated record views may share a detail surface; a short interruptive decision may use one modal; a side task may use a drawer if context and reflow remain usable; long, high-risk or deep-linked editing generally warrants a route. Account for dirty drafts, pending saves, uncertain outcomes, Escape/Cancel, browser Back and a removed invoker before accepting the composition. The normative comparison and state/focus matrix belong to [Master-detail: task-surface choice](master-detail-exploration.md#choose-one-task-surface-across-detail-edit-and-history). The selected [Dialog](../components/dialog/spec.md), [Tabs](../components/tabs/spec.md) and [Navigation](navigation.md) retain their separate canonical contracts.
+
+**Anti-example:** Three nested modals are treated as three "pages" without an owner for Back, draft preservation or focus. **Acceptance:** a representative person can inspect, edit, review history, recover from an unknown save and return without context loss on narrow and wide screens. This remains **NOT VERIFIED** in any consuming product.
+
 ## Information architecture checks
 
 - Group content around user mental models and jobs rather than the organization chart.
