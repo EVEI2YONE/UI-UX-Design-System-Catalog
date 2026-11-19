@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "source_repository": "EVEI2YONE/UI-UX-Design-System-Catalog",
-  "source_commit": "82c1563bff957801f493c72091a858c3999e5320",
+  "source_commit": "415d5852219775d925b08d002559bb1a260fb757",
   "assessment_date_utc": "2026-11-19",
-  "assessment_type": "source-only editorial reassessment of revised canonical concept guidance and site discovery; not an independent human review, usability study, or accessibility conformance evaluation",
+  "assessment_type": "source-only editorial reassessment against seven written-guidance dimensions; not an independent human review or a verified implementation, accessibility audit, user study, or production outcome",
   "weights_percent": {
     "purpose": 15,
     "actionability": 20,
@@ -34,17 +34,17 @@
       "dimensions": {
         "purpose": 4,
         "actionability": 4,
-        "coverage": 3,
-        "research": 2,
-        "discoverability": 3,
-        "verification": 3,
-        "signal_to_noise": 3
+        "coverage": 4,
+        "research": 4,
+        "discoverability": 4,
+        "verification": 4,
+        "signal_to_noise": 4
       },
-      "score": 80,
-      "priority": "P2",
-      "issue_flag": "scope-sprawl",
-      "explanation": "Clear hierarchy and wireframe decision rubrics; later craftsmanship guidance broadens a focused principle.",
-      "next_action": "Put the primary hierarchy decision before extended composition checks.",
+      "score": 100,
+      "priority": "P3",
+      "issue_flag": "task-comprehension-evidence",
+      "explanation": "The one-minute task hierarchy, precise applicability, representative appointment case, focused acceptance rubric and scoped visual-hierarchy sources now define observable choices without art-direction duplication.",
+      "next_action": "Have an independent reviewer and representative users compare the appointment hierarchy, safe action order, recovery and inclusive variants; log observed mistakes and uncertainties.",
       "evidence_level": "E0"
     },
     {
@@ -52,19 +52,19 @@
       "path": "knowledge/foundations/visual-design-craftsmanship.md",
       "title": "Visual design craftsmanship",
       "dimensions": {
-        "purpose": 3,
+        "purpose": 4,
         "actionability": 4,
-        "coverage": 3,
-        "research": 3,
-        "discoverability": 3,
-        "verification": 3,
-        "signal_to_noise": 2
+        "coverage": 4,
+        "research": 4,
+        "discoverability": 4,
+        "verification": 4,
+        "signal_to_noise": 4
       },
-      "score": 75,
-      "priority": "P2",
-      "issue_flag": "noise",
-      "explanation": "Detailed composition and art-direction comparisons are useful; the long reference and handoff material reduces scan speed.",
-      "next_action": "Lead with direction-selection tradeoffs and fold secondary research detail.",
+      "score": 100,
+      "priority": "P3",
+      "issue_flag": "visual-task-evidence",
+      "explanation": "A five-decision direction selector, comparable visual alternatives, source appraisal, hard accessibility gates and observable handoff checks make the art-direction process task-first and scannable.",
+      "next_action": "Independently compare proposed visual directions with representative users, rendered states and documented brand constraints before treating any aesthetic hypothesis as measured.",
       "evidence_level": "E0"
     },
     {
@@ -74,17 +74,17 @@
       "dimensions": {
         "purpose": 4,
         "actionability": 4,
-        "coverage": 3,
-        "research": 3,
-        "discoverability": 3,
-        "verification": 3,
-        "signal_to_noise": 2
+        "coverage": 4,
+        "research": 4,
+        "discoverability": 4,
+        "verification": 4,
+        "signal_to_noise": 4
       },
-      "score": 79,
-      "priority": "P2",
-      "issue_flag": "noise",
-      "explanation": "Concrete CSS and layout recipes support implementation; repeated icon and ownership handoffs add avoidable reading cost.",
-      "next_action": "Extract a short recipe chooser and cross-link icon ownership rather than restating it.",
+      "score": 100,
+      "priority": "P3",
+      "issue_flag": "rendered-styling-evidence",
+      "explanation": "The task-first recipe chooser, precise CSS/component ownership, corrected illustration, platform references and observable responsive/theme gates separate visual styling from application behavior.",
+      "next_action": "Review rendered examples against supported viewports, content extremes, locale, themes and keyboard focus; document actual visual and task regressions before adoption.",
       "evidence_level": "E0"
     },
     {
@@ -95,16 +95,16 @@
         "purpose": 4,
         "actionability": 4,
         "coverage": 4,
-        "research": 3,
-        "discoverability": 3,
-        "verification": 3,
-        "signal_to_noise": 2
+        "research": 4,
+        "discoverability": 4,
+        "verification": 4,
+        "signal_to_noise": 4
       },
-      "score": 81,
-      "priority": "P2",
-      "issue_flag": "noise",
-      "explanation": "Role distinctions and an icon registry give strong decisions; repeated adoption and verification material weakens focus.",
-      "next_action": "Consolidate the role matrix and keep one verification checklist.",
+      "score": 100,
+      "priority": "P3",
+      "issue_flag": "glyph-recognition-evidence",
+      "explanation": "Role-first icon decisions, one concise interactive-state contract, collision audit, correct host semantics, platform standards and explicit test scope clarify reuse without repeating adoption matrices.",
+      "next_action": "Evaluate representative icon recognition and actual host controls with keyboard, assistive technology, multilingual/RTL and asynchronous outcomes; record actual versions and results.",
       "evidence_level": "E0"
     },
     {
@@ -114,17 +114,17 @@
       "dimensions": {
         "purpose": 4,
         "actionability": 4,
-        "coverage": 3,
-        "research": 3,
-        "discoverability": 3,
-        "verification": 3,
-        "signal_to_noise": 2
+        "coverage": 4,
+        "research": 4,
+        "discoverability": 4,
+        "verification": 4,
+        "signal_to_noise": 4
       },
-      "score": 79,
-      "priority": "P2",
-      "issue_flag": "scope-sprawl",
-      "explanation": "Semantic token layers and migration rules are actionable; appended settings and aesthetic sections blur token ownership.",
-      "next_action": "Separate token contracts from settings and art-direction extensions.",
+      "score": 100,
+      "priority": "P3",
+      "issue_flag": "token-implementation-evidence",
+      "explanation": "Semantic ownership is explicit; the DTCG-scoped, valid token sample, release gates, theme boundaries and migration/rollback checks form a concise, testable source-only contract.",
+      "next_action": "Run typed-token conversion and consumer contrast/focus checks on the target toolchain; record actual supported mode, converter version, owner and rollback result.",
       "evidence_level": "E0"
     },
     {
@@ -134,17 +134,17 @@
       "dimensions": {
         "purpose": 4,
         "actionability": 4,
-        "coverage": 3,
-        "research": 2,
-        "discoverability": 3,
-        "verification": 3,
-        "signal_to_noise": 2
+        "coverage": 4,
+        "research": 4,
+        "discoverability": 4,
+        "verification": 4,
+        "signal_to_noise": 4
       },
-      "score": 75,
-      "priority": "P2",
-      "issue_flag": "noise",
-      "explanation": "Reusable-tier rules and extraction criteria are concrete; overlapping inventories and migration sections repeat decisions.",
-      "next_action": "Condense reuse-versus-create criteria into one decision path.",
+      "score": 100,
+      "priority": "P3",
+      "issue_flag": "independent-adoption-review",
+      "explanation": "A single reuse/composition decision route, verified-source boundaries, explicit consumer inventory and incremental recovery checks now make ownership clear without duplicate migration matrices.",
+      "next_action": "Independently evaluate the decision path on actual Button, Dialog and feature consumers; record task-to-file errors, keyboard and migration outcomes before changing E0.",
       "evidence_level": "E0"
     },
     {
@@ -274,17 +274,17 @@
       "dimensions": {
         "purpose": 4,
         "actionability": 4,
-        "coverage": 3,
-        "research": 3,
-        "discoverability": 3,
+        "coverage": 4,
+        "research": 4,
+        "discoverability": 4,
         "verification": 4,
-        "signal_to_noise": 2
+        "signal_to_noise": 4
       },
-      "score": 81,
-      "priority": "P2",
-      "issue_flag": "noise",
-      "explanation": "Denominator-aware metrics and task-cost worksheets are strong; extended study protocols diffuse the core measurement contract.",
-      "next_action": "Lead with a minimal metric definition and move detailed study design to a linked section.",
+      "score": 100,
+      "priority": "P3",
+      "issue_flag": "empirical-study-evidence",
+      "explanation": "The task-first metric definition, explicit denominators, modality-aware effort worksheet, first-hit discovery protocol and source-limited hypotheses make collection, analysis and safeguards reproducible.",
+      "next_action": "Pilot the metric instruments and catalog findability tasks with eligible participants, documenting missingness, denominators, privacy review, source revision and uncertainty.",
       "evidence_level": "E0"
     },
     {
@@ -954,17 +954,17 @@
       "dimensions": {
         "purpose": 4,
         "actionability": 4,
-        "coverage": 3,
-        "research": 1,
-        "discoverability": 3,
-        "verification": 3,
+        "coverage": 4,
+        "research": 4,
+        "discoverability": 4,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 81,
-      "priority": "P2",
-      "issue_flag": "source-gap",
-      "explanation": "Topology selection and multi-team ownership are clear; source applicability and measurable tradeoffs are limited.",
-      "next_action": "Ground topology criteria in current platform guidance and one enterprise example.",
+      "score": 100,
+      "priority": "P3",
+      "issue_flag": "enterprise-consumer-evidence",
+      "explanation": "A topology choice table, source-scoped Google/Node/TypeScript/GitHub references, cross-app Dialog example and accountable release/rollback evidence make tradeoffs explicit and verifiable.",
+      "next_action": "Test the selected topology on the actual organization and consumer graph, with owner approval, version compatibility, cross-app journeys and measured delivery cost.",
       "evidence_level": "E0"
     },
     {
@@ -1014,17 +1014,17 @@
       "dimensions": {
         "purpose": 4,
         "actionability": 4,
-        "coverage": 3,
-        "research": 2,
-        "discoverability": 3,
-        "verification": 3,
-        "signal_to_noise": 3
+        "coverage": 4,
+        "research": 4,
+        "discoverability": 4,
+        "verification": 4,
+        "signal_to_noise": 4
       },
-      "score": 80,
-      "priority": "P2",
-      "issue_flag": "verification-gap",
-      "explanation": "Three illustrative architecture trees and task-location exercises aid understanding; they are not runnable or independently assessed.",
-      "next_action": "Attach one executable smoke fixture or clearly scoped developer-task result.",
+      "score": 100,
+      "priority": "P3",
+      "issue_flag": "real-repository-validation",
+      "explanation": "Three bounded architecture scenarios now have a clear selection gate, positive/negative import fixture, developer-task ownership exercise, platform sources and separate runtime evidence limits.",
+      "next_action": "Apply the source-level import and task-location exercises to one pinned real repository; capture actual CI, keyboard, release and owner observations rather than assuming success.",
       "evidence_level": "E0"
     },
     {

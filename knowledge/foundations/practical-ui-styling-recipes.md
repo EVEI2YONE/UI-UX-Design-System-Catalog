@@ -8,6 +8,20 @@ Turn an approved [visual direction](visual-design-craftsmanship.md) into scoped,
 
 **Context contract before selecting a recipe:** task and information priority; content type and extremes; brand traits; responsive containers and platforms; component system and styling approach; supported themes/locales; accessibility constraints. Favor the existing application stack (CSS Modules, scoped CSS, utilities, or native styles) and its established tokens. Illustrative CSS below uses custom properties as aliases—**not a complete executable theme**, so consumers must define those properties and validate their actual colors and spacing.
 
+## Recipe chooser — context before CSS
+
+Select **one primary composition** and then apply only the supporting treatments needed by the task. A visual recipe is a hypothesis until rendered with real content.
+
+| Need | Start with | Test before adoption | Canonical boundary |
+| --- | --- | --- | --- |
+| Long-form explanation or documentation | Bounded reading measure and clear headings | Dense tables, translated expansion, zoom, keyboard reading order | [Design principles](design-principles.md) owns hierarchy |
+| Filterable data or dashboard | Aligned comparisons, stable actions, readable data density | Dynamic rows, empty/error/loading, RTL number context, narrow width | [Data visualization](../guidance/data-visualization-and-dashboards.md) owns chart meaning |
+| Editable form or review task | Label/error grouping, predictable action location | Failed save, long labels, input focus and validation summary | [Field](../../specifications/components/field/spec.md) owns semantics |
+| Layered content, cards or surfaces | Surface and border only where grouping changes | Theme, forced colors, focus and layering contrast | [Tokens](design-tokens-and-themes.md) own semantic values |
+| Motion or visual identity | Restrained transition or licensed imagery with clear purpose | Reduced motion, latency, alternative text and performance | [Visual craftsmanship](visual-design-craftsmanship.md) owns aesthetic direction |
+
+**Stop condition:** If a visual effect does not clarify a task, grouping, state or brand requirement, omit it. Favor logical spacing properties over left/right assumptions in bi-directional layouts; avoid a custom component or global CSS override for a one-off alignment.
+
 ## Layout and composition recipes
 
 Choose from the **content relationship**, not a rigid device preset.
@@ -154,84 +168,38 @@ The prescriptions above are catalog-level design heuristics. Supporting platform
 
 ## Handoff — semantic icon decisions
 
-This page continues to own **icon visual craftsmanship** (family consistency, stroke, optical scale and imagery). For action/status meaning, decorative vs interactive SVGs, icon-only control states, RTL, hit-target sizing and accessibility evidence, use the canonical [icon semantics contract](iconography-and-semantics.md) (`foundation.icon-semantics`). Do not duplicate a per-component icon registry in this visual recipe or claim the examples constitute an installed icon library.
+This page owns **icon visual coherence** (size, optical weight, stroke and imagery), not semantics. The [semantic icon registry](iconography-and-semantics.md) owns meaning, accessible names, status truthfulness and RTL direction; the [Button contract](../../specifications/components/button/spec.md) owns activation. Do not reproduce those role matrices in a styling recipe.
 
 ## Utility-first styling ownership reference
 
-**When to use:** an application already employs utilities (such as Tailwind) and established accessible controls (such as shadcn/Radix), but styles spread across global CSS, component variants and feature JSX. **When not to use:** replacing a working styling stack to imitate this tree, copying theme values from a sample, or mandating a new package merely to reduce the number of files. [Design tokens and themes](design-tokens-and-themes.md) continues to own reference→semantic→component aliases, modes and migration. [Component model](../architecture/component-model.md) owns promotion; [architecture CI](../architecture/architecture-enforcement-and-ci.md) owns enforcement.
+Use this decision only where a **real application already uses** utility-first styling. Do not rewrite a working styling stack or create a second component library to make a screenshot match. [Tokens and themes](design-tokens-and-themes.md) own semantic roles; [component model](../architecture/component-model.md) owns reuse/promotion; [architecture CI](../architecture/architecture-enforcement-and-ci.md) owns dependency and global-style enforcement.
 
-### Ownership and placement
+| Scope | Preferred owner | Reject |
+| --- | --- | --- |
+| Framework entry and true globals | Application root / established reset | Feature selectors that accidentally affect unrelated pages |
+| Colors, spacing roles, states and modes | Named semantic token source | Scattered hard-coded dark-mode overrides |
+| Button, Input, Dialog behavior | Existing accessible component's public variants | Another primitive with a different focus or disabled contract |
+| Task composition, gap and responsive order | Feature-owned utility classes or scoped CSS | Generic shared wrappers for one-off geometry |
+| Runtime-measured positioning | Bounded CSS property on its owning overlay | Arbitrary inline style values bypassing themes |
 
-| Scope | Owns | Example; customize to existing framework | Anti-pattern |
-| --- | --- | --- | --- |
-| Application root | CSS reset/framework entry, fonts, genuinely global semantics | `app/globals.css` imports established foundations | Feature-card selectors added globally on every screen |
-| Token/theme source | Semantic variables, modes and optional component aliases with owner | `shared/styles/tokens.css`, `themes.css` **only if warranted** | Duplicate color values in feature CSS and theme overrides |
-| Existing UI primitives | Semantic Button/Input/Dialog variants and focus/keyboard states | `specifications/components/ui/button.tsx` or existing library's owner | A second `Button` with arbitrary local hover rules |
-| Shared presentation | Reused task-neutral composition with small stable variants | `shared/ui/SectionHeader`, `ActionBar` after cross-feature evidence | Shared component whose props enumerate all feature names |
-| Feature-owned presentation | Local task hierarchy, responsive composition and rare exceptions | `specifications/experiences/reviews/*` utility classes or scoped stylesheet | Feature styling imported as broad, order-dependent globals |
-| Dynamic runtime placement | Constrained measured coordinates/dimensions not expressible as finite variants | Validated CSS custom property at an owned overlay boundary | Inline hard-coded colors, radii and static spacing |
-
-**File paths are illustrative.** Framework route files, existing import facades and package conventions take priority; never introduce a `src/` migration just for this diagram. A thin compatibility facade is reasonable during gradual migration. One coherent global stylesheet can remain small; splitting solely by line count does not improve ownership.
-
-### Variant and token-backed implementation sketch (illustrative, not executable project scaffold)
-
-```css
-/* Existing app-owned theme entry, not arbitrary feature styling */
-:root {
- --surface-control: var(--surface-default);
- --text-control: var(--text-primary);
- --focus-control: var(--focus-visible);
-}
-[data-theme="dark"] {
- /* Define semantic roles in the actual theme source. */
- --surface-control: var(--surface-default);
-}
-```
+**Illustrative React composition using a real installed Button API** (adapt the actual import and variant names; not a standalone project):
 
 ```tsx
-// Illustrative use of an app's existing styled/accessible Button,
-// not a new Button implementation. Names must match the installed API.
-function TaskActions({ onSave, saving }: {
- onSave: => void; saving: boolean;
-}) {
- return (
- <div className="flex flex-wrap items-center gap-2">
- <Button
- type="button"
- variant="default"
- disabled={saving}
- aria-busy={saving || undefined}
- onClick={onSave}
- >
- {saving ? "Saving…" : "Save"}
- </Button>
- </div>
- );
+function TaskActions({ onSave, saving }: { onSave: () => void; saving: boolean }) {
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <Button type="button" disabled={saving} aria-busy={saving || undefined} onClick={onSave}>
+        {saving ? "Saving…" : "Save"}
+      </Button>
+    </div>
+  );
 }
 ```
 
-**Contract notes:** utility classes above express *local layout*, not new control semantics. The actual Button must already implement keyboard activation, focus-visible, responsive target and valid pending behavior. Button variant semantics belong to the primitive; feature code owns server write, authoritative status, failure and retry. Unresolved `var(...)` references in a snippet must be declared in the consuming token graph; this is *not* a self-contained valid theme, and the sample does not certify a particular Tailwind/shadcn version.
+This snippet does not manage server authorization, completion, duplicate-safe retries or notifications; the feature owns those. The installed Button must already provide native keyboard, focus, theme and accessible naming behavior. Dynamic class generation must be compatible with the actual utility compiler. **Extract only when stable semantics and multiple consumers justify an owner and versioned contract.**
 
-### Reuse or extract? A constrained styling decision
+## Evidence-led styling review
 
-1. **Find current owner first:** existing semantic token, control variant or scoped composition. Match by meaning and behavior, not similar CSS strings alone.
-2. **Repeated semantic role:** promote a named token after checking theme/mode effects and affected consumers. Do not tokenize every one-off measurement.
-3. **Repeated component behavior:** compose or extend a canonical control with an explicit variant contract only if multiple genuine consumers need the same semantics.
-4. **Simple local geometry:** keep readable utility classes near the feature; avoid extracting wrappers solely because multiple views use `flex` and `gap`.
-5. **Complex selector/container layout:** prefer locally owned CSS/selector slots as supported by the app; no cascade dependence on unrelated feature imports.
-6. **True runtime styling:** constrain measured dynamic values and isolate them; static design decisions should consume semantic roles.
-7. **Safe migration:** snapshot baseline and class/selector consumers, migrate a vertical slice, compare states/themes/locales/zoom, preserve route and business logic, retire compatibility selectors only after checks.
+For each selected recipe record: task, source revision, actual rendered content, supported theme and locale, container/viewport width, input method, CSS owner, baseline screenshot, attempted change, observed difference and rollback. Check 320px-class narrow conditions **only where supported**, 200%/400% zoom as applicable, long text and RTL, forced colors, reduced motion, media-loading failure, overlay/focus states and responsiveness without horizontal clipping.
 
-**Good:** a shared Button retains visible keyboard focus and one semantic default variant, while feature-local containers use token-backed gaps and responsive flex wrapping. **Bad:** four nearly identical buttons with hard-coded background colors and inconsistent disabled states; a global `main section button` override silently breaks dialogs; or a new Tailwind config replaces established tokens without a migration plan.
-
-### Verification, documentation only
-
-| Check | Evidence needed | Status |
-| --- | --- | --- |
-| Token alias resolution and theme modes | Real consumer theme build, no cycles or undefined roles | NOT VERIFIED |
-| Shared primitive behavior | Focus/hover/disabled/pending across browser, keyboard, AT and theme | NOT VERIFIED |
-| Responsive layout and long labels | Narrow/zoom/RTL/translations and forced-colors tests | NOT VERIFIED |
-| CSS ownership and migration | Selector/import graph and visual comparison for changed consumers | NOT VERIFIED |
-| Product UI outcome | Task continuity, no backend/permission mutation, real interaction tests | NOT VERIFIED |
-
-**References (for consumer-version review):** [Tailwind theme variables](https://tailwindcss.com/docs/theme/), [MDN CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07). Motivating case: [Little Wins styling architecture](https://github.com/EVEI2YONE/Little_Wins/blob/main/docs/little-wins/ui-knowledge/batch-01-styling-architecture.md), whose proposed app-specific file ownership is not mandated by this catalog.
+**Reproducible acceptance:** (1) the primary action and status remain findable; (2) reading and keyboard order follow the task; (3) no control is hidden under sticky surfaces; (4) tokens resolve in all implemented modes; (5) the change introduces no unintended global cascade collision; (6) any observed bundle/rendering impact is reported with an environment. [MDN container size queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_size_and_style_queries), [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values) and [CSS cascade](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Introduction) define browser mechanisms; they do **not** prove an aesthetic recipe is universally better. All consuming-product observations remain **NOT VERIFIED** until tested.

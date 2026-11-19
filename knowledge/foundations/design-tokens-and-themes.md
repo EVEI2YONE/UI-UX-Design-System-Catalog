@@ -6,6 +6,18 @@
 
 Make recurring visual decisions explicit, semantic, themeable, accessible and portable. Token values are data; a component contract decides how to use them.
 
+## Choose the owner before editing values
+
+| Question | Canonical owner and decision | Evidence required |
+| --- | --- | --- |
+| Is this a reusable visual intent? | A **semantic token** here, not a raw value copied into every screen | List consumer contexts, readable name and supported modes |
+| Is it a specific component's stable difference? | A **component alias** only if a named consumer requires it | State, contrast and variant matrix from the component owner |
+| Is it a user's account/system theme preference? | [Account settings](../../specifications/patterns/account-and-settings-portal.md) owns choice, precedence, persistence and conflict recovery | Observe the effective mode on load, change, reload and another device |
+| Is it an aesthetic direction or a palette choice? | [Visual craftsmanship](visual-design-craftsmanship.md) owns color/typography direction; this page encodes approved choices | Source/reference applicability and task/brand constraints |
+| Is it a CSS selector or feature override? | [Practical styling](practical-ui-styling-recipes.md) owns placement; tokens define reusable values | Inspect selector scope, cascade, fallback and consumer regressions |
+
+Never add an extra token layer merely to mirror a folder. Define semantic meaning before assigning a visual value, and do not equate a named color with WCAG contrast.
+
 ## Layers
 
 1. **Reference:** raw reusable palette or scale (for example `reference.blue.600`).
@@ -41,59 +53,35 @@ For interoperable exports, consider the [DTCG 2025.10 typed format](../../govern
 
 Check alias resolution, a sample of component states across modes, reflow, translated labels and reduced motion. Token values alone do not establish accessibility compliance. Related: [component contracts](../architecture/component-contracts.md) and [accessibility](../guidance/accessibility.md).
 
-## Token authoring and migration contract
+## Token authoring, interchange and release contract
 
-A token record should state **name, type, value or alias, purpose, owner, supported modes, consumers and status**. Resolve aliases before use and reject cycles. Distinguish a semantic role from a particular brand color: changing a reference palette should not require edits across controls.
+Record **name, meaning, type, value or alias, owner, supported modes, consumers, lifecycle and source format version**. Resolve references before export; reject unresolved aliases, cycles, mixed value types and silent cross-mode fallbacks. A token role communicates *why* a value exists, not which product screen chooses it.
 
-Illustrative, **not an importable token export**:
+**Valid standalone illustrative interchange record** using the [DTCG Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/):
 
 ```json
 {
- "color": {
- "text": {
- "primary": {
- "$type": "color",
- "$value": "{palette.neutral.900}"
- }
- }
- }
+  "spacing": {
+    "$type": "dimension",
+    "compact": { "$value": { "value": 8, "unit": "px" } },
+    "comfortable": { "$value": { "value": 16, "unit": "px" } }
+  }
 }
 ```
 
-The example omits the referenced palette by design; it cannot pass alias-resolution checks on its own. A real export must define the referenced token and follow its toolchain's supported DTCG syntax.
+The format is a **Community Group final report, not a W3C Recommendation**, and it defines interchange rather than product aesthetics. For aliases and color-space transforms consult the same specification and the installed converter's supported revision. This miniature example does not encode a complete theme.
 
-**Migration sequence:** inventory repeated literals and contexts; map to a small semantic role set; define mode mappings; migrate one representative component; compare all states and narrow/zoom layouts; then expand consumers incrementally. Keep app-specific values local until a repeated semantic role is established.
-
-| Gate | Evidence required |
+| Gate | Reproducible acceptance |
 | --- | --- |
-| Alias integrity | Every alias resolves, no cycles or ambiguous duplicates |
-| Theme behavior | Text, action, focus, status and disabled roles reviewed in every supported mode |
-| Styling | Component styles use owned aliases; justified dynamic exceptions recorded |
-| Compatibility | Old-to-new token map, affected consumers, rollback method |
+| Interchange | Pin schema/tool revision; parse types and references; verify round-trip without lost metadata or cycles |
+| Semantic contract | Same intent and stable name across consumers; a one-off literal does not become a public role |
+| Mode coverage | Export only implemented light/dark/high-contrast/density modes, inspect missing roles and fallbacks |
+| Real component behavior | Measure focus, disabled, error and text contrast; check narrow/zoom, translated/RTL and forced colors |
+| Release compatibility | Record old→new alias map, affected consumers, owner, test status and revert version |
 
-Avoid encoding success/error only by color. A palette comparison alone does not establish contrast or accessible interaction.
+**Migration order:** inventory raw literals and selectors → select a small semantic role vocabulary → define approved mappings → migrate one representative component → compare states and actual consuming output → expand and retire old selectors only after verification. A passing token file cannot certify a Button, Dialog or full application.
 
-## Token interchange and release checks
-
-Keep **one reviewed semantic token source** with explicit schema version, types, aliases, purpose, ownership and platform/mode mappings. As of 2026-11-07, the Design Tokens Community Group Format Module **2025.10 is stable**, but it is a W3C **Community Group report, not a W3C Recommendation**. Newer 2026 preview drafts must not be treated as authoritative release specifications.
-
-| Decision | Evidence and risk |
-| --- | --- |
-| Source | Named token repository/export, pinned format version, changelog and maintainers |
-| Types and references | Compatible typed values, all aliases resolve, no cycles, type/format mismatch or invalid references |
-| Semantic intent | Shared meaning and role before literal values or app-specific colors |
-| Themes | Explicit light/dark/high-contrast/brand/density mappings; no accidental missing tokens |
-| Platform transform | Test generated CSS/native tokens in actual consumers, including units and color-space support |
-| Compatibility | Document renamed tokens, migration aliases, affected components, release version and rollback |
-| Experience | Verify real focus/disabled/error contrast, responsive modes, RTL and content extremes; screenshots are supplementary |
-
-**Illustrative workflow:** a reviewed semantic color role changes, a pinned converter exports CSS/native values, tests validate aliases and usage, visual snapshots are compared for representative states, and keyboard/focus/contrast are manually checked before a versioned rollout. The token's own metadata does not certify accessibility.
-
-**Anti-example:** overwrite exported raw values, rename widely used aliases without notice, accept every regenerated screenshot and declare all themes compliant.
-
-Sources consulted 2026-11-07: [DTCG Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/), [DTCG spec status and caveats](https://www.designtokens.org/faq/) and [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots). No actual token transform or test occurred as part of this docs-only addition.
-
-Related: [component contracts](../architecture/component-contracts.md), [quality gates](../../governance/quality-gates.md), [lifecycle](../../governance/lifecycle-and-decisions.md).
+**Source applicability:** [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots) can capture regressions in an implemented app, but visual snapshots alone do not verify keyboard behavior. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) provides applicable web contrast/focus criteria, not a token naming convention. These are test requirements; implementation checks are **NOT VERIFIED**.
 
 ## Legacy global CSS to scoped semantic styling
 
@@ -109,15 +97,9 @@ Related: [component contracts](../architecture/component-contracts.md), [quality
 
 **Verification:** documented before/after selector and token map; light/dark only where implemented; responsive snapshots at supported breakpoints, keyboard focus, dialog/backdrop layering, reduced motion, high zoom, long/RTL copy, font fallback and performance measurements where available. Compare component consumers incrementally and keep a revert path.
 
-## Appearance preferences as a product journey — account
+## Account appearance preference boundary
 
-**Boundary:** this source defines semantic tokens and theme capability; an account portal composes those into actual user controls. Offer light, dark and system preference only for implemented modes. Distinguish **device/system preference**, **account-synced preference** and **workspace-controlled appearance**; display the effective result and explain overrides. Persist only after confirmed storage, gracefully apply unsupported-mode fallback, and avoid flashing the incorrect theme during load where practicable.
-
-Optional accessibility adjustments (contrast, density, motion or text) must not substitute for platform/browser accessibility support or WCAG requirements. Respect prefers-reduced-motion and system-level increased contrast, zoom and text resizing; never make a preference toggle the sole accessible path.
-
-**Example:** system theme defaults to OS setting, manual selection clearly overrides and can revert to system. **Anti-example:** a dark-mode toggle is shown while the app still has unreadable dark overlays and hard-coded text colors.
-
-**Verification NOT VERIFIED:** first load/flicker, reload and concurrent device preference, system theme changes, high-contrast/forced colors, reduced motion, keyboard/screen reader, locale text expansion, logged-out behavior. See [account settings](../../specifications/patterns/account-and-settings-portal.md), [accessibility](../guidance/accessibility.md), and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07).
+This page owns theme **capability and semantic mappings**, not the account-setting journey. For system/device, account-synced or workspace-controlled preference precedence, pending saves, concurrent updates, first-paint flash mitigation and invalid modes use [account and settings](../../specifications/patterns/account-and-settings-portal.md). A theme is only "supported" when the consuming product verifies focus, contrast, readable error states, forced colors and applicable zoom/reflow.
 
 ## Aesthetic palette and typography decisions — craftsmanship
 
