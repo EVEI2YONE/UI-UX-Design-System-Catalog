@@ -168,6 +168,34 @@ function SearchPanel({ search, results }) {
 
 The component does **not** equate `draftQuery` with the applied server query; a real feature should separately represent pending, applied, error and stale results. This illustration assumes `ResultsView` is provided by the consumer and does not establish runtime or accessibility verification.
 
+### Dependent writes and editor lifetime (composed feature contract)
+
+A generic control must not own the transaction. The feature controller coordinates writes; domain/service ports enforce authorization, stable identity and invariants; the authoritative service/database determines committed truth; the presentation layer owns focus, pending messages, retained input and delayed refresh. Prefer **one atomic server command** when the parent and child must commit together or rollback together. A two-request sequence is a partial-commit workflow, **not** an atomic transaction.
+
+| Step or result | Feature/controller responsibility | UI contract |
+| --- | --- | --- |
+| Stage draft | Validate local fields and preserve parent/child intent using stable IDs | Keep editor mounted, current selection and focus intact |
+| Save prerequisite | Submit authorized request with stable request identity, then reconcile the authoritative parent record | Pending, no premature success or child submission |
+| Save dependent | Submit only after prerequisite ID is verified; reconcile child response/read-back | Preserve draft and distinguish partial completion from full completion |
+| Confirm outcome | Match persisted IDs/revisions to requested intent | Announce success only when the whole promised task is confirmed |
+| Refresh list | Invalidate/reload at a safe task boundary, or keep controller state outside remounting subtree | Restore appropriate item/list focus, selection, filters and scroll |
+| Error or timeout | Distinguish invalid, denied, revision conflict, confirmed failure and **unknown outcome** | Explain known saved subset; offer reconcile/check-status before retry |
+
+```text
+USER draft -> feature controller -> validate -> [atomic service command if invariants require]
+                                          \-> [parent write] -> read-back/verify parent ID
+                                                                     -> [child write with stable request ID]
+                                                                     -> read-back/verify child ID/revision
+                                                                     -> confirmed summary -> safe list refresh
+any response lost ------------------------> outcome unknown -> authoritative lookup -> retry only if safe
+```
+
+**Bad composition:** A parent `refresh()` replaces the keyed editor immediately after the first response, unmounts the unsaved child form, clears errors and focus, and calls the dependent mutation again on remount. **Better composition:** Keep the editor/task controller stable until the full save is resolved; update only read-only data without remount where possible; move refresh after confirmation; alternatively route draft state to a stable feature owner and restore it explicitly. Do not keep presenting stale values as confirmed while deferring a refresh.
+
+**Concurrency and exit:** On a revision mismatch, show the conflicting fields and require a deliberate merge/retry. If the prerequisite is archived/deleted or permission disappears, stop the dependent write and keep entered information for recovery. On Cancel or route change while pending, explain whether cancellation stops only the view or also the server operation; never imply network cancellation rolls back a committed write. For partial success, name the exact saved record and give a safe continuation path or supported compensation (not invented rollback).
+
+**Verification contract (product behavior NOT VERIFIED):** Exercise success, second-request failure, lost response, duplicate activation, same-revision concurrent edit, revoked authorization, archived parent, navigation during pending, slow network, 320px/200% zoom, screen reader status, keyboard focus and RTL. Assert one intended parent and child, accurate saved status, no lost draft or accidental replay, and persisted selection after refresh. Record request IDs/revision observations and test environment without exposing user data. [RFC 9110 §9.2.2](https://www.rfc-editor.org/rfc/rfc9110#section-9.2.2) explains method idempotence and why non-idempotent requests must not be blindly retried; it does not make a multi-write workflow atomic. See [recovery](../../specifications/patterns/interaction-states-and-recovery.md), [forms](../../specifications/patterns/forms.md), and [module boundaries](module-boundaries-and-developer-navigation.md).
+
 ### Controlled state, nested events and invalid combinations
 
 - **Single source of truth:** if a parent owns selection, open state, query or progress, children receive the current value and emit proposed changes; they do not maintain an unsynchronized second authoritative copy.
