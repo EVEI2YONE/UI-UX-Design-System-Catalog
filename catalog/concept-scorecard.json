@@ -1,0 +1,1871 @@
+{
+  "schema_version": 1,
+  "source_repository": "EVEI2YONE/UI-UX-Design-System-Catalog",
+  "source_commit": "7ba706381d31adb7c95d96ab3be2399e53d7b868",
+  "assessment_date_utc": "2026-11-19",
+  "assessment_type": "source-only editorial assessment; not an independent human review, usability study, or accessibility conformance evaluation",
+  "weights_percent": {
+    "purpose": 15,
+    "actionability": 20,
+    "coverage": 10,
+    "research": 15,
+    "discoverability": 10,
+    "verification": 10,
+    "signal_to_noise": 20
+  },
+  "rating_scale": {
+    "0": "Missing or materially misleading",
+    "1": "Weak or seriously incomplete",
+    "2": "Developing: important gaps",
+    "3": "Good: minor limitations",
+    "4": "Strong: precise and proportionate"
+  },
+  "evidence_levels": {
+    "E0": "Draft without recorded independent review",
+    "E1": "Independent human review and source applicability checked",
+    "E2": "Relevant implementation or representative task test",
+    "E3": "Adopted with documented outcomes and owner"
+  },
+  "concepts": [
+    {
+      "id": "principle.visual-hierarchy",
+      "path": "knowledge/foundations/design-principles.md",
+      "title": "Design principles",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 3
+      },
+      "score": 80,
+      "priority": "P2",
+      "issue_flag": "scope-sprawl",
+      "explanation": "Clear hierarchy and wireframe decision rubrics; later craftsmanship guidance broadens a focused principle.",
+      "next_action": "Put the primary hierarchy decision before extended composition checks.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "foundation.visual-craftsmanship",
+      "path": "knowledge/foundations/visual-design-craftsmanship.md",
+      "title": "Visual design craftsmanship",
+      "dimensions": {
+        "purpose": 3,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 2
+      },
+      "score": 75,
+      "priority": "P2",
+      "issue_flag": "noise",
+      "explanation": "Detailed composition and art-direction comparisons are useful; the long reference and handoff material reduces scan speed.",
+      "next_action": "Lead with direction-selection tradeoffs and fold secondary research detail.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "foundation.practical-styling",
+      "path": "knowledge/foundations/practical-ui-styling-recipes.md",
+      "title": "Practical UI styling recipes",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 2
+      },
+      "score": 79,
+      "priority": "P2",
+      "issue_flag": "noise",
+      "explanation": "Concrete CSS and layout recipes support implementation; repeated icon and ownership handoffs add avoidable reading cost.",
+      "next_action": "Extract a short recipe chooser and cross-link icon ownership rather than restating it.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "foundation.icon-semantics",
+      "path": "knowledge/foundations/iconography-and-semantics.md",
+      "title": "Icon semantics and accessible icon controls",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 2
+      },
+      "score": 81,
+      "priority": "P2",
+      "issue_flag": "noise",
+      "explanation": "Role distinctions and an icon registry give strong decisions; repeated adoption and verification material weakens focus.",
+      "next_action": "Consolidate the role matrix and keep one verification checklist.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "foundation.design-tokens",
+      "path": "knowledge/foundations/design-tokens-and-themes.md",
+      "title": "Design tokens and themes",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 2
+      },
+      "score": 79,
+      "priority": "P2",
+      "issue_flag": "scope-sprawl",
+      "explanation": "Semantic token layers and migration rules are actionable; appended settings and aesthetic sections blur token ownership.",
+      "next_action": "Separate token contracts from settings and art-direction extensions.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "architecture.component-model",
+      "path": "knowledge/architecture/component-model.md",
+      "title": "Component model",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 2
+      },
+      "score": 75,
+      "priority": "P2",
+      "issue_flag": "noise",
+      "explanation": "Reusable-tier rules and extraction criteria are concrete; overlapping inventories and migration sections repeat decisions.",
+      "next_action": "Condense reuse-versus-create criteria into one decision path.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "architecture.component-contracts",
+      "path": "knowledge/architecture/component-contracts.md",
+      "title": "Component contracts",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 1
+      },
+      "score": 79,
+      "priority": "P1",
+      "issue_flag": "noise-overload",
+      "explanation": "Public APIs, event ownership and contract matrices are specific; repeated evidence warnings obscure the minimum contract.",
+      "next_action": "Put required fields and state rules first; move evidence caveats to one section.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.task-flows",
+      "path": "specifications/patterns/task-flows-and-information-architecture.md",
+      "title": "Task flows and information architecture",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 2
+      },
+      "score": 84,
+      "priority": "P2",
+      "issue_flag": "noise",
+      "explanation": "Task-first journeys and structural alternatives are covered; extensive capability and wireframe sections slow retrieval.",
+      "next_action": "Add a compact task-to-flow checklist and index the specialized cases.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.role-aware-workspaces",
+      "path": "specifications/patterns/role-aware-workspaces-and-context-switching.md",
+      "title": "Role-aware workspaces and context switching",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 3
+      },
+      "score": 89,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Preview, impersonation and authorization are correctly distinguished with scenario coverage; product evidence is still absent.",
+      "next_action": "Validate a multi-role switching task and keep identity rules separate from visual affordances.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.interaction-recovery",
+      "path": "specifications/patterns/interaction-states-and-recovery.md",
+      "title": "Interaction states and recovery",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 1
+      },
+      "score": 79,
+      "priority": "P1",
+      "issue_flag": "noise-overload",
+      "explanation": "Unknown outcomes, focus continuity and async states are well handled; many repeated NOT VERIFIED labels drown the recovery choices.",
+      "next_action": "Collapse repeated status notes and front-load the recovery decision table.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.accessibility",
+      "path": "knowledge/guidance/accessibility.md",
+      "title": "Accessibility",
+      "dimensions": {
+        "purpose": 3,
+        "actionability": 3,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 1
+      },
+      "score": 64,
+      "priority": "P1",
+      "issue_flag": "contradiction",
+      "explanation": "Useful keyboard and inclusive testing contracts coexist with preview and iframe claims not supported by the current site.",
+      "next_action": "Remove the obsolete preview and iframe assumptions; separate site checks from consuming-app checks.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.internationalization",
+      "path": "knowledge/guidance/internationalization.md",
+      "title": "Internationalization and bidirectional support",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 86,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "RTL, formatting and translation growth have clear verification rules; no real localized interface evidence is recorded.",
+      "next_action": "Add one representative pseudolocalization and RTL task record.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.ux-measurement",
+      "path": "knowledge/guidance/ux-measurement.md",
+      "title": "UX measurement",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 2
+      },
+      "score": 81,
+      "priority": "P2",
+      "issue_flag": "noise",
+      "explanation": "Denominator-aware metrics and task-cost worksheets are strong; extended study protocols diffuse the core measurement contract.",
+      "next_action": "Lead with a minimal metric definition and move detailed study design to a linked section.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "governance.lifecycle",
+      "path": "governance/lifecycle-and-decisions.md",
+      "title": "Catalog lifecycle and decision policy",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 3
+      },
+      "score": 83,
+      "priority": "P2",
+      "issue_flag": "ownership-gap",
+      "explanation": "Lifecycle states and reuse decisions are explicit; no assigned owner or accepted review currently supports promotion.",
+      "next_action": "Attach a minimal owner and evidence gate before moving any concept out of proposed.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "governance.quality",
+      "path": "governance/quality-gates.md",
+      "title": "Design and catalog quality gates",
+      "dimensions": {
+        "purpose": 3,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 1
+      },
+      "score": 75,
+      "priority": "P1",
+      "issue_flag": "noise-overload",
+      "explanation": "The acceptance coverage is extensive; 61 NOT VERIFIED repetitions and numerous unrelated matrices bury critical gates.",
+      "next_action": "Build a short gate index and replace repeated warnings with one evidence legend.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.button",
+      "path": "specifications/components/button/spec.md",
+      "title": "Button",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 3
+      },
+      "score": 83,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Action semantics, async safety and icon-only use are specified; evidence guidance is repeated without a tested task example.",
+      "next_action": "Add one verified keyboard and double-activation scenario and consolidate evidence notes.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.input",
+      "path": "specifications/components/input/spec.md",
+      "title": "Input",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 2,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 78,
+      "priority": "P3",
+      "issue_flag": "example-gap",
+      "explanation": "Native input, persistent labeling and error ownership are clear; the small contract offers few realistic composition cases.",
+      "next_action": "Add one concrete validation, IME or long-label scenario with expected behavior.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.select",
+      "path": "specifications/components/select/spec.md",
+      "title": "Select",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 2,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 78,
+      "priority": "P3",
+      "issue_flag": "coverage-gap",
+      "explanation": "Native selection and option boundaries are stated concisely; complex empty and unavailable option cases receive little depth.",
+      "next_action": "Provide a no-options and long-label selection check.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.checkbox",
+      "path": "specifications/components/checkbox/spec.md",
+      "title": "Checkbox",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 2,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 78,
+      "priority": "P3",
+      "issue_flag": "example-gap",
+      "explanation": "Independent-choice semantics and labels are clear; mixed or group-level failure examples are limited.",
+      "next_action": "Add a group validation example and clarify indeterminate presentation where applicable.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.dialog",
+      "path": "specifications/components/dialog/spec.md",
+      "title": "Dialog",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 3
+      },
+      "score": 83,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Modal focus and ownership rules are strong, including native dialog integration; runtime focus behavior remains unverified.",
+      "next_action": "Add a focus-entry, Escape and focus-return acceptance scenario.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.field",
+      "path": "specifications/components/field/spec.md",
+      "title": "Field and error",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 2,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 78,
+      "priority": "P3",
+      "issue_flag": "example-gap",
+      "explanation": "The label, help and error composition boundary is concise; a field-level recovery example would improve adoption.",
+      "next_action": "Show one inline error announcement and correction sequence.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.forms",
+      "path": "specifications/patterns/forms.md",
+      "title": "Form composition and validation",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 3
+      },
+      "score": 86,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Field planning, validation and submission recovery are operational; it lacks independent task-completion evidence.",
+      "next_action": "Test one failed submission and recovery flow with representative users.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.navigation",
+      "path": "specifications/patterns/navigation.md",
+      "title": "Navigation and wayfinding",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 2,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 78,
+      "priority": "P3",
+      "issue_flag": "example-gap",
+      "explanation": "Route-state and wayfinding contracts are compact; a multi-level navigation case would make the guidance easier to apply.",
+      "next_action": "Add a representative nested navigation and current-location example.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.search-filter",
+      "path": "specifications/patterns/search-and-filter.md",
+      "title": "Search and filtering",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 3
+      },
+      "score": 86,
+      "priority": "P1",
+      "issue_flag": "implementation-gap",
+      "explanation": "Query, filtering and recovery guidance is sound; the catalog browser search is less capable than the stated discovery model.",
+      "next_action": "Test natural-language queries and align browser ranking with task-oriented retrieval.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.data-tables",
+      "path": "specifications/patterns/data-tables.md",
+      "title": "Data tables and collection actions",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 3
+      },
+      "score": 86,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Table versus grid choices and accessible row actions are specific; applied keyboard and reflow evidence is absent.",
+      "next_action": "Verify row actions, sorting and a narrow layout in a real table example.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.feedback",
+      "path": "specifications/patterns/feedback.md",
+      "title": "Feedback and status messaging",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 80,
+      "priority": "P3",
+      "issue_flag": "example-gap",
+      "explanation": "In-task status and cross-channel notifications are differentiated; durable recovery treatment needs a demonstrated flow.",
+      "next_action": "Add one lost-acknowledgement outcome and persistent recovery case.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.ux-research",
+      "path": "knowledge/guidance/ux-research-methods.md",
+      "title": "UX research methods and evidence",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 4
+      },
+      "score": 94,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Method selection, study protocol and inference limits are well defined; the repository records no completed studies.",
+      "next_action": "Connect the template to a future actual study without presenting hypothetical results as findings.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.journey-mapping",
+      "path": "knowledge/guidance/mental-models-and-journeys.md",
+      "title": "Mental models and journey mapping",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 89,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Journey contracts and mental-model mismatch examples are easy to follow; their use is not demonstrated with participants.",
+      "next_action": "Add a sourced journey example and a validated decision change.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.cognitive-load",
+      "path": "knowledge/guidance/cognitive-load-and-decisions.md",
+      "title": "Cognitive load and decision design",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 89,
+      "priority": "P2",
+      "issue_flag": "cross-link-gap",
+      "explanation": "Concise decisions and anti-examples reduce unnecessary complexity; dense collaborative annotation is not explicitly linked.",
+      "next_action": "Cross-link annotation prioritization and provide a cluttered-review task example.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.content-design",
+      "path": "knowledge/guidance/content-design-and-ux-writing.md",
+      "title": "Content design and UX writing",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 3
+      },
+      "score": 89,
+      "priority": "P2",
+      "issue_flag": "noise",
+      "explanation": "Content-by-state and error-copy rules are actionable; repeated evidence caveats marginally distract from copy decisions.",
+      "next_action": "Add a compact state-copy worksheet and consolidate caveats.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.service-recovery",
+      "path": "specifications/patterns/service-recovery-and-support.md",
+      "title": "Service recovery and support handoff",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 3
+      },
+      "score": 89,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Recovery decision trees and support handoff states cover failure well; no connected service scenario is validated.",
+      "next_action": "Run one self-service-to-support handoff and task-resumption test.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.privacy-trust",
+      "path": "knowledge/guidance/privacy-consent-and-trust.md",
+      "title": "Privacy, consent and trustworthy UX",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 2
+      },
+      "score": 84,
+      "priority": "P2",
+      "issue_flag": "scope-sprawl",
+      "explanation": "Consent and privacy decisions include state and source context; appended account lifecycle material adds scope and repetition.",
+      "next_action": "Separate universal privacy choices from product-specific settings journeys.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.authentication-lifecycle",
+      "path": "specifications/patterns/authentication-and-account-lifecycle.md",
+      "title": "Authentication and account lifecycle",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 3
+      },
+      "score": 86,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Sign-in, MFA, session expiry and recovery boundaries are comprehensive; security and assistive tests are not recorded.",
+      "next_action": "Recheck current source applicability and validate a reauthentication flow.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.notifications-attention",
+      "path": "specifications/patterns/notifications-and-attention.md",
+      "title": "Notifications and attention management",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 91,
+      "priority": "P2",
+      "issue_flag": "cross-link-gap",
+      "explanation": "Urgency, delivery, deduplication and preference decisions are clear; annotation-specific attention overload is not connected.",
+      "next_action": "Add review-thread priority and digest linkage without creating a new concept.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.offline-sync",
+      "path": "specifications/patterns/offline-sync-and-conflicts.md",
+      "title": "Offline work, synchronization and conflict recovery",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 3
+      },
+      "score": 89,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Local versus remote truth, conflict recovery and retry semantics are well described; real reconnection tests are absent.",
+      "next_action": "Exercise duplicate-safe retry and concurrent-edit recovery on a representative implementation.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.data-visualization",
+      "path": "knowledge/guidance/data-visualization-and-dashboards.md",
+      "title": "Data visualization and dashboards",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 91,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Chart-choice decisions and accessible failure states are concise; no observed comprehension outcomes are provided.",
+      "next_action": "Validate one chart-versus-table decision with an actual user task.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.mobile-adaptive",
+      "path": "knowledge/guidance/mobile-and-adaptive-platform-ux.md",
+      "title": "Mobile and adaptive platform UX",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 2
+      },
+      "score": 84,
+      "priority": "P2",
+      "issue_flag": "noise",
+      "explanation": "Adaptive rules and wireframe comparison matrices are thorough; overlapping responsive checklists make scanning harder.",
+      "next_action": "Collapse duplicate adaptation checks and keep one target-specific test matrix.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.advanced-interactions",
+      "path": "specifications/patterns/advanced-interactions-and-reversible-actions.md",
+      "title": "Advanced interactions and reversible actions",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 2
+      },
+      "score": 84,
+      "priority": "P2",
+      "issue_flag": "noise",
+      "explanation": "Bulk actions, undo and drag alternatives are specific; expanded consolidation matrices add procedural bulk.",
+      "next_action": "Keep the simplest-action decision first and move advanced worksheet detail behind it.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.ai-experiences",
+      "path": "knowledge/guidance/ai-powered-experiences-and-trust.md",
+      "title": "AI-powered experiences, transparency and calibrated trust",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 91,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Provenance, uncertainty and correction are expressed as clear UX contracts; no model behavior has been evaluated here.",
+      "next_action": "Attach scenario-based source and uncertainty checks when an implementation exists.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.agentic-actions",
+      "path": "specifications/patterns/agentic-actions-and-approvals.md",
+      "title": "Agentic actions, approvals and reversible workflows",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 3
+      },
+      "score": 89,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Risk-weighted approvals and side-effect boundaries are strong; no tool-backed approval workflow is verified.",
+      "next_action": "Test interrupted and ambiguous action outcomes against an authorized tool flow.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.multimodal-conversation",
+      "path": "specifications/patterns/conversational-voice-and-multimodal-ux.md",
+      "title": "Conversational, voice and multimodal UX",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 91,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Modality fallback, transcript and interruption decisions are practical; voice usability evidence is absent.",
+      "next_action": "Validate interruption and non-audio completion with representative input methods.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.performance-experience",
+      "path": "knowledge/guidance/performance-and-perceived-speed.md",
+      "title": "Performance, perceived speed and resilient task feedback",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 3
+      },
+      "score": 86,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Field, lab and task readiness metrics are correctly distinguished; example performance results are not observed.",
+      "next_action": "Attach an actual task-readiness and Core Web Vitals measurement record.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.experimentation",
+      "path": "knowledge/guidance/experimentation-and-causal-evidence.md",
+      "title": "UX experimentation and causal evidence",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 4
+      },
+      "score": 94,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Randomization, SRM, guardrails and inference boundaries are precise; this is a protocol, not a completed experiment.",
+      "next_action": "Apply the pre-registration contract to a real comparison and record outcome limits.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "architecture.application-selection",
+      "path": "knowledge/architecture/application-architecture.md",
+      "title": "Application architecture and scalability selection",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "source-gap",
+      "explanation": "Four architecture profiles and selection criteria are usable; external provenance and a worked transition are limited.",
+      "next_action": "Add a source-scoped comparison and a small framework-specific selection example.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "architecture.module-boundaries",
+      "path": "knowledge/architecture/module-boundaries-and-developer-navigation.md",
+      "title": "Application module boundaries and developer navigation",
+      "dimensions": {
+        "purpose": 3,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 1,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 73,
+      "priority": "P2",
+      "issue_flag": "framing-gap",
+      "explanation": "Import direction and module ownership are concrete; the entry starts at implementation rules with little framing or cited basis.",
+      "next_action": "Lead with a purpose and use boundary; add a checkable module ownership example.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "architecture.evolution",
+      "path": "knowledge/architecture/architecture-evolution.md",
+      "title": "Application architecture evolution and fitness",
+      "dimensions": {
+        "purpose": 3,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 1,
+        "discoverability": 2,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 70,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Migration triggers and rollback are useful; there is little research traceability or demonstrated fitness measurement.",
+      "next_action": "Add an illustrative before-and-after fitness record with clear unknowns.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "architecture.enterprise-multiapp",
+      "path": "knowledge/architecture/enterprise-and-multiapp.md",
+      "title": "Enterprise and multi-application architecture",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 1,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 81,
+      "priority": "P2",
+      "issue_flag": "source-gap",
+      "explanation": "Topology selection and multi-team ownership are clear; source applicability and measurable tradeoffs are limited.",
+      "next_action": "Ground topology criteria in current platform guidance and one enterprise example.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "architecture.framework-aware",
+      "path": "knowledge/architecture/framework-aware-application-structure.md",
+      "title": "Framework-aware application structure and route ownership",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 89,
+      "priority": "P2",
+      "issue_flag": "freshness-gap",
+      "explanation": "Next.js, Angular and React Router ownership examples are helpful; framework-version assumptions need periodic rechecking.",
+      "next_action": "Pin example versions and add a lightweight update review cadence.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "architecture.enforcement-ci",
+      "path": "knowledge/architecture/architecture-enforcement-and-ci.md",
+      "title": "Application architecture enforcement and CI guardrails",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 2
+      },
+      "score": 84,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Lint, dependency-cruiser and Nx recipes are specific; none is run here and the combined tutorial is lengthy.",
+      "next_action": "Split tool choice from recipes and verify one ruleset against a sample repo.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "architecture.reference-examples",
+      "path": "knowledge/architecture/application-architecture-reference-examples.md",
+      "title": "Application architecture reference implementations and migrations",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 3
+      },
+      "score": 80,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Three illustrative architecture trees and task-location exercises aid understanding; they are not runnable or independently assessed.",
+      "next_action": "Attach one executable smoke fixture or clearly scoped developer-task result.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.account-settings-portal",
+      "path": "specifications/patterns/account-and-settings-portal.md",
+      "title": "Account and settings portal",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 1
+      },
+      "score": 79,
+      "priority": "P1",
+      "issue_flag": "noise-overload",
+      "explanation": "Settings authority, scope and save recovery are exhaustive; the nearly 7,000-word entry hides the core user journey.",
+      "next_action": "Add a one-page settings decision map and split specialized configuration cases.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.billing-subscription-settings",
+      "path": "specifications/patterns/billing-and-subscription-settings.md",
+      "title": "Billing, plans and subscription settings",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 80,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Plan changes, invoices and billing recovery are covered concisely; provider and jurisdiction applicability is not yet validated.",
+      "next_action": "Add a provider-neutral failed-payment scenario and a policy applicability check.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.wireframe-methodology",
+      "path": "knowledge/guidance/wireframe-methodology.md",
+      "title": "Wireframe methodology and prototype escalation",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 3
+      },
+      "score": 86,
+      "priority": "P1",
+      "issue_flag": "broken-reference",
+      "explanation": "Fidelity gates and honest annotation labels are explicit; a few malformed cross-references weaken editorial trust.",
+      "next_action": "Repair link fragments and keep evidence labels outside example screens when possible.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "feature.review-workspace",
+      "path": "specifications/experiences/review-workspace/spec.md",
+      "title": "Review Workspace",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 3
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Task decisions and unknown outcomes are carefully modeled; the feature contract lacks a representative human review test.",
+      "next_action": "Validate one approve, reject and unknown-outcome reconciliation task.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.combobox",
+      "path": "specifications/components/combobox/spec.md",
+      "title": "Combobox and autocomplete",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Editable selection and keyboard states are well structured; the complex popup needs a tested focus and commit example.",
+      "next_action": "Add a keyboard selection and cancellation verification case.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.radio-group",
+      "path": "specifications/components/radio-group/spec.md",
+      "title": "Radio group",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 83,
+      "priority": "P3",
+      "issue_flag": "example-gap",
+      "explanation": "Native exclusive-choice rules and group naming are clear; complex required-group behavior has limited illustration.",
+      "next_action": "Demonstrate required selection error and focus movement.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.switch",
+      "path": "specifications/components/switch/spec.md",
+      "title": "Switch and immediate toggle",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Immediate versus persisted toggle truth is well separated; delayed failures need a realistic confirmation case.",
+      "next_action": "Add a failed-save rollback and accessible status test.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.tabs",
+      "path": "specifications/components/tabs/spec.md",
+      "title": "Tabs and tab panels",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Peer-panel semantics and keyboard rules are concise; dynamic content and tab activation choices need one applied check.",
+      "next_action": "Add manual versus automatic activation and focus-retention examples.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.disclosure",
+      "path": "specifications/components/disclosure/spec.md",
+      "title": "Disclosure and accordion",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P3",
+      "issue_flag": "example-gap",
+      "explanation": "Optional-content boundaries and focus recovery are explicit; nested disclosure behavior needs a bounded example.",
+      "next_action": "Test keyboard expansion and retained focus in a nested section.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.textarea",
+      "path": "specifications/components/textarea/spec.md",
+      "title": "Textarea and long-form input",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 80,
+      "priority": "P3",
+      "issue_flag": "example-gap",
+      "explanation": "Multiline state and draft recovery are covered; text growth and autosave conflicts deserve a worked example.",
+      "next_action": "Add a long-content draft recovery scenario.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.menu-button",
+      "path": "specifications/components/menu-button/spec.md",
+      "title": "Menu button and action menu",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Action-menu semantics and dismissal are clear; overflow and mixed disabled actions need task evidence.",
+      "next_action": "Add a keyboard menu close and disabled-action scenario.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.date-time-input",
+      "path": "specifications/components/date-time-input/spec.md",
+      "title": "Date and time input",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Locale and timezone interpretation are explicit; ambiguous DST entry remains a high-value validation case.",
+      "next_action": "Add a daylight-saving ambiguous-time test with an explicit outcome.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.tooltip",
+      "path": "specifications/components/tooltip/spec.md",
+      "title": "Tooltip",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P3",
+      "issue_flag": "example-gap",
+      "explanation": "The noninteractive boundary is strong; touch and hidden essential information need a demonstrated alternative.",
+      "next_action": "Add an equivalent always-available help-text example.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.popover",
+      "path": "specifications/components/popover/spec.md",
+      "title": "Popover and non-modal overlay",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Nonmodal interaction is distinguished from dialogs and tooltips; outside-click and focus return need applied checks.",
+      "next_action": "Validate focus, Escape and nested overlay dismissal.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.slider",
+      "path": "specifications/components/slider/spec.md",
+      "title": "Slider and bounded range control",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 80,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Range, keyboard and precision alternatives are specified; exact-entry and touch interaction evidence is thin.",
+      "next_action": "Add a fine-grained numeric entry and keyboard adjustment scenario.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.tree-view",
+      "path": "specifications/components/tree-view/spec.md",
+      "title": "Hierarchical tree view",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Hierarchy and navigation semantics are laid out; large-tree typeahead and recovery would benefit from tests.",
+      "next_action": "Verify keyboard typeahead and collapse-focus behavior.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.onboarding-first-use",
+      "path": "specifications/patterns/onboarding-and-first-use.md",
+      "title": "Onboarding and first-use experiences",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "First-success and resumable onboarding decisions are concise; measured completion and abandonment are not available.",
+      "next_action": "Test first-success with a skip and resume path.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.file-upload",
+      "path": "specifications/patterns/file-upload-and-attachments.md",
+      "title": "File upload and attachment workflows",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Transfer states and error recovery are well scoped; interrupted and duplicate uploads are not verified.",
+      "next_action": "Exercise interrupted upload, retry and cancellation outcomes.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.collaboration-sharing",
+      "path": "specifications/patterns/collaboration-and-sharing.md",
+      "title": "Collaboration and sharing",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Invite, revoke and access truth are covered; delayed permission propagation needs a task-level check.",
+      "next_action": "Test revoke visibility and unauthorized re-entry after the change.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.content-publishing",
+      "path": "specifications/patterns/content-creation-and-publishing.md",
+      "title": "Content creation and publishing",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Draft, preview and publication transitions are outlined; concurrent changes and uncertain publish outcomes need tests.",
+      "next_action": "Add an unknown publish acknowledgement and conflict-recovery case.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.scheduling-availability",
+      "path": "specifications/patterns/scheduling-and-availability.md",
+      "title": "Scheduling and availability",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Slots, recurrence and time zones are included; stale slot availability remains an unverified risk.",
+      "next_action": "Test a slot that becomes unavailable before confirmation.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.checkout",
+      "path": "specifications/patterns/purchasing-and-checkout.md",
+      "title": "Purchasing and checkout journeys",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Price review and uncertain payment outcomes are explicit; no live purchase recovery evidence is recorded.",
+      "next_action": "Validate duplicate prevention and unknown payment result recovery.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.master-detail",
+      "path": "specifications/patterns/master-detail-exploration.md",
+      "title": "Master-detail exploration",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Selection and focus continuity are addressed; the narrow-layout back-navigation case lacks demonstrated behavior.",
+      "next_action": "Add an item-to-list return and focus restoration scenario.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.comparison-decision",
+      "path": "specifications/patterns/comparison-and-decision-support.md",
+      "title": "Comparison and decision support",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Aligned comparisons and consequence clarity are defined; decision-quality evidence is still hypothetical.",
+      "next_action": "Test a comparison with materially different options and user priorities.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.content-architecture",
+      "path": "knowledge/guidance/content-architecture-and-taxonomy.md",
+      "title": "Content architecture, taxonomy and findability",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Taxonomy and retrieval tradeoffs are clear; the mapping has no observed findability outcome.",
+      "next_action": "Run a small label-discovery or tree-test task.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.inclusive-design",
+      "path": "knowledge/guidance/inclusive-design-beyond-conformance.md",
+      "title": "Inclusive design beyond conformance",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Situational barriers and broader inclusion are acknowledged; the examples are not drawn from participant evidence.",
+      "next_action": "Add one sourced barrier and the resulting design change.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "foundation.responsive-composition",
+      "path": "knowledge/foundations/responsive-spatial-composition.md",
+      "title": "Responsive spatial composition",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Content-driven reflow and reading order are specific; actual zoom and narrow-container checks remain open.",
+      "next_action": "Add a 320px and zoom/reflow verification record.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.ia-validation",
+      "path": "knowledge/guidance/information-architecture-validation.md",
+      "title": "Information architecture validation",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Card-sort and tree-test method boundaries are useful; no study result demonstrates the protocol.",
+      "next_action": "Attach a representative tree test and its limitations.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "guidance.ethical-engagement",
+      "path": "knowledge/guidance/ethical-motivation-and-engagement.md",
+      "title": "Ethical motivation and engagement",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "Progress and rewards avoid manipulative framing; user outcome evidence is still absent.",
+      "next_action": "Add an example balancing completion value against attention pressure.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "governance.adoption-change",
+      "path": "governance/design-system-adoption-and-change-management.md",
+      "title": "Design-system adoption and change management",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 80,
+      "priority": "P2",
+      "issue_flag": "ownership-gap",
+      "explanation": "Incremental rollout and deprecation guidance is sensible; ownership and adoption metrics need a real example.",
+      "next_action": "Show a staged adoption plan with owner and fallback measures.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.data-import",
+      "path": "specifications/patterns/data-import-and-migration.md",
+      "title": "Data import and migration",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 4
+      },
+      "score": 90,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Field mapping, preview, duplicates and reconciliation have explicit states; real import failure evidence is absent.",
+      "next_action": "Verify partial-error preview and duplicate reconciliation against sample data.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.access-requests",
+      "path": "specifications/patterns/permissions-and-access-requests.md",
+      "title": "Permissions and access requests",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 4
+      },
+      "score": 90,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Request-versus-grant boundaries and decision states are precise; actual permission propagation is untested.",
+      "next_action": "Test denial and pending access visibility from an unprivileged session.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.data-export",
+      "path": "specifications/patterns/data-export-and-background-jobs.md",
+      "title": "Data export and background jobs",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Long-running export states and secure retrieval are covered; expiry and access loss need demonstrated recovery.",
+      "next_action": "Test an expired download and pending job after sign-out.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.commenting-annotations",
+      "path": "specifications/patterns/commenting-and-annotations.md",
+      "title": "Commenting and annotations",
+      "dimensions": {
+        "purpose": 3,
+        "actionability": 3,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 2,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 74,
+      "priority": "P1",
+      "issue_flag": "coverage-gap",
+      "explanation": "Anchor stability, threading, mentions and resolution are clear; there is no explicit triage for dense or noisy annotations.",
+      "next_action": "Add priority and unresolved filters, marker clustering, and an accessible thread list.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.reporting-appeals",
+      "path": "specifications/patterns/reporting-moderation-and-appeals.md",
+      "title": "Reporting, moderation and appeals",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Reporting, privacy-aware status and appeals are included; safety-sensitive escalation is untested.",
+      "next_action": "Verify restricted visibility and appeal handoff with scenario-specific evidence.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.activity-history",
+      "path": "specifications/patterns/activity-timelines-and-history.md",
+      "title": "Activity timelines and history",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Actor/time/redaction context is explicit; busy timelines still need grouping and focus-behavior evidence.",
+      "next_action": "Test grouped events and a keyboard navigable change history.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.rich-text-editing",
+      "path": "specifications/patterns/rich-text-editing.md",
+      "title": "Rich-text editing",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Semantic formatting, safe paste and drafts are scoped; long collaborative edits lack demonstrated recovery.",
+      "next_action": "Exercise paste sanitization and draft restore after failure.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.live-updates",
+      "path": "specifications/patterns/real-time-data-and-live-updates.md",
+      "title": "Real-time data and live updates",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "coverage-gap",
+      "explanation": "Freshness and reconnect semantics avoid stealing focus; high-frequency update noise is not tested.",
+      "next_action": "Verify burst updates with an explicit pause or catch-up path.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.workflow-automation",
+      "path": "specifications/patterns/workflow-automation-and-rule-builders.md",
+      "title": "Workflow automation and rule builders",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Trigger-condition-action rules and safe pauses are clear; conflicting or failing rules need test evidence.",
+      "next_action": "Test a paused rule, failed execution and replay safety.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "pattern.collection-views",
+      "path": "specifications/patterns/collection-and-feed-views.md",
+      "title": "Collection and feed views",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 3,
+        "signal_to_noise": 4
+      },
+      "score": 85,
+      "priority": "P2",
+      "issue_flag": "evidence-gap",
+      "explanation": "List, card and feed selection criteria are covered; dense feed discoverability needs representative scanning evidence.",
+      "next_action": "Test a large collection with focus restoration and meaningful filters.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.progress-indicator",
+      "path": "specifications/components/progress-indicator/spec.md",
+      "title": "Progress indicator",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 4
+      },
+      "score": 94,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Measured versus unknown progress and completion semantics are explicit; no consuming application test is recorded.",
+      "next_action": "Verify stage changes and completion announcements in a live task.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.listbox",
+      "path": "specifications/components/listbox/spec.md",
+      "title": "Listbox and multi-select options",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 4,
+        "research": 3,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 4
+      },
+      "score": 94,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "Focus-versus-selection and keyboard semantics are precise; composite widget behavior has no runtime verification.",
+      "next_action": "Test multi-select, typeahead and focus retention with assistive technology.",
+      "evidence_level": "E0"
+    }
+  ]
+}
