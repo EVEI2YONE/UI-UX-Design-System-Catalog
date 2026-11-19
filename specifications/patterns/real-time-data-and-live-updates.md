@@ -63,3 +63,10 @@ This documentation does not verify real users, moderation outcomes, backend acce
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — supporting context; verify applicability and current edition.
 - Related canonical sources: [Offline sync](offline-sync-and-conflicts.md), [Notifications](notifications-and-attention.md), [Data tables](data-tables.md), [Interaction recovery](interaction-states-and-recovery.md).
 - **Scope limit:** This is a proposed UX contract, not a complete backend or security design.
+
+## Representative state and recovery acceptance
+
+**Illustrative decision case:** Verify burst updates with an explicit pause or catch-up path. Define what the user intends, when the system has authoritative knowledge, how to distinguish a pending or unknown outcome and what preserves their work and orientation. Avoid promoting this task-specific orchestration into a generic component unless independently reusable.
+
+**Evidence contract:** Verify both the normal route and the failure branch with explicit expected and observed results for applicable keyboard, focus, reflow, language and permission conditions. Record the owner, tested environment, findings and unresolved risks; until run, the check is **NOT VERIFIED**. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) offers applicable accessibility criteria, not proof of task success or certification.
+
