@@ -13,8 +13,10 @@ Normative contracts, states and interaction decisions (not published packages). 
 | [Field and error](field/spec.md) | `component.field` | Compose persistent label, help and field-error associations. |
 | [Hierarchical tree view](tree-view/spec.md) | `component.tree-view` | Expand and select hierarchical items with consistent focus and keyboard navigation. |
 | [Input](input/spec.md) | `component.input` | Single-line editable input with labels, values and validation hooks. |
+| [Listbox and multi-select options](listbox/spec.md) | `component.listbox` | Choose one or more options with distinct focus, selection and coherent listbox keyboard semantics. |
 | [Menu button and action menu](menu-button/spec.md) | `component.menu-button` | Action menu trigger, item semantics, dismissal and keyboard operation. |
 | [Popover and non-modal overlay](popover/spec.md) | `component.popover` | Contextual interactive overlay without inappropriate modal focus trapping. |
+| [Progress indicator](progress-indicator/spec.md) | `component.progress-indicator` | Communicate measured or unknown task progress without suggesting unconfirmed completion. |
 | [Radio group](radio-group/spec.md) | `component.radio-group` | Mutually exclusive choices with group labeling and native radio semantics. |
 | [Select](select/spec.md) | `component.select` | Select a single known option using native semantics where possible. |
 | [Slider and bounded range control](slider/spec.md) | `component.slider` | Select a value on a bounded scale with keyboard and precision alternatives. |
