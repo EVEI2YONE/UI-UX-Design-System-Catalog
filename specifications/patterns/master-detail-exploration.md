@@ -49,24 +49,15 @@ Let people move between a collection and item details while preserving selection
 
 ### Back, state and focus matrix
 
-| Transition / condition | Navigation and visible outcome | State and focus expectation |
+| Trigger | Preserve and communicate | Resume / focus |
 | --- | --- | --- |
-| Collection -> record | Keep selected identity and source list context, or navigate to a named route | Capture stable invoker/record ID, filters and useful scroll; focus detail heading or first meaningful control |
-| Overview -> edit / history | Switch a peer subview in the **same** detail surface when appropriate | Preserve editing draft across peer views, identify the active view and set an intentional focus target |
-| Internal Back, Cancel or Escape with clean state | Internal Back returns to detail; Cancel exits edit; Escape dismisses the **owning** overlay if appropriate | Do not confuse internal Back with browser Back; return focus to a surviving relevant target |
-| Back / Cancel / Escape / backdrop with dirty draft | Offer Keep editing / Discard before destroying work, including when product-supported browser navigation would leave the route | Preserve draft and selection; do not silently discard values or trap users in an uncloseable surface |
-| Save pending | Report pending state; do not close, double-submit or unmount the active editor | Keep draft, caret/focus context and status perceivable; defer parent refresh to a safe boundary |
-| Save confirmed | Reconcile authoritative saved state, then change surface/refresh intentionally | Focus updated detail, surviving related action or collection context; do not claim success early |
-| Invalid input / denied access / revision conflict | Stay in the task with specific recovery options | Retain valid values and focus a linked error or meaningful summary |
-| Timeout / acknowledgement lost | Say **outcome unknown**; check authoritative state before retrying a non-idempotent write | Keep editor and draft intact without automatic duplicate creation |
-| Removed invoker / filtered or archived record | Explain why the original action or selected row disappeared | Focus a surviving relevant item or collection heading, never a detached element or another record by array index |
-| Deep link / browser refresh | Restore the authorized route, record and permitted view, or a safe not-found/denied return | Show clear heading and recovery even without a previous invoker or meaningful browser-history entry |
+| Open record or change Overview/Edit/History peer view | Stable ID, list filters and the appropriate draft; distinguish view state from browser history | Heading or active peer view; return to initiating record |
+| Internal Back, browser Back, Cancel, Escape or backdrop | Define the owning surface and a keep/discard choice for dirty edits; no silent loss | Keep editing or return to detail/list by an explicit route policy |
+| Save pending, invalid/denied/conflicting or timeout / acknowledgement lost | Distinguish pending/error/**outcome unknown** from confirmed success; do not duplicate a write on retry | Keep draft and cursor; reconcile backend truth; focus linked error or stable detail target |
+| Confirmed save or removed invoker / filtered or archived record | Update only after authoritative confirmation; explain why the original target disappeared | Focus a surviving relevant record or collection heading rather than a detached node |
+| Deep link / refresh / unavailable item | No required prior list/history entry; recheck permissions and provide a safe not-found return | Focus a descriptive heading and usable recovery route |
 
-**Wide-screen illustration (NOT VERIFIED):** The collection and stable detail region appear side by side. Within the selected detail, a user switches Overview -> Edit -> History, saves a related item, then returns with list filters and selection intact. If edit/history must be shareable or resumable, choose dedicated routes instead of forcing everything into a pane.
-
-**Compact/zoom illustration (NOT VERIFIED):** The collection opens a detail route with a visible Back-to-results link; Edit has its own Back-to-detail control. A single full-height dialog is an alternative only for a short, bounded task with a supported focus and draft policy. A drawer must still work at 320 CSS px equivalent, with large text, translations, touch and RTL; its visual form alone does not solve those needs.
-
-**Anti-example:** Collection -> Details modal -> Manage modal -> Edit modal creates three independent Escape paths, conflicting focus traps and unclear draft ownership. If the parent list refresh unmounts the editor while Save is pending, the last changes disappear. **Repair:** keep the related work in one stable detail surface, or route to a named edit page; interrupt separately only for a justified consequential confirmation and return to the preserved parent task.
+**Wide/compact alternatives (illustrative):** A wide surface can retain the filtered collection beside detail with peer Overview/Edit/History views. At 320 CSS px equivalent, choose a detail route rather than a cramped split pane; a drawer is only suitable if its content and actions reflow. Deep-linkable or resumable edit tasks warrant a dedicated route on either width. Real behavior is **NOT VERIFIED**.
 
 ### Source-to-decision provenance and scope
 
@@ -119,11 +110,9 @@ Apply the MD-01–MD-07 checks to keyboard, screen reader, mobile, high zoom, lo
 
 ## Example and anti-example
 
-**Illustrative example:** An email inbox retains query and scroll location after opening a message and returning; deleting it selects the next available message with focus explained.
+**Illustrative:** A filtered inbox opens message A, switches a related item's Edit/History views, and restores the list query and meaningful focus on return. The MD-01–MD-07 cases above define expected observations, not product results.
 
-**Anti-example:** Selecting row 4 by array index so a sort instantly shows a different person's private details.
-
-For a worked cross-pattern composition using a card, detail, related-record editor, classification, recovery and return, see the [illustrative collection-to-related-record journey](../../examples/collection-to-related-record-journey.md). Use the canonical card, form, lifecycle and recovery contracts for normative decisions; the reference journey is **NOT VERIFIED** in a consuming product.
+**Anti-example:** Choosing a record by array index after sorting can display the wrong person's details; a stack of Details/Manage/Edit modals loses draft and focus ownership. Use stable IDs and one coherent surface or named routes. See the [collection-to-related-record journey](../../examples/collection-to-related-record-journey.md) for a broader synthetic composition.
 
 ## Sources, related concepts and limitations
 
