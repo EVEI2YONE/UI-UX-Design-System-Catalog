@@ -146,6 +146,7 @@
 | [guidance.ux-measurement](knowledge/guidance/ux-measurement.md) | **100** (Strong) | `4/4/4/4/4/4/4` | The task-first metric definition, explicit denominators, modality-aware effort worksheet, first-hit discovery protocol and source-limited hypotheses make collection, analysis and safeguards reproducible. | Pilot the metric instruments and catalog findability tasks with eligible participants, documenting missingness, denominators, privacy review, source revision and uncertainty. |
 | [principle.visual-hierarchy](knowledge/foundations/design-principles.md) | **100** (Strong) | `4/4/4/4/4/4/4` | The one-minute task hierarchy, precise applicability, representative appointment case, focused acceptance rubric and scoped visual-hierarchy sources now define observable choices without art-direction duplication. | Have an independent reviewer and representative users compare the appointment hierarchy, safe action order, recovery and inclusive variants; log observed mistakes and uncertainties. |
 
+
 ## Annotation-noise follow-through
 
 The **signal-to-noise** dimension measures how quickly a reader reaches the governing design decision without repetitive warnings, stale claims or unrelated scope. The [commenting and annotations](specifications/patterns/commenting-and-annotations.md) specification now documents dense-thread filtering, marker clustering and an accessible list alternative. Those are **proposed design contracts**, not verified product features or user outcomes.
