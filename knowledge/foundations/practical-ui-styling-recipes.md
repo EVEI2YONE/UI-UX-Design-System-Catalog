@@ -8,6 +8,20 @@ Turn an approved [visual direction](visual-design-craftsmanship.md) into scoped,
 
 **Context contract before selecting a recipe:** task and information priority; content type and extremes; brand traits; responsive containers and platforms; component system and styling approach; supported themes/locales; accessibility constraints. Favor the existing application stack (CSS Modules, scoped CSS, utilities, or native styles) and its established tokens. Illustrative CSS below uses custom properties as aliases—**not a complete executable theme**, so consumers must define those properties and validate their actual colors and spacing.
 
+## Recipe chooser — context before CSS
+
+Select **one primary composition** and then apply only the supporting treatments needed by the task. A visual recipe is a hypothesis until rendered with real content.
+
+| Need | Start with | Test before adoption | Canonical boundary |
+| --- | --- | --- | --- |
+| Long-form explanation or documentation | Bounded reading measure and clear headings | Dense tables, translated expansion, zoom, keyboard reading order | [Design principles](design-principles.md) owns hierarchy |
+| Filterable data or dashboard | Aligned comparisons, stable actions, readable data density | Dynamic rows, empty/error/loading, RTL number context, narrow width | [Data visualization](../guidance/data-visualization-and-dashboards.md) owns chart meaning |
+| Editable form or review task | Label/error grouping, predictable action location | Failed save, long labels, input focus and validation summary | [Field](../../specifications/components/field/spec.md) owns semantics |
+| Layered content, cards or surfaces | Surface and border only where grouping changes | Theme, forced colors, focus and layering contrast | [Tokens](design-tokens-and-themes.md) own semantic values |
+| Motion or visual identity | Restrained transition or licensed imagery with clear purpose | Reduced motion, latency, alternative text and performance | [Visual craftsmanship](visual-design-craftsmanship.md) owns aesthetic direction |
+
+**Stop condition:** If a visual effect does not clarify a task, grouping, state or brand requirement, omit it. Favor logical spacing properties over left/right assumptions in bi-directional layouts; avoid a custom component or global CSS override for a one-off alignment.
+
 ## Layout and composition recipes
 
 Choose from the **content relationship**, not a rigid device preset.
@@ -154,7 +168,7 @@ The prescriptions above are catalog-level design heuristics. Supporting platform
 
 ## Handoff — semantic icon decisions
 
-This page continues to own **icon visual craftsmanship** (family consistency, stroke, optical scale and imagery). For action/status meaning, decorative vs interactive SVGs, icon-only control states, RTL, hit-target sizing and accessibility evidence, use the canonical [icon semantics contract](iconography-and-semantics.md) (`foundation.icon-semantics`). Do not duplicate a per-component icon registry in this visual recipe or claim the examples constitute an installed icon library.
+This page owns **icon visual coherence** (size, optical weight, stroke and imagery), not semantics. The [semantic icon registry](iconography-and-semantics.md) owns meaning, accessible names, status truthfulness and RTL direction; the [Button contract](../../specifications/components/button/spec.md) owns activation. Do not reproduce those role matrices in a styling recipe.
 
 ## Utility-first styling ownership reference
 
@@ -214,15 +228,7 @@ function TaskActions({ onSave, saving }: {
 
 ### Reuse or extract? A constrained styling decision
 
-1. **Find current owner first:** existing semantic token, control variant or scoped composition. Match by meaning and behavior, not similar CSS strings alone.
-2. **Repeated semantic role:** promote a named token after checking theme/mode effects and affected consumers. Do not tokenize every one-off measurement.
-3. **Repeated component behavior:** compose or extend a canonical control with an explicit variant contract only if multiple genuine consumers need the same semantics.
-4. **Simple local geometry:** keep readable utility classes near the feature; avoid extracting wrappers solely because multiple views use `flex` and `gap`.
-5. **Complex selector/container layout:** prefer locally owned CSS/selector slots as supported by the app; no cascade dependence on unrelated feature imports.
-6. **True runtime styling:** constrain measured dynamic values and isolate them; static design decisions should consume semantic roles.
-7. **Safe migration:** snapshot baseline and class/selector consumers, migrate a vertical slice, compare states/themes/locales/zoom, preserve route and business logic, retire compatibility selectors only after checks.
-
-**Good:** a shared Button retains visible keyboard focus and one semantic default variant, while feature-local containers use token-backed gaps and responsive flex wrapping. **Bad:** four nearly identical buttons with hard-coded background colors and inconsistent disabled states; a global `main section button` override silently breaks dialogs; or a new Tailwind config replaces established tokens without a migration plan.
+First inspect active consumers and the existing styling owner. Reuse a token-backed variant when semantics match; keep feature-only treatments local; extract a shared presentation component only after repeated identical state and layout needs. Never create a second Button/Field abstraction solely to standardize a shadow or color. [Component model](../architecture/component-model.md) owns promotion and [architecture enforcement](../architecture/architecture-enforcement-and-ci.md) owns import/lint guards.
 
 ### Verification, documentation only
 
@@ -235,3 +241,9 @@ function TaskActions({ onSave, saving }: {
 | Product UI outcome | Task continuity, no backend/permission mutation, real interaction tests | NOT VERIFIED |
 
 **References (for consumer-version review):** [Tailwind theme variables](https://tailwindcss.com/docs/theme/), [MDN CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07). Motivating case: [Little Wins styling architecture](https://github.com/EVEI2YONE/Little_Wins/blob/main/docs/little-wins/ui-knowledge/batch-01-styling-architecture.md), whose proposed app-specific file ownership is not mandated by this catalog.
+
+## Evidence-led styling review
+
+For each selected recipe record: task, source revision, actual rendered content, supported theme and locale, container/viewport width, input method, CSS owner, baseline screenshot, attempted change, observed difference and rollback. Check 320px-class narrow conditions **only where supported**, 200%/400% zoom as applicable, long text and RTL, forced colors, reduced motion, media-loading failure, overlay/focus states and responsiveness without horizontal clipping.
+
+**Reproducible acceptance:** (1) the primary action and status remain findable; (2) reading and keyboard order follow the task; (3) no control is hidden under sticky surfaces; (4) tokens resolve in all implemented modes; (5) the change introduces no unintended global cascade collision; (6) any observed bundle/rendering impact is reported with an environment. [MDN container size queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_size_and_style_queries), [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values) and [CSS cascade](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Introduction) define browser mechanisms; they do **not** prove an aesthetic recipe is universally better. All consuming-product observations remain **NOT VERIFIED** until tested.

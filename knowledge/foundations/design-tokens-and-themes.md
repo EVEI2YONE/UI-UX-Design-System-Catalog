@@ -6,6 +6,18 @@
 
 Make recurring visual decisions explicit, semantic, themeable, accessible and portable. Token values are data; a component contract decides how to use them.
 
+## Choose the owner before editing values
+
+| Question | Canonical owner and decision | Evidence required |
+| --- | --- | --- |
+| Is this a reusable visual intent? | A **semantic token** here, not a raw value copied into every screen | List consumer contexts, readable name and supported modes |
+| Is it a specific component's stable difference? | A **component alias** only if a named consumer requires it | State, contrast and variant matrix from the component owner |
+| Is it a user's account/system theme preference? | [Account settings](../../specifications/patterns/account-and-settings-portal.md) owns choice, precedence, persistence and conflict recovery | Observe the effective mode on load, change, reload and another device |
+| Is it an aesthetic direction or a palette choice? | [Visual craftsmanship](visual-design-craftsmanship.md) owns color/typography direction; this page encodes approved choices | Source/reference applicability and task/brand constraints |
+| Is it a CSS selector or feature override? | [Practical styling](practical-ui-styling-recipes.md) owns placement; tokens define reusable values | Inspect selector scope, cascade, fallback and consumer regressions |
+
+Never add an extra token layer merely to mirror a folder. Define semantic meaning before assigning a visual value, and do not equate a named color with WCAG contrast.
+
 ## Layers
 
 1. **Reference:** raw reusable palette or scale (for example `reference.blue.600`).
@@ -109,16 +121,28 @@ Related: [component contracts](../architecture/component-contracts.md), [quality
 
 **Verification:** documented before/after selector and token map; light/dark only where implemented; responsive snapshots at supported breakpoints, keyboard focus, dialog/backdrop layering, reduced motion, high zoom, long/RTL copy, font fallback and performance measurements where available. Compare component consumers incrementally and keep a revert path.
 
-## Appearance preferences as a product journey — account
+## Account appearance preference boundary
 
-**Boundary:** this source defines semantic tokens and theme capability; an account portal composes those into actual user controls. Offer light, dark and system preference only for implemented modes. Distinguish **device/system preference**, **account-synced preference** and **workspace-controlled appearance**; display the effective result and explain overrides. Persist only after confirmed storage, gracefully apply unsupported-mode fallback, and avoid flashing the incorrect theme during load where practicable.
-
-Optional accessibility adjustments (contrast, density, motion or text) must not substitute for platform/browser accessibility support or WCAG requirements. Respect prefers-reduced-motion and system-level increased contrast, zoom and text resizing; never make a preference toggle the sole accessible path.
-
-**Example:** system theme defaults to OS setting, manual selection clearly overrides and can revert to system. **Anti-example:** a dark-mode toggle is shown while the app still has unreadable dark overlays and hard-coded text colors.
-
-**Verification NOT VERIFIED:** first load/flicker, reload and concurrent device preference, system theme changes, high-contrast/forced colors, reduced motion, keyboard/screen reader, locale text expansion, logged-out behavior. See [account settings](../../specifications/patterns/account-and-settings-portal.md), [accessibility](../guidance/accessibility.md), and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07).
+This page owns theme **capability and semantic mappings**, not the account-setting journey. For system/device, account-synced or workspace-controlled preference precedence, pending saves, concurrent updates, first-paint flash mitigation and invalid modes use [account and settings](../../specifications/patterns/account-and-settings-portal.md). A theme is only "supported" when the consuming product verifies focus, contrast, readable error states, forced colors and applicable zoom/reflow.
 
 ## Aesthetic palette and typography decisions — craftsmanship
 
 This page owns **token naming, roles, modes and migration**. For selecting a coherent tonal palette, purposeful accent saturation, type pairing, optical typography and density before encoding them as tokens, use [Visual design craftsmanship](visual-design-craftsmanship.md). Do not mistake attractive sample values for contrast-tested or production-ready tokens.
+
+## Exchange format and reproducible acceptance
+
+When cross-tool exchange is required, use the [Design Tokens Community Group Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/) **as a Community Group specification**, not a W3C Recommendation or a guarantee of converter compatibility. A small *illustrative* valid dimension token (not a published artifact):
+
+```json
+{
+  "spacing": {
+    "$type": "dimension",
+    "compact": { "$value": { "value": 8, "unit": "px" } },
+    "comfortable": { "$value": { "value": 16, "unit": "px" } }
+  }
+}
+```
+
+**Acceptance for a real token release:** parse and type-check against the format revision actually supported by the tool; reject missing references or alias cycles; generate the same named semantics across target platforms; verify light/dark/contrast/density modes that actually exist; compare critical components under translated/RTL, zoom and focus states; record converter/tool version, source hash, affected consumers, owner and rollback alias. **PASS/FAIL/NOT VERIFIED/NOT APPLICABLE** requires recorded observations for each relevant platform. This document has not executed those checks.
+
+[MDN CSS cascade](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Introduction) explains why specificity and cascade layer order must be reviewed during CSS migration; it does not prescribe a token naming scheme. The token format defines interchange syntax, not user preference behavior or aesthetics.

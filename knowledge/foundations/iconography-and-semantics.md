@@ -8,6 +8,18 @@ Give design systems a consistent, inspectable decision rule for icons inside con
 
 This is a **platform-neutral specification**, not an icon package, approved glyph mapping, automated accessibility guarantee or universal brand style. A product chooses and verifies its own installed exports and semantics. [Practical UI styling recipes](practical-ui-styling-recipes.md) owns broader visual craftsmanship and imagery. [Button](../../specifications/components/button/spec.md) owns activation; [component contracts](../architecture/component-contracts.md) own general states; [feedback](../../specifications/patterns/feedback.md) owns communicating domain results. This page owns the *semantic relationship between an icon, its host component and user meaning*.
 
+## Decide the role before selecting a glyph
+
+| Intent in context | Default | Accessible meaning and failure to prevent |
+| --- | --- | --- |
+| Decoration repeating nearby text | Decorative icon, hidden from assistive technology when appropriate | It adds no second "Save Save" announcement |
+| Informative status or category | Expose text plus optional icon, or a meaningful equivalent accessible name | A colored check is not evidence of backend success |
+| Triggering an action | Native host Button with named verb/object, icon optional | The SVG never owns click/keyboard handlers or authorization |
+| Navigation or disclosure | Host link or correctly modeled disclosure/menu control | An arrow alone does not reveal destination/state or force RTL mirroring |
+| Consequential or ambiguous task | Visible descriptive label and impact context | Do not hide deletion/approval behind an unlabeled glyph |
+
+First identify semantic intent and consumer task, then choose a coherent glyph family and optical size. The catalog **never** defines a universal icon map or claims recognition rates from pictogram appearance. Related: [Button](../../specifications/components/button/spec.md) (activation), [feedback](../../specifications/patterns/feedback.md) (status) and [interaction recovery](../../specifications/patterns/interaction-states-and-recovery.md) (unknown outcomes).
+
 ## Semantic icon registry: one meaning, explicit context
 
 Start with the user's recognizable **verb/object or status label**; only then decide whether an icon improves scanning, recognition or wayfinding. Maintain a single product-level semantic registry with **intent ID, human meaning, host role, glyph choice, visible text requirement, accessible-name source, decorative/informative status, RTL behavior, visual token, owner and lifecycle**. This is distinct from importing an arbitrary pictogram by filename.
@@ -83,18 +95,9 @@ The example assumes an implementation with appropriate focus, menu semantics, st
 
 **Anti-example:** a tiny clickable `<Trash2 />` icon inside a clickable card deletes a record without label or confirmation; it has nested click propagation, no named keyboard target, and potentially irreversible side effects.
 
-## Adoption and verification matrix
+## Verification owner and evidence rule
 
-| Check | State | Required evidence before adoption |
-| --- | --- | --- |
-| Semantic intent/role registry has a single owner | NOT VERIFIED | Product-specific mapping with deprecated aliases |
-| Accessible name, keyboard and focus | NOT VERIFIED | Rendered component test, keyboard and AT audit |
-| Touch target and contrast by density/theme | NOT VERIFIED | Rendered browser measurements against applicable WCAG criteria |
-| Status/pending/uncertain outcomes | NOT VERIFIED | Async feature integration; no premature success |
-| RTL, translated strings, zoom and reduced motion | NOT VERIFIED | Supported locale/theme/device matrix |
-| Icon exports/visual consistency | NOT VERIFIED | Actual installed icon-library version and visual review |
-
-**Catalog documentation only.** It neither implements a React component nor certifies WCAG conformance. Suggested consumers: Button, menu trigger, disclosure, tabs, status badges and navigation. **Migration:** audit existing glyph usage by meaning, retain valid mappings, introduce aliases for renamed intents, and replace ambiguous icon-only controls incrementally with accompanying tests.
+Use the **single acceptance matrix at the end** of this document for registered intent, accessible host behavior, zoom/touch, theme, translations/RTL and pending/unknown outcomes. A source-only registry review can establish semantic consistency in writing, but actual accessible-name computation, focus and recognition require rendered consumers and representative tests. Until then the status is **NOT VERIFIED**.
 
 ## Sources and provenance
 
@@ -113,7 +116,7 @@ Motivating example: [Little Wins icon knowledge ](https://github.com/EVEI2YONE/L
 
 ### A reviewable semantic icon registry entry
 
-For each intent, capture: `semanticIntent`, human-readable **verb/object or status**, visual glyph identifier and installed package/version, semantic role (decorative/informative/action/navigation/disclosure), allowed host components, icon size/token, required nearby text/accessible name source, state-specific alternatives, directional/RTL policy, owner, consumers, status and migration aliases. Product teams should choose the actual glyph and confirm package exports; the catalog must not mandate an icon family for every consumer.
+Record one canonical `semanticIntent` (verb/object or status), human meaning, role, approved glyph and package/version, visible/accessible label source, host component, visual token, applicable RTL treatment, owner, current consumers, lifecycle state and migration aliases. Preserve distinguishing context: the same icon may be appropriate for two actions with **different explicit labels**, but never imply the two actions have identical consequences.
 
 ### Consistency and collision matrix
 
@@ -130,14 +133,11 @@ For each intent, capture: `semanticIntent`, human-readable **verb/object or stat
 
 ### Audit and migration sequence
 
-1. Sample **actual rendered consumers** and the app's icon registry/imports. Distinguish unused installed glyphs from icons exposed in live UI.
-2. Map visible action/status icons to semantic intent, host accessible name and permission/outcome model; review duplicate meanings **before** standardizing colors.
-3. Flag mismatches with severity, affected screens, owner and recommended fix; preserve a valid alternate when cultural or task context requires it. Never automatically unify symbols that have different meanings.
-4. Choose a canonical intent and document any renamed glyph alias, affected components, states, tests and staged migration. Check the impact on saved documents, right-to-left navigation and long labels.
-5. For implementation, verify with keyboard, screen reader, pointer/touch, high-contrast/forced-colors, zoom, translations, reduced motion and delayed/unknown backend results. Record actual evidence per environment.
-6. Keep the registry and its consumers versioned together. **Documentation-only checks cannot certify icon recognition or accessibility.**
-
-**Illustrative good:** a task-specific "Edit submission" Button uses a consistent pencil intent, while a pending review Badge shows an informative clock **plus text**; success status waits for authoritative confirmation. **Anti-example:** a clickable check glyph alternates between checking a checkbox and approving a transaction, gains a green fill immediately on click, and has no accessible name.
+1. Inventory **rendered** icons and permitted users in representative journeys; do not treat unused imports as adoption.
+2. Compare each actual glyph with registry meaning, host accessible name, permission, state transitions and RTL behavior; classify ambiguity and severity.
+3. Resolve collisions through clearer text/context before changing glyph shape; document aliases and safe deprecation.
+4. Migrate one host component and its consumers at a time. Record state, theme/locale/zoom and focus regressions, then remove obsolete glyph mappings after tests.
+5. Escalate any actionable icon without accessible name, concealed destructive intent or status falsely announcing server success. This is a product defect **if observed in a product**, not a demonstrated defect in this specification.
 
 ### Verification and adoption
 
@@ -150,3 +150,5 @@ For each intent, capture: `semanticIntent`, human-readable **verb/object or stat
 | Translation, RTL and visual reflow | Supported locale and responsive matrix | NOT VERIFIED |
 
 **References (consulted 2026-11-07):** [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/), [MDN aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden). Audit outcomes remain app-specific; no new packaged component is provided.
+
+**Primary reference scope:** [WAI-ARIA APG Button](https://www.w3.org/WAI/ARIA/apg/patterns/button/) defines web button keyboard and naming expectations; [WCAG 2.2](https://www.w3.org/TR/WCAG22/) defines applicable accessibility outcomes; [MDN aria-hidden](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-hidden) explains hiding decorative content. None prescribes a specific icon library or demonstrates that users recognize a glyph. The visual [styling recipes](practical-ui-styling-recipes.md) govern stroke and placement.
