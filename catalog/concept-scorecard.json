@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "source_repository": "EVEI2YONE/UI-UX-Design-System-Catalog",
-  "source_commit": "b8e15e1cfb2a10ad1ce4c0db4a2f885d39a5bbe9",
+  "source_commit": "7ed33de6ff3241d19a4bff158aeabeb79531cabe",
   "assessment_date_utc": "2026-11-19",
-  "assessment_type": "source-only targeted editorial reassessment of written guidance after the 83-concept decision-scenario update; not an independent human review, verified implementation, accessibility audit, user study, or production outcome",
+  "assessment_type": "source-only targeted editorial reassessment of pattern.master-detail on the proposed PR #42 branch; other 91 ratings carried forward from the earlier 2026-11-19 source-only assessment; not an independent human review, verified consumer implementation, accessibility audit, user study or production outcome",
   "weights_percent": {
     "purpose": 15,
     "actionability": 20,
@@ -1474,17 +1474,17 @@
       "dimensions": {
         "purpose": 4,
         "actionability": 4,
-        "coverage": 3,
-        "research": 2,
-        "discoverability": 3,
-        "verification": 3,
+        "coverage": 4,
+        "research": 4,
+        "discoverability": 4,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 85,
+      "score": 100,
       "priority": "P2",
-      "issue_flag": "verification-gap",
-      "explanation": "Selection and focus continuity are addressed; the narrow-layout back-navigation case lacks demonstrated behavior.",
-      "next_action": "Add an item-to-list return and focus restoration scenario.",
+      "issue_flag": "consumer-task-validation-pending",
+      "explanation": "Decision-first single-surface chooser, scoped W3C/USWDS/GOV.UK sources, canonical aliases and seven observable MD-01–MD-07 checks cover the task's choices, exceptions and recovery without duplicating component behavior.",
+      "next_action": "Ask an independent reviewer to run MD-01–MD-07 on a real product across desktop, mobile, screen reader and locale cases; record actual outcomes before changing E0 or lifecycle status.",
       "evidence_level": "E0"
     },
     {

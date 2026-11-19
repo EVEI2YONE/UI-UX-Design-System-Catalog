@@ -39,6 +39,7 @@ async function run() {
     await page.goto(base+'/tasks/',{waitUntil:'load'});
     assert.equal(await page.locator('article.task-card').count(),tasks.length);
     assert.equal(await page.getByRole('link',{name:'Manage an item from a card'}).count(),1);
+    assert.equal(await page.getByRole('link',{name:'Edit a related record without nested dialogs'}).count(),1);
     assert.equal(await page.getByRole('link',{name:'Narrow a long list'}).getAttribute('href'),
       '/catalog/patterns/search-filter/');
     await page.goto(base+'/catalog/',{waitUntil:'load'});
