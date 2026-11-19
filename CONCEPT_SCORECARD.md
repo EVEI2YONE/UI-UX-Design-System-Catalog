@@ -2,9 +2,9 @@
 
 > **Editorial assessment, not approval or a usability result.** Every score is a source-only judgment about current written guidance. It does not claim an implemented control, user study, accessibility conformance or an independent human review.
 
-**Source:** [`EVEI2YONE/UI-UX-Design-System-Catalog`](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog) at commit [`b8e15e1cfb2a`](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/tree/b8e15e1cfb2a10ad1ce4c0db4a2f885d39a5bbe9) (current code only; no history assessed). **Assessed:** 2026-11-19 (UTC). **Coverage:** 92 of 92 canonical concepts.
+**Source:** [`EVEI2YONE/UI-UX-Design-System-Catalog`](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog) at commit [`7ed33de6ff32`](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/tree/7ed33de6ff3241d19a4bff158aeabeb79531cabe) (current code only; no history assessed). **Assessed:** 2026-11-19 (UTC). **Coverage:** 92 of 92 canonical concepts.
 
-**Snapshot:** 87.9/100 average; 74 strong, 18 good drafts, 0 need revision, 0 need rework. Review queue: 0 P1, 71 P2 and 21 P3. Evidence: 92 E0 entries, meaning no independent review is recorded.
+**Snapshot:** 88.1/100 average; 74 strong, 18 good drafts, 0 need revision, 0 need rework. Review queue: 0 P1, 71 P2 and 21 P3. Evidence: 92 E0 entries, meaning no independent review is recorded.
 
 ## How to use the scorecard
 
@@ -70,7 +70,6 @@
 | [pattern.comparison-decision](specifications/patterns/comparison-and-decision-support.md) | **85** (Strong) | `4/4/3/2/3/3/4` | Aligned comparisons and consequence clarity are defined; decision-quality evidence is still hypothetical. | Test a comparison with materially different options and user priorities. |
 | [pattern.content-publishing](specifications/patterns/content-creation-and-publishing.md) | **85** (Strong) | `4/4/3/2/3/3/4` | Draft, preview and publication transitions are outlined; concurrent changes and uncertain publish outcomes need tests. | Add an unknown publish acknowledgement and conflict-recovery case. |
 | [pattern.data-export](specifications/patterns/data-export-and-background-jobs.md) | **85** (Strong) | `4/4/3/2/3/3/4` | Long-running export states and secure retrieval are covered; expiry and access loss need demonstrated recovery. | Test an expired download and pending job after sign-out. |
-| [pattern.master-detail](specifications/patterns/master-detail-exploration.md) | **85** (Strong) | `4/4/3/2/3/3/4` | Selection and focus continuity are addressed; the narrow-layout back-navigation case lacks demonstrated behavior. | Add an item-to-list return and focus restoration scenario. |
 | [pattern.onboarding-first-use](specifications/patterns/onboarding-and-first-use.md) | **85** (Strong) | `4/4/3/2/3/3/4` | First-success and resumable onboarding decisions are concise; measured completion and abandonment are not available. | Test first-success with a skip and resume path. |
 | [pattern.scheduling-availability](specifications/patterns/scheduling-and-availability.md) | **85** (Strong) | `4/4/3/2/3/3/4` | Slots, recurrence and time zones are included; stale slot availability remains an unverified risk. | Test a slot that becomes unavailable before confirmation. |
 | [guidance.internationalization](knowledge/guidance/internationalization.md) | **86** (Strong) | `4/3/4/3/3/3/4` | RTL, formatting and translation growth have clear verification rules; no real localized interface evidence is recorded. | Add one representative pseudolocalization and RTL task record. |
@@ -118,6 +117,7 @@
 | [component.progress-indicator](specifications/components/progress-indicator/spec.md) | **94** (Strong) | `4/4/4/3/3/4/4` | Measured versus unknown progress and completion semantics are explicit; no consuming application test is recorded. | Verify stage changes and completion announcements in a live task. |
 | [guidance.experimentation](knowledge/guidance/experimentation-and-causal-evidence.md) | **94** (Strong) | `4/4/4/3/3/4/4` | Randomization, SRM, guardrails and inference boundaries are precise; this is a protocol, not a completed experiment. | Apply the pre-registration contract to a real comparison and record outcome limits. |
 | [guidance.ux-research](knowledge/guidance/ux-research-methods.md) | **94** (Strong) | `4/4/4/3/3/4/4` | Method selection, study protocol and inference limits are well defined; the repository records no completed studies. | Connect the template to a future actual study without presenting hypothetical results as findings. |
+| [pattern.master-detail](specifications/patterns/master-detail-exploration.md) | **100** (Strong) | `4/4/4/4/4/4/4` | Decision-first single-surface chooser, scoped W3C/USWDS/GOV.UK sources, canonical aliases and seven observable MD-01–MD-07 checks cover the task's choices, exceptions and recovery without duplicating component behavior. | Ask an independent reviewer to run MD-01–MD-07 on a real product across desktop, mobile, screen reader and locale cases; record actual outcomes before changing E0 or lifecycle status. |
 
 
 ### P3 - Refinements: add a practical example or a small missing edge case (21)
