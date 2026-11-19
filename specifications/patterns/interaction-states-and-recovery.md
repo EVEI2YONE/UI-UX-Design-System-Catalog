@@ -23,7 +23,19 @@ This chooser applies across [forms](forms.md), [feedback](feedback.md), [offline
 
 **Loss-of-acknowledgement example:** A save request times out after the user clicks Confirm. Show *outcome unknown*; check authoritative state before retry, preserve the last typed values, and return focus to a surviving meaningful action. Treat the real behavior as NOT VERIFIED until tested.
 
-The requested file reference is not currently visible. Use files.search or files.list to rediscover the file, then retry with a returned ref_id or file_id.
+## Record lifecycle and dependent-save reconciliation
+
+When an archive, restore, create or related-record save changes a collection, start with the last **authoritative** state, not the disappearance of the card or a lost network response. Use the [record lifecycle chooser](advanced-interactions-and-reversible-actions.md#record-lifecycle-archive-trash-restore-and-truthful-undo) for archive/trash/permanent-delete semantics and the [dependent-write contract](../../knowledge/architecture/component-contracts.md#dependent-writes-and-editor-lifetime-composed-feature-contract) for prerequisite and child saves.
+
+| Observed result | Visible state and next safe action | Preserve |
+| --- | --- | --- |
+| Parent saved, child still pending | "Parent saved; related item still saving" with no full-task success claim | Child draft, parent identity, focus |
+| Parent saved, child confirmed failed | Name partial success and fix/retry dependent step only after safety check | Created parent and edited child fields |
+| Response missing or stale | "Outcome not confirmed"; look up stable ID/revision before any non-idempotent replay | Draft, request identity, previous server snapshot |
+| Archive/trash confirmed | Name actual lifecycle state and location of durable restore when supported | Previous filters, focus fallback and deep-link context |
+| Reopen archived/missing parent | State why related actions are unavailable; provide permitted navigation or recovery | Historical attribution and safe exit |
+
+**Anti-example:** Close the modal and toast "Saved" after the prerequisite write, refresh away the editor, then silently resubmit the child on the next render. **Acceptance (NOT VERIFIED):** Demonstrate that pending and unknown states remain intelligible with keyboard, screen reader, translated copy, RTL and narrow reflow; verify that the server result and restored list context match the message.
 
 ## State model
 
