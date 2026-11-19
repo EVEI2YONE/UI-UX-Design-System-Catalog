@@ -171,15 +171,15 @@ def render(doc: dict) -> str:
     lines.extend([
         "## Annotation-noise follow-through",
         "",
-        "The **signal-to-noise** score assesses *the concept document itself*: whether decisions appear before repetitive "
-        "warnings, irrelevant scope expansions or stale implementation claims. The rating for "
-        "[commenting and annotations](specifications/patterns/commenting-and-annotations.md) also highlights a "
-        "separate **product UX coverage gap**: handling many anchored comments without visual clutter, including "
-        "unresolved/action-required filters, priority, marker grouping and an accessible list alternative.",
+        "The **signal-to-noise** dimension measures how quickly a reader reaches the governing design decision "
+        "without repetitive warnings, stale claims or unrelated scope. The "
+        "[commenting and annotations](specifications/patterns/commenting-and-annotations.md) specification now "
+        "documents dense-thread filtering, marker clustering and an accessible list alternative. "
+        "Those are **proposed design contracts**, not verified product features or user outcomes.",
         "",
-        "Extend the existing annotation pattern and connect it to "
+        "Applied performance, keyboard navigation and privacy checks remain product-owned. Related guidance: "
         "[attention management](specifications/patterns/notifications-and-attention.md) and "
-        "[cognitive load](knowledge/guidance/cognitive-load-and-decisions.md), rather than creating competing rules.",
+        "[cognitive load](knowledge/guidance/cognitive-load-and-decisions.md).",
         "",
         "## Revision policy",
         "",

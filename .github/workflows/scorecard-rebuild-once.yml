@@ -1,0 +1,42 @@
+name: One-time scorecard regeneration on review branch
+on:
+  push:
+    branches:
+      - review/scorecard-reassessment-20261119
+    paths:
+      - catalog/concept-scorecard.json
+      - .github/workflows/scorecard-rebuild-once.yml
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate canonical Markdown and cached workbook
+        run: |
+          python -m pip install openpyxl==3.1.5
+          python3 scripts/build_concept_scorecard.py --write
+          python3 scripts/build_concept_scorecard_workbook.py
+          python3 scripts/build_concept_scorecard.py --check
+          python3 scripts/build_concept_scorecard_workbook.py --check
+      - name: Commit generated outputs to the review branch only
+        env:
+          BRANCH_NAME: review/scorecard-reassessment-20261119
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add CONCEPT_SCORECARD.md CONCEPT_SCORECARD.xlsx
+          if git diff --cached --quiet; then
+            echo "Generated output already current"
+            exit 0
+          fi
+          git commit -m "build(scorecard): regenerate synchronized report and workbook"
+          git push origin "HEAD:refs/heads/$BRANCH_NAME"
