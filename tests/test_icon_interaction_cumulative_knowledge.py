@@ -76,7 +76,7 @@ class IconInteractionCumulativeTests(unittest.TestCase):
         ledger = (ROOT / "archive/planning/icon-interaction-batches-progress-2026-11-07.md").read_text(encoding="utf-8")
         for batch in range(1, 7):
             self.assertIn(f"B{batch:02d}", ledger)
-        for section in ("README.md", "foundations/README.md", "governance/README.md", "AGENTS.md"):
+        for section in ("README.md", "knowledge/foundations/README.md", "governance/README.md", "AGENTS.md"):
             with self.subTest(section=section):
                 text = (ROOT / section).read_text(encoding="utf-8")
                 self.assertIn("Batch 6" if section in ("README.md", "AGENTS.md") else "B06", text)

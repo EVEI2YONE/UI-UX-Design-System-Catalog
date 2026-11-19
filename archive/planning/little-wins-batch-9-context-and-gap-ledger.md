@@ -8,12 +8,12 @@
 
 **Direct source observations:**
 - `app/page.tsx` is a 49 KB file with 84 physical lines; one `Home` component handles workspace/project/page selection, API loading/commands, modal orchestration and most UI. Its compact formatting explains why line count is not a meaningful complexity measure.
-- A separate `features/projects/components` module is imported for project and challenge presentation. Domain command rules are imported from `features/contributions/domain`; the architecture is **not** literally all-in-one.
-- `components/ui/` contains numerous generic controls including button, dialog, table and field. Presence in the repository is not evidence of adoption in app UI: page source uses bespoke `Dialog`, `Avatar`, `Status`, `Progress` and many classes.
+- A separate `specifications/experiences/projects/components` module is imported for project and challenge presentation. Domain command rules are imported from `specifications/experiences/contributions/domain`; the architecture is **not** literally all-in-one.
+- `specifications/components/ui/` contains numerous generic controls including button, dialog, table and field. Presence in the repository is not evidence of adoption in app UI: page source uses bespoke `Dialog`, `Avatar`, `Status`, `Progress` and many classes.
 - `app/globals.css` is about 50 KB condensed into 19 physical lines, includes a Tailwind import, raw CSS variables and repeated responsive breakpoint overrides; `components.json` describes a shadcn-style configuration. These facts do not prove CSS collisions, poor performance or accessibility failure.
 - Source tests for the contribution domain are separate from actual browser and visual regression evidence. No current production build, WCAG audit or end-user measured performance was run during this batch.
 
-**Catalog material retrieved before changes:** `catalog/index.json`, `architecture/component-model.md`, `architecture/component-contracts.md`, `foundations/design-tokens-and-themes.md`, `governance/lifecycle-and-decisions.md`, `governance/quality-gates.md`, `patterns/interaction-states-and-recovery.md`, and `AGENTS.md`. Existing concepts already own component boundaries, reusable contracts, token migration and release evidence.
+**Catalog material retrieved before changes:** `catalog/index.json`, `knowledge/architecture/component-model.md`, `knowledge/architecture/component-contracts.md`, `knowledge/foundations/design-tokens-and-themes.md`, `governance/lifecycle-and-decisions.md`, `governance/quality-gates.md`, `specifications/patterns/interaction-states-and-recovery.md`, and `AGENTS.md`. Existing concepts already own component boundaries, reusable contracts, token migration and release evidence.
 
 ## Gap decisions
 

@@ -6,7 +6,7 @@
 
 ## Context gathered before edits
 
-The canonical contracts `components/{input,field,select,checkbox,dialog}/spec.md` already specify the expected semantics. Input/Field require persistent labels and linked help/error; Select prefers native controls; Checkbox needs a true indeterminate state; Dialog requires modal semantics, initial focus, Escape and focus return. Existing `site/build.py` supports only trusted colocated classic JavaScript source, `scenarios.js` and a source-named CSS file. The shared preview runner previously supported only Button's `onActivate`.
+The canonical contracts `specifications/components/{input,field,select,checkbox,dialog}/spec.md` already specify the expected semantics. Input/Field require persistent labels and linked help/error; Select prefers native controls; Checkbox needs a true indeterminate state; Dialog requires modal semantics, initial focus, Escape and focus return. Existing `site/build.py` supports only trusted colocated classic JavaScript source, `scenarios.js` and a source-named CSS file. The shared preview runner previously supported only Button's `onActivate`.
 
 The new work **does not introduce a component package, unreviewed custom combobox, new registry concept IDs or a second implementation framework**.
 

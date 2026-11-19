@@ -55,9 +55,9 @@ class VisualCraftsmanshipTests(unittest.TestCase):
 
     def test_canonical_content_ownership(self):
         expected = {
-            "foundation.visual-craftsmanship": ("foundations/visual-design-craftsmanship.md",
+            "foundation.visual-craftsmanship": ("knowledge/foundations/visual-design-craftsmanship.md",
                                                   [1, 2, 3, 4, 5, 11, 12, 13, 14]),
-            "foundation.practical-styling": ("foundations/practical-ui-styling-recipes.md",
+            "foundation.practical-styling": ("knowledge/foundations/practical-ui-styling-recipes.md",
                                                [6, 7, 8, 9, 10]),
             "governance.quality": ("governance/quality-gates.md", [15, 16]),
         }
@@ -68,7 +68,7 @@ class VisualCraftsmanshipTests(unittest.TestCase):
             for n in covered:
                 with self.subTest(ident=ident, kg=n):
                     self.assertIn(f"KG-{n:02d}", text)
-        examples = (ROOT / "foundations/visual-refinement-examples.md").read_text(encoding="utf-8")
+        examples = (ROOT / "knowledge/foundations/visual-refinement-examples.md").read_text(encoding="utf-8")
         self.assertIn("KG-17", examples)
 
     def test_discovery_and_related_ids(self):

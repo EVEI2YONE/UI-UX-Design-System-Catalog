@@ -41,7 +41,7 @@ class IconSemanticsRetrievalTests(unittest.TestCase):
         text = (ROOT / entry["path"]).read_text(encoding="utf-8")
         for phrase in ("CKG-01", "CKG-02", "CKG-03", "NOT VERIFIED", "component.button"):
             self.assertIn(phrase, text)
-        self.assertIn("iconography-and-semantics.md", (ROOT / "foundations/README.md").read_text(encoding="utf-8"))
+        self.assertIn("iconography-and-semantics.md", (ROOT / "knowledge/foundations/README.md").read_text(encoding="utf-8"))
         self.assertIn("foundation.icon-semantics", (ROOT / "AGENTS.md").read_text(encoding="utf-8"))
 
     def test_no_duplicate_ids(self):

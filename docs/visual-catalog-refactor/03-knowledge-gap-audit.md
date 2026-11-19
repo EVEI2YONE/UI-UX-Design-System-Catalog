@@ -9,7 +9,7 @@
 - The root README describes a **proposal scaffold**, not a shipped component library. It explicitly distinguishes Markdown contracts from executable implementations, and says all initial concepts are proposed.
 - `catalog/index.json` uses `schema_version: 0.1.0` and records ID, path, layer, kind, status, summary, aliases, domains, when-to-use, avoid, related, dependencies, owner and review date.
 - `catalog/schema.json` has `additionalProperties: false`, so blindly adding preview fields will fail schema validation.
-- `components/README.md` enumerates six existing specs: Button, Input, Select, Checkbox, Dialog and Field/Error. These are expressly **not** runtime implementations.
+- `specifications/components/README.md` enumerates six existing specs: Button, Input, Select, Checkbox, Dialog and Field/Error. These are expressly **not** runtime implementations.
 - The repository contains guidance for task flows, search/filter, tables, forms, recovery, accessibility, content writing, visual hierarchy, token themes, performance and UX metrics.
 - `AGENTS.md` specifies a canonical registry-first retrieval protocol using `scripts/find_concept.py`; `CONTRIBUTING.md` requires alias/index search before new entries.
 - `governance/quality-gates.md` already distinguishes documentation checks from browser/a11y/runtime evidence.
@@ -23,10 +23,10 @@
 | KG-01 | Explicit contract linking canonical ID to executable preview/source/scenario | **Incomplete** registry/website metadata | `catalog/schema.json` lacks visual implementation fields; `AGENTS.md` defines text retrieval only | Add optional typed binding fields and registry validation; preserve original `path` | P1 / high |
 | KG-02 | Canonical rule that UI site renders the actual implementation rather than duplicated examples | **Missing implementation governance** | General design-to-code trace present in `governance/quality-gates.md`, but no site-specific source-of-truth rule | Add site source/preview contract and CI parity checks | P1 / high |
 | KG-03 | Visual catalog IA and no-preview fallback design | **Missing site-specific pattern** | Task-flow/navigation guidance exists; no site routes or catalog UI implementation | Document static entry page/search/preview fallback; implement a pilot | P1 / high |
-| KG-04 | Deterministic, isolated feature demo data and reset contract | **Incomplete** for executable demos | `patterns/interaction-states-and-recovery.md` explains recovery; `governance/quality-gates.md` covers real runtime checks | Define synthetic adapter, scenario lifecycle, no-write isolation and visible simulated-result labeling | P1 / high |
-| KG-05 | Feature-level specifications for complete, configurable reference workflows | **Missing specific canonical entries**, not missing pattern guidance | Existing `patterns/data-tables.md`, forms, navigation, recovery, account/settings already cover ingredients | Introduce one feature spec only after checking synonyms and proving cross-product relevance | P2 / medium |
-| KG-06 | Executable previews for six core component specifications | **Implementation absent** | `components/README.md` explicitly says specs, not code | Implement minimally, mapping each to existing component IDs | P1 / high |
-| KG-07 | Implemented theme/contrast and performance evidence | **Unverified**, not conceptual gap | `guidance/performance-and-perceived-speed.md`; `guidance/accessibility.md`; quality gates | Actual browser/test evidence required before claiming pass | P1 / high |
+| KG-04 | Deterministic, isolated feature demo data and reset contract | **Incomplete** for executable demos | `specifications/patterns/interaction-states-and-recovery.md` explains recovery; `governance/quality-gates.md` covers real runtime checks | Define synthetic adapter, scenario lifecycle, no-write isolation and visible simulated-result labeling | P1 / high |
+| KG-05 | Feature-level specifications for complete, configurable reference workflows | **Missing specific canonical entries**, not missing pattern guidance | Existing `specifications/patterns/data-tables.md`, forms, navigation, recovery, account/settings already cover ingredients | Introduce one feature spec only after checking synonyms and proving cross-product relevance | P2 / medium |
+| KG-06 | Executable previews for six core component specifications | **Implementation absent** | `specifications/components/README.md` explicitly says specs, not code | Implement minimally, mapping each to existing component IDs | P1 / high |
+| KG-07 | Implemented theme/contrast and performance evidence | **Unverified**, not conceptual gap | `knowledge/guidance/performance-and-perceived-speed.md`; `knowledge/guidance/accessibility.md`; quality gates | Actual browser/test evidence required before claiming pass | P1 / high |
 | KG-08 | Readability and code maintainability guidance | **Already covered in part** | Content writing, design principles, typography/tokens and component architecture | Extend only if site tests identify a real reusable missing decision | P3 / medium |
 | KG-09 | Agent discovery for visual example status, preview URL and capabilities | **Incomplete integration** | Alias/relationship-aware text lookup already exists | Extend retrieval to resolve preview/source references without reducing existing matches | P1 / high |
 | KG-10 | Complete site deployment/security/performance configuration | **Unknown / design dependency** | No runtime site inspected; only proposal-level source documents | Choose host/framework, privacy/csp rules, rendering budgets after pilot | P2 / medium |
@@ -37,12 +37,12 @@
 
 | Domain | Canonical source exists? | Runtime evidence? | Audit judgment |
 | --- | --- | --- | --- |
-| Visual hierarchy & typography | Yes: `foundations/design-principles.md`, `visual-design-craftsmanship.md` | No site implementation inspected | Guidance present |
-| Design tokens/themes | Yes: `foundations/design-tokens-and-themes.md` | No embedded site theme tested | Guidance present |
-| Component semantics | Yes: `architecture/component-contracts.md`; six `components/*/spec.md` | No executable controls in audited catalog | Implementation absent |
-| Task flows/IA | Yes: `patterns/task-flows-and-information-architecture.md` | Catalog site IA absent | Site-specific implementation gap |
+| Visual hierarchy & typography | Yes: `knowledge/foundations/design-principles.md`, `visual-design-craftsmanship.md` | No site implementation inspected | Guidance present |
+| Design tokens/themes | Yes: `knowledge/foundations/design-tokens-and-themes.md` | No embedded site theme tested | Guidance present |
+| Component semantics | Yes: `knowledge/architecture/component-contracts.md`; six `specifications/components/*/spec.md` | No executable controls in audited catalog | Implementation absent |
+| Task flows/IA | Yes: `specifications/patterns/task-flows-and-information-architecture.md` | Catalog site IA absent | Site-specific implementation gap |
 | Responsive/zoom/RTL | Yes: accessibility, internationalization and mobile guidance | No site browser evidence | Unverified |
-| Forms/errors/recovery | Yes: `patterns/forms.md`, interaction recovery | No runtime feature previews | Implementation absent |
+| Forms/errors/recovery | Yes: `specifications/patterns/forms.md`, interaction recovery | No runtime feature previews | Implementation absent |
 | Performance/readability | Yes: performance and content writing | No site metric baseline | Unverified |
 | Agent search/index | Yes: index, schema, `AGENTS.md`, lookup script | Site display integration missing | Extend existing |
 | Feature reference contracts | Related general guidance exists | No candidate multi-step feature demonstrated | Potential new feature-specific specs |

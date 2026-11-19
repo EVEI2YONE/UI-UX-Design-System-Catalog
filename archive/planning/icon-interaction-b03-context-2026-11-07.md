@@ -4,7 +4,7 @@
 
 ## Repository context collected before drafting
 
-- Checked `AGENTS.md`, `CONTRIBUTING.md`, `catalog/index.json` (53 entries on working branch vs 52 on main, with one B01 `foundation.icon-semantics` addition), `patterns/README.md`, `patterns/interaction-states-and-recovery.md`, `patterns/task-flows-and-information-architecture.md`, `foundations/iconography-and-semantics.md`, and `architecture/component-contracts.md`.
+- Checked `AGENTS.md`, `CONTRIBUTING.md`, `catalog/index.json` (53 entries on working branch vs 52 on main, with one B01 `foundation.icon-semantics` addition), `specifications/patterns/README.md`, `specifications/patterns/interaction-states-and-recovery.md`, `specifications/patterns/task-flows-and-information-architecture.md`, `knowledge/foundations/iconography-and-semantics.md`, and `knowledge/architecture/component-contracts.md`.
 - Existing `pattern.interaction-recovery` already owns loading, errors, confirmation, cancellation, focus after dialogs, uncertain outcomes and backend-confirmed state. Its existing human review and value-changing transaction section must remain authoritative for review, points and ledger correctness.
 - Existing `pattern.task-flows` owns entry → task → pending → outcome → recovery/exit, information architecture, authorized context and task continuity.
 - B01 `foundation.icon-semantics` owns icon identity/host semantics; B02 `architecture.component-contracts` owns event source, controlled state, sibling projection and domain-outcome separation.

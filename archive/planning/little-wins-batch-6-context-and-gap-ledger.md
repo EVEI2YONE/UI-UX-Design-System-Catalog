@@ -4,7 +4,7 @@
 
 ## Context intake before editing
 
-**Target input:** user-supplied `Little_Wins_Source.zip` archive (source snapshot; no verified GitHub target SHA). Inspected its `README.md`, `features/contributions/domain.ts`, `app/api/workspace/route.ts` and directory/migration inventory. The README describes a Sites-native owner-operated pilot with D1 storage and compare-and-swap revisions; its finalized external architecture draft was not supplied.
+**Target input:** user-supplied `Little_Wins_Source.zip` archive (source snapshot; no verified GitHub target SHA). Inspected its `README.md`, `specifications/experiences/contributions/domain.ts`, `app/api/workspace/route.ts` and directory/migration inventory. The README describes a Sites-native owner-operated pilot with D1 storage and compare-and-swap revisions; its finalized external architecture draft was not supplied.
 
 **Source-observed:** `normalizeProjects` assigns legacy unscoped challenges/submissions to `general`, retaining their IDs and point transactions. The API `read()` archives sample groups from active `groups` into `archivedSampleGroups` using a revision-checked UPDATE, so an otherwise read-oriented call can change persisted storage. GET omits archived samples from its visible result. POST retries revision conflicts up to four times. The state is an aggregate JSON payload per authenticated owner; the code does not establish a user-facing export or restore capability. No production restore exercise or load baseline was available.
 
@@ -14,12 +14,12 @@
 
 | KG ID | Existing canonical entry checked | Classification | Reusable addition | Disposition |
 | --- | --- | --- | --- | --- |
-| KG-LW06-01 | `guidance.privacy-trust` / `guidance/privacy-consent-and-trust.md` already mentions delete/download and retention | Incomplete | Archive/delete/retention distinctions, export/import contract, corrections and privacy-sensitive history | Extend, not create |
-| KG-LW06-02 | `pattern.offline-sync` / `patterns/offline-sync-and-conflicts.md` already addresses conflicting writes and uncertain persistence | Incomplete | Idempotent aggregate migrations, read-side writes, schema versions, restoration and revision conflicts | Extend, not create |
+| KG-LW06-01 | `guidance.privacy-trust` / `knowledge/guidance/privacy-consent-and-trust.md` already mentions delete/download and retention | Incomplete | Archive/delete/retention distinctions, export/import contract, corrections and privacy-sensitive history | Extend, not create |
+| KG-LW06-02 | `pattern.offline-sync` / `specifications/patterns/offline-sync-and-conflicts.md` already addresses conflicting writes and uncertain persistence | Incomplete | Idempotent aggregate migrations, read-side writes, schema versions, restoration and revision conflicts | Extend, not create |
 | KG-LW06-03 | `governance.quality` / `governance/quality-gates.md` already covers generic rollback and concurrency | Incomplete | Negative migration, restore, export, ledger and contention acceptance cases | Extend, not create |
 | KG-LW06-04 | Root/nested README and `AGENTS.md` lookup | Discoverability | Link canonical entries and context ledger without duplicate IDs | Index updates |
 
-**Other sources checked:** `patterns/service-recovery-and-support.md`, `patterns/interaction-states-and-recovery.md`, `planning/batch-12-context-and-gap-ledger.md`, `catalog/index.json`, `CONTRIBUTING.md`. No new catalog registry entry, duplicate guideline, new schema, or product code is needed.
+**Other sources checked:** `specifications/patterns/service-recovery-and-support.md`, `specifications/patterns/interaction-states-and-recovery.md`, `planning/batch-12-context-and-gap-ledger.md`, `catalog/index.json`, `CONTRIBUTING.md`. No new catalog registry entry, duplicate guideline, new schema, or product code is needed.
 
 ## Reference applicability
 

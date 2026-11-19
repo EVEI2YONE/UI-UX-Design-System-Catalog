@@ -12,16 +12,16 @@ PACK = ROOT / "docs/visual-catalog-refactor"
 DELIVERY = PACK / "20-knowledge-development-batches.md"
 
 CASES = {
-    "KG-08": ("architecture/component-model.md",
+    "KG-08": ("knowledge/architecture/component-model.md",
               "## Executable reference maintainability and composition contract",
               ["state ownership", "token", "readability"]),
-    "KG-07": ("guidance/accessibility.md",
+    "KG-07": ("knowledge/guidance/accessibility.md",
               "## Reference-state accessibility, theme and performance acceptance matrix",
               ["200%", "RTL", "NOT VERIFIED"]),
-    "KG-11": ("architecture/component-contracts.md",
+    "KG-11": ("knowledge/architecture/component-contracts.md",
               "## Source exploration, reuse and distribution contract",
               ["Copy and download", "license", "NOT VERIFIED"]),
-    "KG-12": ("guidance/ux-measurement.md",
+    "KG-12": ("knowledge/guidance/ux-measurement.md",
               "## Catalog discoverability and source-trust study protocol",
               ["First-hit relevance", "participant", "NOT VERIFIED"]),
     "KG-10": ("governance/quality-gates.md",

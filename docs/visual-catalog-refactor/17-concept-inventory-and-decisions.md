@@ -17,7 +17,7 @@ The [machine-readable decision manifest](concepts/decision-manifest.json) is a *
 
 | Origin | Durable concept artifact | Disposition | Canonical ownership / action |
 | --- | --- | --- | --- |
-| F-01 Review Workspace | [Canonical feature specification](../../features/review-workspace/spec.md) | **Registered reference**; `feature.review-workspace` exists, `status=proposed`; synthetic example implemented and tested | Human approval queue, not AI-agent tool approval; retain until owner validation |
+| F-01 Review Workspace | [Canonical feature specification](../../specifications/experiences/review-workspace/spec.md) | **Registered reference**; `feature.review-workspace` exists, `status=proposed`; synthetic example implemented and tested | Human approval queue, not AI-agent tool approval; retain until owner validation |
 | F-02 Data Management Workspace | [F-02 concept brief](concepts/f02-data-workspace.md) | **Deferred**; proposed `feature.data-workspace` not registered | Existing `pattern.data-tables` + `pattern.search-filter`; require distinct cross-pattern orchestration evidence |
 | F-03 Settings Center | [F-03 concept brief](concepts/f03-settings-center.md) | **Deferred**; proposed `feature.settings-center` not registered | Extend existing `pattern.account-settings-portal` rather than duplicating it; prove executable-specific gap |
 | F-04 Onboarding Workflow | [F-04 concept brief](concepts/f04-onboarding-flow.md) | **Deferred**; proposed `feature.onboarding-flow` not registered | `pattern.task-flows`, `pattern.forms` and recovery; justify independent progress/resume contract |
@@ -51,7 +51,7 @@ This table updates the **2026-11-08 baseline** in [the original gap audit](03-kn
 | KG-02 True source/preview parity | `site/build.py`, source inspector, site tests and Phase 4 ledger | **Implemented / automated validated**; human code review pending |
 | KG-03 Catalog IA and fallback | `site/build.py` + static site, Phase 3 and Chromium evidence | **Implemented / automated tested**; human visual review pending |
 | KG-04 Synthetic isolated scenarios | `site/src/previews/`, real fixture sources and Review Workspace adapter | **Implemented / automated tested**; security signoff pending |
-| KG-05 Full feature contracts | `features/review-workspace/spec.md` canonical; F-02–F-05 briefs above | **One specified reference; four candidate briefs preserved**; cross-product reuse unverified |
+| KG-05 Full feature contracts | `specifications/experiences/review-workspace/spec.md` canonical; F-02–F-05 briefs above | **One specified reference; four candidate briefs preserved**; cross-product reuse unverified |
 | KG-06 Core control previews | Six component implementation folders, catalog metadata and Phase 5 tests | **Implemented / automated tested**; AT signoff pending |
 | KG-07 Theme/contrast/performance verification | Preview themes, Phase 8 Chromium/axe and build-size budgets | **Partial verification**; manual contrast/AT and production Web Vitals not verified |
 | KG-08 Readability and maintainability guidance | Existing typography/content/architecture guidance; code-readability follow-up in Phase 8 ledger | **Previously covered**; independent source readability review not verified |
@@ -68,7 +68,7 @@ This table updates the **2026-11-08 baseline** in [the original gap audit](03-kn
 2. Read the relevant [candidate brief](concepts/decision-manifest.json) and existing normative guidance; write down the **reuse/extend/merge/create** decision and why the current owner is insufficient.
 3. Supply credible evidence across at least two independent application contexts or a documented strategic exception; specify accessibility, localization, responsive, performance, error/recovery and service boundaries.
 4. Name the responsible catalog/design reviewer, record their actual decision and date, and update the candidate brief and decision manifest together. Do not invent an owner or date.
-5. **Only after review**, create any new canonical `features/<slug>/spec.md` and registry `id`; add implementation metadata only when actual source and scenarios exist. Preserve existing canonical IDs and link prior decisions.
+5. **Only after review**, create any new canonical `specifications/experiences/<slug>/spec.md` and registry `id`; add implementation metadata only when actual source and scenarios exist. Preserve existing canonical IDs and link prior decisions.
 6. Run the catalog validator, source/provenance/route tests, browser CI where applicable and the concept preservation suite. If a concept is rejected or merged, preserve its concept history and point to the canonical destination.
 
 ## Signoff and handoff

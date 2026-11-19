@@ -4,7 +4,7 @@
 
 ## Sources and current ownership
 
-- Read `AGENTS.md`, `CONTRIBUTING.md`, `catalog/index.json`, `foundations/README.md`, `architecture/README.md`, and relevant test/validation guidance. The catalog is proposed knowledge, not executable design system code.
+- Read `AGENTS.md`, `CONTRIBUTING.md`, `catalog/index.json`, `knowledge/foundations/README.md`, `knowledge/architecture/README.md`, and relevant test/validation guidance. The catalog is proposed knowledge, not executable design system code.
 - `foundation.design-tokens` already owns semantic/reference/component token layers, theme modes, alias integrity, legacy-global-CSS migration and compatibility. Do not create a second token definition system.
 - `foundation.practical-styling` owns layout/surface recipes, icon craftsmanship, scoped styling illustrations and visual proof requirements. It is incomplete on a *concrete utility-first/shadcn mapping with ownership and example states*.
 - `architecture.framework-aware` owns routing-dependent colocation and module placements, not CSS semantics. `architecture.component-model` already owns reuse/extend/deprecate and an incremental extraction method; incomplete on a *component inventory to canonical contract decision worksheet*.

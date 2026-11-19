@@ -6,12 +6,12 @@
 
 | Existing canonical source | Coverage already available | Specific unresolved gap |
 | --- | --- | --- |
-| `architecture/application-architecture.md` (Batch 13) | Prototype/MVP/modular/multi-app trees and selection | Standalone structures without connected developer tasks |
-| `architecture/module-boundaries-and-developer-navigation.md` (Batch 14) | Feature/domain/shared imports and discoverability | No task-to-file reference covering several stages |
-| `architecture/architecture-evolution.md` (Batch 15) | One-slice migration protocol | No concrete duplicated-form before/after illustration |
-| `architecture/enterprise-and-multiapp.md` (Batch 16) | Topology, package ownership and integration concerns | No shared-contract vs app-specific workflow walkthrough |
-| `architecture/framework-aware-application-structure.md` (Batch 17) | Route convention mapping | Examples should not supersede required route conventions |
-| `architecture/architecture-enforcement-and-ci.md` (Batch 18) | Lint graph/Nx configurations and caveats | Needs concrete violations tied to developer tasks |
+| `knowledge/architecture/application-architecture.md` (Batch 13) | Prototype/MVP/modular/multi-app trees and selection | Standalone structures without connected developer tasks |
+| `knowledge/architecture/module-boundaries-and-developer-navigation.md` (Batch 14) | Feature/domain/shared imports and discoverability | No task-to-file reference covering several stages |
+| `knowledge/architecture/architecture-evolution.md` (Batch 15) | One-slice migration protocol | No concrete duplicated-form before/after illustration |
+| `knowledge/architecture/enterprise-and-multiapp.md` (Batch 16) | Topology, package ownership and integration concerns | No shared-contract vs app-specific workflow walkthrough |
+| `knowledge/architecture/framework-aware-application-structure.md` (Batch 17) | Route convention mapping | Examples should not supersede required route conventions |
+| `knowledge/architecture/architecture-enforcement-and-ci.md` (Batch 18) | Lint graph/Nx configurations and caveats | Needs concrete violations tied to developer tasks |
 | `templates/concept-entry.md` | Example vs tested implementation evidence distinctions | New examples must remain explicitly proposed and non-runnable |
 
 **Finding KG-13 — incomplete connected examples:** Existing files contain useful fragments but not a cohesive, stage-spanning walkthrough connecting a user task, an owner, a source tree, an import contract, a migration and a test plan. Add one dedicated example concept, not another parallel policy or generated application scaffold.
@@ -30,4 +30,4 @@ Catalog validator, link checks and lookup tests can prove documentation and regi
 
 ## Related source constraints
 
-The current project/source catalog guidance is the basis for these examples. Next.js, Angular and React Router route layout must be adapted to the *actual version and mode* using [framework-aware guidance](../../architecture/framework-aware-application-structure.md), rather than silently assuming one generic routing tree fits all stacks.
+The current project/source catalog guidance is the basis for these examples. Next.js, Angular and React Router route layout must be adapted to the *actual version and mode* using [framework-aware guidance](../../knowledge/architecture/framework-aware-application-structure.md), rather than silently assuming one generic routing tree fits all stacks.

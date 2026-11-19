@@ -40,7 +40,7 @@ The site is a *reference implementation environment*, not an assurance that a sc
 
 ## Non-negotiable boundaries
 
-- `foundations/`, `architecture/`, `guidance/`, `patterns/`, `governance/`, `components/`, `catalog/`, `templates/`, `scripts/` and `archive/` remain canonical knowledge areas.
+- `knowledge/foundations/`, `knowledge/architecture/`, `knowledge/guidance/`, `specifications/patterns/`, `governance/`, `specifications/components/`, `catalog/`, `templates/`, `scripts/` and `archive/` remain canonical knowledge areas.
 - The website **reads** the authoritative registry and Markdown. Site-specific route maps and generated indexes are derived outputs, never rival sources of canonical identity.
 - Implementation code lives under `site/src/implementations/`; catalog website chrome lives under `site/src/catalog-ui/`. Keep these separate.
 - A feature reference may emulate a service using deterministic synthetic fixtures; it may not claim production security, persistence or business authorization.
@@ -55,8 +55,8 @@ Repository inspection confirmed `catalog/index.json` with existing `schema_versi
 ## Source links
 
 - [Canonical registry](../../catalog/index.json), [schema](../../catalog/schema.json), [agent lookup](../../AGENTS.md), [contribution policy](../../CONTRIBUTING.md)
-- [Component model](../../architecture/component-model.md), [component specifications](../../components/README.md), [patterns](../../patterns/README.md)
-- [Performance guidance](../../guidance/performance-and-perceived-speed.md), [accessibility guidance](../../guidance/accessibility.md), [quality gates](../../governance/quality-gates.md)
+- [Component model](../../knowledge/architecture/component-model.md), [component specifications](../../specifications/components/README.md), [patterns](../../specifications/patterns/README.md)
+- [Performance guidance](../../knowledge/guidance/performance-and-perceived-speed.md), [accessibility guidance](../../knowledge/guidance/accessibility.md), [quality gates](../../governance/quality-gates.md)
 
 **PR status:** This pack is proposed on a feature branch. A pull request, if opened, is not adoption or implementation.
 

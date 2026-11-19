@@ -8,7 +8,7 @@
 - `catalog/index.json`: `pattern.advanced-interactions` covers bulk actions, shortcuts, undo, drag and reversible operations. `guidance.ux-measurement` covers task completion, time on task, errors, abandonment, consent/privacy, eligible cohorts and instrumentation. Both are proposed and unreviewed.
 - `pattern.task-flows`: B03 spatial continuity and safe next-item task state; **not** action-selection heuristics or a measurement specification.
 - `architecture.component-contracts`: B02 UI event vs feature command vs authoritative domain outcome; **not** a reusable rule for choosing visible buttons versus overflow/split controls.
-- `patterns/README.md`, `guidance/README.md`, and batch progress ledger: ownership and retrieval paths checked.
+- `specifications/patterns/README.md`, `knowledge/guidance/README.md`, and batch progress ledger: ownership and retrieval paths checked.
 - Little Wins B06 (`batch-06-interaction-efficiency.md`) and B07 (`batch-07-action-consolidation.md`): source observations and candidate heuristics for review queues, action grouping, and pointer travel. They explicitly lack user-behavior baselines; no production UX outcomes inferred.
 
 ## Gap assessment and disposition

@@ -7,7 +7,7 @@
 
 ## Context gathered before implementation
 
-Phase 3 uses `site/build.py` as a dependency-free static compiler for 53 registered canonical concepts and already provides static documentation, navigation, search and specification-only fallbacks. Phase 2 introduced an optional `implementation` object with `source_path`, `scenario_manifest`, `preview_path` and lifecycle status, with strict source-path validation. The existing [Button contract](../../components/button/spec.md) defines native button semantics, pending and disabled behavior, focus, variants, token roles, responsive and localization requirements. There was no actual preview source registered before this phase.
+Phase 3 uses `site/build.py` as a dependency-free static compiler for 53 registered canonical concepts and already provides static documentation, navigation, search and specification-only fallbacks. Phase 2 introduced an optional `implementation` object with `source_path`, `scenario_manifest`, `preview_path` and lifecycle status, with strict source-path validation. The existing [Button contract](../../specifications/components/button/spec.md) defines native button semantics, pending and disabled behavior, focus, variants, token roles, responsive and localization requirements. There was no actual preview source registered before this phase.
 
 ## Key architecture decisions
 

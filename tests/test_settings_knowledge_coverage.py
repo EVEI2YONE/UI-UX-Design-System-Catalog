@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from find_concept import lookup  # noqa: E402
 
 CANONICAL_ID = "pattern.account-settings-portal"
-CANONICAL_PATH = "patterns/account-and-settings-portal.md"
+CANONICAL_PATH = "specifications/patterns/account-and-settings-portal.md"
 BATCH_HEADINGS = (
     "Workspace configuration foundation — Settings knowledge Batch 1",
     "Settings knowledge Batch 2 — feature and policy configuration",
@@ -65,7 +65,7 @@ class SettingsKnowledgeCoverageTests(unittest.TestCase):
                 self.assertEqual(result[0]["id"], CANONICAL_ID)
 
     def test_navigation_and_evidence_boundaries(self):
-        for path in ("README.md", "patterns/README.md", "CHANGELOG.md"):
+        for path in ("README.md", "specifications/patterns/README.md", "CHANGELOG.md"):
             text = (ROOT / path).read_text(encoding="utf-8")
             self.assertIn("Settings", text)
             self.assertIn("Batch 4", text)

@@ -4,7 +4,7 @@
 
 ## Source/context collected before authoring
 
-**Little Wins input:** user-supplied source ZIP, local extracted snapshot under `Little_Wins/`; its README identifies a private Sites-hosted, owner-operated pilot. Inspection of `features/contributions/domain.ts` and `app/page.tsx` established:
+**Little Wins input:** user-supplied source ZIP, local extracted snapshot under `Little_Wins/`; its README identifies a private Sites-hosted, owner-operated pilot. Inspection of `specifications/experiences/contributions/domain.ts` and `app/page.tsx` established:
 - `Group` contains three booleans: `pointsEnabled`, `challengesEnabled`, `rewardsEnabled`, all initially true for newly created groups; `settings` accepts changes to each separately.
 - `review` can approve submissions while points are off, but the points credit transaction occurs only when `pointsEnabled` is true.
 - `redeem` rejects new requests unless **both** `pointsEnabled` and `rewardsEnabled` are true; it reserves points and creates a request otherwise.
@@ -12,7 +12,7 @@
 - UI navigation filters out Challenges when disabled and Rewards when either rewards or points is disabled; the Rewards page has a paused-state notice, including preservation of existing requests. Direct navigation and actual rendered discoverability were not tested.
 - Source README states historical points/challenges/rewards data is retained when features are disabled. No observed live-user behavior or comprehensive 8-combination browser test is available.
 
-**Existing catalog context fetched from branch before edits:** `catalog/index.json`/canonical IDs, `patterns/task-flows-and-information-architecture.md`, `patterns/interaction-states-and-recovery.md`, `patterns/role-aware-workspaces-and-context-switching.md`, `patterns/offline-sync-and-conflicts.md`, `governance/quality-gates.md`, `architecture/component-contracts.md`, `guidance/ux-measurement.md`, plus contributing conventions. Batch 4 already introduced a high-level feature-toggle sentence and Batch 6 addressed historical data integrity.
+**Existing catalog context fetched from branch before edits:** `catalog/index.json`/canonical IDs, `specifications/patterns/task-flows-and-information-architecture.md`, `specifications/patterns/interaction-states-and-recovery.md`, `specifications/patterns/role-aware-workspaces-and-context-switching.md`, `specifications/patterns/offline-sync-and-conflicts.md`, `governance/quality-gates.md`, `knowledge/architecture/component-contracts.md`, `knowledge/guidance/ux-measurement.md`, plus contributing conventions. Batch 4 already introduced a high-level feature-toggle sentence and Batch 6 addressed historical data integrity.
 
 ## Gap assessment and disposition
 

@@ -8,7 +8,7 @@ from urllib.parse import unquote
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / 'catalog/index.json'
-SECTIONS = ('catalog', 'foundations', 'architecture', 'components', 'patterns', 'guidance', 'governance', 'templates')
+SECTIONS = ('catalog', 'tasks', 'knowledge', 'knowledge/foundations', 'knowledge/architecture', 'knowledge/guidance', 'specifications', 'specifications/components', 'specifications/patterns', 'specifications/experiences', 'examples', 'research', 'packages', 'governance', 'templates')
 LAYERS = {'context','principles','behavior','tokens','foundations','primitives','components','patterns','experiences','intelligence','cross-cutting'}
 KINDS = {'guideline', 'contract', 'policy', 'checklist', 'specification', 'example'}
 

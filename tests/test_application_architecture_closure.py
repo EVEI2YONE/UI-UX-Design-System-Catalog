@@ -12,13 +12,13 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from find_concept import lookup  # noqa: E402
 
 EXPECTED = {
-    "architecture.application-selection": "architecture/application-architecture.md",
-    "architecture.module-boundaries": "architecture/module-boundaries-and-developer-navigation.md",
-    "architecture.evolution": "architecture/architecture-evolution.md",
-    "architecture.enterprise-multiapp": "architecture/enterprise-and-multiapp.md",
-    "architecture.framework-aware": "architecture/framework-aware-application-structure.md",
-    "architecture.enforcement-ci": "architecture/architecture-enforcement-and-ci.md",
-    "architecture.reference-examples": "architecture/application-architecture-reference-examples.md",
+    "architecture.application-selection": "knowledge/architecture/application-architecture.md",
+    "architecture.module-boundaries": "knowledge/architecture/module-boundaries-and-developer-navigation.md",
+    "architecture.evolution": "knowledge/architecture/architecture-evolution.md",
+    "architecture.enterprise-multiapp": "knowledge/architecture/enterprise-and-multiapp.md",
+    "architecture.framework-aware": "knowledge/architecture/framework-aware-application-structure.md",
+    "architecture.enforcement-ci": "knowledge/architecture/architecture-enforcement-and-ci.md",
+    "architecture.reference-examples": "knowledge/architecture/application-architecture-reference-examples.md",
 }
 TASKS = {
     "MVP architecture": "architecture.application-selection",
@@ -59,7 +59,7 @@ class ApplicationArchitectureClosureTests(unittest.TestCase):
                 self.assertTrue((ROOT / path).is_file())
 
     def test_task_first_index_and_root_links_are_complete(self):
-        index = (ROOT / "architecture/README.md").read_text(encoding="utf-8")
+        index = (ROOT / "knowledge/architecture/README.md").read_text(encoding="utf-8")
         root = (ROOT / "README.md").read_text(encoding="utf-8")
         for concept_id, path in EXPECTED.items():
             with self.subTest(concept=concept_id):

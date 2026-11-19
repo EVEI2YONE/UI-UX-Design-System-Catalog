@@ -51,10 +51,10 @@ class InteractionContinuationKnowledgeTests(unittest.TestCase):
 
     def test_context_and_discovery_present(self):
         self.assertTrue((ROOT / "archive/planning/icon-interaction-b03-context-2026-11-07.md").is_file())
-        for path in ("README.md", "patterns/README.md", "AGENTS.md"):
+        for path in ("README.md", "specifications/patterns/README.md", "AGENTS.md"):
             with self.subTest(path=path):
                 text = (ROOT / path).read_text(encoding="utf-8")
-                self.assertIn("B03" if path == "patterns/README.md" else "Batch 3", text)
+                self.assertIn("B03" if path == "specifications/patterns/README.md" else "Batch 3", text)
 
 if __name__ == "__main__":
     unittest.main()

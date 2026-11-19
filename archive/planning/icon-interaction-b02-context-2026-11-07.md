@@ -25,7 +25,7 @@
 
 ## Source provenance and applicability
 
-- Existing catalog: `architecture/component-contracts.md`, six `components/*/spec.md` pages, `patterns/search-and-filter.md`, `patterns/data-tables.md`, `patterns/navigation.md`, `guidance/accessibility.md`, `catalog/index.json`, `AGENTS.md` and `CONTRIBUTING.md`.
+- Existing catalog: `knowledge/architecture/component-contracts.md`, six `specifications/components/*/spec.md` pages, `specifications/patterns/search-and-filter.md`, `specifications/patterns/data-tables.md`, `specifications/patterns/navigation.md`, `knowledge/guidance/accessibility.md`, `catalog/index.json`, `AGENTS.md` and `CONTRIBUTING.md`.
 - Motivating Little Wins: `docs/little-wins/ui-knowledge/batch-03-component-architecture.md` (slots/compound components and state ownership) and `batch-07-action-consolidation.md` (async actions, safe decisions and event orchestration). These are **proposed product knowledge**, not observed UX performance or universal architecture rules.
 - Standards: [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) for specific composites, particularly [menu button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/) and [dialog](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/); [WCAG 2.2](https://www.w3.org/TR/WCAG22/) for keyboard, focus and name/role/value criteria. APG examples are not mandatory implementation libraries; prefer native semantics and existing tested accessible component primitives.
 - **Known unknowns:** no target-side browser event traces, task measurements, AT test results or component package runtime verification. Specified examples are illustrative patterns requiring real implementation and tests.

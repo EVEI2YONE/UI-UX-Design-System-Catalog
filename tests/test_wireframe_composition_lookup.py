@@ -40,7 +40,7 @@ class WireframeCompositionLookupTests(unittest.TestCase):
                 self.assertTrue((ROOT / entry["path"]).is_file())
 
     def test_composition_contract_documents_decisions_and_limits(self):
-        contents = (ROOT / "patterns/task-flows-and-information-architecture.md").read_text(encoding="utf-8").lower()
+        contents = (ROOT / "specifications/patterns/task-flows-and-information-architecture.md").read_text(encoding="utf-8").lower()
         for keyword in ("minimum context", "assumed", "structural alternatives", "comparison", "anti-example", "not implemented", "not verified"):
             with self.subTest(keyword=keyword):
                 self.assertIn(keyword, contents)

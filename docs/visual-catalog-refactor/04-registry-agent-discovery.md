@@ -15,7 +15,7 @@ Add optional fields to the existing per-entry schema after review; **keep all ex
 ```json
 {
   "id": "component.button",
-  "path": "components/button/spec.md",
+  "path": "specifications/components/button/spec.md",
   "implementation": {
     "status": "reference",
     "source_path": "site/src/implementations/components/button/Button.tsx",

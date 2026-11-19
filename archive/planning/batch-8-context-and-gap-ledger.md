@@ -10,7 +10,7 @@
 
 | ID | Topic | Existing canonical evidence on main | Classification | Decision and proposed result |
 | --- | --- | --- | --- | --- |
-| KG-8-01 | Content design / UX writing | `guidance/internationalization.md`, `foundations/design-principles.md` mention copy, semantics and labels but not content strategy or microcopy lifecycle | Incomplete / missing dedicated guidance | **Create** `guidance.content-design` with task language, content state matrix, maintenance, acceptance |
+| KG-8-01 | Content design / UX writing | `knowledge/guidance/internationalization.md`, `knowledge/foundations/design-principles.md` mention copy, semantics and labels but not content strategy or microcopy lifecycle | Incomplete / missing dedicated guidance | **Create** `guidance.content-design` with task language, content state matrix, maintenance, acceptance |
 | KG-8-02 | Complex forms | `pattern.forms`, `component.field`, `pattern.interaction-recovery` already cover composition and general errors | Incomplete depth, **not absent** | **Extend** `pattern.forms` for validation timing, multifield summaries, save/resume, autofill, review and failure |
 | KG-8-03 | Search/discovery | `pattern.search-filter`, `pattern.data-tables`, task-flow guidance already cover basic query and filters | Incomplete depth, **not absent** | **Extend** `pattern.search-filter` for query mode, facets, sorting, pagination, result context and accessibility |
 | KG-8-04 | Cross-channel service recovery | `pattern.interaction-recovery` and `pattern.feedback` address UI state, but not support handoff/case status or returning from another channel | Missing reusable cross-channel boundary | **Create** `pattern.service-recovery`; reuse existing error mechanics by reference |

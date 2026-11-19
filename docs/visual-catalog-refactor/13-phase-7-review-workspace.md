@@ -6,9 +6,9 @@
 
 ## Context and gap audit
 
-The existing catalog contains normative [data table](../../patterns/data-tables.md), [forms](../../patterns/forms.md), [safe recovery](../../patterns/interaction-states-and-recovery.md), [role-aware workspace](../../patterns/role-aware-workspaces-and-context-switching.md) and [agentic approval](../../patterns/agentic-actions-and-approvals.md) guidance. These do not by themselves demonstrate a bounded multi-step **human administrative** review workflow. Agentic approval concerns delegated AI tool authority and is not a substitute for this queue/detail/decision example.
+The existing catalog contains normative [data table](../../specifications/patterns/data-tables.md), [forms](../../specifications/patterns/forms.md), [safe recovery](../../specifications/patterns/interaction-states-and-recovery.md), [role-aware workspace](../../specifications/patterns/role-aware-workspaces-and-context-switching.md) and [agentic approval](../../specifications/patterns/agentic-actions-and-approvals.md) guidance. These do not by themselves demonstrate a bounded multi-step **human administrative** review workflow. Agentic approval concerns delegated AI tool authority and is not a substitute for this queue/detail/decision example.
 
-The Phase 1 [feature ownership gate](../../features/README.md) requires a distinct user job, cross-context justification, nonduplication, synthetic adapters and a documented service boundary. **Two credible prospective contexts** are community contribution moderation and general content/quality review. Neither has been validated through research or usage. On that basis Phase 7 adds exactly one canonical feature reference and leaves other feature candidates deferred.
+The Phase 1 [feature ownership gate](../../specifications/experiences/README.md) requires a distinct user job, cross-context justification, nonduplication, synthetic adapters and a documented service boundary. **Two credible prospective contexts** are community contribution moderation and general content/quality review. Neither has been validated through research or usage. On that basis Phase 7 adds exactly one canonical feature reference and leaves other feature candidates deferred.
 
 ## Catalog and source structure
 
