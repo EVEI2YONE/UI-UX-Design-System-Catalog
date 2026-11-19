@@ -40,3 +40,14 @@ Use text, surface, border, error and focus semantic tokens. Accommodate autofill
 **Canonical ID:** `component.input` · **Owner:** unassigned · **Review date:** not reviewed
 
 Related: [Field and error](../field/spec.md), [component contracts](../../../knowledge/architecture/component-contracts.md), [accessibility](../../../knowledge/guidance/accessibility.md), [internationalization](../../../knowledge/guidance/internationalization.md). Primary standards starting point: [WCAG 2.2](../../../governance/references.md).
+
+## Decision scenario, evidence and acceptance
+
+**Decision:** Use a native typed input for concise values; use Select for bounded known options and Textarea for multiline content. Field owns label and error composition.
+
+**Illustrative scenario (not a completed study):** Enter a long name with an IME, receive validation only after composition commits, correct it and resubmit without erased valid text or displaced caret.
+
+**Acceptance:** Verify composition events, keyboard editing, label and error associations, long translations, zoom/reflow and RTL text direction in the consuming form. Record the environment, owner, expected/actual results and evidence links; until executed, runtime outcomes remain **NOT VERIFIED**.
+
+**Source scope:** [Applicable reference](https://www.w3.org/WAI/tutorials/forms/validation/) informs the design decision. WAI covers accessible errors; a real IME/browser test is still necessary. A reference is not proof of adoption, conformance or an independent review.
+

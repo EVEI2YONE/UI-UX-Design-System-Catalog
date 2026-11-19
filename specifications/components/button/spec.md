@@ -48,3 +48,14 @@ Related: [component model](../../../knowledge/architecture/component-model.md), 
 **Icon-only state matrix:** `default` (name and meaningful icon); `hover` (optional pointer affordance); `focus-visible` (visible independent of hover); `pressed` (transient, not persistent toggle state); `loading` (stable layout, duplicate activation prevented, status text/announcement where needed); `disabled` (meaningful reason visible when relevant); `success/error` (owned by feature after authoritative response). Do not render an approved/saved icon merely because a click occurred. Do not rename a pending action to imply a confirmed success. If the host is a toggle/disclosure, expose the appropriate *host* state rather than relying on icon rotation.
 
 **Geometry:** icon glyph dimension and clickable target are distinct. Verify the final hit target under WCAG 2.2 SC 2.5.8 Target Size (Minimum), including applicable exceptions; do not claim every small glyph is nonconforming. Larger practical touch targets may be appropriate. Test high contrast, zoom/reflow, long translated labels, logical leading/trailing icon slots and RTL-aware directional graphics. All checks remain `NOT VERIFIED` until run in an actual consumer.
+
+## Decision scenario, evidence and acceptance
+
+**Decision:** Use a native button for an action and a link for navigation. The component owns activation presentation; feature code owns request idempotency.
+
+**Illustrative scenario (not a completed study):** Activate Save twice by Enter while the request is pending. Show one pending operation, retain focus, then expose a retry that does not duplicate a successful mutation.
+
+**Acceptance:** Verify Enter/Space/pointer, visible focus, accessible name, duplicate prevention, pending/error feedback and translated labels against a representative consumer. Record the environment, owner, expected/actual results and evidence links; until executed, runtime outcomes remain **NOT VERIFIED**.
+
+**Source scope:** [Applicable reference](https://www.w3.org/WAI/ARIA/apg/patterns/button/) informs the design decision. APG specifies interaction semantics, not backend mutation guarantees. A reference is not proof of adoption, conformance or an independent review.
+

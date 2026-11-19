@@ -399,3 +399,14 @@ The Python static builder uses the standard library; CI installs Playwright and 
 | Rollback | Prior artifact and named release owner | Do not proceed with irreversible rollout |
 
 **Provenance:** [OWASP Content Security Policy Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html) and [web.dev deployment guidance](https://web.dev/) provide context rather than proof this site is secured. The repo's read-only build and checks are documentation infrastructure; runtime component and product security verification belong to consuming applications. All actual deployment conditions remain **NOT VERIFIED** until tested.
+
+## Decision scenario, evidence and acceptance
+
+**Decision:** Choose the smallest applicable gate by artifact: concept-only evidence for guidance, keyboard/focus/task recovery for applied controls and rollback for deployments.
+
+**Illustrative scenario (not a completed study):** A reviewer needs the failed-save settings dialog release criterion. Start at the gate selector, follow the owned recovery section, and avoid reading all specialist matrices.
+
+**Acceptance:** Measure task-to-gate lookup, confirm explicit applicability and keep unavailable runtime checks NOT VERIFIED; no automated check stands in for a human release decision. Record the environment, owner, expected/actual results and evidence links; until executed, runtime outcomes remain **NOT VERIFIED**.
+
+**Source scope:** [Applicable reference](https://www.w3.org/WAI/test-evaluate/) informs the design decision. W3C methods scope accessibility evaluation, not all business release risk. A reference is not proof of adoption, conformance or an independent review.
+

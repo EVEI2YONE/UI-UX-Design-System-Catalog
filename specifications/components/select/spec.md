@@ -40,3 +40,14 @@ Use semantic surface/border/text/focus/error tokens and logical spacing. Do not 
 **Canonical ID:** `component.select` · **Owner:** unassigned · **Review date:** not reviewed
 
 Related: [Input](../input/spec.md), [Field](../field/spec.md), [accessibility](../../../knowledge/guidance/accessibility.md), [component contracts](../../../knowledge/architecture/component-contracts.md). Primary reference: [WAI-ARIA APG](../../../governance/references.md), when applicable to custom widgets.
+
+## Decision scenario, evidence and acceptance
+
+**Decision:** Prefer native Select for bounded options; use Combobox only when edit/search behavior justifies the added semantics.
+
+**Illustrative scenario (not a completed study):** A country has no available regions. Show a meaningful empty/disabled reason, preserve the country and accommodate a long localized option label.
+
+**Acceptance:** Check keyboard selection, no-option state, disabled choices, accessible name, option refresh and translated text without clipped meaning. Record the environment, owner, expected/actual results and evidence links; until executed, runtime outcomes remain **NOT VERIFIED**.
+
+**Source scope:** [Applicable reference](https://www.w3.org/WAI/tutorials/forms/) informs the design decision. WAI covers form labeling, not the application option source. A reference is not proof of adoption, conformance or an independent review.
+

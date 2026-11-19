@@ -40,3 +40,14 @@ Use semantic text/muted/error/spacing/focus tokens. Layout uses logical properti
 **Canonical ID:** `component.field` · **Owner:** unassigned · **Review date:** not reviewed
 
 Related: [Input](../input/spec.md), [Select](../select/spec.md), [Checkbox](../checkbox/spec.md), [accessibility](../../../knowledge/guidance/accessibility.md), [interaction recovery](../../patterns/interaction-states-and-recovery.md). Reference: [WCAG 2.2](../../../governance/references.md).
+
+## Decision scenario, evidence and acceptance
+
+**Decision:** Field composes persistent label, help, required cue and error association; it does not own domain validation or child input semantics.
+
+**Illustrative scenario (not a completed study):** Submit an invalid email; preserve input, announce an actionable inline error, correct it by keyboard and clear the stale error after success.
+
+**Acceptance:** Check association of label/help/error, reachable correction, translated error expansion, focus return and no duplication of the Forms pattern. Record the environment, owner, expected/actual results and evidence links; until executed, runtime outcomes remain **NOT VERIFIED**.
+
+**Source scope:** [Applicable reference](https://www.w3.org/WAI/tutorials/forms/validation/) informs the design decision. WAI error principles do not validate a particular product's error timing. A reference is not proof of adoption, conformance or an independent review.
+
