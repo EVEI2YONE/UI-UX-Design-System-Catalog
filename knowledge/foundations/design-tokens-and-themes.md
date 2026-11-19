@@ -53,59 +53,35 @@ For interoperable exports, consider the [DTCG 2025.10 typed format](../../govern
 
 Check alias resolution, a sample of component states across modes, reflow, translated labels and reduced motion. Token values alone do not establish accessibility compliance. Related: [component contracts](../architecture/component-contracts.md) and [accessibility](../guidance/accessibility.md).
 
-## Token authoring and migration contract
+## Token authoring, interchange and release contract
 
-A token record should state **name, type, value or alias, purpose, owner, supported modes, consumers and status**. Resolve aliases before use and reject cycles. Distinguish a semantic role from a particular brand color: changing a reference palette should not require edits across controls.
+Record **name, meaning, type, value or alias, owner, supported modes, consumers, lifecycle and source format version**. Resolve references before export; reject unresolved aliases, cycles, mixed value types and silent cross-mode fallbacks. A token role communicates *why* a value exists, not which product screen chooses it.
 
-Illustrative, **not an importable token export**:
+**Valid standalone illustrative interchange record** using the [DTCG Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/):
 
 ```json
 {
- "color": {
- "text": {
- "primary": {
- "$type": "color",
- "$value": "{palette.neutral.900}"
- }
- }
- }
+  "spacing": {
+    "$type": "dimension",
+    "compact": { "$value": { "value": 8, "unit": "px" } },
+    "comfortable": { "$value": { "value": 16, "unit": "px" } }
+  }
 }
 ```
 
-The example omits the referenced palette by design; it cannot pass alias-resolution checks on its own. A real export must define the referenced token and follow its toolchain's supported DTCG syntax.
+The format is a **Community Group final report, not a W3C Recommendation**, and it defines interchange rather than product aesthetics. For aliases and color-space transforms consult the same specification and the installed converter's supported revision. This miniature example does not encode a complete theme.
 
-**Migration sequence:** inventory repeated literals and contexts; map to a small semantic role set; define mode mappings; migrate one representative component; compare all states and narrow/zoom layouts; then expand consumers incrementally. Keep app-specific values local until a repeated semantic role is established.
-
-| Gate | Evidence required |
+| Gate | Reproducible acceptance |
 | --- | --- |
-| Alias integrity | Every alias resolves, no cycles or ambiguous duplicates |
-| Theme behavior | Text, action, focus, status and disabled roles reviewed in every supported mode |
-| Styling | Component styles use owned aliases; justified dynamic exceptions recorded |
-| Compatibility | Old-to-new token map, affected consumers, rollback method |
+| Interchange | Pin schema/tool revision; parse types and references; verify round-trip without lost metadata or cycles |
+| Semantic contract | Same intent and stable name across consumers; a one-off literal does not become a public role |
+| Mode coverage | Export only implemented light/dark/high-contrast/density modes, inspect missing roles and fallbacks |
+| Real component behavior | Measure focus, disabled, error and text contrast; check narrow/zoom, translated/RTL and forced colors |
+| Release compatibility | Record old→new alias map, affected consumers, owner, test status and revert version |
 
-Avoid encoding success/error only by color. A palette comparison alone does not establish contrast or accessible interaction.
+**Migration order:** inventory raw literals and selectors → select a small semantic role vocabulary → define approved mappings → migrate one representative component → compare states and actual consuming output → expand and retire old selectors only after verification. A passing token file cannot certify a Button, Dialog or full application.
 
-## Token interchange and release checks
-
-Keep **one reviewed semantic token source** with explicit schema version, types, aliases, purpose, ownership and platform/mode mappings. As of 2026-11-07, the Design Tokens Community Group Format Module **2025.10 is stable**, but it is a W3C **Community Group report, not a W3C Recommendation**. Newer 2026 preview drafts must not be treated as authoritative release specifications.
-
-| Decision | Evidence and risk |
-| --- | --- |
-| Source | Named token repository/export, pinned format version, changelog and maintainers |
-| Types and references | Compatible typed values, all aliases resolve, no cycles, type/format mismatch or invalid references |
-| Semantic intent | Shared meaning and role before literal values or app-specific colors |
-| Themes | Explicit light/dark/high-contrast/brand/density mappings; no accidental missing tokens |
-| Platform transform | Test generated CSS/native tokens in actual consumers, including units and color-space support |
-| Compatibility | Document renamed tokens, migration aliases, affected components, release version and rollback |
-| Experience | Verify real focus/disabled/error contrast, responsive modes, RTL and content extremes; screenshots are supplementary |
-
-**Illustrative workflow:** a reviewed semantic color role changes, a pinned converter exports CSS/native values, tests validate aliases and usage, visual snapshots are compared for representative states, and keyboard/focus/contrast are manually checked before a versioned rollout. The token's own metadata does not certify accessibility.
-
-**Anti-example:** overwrite exported raw values, rename widely used aliases without notice, accept every regenerated screenshot and declare all themes compliant.
-
-Sources consulted 2026-11-07: [DTCG Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/), [DTCG spec status and caveats](https://www.designtokens.org/faq/) and [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots). No actual token transform or test occurred as part of this docs-only addition.
-
-Related: [component contracts](../architecture/component-contracts.md), [quality gates](../../governance/quality-gates.md), [lifecycle](../../governance/lifecycle-and-decisions.md).
+**Source applicability:** [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots) can capture regressions in an implemented app, but visual snapshots alone do not verify keyboard behavior. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) provides applicable web contrast/focus criteria, not a token naming convention. These are test requirements; implementation checks are **NOT VERIFIED**.
 
 ## Legacy global CSS to scoped semantic styling
 
@@ -128,21 +104,3 @@ This page owns theme **capability and semantic mappings**, not the account-setti
 ## Aesthetic palette and typography decisions — craftsmanship
 
 This page owns **token naming, roles, modes and migration**. For selecting a coherent tonal palette, purposeful accent saturation, type pairing, optical typography and density before encoding them as tokens, use [Visual design craftsmanship](visual-design-craftsmanship.md). Do not mistake attractive sample values for contrast-tested or production-ready tokens.
-
-## Exchange format and reproducible acceptance
-
-When cross-tool exchange is required, use the [Design Tokens Community Group Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/) **as a Community Group specification**, not a W3C Recommendation or a guarantee of converter compatibility. A small *illustrative* valid dimension token (not a published artifact):
-
-```json
-{
-  "spacing": {
-    "$type": "dimension",
-    "compact": { "$value": { "value": 8, "unit": "px" } },
-    "comfortable": { "$value": { "value": 16, "unit": "px" } }
-  }
-}
-```
-
-**Acceptance for a real token release:** parse and type-check against the format revision actually supported by the tool; reject missing references or alias cycles; generate the same named semantics across target platforms; verify light/dark/contrast/density modes that actually exist; compare critical components under translated/RTL, zoom and focus states; record converter/tool version, source hash, affected consumers, owner and rollback alias. **PASS/FAIL/NOT VERIFIED/NOT APPLICABLE** requires recorded observations for each relevant platform. This document has not executed those checks.
-
-[MDN CSS cascade](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Introduction) explains why specificity and cascade layer order must be reviewed during CSS migration; it does not prescribe a token naming scheme. The token format defines interchange syntax, not user preference behavior or aesthetics.

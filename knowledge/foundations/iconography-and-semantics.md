@@ -39,34 +39,22 @@ Example mappings are **intent IDs, not universally mandated icons**. Record alte
 
 ## Classify the icon's role before coding
 
-| Role | Interaction owner | Accessible contract | Counterexample |
-| --- | --- | --- | --- |
-| Decorative icon with visible text | Enclosing named Button/Link | Icon hidden from assistive technology; host label supplies accessible name | Giving SVG a second redundant name |
-| Informative standalone status | Badge/status region, not the glyph itself | Visible text plus appropriate programmatic meaning | Color-only or icon-only "approved" |
-| Interactive icon-only affordance | Native button/menu trigger/other semantic control | Host has a contextual accessible name, keyboard operation, focus indication and hit target | Bare SVG with `onClick`, no keyboard path |
-| Disclosure/toggle signifier | Button/switch/checkbox as appropriate | Host exposes actual state (`aria-expanded`, `aria-pressed`, `aria-checked` only when semantically appropriate) | Rotated chevron as the only expanded-state indication |
-| Navigational icon | Real link/navigation item | Destination label and current-location semantics where applicable | Action-style button pretending to be a link |
-| Loading/feedback symbol | Feature status or async action host | Pending meaning and eventual result conveyed in text/status; avoid speech spam | Swapping a spinner for a check before server result |
+**Host owns the interaction.** In a named Button, Link, switch or disclosure control, the icon is generally decorative and its action meaning comes from host text or an accessible name. Informative status needs a readable word/status, not just color or a glyph. If a visual control has no reliable accessible name, its role is not complete. Do not nest independent interactive SVGs inside a clickable parent.
 
-**No independently interactive child icons inside already interactive parents.** Give each action its own semantic target or make a bounded non-interactive card with explicit controls. Never make hover, double-click, swipe or long-press the only route to a primary operation. A tooltip is supplementary, not the sole accessible name or explanation.
+### Icon-only action state and geometry contract
 
-## Icon-only action state and geometry contract
+| State or context | Contract and accessible alternative | Check |
+| --- | --- | --- |
+| Idle / hover / focus | Descriptive action name and visible focus, not a tooltip-only affordance | Keyboard Enter/Space, pointer and touch |
+| Pressed / toggled | Expose pressed/expanded/checked **only on the correctly modeled host** | Assistive role/state and false toggles |
+| Pending / unknown result | Preserve layout/context, prevent unsafe duplicate submit, announce pending/unknown truthfully | Delayed service and lost acknowledgement |
+| Disabled / permission revoked | Explain why in adjacent accessible text when relevant | Keyboard and authorized scope |
+| Success / failure | Confirm state only after authoritative result; offer recovery | Error, retry and partial completion |
+| Narrow / zoom / locale / RTL | Keep hit target usable, labels localizable and direction-sensitive symbols appropriate | Reflow, forced colors, reduced motion and translated growth |
 
-An icon-only control requires: (1) stable purpose and contextual accessible name; (2) a host semantic element; (3) visible keyboard focus; (4) a reasonable target area, not just a glyph-sized hit box; (5) a state-specific visual and programmatic response; (6) disabled reason when it matters; (7) text feedback for consequential results; (8) no unverified outcome claim.
+**Glyph versus hit target:** a 16–24 CSS-pixel drawing may sit inside a substantially larger interactive area. [WCAG 2.2 SC 2.5.8](https://www.w3.org/TR/WCAG22/#target-size-minimum) has a 24×24 CSS-pixel AA target requirement with specified exceptions; check the *actual target and exception*, not just icon dimensions. Non-text contrast and focus criteria must likewise be evaluated in the implemented host.
 
-| Host state | Icon/visual treatment | Expected interaction | Verify |
-| --- | --- | --- | --- |
-| Default | Recognizable glyph, sufficient contrast | Name describes action, not shape | Keyboard + screen reader |
-| Hover | Subtle hover affordance on pointer devices | No critical instruction only on hover | Pointer + touch equivalent |
-| Focus-visible | Visible ring independent of hover | Enter/Space activates native button | Tab/Shift+Tab |
-| Pressed/active | Brief pressed feedback or persistent state **only if the control is a real toggle** | No confusion between pressed moment and selected value | Keyboard and touch |
-| Loading | Spinner/indicator may replace glyph without changing width or losing context | Suppress duplicate consequential activation; announce status appropriately | Async and layout stability |
-| Disabled/unavailable | Distinct but discernible appearance | Explain why near control; native disabled is not focusable | Keyboard + textual reason |
-| Success/failure | Present result via owning feature; icon is secondary | Success only after authoritative result; error offers recovery | Delayed/uncertain response |
-
-**Size and target separation:** a typical visual glyph set might use 16/20/24 CSS pixels, but glyph size does **not** establish interactive target size. WCAG 2.2 SC 2.5.8 Target Size (Minimum) at AA uses 24×24 CSS pixels **with exceptions including spacing**; many applications choose larger practical touch targets. Test actual targets and exception applicability at supported sizes, zoom and density. For non-text UI indicator contrast use relevant WCAG non-text contrast criteria.
-
-**RTL and internationalization:** reserve logical leading/trailing slots; localize accessible names and tooltips. Mirror *direction-dependent navigation/disclosure glyphs only where appropriate*; do not automatically mirror clocks, gifts, brands, numerical shapes or universal statuses. Verify long translated labels, icon+text wrap, zoom, high contrast/forced colors and reduced motion.
+**RTL:** use logical leading/trailing slots; mirror meaningful directional navigation icons when appropriate, not brands, clocks, numbers or status symbols automatically. Localize `aria-label` and nearby text together.
 
 ## Illustrative code: host owns the event
 
@@ -120,16 +108,13 @@ Record one canonical `semanticIntent` (verb/object or status), human meaning, ro
 
 ### Consistency and collision matrix
 
-| Audit question | Positive condition | Error or escalation |
+| Compare | Conformance decision | Escalation trigger |
 | --- | --- | --- |
-| Same semantic intent across pages | One registered meaning with context-specific clear labels | Two glyphs both mean "Delete" without documented context/reason |
-| Same glyph across intents | Distinct neighboring labels and no misleading high-stakes ambiguity | Check glyph used interchangeably for "select", "approve", "saved" and "completed" without labels |
-| Icon-only affordances | Named host button/menu, visible focus, reasonable target, touch/keyboard route | Bare clickable SVG, hover-only reveal, inaccessible tooltip-only meaning |
-| Status identity over time | Text/status remains authoritative across pending/confirmed/failed/unknown | Green check appears as soon as "Approve" is clicked before confirmation |
-| Visual language | Coherent stroke/fill, optical alignment and size roles, compatible themes | Inconsistent unrelated icon packs or status conveyed only by color |
-| Responsive and localization | Label and target remain usable at zoom/narrow widths; reviewed directional mirroring | Automatic RTL mirroring of clocks/status/brands or clipped translated labels |
-| Duplicate/dormant registry entries | Alias/deprecation path and consumer inventory | Same meaning entered under multiple IDs with no compatibility plan |
-| Contextual consequence | Destructive/high-risk action has a precise verb/object and impact explanation | Trash icon hidden in "More" without discoverable consequence or permission checking |
+| Same intent / different glyphs | Prefer one product meaning, document context and migration aliases | Conflicting destructive or high-value action labels |
+| Same glyph / different verbs | Different contextual accessible labels must distinguish consequences | Approval, selection and confirmed success confused |
+| Decorative vs interactive use | Decorative SVG is hidden; named host owns activation | Bare clickable SVG or nested targets |
+| Pending vs completed | Product feature confirms authoritative status before visual success | Optimistic green check misstates server outcome |
+| Themes, locale and density | Consistent optical size plus focus, contrast, meaningful RTL | Icon-only disclosure disappears on zoom/forced colors |
 
 ### Audit and migration sequence
 
