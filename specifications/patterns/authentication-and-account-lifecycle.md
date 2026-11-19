@@ -96,3 +96,10 @@ Related: [role-aware workspaces](role-aware-workspaces-and-context-switching.md)
 **Verification (NOT VERIFIED):** current/revoked sessions from multiple browsers; MFA enrollment and factor loss; passkey/browser unsupported/cancel paths; reauthentication expiry; external-provider callback timeout; keyboard/focus and localized recovery messages; no enumeration, session fixation or privilege escalation. Security tests must be executed against the actual identity provider and backend.
 
 **Sources:** [NIST SP 800-63B-4](https://csrc.nist.gov/pubs/sp/800/63/b/4/final) (2025 digital identity guidance, applicability determined by security owner); [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html) and [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html) (maintained engineering guidance; consulted 2026-11-07); [WCAG 2.2 SC 3.3.8](https://www.w3.org/WAI/WCAG22/Understanding/accessible-authentication-minimum.html) (applicable accessible authentication tests). Related portal composition: [Account/settings portal](account-and-settings-portal.md).
+
+## Task-level decision example and evidence scope
+
+**Illustrative task condition:** Recheck current source applicability and validate a reauthentication flow. Describe the observable starting state, the user's actual choice, authoritative success or unknown/failed outcome, and safe repeat or cancellation. When the pattern crosses authorization, privacy or state ownership boundaries, explicitly defer those decisions to the consuming system rather than changing shared component semantics.
+
+**Verification:** Make the expected visible and accessible result testable across keyboard/pointer, relevant small-screen and locale cases, plus permission and failure states. Record the actual browser, environment, observed behavior, owner and limitations before marking an implementation test passed; until then, status is **NOT VERIFIED**. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) is applicable only to relevant web accessibility criteria and cannot substitute for user-task evidence.
+

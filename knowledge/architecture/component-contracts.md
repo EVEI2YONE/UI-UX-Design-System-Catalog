@@ -22,6 +22,8 @@ Use the following decision before writing a new API. A **shared component** owns
 
 **Evidence convention:** A `—` in a verification table means the consuming-product observation is **NOT VERIFIED**, never passed. Supply a dated test record rather than repeating the same caveat in every row.
 
+**Fast adoption case:** Apply the five decision rows to one Button or Dialog consumer. Record the owner, stable API, relevant state checks, migration risk, and whether any specialist section changed the decision; remove a repeated section only when it adds no distinct acceptance criterion.
+
 ## Required contract
 
 1. **Identity:** durable ID, name, role, owner, version, status, consumers, use/avoid.

@@ -17,6 +17,8 @@ Define discoverable, accessible and reversible behavior for reorder, bulk action
 | Edit an interactive grid | Defined navigation, selection and edit model | Do not give ordinary table `role=grid` semantics without actual behavior |
 | Commit consequential changes | Review summary and explicit confirmation | Recheck permissions and result status |
 
+**Decision speed check:** First attempt the same task with an ordinary button, list or native control. Only move to a bulk/drag/shortcut pattern when task volume and recovery needs justify it; keep the verification evidence with the corresponding interaction row.
+
 ## State matrix and error paths
 
 | State | Visible behavior | Recovery |

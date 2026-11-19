@@ -52,3 +52,14 @@ The concept is a proposed, unreviewed reference; no production implementation, m
 - [GOV.UK patterns](https://design-system.service.gov.uk/patterns/) — contextual reference; check version and applicability.
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — contextual reference; check version and applicability.
 - Related canonical sources: [Lifecycle](lifecycle-and-decisions.md), [Quality gates](quality-gates.md), [Component model](../knowledge/architecture/component-model.md).
+
+## Decision scenario, evidence and acceptance
+
+**Decision:** The catalog owner owns reusable guidance; each consumer owns pilot scope, task outcomes, support and rollback.
+
+**Illustrative scenario (not a completed study):** A team trials new Field errors in one consequential form. If error recovery or keyboard success regresses, restore the old view and keep valid entries.
+
+**Acceptance:** Record accountable owner, eligible pilot cohort, task completion/error baseline, fallback and sunset decision; do not use import counts as UX impact. Record the environment, owner, expected/actual results and evidence links; until executed, runtime outcomes remain **NOT VERIFIED**.
+
+**Source scope:** [Applicable reference](https://www.w3.org/WAI/test-evaluate/) informs the design decision. Accessibility checks are only one guardrail; adoption outcome needs product evidence. A reference is not proof of adoption, conformance or an independent review.
+

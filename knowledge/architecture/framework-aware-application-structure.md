@@ -110,3 +110,10 @@ Inventory URLs and route hierarchy; capture navigation, deep links, layouts, loa
 ## Evidence and limitations
 
 Sources are official framework guides consulted 2026-11-07. Conventions can change across framework releases and optional router modes; re-check the applicable version at implementation time. No target application was audited or migrated. Example file structures are proposed and do not demonstrate build, performance, accessibility or DX improvements.
+
+## Worked decision and fitness verification
+
+**Bounded adoption exercise (illustrative):** Pin example versions and add a lightweight update review cadence. Specify the actual consumer task or developer change, the alternative architecture or UI contract, expected outcome and a failure/rollback condition. Preserve one canonical owner and avoid multiplying abstractions merely to improve a document's rating.
+
+**Fitness evidence:** Observe task-to-file location, import boundary conformance, keyboard/focus where relevant, compatible consumers, deployment or rollback only when available. Log tool/repository revision, expected versus actual result, owner and limitations; no unrun case is a pass. [Relevant implementation or platform reference](https://react.dev/learn/thinking-in-react) motivates the decision in its own scope and is not proof of a particular consumer result.
+

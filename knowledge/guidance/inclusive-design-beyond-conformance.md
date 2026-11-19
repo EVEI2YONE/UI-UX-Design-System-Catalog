@@ -53,3 +53,10 @@ This concept is proposed guidance, not a real-user study, implementation, compli
 - [W3C internationalization](https://www.w3.org/International/quicktips/) — review scope and edition for the consuming context.
 - Related canonical sources: [Accessibility](accessibility.md), [Cognitive load](cognitive-load-and-decisions.md), [Mobile and adaptive](mobile-and-adaptive-platform-ux.md).
 - Record a human owner, review date, evidence and known limitations before changing the proposed status.
+
+## Practical decision and validation boundary
+
+**Illustrative decision question:** Add one sourced barrier and the resulting design change. State when to apply the guidance, what alternative would better serve a different context and which actual user or developer task would change the decision. Do not infer successful usability, accessibility or business outcomes from a well-worded scenario.
+
+**Acceptance:** Trace applicable claims to current primary/platform sources and specify their limitations; for behavioral claims, record eligible cohort, observation method, expected success/error state, measurement context and review owner. For interactive web surfaces, [WCAG 2.2](https://www.w3.org/TR/WCAG22/) informs relevant inclusive design checks; the guideline alone does not establish conformance. Any missing applied evidence stays **NOT VERIFIED**.
+

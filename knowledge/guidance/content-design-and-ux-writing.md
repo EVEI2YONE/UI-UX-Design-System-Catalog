@@ -72,3 +72,10 @@ For every high-impact phrase record **user goal, moment, constraint, proposed co
 
 **Canonical ID:** `guidance.content-design` · **Owner:** unassigned · **Human review date:** null. Guidance proposed 2026-11-07; product tests not performed.
 **Related:** [form composition](../../specifications/patterns/forms.md), [search/filtering](../../specifications/patterns/search-and-filter.md), [service recovery](../../specifications/patterns/service-recovery-and-support.md), [localization](internationalization.md), [accessibility](accessibility.md).
+
+## Applying this guidance: decision and evidence check
+
+**Representative decision to evaluate:** Add a compact state-copy worksheet and consolidate caveats. Define the intended cohort and task, initial conditions, competing option, observable user outcome and relevant accessibility, language and privacy constraints. Keep assumed behavior separate from user evidence; examples are illustrative unless results are directly recorded.
+
+**Acceptance record:** Name the selected research or audit method, eligible population, task and metric denominator where applicable, observed versus expected outcome, source version and unresolved validity limitations. Do not treat a worked example as a completed study. For web accessibility only, [WCAG 2.2](https://www.w3.org/TR/WCAG22/) gives relevant criteria; it cannot validate a UX hypothesis or provide a product baseline.
+

@@ -52,3 +52,14 @@ Related: [component contracts](../../../knowledge/architecture/component-contrac
 **Implementation verification:** (1) open with keyboard and pointer, inspect actual initial focus; (2) Tab/Shift+Tab, Escape, Cancel and backdrop; (3) modify input, attempt dismissal, verify truthful loss warning and resumption; (4) complete async save with success/error, verify status plus focus after close; (5) remove initiating row on approval/filter and verify fallback focus; (6) repeat at narrow/zoomed view, with long translated content and screen reader. Record PASS/FAIL/NOT VERIFIED per scenario, browser and assistive technology.
 
 **Good:** dialog closes after confirmed success and focus moves to the refreshed review list heading or next item if the original action disappeared. **Anti-example:** a modal unmounts on backdrop without checking edits, or assumes the browser will restore focus to a now-removed row.
+
+## Decision scenario, evidence and acceptance
+
+**Decision:** Dialog is a reusable modal shell; business confirmation, authorization and data mutations remain feature-owned.
+
+**Illustrative scenario (not a completed study):** Open confirmation from a list row, press Escape, and restore focus to that row. If the triggering row was removed, focus the nearest surviving task context.
+
+**Acceptance:** Verify initial focus, background inertness, Escape policy, exit focus, narrow-screen scroll and long translated content with actual keyboard/AT checks. Record the environment, owner, expected/actual results and evidence links; until executed, runtime outcomes remain **NOT VERIFIED**.
+
+**Source scope:** [Applicable reference](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) informs the design decision. APG is a design reference; host runtime behavior is NOT VERIFIED. A reference is not proof of adoption, conformance or an independent review.
+

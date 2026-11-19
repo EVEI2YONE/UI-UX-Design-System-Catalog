@@ -85,3 +85,10 @@ Approval screens need semantic labels, keyboard and screen-reader operation, foc
 **Canonical ID:** `pattern.agentic-actions` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
 Related: [AI experiences](../../knowledge/guidance/ai-powered-experiences-and-trust.md), [advanced interactions](advanced-interactions-and-reversible-actions.md), [role-aware workspaces](role-aware-workspaces-and-context-switching.md), [privacy/trust](../../knowledge/guidance/privacy-consent-and-trust.md), [recovery](interaction-states-and-recovery.md), [voice and multimodal](conversational-voice-and-multimodal-ux.md).
+
+## Task-level decision example and evidence scope
+
+**Illustrative task condition:** Test interrupted and ambiguous action outcomes against an authorized tool flow. Describe the observable starting state, the user's actual choice, authoritative success or unknown/failed outcome, and safe repeat or cancellation. When the pattern crosses authorization, privacy or state ownership boundaries, explicitly defer those decisions to the consuming system rather than changing shared component semantics.
+
+**Verification:** Make the expected visible and accessible result testable across keyboard/pointer, relevant small-screen and locale cases, plus permission and failure states. Record the actual browser, environment, observed behavior, owner and limitations before marking an implementation test passed; until then, status is **NOT VERIFIED**. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) is applicable only to relevant web accessibility criteria and cannot substitute for user-task evidence.
+

@@ -59,3 +59,14 @@ No executable component, browser test result, product user study or accessibilit
 - Accessibility target: [WCAG 2.2](https://www.w3.org/TR/WCAG22/); compatibility and conformance require independent checks.
 - Existing canonical guidance: [Component contracts](../../../knowledge/architecture/component-contracts.md), [Accessibility](../../../knowledge/guidance/accessibility.md), [Design tokens](../../../knowledge/foundations/design-tokens-and-themes.md), and [Forms](../../patterns/forms.md).
 - Review applicability, browser/assistive technology support, and any documented APG variants before implementing. Guidance is proposed and may change after expert review.
+
+## Decision scenario, evidence and acceptance
+
+**Decision:** Use Radio Group when one of several visible options is required; keep selection constraints at the form level.
+
+**Illustrative scenario (not a completed study):** Submit a required delivery-choice group empty; expose a group-level error, move to the group without surprise selection, then clear the error after explicit choice.
+
+**Acceptance:** Check native fieldset/legend or equivalent, Arrow/Space behavior where applicable, focus order and long localized labels. Record the environment, owner, expected/actual results and evidence links; until executed, runtime outcomes remain **NOT VERIFIED**.
+
+**Source scope:** [Applicable reference](https://www.w3.org/WAI/ARIA/apg/patterns/radio/) informs the design decision. APG offers interaction patterns; native semantics and actual behavior depend on platform. A reference is not proof of adoption, conformance or an independent review.
+

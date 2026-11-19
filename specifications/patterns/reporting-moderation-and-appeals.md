@@ -63,3 +63,10 @@ This documentation does not verify real users, moderation outcomes, backend acce
 - [OWASP Access Control Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) — supporting context; verify applicability and current edition.
 - Related canonical sources: [Review Workspace](../experiences/review-workspace/spec.md), [Service recovery](service-recovery-and-support.md), [Privacy and trust](../../knowledge/guidance/privacy-consent-and-trust.md), [File upload](file-upload-and-attachments.md).
 - **Scope limit:** This is a proposed UX contract, not a complete backend or security design.
+
+## Representative task verification case
+
+**Scenario to specify (illustrative, not tested):** Verify restricted visibility and appeal handoff with scenario-specific evidence. Define user intent, initial and resulting authoritative state, invalid/unknown outcomes and an explicit recovery path. Preserve permission boundaries, reversible actions and the meaning of existing canonical components.
+
+**Evidence rule:** State the success/failure observation, keyboard focus return, error announcement, small screen, text expansion and locale/RTL requirements that are relevant to the task. Collect actual environment, reviewer, observable results and limitations before marking a real implementation check complete. See [WCAG 2.2](https://www.w3.org/TR/WCAG22/) for applicable accessibility criteria; this source alone is not product or research evidence. No unexecuted check is PASS.
+

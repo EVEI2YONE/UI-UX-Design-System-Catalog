@@ -54,6 +54,8 @@ The primary job is **find the setting â†’ understand its scope and consequence â
 
 Prefer an explicit save for high-consequence or multi-field forms; autosave may fit independent, reversible settings when effective state, failure and rollback are clear. Use [forms](forms.md), [offline conflicts](offline-sync-and-conflicts.md) and [interaction recovery](interaction-states-and-recovery.md) rather than creating unique controls for every setting.
 
+**One scope-change test:** Change a workspace setting, observe its effective value in another authorized view, then simulate a lost save acknowledgement. Show pending/unknown status and reconcile before retry; delegate billing, security and consent policy to their canonical owners.
+
 ## Composition example
 
 `/settings` account overview -> `/settings/profile` editable fields -> validation -> submit -> verified persisted result. A separate `/settings/security` high-risk action first asks for server-approved step-up verification, then returns focus and navigational context. On mobile, the section list precedes the detail view; deep links still open directly with a clear back route.

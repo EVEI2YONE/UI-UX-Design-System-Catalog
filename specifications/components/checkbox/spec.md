@@ -40,3 +40,14 @@ Use semantic border, action, text and focus roles. Maintain a sufficient target 
 **Canonical ID:** `component.checkbox` · **Owner:** unassigned · **Review date:** not reviewed
 
 Related: [Field](../field/spec.md), [component contracts](../../../knowledge/architecture/component-contracts.md), [accessibility](../../../knowledge/guidance/accessibility.md), [internationalization](../../../knowledge/guidance/internationalization.md). Reference: [WCAG 2.2 and WAI-ARIA APG](../../../governance/references.md).
+
+## Decision scenario, evidence and acceptance
+
+**Decision:** Checkbox expresses an independent choice; Radio Group handles mutually exclusive choices. Indeterminate is an aggregate presentation state, not a persisted third Boolean.
+
+**Illustrative scenario (not a completed study):** A Select all parent is mixed while only some eligible children are selected; updating it changes only eligible children. A required checkbox-group error explains the correction.
+
+**Acceptance:** Verify Space activation, mixed-state announcement, disabled child handling, visible group label and accessible validation feedback. Record the environment, owner, expected/actual results and evidence links; until executed, runtime outcomes remain **NOT VERIFIED**.
+
+**Source scope:** [Applicable reference](https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/) informs the design decision. APG explains states; feature-specific group permissions require separate validation. A reference is not proof of adoption, conformance or an independent review.
+

@@ -20,6 +20,8 @@ Before choosing a tool or writing a rule, capture **repository and pinned revisi
 
 The objective is **prevent new coupling** at a cost the team can sustain, not to achieve the largest possible ruleset. A passing import rule cannot prove architectural quality, test coverage or user accessibility.
 
+**Tool-choice first:** Choose one row below before reading the lint recipes. Verify a permitted and a forbidden import in a pinned sample repo; only add Nx or whole-graph enforcement when actual alias/cycle needs justify it. A sample rule without a run is NOT VERIFIED.
+
 ## Recipe 1: scoped ESLint for obvious forbidden imports
 
 **Preconditions:** ESLint flat config; TS/JS source files; path aliases actually defined by the application. This example only checks import specifiers that match the listed strings.

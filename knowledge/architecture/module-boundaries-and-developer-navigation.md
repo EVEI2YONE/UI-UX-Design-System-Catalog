@@ -67,3 +67,10 @@ Evaluate with a small task lookup exercise: ask a developer unfamiliar with the 
 Document allowed imports and owners, then implement boundary lint rules, dependency graph cycle checks and module contract tests in the target's existing tooling. Avoid imposing a specific lint plugin without framework/toolchain assessment. Confirm that route deep links, state/error/loading and keyboard/focus/RTL flows survive extraction. Capture before/after import graph, search-to-edit path and duplicate-code reduction. See [selection](application-architecture.md), [component hierarchy](component-model.md), and [quality gates](../../governance/quality-gates.md).
 
 **Scope:** reusable guidance only; no app has been refactored or tested.
+
+## Worked decision and fitness verification
+
+**Bounded adoption exercise (illustrative):** Test the import rules and task-to-file lookup with unfamiliar contributors in a representative repository and report observed errors and time. Specify the actual consumer task or developer change, the alternative architecture or UI contract, expected outcome and a failure/rollback condition. Preserve one canonical owner and avoid multiplying abstractions merely to improve a document's rating.
+
+**Fitness evidence:** Observe task-to-file location, import boundary conformance, keyboard/focus where relevant, compatible consumers, deployment or rollback only when available. Log tool/repository revision, expected versus actual result, owner and limitations; no unrun case is a pass. [Relevant implementation or platform reference](https://www.typescriptlang.org/docs/handbook/modules/introduction.html) motivates the decision in its own scope and is not proof of a particular consumer result.
+

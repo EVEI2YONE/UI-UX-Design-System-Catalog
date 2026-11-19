@@ -99,3 +99,10 @@ For the catalog browser, record source revision, route, viewport/zoom, browser/O
 Keep **static bundle size**, **lab rendering**, **field Web Vitals** and **task completion** separate. A stylesheet-size budget is not LCP/INP/CLS evidence. Measure in context and use [web.dev's current Web Vitals definitions](https://web.dev/articles/vitals) when applicable; report cohorts, units, percentile, environment and sampling limitations. Never substitute illustrative source examples for measured performance.
 
 **Record template:** concept ID; consuming product (or catalog browser); scenario/state; expected versus observed result; theme, locale and viewport; input/assistive technology; method/tool/version; date; owner; evidence link; severity; disposition. Use `PASS`, `FAIL`, `NOT VERIFIED` or `NOT APPLICABLE` with a reason. A proposed contract remains proposed until independently reviewed; the existence of this checklist is not a completed evaluation.
+
+## Applying this guidance: decision and evidence check
+
+**Representative decision to evaluate:** Carry out keyboard, screen-reader, reflow, theme and RTL checks on a real consuming journey; record browser, assistive technology, product version and results. Define the intended cohort and task, initial conditions, competing option, observable user outcome and relevant accessibility, language and privacy constraints. Keep assumed behavior separate from user evidence; examples are illustrative unless results are directly recorded.
+
+**Acceptance record:** Name the selected research or audit method, eligible population, task and metric denominator where applicable, observed versus expected outcome, source version and unresolved validity limitations. Do not treat a worked example as a completed study. For web accessibility only, [WCAG 2.2](https://www.w3.org/TR/WCAG22/) gives relevant criteria; it cannot validate a UX hypothesis or provide a product baseline.
+

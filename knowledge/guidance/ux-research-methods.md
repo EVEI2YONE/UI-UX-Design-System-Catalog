@@ -77,3 +77,10 @@ Do not universalize a fixed participant number; method, risk, variability and re
 
 **Canonical ID:** `guidance.ux-research` · **Owner:** unassigned · **Last human review:** none; proposed on 2026-11-07.
 **Related:** [UX measurement](ux-measurement.md), [journey mapping](mental-models-and-journeys.md), [task flows](../../specifications/patterns/task-flows-and-information-architecture.md), [accessibility](accessibility.md).
+
+## Applying this guidance: decision and evidence check
+
+**Representative decision to evaluate:** Connect the template to a future actual study without presenting hypothetical results as findings. Define the intended cohort and task, initial conditions, competing option, observable user outcome and relevant accessibility, language and privacy constraints. Keep assumed behavior separate from user evidence; examples are illustrative unless results are directly recorded.
+
+**Acceptance record:** Name the selected research or audit method, eligible population, task and metric denominator where applicable, observed versus expected outcome, source version and unresolved validity limitations. Do not treat a worked example as a completed study. For web accessibility only, [WCAG 2.2](https://www.w3.org/TR/WCAG22/) gives relevant criteria; it cannot validate a UX hypothesis or provide a product baseline.
+

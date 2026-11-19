@@ -76,3 +76,10 @@ For each representative wireframe, specify **content language/locale and directi
 **Synthetic example:** A right-to-left account-settings mock keeps a long translated section heading and mixed-direction account ID readable, while the return affordance is direction-aware; mark all language as illustrative unless reviewed by a qualified speaker. **Anti-example:** a fixed-width tab silently truncates the only security-setting description, and an English label is overlaid on an RTL screenshot with no content direction plan.
 
 **Verification:** compare translated resources and real typography at representative windows; test bidi controls, focus order, mixed-direction data, zoom and validation with supported locales and assistive technologies. A wireframe alone remains **NOT VERIFIED** for localization support or accessibility. Related: [adaptive UX](mobile-and-adaptive-platform-ux.md), [accessibility](accessibility.md), [task flow composition](../../specifications/patterns/task-flows-and-information-architecture.md).
+
+## Applying this guidance: decision and evidence check
+
+**Representative decision to evaluate:** Add one representative pseudolocalization and RTL task record. Define the intended cohort and task, initial conditions, competing option, observable user outcome and relevant accessibility, language and privacy constraints. Keep assumed behavior separate from user evidence; examples are illustrative unless results are directly recorded.
+
+**Acceptance record:** Name the selected research or audit method, eligible population, task and metric denominator where applicable, observed versus expected outcome, source version and unresolved validity limitations. Do not treat a worked example as a completed study. For web accessibility only, [WCAG 2.2](https://www.w3.org/TR/WCAG22/) gives relevant criteria; it cannot validate a UX hypothesis or provide a product baseline.
+

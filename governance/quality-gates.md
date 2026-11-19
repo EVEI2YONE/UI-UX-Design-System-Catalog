@@ -30,6 +30,8 @@ Use `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` per check and provide ev
 
 **Evidence legend for tables below:** `—` means **NOT VERIFIED** because an applicable observation is not recorded; it never means PASS. Use `PASS`, `FAIL`, `NOT VERIFIED` or `NOT APPLICABLE` (with rationale) in actual review records. Documentation validators and browser checks cover the catalog website, **not** arbitrary consuming products. Apply specialized sections only to affected journeys.
 
+**Reviewer lookup case:** Locate the failed-save settings criterion from this selector, follow only the relevant recovery subsection, and record how long it took plus any wrong turns. This is a proposed findability test, not a measured result.
+
 ## Documentation checks
 
 ```bash

@@ -68,3 +68,10 @@ Use an **A/A dry run** when instrumenting a new experimentation system to catch 
 **Canonical ID:** `guidance.experimentation` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
 Related: [UX measurement](ux-measurement.md), [UX research](ux-research-methods.md), [quality gates](../../governance/quality-gates.md), [privacy/trust](privacy-consent-and-trust.md), [performance experience](performance-and-perceived-speed.md).
+
+## Practical decision and validation boundary
+
+**Illustrative decision question:** Apply the pre-registration contract to a real comparison and record outcome limits. State when to apply the guidance, what alternative would better serve a different context and which actual user or developer task would change the decision. Do not infer successful usability, accessibility or business outcomes from a well-worded scenario.
+
+**Acceptance:** Trace applicable claims to current primary/platform sources and specify their limitations; for behavioral claims, record eligible cohort, observation method, expected success/error state, measurement context and review owner. For interactive web surfaces, [WCAG 2.2](https://www.w3.org/TR/WCAG22/) informs relevant inclusive design checks; the guideline alone does not establish conformance. Any missing applied evidence stays **NOT VERIFIED**.
+

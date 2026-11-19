@@ -149,3 +149,10 @@ References: [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org
 - **Tests NOT VERIFIED:** direct endpoint calls without UI, cross-account ID tampering, revoked session, role changes mid-submit, multi-workspace context, accessible denied state and audit actor/subject trail.
 
 **Reference:** [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) (maintained security guidance; consulted 2026-11-07); [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/). See [account portal composition](account-and-settings-portal.md).
+
+## Decision application and acceptance example
+
+**Illustrative task, not a completed study:** Validate a multi-role switching task and keep identity rules separate from visual affordances. Interpret this as a scenario to specify, not as a claim that a product test occurred. Identify the initiating user, preconditions, intended action, authoritative outcome, error/unknown outcome, keyboard/focus behavior and safe recovery. Preserve task context, permissions and valid input; choose an existing canonical component rather than duplicating its contract.
+
+**Verification and source boundary:** For the described case, record a reproducible acceptance check with expected/actual results, owner, environment, localization and inclusive interaction coverage. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) applies where relevant to web UI; it is not evidence that the concept was independently reviewed or implemented. Keep runtime checks **NOT VERIFIED** until observed and connect any specialized source by its applicable criterion.
+

@@ -81,3 +81,10 @@ Use **progressive enhancement** when possible: essential content, navigation and
 **Canonical ID:** `guidance.performance-experience` · **Owner:** unassigned · **Reviewed:** null · **Drafted:** 2026-11-07.
 
 Related: [UX measurement](ux-measurement.md), [interaction recovery](../../specifications/patterns/interaction-states-and-recovery.md), [offline synchronization](../../specifications/patterns/offline-sync-and-conflicts.md), [quality gates](../../governance/quality-gates.md), [experimentation](experimentation-and-causal-evidence.md).
+
+## Practical decision and validation boundary
+
+**Illustrative decision question:** Attach an actual task-readiness and Core Web Vitals measurement record. State when to apply the guidance, what alternative would better serve a different context and which actual user or developer task would change the decision. Do not infer successful usability, accessibility or business outcomes from a well-worded scenario.
+
+**Acceptance:** Trace applicable claims to current primary/platform sources and specify their limitations; for behavioral claims, record eligible cohort, observation method, expected success/error state, measurement context and review owner. For interactive web surfaces, [WCAG 2.2](https://www.w3.org/TR/WCAG22/) informs relevant inclusive design checks; the guideline alone does not establish conformance. Any missing applied evidence stays **NOT VERIFIED**.
+

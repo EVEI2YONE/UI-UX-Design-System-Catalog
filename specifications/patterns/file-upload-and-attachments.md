@@ -56,3 +56,10 @@ Primary outcome: task success on the full journey, with errors, recovery and aba
 - [HTML file input](https://html.spec.whatwg.org/multipage/input.html#file-upload-state-%28type=file%29) — contextual source, not evidence that this workflow has been tested.
 - Related canonical guidance: [Task flows](task-flows-and-information-architecture.md), [Interaction recovery](interaction-states-and-recovery.md), [Accessibility](../../knowledge/guidance/accessibility.md), [UX measurement](../../knowledge/guidance/ux-measurement.md) and [Content design](../../knowledge/guidance/content-design-and-ux-writing.md).
 - Follow product-specific legal, privacy, security and lifecycle constraints; this is a reusable reference pattern, not a production service.
+
+## Applied decision and verification case
+
+**Illustrative decision case (not observed):** Exercise interrupted upload, retry and cancellation outcomes. Name the initiating task, what becomes unavailable or uncertain, how the user learns the truthful state and which continuation is safe. Distinguish user-visible feedback from server authority and explain when the simpler existing pattern should be reused.
+
+**Acceptance boundary:** Specify an observable expected result for primary action, keyboard/focus recovery, relevant locale/RTL and small-screen conditions and a negative or failure state. Link the selected test to the concept's existing canonical owner instead of introducing an overlapping shared control. A [WCAG 2.2](https://www.w3.org/TR/WCAG22/) reference supports applicable web accessibility criteria but does not verify an implementation, independent review or actual task completion. Unexecuted checks remain **NOT VERIFIED**.
+

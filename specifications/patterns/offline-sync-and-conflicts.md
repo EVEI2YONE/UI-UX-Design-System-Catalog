@@ -87,3 +87,10 @@ Related: [interaction recovery](interaction-states-and-recovery.md), [form compo
 **Anti-example:** a GET request silently migrates records repeatedly, or a stale tab overwrites a newer group configuration while displaying “Saved”.
 
 **Verification:** old/new fixture comparisons, repeated migration idempotency, no missing/duplicated ledger entries, revision collisions, interrupted restore, authorized cross-scope export, and keyboard/screen-reader conflict recovery. All application verification remains NOT VERIFIED.
+
+## Task-level decision example and evidence scope
+
+**Illustrative task condition:** Exercise duplicate-safe retry and concurrent-edit recovery on a representative implementation. Describe the observable starting state, the user's actual choice, authoritative success or unknown/failed outcome, and safe repeat or cancellation. When the pattern crosses authorization, privacy or state ownership boundaries, explicitly defer those decisions to the consuming system rather than changing shared component semantics.
+
+**Verification:** Make the expected visible and accessible result testable across keyboard/pointer, relevant small-screen and locale cases, plus permission and failure states. Record the actual browser, environment, observed behavior, owner and limitations before marking an implementation test passed; until then, status is **NOT VERIFIED**. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) is applicable only to relevant web accessibility criteria and cannot substitute for user-task evidence.
+

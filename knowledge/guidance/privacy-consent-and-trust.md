@@ -20,6 +20,8 @@ Consent is **not** the lawful basis for every processing activity. Identify the 
 | Delete/download data | Distinguish draft deletion, account closure and subject rights; explain consequences and verified status | Promising immediate total erasure when retention obligations apply |
 | Shared devices | Reduce unnecessary sensitive previews and stale personal information | Private account data visible after sign-out or context switch |
 
+**Scope ownership:** The table below owns universal disclosure, choice and truthful-status rules. Account-specific settings navigation and save recovery belong to [Account settings](../../specifications/patterns/account-and-settings-portal.md); avoid restating those workflows here.
+
 ## Permission/choice flow
 
 ```text

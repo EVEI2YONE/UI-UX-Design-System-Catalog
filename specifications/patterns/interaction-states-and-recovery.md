@@ -21,6 +21,8 @@ Start with the user goal, the **last authoritative state**, and what may be safe
 
 This chooser applies across [forms](forms.md), [feedback](feedback.md), [offline conflicts](offline-sync-and-conflicts.md) and [account settings](account-and-settings-portal.md). Specialized transaction, review and annotation rules below apply only to relevant products. A `—` in a verification table means **NOT VERIFIED** rather than a completed check.
 
+**Loss-of-acknowledgement example:** A save request times out after the user clicks Confirm. Show *outcome unknown*; check authoritative state before retry, preserve the last typed values, and return focus to a surviving meaningful action. Treat the real behavior as NOT VERIFIED until tested.
+
 ## State model
 
 | State | Guidance | Recovery / accessibility |

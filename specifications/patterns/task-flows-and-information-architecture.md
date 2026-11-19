@@ -16,6 +16,8 @@ entry -> orientation -> decision -> input -> pending -> success
 
 Record user cohort, context, success condition, primary action, safe exit, and failure branches. Add empty, no-permission, expired-session, partial-failure and offline states as applicable. Include keyboard, mobile and assistive-technology equivalents.
 
+**Task-to-flow quick check:** Identify the user and success event; map entry, decision, pending, success, unknown outcome, recovery and exit; verify a keyboard and small-screen path. Use specialized flow sections only for states present in this task.
+
 ## Information architecture checks
 
 - Group content around user mental models and jobs rather than the organization chart.

@@ -52,3 +52,12 @@ The concept is a proposed, unreviewed reference; no production implementation, m
 - [FTC dark patterns report](https://www.ftc.gov/reports/bringing-dark-patterns-light) — contextual reference; check version and applicability.
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — contextual reference; check version and applicability.
 - Related canonical sources: [Privacy and trust](privacy-consent-and-trust.md), [UX measurement](ux-measurement.md), [Notifications](../../specifications/patterns/notifications-and-attention.md).
+
+## Engagement-value decision and bounded evaluation
+
+**Use a benefit-first comparison:** A progress indicator may support task completion when it reflects a meaningful user-owned milestone. Avoid reward prompts, streak urgency or premature celebrations that pressure continued attention without improving the original task. Compare a calm completion message to a more visually prominent reward treatment; preserve a clear stop/exit route in both.
+
+**Illustrative, not observed:** A learner completes a practice exercise and chooses either another exercise or a clear exit. Evaluate whether the interface helps the learner accurately understand progress and decide freely, rather than counting only more sessions or taps.
+
+**Verification:** State eligible participants, the task-success denominator, voluntary continuation and any reported pressure or misinterpretation; note accessibility, reduced-motion and translation expectations. No behavioral outcome is recorded here. The [W3C WCAG 2.2 recommendation](https://www.w3.org/TR/WCAG22/) informs relevant accessibility constraints, but it does not establish ethical-engagement or user outcome evidence.
+

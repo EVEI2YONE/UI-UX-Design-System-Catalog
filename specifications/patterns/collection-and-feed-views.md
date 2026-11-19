@@ -63,3 +63,10 @@ This is a proposed conceptual pattern. No released editor, live data service, pr
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — reference context; verify current edition and applicability.
 - Related canonical concepts: [Data tables](data-tables.md), [Search and filtering](search-and-filter.md), [Master-detail](master-detail-exploration.md), [Real-time updates](real-time-data-and-live-updates.md).
 - **Scope limit:** A product-specific feature must own real data persistence, authorization and performance verification.
+
+## Representative state and recovery acceptance
+
+**Illustrative decision case:** Test a large collection with focus restoration and meaningful filters. Define what the user intends, when the system has authoritative knowledge, how to distinguish a pending or unknown outcome and what preserves their work and orientation. Avoid promoting this task-specific orchestration into a generic component unless independently reusable.
+
+**Evidence contract:** Verify both the normal route and the failure branch with explicit expected and observed results for applicable keyboard, focus, reflow, language and permission conditions. Record the owner, tested environment, findings and unresolved risks; until run, the check is **NOT VERIFIED**. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) offers applicable accessibility criteria, not proof of task success or certification.
+

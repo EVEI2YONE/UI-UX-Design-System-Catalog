@@ -85,3 +85,14 @@ When a proposal becomes a real component, track **design decisions, code deliver
 ## Settings-specific lifecycle application
 
 The general lifecycle states above govern **catalog concepts**, not product setting values. For settings with stored values and versioned clients, use the [per-setting transition matrix](../specifications/patterns/account-and-settings-portal.md) to review missing defaults, key/label renames, split/merge, scope/authority changes, deprecation, and removal. A renamed control must not silently reset an explicit choice; a moved setting must not silently broaden who it affects. Keep app-specific storage migrations and permission checks with the product owner. Product/runtime migration tests remain **NOT VERIFIED** until actually executed.
+
+## Decision scenario, evidence and acceptance
+
+**Decision:** Promotion requires a named catalog owner, independent human decision and scope-specific evidence; automated documentation checks alone do not advance an entry.
+
+**Illustrative scenario (not a completed study):** A proposed Dialog contract has passing links but no consuming-product focus result. Keep owner review pending, reviewed_at null and E0; name the acceptance scenario rather than promoting it.
+
+**Acceptance:** Check lifecycle status, owner, criteria and approval provenance; exercise one deprecation/rollback decision without mislabeling untested results. Record the environment, owner, expected/actual results and evidence links; until executed, runtime outcomes remain **NOT VERIFIED**.
+
+**Source scope:** [Applicable reference](https://www.w3.org/WAI/test-evaluate/) informs the design decision. W3C evaluation resources inform verification methodology, not catalog approval. A reference is not proof of adoption, conformance or an independent review.
+

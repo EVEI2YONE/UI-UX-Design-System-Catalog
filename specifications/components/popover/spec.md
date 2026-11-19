@@ -59,3 +59,12 @@ The contract is guidance only: no runnable implementation, tested cross-browser 
 - Behavior reference: [platform or WAI guidance](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API); confirm edition, browser support and applicability before adopting custom semantics.
 - Accessibility target: [WCAG 2.2](https://www.w3.org/TR/WCAG22/), not an assertion of conformance.
 - Related canonical sources: [Component contracts](../../../knowledge/architecture/component-contracts.md), [Accessibility](../../../knowledge/guidance/accessibility.md), [Design tokens](../../../knowledge/foundations/design-tokens-and-themes.md), [Interaction recovery](../../patterns/interaction-states-and-recovery.md).
+
+## Decision example and verification boundary
+
+**Illustrative scenario (not a user study):** Open a nonmodal popover with nested options; close nested overlay before parent and restore trigger focus. The consumer owns product data and permissions; the shared specification owns semantic behavior, presentation and focus. Choose simpler native controls where they satisfy the user task.
+
+**Acceptance evidence to collect:** Check dismissal stack, outside click, background access, Escape, scrolling and narrow layout. Record tool/browser, owner, expected versus observed behavior, locale and unresolved cases; actual runtime results remain **NOT VERIFIED** until executed.
+
+**Source applicability:** [Relevant W3C guidance](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) informs the interaction choices, not production conformance or independent review. Keep implementation-specific details with the consumer.
+

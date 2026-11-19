@@ -21,6 +21,8 @@ Native SDK/API behavior, permission handling and navigation are owned by each pl
 | Disruption | Explain pending/saved states and preserve safe edits | Background/foreground, low connectivity |
 | Language and RTL | Logical direction, locale formatting and source-order consistency | Long mixed-direction labels, numeric data |
 
+**One matrix per task:** Select only the applicable rows below for the current window, input method and locale. Record keyboard, small window/zoom, text growth and permission loss for the same task rather than creating separate device-by-device checklists.
+
 ## Interaction and layout rules
 
 - Start with the user's highest-value tasks, not a desktop screenshot scaled down. Changes to navigation must not remove essential commands or escape paths.
