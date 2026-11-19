@@ -47,6 +47,12 @@ Record a task as **entry → orientation → choose → act → pending → outc
 
 **IA acceptance:** primary routes and labels are distinguishable; landmarks and headings form a predictable hierarchy; filter and back behavior are consistent; direct links and narrow/reflowed views function; empty/error branches have recoverable next steps. Validate the model with task observation and task completion, not click count alone.
 
+## Overview-to-detail scope and return contract
+
+For workspace, project, person and activity summaries, select the user's question before selecting a chart or card. Label the current scope and period; distinguish a global total from a project-filtered subset. Route `overview -> scoped card/KPI -> authorized detail -> return` with the originating filters, date range, selection, focus and deep-link target preserved. A scope selector should expose whether it changes one panel, the page, or the full workspace; never silently rewrite unrelated totals.
+
+**Decision:** If the goal is "what next?", prefer a clear action and brief status; if "what happened?", prefer a bounded activity preview; if "how did it change?", use a sourced trend and accessible table; if "compare items", route to a table. Full metric definition and sparse-card guidance belong to [Data visualization](../../knowledge/guidance/data-visualization-and-dashboards.md#scoped-overview-cards-activity-summaries-and-drill-down); card interactions belong to [Collection views](collection-and-feed-views.md). Verify overview, empty, stale, partial, unauthorized, filter-changed and return paths with keyboard, zoom, screen reader, locales and RTL; consuming tests **NOT VERIFIED**.
+
 ## Multi-scope task context and optional features
 
 **Illustrative scope example:** A product may show some records at the project scope and other membership or account records at a group scope. Moving a task between projects can update project-level progress without moving its underlying submissions or financial/history ledger. Make every scope visible and verify the effects of context switching.

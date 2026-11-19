@@ -120,6 +120,115 @@
         "pattern.advanced-interactions",
         "guidance.content-design"
       ]
+    },
+    {
+      "id": "select-or-create-multiple-categories",
+      "group": "Enter and complete",
+      "title": "Select or create multiple category tags",
+      "summary": "Choose existing labels, explicitly create a missing label and retain stable membership identity.",
+      "intent_phrases": [
+        "select or create multiple category tags",
+        "add removable chips to a field",
+        "reuse an archived category label",
+        "creatable multi select tags"
+      ],
+      "primary_id": "guidance.content-architecture",
+      "related_ids": [
+        "pattern.forms",
+        "component.combobox",
+        "component.listbox"
+      ]
+    },
+    {
+      "id": "manage-record-card-actions",
+      "group": "Find and discover",
+      "title": "Manage an item from a card",
+      "summary": "Compose a direct detail link, useful related preview and independent contextual commands.",
+      "intent_phrases": [
+        "manage an item from a card",
+        "card contextual overflow menu",
+        "open related items from a card",
+        "avoid nested clickable card actions"
+      ],
+      "primary_id": "pattern.collection-views",
+      "related_ids": [
+        "component.menu-button",
+        "pattern.master-detail",
+        "architecture.component-contracts"
+      ]
+    },
+    {
+      "id": "archive-or-restore-related-record",
+      "group": "Decide and confirm",
+      "title": "Archive versus delete a record",
+      "summary": "Select truthful lifecycle semantics and reversible operations across related records.",
+      "intent_phrases": [
+        "archive versus delete a record",
+        "restore an archived child",
+        "move record to trash then restore",
+        "when can an undo be promised"
+      ],
+      "primary_id": "pattern.advanced-interactions",
+      "related_ids": [
+        "pattern.interaction-recovery",
+        "pattern.activity-history",
+        "component.menu-button"
+      ]
+    },
+    {
+      "id": "save-dependent-record",
+      "group": "Recover and resume",
+      "title": "Save a dependent item without losing form state",
+      "summary": "Verify prerequisite and child writes while retaining draft, focus and truthful outcome across refresh.",
+      "intent_phrases": [
+        "save a dependent item without losing form state",
+        "verify an uncertain save",
+        "avoid parent refresh unmounting editor",
+        "save parent then child safely"
+      ],
+      "primary_id": "architecture.component-contracts",
+      "related_ids": [
+        "pattern.forms",
+        "pattern.interaction-recovery",
+        "architecture.module-boundaries"
+      ]
+    },
+    {
+      "id": "manage-related-items-from-collection",
+      "group": "Understand and compare",
+      "title": "Manage related records from a collection card",
+      "summary": "Move from a filtered collection to a related-item editor and safely return.",
+      "intent_phrases": [
+        "manage related records from a collection card",
+        "collection to record to child editor",
+        "return to filtered collection after edit",
+        "choose narrow route or wide detail panel"
+      ],
+      "primary_id": "pattern.master-detail",
+      "related_ids": [
+        "pattern.collection-views",
+        "pattern.forms",
+        "pattern.task-flows",
+        "pattern.interaction-recovery"
+      ]
+    },
+    {
+      "id": "drill-into-scoped-activity",
+      "group": "Understand and compare",
+      "title": "Drill down from a KPI card",
+      "summary": "Keep workspace/project metric scope and filters truthful from summary through details and return.",
+      "intent_phrases": [
+        "drill down from KPI card",
+        "understand activity across workspace and projects",
+        "show scoped project analytics",
+        "preserve date filter after KPI drill down"
+      ],
+      "primary_id": "guidance.data-visualization",
+      "related_ids": [
+        "pattern.task-flows",
+        "pattern.collection-views",
+        "pattern.activity-history"
+      ]
     }
   ]
 }

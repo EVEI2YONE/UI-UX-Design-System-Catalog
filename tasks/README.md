@@ -14,4 +14,11 @@ Choose the user's problem before choosing a component. The [task index](index.js
 | Submit something consequential | [Task flows](../specifications/patterns/task-flows-and-information-architecture.md) |
 | Confirm an irreversible action | [Dialog](../specifications/components/dialog/spec.md) |
 
+| Select or create multiple category tags | [Content taxonomy](../knowledge/guidance/content-architecture-and-taxonomy.md) |
+| Manage an item from a card | [Collection views](../specifications/patterns/collection-and-feed-views.md) |
+| Archive versus delete a record | [Reversible actions](../specifications/patterns/advanced-interactions-and-reversible-actions.md) |
+| Save a dependent item without losing form state | [Component contracts](../knowledge/architecture/component-contracts.md) |
+| Manage related records from a collection card | [Master-detail](../specifications/patterns/master-detail-exploration.md) |
+| Drill down from a KPI card | [Data visualization](../knowledge/guidance/data-visualization-and-dashboards.md) |
+
 Each task points to related components, content guidance and recovery rules. Choose a pattern after checking the actual context, risks, accessibility requirements and research evidence; a phrase match does not replace user research.

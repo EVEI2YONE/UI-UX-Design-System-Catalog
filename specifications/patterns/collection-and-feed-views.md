@@ -46,6 +46,32 @@ Use semantic tokens for text, status, surfaces and focus; verify theme/high cont
 
 **Anti-example:** An infinite feed constantly inserts new cards above the current focus, hides navigation to the footer and uses unlabeled card tiles with several nested click handlers.
 
+## Actionable record cards and related-item disclosure
+
+A card is a composition of **one obvious primary task** and optional secondary controls. Decide whether activating the card navigates, selects, expands or executes a command; do not make a parent card clickable when it contains independent buttons or links.
+
+| Structure | Use when | Constraint and alternative |
+| --- | --- | --- |
+| Title link to detail | Item inspection is primary and card has other controls | Explicit anchor with descriptive name; no redundant "Open" beside it |
+| Named detail button | Non-navigation detail subview is the primary action | Explain destination/state and maintain focus on return |
+| Whole-card link | Entire card has **one** action and no nested interactive descendants | Never wrap menu, checkbox or nested links in it |
+| Inline disclosure | Related preview is short and does not require independent route/edit history | Button communicates expanded state; use [Disclosure](../components/disclosure/spec.md) |
+| Visible Add/Edit | Frequent, high-value action | Do not bury it in overflow just to simplify appearance |
+| Labeled overflow menu | Infrequent authorized actions such as Archive or Delete | Follow [Menu button](../components/menu-button/spec.md); preserve focus when record vanishes |
+
+**Card anatomy:** identity and current scope -> clear title/detail affordance -> one-line purpose or status -> two or three meaningful metadata items -> optionally a bounded related-record preview with "View all" -> primary/secondary actions. Keep totals labeled with unit/period/scope; no metric or empty preview purely for decoration. Separate navigation, selection, expansion and commands as distinct semantic controls with non-overlapping hit areas. The container may receive hover/focus styling, but hover must not be the only way to discover essential commands.
+
+**Prose variants (illustrative, not rendered):**
+- **Compact narrow card:** wrapped title link, status beneath, one high-value action, labeled overflow menu, at most one related-item preview line plus "View all". At 320px and zoom, let actions wrap, avoid truncating the only identifier, and preserve logical focus order.
+- **Wide summary card:** title/link and status followed by short summary, count/last activity where meaningful, a bounded list of related items, visible common action and overflow for rarer actions. Preview entries with independent destinations are explicit links, not nested card-wide links.
+- **No secondary actions:** one simple title or whole-card link, no empty menu button or duplicate detail control. When many related items exist, show a count and a clear destination rather than a long interactive stack inside the card.
+
+**States:** Loading reserves a readable status without phantom controls; zero related items offers a relevant Add only when authorized; partial/permission-limited counts state the scope; overflow and many-related summaries truncate visually only with a full accessible label or detail route; failed/unknown mutations preserve context and do not imply success. If an item disappears after action, restore focus to a surviving neighbor, collection heading or status, retaining filters and selection. [Master-detail](master-detail-exploration.md) owns item-to-list return; [Component contracts](../../knowledge/architecture/component-contracts.md) owns event/state boundaries; [recovery](interaction-states-and-recovery.md) owns uncertain outcomes.
+
+**Correct route:** Open a title link, update a related record, then return to the filtered collection with focus at the originating item or a sensible fallback. **Anti-example:** A clickable `<article>` card wraps a nested "Open" button, related links and an ellipsis menu; pointer bubbling triggers both navigation and archive.
+
+**Acceptance (product behavior NOT VERIFIED):** Check one primary target, independent actions, keyboard Tab/Enter/Space, menu Escape, focus after removal, target sizing, narrow/zoom/reflow, long locale text and RTL. Record which detail destination is restored and whether no-items, partial, permission-limited, failure and unknown states are distinguishable. [WAI-ARIA APG Menu Button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/) specifies applicable menu semantics; [WCAG 2.2](https://www.w3.org/TR/WCAG22/) informs keyboard, focus and target-size criteria. Neither proves this prose example works in a product.
+
 ## Evidence and verification
 
 | Scenario | Evidence required | Status |

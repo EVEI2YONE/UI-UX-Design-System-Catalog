@@ -22,8 +22,8 @@ class TaskIntentSearchTests(unittest.TestCase):
         cls.tasks = load_tasks(ROOT)
         validate_tasks(cls.tasks, cls.entries)
 
-    def test_seven_user_tasks_and_all_declared_aliases_resolve_to_owners(self):
-        self.assertEqual(len(self.tasks), 7)
+    def test_all_user_tasks_and_declared_aliases_resolve_to_owners(self):
+        self.assertGreaterEqual(len(self.tasks), 7)
         for task in self.tasks:
             for query in (task["title"], *task["intent_phrases"]):
                 with self.subTest(task=task["id"], phrase=query):

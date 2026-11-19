@@ -37,6 +37,31 @@ Interactive charts must not require hover, precise pointing or color recognition
 
 **Anti-example:** A full-screen unlabeled red/green dashboard truncates axes and shows a 12% increase without baseline, denominator or update date.
 
+## Scoped overview cards, activity summaries and drill-down
+
+An overview is a **task and navigation surface**, not an instruction to fit every chart into cards. First name the decision ("what changed?", "where should I act?", "which scope?") and then choose the smallest truthful representation.
+
+| Question or intent | Initial surface | Drill-down / alternative |
+| --- | --- | --- |
+| What is the confirmed total now? | Labeled KPI with scope, unit, period and freshness | Detail table with numerator/denominator and calculation definition |
+| What happened recently? | Bounded activity preview with actor/time/action and "View activity" | Filterable accessible timeline; no invented aggregate chart |
+| Which project needs attention? | Project summaries with status and one clear next action | Scoped project view, not silently filtered workspace totals |
+| Is the trend changing? | Short textual trend or small plot only when reliable historical data exists | Accessible chart + equivalent table/text and explicit gaps |
+| Who or what contributed? | Linked record/person summary only when authorized | Permissions-aware detail; do not infer cause from correlated activity |
+
+**Scope and metric definition:** Every displayed number specifies `metric name | scope type + stable scope ID | eligible cohort | numerator/denominator or aggregation | unit | time window/time zone | data authority | freshness | filters | access policy`. Workspace, project, person and activity scopes must be distinguishable in labels, breadcrumbs and deep links. Decide whether a filter affects *this component*, *this view* or *the entire workspace*; do not let a project filter silently change global totals, reward counts or unrelated cards. If counts are partial, estimated, delayed or access-limited, say so near the number.
+
+**Composition examples (illustrative prose):**
+- **Compact workspace overview:** current workspace identity, two meaningful scoped indicators, one high-priority action, a bounded recent-activity preview and a link to full activity. No mini-chart if the question is only "what needs attention?".
+- **Record/project summary card:** title link, active/archived state, one scoped count with unit/period, recent change and a clear destination; prefer [collection card composition](../../specifications/patterns/collection-and-feed-views.md#actionable-record-cards-and-related-item-disclosure) over adding more controls to a KPI.
+- **Project-detail analysis:** project breadcrumbs, date range and filter state, trend comparison where warranted, accessible summary/table, and a return route restoring the overview's scope and focus. Keep a narrow-screen priority order: task and status first, data preview second, rich analysis after explicit navigation.
+
+**Correct scope example:** "Workspace · 18 active records · as of 09:00 UTC" remains the workspace total while "Project Atlas · 4 active records · same time" is separately labeled. Drill-down retains `project=Atlas` and the chosen period; Back restores the previous workspace filter. **Anti-example:** Selecting Atlas silently changes the unlabeled global "18" card to "4", then Back loses the period and selected record. These values are synthetic and not real metrics.
+
+**State contract:** Loading and partial data must not show a cached value as current; no activity is different from no access; unavailable/archived scope retains context and explains limits; a changed reporting period recalculates labels/denominators coherently; stale/failed data provides a timestamp and retry or last-confirmed fallback. Provide chart-equivalent text/table, keyboard-accessible drill-downs, meaningful units/time zones, 320px/zoom reflow, long translations and RTL-safe reading order.
+
+**Acceptance (runtime and comprehension NOT VERIFIED):** Verify distinct workspace/project/person scopes, stable period/filter/back behavior, denominator and freshness labeling, permission-limited and partial states, narrow-screen navigation, keyboard/screen-reader table parity and no false causal story. A data owner must validate calculations; representative users must test comprehension separately. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) supports applicable accessibility checks, while [USWDS data visualizations](https://designsystem.digital.gov/components/data-visualizations/) is illustrative public-sector guidance; neither proves metric correctness or task success in a consuming application.
+
 ## Verification
 
 | Check | Status | Evidence needed |

@@ -41,6 +41,14 @@ Allow long labels/errors to wrap and form columns to collapse without changing r
 
 Related: [task flows](task-flows-and-information-architecture.md), [recovery](interaction-states-and-recovery.md), [accessibility](../../knowledge/guidance/accessibility.md), [measurement](../../knowledge/guidance/ux-measurement.md). Standards: [WCAG 2.2](../../governance/references.md) and native platform semantics where applicable.
 
+### Compose creatable multi-select fields without inventing a new widget
+
+Use the [taxonomy decision and state contract](../../knowledge/guidance/content-architecture-and-taxonomy.md#creatable-multi-select-classifications-reuse-create-and-persist) to decide between a checkbox group, listbox, searchable suggestions or explicitly creatable labels. [Combobox](../components/combobox/spec.md) describes suggestion input focus; [Listbox](../components/listbox/spec.md) describes multiple-selection keyboard models; [Field](../components/field/spec.md) owns labels, descriptions and validation. Do not nest buttons inside listbox options or claim that combobox automatically implements multi-select.
+
+**Form composition:** Keep selected tokens, available suggestions and a separate explicit Create command intelligible. Label each remove control "Remove [label] from [resource]" rather than "Delete category". Validate maximum count, duplicate labels, permission, unavailable/archived choices, and the required/optional empty state before submit. Domain services own canonical category IDs and relations; the form must retain pending tokens and input on failure. Verify creation before submitting dependent membership; reconcile unknown outcomes before retries. Example: type a missing label, choose "Create label", wait for confirmed identity, then save two memberships. Anti-example: create on every keystroke or remove global category when deselecting a token.
+
+**Acceptance (consuming behavior NOT VERIFIED):** Complete search, multi-select, create, remove, submit, duplicate, renamed/archived result, retry and focus recovery with keyboard, screen reader, touch, zoom, long translations and RTL; observe relation and definition identities separately.
+
 ## Complex forms and data entry
 
 ### Plan the input before composing fields
