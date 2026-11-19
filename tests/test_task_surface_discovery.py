@@ -29,6 +29,34 @@ class TaskSurfaceDecisionTests(unittest.TestCase):
                 self.assertTrue(result, phrase)
                 self.assertEqual(result[0]["id"], "pattern.master-detail")
 
+    def test_canonical_aliases_and_reuse_triggers_resolve_to_master_detail(self):
+        entry = next(e for e in self.entries if e["id"] == "pattern.master-detail")
+        for phrase in (
+            "choose task surface",
+            "inline edit versus dialog or route",
+            "drawer versus route",
+            "record detail edit history",
+            "nested dialog alternatives",
+        ):
+            with self.subTest(phrase=phrase):
+                self.assertIn(phrase, entry["aliases"])
+                result = lookup(self.entries, phrase, limit=1)
+                self.assertEqual(result[0]["id"], "pattern.master-detail")
+        for related in ("component.dialog", "component.tabs", "pattern.collection-views"):
+            self.assertIn(related, entry["related"])
+
+    def test_source_scoped_acceptance_scenarios_are_not_treated_as_observed(self):
+        content = (ROOT / "specifications/patterns/master-detail-exploration.md").read_text(encoding="utf-8")
+        self.assertIn("### Source-to-decision provenance and scope", content)
+        self.assertIn("### Executable acceptance specification", content)
+        for label in ("USWDS Modal", "WAI-ARIA APG Dialog", "WAI-ARIA APG Tabs",
+                      "GOV.UK Back link", "WCAG 2.2", "MD-01", "MD-02",
+                      "MD-03", "MD-04", "MD-05", "MD-06", "MD-07"):
+            with self.subTest(label=label):
+                self.assertIn(label, content)
+        self.assertGreaterEqual(content.count("NOT VERIFIED"), 3)
+        self.assertNotIn("## Applied decision and verification case", content)
+
     def test_modal_depth_and_recovery_contract_remains_canonical(self):
         path = ROOT / "specifications/patterns/master-detail-exploration.md"
         source = path.read_text(encoding="utf-8").casefold()
