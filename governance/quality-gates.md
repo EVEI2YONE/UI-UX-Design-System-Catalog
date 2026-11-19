@@ -18,6 +18,18 @@ Use `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` per check and provide ev
 | Catalog integrity | Unique ID, canonical path, index/README links, status and version |
 | Delivery | Actual validation output, PR review, compatibility and rollback notes |
 
+## Choose the gate before reading the specialized matrices
+
+| Decision | Start with | Escalate when |
+| --- | --- | --- |
+| Is this concept reusable and discoverable? | [Catalog integrity](#documentation-checks) and [agent lookup](#agent-lookup-and-metadata-acceptance) | Duplicate IDs, stale links, unclear ownership or contradictory advice |
+| Is this a proposed implementation contract? | [Implementation evidence](#product-release-evidence-beyond-documentation) | A control changes behavior, focus, event ownership or tokens |
+| Does the product task work safely? | [Interaction states](#interaction-state-test-evidence-and-catalog-retrieval-assurance) and [record-to-modal flows](#record-to-modal-journey-assurance) | Data loss, unsafe retries, permissions, blocked keyboard operation or critical regressions |
+| Is the decision specific to a product context? | Relevant [settings](#account-and-settings-acceptance-matrix), [migration](#data-lifecycle-and-migration-acceptance), [architecture](#application-architecture-selection-and-evolution) or [visual QA](#static-wireframe-visual-qa-and-evidence-rubric) section | A specialized scenario is being treated as a requirement for every component |
+| Is a documentation website ready to publish? | [Static catalog hosting](#static-visual-catalog-hosting-and-documentation-supply-chain-gate) | Deployment origin, CSP, dependency integrity or route behavior changes |
+
+**Evidence legend for tables below:** `—` means **NOT VERIFIED** because an applicable observation is not recorded; it never means PASS. Use `PASS`, `FAIL`, `NOT VERIFIED` or `NOT APPLICABLE` (with rationale) in actual review records. Documentation validators and browser checks cover the catalog website, **not** arbitrary consuming products. Apply specialized sections only to affected journeys.
+
 ## Documentation checks
 
 ```bash
@@ -32,14 +44,14 @@ P0 accessibility/safety/privacy/security/data-loss and critical regressions over
 
 ## Evidence record
 
-For PRs that expand existing scaffold entries, reviewers should see a batch label, canonical paths touched, the design decisions added, known limitations, and check results. A useful definition includes an actionable rule, example/anti-example, a verification method and an identified owner or explicitly unassigned ownership. Avoid promoting entries solely because documentation validation passes.
+For PRs that expand concept guidance, reviewers should see the canonical paths touched, the design decisions added, known limitations, and actual check results. A useful definition includes an actionable rule, example/anti-example, a verification method and an identified owner or explicitly unassigned ownership. Avoid promoting entries solely because documentation validation passes.
 
 | Check | Current documentation-only interpretation |
 | --- | --- |
 | Registry integrity | Existing stable IDs and paths remain unchanged unless intentionally migrated |
 | Markdown navigation | Relative links and section/root index references resolve |
 | Content completeness | Decisions, counterexamples, scenarios and limitations provided |
-| Code a11y / RTL / runtime UX | NOT APPLICABLE to docs-only changes; downstream behavior NOT VERIFIED |
+| Code a11y / RTL / runtime UX | NOT APPLICABLE to docs-only changes; downstream behavior — |
 | Research baseline | UNKNOWN unless measured with documented cohort/denominator |
 
 Record actual script output in the PR, and keep code/UX claims distinct from validation of Markdown files.
@@ -81,14 +93,14 @@ Before this gate, gather: actual hosting trust boundary, public/raw endpoint exp
 
 | Gate | Required scenario | Disposition without execution |
 | --- | --- | --- |
-| Trusted hosting identity | Test missing/forged identity headers and reachable direct-origin URLs; verify platform strips client-controlled identity claims | NOT VERIFIED |
-| Object authorization | Cross-owner/group/project reference edits, revoked roles, unauthorized approval, unknown member IDs | NOT VERIFIED |
-| Workflow integrity | Invalid state transitions, resubmission history, replay/double-click approval and reward redemption | NOT VERIFIED |
-| Atomic value changes | Award+ledger, reservation+balance, reject+refund, concurrent reviewer attempts | NOT VERIFIED |
-| Conflict recovery | Two tabs, compare-and-swap exhausted retries, lost network response, draft preservation and safe re-fetch | NOT VERIFIED |
-| Privacy/recovery | Tenant cache boundaries, backup/restore procedure, export/retention, safe errors without sensitive data | NOT VERIFIED |
-| Interaction/accessibility | Keyboard focus after modal decision, accessible table actions, failure announcements, 200–400% zoom, narrow screen, RTL | NOT VERIFIED |
-| Delivery | Domain tests plus API integration, production-like build, browser E2E, deployment environment and rollback | NOT VERIFIED |
+| Trusted hosting identity | Test missing/forged identity headers and reachable direct-origin URLs; verify platform strips client-controlled identity claims | — |
+| Object authorization | Cross-owner/group/project reference edits, revoked roles, unauthorized approval, unknown member IDs | — |
+| Workflow integrity | Invalid state transitions, resubmission history, replay/double-click approval and reward redemption | — |
+| Atomic value changes | Award+ledger, reservation+balance, reject+refund, concurrent reviewer attempts | — |
+| Conflict recovery | Two tabs, compare-and-swap exhausted retries, lost network response, draft preservation and safe re-fetch | — |
+| Privacy/recovery | Tenant cache boundaries, backup/restore procedure, export/retention, safe errors without sensitive data | — |
+| Interaction/accessibility | Keyboard focus after modal decision, accessible table actions, failure announcements, 200–400% zoom, narrow screen, RTL | — |
+| Delivery | Domain tests plus API integration, production-like build, browser E2E, deployment environment and rollback | — |
 
 **Decision:** a passing domain unit suite supports only tested domain invariants. A protected Site audience is a deployment condition, not proof that a raw API is unreachable. Promote a finding to PASS only with named test, environment, result and evidence. Owner/security specialists retain authority over platform contracts; this catalog describes inspection criteria, not guaranteed Sites behavior.
 
@@ -98,13 +110,13 @@ Gather the existing schema and deployed persistence contract **before** filling 
 
 | Gate | Minimum evidence / failure scenario | Default |
 | --- | --- | --- |
-| Retention and ownership | Data types, controller/owner, subject, active/archive/delete semantics, authorized request process | NOT VERIFIED |
-| Portability | Export scope, privacy redaction, accurate result status, schema/version, duplicate import behavior | NOT VERIFIED |
-| Legacy migrations | Representative old fixtures, deterministic/idempotent mapping, stable IDs, history and totals preserved | NOT VERIFIED |
-| Read-side effects | Confirm whether ostensibly read-only requests can persist migrations; test concurrency and failure recovery | NOT VERIFIED |
-| Backup/restore | Snapshot source and schedule, restore drill, recovery limits, authorized operators and rollback | NOT VERIFIED |
-| Aggregate contention | Two independent project writers, bounded compare-and-swap failures, large payloads and retry/refresh UX | NOT VERIFIED |
-| Value history | Ledger/review integrity and correction trail through archive, restore, deletion, toggle and import | NOT VERIFIED |
+| Retention and ownership | Data types, controller/owner, subject, active/archive/delete semantics, authorized request process | — |
+| Portability | Export scope, privacy redaction, accurate result status, schema/version, duplicate import behavior | — |
+| Legacy migrations | Representative old fixtures, deterministic/idempotent mapping, stable IDs, history and totals preserved | — |
+| Read-side effects | Confirm whether ostensibly read-only requests can persist migrations; test concurrency and failure recovery | — |
+| Backup/restore | Snapshot source and schedule, restore drill, recovery limits, authorized operators and rollback | — |
+| Aggregate contention | Two independent project writers, bounded compare-and-swap failures, large payloads and retry/refresh UX | — |
+| Value history | Ledger/review integrity and correction trail through archive, restore, deletion, toggle and import | — |
 
 Documentation review can PASS while these product gates remain NOT VERIFIED. Do not claim legal compliance or backups solely from database technology or a successful unit suite.
 
@@ -112,11 +124,11 @@ Documentation review can PASS while these product gates remain NOT VERIFIED. Do 
 
 | Scenario | Evidence required | Untested status |
 | --- | --- | --- |
-| Row action semantics | Action is a named native link/button in semantic table; keyboard and screen-reader task path | NOT VERIFIED |
-| Modal focus lifecycle | Actual initial focus, containment, Escape and close-button behavior, background inertness | NOT VERIFIED |
-| Draft protection | Changed field -> cancel/backdrop/Escape -> explicit preservation/discard policy; verified restoration | NOT VERIFIED |
-| Async completion and focus | Server-confirmed result, accessible status, return focus to valid trigger or safe fallback after row disappears | NOT VERIFIED |
-| State/locale/responsive | Error/retry, disabled/busy, long labels, keyboard at narrow/zoom, RTL and supported AT/browser matrix | NOT VERIFIED |
+| Row action semantics | Action is a named native link/button in semantic table; keyboard and screen-reader task path | — |
+| Modal focus lifecycle | Actual initial focus, containment, Escape and close-button behavior, background inertness | — |
+| Draft protection | Changed field -> cancel/backdrop/Escape -> explicit preservation/discard policy; verified restoration | — |
+| Async completion and focus | Server-confirmed result, accessible status, return focus to valid trigger or safe fallback after row disappears | — |
+| State/locale/responsive | Error/retry, disabled/busy, long labels, keyboard at narrow/zoom, RTL and supported AT/browser matrix | — |
 
 Do not mark a product test PASS based solely on source review or on the presence of a prebuilt accessible component library. Prefer one integrated end-to-end evidence record for the full journey, supplemented by unit/component checks.
 
@@ -124,13 +136,13 @@ Do not mark a product test PASS based solely on source review or on the presence
 
 | Test | Required evidence | Untested status |
 | --- | --- | --- |
-| Capability matrix | All meaningful flag combinations and action dependencies recorded, including direct server commands | NOT VERIFIED |
-| Cross-layer agreement | Visible navigation, disabled controls, deep links and server enforcement agree; UI hidden state is not authorization | NOT VERIFIED |
-| Pause and resume | Before/after snapshots of approved contributions, challenge history, balances, ledger entries and requests | NOT VERIFIED |
-| Pending work | Configuration changed during form/edit/redeem/fulfill; safe rejection or completion with honest user-facing status | NOT VERIFIED |
-| Orphaned tasks | Existing reward requests remain discoverable and actionable to authorized owners even when new redemption is disabled | NOT VERIFIED |
-| Configuration persistence | Save, reload, concurrent admins/tabs, retry, default new workspace settings and rollback | NOT VERIFIED |
-| Accessibility/locale | Clear paused versus no-data messaging, keyboard reachability, screen-reader status and long translations | NOT VERIFIED |
+| Capability matrix | All meaningful flag combinations and action dependencies recorded, including direct server commands | — |
+| Cross-layer agreement | Visible navigation, disabled controls, deep links and server enforcement agree; UI hidden state is not authorization | — |
+| Pause and resume | Before/after snapshots of approved contributions, challenge history, balances, ledger entries and requests | — |
+| Pending work | Configuration changed during form/edit/redeem/fulfill; safe rejection or completion with honest user-facing status | — |
+| Orphaned tasks | Existing reward requests remain discoverable and actionable to authorized owners even when new redemption is disabled | — |
+| Configuration persistence | Save, reload, concurrent admins/tabs, retry, default new workspace settings and rollback | — |
+| Accessibility/locale | Clear paused versus no-data messaging, keyboard reachability, screen-reader status and long translations | — |
 
 **Release decision:** independently stored options with dependent behavior require a documented dependency matrix and server tests. No separate login, hard-coded global flag system or arbitrary disabled-state semantics are prescribed by the catalog.
 
@@ -138,14 +150,14 @@ Do not mark a product test PASS based solely on source review or on the presence
 
 | Gate | Evidence and risk to check | Untested status |
 | --- | --- | --- |
-| Existing component inventory | Actually imported/used library controls versus merely installed template files, plus feature modules | NOT VERIFIED |
-| Extraction ownership | Route orchestration, domain mutation, feature form, shared control and style responsibilities separated | NOT VERIFIED |
-| Baseline/compatibility | Before/after task state and semantic behavior; public API/consumer matrix, version/rollback plan | NOT VERIFIED |
-| CSS/token migration | Selector inventory, semantic-role mapping, specificity/cascade and dead-class detection | NOT VERIFIED |
-| Inclusive interaction | Native control labels, keyboard/focus after dialog, error recovery, zoom/RTL and reduced motion | NOT VERIFIED |
-| Responsive/visual checks | Supported viewport and theme snapshots reviewed, not blindly updated; font fallback and long copy | NOT VERIFIED |
-| Domain invariants | Existing command and points/reward/review histories unchanged by presentation-only migration | NOT VERIFIED |
-| Adoption/release | Small vertical slice first, measured regressions, named owner and removal conditions for adapters | NOT VERIFIED |
+| Existing component inventory | Actually imported/used library controls versus merely installed template files, plus feature modules | — |
+| Extraction ownership | Route orchestration, domain mutation, feature form, shared control and style responsibilities separated | — |
+| Baseline/compatibility | Before/after task state and semantic behavior; public API/consumer matrix, version/rollback plan | — |
+| CSS/token migration | Selector inventory, semantic-role mapping, specificity/cascade and dead-class detection | — |
+| Inclusive interaction | Native control labels, keyboard/focus after dialog, error recovery, zoom/RTL and reduced motion | — |
+| Responsive/visual checks | Supported viewport and theme snapshots reviewed, not blindly updated; font fallback and long copy | — |
+| Domain invariants | Existing command and points/reward/review histories unchanged by presentation-only migration | — |
+| Adoption/release | Small vertical slice first, measured regressions, named owner and removal conditions for adapters | — |
 
 A component-library folder is **not** evidence that its contracts are adopted by the app. A passing snapshot or bundler build is not proof that keyboard, focus, business transitions or accessibility are unchanged.
 
@@ -187,13 +199,13 @@ Review the **rendered image at its intended sharing size**, including every scre
 
 | Visual QA gate | What to inspect in the image | Example failure / disposition |
 | --- | --- | --- |
-| **Legibility and content fidelity** | Can headings, labels, critical values and notes actually be read? Does each essential label match source-of-truth text? | Garbled/generated copy, altered monetary value, tiny annotation → **FAIL** until corrected; unknown source copy → **NOT VERIFIED** |
+| **Legibility and content fidelity** | Can headings, labels, critical values and notes actually be read? Does each essential label match source-of-truth text? | Garbled/generated copy, altered monetary value, tiny annotation → **FAIL** until corrected; unknown source copy → **—** |
 | **Clipping and geometry** | Are controls, text, borders, overlays and screen edges intact at the depicted viewport? | Truncated error or overlapped primary button → **FAIL** for depicted state |
 | **Hierarchy and task orientation** | Are current scope, user decision, primary action, supporting context and safe exit identifiable? | Decorative hero dominates task; equal-priority CTAs → revise or justify |
 | **Affordance and state consistency** | Do identical patterns look alike across screens? Do loading, empty, error, denied, confirmed and return states differ meaningfully? | “Success” styling on unknown-outcome state → **FAIL**, not a confirmed transaction |
 | **Truthfulness and invented behavior** | Are permissions, live availability, payment/export completion, routes, support channels and saving claims backed by input or marked illustrative? | Fake capability displayed as implemented → **FAIL**; unknowns must be labeled |
 | **Cross-screen/variant consistency** | Do navigation, terminology, selected item, filter scope, CTA label and data carry coherently across alternatives/viewport images? | Task identity silently changes between compact and wide mock → **FAIL** or documented intentional change |
-| **Responsive/locale stress visibility** | Are intended compact/wide, long copy, RTL and error variants depicted or clearly listed as not shown? | Single desktop image claimed to prove reflow/RTL → **FAIL** for the claim; actual behavior **NOT VERIFIED** |
+| **Responsive/locale stress visibility** | Are intended compact/wide, long copy, RTL and error variants depicted or clearly listed as not shown? | Single desktop image claimed to prove reflow/RTL → **FAIL** for the claim; actual behavior **—** |
 | **Source and decision trace** | Are image ID/version, task, canonical IDs, known/assumed information, reviewer, issue severity and next step recorded? | No way to match criticism to artifact or brief → request evidence |
 
 A static review may establish that an **observed image** visibly includes or omits content. It cannot establish keyboard operation, accessible names, focus, actual reflow, service permissions, server results, or real-user comprehension. Use `NOT APPLICABLE` only when a reviewed task/scope justifies it; use `NOT SHOWN` to describe omitted imagery, not as a test result.
@@ -348,7 +360,7 @@ This is a publication-readiness checklist for a **read-only documentation browse
 | Origin/base path | Verify root-versus-subpath routes, CSS/JS links, search query parameters and source URLs on the target host | The generated site uses root-relative links; subpath deployment needs a tested strategy |
 | Source provenance | Tie published Markdown source links to a reviewed commit or known immutable revision | The builder accepts `CATALOG_SOURCE_REF`; default local builds use `main` |
 | Build artifact and rollback | Record release commit/digest, authorized approver, deployment and revert procedure | No public deployment or recovery SLO is established here |
-| Cache and indexability | Review caching, robots/indexing, redirects and deprecation links | These are host-dependent and NOT VERIFIED |
+| Cache and indexability | Review caching, robots/indexing, redirects and deprecation links | These are host-dependent and — |
 | Privacy and telemetry | Disclose analytics if introduced and avoid publishing sensitive records or test artifacts | The documentation builder uses repository-authored content; browser audit screenshots still need review |
 
 For public hosting, crawl `/catalog/`, `/search/`, representative concept pages and the task index at the **actual deployment path**. Verify canonical ID-based URLs remain stable, every relative source link resolves and query-state restoration does not expose sensitive data. Do not infer deployment success from a local build.

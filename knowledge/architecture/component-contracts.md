@@ -6,6 +6,22 @@
 
 A shared component needs a stable, inspectable contract before it is marked ready for cross-context adoption. This is a reusable **specification checklist**, not a coded component.
 
+## Minimum reusable-component contract — start here
+
+Use the following decision before writing a new API. A **shared component** owns stable interaction semantics; a **feature** composes those controls with product permissions, validation, persistence and telemetry.
+
+| Decision | Record and verify | Do not do |
+| --- | --- | --- |
+| Reuse, compose or create? | Existing canonical ID, real consumers, semantic/state equivalence, reason to extend | Mint a new variant for one screenshot or domain-specific action |
+| Public boundary | Anatomy/slots, props/events, controlled state, invalid combinations, owner/version | Make consumers rely on private markup or unpredictable Boolean combinations |
+| State and behavior | Default, focus-visible, disabled, loading, error and recovery as applicable; keyboard/touch model | Promise completion before the service confirms it |
+| Inclusive rendering | Accessible name/role/value, focus lifecycle, zoom, long copy, locale/RTL, theme, reduced motion | Treat an ARIA label, token name or static diagram as a passed runtime test |
+| Release and compatibility | Source revision, test matrix, affected consumers, migration/deprecation and rollback | Break a stable contract without an adoption path |
+
+**Fast path:** start with [Required contract](#required-contract), then [Dialog versus task](#example-dialog-shell-versus-destructive-task) or [async Button](#example-contract-asynchronous-action-button-illustrative). Read [event coordination](#composite-anatomy-and-event-coordination) and [source distribution](#source-exploration-reuse-and-distribution-contract) only when those concerns apply. A catalog specification is **not** runnable code.
+
+**Evidence convention:** A `—` in a verification table means the consuming-product observation is **NOT VERIFIED**, never passed. Supply a dated test record rather than repeating the same caveat in every row.
+
 ## Required contract
 
 1. **Identity:** durable ID, name, role, owner, version, status, consumers, use/avoid.
@@ -26,11 +42,11 @@ A shared component needs a stable, inspectable contract before it is marked read
 
 | Scenario | Behavior to verify | Result |
 | --- | --- | --- |
-| Keyboard only | All controls reachable and operable; focus visible | NOT VERIFIED |
-| Short and translated labels | No essential truncation or overflow | NOT VERIFIED |
-| Loading and error | Feedback, prevention of duplicate action, recovery | NOT VERIFIED |
-| Zoom, narrow container, touch | Layout reflows; targets operable | NOT VERIFIED |
-| Theme variants | Contrast and focus across applicable modes | NOT VERIFIED |
+| Keyboard only | All controls reachable and operable; focus visible | — |
+| Short and translated labels | No essential truncation or overflow | — |
+| Loading and error | Feedback, prevention of duplicate action, recovery | — |
+| Zoom, narrow container, touch | Layout reflows; targets operable | — |
+| Theme variants | Contrast and focus across applicable modes | — |
 
 Use [the entry template](../../templates/concept-entry.md) to record an actual component specification. Do not mark this sample matrix as tested.
 
@@ -166,12 +182,12 @@ The component does **not** equate `draftQuery` with the applied server query; a 
 
 | Check | Expected evidence | Current status |
 | --- | --- | --- |
-| Typed semantic events and ownership boundary | Implemented component + feature integration tests for event once and owner handoff | NOT VERIFIED |
-| Controlled/uncontrolled selection consistency | Change, reset, remount, prop update and failure tests | NOT VERIFIED |
-| Nested actions and accessible semantics | Keyboard, screen-reader and pointer tests on card/menu/row interactions | NOT VERIFIED |
-| Async pending and authoritative outcomes | Mocked delayed, failed, conflicted and uncertain responses + no duplicate dispatch | NOT VERIFIED |
-| Responsive, touch, translated labels, RTL | Actual device/viewport and locale inspection | NOT VERIFIED |
-| Catalog retrieval, links and schema | Catalog validator and unit tests | NOT VERIFIED until executed |
+| Typed semantic events and ownership boundary | Implemented component + feature integration tests for event once and owner handoff | — |
+| Controlled/uncontrolled selection consistency | Change, reset, remount, prop update and failure tests | — |
+| Nested actions and accessible semantics | Keyboard, screen-reader and pointer tests on card/menu/row interactions | — |
+| Async pending and authoritative outcomes | Mocked delayed, failed, conflicted and uncertain responses + no duplicate dispatch | — |
+| Responsive, touch, translated labels, RTL | Actual device/viewport and locale inspection | — |
+| Catalog retrieval, links and schema | Catalog validator and unit tests | — until executed |
 
 **Adoption/migration:** keep existing canonical controls; add composition contracts at feature boundaries, remove overlapping parent/child event handlers, and migrate only consumers that need coordinated state. This is not a new universal event bus, state machine library, UI package, or application API.
 

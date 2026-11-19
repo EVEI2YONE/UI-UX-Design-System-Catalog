@@ -6,6 +6,24 @@
 
 Use this pattern when users need a coherent place to understand and change account identity, contact details, preferences, security, privacy, notifications or billing. Avoid treating a generic settings screen as a substitute for authoritative permission, identity, privacy or payment policy. This page owns **cross-section composition, navigation, account overview, profile editing and save behavior**; specialized security, billing and consent rules remain with their respective canonical pages.
 
+## Settings decision map — start here
+
+The primary job is **find the setting → understand its scope and consequence → change it → confirm the effective result → recover if needed**. Choose only the specialized guidance that applies to the user's task; the sections below are **conditional reference material**, not a requirement to expose every settings category.
+
+| User is trying to… | Route/authority decision | Confirm and recover |
+| --- | --- | --- |
+| Find or inspect a setting | [Navigation and overview](#navigation-and-overview-contract); use stable links and user-language groups | Show current section, effective value and whether edit is allowed |
+| Edit profile or contact | [Profile and contact](#profile-and-contact-information); distinguish display text from verified identity | Preserve input; treat email/phone verification as a pending journey |
+| Change a preference | [Scope and fallback](#preference-scope-effective-mode-and-safe-fallback); label device/person/workspace scope | Confirm actual effective value at its scope, including reload |
+| Change a team/workspace rule | [Authoritative setting registry](#authoritative-setting-registry) and [permission boundaries](#scope-authority-and-permission-boundaries) | Show impact, enforce authorization and reconcile stale or conflicting values |
+| Change high-consequence policy | [Feature/policy configuration](#feature-and-policy-configuration) and [impact confirmation](#impact-summary-and-confirmation-contract) | Display pending work and safe exit; never imply a UI toggle is server authority |
+| Recover from an uncertain save | [Settings persistence](#settings-persistence), [propagation](#configuration-propagation-and-state-reconciliation) and [interaction recovery](interaction-states-and-recovery.md) | Preserve drafts, distinguish local from committed state, avoid blind retries |
+| Audit, retire or migrate a setting | [Configuration governance](#configuration-governance-and-audit) and [lifecycle](#configuration-lifecycle-and-migration) | Record owner, authorization, compatibility, rollback and available evidence |
+
+**Default journey:** open settings → choose context → inspect effective value and editable scope → change → validate → save or confirm → independently verify persistence → return to the prior context. On narrow screens use list-to-detail navigation; for invalid, offline, conflicting and permission-revoked states preserve an understandable recovery path.
+
+**Evidence rule:** A `—` in a check table means **NOT VERIFIED**, not PASS. Product authorization, persistence, cross-device propagation, keyboard behavior and human outcomes require application-specific verification. A proposed guideline cannot certify them.
+
 ### Navigation and overview contract
 
 - Group by user mental model and consequence: **Profile**, **Security**, **Privacy & data**, **Notifications**, **Appearance & language**, **Billing & plan** where supported. Do not render unavailable or inapplicable groups merely to complete a template.
@@ -65,11 +83,11 @@ Prefer an explicit save for high-consequence or multi-field forms; autosave may 
 | Check | Status |
 | --- | --- |
 | Existing catalog ownership and aliases inspected | PASS (documentation review) |
-| Portal navigation, persistence and concurrency tested in product | NOT VERIFIED |
-| Keyboard, assistive technology, responsive/RTL, cross-device | NOT VERIFIED |
-| Identity verification and data portability policy approved | NOT VERIFIED |
+| Portal navigation, persistence and concurrency tested in product | — |
+| Keyboard, assistive technology, responsive/RTL, cross-device | — |
+| Identity verification and data portability policy approved | — |
 
-**Canonical ID:** `pattern.account-settings-portal` · **Drafted:** 2026-11-07.
+**Canonical ID:** `pattern.account-settings-portal`.
 
 ## Workspace configuration foundation
 
@@ -217,7 +235,7 @@ Review policy should be modeled as an **authorized, versioned workflow policy**,
 
 **Acceptance tests:** direct mutation with insufficient capability, flag gate off, stale policy version, pending submission race, approval/rejection/return transitions, duplicate processing, points-off award, policy reversal, preserved history, long text, keyboard and screen reader status. Manual/runtime outcomes remain **NOT VERIFIED**.
 
-**Status:** proposed knowledge on draft ; catalog owner unassigned; product policy approval, live behavior, accessibility and authorization tests **NOT VERIFIED**. must re-gather context before proceeding.
+**Evidence boundary:** proposed guidance, owner unassigned; product-specific policy approval and runtime accessibility, behavior and authorization require independent review.
 
 ## Time and personal preferences
 

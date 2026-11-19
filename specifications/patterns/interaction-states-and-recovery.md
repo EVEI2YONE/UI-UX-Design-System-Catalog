@@ -6,6 +6,21 @@
 
 Make system status and user control clear during input, asynchronous work, empty results and failure. States are part of the interaction contract, not optional polish.
 
+## Recovery chooser — choose by the user's known outcome
+
+Start with the user goal, the **last authoritative state**, and what may be safely repeated. Preserve user input and orientation; represent uncertainty honestly.
+
+| Situation | User-facing decision | Safe continuation |
+| --- | --- | --- |
+| Invalid local input | Identify the field, show a specific fix and preserve valid values | Focus the field or reachable error summary; resubmit after correction |
+| Confirmed service failure | Explain what failed, what was saved and whether retry is safe | Retry with duplicate protection, or provide an alternate route/support |
+| Timeout or lost acknowledgement | Say **outcome unknown**, not “failed” or “done” | Check authoritative status before repeating a potentially irreversible action |
+| Partial success or mixed results | Distinguish completed items from blocked items | Retry only known failures, maintain references to confirmed successes |
+| Permission or policy changed | Explain the current available action without leaking protected data | Return to the last permitted context; preserve recoverable work |
+| Record moved, deleted or workflow paused | Keep the original intent understandable and focus meaningful | Offer a surviving target or relevant next task, not a dead control |
+
+This chooser applies across [forms](forms.md), [feedback](feedback.md), [offline conflicts](offline-sync-and-conflicts.md) and [account settings](account-and-settings-portal.md). Specialized transaction, review and annotation rules below apply only to relevant products. A `—` in a verification table means **NOT VERIFIED** rather than a completed check.
+
 ## State model
 
 | State | Guidance | Recovery / accessibility |
@@ -84,7 +99,7 @@ Before illustrating, enumerate every **applicable** state and mark each `SHOWN`,
 | **Ready / default** | Current user task, meaningful content, available primary action | Screen ID, entry condition and intended next step |
 | **Empty / first use / no results** | Why there is no content; constructive create, reset or help path | Distinguish first use from filtered no-results, deleted data and no permission |
 | **Loading / pending / long wait** | Work in progress, retained context, available cancel/escape or safe continuation | Originating action, whether a retry is safe, outcome still unknown |
-| **Field / submission validation error** | What failed, where and how to fix it, while preserving unrelated input | Intended association, error summary/focus destination; actual behavior NOT VERIFIED |
+| **Field / submission validation error** | What failed, where and how to fix it, while preserving unrelated input | Intended association, error summary/focus destination; actual behavior — |
 | **Network / service error and partial failure** | What completed versus failed; safe next action | Never assert failure if the result might be unknown; verify server outcome before replay |
 | **Permission denied / expired session / unavailable capability** | Action unavailable, non-sensitive reason and legitimate way out or back | UI visibility is not authorization; avoid invented access escalation or data disclosure |
 | **Success / confirmed outcome** | Which action completed, what changed and what to do next | Distinguish simulated success screen from actually confirmed product transaction |
@@ -106,10 +121,10 @@ Use stable screen IDs (for example `S2-pending`, `S2-error`, `S2-confirmed`) and
 | Screen ID | Trigger | Depiction and user path | Continuity / evidence |
 | --- | --- | --- | --- |
 | `S3-ready` | Permitted export is *assumed* | Selected report, export scope, primary “Request export”, safe return | Permission is `ASSUMED`; do not label as authorized |
-| `S3-pending` | User requests export | Progress/awaiting confirmation, action cannot silently duplicate | Request ID and persistence `NOT VERIFIED` |
-| `S3-unknown` | Connection drops after request | “Status unknown”; option to check verified status, not blindly repeat | Preserve selection; server outcome `NOT VERIFIED` |
+| `S3-pending` | User requests export | Progress/awaiting confirmation, action cannot silently duplicate | Request ID and persistence `—` |
+| `S3-unknown` | Connection drops after request | “Status unknown”; option to check verified status, not blindly repeat | Preserve selection; server outcome `—` |
 | `S3-failed` | Server definitively rejects request | Reason and safe recoverable edit/exit | Error source `ILLUSTRATIVE`; no claim of actual retry policy |
-| `S3-confirmed` | Server confirms output | Confirmed result plus view/download **only if it truly exists** | Static mock is `ILLUSTRATIVE`, real confirmation `NOT VERIFIED` |
+| `S3-confirmed` | Server confirms output | Confirmed result plus view/download **only if it truly exists** | Static mock is `ILLUSTRATIVE`, real confirmation `—` |
 
 **Anti-example:** depict only `S3-ready` and a green “Export completed” toast, then declare error recovery, permissions and duplicate-prevention complete. That illustrates styling, **not** a tested state machine. An entirely different empty-results or permission-denied design should not be shown as the same loading state.
 
@@ -184,11 +199,11 @@ A server acknowledgment is not automatically proof that all dependent read model
 
 | Scenario | Required observable evidence | Status |
 | --- | --- | --- |
-| Delayed, failed and ambiguous write | No premature success icon/label or unsafe duplicate; current task remains recoverable | NOT VERIFIED |
-| Authoritative result with changed dependent data | Status, counts, permitted actions and item detail agree | NOT VERIFIED |
-| Row removal and modal trigger disappearance | Logical focus destination for pointer, keyboard and screen reader | NOT VERIFIED |
-| Queue subset/permission changes | No false completion or unauthorized next item; clear recovery and focus | NOT VERIFIED |
-| Narrow/zoom/RTL/long labels and reduced motion | Stable action identity, readable feedback, practical hit targets | NOT VERIFIED |
-| Live-region and focus announcement behavior | Relevant updates announced once without excessive focus jumps | NOT VERIFIED |
+| Delayed, failed and ambiguous write | No premature success icon/label or unsafe duplicate; current task remains recoverable | — |
+| Authoritative result with changed dependent data | Status, counts, permitted actions and item detail agree | — |
+| Row removal and modal trigger disappearance | Logical focus destination for pointer, keyboard and screen reader | — |
+| Queue subset/permission changes | No false completion or unauthorized next item; clear recovery and focus | — |
+| Narrow/zoom/RTL/long labels and reduced motion | Stable action identity, readable feedback, practical hit targets | — |
+| Live-region and focus announcement behavior | Relevant updates announced once without excessive focus jumps | — |
 
 **References:** [WAI-ARIA APG Dialog (Modal)](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG patterns](https://www.w3.org/WAI/ARIA/apg/patterns/) (consulted 2026-11-07). Motivating source: [Little Wins // proposed interaction knowledge](https://github.com/EVEI2YONE/Little_Wins/tree/main/docs/little-wins/ui-knowledge/); observed source behavior does not certify UX benefit, accessibility or implementation.
