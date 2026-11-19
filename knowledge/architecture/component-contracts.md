@@ -22,6 +22,8 @@ Use the following decision before writing a new API. A **shared component** owns
 
 **Evidence convention:** A `—` in a verification table means the consuming-product observation is **NOT VERIFIED**, never passed. Supply a dated test record rather than repeating the same caveat in every row.
 
+**Fast adoption case:** Apply the five decision rows to one Button or Dialog consumer. Record the owner, stable API, relevant state checks, migration risk, and whether any specialist section changed the decision; remove a repeated section only when it adds no distinct acceptance criterion.
+
 ## Required contract
 
 1. **Identity:** durable ID, name, role, owner, version, status, consumers, use/avoid.
@@ -231,10 +233,3 @@ A source inspector should offer text wrapping or horizontal scrolling with keybo
 Give a developer an unprompted task to find a canonical component, inspect a complex error state, identify required integration files, and explain why the example is not safe to paste into a production app unchanged. Record **correct source path**, **missing dependencies found**, **time to answer**, **incorrect assumptions**, **keyboard/AT operation** and **success/failure**. Compare against a baseline; don't assert ease of reuse from available links alone.
 
 **Current repository evidence:** the static generator displays the actual checked-in JavaScript, provides optional synthetic adapter inspection and source links, and its tests verify byte parity. A one-click source copy/download and installable package do **not** currently exist. **NOT VERIFIED:** human developer task study, source-copy usability, distribution license clearance and package adoption. No human developer task study or license clearance is recorded; source reuse and distribution decisions remain unverified.
-
-## Worked decision and fitness verification
-
-**Bounded adoption exercise (illustrative):** Validate the minimum contract with one real Button or Dialog adoption and reduce repeated specialist details that do not change a decision. Specify the actual consumer task or developer change, the alternative architecture or UI contract, expected outcome and a failure/rollback condition. Preserve one canonical owner and avoid multiplying abstractions merely to improve a document's rating.
-
-**Fitness evidence:** Observe task-to-file location, import boundary conformance, keyboard/focus where relevant, compatible consumers, deployment or rollback only when available. Log tool/repository revision, expected versus actual result, owner and limitations; no unrun case is a pass. [Relevant implementation or platform reference](https://www.w3.org/WAI/ARIA/apg/) motivates the decision in its own scope and is not proof of a particular consumer result.
-

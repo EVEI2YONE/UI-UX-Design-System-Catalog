@@ -21,6 +21,8 @@ Native SDK/API behavior, permission handling and navigation are owned by each pl
 | Disruption | Explain pending/saved states and preserve safe edits | Background/foreground, low connectivity |
 | Language and RTL | Logical direction, locale formatting and source-order consistency | Long mixed-direction labels, numeric data |
 
+**One matrix per task:** Select only the applicable rows below for the current window, input method and locale. Record keyboard, small window/zoom, text growth and permission loss for the same task rather than creating separate device-by-device checklists.
+
 ## Interaction and layout rules
 
 - Start with the user's highest-value tasks, not a desktop screenshot scaled down. Changes to navigation must not remove essential commands or escape paths.
@@ -81,10 +83,3 @@ A small set of screenshots can support **design inspection**, not prove every in
 For each depicted variant, record `screen_id`, `supported platform/window (KNOWN or ASSUMED)`, `layout mode`, `navigation transform`, `primary/secondary actions`, `content preserved / moved`, `state IDs`, `text expansion/RTL case`, `NOT SHOWN variants`, and `runtime verification status`. Annotate logical order and intended keyboard/focus transitions without implying they function in an image.
 
 **Review gate:** essential tasks, disclosures and recovery are present across variants; transformations are described rather than inferred; no fabricated permissions, breakpoint policy or implementation success. Real resize, zoom, touch, keyboard, assistive technology, device and system text scaling tests: **NOT VERIFIED** until executed. See the [wireframe methodology](wireframe-methodology.md) for escalation to interactive prototypes.
-
-## Practical decision and validation boundary
-
-**Illustrative decision question:** Collapse duplicate adaptation checks and keep one target-specific test matrix. State when to apply the guidance, what alternative would better serve a different context and which actual user or developer task would change the decision. Do not infer successful usability, accessibility or business outcomes from a well-worded scenario.
-
-**Acceptance:** Trace applicable claims to current primary/platform sources and specify their limitations; for behavioral claims, record eligible cohort, observation method, expected success/error state, measurement context and review owner. For interactive web surfaces, [WCAG 2.2](https://www.w3.org/TR/WCAG22/) informs relevant inclusive design checks; the guideline alone does not establish conformance. Any missing applied evidence stays **NOT VERIFIED**.
-

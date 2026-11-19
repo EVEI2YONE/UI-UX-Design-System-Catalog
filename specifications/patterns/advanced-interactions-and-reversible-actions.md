@@ -17,6 +17,8 @@ Define discoverable, accessible and reversible behavior for reorder, bulk action
 | Edit an interactive grid | Defined navigation, selection and edit model | Do not give ordinary table `role=grid` semantics without actual behavior |
 | Commit consequential changes | Review summary and explicit confirmation | Recheck permissions and result status |
 
+**Decision speed check:** First attempt the same task with an ordinary button, list or native control. Only move to a bulk/drag/shortcut pattern when task volume and recovery needs justify it; keep the verification evidence with the corresponding interaction row.
+
 ## State matrix and error paths
 
 | State | Visible behavior | Recovery |
@@ -109,10 +111,3 @@ Before replacing visible actions with a menu, single CTA, gesture or compact too
 | Efficiency vs correctness | TCR/time/error and [effort metrics](../../knowledge/guidance/ux-measurement.md), not click reduction alone | NOT VERIFIED |
 
 **References:** [WAI-ARIA APG Menu Button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/), [WAI-ARIA APG Toolbar](https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [OWASP authorization guidance](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) (consulted 2026-11-07). Design motivation: Little Wins proposed action-consolidation guidance; no observed improvement or deployment is claimed.
-
-## Task-level decision example and evidence scope
-
-**Illustrative task condition:** Keep the simplest-action decision first and move advanced worksheet detail behind it. Describe the observable starting state, the user's actual choice, authoritative success or unknown/failed outcome, and safe repeat or cancellation. When the pattern crosses authorization, privacy or state ownership boundaries, explicitly defer those decisions to the consuming system rather than changing shared component semantics.
-
-**Verification:** Make the expected visible and accessible result testable across keyboard/pointer, relevant small-screen and locale cases, plus permission and failure states. Record the actual browser, environment, observed behavior, owner and limitations before marking an implementation test passed; until then, status is **NOT VERIFIED**. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) is applicable only to relevant web accessibility criteria and cannot substitute for user-task evidence.
-
