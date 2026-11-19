@@ -43,7 +43,7 @@ Example mappings are **intent IDs, not universally mandated icons**. Record alte
 
 ### Icon-only action state and geometry contract
 
-| State or context | Contract and accessible alternative | Check |
+| State | Contract and accessible alternative | Check |
 | --- | --- | --- |
 | Idle / hover / focus | Descriptive action name and visible focus, not a tooltip-only affordance | Keyboard Enter/Space, pointer and touch |
 | Pressed / toggled | Expose pressed/expanded/checked **only on the correctly modeled host** | Assistive role/state and false toggles |
