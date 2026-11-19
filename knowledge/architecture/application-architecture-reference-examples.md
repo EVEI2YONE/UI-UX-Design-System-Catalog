@@ -2,7 +2,7 @@
 
 **Kind:** example · **Status:** proposed · **Primary layer:** cross-cutting · **Owner:** unassigned · **Review:** pending
 
-## Batch 19 context and applicability
+## Context and applicability
 
 The [architecture selection guide](application-architecture.md) defines four profiles; [module boundaries](module-boundaries-and-developer-navigation.md) owns import and code-sharing decisions; [architecture evolution](architecture-evolution.md) owns safe migrations; [framework-aware guidance](framework-aware-application-structure.md) protects router-specific files; and [enforcement](architecture-enforcement-and-ci.md) owns lint/graph/CI configuration. Those chapters contain isolated file-tree sketches and abstract rules, but not **complete developer-task examples** showing where code belongs before and after a change. This page provides three connected, small **illustrative TypeScript/React-oriented reference scenarios**, not production starter repositories or benchmarked results.
 
@@ -14,16 +14,16 @@ For an actual repository, first gather a pinned commit, installed framework and 
 
 ```text
 src/
-  main.tsx
-  screens/
-    ProjectsScreen.tsx
-    ProjectsScreen.test.tsx
-  components/
-    Button.tsx          # use only if this is already a shared accessible control
-  lib/
-    project-storage.ts  # app-local persistence adapter, not a domain package
-  styles/
-    base.css
+ main.tsx
+ screens/
+ ProjectsScreen.tsx
+ ProjectsScreen.test.tsx
+ components/
+ Button.tsx # use only if this is already a shared accessible control
+ lib/
+ project-storage.ts # app-local persistence adapter, not a domain package
+ styles/
+ base.css
 ```
 
 A simple screen can own its form state and task feedback. The storage adapter persists records; it does not belong in a global `services/` directory just because it performs I/O. Test a named input, submission, pending/failure feedback and keyboard use. If browser-only local storage is used, show a clear prototype limitation; do not imply tenant isolation, multiuser synchronization, server authorization or backup.
@@ -43,35 +43,35 @@ import { saveProject } from "../lib/project-storage";
 **Before (illustrative duplication):**
 ```text
 src/
-  app/
-    routes/
-      ProjectListPage.tsx        # validates + saves + renders form
-      ProjectDetailsPage.tsx     # repeats validation + save + form
-  components/
-    ProjectForm.tsx             # unclear ownership and growing Boolean props
+ app/
+ routes/
+ ProjectListPage.tsx # validates + saves + renders form
+ ProjectDetailsPage.tsx # repeats validation + save + form
+ components/
+ ProjectForm.tsx # unclear ownership and growing Boolean props
 ```
 
 **After (feature ownership; adjust route placement to the actual router):**
 ```text
 src/
-  app/
-    routes/
-      ProjectListPage.tsx
-      ProjectDetailsPage.tsx
-  features/
-    projects/
-      components/
-        ProjectEditor.tsx
-        ProjectEditor.test.tsx
-      api/
-        update-project.ts
-      model/
-        validate-project-name.ts
-        validate-project-name.test.ts
-      index.ts                  # approved public API
-  shared/
-    ui/
-      TextField.tsx             # shared only if more than one context needs same contract
+ app/
+ routes/
+ ProjectListPage.tsx
+ ProjectDetailsPage.tsx
+ features/
+ projects/
+ components/
+ ProjectEditor.tsx
+ ProjectEditor.test.tsx
+ api/
+ update-project.ts
+ model/
+ validate-project-name.ts
+ validate-project-name.test.ts
+ index.ts # approved public API
+ shared/
+ ui/
+ TextField.tsx # shared only if more than one context needs same contract
 ```
 
 **One public entrypoint:**
@@ -85,10 +85,10 @@ export { validateProjectName } from "./model/validate-project-name";
 ```ts
 // features/projects/model/validate-project-name.ts
 export function validateProjectName(value: string): string | null {
-  const name = value.trim();
-  if (!name) return "Enter a project name.";
-  if (name.length > 80) return "Use 80 characters or fewer.";
-  return null;
+ const name = value.trim;
+ if (!name) return "Enter a project name.";
+ if (name.length > 80) return "Use 80 characters or fewer.";
+ return null;
 }
 ```
 
@@ -121,31 +121,31 @@ This does **not** mean client-side validation replaces server-side authorization
 
 ```text
 apps/
-  customer-web/
-    src/
-      app/                       # framework-owned routes
-      features/
-        project-overview/
-  admin-web/
-    src/
-      app/                       # framework-owned routes
-      features/
-        project-moderation/
+ customer-web/
+ src/
+ app/ # framework-owned routes
+ features/
+ project-overview/
+ admin-web/
+ src/
+ app/ # framework-owned routes
+ features/
+ project-moderation/
 packages/
-  design-system/
-    src/
-      ui/
-        Dialog.tsx
-        TextField.tsx
-      tokens/
-  domain-projects/
-    src/
-      project-id.ts
-      project-name.ts
-      index.ts
-  platform/
-    src/
-      http/
+ design-system/
+ src/
+ ui/
+ Dialog.tsx
+ TextField.tsx
+ tokens/
+ domain-projects/
+ src/
+ project-id.ts
+ project-name.ts
+ index.ts
+ platform/
+ src/
+ http/
 tooling/
 docs/
 ```

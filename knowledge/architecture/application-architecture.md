@@ -6,7 +6,7 @@
 
 Select the least complex application source organization that supports user journeys, code ownership, discoverability and expected change. This document concerns *application code*, not the UI catalog's directory structure, and complements [component placement](component-model.md). Profiles are starting points, not mandatory progression stages. Repository size or engineer count alone does not justify a migration.
 
-## Context-first assessment
+## Context and selection criteria
 
 Before recommending an architecture, record: repository URL and pinned revision; runtime/framework and routing model; one or several apps; key user journeys; team and release ownership; current source tree, import graph and duplication; shared domain rules; build/test and deployment boundaries; accessibility/i18n needs; observed change friction, and unknown evidence. Do not assume React, Next.js, microfrontends or monorepos.
 
@@ -26,55 +26,55 @@ These are **illustrative TypeScript/web layouts**, not framework-specific mandat
 ### A. Prototype or exploration
 ```text
 src/
-  screens/
-  components/
-  lib/
-  styles/
+ screens/
+ components/
+ lib/
+ styles/
 ```
 Use when the experience and technical assumptions are still changing. Colocate simple screen-specific behavior; extract shared code only for genuine repetition. Avoid a speculative domain layer, package hierarchy or several empty directories. Preserve accessible semantics and data-safety even in a prototype.
 
 ### B. MVP or focused product
 ```text
 src/
-  app/                  # composition, routes and providers
-  features/
-    projects/           # UI + feature-owned logic; expand subfolders as needed
-    onboarding/
-  shared/
-    ui/                 # truly cross-feature controls
-    lib/
-  styles/
+ app/ # composition, routes and providers
+ features/
+ projects/ # UI + feature-owned logic; expand subfolders as needed
+ onboarding/
+ shared/
+ ui/ # truly cross-feature controls
+ lib/
+ styles/
 ```
 Use when recurring product workflows have clear names and developers need task-oriented navigation. Put route entry points in the framework's required routes directory (e.g. Next.js app router); do not move framework-conventional special files merely to match this sketch.
 
 ### C. Growing modular product
 ```text
 src/
-  app/
-  features/
-    projects/
-      components/
-      api/
-      model/
-      index.ts           # explicit public API
-  domains/               # only cross-feature business concepts
-  shared/
-    ui/
-    api/
-    lib/
-  design-system/         # when tokens/styles require separate ownership
+ app/
+ features/
+ projects/
+ components/
+ api/
+ model/
+ index.ts # explicit public API
+ domains/ # only cross-feature business concepts
+ shared/
+ ui/
+ api/
+ lib/
+ design-system/ # when tokens/styles require separate ownership
 ```
 Use when multiple workflows share durable business invariants and change coordination is costly. Enforce one-way dependencies and public feature entrypoints; avoid importing deep internals of a sibling feature.
 
 ### D. Multi-application platform
 ```text
 apps/
-  web/
-  admin/
+ web/
+ admin/
 packages/
-  design-system/
-  platform/
-  domain-projects/
+ design-system/
+ platform/
+ domain-projects/
 tooling/
 docs/
 ```

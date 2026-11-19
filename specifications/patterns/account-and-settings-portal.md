@@ -6,7 +6,7 @@
 
 Use this pattern when users need a coherent place to understand and change account identity, contact details, preferences, security, privacy, notifications or billing. Avoid treating a generic settings screen as a substitute for authoritative permission, identity, privacy or payment policy. This page owns **cross-section composition, navigation, account overview, profile editing and save behavior**; specialized security, billing and consent rules remain with their respective canonical pages.
 
-### Navigation and overview contract (KG-001, KG-002)
+### Navigation and overview contract
 
 - Group by user mental model and consequence: **Profile**, **Security**, **Privacy & data**, **Notifications**, **Appearance & language**, **Billing & plan** where supported. Do not render unavailable or inapplicable groups merely to complete a template.
 - Put account identifier and status in an understandable overview; show actionable alerts and last successful state only when supported by reliable data. Do not display secrets, full payment instruments or sensitive identifiers in dashboards.
@@ -14,14 +14,14 @@ Use this pattern when users need a coherent place to understand and change accou
 - Treat cross-workspace/global settings explicitly. Display which account, user, team or tenant will be changed; do not silently apply a personal preference to all workspaces.
 - Place destructive account actions in an intentionally separated section with descriptive consequences, not adjacent to routine profile edits.
 
-### Profile and contact information (KG-004, KG-005, KG-006)
+### Profile and contact information
 
 - Separate editable display information from verified identity claims. Label what is public, shared internally or private; indicate server-managed or locked fields and explain why they cannot be edited.
 - For avatar/photo changes, provide preview, cropping alternative, accessible text, size/type validation, cancellation and a recoverable upload failure; do not assume an image is mandatory.
 - Changing a verified email or phone is a **pending verification journey**, not an ordinary text-save. Distinguish requested, challenge sent, verified, expired, rejected and reverted states. Keep current verified contact available until policy-defined transfer completes.
 - Data export is a separate asynchronous request with eligible scope, request time, ready/expired/failed status and a private authenticated download route. Legal and retention obligations require product-specific review; never promise instant export or universal portability.
 
-### Settings persistence (KG-003)
+### Settings persistence
 
 | State | User-facing contract | Verification |
 | --- | --- | --- |
@@ -71,12 +71,11 @@ Prefer an explicit save for high-consequence or multi-field forms; autosave may 
 
 **Canonical ID:** `pattern.account-settings-portal` · **Drafted:** 2026-11-07.
 
+## Workspace configuration foundation
 
-## Workspace configuration foundation — Settings knowledge Batch 1 (proposed, 2026-11-07)
+**Scope:** generalizable settings *knowledge* for applications with personal and workspace configuration.
 
-**Scope:** generalizable settings *knowledge* for applications with personal and workspace configuration. This section extends `pattern.account-settings-portal`; it does not create a new Settings component, implement a server, or grant permissions. The Little Wins F20 source-code review motivated the gap, but its product-specific feature names, values, and route contracts remain in the product repository. Re-check the catalog and target at the start of each subsequent batch.
-
-### KG-001 — Authoritative setting registry
+### Authoritative setting registry
 
 Define one reviewed contract per setting before exposing its control. Keep a single authoritative backend/domain owner for workspace rules, while client-side-only presentation preferences can have a separate explicit storage owner. Required fields:
 
@@ -111,7 +110,7 @@ status: proposed
 
 **Avoid:** storing permissions in browser preferences, creating one untyped `settings` object shared by all features, or treating a disabled UI control as proof of server policy.
 
-### KG-003 — Scope, authority, and permission boundaries
+### Scope, authority, and permission boundaries
 
 1. Always show the *effective target* (e.g. current workspace) and separate personal/device preferences from workspace-wide rules. Avoid invisible scope changes across accounts or tenants.
 2. Authorize **read and write independently** on the server for each request and object; a route guard, hidden tab or disabled switch is only UI guidance. Bind updates to the currently authorized target ID and reject stale/revoked access.
@@ -121,7 +120,7 @@ status: proposed
 
 **Acceptance scenarios:** unauthorized direct API write, cross-workspace identifier edit, old browser tab after permission revocation, user with view-only rights, and changes from multiple devices. Every unauthorized mutation must fail on the server and leave persisted values unchanged.
 
-### KG-006 — Save, propagate, and recover
+### Save, propagate, and recover
 
 Use the existing persistence-state table above as the **canonical UI state reference**; implement the following cross-feature process without inventing a second form component:
 
@@ -168,18 +167,11 @@ load effective setting + scope + version
 
 **Knowledge state:** proposed; catalog reviewer unassigned; product-specific authorization, persistence, user-testing, accessibility/runtime behavior and security checks **NOT VERIFIED**. Revisit on a real target implementation and record the actual owner and results.
 
-### Shared batch-PR protocol
+## Feature and policy configuration
 
-This section is Batch 1 of a cumulative settings-knowledge PR. At the **start of each later batch**, re-fetch `main`, this PR branch, the canonical catalog registry, relevant linked concepts, and the latest available target code/decision context; log differences, existing ownership, evidence limitations and applicable standards before changing guidance. Do not overwrite unrelated changes, silently use old target assumptions, or mark proposed guidance as merged. Batch 2 concerns feature/capability dependencies and policy transitions; Batch 3 time and personalization; Batch 4 auditability; Batch 5 catalog validation and crosswalk. Subsequent changes remain reviewed separately inside the same draft PR until it is ready for approval.
+### Configuration-to-capability UX contract
 
-
-## Settings knowledge Batch 2 — feature and policy configuration (proposed, 2026-11-07)
-
-**Fresh-context check:** Compared `main` against cumulative PR #12, inspected the canonical registry and existing [task-flow capability matrix](task-flows-and-information-architecture.md#batch-8--capability-dependencies-and-configuration-state-journeys-2026-11-07), [paused-work recovery](interaction-states-and-recovery.md#batch-8--paused-capabilities-and-work-already-in-progress-2026-11-07), and current available Little Wins F20 review-policy contracts. The existing catalog **already documents** feature-flag combinations, server-command gating, retained history and paused-task recovery. This batch adds the missing *settings-specific authoring and policy-transition contract*; it does not duplicate or replace that matrix.
-
-### KG-002 — Configuration-to-capability UX contract
-
-A settings switch changes a **stored preference or policy**, not automatically every dependent user capability. Use the canonical [task-flow feature/capability matrix](task-flows-and-information-architecture.md#batch-8--capability-dependencies-and-configuration-state-journeys-2026-11-07) to define valid state combinations, direct-command constraints, and historical continuity.
+A settings switch changes a **stored preference or policy**, not automatically every dependent user capability. Use the canonical [task-flow feature/capability matrix](task-flows-and-information-architecture.md) to define valid state combinations, direct-command constraints, and historical continuity.
 
 Before rendering a workspace toggle, complete this checklist:
 
@@ -202,7 +194,7 @@ Before rendering a workspace toggle, complete this checklist:
 
 **Verification:** enumerate full flag-state table and each transition, authorization denial, in-flight operations, pending-work management, refresh/second session, re-enable, accessibility announcements, mobile navigation and long translated labels. Mark untested states **NOT VERIFIED**.
 
-### KG-005 — Review/approval policy transition contract
+### Review/approval policy transition contract
 
 Review policy should be modeled as an **authorized, versioned workflow policy**, not as a purely visual toggle. Before implementation the product must define its mode names, default, effective time, actor capabilities, existing pending submissions, accepted/rejected/returned history and points/entitlement effects. [Interaction recovery](interaction-states-and-recovery.md#human-review-and-value-changing-transaction-lifecycle-2026-11-07) remains canonical for submission and review *states*.
 
@@ -225,16 +217,11 @@ Review policy should be modeled as an **authorized, versioned workflow policy**,
 
 **Acceptance tests:** direct mutation with insufficient capability, flag gate off, stale policy version, pending submission race, approval/rejection/return transitions, duplicate processing, points-off award, policy reversal, preserved history, long text, keyboard and screen reader status. Manual/runtime outcomes remain **NOT VERIFIED**.
 
-**Scope and sources:** Reuse [role-aware workspace authorization](role-aware-workspaces-and-context-switching.md) and [Batch 1 setting registry](#workspace-configuration-foundation--settings-knowledge-batch-1-proposed-2026-11-07). The generic requirements above draw on the catalog's canonical task/recovery guidance, [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html), [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (reference review date 2026-11-07; external URL reachability not verified in this batch). Little Wins F20 source evidence: `server/modules/reviews/index.ts` declares modes `approval_required` and `trusted_recorder_acceptance`, and gates acceptance on a distinct capability; its README states the latter is proposed and not activated in legacy routes. `docs/little-wins/03_DECISIONS_AND_OPEN_QUESTIONS.md` still flags review atomicity (DEC-009) as open. This product snapshot is not the authoritative catalog and is not proof of deployment.
+**Status:** proposed knowledge on draft ; catalog owner unassigned; product policy approval, live behavior, accessibility and authorization tests **NOT VERIFIED**. must re-gather context before proceeding.
 
-**Status:** proposed knowledge on draft PR #12; catalog owner unassigned; product policy approval, live behavior, accessibility and authorization tests **NOT VERIFIED**. Batch 3 must re-gather context before proceeding.
+## Time and personal preferences
 
-
-## Settings knowledge Batch 3 — time and personal preferences (proposed, 2026-11-07)
-
-**Context refresh and coverage disposition:** Re-read current `main` and the cumulative branch, canonical registry, [design tokens/themes](../../knowledge/foundations/design-tokens-and-themes.md), [internationalization](../../knowledge/guidance/internationalization.md), and [accessibility](../../knowledge/guidance/accessibility.md). Their semantic token, mode/density, locale formatting, and reduced-motion requirements **already exist**. This addition specifies how a settings page exposes *effective preferences* and how a workspace timezone decision affects period-based tasks; it does not duplicate token implementation. In the available cleaned Little Wins F20 ZIP, `shell/context/display-preferences.ts` defines `light`/`high-contrast` and `comfortable`/`compact` with browser-local storage, while `server/modules/history/index.ts` reports periods as UTC. Its decision register `DEC-010` still leaves timezone and activity-versus-award date semantics open. No live user behavior, deployments, or changed target implementation are verified.
-
-### KG-004 — Reporting timezone and calendar-period configuration
+### Reporting timezone and calendar-period configuration
 
 **Use when** a configurable timezone changes which business dates or reporting periods contain a record. **Avoid** assuming that changing how a date is *displayed* authorizes rewriting timestamps or reassigning historical awards.
 
@@ -253,13 +240,11 @@ A timezone setting must not be editable until the following domain decisions hav
 
 **Example (illustrative):** A stored UTC instant shortly after midnight UTC may belong to the prior local calendar day in `America/New_York`. A monthly report must consistently apply the selected timezone to its period boundaries; merely relabeling the UTC result with a local date would be misleading. The decision about **which event timestamp** determines the period remains product-owned.
 
-**Default when unresolved:** show current reporting basis explicitly as read-only (for example, “Reports currently use UTC”), link an explanation if supported, and do not expose a functional-looking timezone selector. There is no evidence that Little Wins F20 implements configurable reporting timezones.
-
 **Verification cases:** UTC day/month rollover; spring-forward missing local hour and fall-back repeated hour; timestamps around period boundaries; date-only activity input; locale date display different from period computation; stale cached report after authorized change; historical export; unauthorized edit; concurrent edit; invalid timezone and tzdb update. Tests must compare authoritative aggregation outputs, not only formatted labels.
 
-### KG-008 — Preference scope, effective mode and safe fallback
+### Preference scope, effective mode and safe fallback
 
-Use [design tokens and themes](../../knowledge/foundations/design-tokens-and-themes.md#appearance-preferences-as-a-product-journey--account-batch-3-kg-016017) as canonical ownership for semantic themes, modes, density and contrast; [accessibility](../../knowledge/guidance/accessibility.md) owns platform-level accessibility requirements. The settings page owns *the user journey and scope disclosure*, not an independent theme engine.
+Use [design tokens and themes](../../knowledge/foundations/design-tokens-and-themes.md) as canonical ownership for semantic themes, modes, density and contrast; [accessibility](../../knowledge/guidance/accessibility.md) owns platform-level accessibility requirements. The settings page owns *the user journey and scope disclosure*, not an independent theme engine.
 
 | Preference decision | Settings experience requirement |
 | --- | --- |
@@ -277,23 +262,19 @@ Use [design tokens and themes](../../knowledge/foundations/design-tokens-and-the
 
 **Acceptance cases:** reload with valid/invalid stored value, disabled storage, hydration first paint, preference reset, second device expectations, light/high-contrast focus and errors, compact density at touch/zoom, browser reduced-motion override, untranslated text and mixed RTL strings. Record actual run results separately from the proposed checks.
 
-### Batch 3 evidence and unresolved decisions
+### Evidence and unresolved decisions
 
 - **Reusable sources:** [IANA Time Zone Database](https://www.iana.org/time-zones) (tzdb, consulted 2026-11-07; political/DST revisions occur), [MDN `Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) (locale-aware display and explicit `timeZone`, consulted 2026-11-07), [W3C Internationalization](https://www.w3.org/International/quicktips/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
-- **Little Wins source snapshot:** cleaned F20 archive provided by the user; direct inspection of `docs/little-wins/03_DECISIONS_AND_OPEN_QUESTIONS.md`, `shell/context/display-preferences.ts`, `shell/context/display-preferences-provider.tsx`, and `server/modules/history/index.ts`. Source inspection supports only those observed claims, not deployed behavior.
-- **Open product decision:** `DEC-010` is unresolved. Do not infer the workspace timezone or choose activity versus award date semantics on behalf of the product owner.
-- **Status:** proposed catalog guidance; owner/review assignment outstanding; catalog validator, runtime timezone correctness, browser preference behavior, accessibility and internationalization tests **NOT VERIFIED**. Next batch must re-collect current context before modifying guidance.
 
+- **Unresolved design decision:** The owner must define whether reporting periods use a workspace timezone, a user's display timezone, or source event timezone; never infer activity-versus-award-date semantics from presentation choices.
 
-## Settings knowledge Batch 4 — configuration governance and audit (proposed, 2026-11-07)
+## Configuration governance and audit
 
-**Fresh-context and reuse check:** At the start of Batch 4, compared current `main` and PR #12 branch, inspected `catalog/index.json`, this portal, [role-aware audit visibility](role-aware-workspaces-and-context-switching.md#batch-10-extension--enterprise-approvals-delegation-and-audit-visibility), [privacy/retention](../../knowledge/guidance/privacy-consent-and-trust.md), [interaction recovery](interaction-states-and-recovery.md), and [governance decisions](../../governance/lifecycle-and-decisions.md). Existing pages already own permission-aware audit viewing, data lifecycle, and general recovery. This extension owns only the **workspace settings change-event contract and its management journey**. Do not equate catalog decision/changelog records with runtime administrative audit events.
-
-### KG-007 — Configuration-change history contract
+### Configuration-change history contract
 
 **Use when:** a setting changes who can act, which workflows execute, how reports are grouped, how data is retained, or other consequential workspace behavior. **Avoid:** logging every ephemeral personal theme selection as an administrative change or promising a tamper-proof audit trail without backend guarantees.
 
-Before implementation, assign the product/security owners and determine which changes warrant an audit event. Use the existing Batch 1 `auditClass` registry field to document whether each setting is `none`, `operational` or `sensitive` (illustrative classification names, not a mandated schema).
+Before implementation, assign the product/security owners and determine which changes warrant an audit event. Use the existing `auditClass` registry field to document whether each setting is `none`, `operational` or `sensitive` (illustrative classification names, not a mandated schema).
 
 | Event field / behavior | Minimum contract |
 | --- | --- |
@@ -312,7 +293,7 @@ Before implementation, assign the product/security owners and determine which ch
 
 - Show an **administrative settings activity** view only to authorized roles, scoped to the current workspace; independently authorize both event queries and export/download if implemented. Omit or redact fields the viewer is not entitled to see.
 - Display the **setting, actor (where permitted), effective timestamp, scope, change summary and outcome**; separate proposed/draft values from confirmed persisted changes. Use accessible semantic tables or timelines with labels and readable empty/filter/error states.
-- For conflicting updates, link the event or configuration revision to the safe [Batch 1 save recovery](#workspace-configuration-foundation--settings-knowledge-batch-1-proposed-2026-11-07) flow. A log entry explains what changed but does not itself restore access or guarantee undo.
+- For conflicting updates, link the event or configuration revision to the safe save recovery flow. A log entry explains what changed but does not itself restore access or guarantee undo.
 - **Revert policy:** decide separately whether the *setting* can be restored and whether downstream effects can be reversed. Reverting `reviewRequired` may change future submissions without undoing prior approvals or points transactions. When reversal is unsafe, provide an authorized compensating workflow and explain the consequences rather than a misleading one-click “Undo.”
 - **Retention and privacy:** choose a justified retention schedule and disclosure policy with product/security/legal owners; consider minors, member identities, sensitive values, access revocations, account/group deletion, and exports. Do not hardcode a universal retention duration or claim immutable retention that conflicts with legitimate deletion processes.
 - **Presentation and localization:** use explicit timestamps and timezone, translated actor/action labels and error text, long-name reflow, keyboard-accessible filters and focus, readable contrast and status announcements. Audit history must remain usable without relying on colors or icons alone.
@@ -321,20 +302,20 @@ Before implementation, assign the product/security owners and determine which ch
 
 ```json
 {
-  "eventId": "evt-example",
-  "kind": "workspace.settings.changed",
-  "workspaceId": "workspace-example",
-  "actorId": "authenticated-actor",
-  "settingKey": "workspace.reviewRequired",
-  "previousSummary": "approval required",
-  "newSummary": "trusted mode (capability gated)",
-  "revision": 17,
-  "recordedAtUtc": "2026-11-07T16:00:00Z",
-  "outcome": "committed"
+ "eventId": "evt-example",
+ "kind": "workspace.settings.changed",
+ "workspaceId": "workspace-example",
+ "actorId": "authenticated-actor",
+ "settingKey": "workspace.reviewRequired",
+ "previousSummary": "approval required",
+ "newSummary": "trusted mode (capability gated)",
+ "revision": 17,
+ "recordedAtUtc": "2026-11-07T16:00:00Z",
+ "outcome": "committed"
 }
 ```
 
-The event illustrates audit semantics only. The specific setting and trusted mode are **not** evidence of an implemented Little Wins configuration capability.
+The event is a synthetic audit example. It illustrates the event contract but does not demonstrate a deployed configuration capability.
 
 **Anti-examples:** a settings switch saves but the only audit trace is a client console message; a “Revert” button promises to erase awards granted while a permissive review policy was active; a settings export exposes secret values or unrelated workspaces.
 
@@ -354,16 +335,11 @@ The event illustrates audit semantics only. The specific setting and trusted mod
 
 **Sources and boundaries:** This knowledge reuses [role-aware audit and delegation](role-aware-workspaces-and-context-switching.md), [privacy/data lifecycle](../../knowledge/guidance/privacy-consent-and-trust.md), [interaction recovery](interaction-states-and-recovery.md), [OWASP Logging Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Logging_Cheat_Sheet.html), [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html), and [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) (reference review: 2026-11-07; link reachability not independently verified).
 
-**Little Wins F20 evidence boundary:** the inspected product snapshot provides contribution/review/reward history and owner-managed configuration; it is **not proof of an implemented configuration-change event stream, viewer, export, retention policy or undo function**. No event schema, retention duration or audit-authorized role is approved by this guidance.
+**Status:** proposed catalog guidance; product/security/legal ownership and implementation choices pending. Source/catalog review completed; validator, security tests, browser/a11y checks, event integrity and actual retention enforcement **NOT VERIFIED**. must gather fresh context, run catalog-wide validation where available, and record the remaining product-specific decisions.
 
-**Status:** proposed catalog guidance; product/security/legal ownership and implementation choices pending. Source/catalog review completed; validator, security tests, browser/a11y checks, event integrity and actual retention enforcement **NOT VERIFIED**. Batch 5 must gather fresh context, run catalog-wide validation where available, and record the remaining product-specific decisions.
+## Interaction composition, availability and impact
 
-
-## Settings knowledge Batch 1 — interaction composition, availability and impact (KG-009, KG-011, KG-012; proposed 2026-11-07)
-
-**Coverage disposition:** These are *focused extensions*, not three new catalog concepts. The existing [settings persistence table](#settings-persistence-kg-003), [forms](forms.md), [feature/capability matrix](task-flows-and-information-architecture.md#batch-8--capability-dependencies-and-configuration-state-journeys-2026-11-07), and [paused-work recovery](interaction-states-and-recovery.md#batch-8--paused-capabilities-and-work-already-in-progress-2026-11-07) already cover generic saving, dependencies and recovery. This batch makes their **settings-specific composition and presentation decisions** explicit.
-
-### KG-009 — Compose settings without duplicating authority
+### Compose settings without duplicating authority
 
 | Boundary | Owns | Must not own |
 | --- | --- | --- |
@@ -380,7 +356,7 @@ The event illustrates audit semantics only. The specific setting and trusted mod
 
 **Acceptance:** keyboard and screen reader can identify the section heading, each field and error; focus is retained after save/retry; loading, invalid, pending, conflict, read-only and offline states are distinguishable; small/zoomed and translated/RTL layouts keep controls and actions reachable.
 
-### KG-011 — Presentation when a feature is unavailable
+### Presentation when a feature is unavailable
 
 Choose the representation based on **user intent and data continuity**, not only the stored enable flag:
 
@@ -397,7 +373,7 @@ Choose the representation based on **user intent and data continuity**, not only
 
 **Anti-pattern:** disabling rewards removes all navigation to pending redemptions and leaves a deep link showing a misleading "No rewards" empty state.
 
-### KG-012 — Impact-summary and confirmation contract
+### Impact-summary and confirmation contract
 
 Use a compact inline explanation for ordinary reversible changes, an impact summary for changes to dependent workflows, and a confirmation dialog **only when the consequences are material, hard to reverse, destructive, or otherwise require explicit authorization**. Avoid warning fatigue from confirming every edit.
 
@@ -409,14 +385,9 @@ A consequential change summary should include: (1) exact setting and affected wo
 
 **Verification examples:** reversible personal setting (no confirmation), workspace rename (explicit save), feature pause with pending work (impact summary), feature disable with historical records (deep-link preservation), unauthorized change (server rejection), stale version (reconcile), long localized copy and screen reader focus/recovery. All product/runtime scenarios remain **NOT VERIFIED**.
 
-**Provenance and status:** Derived by reconciling existing catalog guidance with the Little Wins F20 Settings user-scenario design; generic accessibility criteria follow [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (references identified 2026-11-07; no new external validation in this batch). Knowledge is **proposed**, owner/reviewer unassigned, no product implementation asserted. Later batches address cross-consumer propagation/integration tests and lifecycle; do not treat this section as evidence they are complete.
+## Propagation and integration verification
 
-
-## Settings knowledge Batch 2 — propagation and integration verification (KG-010, KG-013; proposed 2026-11-07)
-
-**Coverage disposition:** Existing [Settings persistence](#settings-persistence-kg-003) and [workspace save/propagation](#kg-006--save-propagate-and-recover) already specify authoritative saves, conflicts and dependent-view refresh. [Offline synchronization](offline-sync-and-conflicts.md) owns multi-device/queued changes and uncertain write outcomes; [quality gates](../../governance/quality-gates.md) owns general release evidence. This batch adds a *configuration-specific consumer update contract and cross-feature verification matrix*, not a new state manager or a replacement for those concepts.
-
-### KG-010 — Configuration propagation and state reconciliation
+### Configuration propagation and state reconciliation
 
 Before implementation, list for each setting: authoritative scope and version; direct writers; UI consumers; derived capability consumers; historical/report consumers; invalidation mechanism; security boundary; expected behavior after success, failure, stale data or permission change. Model *effective* capabilities separately from stored flags.
 
@@ -438,7 +409,7 @@ Before implementation, list for each setting: authoritative scope and version; d
 5. If one downstream refresh fails, show an honest “Settings saved; some views may be outdated” state if the core write was verified; offer refetch rather than reissuing a possibly non-idempotent write.
 6. On revision conflict, permission loss or ambiguous timeout, preserve drafts according to privacy policy, fetch current server state, and offer compare/reapply or safe restart. Never silently overwrite.
 
-**Consumer contract example (illustrative, not a Little Wins implementation):**
+**Consumer contract example (illustrative):**
 
 | Setting family | Direct consumer | Dependent consumer | Invariant to verify |
 | --- | --- | --- | --- |
@@ -451,7 +422,7 @@ Before implementation, list for each setting: authoritative scope and version; d
 
 **Anti-pattern:** a successful workspace policy POST changes one toggle locally while the Review page still accepts a disallowed direct action; another user's workspace also sees the updated cached value.
 
-### KG-013 — Configuration change integration evidence
+### Configuration change integration evidence
 
 Test the *user's configuration intent through all affected consumers*, not just successful control rendering or an isolated API unit test. Build an evidence row for every consequential setting transition: source value/version, action, actor/scope, server outcome, UI consumer state, domain invariants, retry/recovery, verification tool, owner and status.
 
@@ -476,14 +447,11 @@ Test the *user's configuration intent through all affected consumers*, not just 
 
 **Anti-example:** a green switch component test is used to claim the policy is enforced while direct API calls and stale tabs have never been exercised.
 
-**Sources and verification boundary:** Reuses [Settings portal](#kg-006--save-propagate-and-recover), [offline synchronization](offline-sync-and-conflicts.md), [feature capability journeys](task-flows-and-information-architecture.md#batch-8--capability-dependencies-and-configuration-state-journeys-2026-11-07), [quality gates](../../governance/quality-gates.md), and [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) / [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) for applicable inclusive interactions. Date: 2026-11-07. **Status:** proposed catalog guidance, reviewer unassigned. Product runtime checks and security/a11y/E2E tests are **NOT VERIFIED**.
+**Sources and verification boundary:** Reuses Settings portal, [offline synchronization](offline-sync-and-conflicts.md), [feature capability journeys](task-flows-and-information-architecture.md), [quality gates](../../governance/quality-gates.md), and [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) / [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) for applicable inclusive interactions. Date: 2026-11-07. **Status:** proposed catalog guidance, reviewer unassigned. Product runtime checks and security/a11y/E2E tests are **NOT VERIFIED**.
 
+## Configuration lifecycle and migration
 
-## Settings knowledge Batch 3 — configuration lifecycle and migration (KG-014; proposed 2026-11-07)
-
-**Coverage disposition:** General [catalog lifecycle and decisions](../../governance/lifecycle-and-decisions.md) already governs reusable concept ownership, status, deprecation and migration; [versioned aggregate migrations](offline-sync-and-conflicts.md#versioned-aggregate-migrations-and-safe-restore-batch-6--proposed-2026-11-07) covers durable data conversion and concurrency. The focused addition here is the **user-facing and implementation handoff contract for an individual setting** as it is added, renamed, split, merged, retired or moved between scopes. This is not a new canonical component or permission model.
-
-### KG-014 — Per-setting lifecycle decision and compatibility matrix
+### Per-setting lifecycle decision and compatibility matrix
 
 For each setting record its stable key, documented default and effective value, prior aliases, data type and allowed values, personal/workspace/system scope, authority and storage owner, schema/version, read/write capabilities, affected consumers, migration path, rollback and status (proposed, active, deprecated or removed). **Setting runtime lifecycle status is distinct from catalog concept status.** Before changing the schema or UI, identify whether existing deployments, stored records, deep links, mobile/old browser clients and downstream feature readers can still interpret the value safely.
 
@@ -511,6 +479,6 @@ For each setting record its stable key, documented default and effective value, 
 5. **Verify:** compare effective values before/after, saved explicit choices, missing/unset defaults, mixed-version clients, stale tabs, offline drafts, tenant isolation, dependent capabilities and history. Record real tests and responsible owner.
 6. **Retire:** stop writing aliases once supported readers are migrated; remove UI, code and dead styles only with verified consumers and rollback evidence.
 
-**Target-specific boundary:** The catalog does not prescribe Little Wins' timezone default, points/rewards transition policy, or which clients remain supported; those are application decisions. Nor does documentation prove an actual migration, deployment or backup.
+**Application-specific boundary:** A reusable settings contract cannot choose the product's timezone defaults, feature-transition policies or supported clients. These decisions require domain ownership and must not be inferred from documentation alone.
 
-**Verification status:** Documentation guidance **proposed**; reviewer unassigned. Real schema fixtures, application upgrades, data safety, accessibility, multi-client behavior and restore tests are **NOT VERIFIED**. Reuse [lifecycle governance](../../governance/lifecycle-and-decisions.md), [offline synchronization](offline-sync-and-conflicts.md), [configuration propagation](#settings-knowledge-batch-2--propagation-and-integration-verification-kg-010-kg-013-proposed-2026-11-07), [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (reference date 2026-11-07; external revalidation not performed).
+**Verification status:** Documentation guidance **proposed**; reviewer unassigned. Real schema fixtures, application upgrades, data safety, accessibility, multi-client behavior and restore tests are **NOT VERIFIED**. Reuse [lifecycle governance](../../governance/lifecycle-and-decisions.md), [offline synchronization](offline-sync-and-conflicts.md), configuration propagation, [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (reference date 2026-11-07; external revalidation not performed).

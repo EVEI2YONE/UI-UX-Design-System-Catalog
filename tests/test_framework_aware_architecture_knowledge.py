@@ -29,16 +29,5 @@ class FrameworkAwareArchitectureKnowledgeTests(unittest.TestCase):
                 self.assertTrue(hits)
                 self.assertEqual(hits[0]["id"], "architecture.framework-aware")
 
-    def test_new_entry_is_proposed_and_source_files_exist(self):
-        entry = next(x for x in self.entries if x["id"] == "architecture.framework-aware")
-        self.assertEqual(entry["status"], "proposed")
-        for path in [
-            entry["path"],
-            "archive/planning/application-architecture-batch-17-context-and-gaps.md",
-        ]:
-            with self.subTest(path=path):
-                self.assertTrue((ROOT / path).is_file())
-
-
 if __name__ == "__main__":
     unittest.main()

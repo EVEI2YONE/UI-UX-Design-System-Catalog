@@ -10,8 +10,8 @@ Design around high-value user tasks instead of page inventories or decorative co
 
 ```text
 entry -> orientation -> decision -> input -> pending -> success
-                                   \-> error -> recovery/retry
-                                   \-> cancel/exit
+ \-> error -> recovery/retry
+ \-> cancel/exit
 ```
 
 Record user cohort, context, success condition, primary action, safe exit, and failure branches. Add empty, no-permission, expired-session, partial-failure and offline states as applicable. Include keyboard, mobile and assistive-technology equivalents.
@@ -45,10 +45,9 @@ Record a task as **entry → orientation → choose → act → pending → outc
 
 **IA acceptance:** primary routes and labels are distinguishable; landmarks and headings form a predictable hierarchy; filter and back behavior are consistent; direct links and narrow/reflowed views function; empty/error branches have recoverable next steps. Validate the model with task observation and task completion, not click count alone.
 
+## Multi-scope task context and optional features
 
-## Multi-scope task context and optional features (2026-11-07)
-
-**Observed example:** Little Wins scopes Overview, Review and History by project, but Members and Rewards by group. Groups own membership/points, while projects own challenges/submissions. Moving a challenge recalculates project progress without moving the submission or point ledger.
+**Illustrative scope example:** A product may show some records at the project scope and other membership or account records at a group scope. Moving a task between projects can update project-level progress without moving its underlying submissions or financial/history ledger. Make every scope visible and verify the effects of context switching.
 
 **Guidance:** before drawing navigation, make a resource/scope matrix (account -> workspace -> group -> project -> record) with visible scope for every list, aggregate, action and deep link. Keep the active project explicit where data is project-filtered; distinguish global/group-wide views with their own headings and filter affordances. Verify changing project with unsaved forms, old links, return navigation and no-results states. Avoid suggesting a product-wide project filter that misleadingly narrows group-wide rewards.
 
@@ -58,12 +57,11 @@ Record a task as **entry → orientation → choose → act → pending → outc
 
 **Checks:** scope matrix for every route; accessible focus/context announcements; empty and revoked-project states; localized labels; restored history and balances on feature toggle; no unintended mutations when moving a challenge.
 
-
-## Batch 8 — capability dependencies and configuration-state journeys (2026-11-07)
+## Capability dependencies and configuration-state journeys
 
 **Purpose:** extend the earlier multi-scope/optional-feature guidance with a testable **capability matrix**, not an assumption that independently stored toggles represent independent user capabilities. Use when owners can pause/re-enable optional tasks or features whose actions depend on other features. Avoid prescribing universal flag names, infrastructure or authorization from a UI control.
 
-**Context-first trigger:** Little Wins persists `pointsEnabled`, `rewardsEnabled` and `challengesEnabled` independently on each group. Its redemption command requires **both points and rewards**, whereas challenges have separate visibility. The Rewards navigation is hidden when either prerequisite is off, yet the Rewards page contains a paused-state notice and preserves existing requests. These are source-observed behaviors, not live UI test results.
+**Illustrative dependency:** A product stores points, rewards and challenges as separate configuration values, while a redemption action depends on both points and rewards being available. Its navigation may hide unavailable rewards, yet authorized historical requests still need a discoverable management route. Configuration independence is not the same as capability independence.
 
 **Define before implementation:**
 1. **Configuration versus capability:** map each stored flag to the actual action preconditions and derived availability. Define one centralized, documented capability predicate per protected action; a hidden tab does not authorize or block a direct command.
@@ -73,7 +71,7 @@ Record a task as **entry → orientation → choose → act → pending → outc
 5. **Discoverability:** if navigation disappears but requests remain pending, provide a deliberate authorized route to review/manage those requests; do not assume a deep link is discoverable.
 6. **Scope and roles:** group versus project flags, defaults for new groups, membership permissions and deployment gating are distinct decisions. Keep one source of truth for actual action availability; test a denied direct command independently of visual gating.
 
-**Illustrative capability table (Little Wins source, simplified):**
+**Illustrative capability matrix (hypothetical):**
 
 | Points | Rewards | Challenges | Redeem new reward | Challenge task | Historical points/redemptions |
 | --- | --- | --- | --- | --- | --- |
@@ -88,8 +86,7 @@ This table describes the relevant domain command and UX intent; it does not clai
 
 **Verification:** eight-configuration state table, direct API action for each configuration, pending-work and history preservation, settings confirmation, stale-tab race, re-enable with intact balances, keyboard/read-only affordances, localized labels, mobile navigation and permission differences. Report missing browser/API evidence as **NOT VERIFIED**.
 
-
-## Task-to-screen wireframe composition and meaningful alternatives (proposed Batch 2, 2026-11-07)
+## Task-to-screen wireframe composition and meaningful alternatives
 
 **Use when:** a task brief must become a reviewable wireframe screen or small screen sequence, or when comparing structurally distinct layout hypotheses. **Avoid when:** requirements for the user, task or critical constraints are unavailable and cannot be defensibly labeled as assumptions; a decorative reskin is presented as a second concept; or an image is mistaken for working behavior. For fidelity/escalation see [wireframe methodology](../../knowledge/guidance/wireframe-methodology.md). For within-screen emphasis see [visual hierarchy](../../knowledge/foundations/design-principles.md). For runtime state/retry semantics see [interaction recovery](interaction-states-and-recovery.md).
 
@@ -148,12 +145,11 @@ For each option deliver: brief contract with KNOWN/ASSUMED/ILLUSTRATIVE/BLOCKED 
 
 **Sources and interpretation:** [GOV.UK Service Standard, understanding user needs](https://www.gov.uk/service-manual/service-standard/point-1-understand-user-needs) (updated 2022-05-30; checked 2026-11-07) supports grounding the brief in user needs and testing assumptions; [GOV.UK user-needs research](https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs) (checked 2026-11-07) distinguishes observed needs from stakeholder assumptions; [Home Office designer role standard](https://design.homeoffice.gov.uk/design-and-content/professional-standards/designer-role-standard) (checked 2026-11-07) describes using multiple design approaches in alpha. The specific brief, comparison rubric and two-variant decision rule above are **proposed catalog synthesis**, not mandated GOV.UK standards or empirically validated thresholds.
 
+## Spatial continuity and sequential task progress
 
-## B03 — spatial continuity and sequential task progress (CKG-11/12; proposed 2026-11-07)
+**Scope:** how a flow keeps the current object, next action, selection and task location predictable across repeated items. This extends the task-first map, not a universal requirement to automate review queues. [Interaction recovery](interaction-states-and-recovery.md) owns outcome truth and focus fallback. [Component contracts](../../knowledge/architecture/component-contracts.md) owns event boundaries. [Advanced interactions](advanced-interactions-and-reversible-actions.md) covers action-control consolidation and interaction effort.
 
-**Scope:** how a flow keeps the current object, next action, selection and task location predictable across repeated items. This extends the task-first map, not a universal requirement to automate review queues. [Interaction recovery](interaction-states-and-recovery.md#b03--iconstate-synchronization-and-post-mutation-focus-continuity-ckg-0910-proposed-2026-11-07) owns outcome truth and focus fallback. [Component contracts](../../knowledge/architecture/component-contracts.md) owns event boundaries. B04 owns action-control consolidation and effort measurement.
-
-### CKG-11 — spatial continuity before action compression
+### Spatial continuity before action compression
 
 Map the user task as **last necessary input → decision control → result/status → likely next action** for pointer, touch and keyboard. Preserve stable placement and visual identity of the primary controls when only selected-item content changes. This is a *layout hypothesis* to test against actual work, not a mandatory fixed pixel distance.
 
@@ -168,26 +164,26 @@ Map the user task as **last necessary input → decision control → result/stat
 
 **Review method:** capture representative task start, last input, relevant decision, feedback and next-action locations; record avoidable navigation, scroll changes, target relocations, focus jumps and lost context. Test whether stable placement improves task success and perceived clarity for relevant users. Pointer distance alone does not demonstrate improved usability; keyboard, touch, zoom and safety constraints can justify different placement. The numeric metric definition belongs to [UX measurement](../../knowledge/guidance/ux-measurement.md), not this flow pattern.
 
-### CKG-12 — feature-owned sequential workflow contract
+### Feature-owned sequential workflow contract
 
 Use a sequential controller only when the user deliberately processes multiple related items and the next item can be selected unambiguously, safely and accessibly. Feature code owns permissions, eligibility, ordering, note/validation requirements and server mutation. It composes existing controls rather than replacing Button, collection, Dialog or menu primitives.
 
 ```text
 ready / queue overview
-  -> item selected (identity + revision + context)
-  -> optional note/edit/validation
-  -> decision requested (one explicit outcome)
-  -> pending (disable duplicate consequential action)
-  -> acknowledged by authoritative service
-  -> reconciled with current permitted queue state
-  -> result communicated (status + focus)
-  -> next eligible selected OR user stops / returns / loads more
+ -> item selected (identity + revision + context)
+ -> optional note/edit/validation
+ -> decision requested (one explicit outcome)
+ -> pending (disable duplicate consequential action)
+ -> acknowledged by authoritative service
+ -> reconciled with current permitted queue state
+ -> result communicated (status + focus)
+ -> next eligible selected OR user stops / returns / loads more
 
 pending
-  -> validation error: retain item/notes; correct and resubmit
-  -> definite failure: explain and permit safe retry if justified
-  -> unknown outcome: reconcile; DO NOT automatically retry or advance
-  -> stale revision / permission changed: revalidate and explain
+ -> validation error: retain item/notes; correct and resubmit
+ -> definite failure: explain and permit safe retry if justified
+ -> unknown outcome: reconcile; DO NOT automatically retry or advance
+ -> stale revision / permission changed: revalidate and explain
 ```
 
 | Transition requirement | Feature contract |
@@ -206,7 +202,7 @@ pending
 
 **Exceptions:** automatic next-item selection is inappropriate where a decision requires a separate review, where the user may wish to inspect the result, when task frequency/ordering is uncertain, or where access/eligibility cannot be confirmed. An explicit Next button may be safer than automatic advancement. Do not claim speed benefits without observed testing.
 
-### B03 task-flow verification — proposed, not product-tested
+### Task-flow verification — proposed, not product-tested
 
 | Acceptance scenario | Expected evidence | Status |
 | --- | --- | --- |
@@ -217,4 +213,4 @@ pending
 | Keyboard, screen reader, touch and zoom | Navigation/focus predictable across content changes | NOT VERIFIED |
 | User research and task metrics | Recorded task success, errors, context loss and travel with baseline | NOT VERIFIED |
 
-**Sources and applicability:** [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) for relevant focus/keyboard semantics (consulted 2026-11-07); product-inspired examples from [Little Wins UI knowledge](https://github.com/EVEI2YONE/Little_Wins/tree/main/docs/little-wins/ui-knowledge/). These documents do not certify interaction improvements or backend behavior.
+**Sources and applicability:** [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) inform applicable focus and keyboard semantics. Capability matrices here are hypothetical examples, not evidence of implemented server behavior or measured task outcomes.

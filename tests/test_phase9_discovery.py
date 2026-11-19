@@ -1,4 +1,4 @@
-"""Phase 9: deterministic human/agent discovery and source provenance regression tests."""
+"""Deterministic human/agent discovery and source provenance regression tests."""
 import json
 import sys
 import tempfile
@@ -15,7 +15,7 @@ class Phase9DiscoveryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.entries=json.loads((ROOT/"catalog/index.json").read_text(encoding="utf-8"))["entries"]
-        cls.cases=json.loads((ROOT/"tests/fixtures/phase9_retrieval_cases.json").read_text(encoding="utf-8"))
+        cls.cases=json.loads((ROOT/"tests/fixtures/retrieval_cases.json").read_text(encoding="utf-8"))
         cls.by_id={entry["id"]:entry for entry in cls.entries}
         cls.out=tempfile.TemporaryDirectory()
         cls.generated=Path(cls.out.name)/"site"
@@ -62,7 +62,7 @@ class Phase9DiscoveryTests(unittest.TestCase):
             detail=(self.generated/site_build.route(entry).lstrip("/")/"index.html").read_text(encoding="utf-8")
             implementation=entry.get("implementation")
             if not implementation:
-                self.assertIn("Specification only",detail)
+                self.assertIn("No runnable reference",detail)
                 continue
             with self.subTest(entry=entry["id"]):
                 self.assertIn("Inspect implementation source",detail)
@@ -80,9 +80,9 @@ class Phase9DiscoveryTests(unittest.TestCase):
                 self.assertEqual(implementation["status"],"reference")
 
     def test_safe_source_ref_links_support_reviewed_branch_and_sha(self):
-        branch = site_build.source_repo_url("docs/visual-catalog-refactor-blueprint")
+        branch = site_build.source_repo_url("review/shell-routes")
         sha = site_build.source_repo_url("3b933abea778122dece31af7496f409028ed6198")
-        self.assertIn("/blob/docs/visual-catalog-refactor-blueprint/", branch)
+        self.assertIn("/blob/review/shell-routes/", branch)
         self.assertIn("/blob/3b933abea778122dece31af7496f409028ed6198/", sha)
         for bad in ("", "../main", "/main", ".hidden", "main?x=1", "main#fragment", "https://other"):
             with self.subTest(ref=bad):

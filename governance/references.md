@@ -1,6 +1,6 @@
 # Standards and research references
 
-**Status:** curated starting points (reviewed for this scaffold: 2026-11-07). Standards indicate intended requirements and patterns, **not** verified conformance of this catalog or any application.
+**Status:** external standards and source-review register. Standards indicate intended requirements and patterns, **not** verified conformance of this catalog or any application.
 
 | Source | Version/status | Intended use and limits |
 | --- | --- | --- |
@@ -10,14 +10,11 @@
 | [Design Tokens Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/) | Final W3C Community Group report, 2025-10-28 | Vendor-neutral typed design-token interchange. **Not** a W3C standards-track Recommendation. |
 | [Design Tokens Community Group FAQ](https://www.designtokens.org/faq/) | Project documentation | Format adoption and status context; verify applicability to toolchain. |
 
-## Internal source lineage
-
-Initial concepts are a selective synthesis of the user-provided **UI/UX Design System Architect v1.1** materials: `02_component_architecture.md`, `03_tokens_themes.md`, `05_ux_interaction.md`, `06_accessibility.md`, `07_internationalization.md`, `08_metrics.md`, `09_quality_gates.md`, `10_catalog_first_knowledge_audit.md`, and associated catalog entry/governance templates. Those materials are not automatically a published design standard, and this scaffold does not include a copy of the agent operating contract.
 
 ## Evidence hygiene
 
 New guidance should capture a source URL, edition/date, scope, limitations, last review date and owner. Prefer primary authoritative references for normative claims, and actual user research or telemetry for product outcomes. Label hypotheses as hypotheses. If a source is inaccessible, mark it unverified rather than fabricating a quotation or result.
-## Batch 7 research and cognitive-design sources (proposed guidance)
+## research and cognitive-design sources (proposed guidance)
 
 - [Nielsen Norman Group: When to Use Which UX Research Methods](https://www.nngroup.com/articles/which-ux-research-methods/) — research-purpose and method-selection framework; professional guidance, not universal sampling thresholds.
 - [GOV.UK Service Manual: User Research](https://www.gov.uk/service-manual/user-research) — research planning, recruitment and inclusive service research; contextualize outside government services.
@@ -27,7 +24,7 @@ New guidance should capture a source URL, edition/date, scope, limitations, last
 
 Added to the research queue on 2026-11-07; individual source publication dates and applicability must be verified in each knowledge review. Human review is not claimed.
 
-## Batch 8: content, forms, discovery and service recovery (review queue, 2026-11-07)
+## content, forms, discovery and service recovery (review queue, 2026-11-07)
 
 | Source | Applicability and limits |
 | --- | --- |
@@ -42,7 +39,7 @@ Added to the research queue on 2026-11-07; individual source publication dates a
 
 These URLs were inspected as research starting points on 2026-11-07; source editions/changes must be rechecked on future reviews. No live product tests or external content endorsements are claimed.
 
-## Batch 9: trust and resilient journeys (source review 2026-11-07)
+## trust and resilient journeys (source review 2026-11-07)
 
 | Source | Applicability and limit |
 | --- | --- |
@@ -56,7 +53,7 @@ These URLs were inspected as research starting points on 2026-11-07; source edit
 
 External pages were checked for research context on 2026-11-07. They do not certify this catalog or a target application.
 
-## Batch 10: charts, mobile/adaptive UX, advanced interactions and enterprise (reviewed 2026-11-07)
+## charts, mobile/adaptive UX, advanced interactions and enterprise (reviewed 2026-11-07)
 
 | Source | Applicability and limits |
 | --- | --- |
@@ -67,9 +64,7 @@ External pages were checked for research context on 2026-11-07. They do not cert
 | [WAI-ARIA APG Grid](https://www.w3.org/WAI/ARIA/apg/patterns/grid/) | Keyboard semantics for deliberately implemented interactive grids; not ordinary HTML tables. |
 | [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) | Security requirement for server-side authorization and object scope; not user-experience verification. |
 
-All are guidance or standards references, not evidence of an actual tested product. See [Batch 10 context ledger](../archive/planning/batch-10-context-and-gap-ledger.md).
-
-## Batch 11: AI and multimodal experience sources (reviewed 2026-11-07)
+## AI and multimodal experience sources (reviewed 2026-11-07)
 
 | Source | Applicability and limits |
 | --- | --- |
@@ -81,9 +76,7 @@ All are guidance or standards references, not evidence of an actual tested produ
 | [MDN SpeechRecognition](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition) | Limited support and possible server-based processing; do not claim offline or device-local recognition on all platforms. |
 | [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) | Web accessibility target; real app evaluation and assistive testing remain necessary. |
 
-**Source interpretation:** normative accessibility criteria, voluntary risk guidance, historical UX research and provider-specific implementation docs have different authority. All are context for proposed knowledge, not tests of an actual product. [Batch 11 ledger](../archive/planning/batch-11-context-and-gap-ledger.md).
-
-## Batch 12: performance, experimentation and design-to-code (research 2026-11-07)
+## performance, experimentation and design-to-code (research 2026-11-07)
 
 | Source | Applicability and limitations |
 | --- | --- |
@@ -95,8 +88,6 @@ All are guidance or standards references, not evidence of an actual tested produ
 | [Optimizely statistical methods](https://www.optimizely.com/field-notes/articles/how-to-choose-the-right-stats-engine) | 2026 vendor guidance on fixed-horizon and sequential testing; not independent validation of any product algorithm. |
 | [DTCG Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/) and [format FAQ](https://www.designtokens.org/faq/) | Stable 2025 Community Group token interchange, not W3C Recommendation or the experimental 2026 preview; converter support must be tested. |
 | [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots) and [Storybook tests](https://storybook.js.org/docs/writing-tests/index) | Visual snapshot/stories can support review with pinned environment, but do not replace actual keyboard, AT or user-task tests. |
-
-Sources are decision references as of 2026-11-07, not a claim of implementation/tool installation. See [Batch 12 context ledger](../archive/planning/batch-12-context-and-gap-ledger.md).
 
 ## Wireframe methodology source review (2026-11-07; proposed B1)
 
@@ -140,7 +131,6 @@ The brief contract, comparison matrix and default two meaningful alternatives ar
 ## Wireframe B6 — synthetic scenarios and retrieval evidence (2026-11-07)
 
 - **Internal canonical source:** B1–B5 pages for `guidance.wireframe-methodology`, `pattern.task-flows`, `pattern.interaction-recovery`, `guidance.mobile-adaptive`, `guidance.accessibility`, `guidance.internationalization` and `governance.quality`. Each remains `proposed`.
-- **Fixture source:** [synthetic WRF-01–06 example bank](../archive/planning/wireframe-synthetic-example-bank-2026-11-07.md). All cases and placeholder data are authored test illustrations, not real research, screenshots, or externally sourced assets.
 - **Retrieval contract:** [deterministic resolver](../scripts/find_concept.py) and [regression tests](../tests/test_wireframe_examples_retrieval.py); `avoid_when` is negative metadata, not a positive discovery field. Python checks validate lookup behavior only.
 
 No new external standard was required for B6. User-testing, actual image inspection, translation correctness, accessibility and app/runtime claims: **NOT VERIFIED**.

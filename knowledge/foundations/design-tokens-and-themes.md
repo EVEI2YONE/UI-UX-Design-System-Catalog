@@ -19,7 +19,7 @@ Conceptual mapping, **not a shipped token file**:
 reference.blue.600 -> color.action.primary.background
 color.action.primary.background -> button.primary.background
 light: color.action.primary.background = reference.blue.600
-dark:  color.action.primary.background = reference.blue.300
+dark: color.action.primary.background = reference.blue.300
 ```
 
 For interoperable exports, consider the [DTCG 2025.10 typed format](../../governance/references.md) with `$type`, `$value` and aliases. It is a W3C Community Group report, **not a W3C Recommendation**.
@@ -49,14 +49,14 @@ Illustrative, **not an importable token export**:
 
 ```json
 {
-  "color": {
-    "text": {
-      "primary": {
-        "$type": "color",
-        "$value": "{palette.neutral.900}"
-      }
-    }
-  }
+ "color": {
+ "text": {
+ "primary": {
+ "$type": "color",
+ "$value": "{palette.neutral.900}"
+ }
+ }
+ }
 }
 ```
 
@@ -73,7 +73,7 @@ The example omits the referenced palette by design; it cannot pass alias-resolut
 
 Avoid encoding success/error only by color. A palette comparison alone does not establish contrast or accessible interaction.
 
-## Batch 12 extension — token interchange and release checks
+## Token interchange and release checks
 
 Keep **one reviewed semantic token source** with explicit schema version, types, aliases, purpose, ownership and platform/mode mappings. As of 2026-11-07, the Design Tokens Community Group Format Module **2025.10 is stable**, but it is a W3C **Community Group report, not a W3C Recommendation**. Newer 2026 preview drafts must not be treated as authoritative release specifications.
 
@@ -95,8 +95,7 @@ Sources consulted 2026-11-07: [DTCG Format Module 2025.10](https://www.w3.org/co
 
 Related: [component contracts](../architecture/component-contracts.md), [quality gates](../../governance/quality-gates.md), [lifecycle](../../governance/lifecycle-and-decisions.md).
 
-
-## Batch 9 — legacy global CSS to scoped semantic styling (proposed, 2026-11-07)
+## Legacy global CSS to scoped semantic styling
 
 **Observed migration trigger:** Little Wins imports Tailwind but also relies on a large `app/globals.css` with compact global selectors, raw hex custom properties (`--ink`, `--paper`, `--sidebar`, `--purple`) and repeated breakpoint overrides. The source includes a shadcn-style configuration and a separate UI component collection. Neither that configuration nor a Tailwind import proves product-specific classes already follow the library's token and component conventions.
 
@@ -110,8 +109,7 @@ Related: [component contracts](../architecture/component-contracts.md), [quality
 
 **Verification:** documented before/after selector and token map; light/dark only where implemented; responsive snapshots at supported breakpoints, keyboard focus, dialog/backdrop layering, reduced motion, high zoom, long/RTL copy, font fallback and performance measurements where available. Compare component consumers incrementally and keep a revert path.
 
-
-## Appearance preferences as a product journey — account batch 3 (KG-016–017)
+## Appearance preferences as a product journey — account
 
 **Boundary:** this source defines semantic tokens and theme capability; an account portal composes those into actual user controls. Offer light, dark and system preference only for implemented modes. Distinguish **device/system preference**, **account-synced preference** and **workspace-controlled appearance**; display the effective result and explain overrides. Persist only after confirmed storage, gracefully apply unsupported-mode fallback, and avoid flashing the incorrect theme during load where practicable.
 
@@ -121,6 +119,6 @@ Optional accessibility adjustments (contrast, density, motion or text) must not 
 
 **Verification NOT VERIFIED:** first load/flicker, reload and concurrent device preference, system theme changes, high-contrast/forced colors, reduced motion, keyboard/screen reader, locale text expansion, logged-out behavior. See [account settings](../../specifications/patterns/account-and-settings-portal.md), [accessibility](../guidance/accessibility.md), and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07).
 
-## Aesthetic palette and typography decisions — craftsmanship Batch 1 (proposed)
+## Aesthetic palette and typography decisions — craftsmanship
 
-This page owns **token naming, roles, modes and migration**. For selecting a coherent tonal palette, purposeful accent saturation, type pairing, optical typography and density before encoding them as tokens, use [Visual design craftsmanship](visual-design-craftsmanship.md) (KG-02–04). Do not mistake attractive sample values for contrast-tested or production-ready tokens.
+This page owns **token naming, roles, modes and migration**. For selecting a coherent tonal palette, purposeful accent saturation, type pairing, optical typography and density before encoding them as tokens, use [Visual design craftsmanship](visual-design-craftsmanship.md). Do not mistake attractive sample values for contrast-tested or production-ready tokens.

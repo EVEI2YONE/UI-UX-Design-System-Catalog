@@ -16,8 +16,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Validate index, sections, and links
         run: python3 scripts/validate_catalog.py
-      - name: Verify structure migration
-        run: python3 scripts/migrate_structure.py --check --final
+      - name: Check concept-only editorial policy
+        run: python3 scripts/check_editorial.py
       - name: Smoke-test lookup
         run: python3 scripts/find_concept.py dialog
 
@@ -41,6 +41,8 @@ jobs:
       - name: Test site routes, source and fallback
         run: python3 -m unittest discover -s site/tests -v
 
+      - name: Test frontend shell search helpers
+        run: node --test site/tests/shell-query.test.cjs
       - name: Test executable Button reference source
         run: node --test site/tests/button-runtime.test.cjs
       - name: Test reference color contrast

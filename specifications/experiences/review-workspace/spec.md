@@ -1,7 +1,7 @@
 # Review Workspace
 
-**Kind:** feature reference specification · **Status:** proposed · **Primary knowledge layer:** experiences  
-**Canonical ID:** `feature.review-workspace` · **Owner:** unassigned · **Review date:** not reviewed  
+**Kind:** feature reference specification · **Status:** proposed · **Primary knowledge layer:** experiences
+**Canonical ID:** `feature.review-workspace` · **Owner:** unassigned · **Review date:** not reviewed
 **Implementation evidence:** source-controlled synthetic reference exists; real backend integration, user studies and browser/assistive technology verification **NOT VERIFIED**.
 
 ## User job and reuse justification
@@ -27,15 +27,15 @@ UI `canDecide` flags express a **display affordance only**. They must not be use
 
 ```text
 Queue (loaded / empty / error / loading)
-  -> select record -> inspect title, description, status, revision
-  -> choose Approve / Return / Reject, optionally explain reason
-  -> validate input and local availability
-  -> simulated request pending (no duplicate submit)
-  -> simulated confirmed | denied | stale revision/conflict | known failure | unknown outcome
-  -> confirmed: show truthful result and return to queue
-  -> denied/conflict/error: preserve selected record, note and context
-  -> unknown: prohibit blind retry; verify authoritative-like status in simulation
-  -> verify known outcome: conclude / review again according to actual application policy
+ -> select record -> inspect title, description, status, revision
+ -> choose Approve / Return / Reject, optionally explain reason
+ -> validate input and local availability
+ -> simulated request pending (no duplicate submit)
+ -> simulated confirmed | denied | stale revision/conflict | known failure | unknown outcome
+ -> confirmed: show truthful result and return to queue
+ -> denied/conflict/error: preserve selected record, note and context
+ -> unknown: prohibit blind retry; verify authoritative-like status in simulation
+ -> verify known outcome: conclude / review again according to actual application policy
 ```
 
 | Scenario | UI responsibilities | Authorized service responsibilities | Focus and recovery |
@@ -55,10 +55,10 @@ Queue (loaded / empty / error / loading)
 `ReviewWorkspace.mount(container, options)` accepts a `scenario` object and safe renderer callbacks. The synthetic adapter contract used by the reference is deliberately simple:
 
 ```text
-list() -> {records: ReviewRecord[]}
+list -> {records: ReviewRecord[]}
 get(id) -> ReviewRecord | null
 decide({id, revision, action, reason}) ->
-  {kind: "confirmed"|"denied"|"conflict"|"error"|"unknown", ...}
+ {kind: "confirmed"|"denied"|"conflict"|"error"|"unknown", ...}
 verify(id) -> {kind: "confirmed"|"unresolved", ...}
 ```
 
@@ -92,7 +92,7 @@ Bound rendered rows or paginate larger queues instead of rendering unbounded lis
 - **Styles:** [ReviewWorkspace.css](../../../site/src/implementations/features/review-workspace/ReviewWorkspace.css)
 - **Preview route:** `/catalog/features/review-workspace/` when generated and served from the site root. No deployment is claimed.
 - **Tests:** [reference source-level tests](../../../site/tests/review-workspace-runtime.test.cjs) plus static site/registry tests.
-- **Evidence ledger:** [Phase 7](../../../docs/visual-catalog-refactor/13-phase-7-review-workspace.md).
+- **Evidence ledger:** [](../../../docs/visual-catalog-refactor/13-phase-7-review-workspace.md).
 
 | Check | Status |
 | --- | --- |

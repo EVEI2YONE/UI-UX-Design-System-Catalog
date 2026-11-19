@@ -42,15 +42,13 @@ For each *implemented* critical task, document the assistive technology/input co
 
 Use [WCAG 2.2](../../governance/references.md) for the precise normative success criteria and exceptions rather than turning these scenario descriptions into invented numeric thresholds. Mark each check `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` with reason; do not claim blanket compliance from an empty scan.
 
-
-## Batch 7 — connected journey evidence, not isolated controls (2026-11-07)
+## Connected journey evidence, not isolated controls
 
 Audit **entry -> record action -> modal/form -> validation or submission -> updated list -> resumed focus** as one continuous task. Check that a keyboard user can reach every step and can identify where they are after an item disappears, scope changes or a modal closes. Prefer native buttons/links in table action cells and genuine `<dialog>` semantics; avoid turning a whole `<tr>` into a pseudo-button when a discrete control conveys the action clearly.
 
-Capture actual focus destinations, screen-reader announcements, keyboard activation (including Space for buttons), unexpected draft loss, background operability, Escape/cancel behavior, and change-of-context communication. Separate source-observed semantics from tested failure: a suspicious pattern is an audit candidate, **not** automatic proof of WCAG failure. Use [data tables](../../specifications/patterns/data-tables.md) and the [dialog contract](../../specifications/components/dialog/spec.md) for the canonical ownership details. No Little Wins runtime accessibility verification was performed in this batch.
+Capture actual focus destinations, screen-reader announcements, keyboard activation (including Space for buttons), unexpected draft loss, background operability, Escape/cancel behavior, and change-of-context communication. Separate source-observed semantics from tested failure: a suspicious pattern is an audit candidate, **not** automatic proof of WCAG failure. Use [data tables](../../specifications/patterns/data-tables.md) and the [dialog contract](../../specifications/components/dialog/spec.md) for the canonical ownership details. No Little Wins runtime accessibility verification was performed in this guidance.
 
-
-## Inclusive wireframe stress review (proposed Batch 4, 2026-11-07)
+## Inclusive wireframe stress review
 
 A static wireframe may record *intended* reading order, focus sequence, labels, error association, target discoverability and reflow; it cannot demonstrate native semantics, screen-reader output, touch activation or a WCAG pass. Distinguish **VISUALLY DEPICTED**, **ANNOTATED INTENT**, **NOT SHOWN**, and **IMPLEMENTATION TEST NOT VERIFIED** in every handoff.
 
@@ -67,7 +65,6 @@ A static wireframe may record *intended* reading order, focus sequence, labels, 
 **Synthetic example:** A compact form mock shows a two-line submit label and inline error with a callout “Intended: announce validation errors and focus summary.” That callout is an interaction **requirement**, not evidence that the behavior works. **Anti-example:** a mock's green badge says “WCAG AA passed” without semantics, measured contrast, assistive tech or keyboard tests.
 
 Record the target standard/scope per product (for web, evaluate applicable [WCAG 2.2](https://www.w3.org/TR/WCAG22/) criteria; for native, use relevant platform expectations). Document product-specific exclusions with rationale rather than silently asserting `NOT APPLICABLE`. This guidance does not certify a screenshot or product. Related: [adaptive composition](mobile-and-adaptive-platform-ux.md), [internationalization](internationalization.md), [wireframe methodology](wireframe-methodology.md) and [quality gates](../../governance/quality-gates.md).
-
 
 ## Reference-state accessibility, theme and performance acceptance matrix
 
@@ -105,4 +102,4 @@ Record **reference ID / scenario / theme / viewport and zoom / browser and OS / 
 
 **Standards and provenance:** [WCAG 2.2](https://www.w3.org/TR/WCAG22/) covers reflow (1.4.10) and focus not obscured (2.4.11); focus appearance (2.4.13) is AAA, not part of an unqualified AA claim. [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) provides patterns, not authorization for nonsemantic widgets. [Design Tokens Community Group 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/) is a final *Community Group* report, not a W3C Recommendation; token exchange compliance does not demonstrate UI accessibility.
 
-**Evidence state:** the checklist is now **documented**; a human-reviewed matrix and deployed performance remain **NOT VERIFIED**. The human/field verification requirements remain open and are summarized in the [knowledge-development ledger](../../docs/visual-catalog-refactor/20-knowledge-development-batches.md).
+**Evidence state:** the checklist is now **documented**; a human-reviewed matrix and deployed performance remain **NOT VERIFIED**. The human/field verification requirements remain open and are summarized in the .

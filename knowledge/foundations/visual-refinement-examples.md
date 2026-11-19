@@ -1,4 +1,4 @@
-# Synthetic visual refinement example bank — KG-17
+# Synthetic visual refinement examples
 
 **Status:** proposed illustrative documentation, **not a canonical concept**, rendered screenshots, or measured UX evidence. **Owner:** unassigned. Guidance lives in [quality gates](../../governance/quality-gates.md#visual-craftsmanship-review-and-corrective-iteration--batch-4-kg-15-and-kg-16-proposed-2026-11-07) and [visual foundations](visual-design-craftsmanship.md). This file provides worked **written** before/after scenarios to help reviewers practice precise criticism and correction.
 

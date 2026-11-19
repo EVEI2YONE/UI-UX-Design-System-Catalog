@@ -2,7 +2,7 @@
 
 **Kind:** guideline · **Status:** proposed · **Owner:** unassigned · **Review:** pending
 
-## Context and prior-knowledge audit (Batch 16)
+## Context and prior-knowledge audit
 
 The [application selection guide](application-architecture.md) distinguishes a multi-app profile from a modular single app; [module boundaries](module-boundaries-and-developer-navigation.md) defines feature/domain/shared ownership, and [evolution](architecture-evolution.md) defines migration and fitness. Existing [lifecycle](../../governance/lifecycle-and-decisions.md) already covers component contracts and deprecation. This page adds multi-application topology and multi-team delivery decisions, not a duplicate component lifecycle.
 
@@ -23,14 +23,14 @@ These are alternatives, not an ordered maturity ladder. A large company can rema
 
 ```text
 apps/
-  customer-web/
-  admin-web/
+ customer-web/
+ admin-web/
 packages/
-  design-system/          # stable UI contracts + compiled tokens
-  platform/               # cross-app technical infrastructure
-  domain-projects/        # shared domain rules with real multi-app consumers
-tooling/                  # build, lint, dependency-rule configuration
-docs/                     # decisions and consumer migration guides
+ design-system/ # stable UI contracts + compiled tokens
+ platform/ # cross-app technical infrastructure
+ domain-projects/ # shared domain rules with real multi-app consumers
+tooling/ # build, lint, dependency-rule configuration
+docs/ # decisions and consumer migration guides
 ```
 
 Do not create a package for every directory or tiny feature. Package boundaries require versioned public interfaces, a real maintenance owner and independent consumer tests. Keep app-only features inside the owning app. Choose workspace and build tooling based on existing stack and the actual incremental-build/dependency needs.

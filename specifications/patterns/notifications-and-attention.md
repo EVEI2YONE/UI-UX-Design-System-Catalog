@@ -23,8 +23,8 @@ Help people notice consequential changes without exhausting attention, leaking p
 
 ```text
 Event -> relevance and audience check -> sensitivity/urgency -> permission + app preference
-  -> deduplicate and choose channel/timing -> deliver / create durable record
-  -> read, dismiss, mute, act or adjust -> authorized return to task
+ -> deduplicate and choose channel/timing -> deliver / create durable record
+ -> read, dismiss, mute, act or adjust -> authorized return to task
 ```
 
 - Request browser/system permission in meaningful task context and through deliberate user interaction where platforms require it. Detect unsupported and denied states; do not repeatedly nag.
@@ -71,8 +71,7 @@ Event -> relevance and audience check -> sensitivity/urgency -> permission + app
 
 Related: [feedback](feedback.md), [privacy](../../knowledge/guidance/privacy-consent-and-trust.md), [service recovery](service-recovery-and-support.md), [content design](../../knowledge/guidance/content-design-and-ux-writing.md), [authentication](authentication-and-account-lifecycle.md).
 
-
-## Notification preferences inside settings — account batch 3 (KG-014–015)
+## Notification preferences inside settings — account
 
 For each event class, expose only genuinely supported delivery channels and distinguish `on` (effective), `requested` (pending), `blocked` (browser/device permission), `ineligible` (policy), and `failed` (delivery configuration). Explicitly label mandatory security/transactional messages separately from opt-in promotions and configurable reminders.
 

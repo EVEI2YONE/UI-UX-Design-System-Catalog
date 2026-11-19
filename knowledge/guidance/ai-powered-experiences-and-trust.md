@@ -31,9 +31,9 @@ When claims depend on external data, distinguish source availability from the mo
 
 ```text
 Discover capability -> choose scope/data -> generate or retrieve
-  -> pending / partially streamed / failed / uncertain / complete
-  -> inspect evidence and limitations -> accept, edit, reject or retry
-  -> confirm saved user outcome -> feedback and correction
+ -> pending / partially streamed / failed / uncertain / complete
+ -> inspect evidence and limitations -> accept, edit, reject or retry
+ -> confirm saved user outcome -> feedback and correction
 ```
 
 Treat streaming text as **provisional** until the system reaches a confirmed finish state. A polished answer is not proof that a tool call succeeded. For failed retrieval or unavailable sources, explain what was **not** checked and offer a path to continue without invented evidence.

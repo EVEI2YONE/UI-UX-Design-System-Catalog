@@ -1,6 +1,6 @@
 # Practical UI styling recipes: layout, surfaces, imagery, archetypes and motion
 
-**Kind:** guideline · **Status:** proposed · **Primary layer:** foundations · **Owner:** unassigned · **Reviewed:** not yet · **Batch:** visual craftsmanship 2 (KG-06–10)
+**Kind:** guideline · **Status:** proposed · **Primary layer:** foundations · **Owner:** unassigned · **Reviewed:** not yet · **Batch:** visual craftsmanship 2
 
 ## Purpose, boundaries and adoption
 
@@ -8,7 +8,7 @@ Turn an approved [visual direction](visual-design-craftsmanship.md) into scoped,
 
 **Context contract before selecting a recipe:** task and information priority; content type and extremes; brand traits; responsive containers and platforms; component system and styling approach; supported themes/locales; accessibility constraints. Favor the existing application stack (CSS Modules, scoped CSS, utilities, or native styles) and its established tokens. Illustrative CSS below uses custom properties as aliases—**not a complete executable theme**, so consumers must define those properties and validate their actual colors and spacing.
 
-## KG-06 — Layout and composition recipes
+## Layout and composition recipes
 
 Choose from the **content relationship**, not a rigid device preset.
 
@@ -24,15 +24,15 @@ Choose from the **content relationship**, not a rigid device preset.
 
 ```css
 .workspace {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--space-section, 1.5rem);
+ display: grid;
+ grid-template-columns: minmax(0, 1fr);
+ gap: var(--space-section, 1.5rem);
 }
 @media (min-width: 64rem) {
-  .workspace {
-    grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
-    align-items: start;
-  }
+ .workspace {
+ grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem);
+ align-items: start;
+ }
 }
 .workspace__main { min-width: 0; }
 .workspace__aside { min-width: 0; }
@@ -42,7 +42,7 @@ Choose from the **content relationship**, not a rigid device preset.
 
 **Good:** a report page keeps its title, scope and actions aligned while a supplemental summary relocates below content in compact mode. **Bad:** a decorative three-column dashboard truncates action labels and rearranges screen-reader order independently of its visual order.
 
-## KG-07 — Surfaces, borders, shadows and layered depth
+## Surfaces, borders, shadows and layered depth
 
 Use the smallest visual cue that conveys a semantic boundary or interaction, in this order: **space/proximity → subtle tonal surface → border → elevation**. Shadows alone must not carry critical state.
 
@@ -58,22 +58,22 @@ Use the smallest visual cue that conveys a semantic boundary or interaction, in 
 
 ```css
 .summaryCard {
-  background: var(--color-surface-raised);
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-card);
-  box-shadow: var(--elevation-card);
-  padding: var(--space-card);
+ background: var(--color-surface-raised);
+ color: var(--color-text-primary);
+ border: 1px solid var(--color-border-subtle);
+ border-radius: var(--radius-card);
+ box-shadow: var(--elevation-card);
+ padding: var(--space-card);
 }
 .summaryCard:focus-within {
-  border-color: var(--color-border-focus);
+ border-color: var(--color-border-focus);
 }
 /* This does not replace a visible :focus-visible indicator on each interactive child. */
 ```
 
 A shadow should express **actual layering** (raised cards or temporary overlays), not be added to every rectangle. Limit competing radius families. In high-contrast/forced-colors environments, inspect whether borders and focus survive; decorative backgrounds may disappear. **Bad:** floating shadow on every field, three unrelated radii and a faint border used as the only selection signal. **Good:** quiet data panels with one distinct raised overlay and independently visible button focus.
 
-## KG-08 — Iconography, illustration and photography
+## Iconography, illustration and photography
 
 - **Icons:** choose one coherent family (stroke, fill, corner behavior and optical size). Define a small size set; align icons optically with text rather than forcing strict mathematical centering. Preserve recognizable metaphors and use accompanying labels for unclear actions. Accessible names should reflect *actions*, not an icon's shape.
 - **Photography:** choose consistent subject, lighting, crop, perspective, color temperature and visual treatment. Prefer deliberate crops with safe subject framing over arbitrary background cover. Specify aspect ratio and focal region; test responsive crops and translated overlays.
@@ -85,7 +85,7 @@ A shadow should express **actual layering** (raised cards or temporary overlays)
 
 Illustrative asset contract: `role=informative|decorative; source/license; subject; aspectRatio; objectPosition; alt; mobileCrop; loadingPriority; themeBehavior`. The exact attributes depend on platform and implementation.
 
-## KG-09 — Recipes by interface archetype
+## Recipes by interface archetype
 
 These are **starting hypotheses**, not compulsory industry styles. Choose based on user expectations and real tasks.
 
@@ -97,7 +97,7 @@ These are **starting hypotheses**, not compulsory industry styles. Choose based 
 | Commerce / comparisons | Clear images, visible price/terms, comparable specifications, trusted call-to-action hierarchy | Visual urgency or promotional treatment obscuring price, shipping or consent |
 | Creative portfolio | Expressive display typography, intentional negative space and strong media art direction | Unpredictable navigation, inaccessible contrast, slow/heavy interaction |
 
-**Worked miniature recipe — operational dashboard:** 
+**Worked miniature recipe — operational dashboard:**
 1. Begin with the user's decision (“What needs action today?”).
 2. Put current scope, date/freshness and one relevant next action in the header.
 3. Group 2–4 salient signals using stable numeral alignment; use smaller supporting labels.
@@ -107,7 +107,7 @@ These are **starting hypotheses**, not compulsory industry styles. Choose based 
 
 **Anti-example:** a wall of equal-sized saturated KPI tiles with no scope or dates looks energetic but does not support reliable decisions. [Data-visualization guidance](../guidance/data-visualization-and-dashboards.md) owns truthful metrics, axes and accessible chart alternatives.
 
-## KG-10 — Motion and microinteraction craftsmanship
+## Motion and microinteraction craftsmanship
 
 Every motion decision must document **trigger → what changes → why the movement helps → interruption/exit → reduced-motion fallback**. Begin with useful feedback: state acknowledgment, orientation, hierarchy, or continuity. Avoid animation that delays the primary task or implies a server save succeeded before confirmation.
 
@@ -123,18 +123,18 @@ Every motion decision must document **trigger → what changes → why the movem
 
 ```css
 .action {
-  transition: background-color var(--motion-fast) var(--easing-standard),
-              transform var(--motion-fast) var(--easing-standard);
+ transition: background-color var(--motion-fast) var(--easing-standard),
+ transform var(--motion-fast) var(--easing-standard);
 }
 .action:active { transform: translateY(1px); }
 @media (prefers-reduced-motion: reduce) {
-  .action { transition: none; transform: none; }
+ .action { transition: none; transform: none; }
 }
 ```
 
 Values are deliberately semantic; durations and easing must be resolved in a real theme. Verify whether opacity/transform effects are appropriate for each interaction and whether reduced-motion fallback retains essential feedback. [MDN prefers-reduced-motion](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion) explains platform preference matching; [WCAG 2.2](https://www.w3.org/TR/WCAG22/) governs applicable accessibility requirements. Do not equate this snippet with comprehensive motion accessibility.
 
-## Batch 2 quality and delivery gates
+## Quality and delivery gates
 
 For every adopted recipe record: **task and visual direction; selected archetype/layout; token roles and styling owner; state matrix; accessibility/locale requirements; reference provenance; viewport/container behavior; screenshot checks; alternate considered; measured or unknown outcomes**.
 
@@ -152,11 +152,11 @@ The prescriptions above are catalog-level design heuristics. Supporting platform
 
 **Related canonical owners:** [Visual craftsmanship](visual-design-craftsmanship.md) (visual direction), [Design principles](design-principles.md) (task hierarchy), [Tokens and themes](design-tokens-and-themes.md) (role naming/modes), [Component contracts](../architecture/component-contracts.md) (states and APIs), [Mobile/adaptive](../guidance/mobile-and-adaptive-platform-ux.md) (platform behavior), [Dashboard semantics](../guidance/data-visualization-and-dashboards.md), [Accessibility](../guidance/accessibility.md), [Internationalization](../guidance/internationalization.md), [Quality gates](../../governance/quality-gates.md).
 
-## Batch 1 handoff — semantic icon decisions (proposed, 2026-11-07)
+## Handoff — semantic icon decisions
 
 This page continues to own **icon visual craftsmanship** (family consistency, stroke, optical scale and imagery). For action/status meaning, decorative vs interactive SVGs, icon-only control states, RTL, hit-target sizing and accessibility evidence, use the canonical [icon semantics contract](iconography-and-semantics.md) (`foundation.icon-semantics`). Do not duplicate a per-component icon registry in this visual recipe or claim the examples constitute an installed icon library.
 
-## B05 — utility-first styling ownership reference (CKG-15; proposed 2026-11-07)
+## Utility-first styling ownership reference
 
 **When to use:** an application already employs utilities (such as Tailwind) and established accessible controls (such as shadcn/Radix), but styles spread across global CSS, component variants and feature JSX. **When not to use:** replacing a working styling stack to imitate this tree, copying theme values from a sample, or mandating a new package merely to reduce the number of files. [Design tokens and themes](design-tokens-and-themes.md) continues to own reference→semantic→component aliases, modes and migration. [Component model](../architecture/component-model.md) owns promotion; [architecture CI](../architecture/architecture-enforcement-and-ci.md) owns enforcement.
 
@@ -178,13 +178,13 @@ This page continues to own **icon visual craftsmanship** (family consistency, st
 ```css
 /* Existing app-owned theme entry, not arbitrary feature styling */
 :root {
-  --surface-control: var(--surface-default);
-  --text-control: var(--text-primary);
-  --focus-control: var(--focus-visible);
+ --surface-control: var(--surface-default);
+ --text-control: var(--text-primary);
+ --focus-control: var(--focus-visible);
 }
 [data-theme="dark"] {
-  /* Define semantic roles in the actual theme source. */
-  --surface-control: var(--surface-default);
+ /* Define semantic roles in the actual theme source. */
+ --surface-control: var(--surface-default);
 }
 ```
 
@@ -192,21 +192,21 @@ This page continues to own **icon visual craftsmanship** (family consistency, st
 // Illustrative use of an app's existing styled/accessible Button,
 // not a new Button implementation. Names must match the installed API.
 function TaskActions({ onSave, saving }: {
-  onSave: () => void; saving: boolean;
+ onSave: => void; saving: boolean;
 }) {
-  return (
-    <div className="flex flex-wrap items-center gap-2">
-      <Button
-        type="button"
-        variant="default"
-        disabled={saving}
-        aria-busy={saving || undefined}
-        onClick={onSave}
-      >
-        {saving ? "Saving…" : "Save"}
-      </Button>
-    </div>
-  );
+ return (
+ <div className="flex flex-wrap items-center gap-2">
+ <Button
+ type="button"
+ variant="default"
+ disabled={saving}
+ aria-busy={saving || undefined}
+ onClick={onSave}
+ >
+ {saving ? "Saving…" : "Save"}
+ </Button>
+ </div>
+ );
 }
 ```
 
@@ -224,7 +224,7 @@ function TaskActions({ onSave, saving }: {
 
 **Good:** a shared Button retains visible keyboard focus and one semantic default variant, while feature-local containers use token-backed gaps and responsive flex wrapping. **Bad:** four nearly identical buttons with hard-coded background colors and inconsistent disabled states; a global `main section button` override silently breaks dialogs; or a new Tailwind config replaces established tokens without a migration plan.
 
-### B05 verification, documentation only
+### Verification, documentation only
 
 | Check | Evidence needed | Status |
 | --- | --- | --- |
@@ -234,4 +234,4 @@ function TaskActions({ onSave, saving }: {
 | CSS ownership and migration | Selector/import graph and visual comparison for changed consumers | NOT VERIFIED |
 | Product UI outcome | Task continuity, no backend/permission mutation, real interaction tests | NOT VERIFIED |
 
-**References (for consumer-version review):** [Tailwind theme variables](https://tailwindcss.com/docs/theme/), [MDN CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07). Motivating case: [Little Wins B01 styling architecture](https://github.com/EVEI2YONE/Little_Wins/blob/main/docs/little-wins/ui-knowledge/batch-01-styling-architecture.md), whose proposed app-specific file ownership is not mandated by this catalog.
+**References (for consumer-version review):** [Tailwind theme variables](https://tailwindcss.com/docs/theme/), [MDN CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties), [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07). Motivating case: [Little Wins styling architecture](https://github.com/EVEI2YONE/Little_Wins/blob/main/docs/little-wins/ui-knowledge/batch-01-styling-architecture.md), whose proposed app-specific file ownership is not mandated by this catalog.

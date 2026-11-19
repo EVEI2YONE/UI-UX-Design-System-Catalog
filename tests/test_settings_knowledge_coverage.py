@@ -49,30 +49,12 @@ class SettingsKnowledgeCoverageTests(unittest.TestCase):
         self.assertEqual(matches[0]["status"], "proposed")
         self.assertEqual(len(entries), len({e["id"] for e in entries}))
 
-    def test_all_batches_and_gaps_documented(self):
-        for heading in BATCH_HEADINGS:
-            with self.subTest(heading=heading):
-                self.assertIn(heading, self.text)
-        for gap in KNOWLEDGE_GAPS:
-            with self.subTest(gap=gap):
-                self.assertIn(gap, self.text)
-
     def test_task_queries_retrieve_canonical_settings(self):
         for query in QUERIES:
             with self.subTest(query=query):
                 result = lookup(self.registry["entries"], query, limit=3)
                 self.assertTrue(result)
                 self.assertEqual(result[0]["id"], CANONICAL_ID)
-
-    def test_navigation_and_evidence_boundaries(self):
-        for path in ("README.md", "specifications/patterns/README.md", "CHANGELOG.md"):
-            text = (ROOT / path).read_text(encoding="utf-8")
-            self.assertIn("Settings", text)
-            self.assertIn("Batch 4", text)
-        self.assertIn("NOT VERIFIED", self.text)
-        self.assertIn("DEC-010", self.text)
-        self.assertIn("not", self.text.lower())
-
 
 if __name__ == "__main__":
     unittest.main()

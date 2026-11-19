@@ -36,11 +36,11 @@ Prefer responsive overflow or alternate summaries that preserve essential compar
 | Sorting, empty/error, pagination | NOT VERIFIED | Integration tests |
 | Reflow, formats, RTL and themes | NOT VERIFIED | Supported locales/viewport matrix |
 
-**Canonical ID:** `pattern.data-tables` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** preserve row action paths, sort state and data correctness. Proposed documentation, not a table library.
+**Canonical ID:** `pattern.data-tables` · **Owner:** unassigned · **Review date:** not reviewed
 
 Related: [search/filtering](search-and-filter.md), [task flows](task-flows-and-information-architecture.md), [accessibility](../../knowledge/guidance/accessibility.md), [internationalization](../../knowledge/guidance/internationalization.md). Standards: [WCAG 2.2](../../governance/references.md).
 
-## Batch 10 extension — dense records, editing and visualization
+## Dense records, editing and visualization
 
 **Representation choice:** Use a semantic data table for row/column comparison; use a [chart and narrative](../../knowledge/guidance/data-visualization-and-dashboards.md) for trends and distributions; use a detailed edit flow when validation, permission or explanation would become confusing in a compact grid. Do not substitute a visual dashboard for needed record-level actions.
 
@@ -62,10 +62,9 @@ A read-only sortable table should remain a semantic HTML table. Do **not** apply
 
 Related decisions: [advanced interactions and undo](advanced-interactions-and-reversible-actions.md), [visualization](../../knowledge/guidance/data-visualization-and-dashboards.md), [mobile and adaptive layout](../../knowledge/guidance/mobile-and-adaptive-platform-ux.md). Test actual integrated behavior; this is proposed documentation.
 
+## Accessible row actions without inventing a grid
 
-## Batch 7 — accessible row actions without inventing a grid (2026-11-07)
-
-**Context-first example:** The Little Wins source renders semantic data cells but attaches `onClick`, `tabIndex=0` and Enter handling to the `<tr>`, with a decorative chevron in the final Actions column. This is a code observation, **not** a verified screen-reader failure. Its `specifications/components/ui` library also contains accessible control primitives; their mere presence does not establish usage.
+**Illustrative anti-pattern:** A semantic table uses `onClick`, `tabIndex=0` and Enter handling on `<tr>` with only a decorative chevron in an Actions column. The row may lack the clear activation semantics and accessible name of a native control. This is a design risk to verify with the implemented table, not a claim of a measured screen-reader failure.
 
 **Decision:** keep table semantics for scan-and-compare tasks. Prefer a native `<button>` inside an action cell for opening a review/details task, or a native `<a>` for route navigation. Give the action a record-specific accessible name such as “Review contribution: Garden cleanup”; avoid a row-wide tab stop whose activation semantics, label, and Space behavior are unclear. Do not change the table to `role=grid` simply to make rows clickable. Where an entire-row pointer target is useful, ensure it does not create nested interactive actions or duplicate keyboard stops; the explicit native control remains the primary accessible path.
 
@@ -73,6 +72,6 @@ Related decisions: [advanced interactions and undo](advanced-interactions-and-re
 
 **Anti-example:** a row receives keyboard focus, responds only to Enter, and shows a chevron under an Actions header without an operable labeled control. **Good:** an Actions column contains an explicitly labeled Review button while the row stays a normal table row.
 
-## Phase 6 executable pattern reference (2026-11-08)
+## Interactive reference
 
-The visual catalog now includes an actual [Data tables implementation](../../site/src/implementations/patterns/data-tables/DataTables.js), its [deterministic synthetic scenarios](../../site/src/implementations/patterns/data-tables/scenarios.js), and [scoped demonstration styles](../../site/src/implementations/patterns/data-tables/DataTables.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests. See the [Phase 6 evidence ledger](../../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).
+The visual catalog now includes an actual [Data tables implementation](../../site/src/implementations/patterns/data-tables/DataTables.js), its [deterministic synthetic scenarios](../../site/src/implementations/patterns/data-tables/scenarios.js), and [scoped demonstration styles](../../site/src/implementations/patterns/data-tables/DataTables.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests.

@@ -24,8 +24,8 @@ Consent is **not** the lawful basis for every processing activity. Identify the 
 
 ```text
 User need -> clear reason and scope -> choice / decline or applicable alternative
-  -> processing / permission result -> truthful persisted state
-  -> discoverable adjustment or withdrawal where applicable -> confirmed outcome
+ -> processing / permission result -> truthful persisted state
+ -> discoverable adjustment or withdrawal where applicable -> confirmed outcome
 ```
 
 A browser/device permission is not the same thing as an app-category preference. Withdrawal, deletion and purpose restrictions may have asynchronous effects; display **pending vs completed** accurately. For potentially irreversible choices, include a consequence summary, explicit action label, safe cancellation, and a trustworthy confirmation.
@@ -62,8 +62,7 @@ A browser/device permission is not the same thing as an app-category preference.
 
 Related: [content design](content-design-and-ux-writing.md), [authentication lifecycle](../../specifications/patterns/authentication-and-account-lifecycle.md), [notifications](../../specifications/patterns/notifications-and-attention.md), [accessibility](accessibility.md), [service recovery](../../specifications/patterns/service-recovery-and-support.md).
 
-
-## Data lifecycle, portability and archived records (Batch 6 — proposed, 2026-11-07)
+## Data lifecycle, portability and archived records ( — proposed, 2026-11-07)
 
 **When to use:** collaborative products with persisted contribution histories, reward/credit ledgers, legacy records, retained archives or user-requested exports. **Avoid:** assuming that hiding an item, removing a UI switch, archiving a group, deleting an account and erasing every record are equivalent operations. This extends existing deletion/download guidance; it does not establish a particular legal right or retention period.
 
@@ -73,20 +72,19 @@ Related: [content design](content-design-and-ux-writing.md), [authentication lif
 
 **Preservation rules:** treat historical points and review outcomes as an auditable sequence rather than mutable totals; where policy allows corrections, append a reasoned correction record and keep actor/subject distinctions. Archiving a sample group or disabling a feature is not data deletion. Data minimization and subject-access duties require product-specific privacy/legal review; do not treat archival history as indefinitely retainable by default.
 
-**Illustrative trigger:** Little Wins stores an owner-scoped D1 workspace JSON aggregate, preserves legacy unscoped activity by normalizing it to a General project, archives demo groups, and does not document an end-user export/restore flow. These source observations are not evidence that production backup or privacy requests are implemented.
+**Example boundary:** An owner-scoped, revisioned JSON record and a migration that normalizes legacy content do not automatically supply an end-user export, secure restore, privacy-request workflow or production backup. Those capabilities must be explicitly designed, authorized and verified.
 
 **Acceptance (NOT VERIFIED unless tested):** export consistency against backend records; record-level access/redaction; bulk file size; versioned export schema; duplicate import/idempotency; role revocation during download; deletion and backup-retention boundaries; screen-reader/keyboard export feedback; safe error and interrupted-download recovery.
 
-
-## Account privacy and lifecycle control center — batch 2 (KG-011–013)
+## Account privacy and lifecycle control center
 
 **Scope:** extends generic privacy and data lifecycle guidance for a settings portal. Consent and rights options depend on the controller, jurisdiction, policy and processing basis. The interface must not label all processing as optional consent.
 
 | Task | Account-portal UX contract | Owner evidence |
 | --- | --- | --- |
-| Privacy choices (KG-011) | Organize by understandable purpose and effective scope, show current state and changed/pending state, distinguish necessary processing from optional permissions, provide withdrawal where applicable | Data-protection/legal review of choices, defaults, downstream propagation and audit |
-| View/correct/download personal data (KG-012) | Explain eligible data sources, corrections and verification; distinguish requested, verifying, processing, ready, denied, expired and completed; secure access to any export | Data inventory, authorized subject identification, retention and protected export/fulfillment |
-| Deactivate, close or delete account (KG-013) | Distinguish disabling access from deleting data; summarize billing/workspace/ownership/backup consequences; show policy-compliant reauthentication, cancellation/grace window if offered and progress | Actual deletion pipeline, retained legal records, linked services, cancellation and audit policy |
+| Privacy choices | Organize by understandable purpose and effective scope, show current state and changed/pending state, distinguish necessary processing from optional permissions, provide withdrawal where applicable | Data-protection/legal review of choices, defaults, downstream propagation and audit |
+| View/correct/download personal data | Explain eligible data sources, corrections and verification; distinguish requested, verifying, processing, ready, denied, expired and completed; secure access to any export | Data inventory, authorized subject identification, retention and protected export/fulfillment |
+| Deactivate, close or delete account | Distinguish disabling access from deleting data; summarize billing/workspace/ownership/backup consequences; show policy-compliant reauthentication, cancellation/grace window if offered and progress | Actual deletion pipeline, retained legal records, linked services, cancellation and audit policy |
 
 **Workflow:** clear request scope → plain-language consequence/choice → appropriate verification and confirmation → pending vs completed feedback → accessible durable status and help/reversal if supported. Delete a user-facing label only when the backend performs that exact operation; never claim all data is erased before backups or retained records are handled under reviewed policy.
 

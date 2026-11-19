@@ -2,7 +2,7 @@
 
 **Kind:** guideline · **Status:** proposed · **Primary layer:** cross-cutting · **Owner:** unassigned · **Review:** pending
 
-## Batch 17 context-first coverage audit
+## Framework-specific coverage considerations
 
 [Application selection](application-architecture.md) gives complexity-based profiles; [module boundaries](module-boundaries-and-developer-navigation.md) defines feature/domain/shared ownership; [evolution](architecture-evolution.md) covers safe migration. The missing knowledge is **adapting those profiles to frameworks where file location or filename has runtime meaning**. An illustrative `src/app/routes/` architecture can be harmful when interpreted as a required location in a framework with its own routing rules.
 
@@ -25,18 +25,18 @@ Illustrative trees demonstrate ownership, **not** copy-paste starter templates o
 
 ```text
 src/
-  app/
-    (workspace)/
-      projects/
-        page.tsx              # route entry
-        loading.tsx           # route loading UI if appropriate
-  features/
-    projects/
-      ProjectList.tsx
-      project-actions.ts
-      index.ts
-  shared/
-    ui/
+ app/
+ (workspace)/
+ projects/
+ page.tsx # route entry
+ loading.tsx # route loading UI if appropriate
+ features/
+ projects/
+ ProjectList.tsx
+ project-actions.ts
+ index.ts
+ shared/
+ ui/
 ```
 
 The App Router uses filesystem-defined route segments and special files. Parenthesized route groups organize routes without adding segments to URLs; they can also influence layout boundaries. Next.js permits colocating project files within route segments, so `specifications/experiences/` outside `app/` is an **option**, not a Next.js requirement. Choose route colocation for route-only code, and an external feature when multiple routes actually share an owner. Keep server-only code out of client imports; check current Next.js official runtime and file conventions before moving components. Do not suggest moving `page.tsx` into an arbitrary feature tree or treating `(group)` as a URL segment.
@@ -47,17 +47,17 @@ Source: [Next.js App Router route groups](https://nextjs.org/docs/app/api-refere
 
 ```text
 src/
-  main.ts
-  app/
-    projects/
-      project-list/
-        project-list.ts
-        project-list.html
-        project-list.css
-        project-list.spec.ts
-      project-data.ts
-    shared/
-      ui/
+ main.ts
+ app/
+ projects/
+ project-list/
+ project-list.ts
+ project-list.html
+ project-list.css
+ project-list.spec.ts
+ project-data.ts
+ shared/
+ ui/
 ```
 
 Angular's official style guide favors organizing by feature area, colocating related component files and tests, and avoiding large top-level folders grouped only by code type. Do not force a React-style `specifications/experiences/projects/hooks/` tree onto Angular; respect Angular's component, template and dependency-injection conventions. Keep files named consistently with the project's prevailing style and the Angular guide.
@@ -68,16 +68,16 @@ Source: [Angular style guide](https://angular.dev/style-guide).
 
 ```text
 app/
-  root.tsx
-  routes.ts                 # route configuration
-  routes/
-    projects/
-      route.tsx             # if using supported file-route conventions
-      project-form.tsx
-      project-data.server.ts
-  features/
-    projects/
-      project-rules.ts
+ root.tsx
+ routes.ts # route configuration
+ routes/
+ projects/
+ route.tsx # if using supported file-route conventions
+ project-form.tsx
+ project-data.server.ts
+ features/
+ projects/
+ project-rules.ts
 ```
 
 React Router supports route configuration; its optional file-route conventions use `@react-router/fs-routes` and route modules can live in folders alongside route-owned helpers. **Do not assume file routing is enabled** or that every `app/routes` file must become a route regardless of configuration. Prefer colocated route-only files when supported; share stable business logic through explicit feature APIs.
@@ -86,7 +86,7 @@ Source: [React Router file-route conventions](https://reactrouter.com/how-to/fil
 
 ### Other UI frameworks and native apps
 
-For Vue, SvelteKit, Nuxt, Remix-derived systems, mobile or desktop applications, **inspect official framework/platform rules at the target version before generating a proposed tree**. Preserve required route/platform entry points and map the same ownership decisions to native conventions. This batch does not claim validated recipes for frameworks it has not researched.
+For Vue, SvelteKit, Nuxt, Remix-derived systems, mobile or desktop applications, **inspect official framework/platform rules at the target version before generating a proposed tree**. Preserve required route/platform entry points and map the same ownership decisions to native conventions. this guidance does not claim validated recipes for frameworks it has not researched.
 
 ## Route-local versus feature-shared decision
 

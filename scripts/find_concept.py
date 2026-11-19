@@ -4,8 +4,12 @@ import argparse
 import json
 import re
 from pathlib import Path
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+from catalog.core.discovery import load_tasks, task_relevance
+TASKS = load_tasks(ROOT)
 
 
 def normalize(text):
@@ -24,6 +28,9 @@ def score(entry, query):
         return 90
     if normalize(entry['title']) == q:
         return 80
+    task_score = task_relevance(entry['id'], q, TASKS)
+    if task_score >= 0:
+        return task_score
     fields = [entry['id'], entry['title'], entry['summary'],
               *entry['aliases'], *entry['domains'],
               *entry.get('use_when', [])]

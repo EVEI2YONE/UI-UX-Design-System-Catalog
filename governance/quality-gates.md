@@ -30,7 +30,7 @@ This checks *document structure and lookup integrity only*. Example manual check
 
 P0 accessibility/safety/privacy/security/data-loss and critical regressions override the normal migration ranking. The user-impact order for product modernization is P1 core workflows, P2 IA/navigation, P3 minimal foundations/components, P4 onboarding/change management, P5 high-friction quick wins, P6 secondary experiences, P7 cosmetic polish. Engineering prerequisites may execute earlier than a higher-value product change. Do not invent usage frequency or test outcomes.
 
-## Per-batch evidence record
+## Evidence record
 
 For PRs that expand existing scaffold entries, reviewers should see a batch label, canonical paths touched, the design decisions added, known limitations, and check results. A useful definition includes an actionable rule, example/anti-example, a verification method and an identified owner or explicitly unassigned ownership. Avoid promoting entries solely because documentation validation passes.
 
@@ -51,7 +51,7 @@ Record actual script output in the PR, and keep code/UX claims distinct from val
 - **Governance:** explicit ownership or `unassigned`, review date or `null`, documented source limitations and review evidence before lifecycle promotion.
 - **Verification:** run `python3 scripts/validate_catalog.py` and `python3 -m unittest discover -s tests -v`; log actual outcomes. Runtime keyboard, a11y, RTL, theme and user testing are **NOT VERIFIED** by documentation tests.
 
-## Batch 12 extension — product release evidence beyond documentation
+## Product release evidence beyond documentation
 
 The existing catalog checks remain necessary. A real UI release additionally needs **performance, controlled-experiment and design-to-code checks**. Do not mark any product row PASS simply because Markdown validation succeeded.
 
@@ -75,10 +75,9 @@ For each implementing PR, record: **canonical ID**, version/owner, linked contra
 
 **Sources, consulted 2026-11-07:** [Playwright visual comparisons](https://playwright.dev/docs/test-snapshots) (rendering environment matters), [Storybook UI testing](https://storybook.js.org/docs/writing-tests/index) (stories, interaction and automated checks), [DTCG Format Module 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/) (W3C Community Group report, not W3C Recommendation), and [web.dev Web Vitals](https://web.dev/articles/vitals). These tools are **possible** implementation choices, not declared dependencies of this docs-only repository.
 
+## Hosted collaborative product assurance — context-driven checks
 
-## Hosted collaborative product assurance — context-driven checks (2026-11-07)
-
-Before this gate, gather: actual hosting trust boundary, public/raw endpoint exposure, authenticated subject contract, owner and tenant data model, command/state transitions, storage concurrency scheme, and domain tests. Little Wins, for example, documents Sites sign-in, an owner-derived D1 workspace, a revision-checked JSON aggregate and 11 domain tests; this **does not verify** a deployed identity boundary or browser behavior.
+Before this gate, gather: actual hosting trust boundary, public/raw endpoint exposure, authenticated subject contract, owner and tenant data model, command/state transitions, storage concurrency scheme, and domain tests. A hosted application's design notes or domain tests are insufficient proof of deployed identity isolation or browser behavior; validate the actual environment.
 
 | Gate | Required scenario | Disposition without execution |
 | --- | --- | --- |
@@ -93,8 +92,7 @@ Before this gate, gather: actual hosting trust boundary, public/raw endpoint exp
 
 **Decision:** a passing domain unit suite supports only tested domain invariants. A protected Site audience is a deployment condition, not proof that a raw API is unreachable. Promote a finding to PASS only with named test, environment, result and evidence. Owner/security specialists retain authority over platform contracts; this catalog describes inspection criteria, not guaranteed Sites behavior.
 
-
-## Batch 6 — data-lifecycle and migration acceptance (proposed, 2026-11-07)
+## Data-lifecycle and migration acceptance
 
 Gather the existing schema and deployed persistence contract **before** filling the checklist. Distinguish (a) observed source, (b) documented product intention, (c) inferred risk and (d) tested behavior.
 
@@ -110,8 +108,7 @@ Gather the existing schema and deployed persistence contract **before** filling 
 
 Documentation review can PASS while these product gates remain NOT VERIFIED. Do not claim legal compliance or backups solely from database technology or a successful unit suite.
 
-
-## Batch 7 — record-to-modal journey assurance (2026-11-07)
+## Record-to-modal journey assurance
 
 | Scenario | Evidence required | Untested status |
 | --- | --- | --- |
@@ -123,8 +120,7 @@ Documentation review can PASS while these product gates remain NOT VERIFIED. Do 
 
 Do not mark a product test PASS based solely on source review or on the presence of a prebuilt accessible component library. Prefer one integrated end-to-end evidence record for the full journey, supplemented by unit/component checks.
 
-
-## Batch 8 — independent flags and dependent capabilities (2026-11-07)
+## Independent flags and dependent capabilities
 
 | Test | Required evidence | Untested status |
 | --- | --- | --- |
@@ -138,8 +134,7 @@ Do not mark a product test PASS based solely on source review or on the presence
 
 **Release decision:** independently stored options with dependent behavior require a documented dependency matrix and server tests. No separate login, hard-coded global flag system or arbitrary disabled-state semantics are prescribed by the catalog.
 
-
-## Batch 9 — safe component and styling modernization (proposed, 2026-11-07)
+## Safe component and styling modernization
 
 | Gate | Evidence and risk to check | Untested status |
 | --- | --- | --- |
@@ -154,16 +149,15 @@ Do not mark a product test PASS based solely on source review or on the presence
 
 A component-library folder is **not** evidence that its contracts are adopted by the app. A passing snapshot or bundler build is not proof that keyboard, focus, business transitions or accessibility are unchanged.
 
-## Application architecture selection and evolution (Batches 13–16)
+## Application architecture selection and evolution
 
 For an app architecture recommendation, record the repository/ref, framework and routing constraints, primary user journeys, current tree/import graph, real duplication and cross-feature edits, ownership/deployment boundaries, and unknowns. Check that (1) the selected profile is no more complex than needed; (2) feature/domain/shared APIs have documented owners and directional imports; (3) cross-package decisions have real consumers; (4) developer task-to-file discoverability has a baseline; (5) regression and rollback plans cover critical workflows, accessibility, responsive/i18n/theme states and data integrity. A clean docs registry is not proof of an application architecture improvement. See [selection](../knowledge/architecture/application-architecture.md), [modules](../knowledge/architecture/module-boundaries-and-developer-navigation.md), [evolution](../knowledge/architecture/architecture-evolution.md), [enterprise topology](../knowledge/architecture/enterprise-and-multiapp.md).
 
-## Batch 18 — architecture boundary enforcement evidence
+## Architecture boundary enforcement evidence
 
-For real application releases, document the owner and allowed dependency contract, installed tool/version, alias and relative-import resolution, positive/negative fixture results, existing-versus-new violations, CI check results, approved exception expirations, and cross-feature consumer impact. A green static import check alone does not establish that relative imports, dynamic imports or other languages are covered. The catalog's document validator **cannot** prove application architecture enforcement. Follow [architecture enforcement recipes](../knowledge/architecture/architecture-enforcement-and-ci.md) and the [Batch 18 context ledger](../archive/planning/application-architecture-batch-18-context-and-gaps.md).
+For real application releases, document the owner and allowed dependency contract, installed tool/version, alias and relative-import resolution, positive/negative fixture results, existing-versus-new violations, CI check results, approved exception expirations, and cross-feature consumer impact. A green static import check alone does not establish that relative imports, dynamic imports or other languages are covered. The catalog's document validator **cannot** prove application architecture enforcement. Follow [architecture enforcement recipes](../knowledge/architecture/architecture-enforcement-and-ci.md) and the .
 
-
-## Account/settings acceptance matrix — batch 3 (KG-024)
+## Account and settings acceptance matrix
 
 The portal's release gate must validate a **real joined journey**, not just isolated component demos:
 
@@ -181,8 +175,7 @@ Measure task completion, error/recovery, abandonment and support contact by user
 
 Related: [account portal](../specifications/patterns/account-and-settings-portal.md), [quality gates](quality-gates.md), [measurement](../knowledge/guidance/ux-measurement.md), [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
 
-
-## Static wireframe visual QA and evidence rubric (proposed Batch 5, 2026-11-07)
+## Static wireframe visual QA and evidence rubric
 
 **Use when:** reviewing generated or manually drafted image-based wireframes before presenting a design direction or advancing to interactive prototyping. **Avoid when:** visual neatness substitutes for task outcomes, a screenshot is treated as proof of implementation, or a claimed automated score has no repeatable method and inspected evidence.
 
@@ -230,16 +223,15 @@ These are **proposed review priorities**, not measured defect frequency or a uni
 
 The rubric is a **proposed synthesis** of existing catalog hierarchy, UX writing, interaction-state and verification guidance. W3C [WCAG 2.2](https://www.w3.org/TR/WCAG22/) informs *applicable actual web-content evaluation* but is not an image-only certification. [W3C WAI Easy Checks](https://www.w3.org/WAI/test-evaluate/preliminary/) offers preliminary inspection prompts, not complete accessibility assurance. Actual generated images were **not** produced or visually inspected in this documentation batch, so **visual artifact QA: NOT VERIFIED**. Human-user, keyboard, screen reader, browser/device, localization and backend behavior checks are also **NOT VERIFIED**.
 
-## Settings configuration propagation assurance — PR #13 Batch 2 (proposed, 2026-11-07)
+## Settings configuration propagation assurance
 
-For a consequential setting, trace one intent from edited draft through authorized revisioned persistence to **every named affected consumer**. The canonical [Settings Batch 2 contract](../specifications/patterns/account-and-settings-portal.md#settings-knowledge-batch-2--propagation-and-integration-verification-kg-010-kg-013-proposed-2026-11-07) defines the consumer/invariant matrix and recovery behavior. Do not duplicate it in each feature. Check authoritative value/version, dependent navigation and direct API enforcement, stale/failed read refreshes, multi-tab conflicts, tenant isolation, in-flight work, retained history, and rollback. Passing field-level tests or the catalog validator does not establish end-to-end correctness; unexecuted target tests remain **NOT VERIFIED**.
+For a consequential setting, trace one intent from edited draft through authorized revisioned persistence to **every named affected consumer**. The canonical [Settings contract](../specifications/patterns/account-and-settings-portal.md) defines the consumer/invariant matrix and recovery behavior. Do not duplicate it in each feature. Check authoritative value/version, dependent navigation and direct API enforcement, stale/failed read refreshes, multi-tab conflicts, tenant isolation, in-flight work, retained history, and rollback. Passing field-level tests or the catalog validator does not establish end-to-end correctness; unexecuted target tests remain **NOT VERIFIED**.
 
+## Visual craftsmanship review and corrective iteration
 
-## Visual craftsmanship review and corrective iteration — Batch 4 (KG-15 and KG-16; proposed, 2026-11-07)
+**Use when:** judging a high-fidelity mock, rendered webpage, component story, or implementation screenshot for *aesthetic coherence and execution quality*. **Avoid when:** replacing the existing static-wireframe visual QA, calling a pleasing still image accessible, or claiming animation, keyboard behavior or user success from pixels. The existing image QA still owns literal text fidelity, clipping and screenshot-evidence boundaries; this extension adds **aesthetic craftsmanship** and an iterative correction protocol. [Visual foundations](../knowledge/foundations/visual-design-craftsmanship.md) own the aesthetic principles; [practical recipes](../knowledge/foundations/practical-ui-styling-recipes.md) own implementation options.
 
-**Use when:** judging a high-fidelity mock, rendered webpage, component story, or implementation screenshot for *aesthetic coherence and execution quality*. **Avoid when:** replacing the existing [static-wireframe visual QA](#static-wireframe-visual-qa-and-evidence-rubric-proposed-batch-5-2026-11-07), calling a pleasing still image accessible, or claiming animation, keyboard behavior or user success from pixels. The existing image QA still owns literal text fidelity, clipping and screenshot-evidence boundaries; this extension adds **aesthetic craftsmanship** and an iterative correction protocol. [Visual foundations](../knowledge/foundations/visual-design-craftsmanship.md) own the aesthetic principles; [practical recipes](../knowledge/foundations/practical-ui-styling-recipes.md) own implementation options.
-
-### KG-15 — Reproducible visual critique rubric
+### Reproducible visual critique rubric
 
 Record an observation, why it matters, a specific proposed correction and the artifact/view state for **each applicable dimension**. Use `PASS` / `FAIL` / `NOT VERIFIED` / `NOT APPLICABLE` per dimension, with reviewer and evidence. Do not turn taste into an unexplained numerical “beauty” score.
 
@@ -258,7 +250,7 @@ Record an observation, why it matters, a specific proposed correction and the ar
 
 **Good critique:** “At the 375px error-state capture, the second line of the Save error overlaps Cancel; make the message area auto-height, allow wrapping and re-render at 375px/zoom.” **Bad critique:** “Feels off; make it more modern,” without evidence or a change hypothesis.
 
-### KG-16 — Render → inspect → diagnose → adjust → re-render
+### Render → inspect → diagnose → adjust → re-render
 
 1. **Establish the comparison baseline:** task, visual-direction brief, authoritative content, route/component and revision; selected viewports, theme, locale, state, browser, font loading, device scale and capture method. Never compare unrelated states as visual improvements.
 2. **Render real artifacts** with the available stack. Capture representative narrow/wide, long-copy, empty/error/loading, light/dark and focus/reduced-motion variants when applicable. Record any unrendered scenarios as `NOT VERIFIED`; screenshots alone cannot validate actual focus or motion behavior.
@@ -270,28 +262,28 @@ Record an observation, why it matters, a specific proposed correction and the ar
 
 **Troubleshooting example (synthetic):** a screenshot shows the call-to-action cramped against a card edge. Determine if the cause is card inset, button sizing, misapplied token, or a text-wrap edge case. Fix the owning component/style rule, re-render compact and wide versions, then check its disabled and loading variants rather than adding a local negative margin.
 
-**Before/after evidence contract:** capture IDs and same-task comparison with context/state, one specific hypothesis per meaningful change, diffs or annotated observations, side-effect check, reviewer decision and any unverified behavior. See [the synthetic visual-refinement examples](../knowledge/foundations/visual-refinement-examples.md) (KG-17). Illustrative written examples are **not real screenshots, executed tests or validated user outcomes**.
+**Before/after evidence contract:** capture IDs and same-task comparison with context/state, one specific hypothesis per meaningful change, diffs or annotated observations, side-effect check, reviewer decision and any unverified behavior. See [the synthetic visual-refinement examples](../knowledge/foundations/visual-refinement-examples.md). Illustrative written examples are **not real screenshots, executed tests or validated user outcomes**.
 
 **Evidence boundary:** Playwright [visual comparisons](https://playwright.dev/docs/test-snapshots) and [Storybook visual testing](https://storybook.js.org/docs/writing-tests/visual-testing) describe potential tooling; neither is declared installed here. Screenshot rendering can detect visual drift but cannot establish WCAG compliance, task completion, font licensing or causal UX improvements. Continue using [WCAG 2.2](https://www.w3.org/TR/WCAG22/) and platform/manual tests for relevant accessibility evidence.
 
-### Batch 4 acceptance
+### Acceptance
 
 - [ ] Critique identifies concrete aesthetic observations rather than general preference scores.
 - [ ] Evidence IDs, viewport/state, browser/font inputs, affected owner and severity are explicit.
 - [ ] Every high-impact fix has a before/after same-condition re-render or is `NOT VERIFIED`.
 - [ ] Actual responsive, long copy, themes, focus/error/disabled, locale/RTL and reduced-motion behavior checked where applicable, or marked `NOT VERIFIED`.
 - [ ] Critical workflows remain usable; image QA, component contract and release/accessibility gates remain separately applicable.
-- [ ] Change log and canonical lookup map KG-15/16 to `governance.quality`, KG-17 to a non-canonical example bank.
+- [ ] Change log and canonical lookup map to `governance.quality`, to a non-canonical example bank.
 
-## Integrated visual craftsmanship workflow — Batch 5 (KG-18, proposed)
+## Integrated visual craftsmanship workflow
 
-To apply visual direction, styling and critique as a connected process, use the [end-to-end visual craftsmanship workflow](visual-craftsmanship-workflow.md). This document remains the canonical owner of review and evidence requirements; the linked guide is **non-canonical orchestration** only. It maps KG-01–18 to existing owners, defines proportionate intake and handoff, and requires accurate `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` checks. Do not infer visual quality or accessibility from documentation alone.
+To apply visual direction, styling and critique as a connected process, use the [end-to-end visual craftsmanship workflow](visual-craftsmanship-workflow.md). This document remains the canonical owner of review and evidence requirements; the linked guide is **non-canonical orchestration** only. It maps to existing owners, defines proportionate intake and handoff, and requires accurate `PASS`, `FAIL`, `NOT VERIFIED`, or `NOT APPLICABLE` checks. Do not infer visual quality or accessibility from documentation alone.
 
-## B06 — interaction-state test evidence and catalog retrieval assurance (CKG-18/19; proposed 2026-11-07)
+## Interaction-state test evidence and catalog retrieval assurance
 
 **Scope:** define what a reviewer must observe for proposed component/interaction contracts and how an agent must retrieve their canonical owner. This extends existing quality gates rather than shipping a test framework or replacing actual end-user trials. A passing Markdown validator can verify only catalog structure; **it cannot verify accessibility, implemented interactions or task outcomes.**
 
-### CKG-18 — interaction-state test matrix
+### Interaction-state test matrix
 
 Tests must exercise **trigger → component state → workflow coordinator → user-visible response**, including keyboard/pointer/touch paths and error branches where relevant. Prefer the existing consumer application's test toolchain; the names below are test *scenarios*, not imports or a required Playwright/Storybook dependency.
 
@@ -310,7 +302,7 @@ Tests must exercise **trigger → component state → workflow coordinator → u
 
 **Negative fixtures matter:** a bare clickable SVG must fail an interactive semantic review; an overflow menu that only opens on hover must fail discoverability; a pending spinner that appears as confirmed success must fail authoritative result correctness; a row removal that strands focus must fail navigation continuity. Do not use CSS-only focus snapshots as proof of actual keyboard operability.
 
-### CKG-19 — retrieval and documentation regression
+### Retrieval and documentation regression
 
 **Canonical retrieval owner:** `catalog/index.json` declares the unique ID/path/status/aliases; Markdown pages own detailed guidance; `scripts/find_concept.py` supplies deterministic exact-ID/alias priority. Do not duplicate normative contracts as agent-local instructions.
 
@@ -344,7 +336,6 @@ Do not infer a successful run merely from the presence of these commands in docu
 **Illustrative positive:** a catalog PR updates an existing owner and retrieval aliases, then logs actual passing validator/tests and separately marks unperformed screen-reader interaction checks NOT VERIFIED. **Anti-example:** write a retrieval unit test that only asserts a phrase exists in Markdown, mark "Accessible PASS" without rendering a control, then auto-promote every changed entry to stable.
 
 **Review and ownership:** Proposed knowledge, owner unassigned. Human review, observed consumer accessibility, production release and UX metrics remain **NOT VERIFIED** until supported by separate evidence. References (consulted 2026-11-07): [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [Playwright testing](https://playwright.dev/docs/intro), [Storybook interaction tests](https://storybook.js.org/docs/writing-tests/interaction-testing), and the catalog's own `scripts/validate_catalog.py` and `scripts/find_concept.py`.
-
 
 ## Static visual catalog hosting, supply-chain and preview security gate
 
@@ -400,4 +391,4 @@ The Python static builder uses the standard library, while **CI only** currently
 
 **Provenance:** [OWASP Content Security Policy Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html) describes CSP as defense in depth and host-specific framing rules; [MDN iframe sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe#sandbox) warns against combining `allow-scripts` and `allow-same-origin` for same-origin embedders; [npm ci](https://docs.npmjs.com/cli/commands/npm-ci/) documents reproducible clean installs with a lockfile. These are reference sources, not evidence that this repository has satisfied the controls.
 
-**Current disposition:** the release checklist is authored knowledge, but hosting, CSP enforcement, locked CI dependencies, license review and named security signoff remain **NOT VERIFIED**. The [release decision record](../docs/visual-catalog-refactor/16-phase-10-release-readiness.md) documents the original blockers; merging PR #16 did not establish security approval or deployment authorization.
+**Current disposition:** the release checklist is authored knowledge, but hosting, CSP enforcement, locked CI dependencies, license review and named security signoff remain **NOT VERIFIED**. The documents the original blockers; merging did not establish security approval or deployment authorization.

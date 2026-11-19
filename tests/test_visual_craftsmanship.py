@@ -1,8 +1,6 @@
-"""Visual craftsmanship KG-01..18 catalog routing and documentation regression.
+"""Verify visual craftsmanship topics, evidence boundaries and canonical lookup.
 
-Run: python3 -m unittest discover -s tests -v
-These tests only check registry/documentation integrity, not any rendered UI or
-accessibility compliance.
+This is source-level knowledge coverage, not rendered product or accessibility testing.
 """
 import json
 import sys
@@ -11,14 +9,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from find_concept import lookup  # noqa: E402
-
+from find_concept import lookup
 
 class VisualCraftsmanshipTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.entries = json.loads((ROOT / "catalog/index.json").read_text(encoding="utf-8"))["entries"]
-        cls.ids = {e["id"] for e in cls.entries}
+        cls.by_id = {e["id"]: e for e in cls.entries}
 
     def test_retrieval(self):
         mapping = {
@@ -33,56 +30,39 @@ class VisualCraftsmanshipTests(unittest.TestCase):
         }
         for phrase, expected in mapping.items():
             with self.subTest(phrase=phrase):
-                found = lookup(self.entries, phrase)
-                self.assertTrue(found, f"no result for {phrase}")
-                self.assertEqual(found[0]["id"], expected)
+                matches = lookup(self.entries, phrase, limit=1)
+                self.assertTrue(matches, phrase)
+                self.assertEqual(matches[0]["id"], expected)
 
-    def test_existing_canonical_owners_and_no_duplicate_ids(self):
-        self.assertEqual(len(self.entries), len(self.ids))
-        for ident in ("foundation.visual-craftsmanship", "foundation.practical-styling",
-                      "governance.quality", "foundation.design-tokens",
-                      "guidance.accessibility", "guidance.wireframe-methodology"):
-            with self.subTest(ident=ident):
-                self.assertIn(ident, self.ids)
+    def test_canonical_owners_remain_distinct(self):
+        self.assertEqual(len(self.entries), len(self.by_id))
+        for identifier in ("foundation.visual-craftsmanship", "foundation.practical-styling",
+                           "governance.quality", "foundation.design-tokens",
+                           "guidance.accessibility", "guidance.wireframe-methodology"):
+            self.assertIn(identifier, self.by_id)
 
-    def test_coverage_kgs_01_to_18(self):
-        workflow = (ROOT / "governance/visual-craftsmanship-workflow.md").read_text(encoding="utf-8")
-        for n in range(1, 19):
-            with self.subTest(kg=n):
-                self.assertIn(f"KG-{n:02d}", workflow)
-        self.assertIn("NOT VERIFIED", workflow)
-        self.assertIn("synthetic", workflow.lower())
-
-    def test_canonical_content_ownership(self):
-        expected = {
-            "foundation.visual-craftsmanship": ("knowledge/foundations/visual-design-craftsmanship.md",
-                                                  [1, 2, 3, 4, 5, 11, 12, 13, 14]),
-            "foundation.practical-styling": ("knowledge/foundations/practical-ui-styling-recipes.md",
-                                               [6, 7, 8, 9, 10]),
-            "governance.quality": ("governance/quality-gates.md", [15, 16]),
+    def test_visual_decision_topics_remain_findable(self):
+        sources = {
+            "foundation.visual-craftsmanship": ("optical balance", "typography", "color composition", "art direction", "inspiration"),
+            "foundation.practical-styling": ("layout", "surfaces", "iconography", "motion"),
+            "governance.quality": ("visual critique", "evidence", "accessibility"),
         }
-        for ident, (path, covered) in expected.items():
-            entry = next(e for e in self.entries if e["id"] == ident)
-            self.assertEqual(entry["path"], path)
-            text = (ROOT / path).read_text(encoding="utf-8")
-            for n in covered:
-                with self.subTest(ident=ident, kg=n):
-                    self.assertIn(f"KG-{n:02d}", text)
-        examples = (ROOT / "knowledge/foundations/visual-refinement-examples.md").read_text(encoding="utf-8")
-        self.assertIn("KG-17", examples)
+        for identifier, topics in sources.items():
+            source = (ROOT / self.by_id[identifier]["path"]).read_text(encoding="utf-8").casefold()
+            for topic in topics:
+                with self.subTest(concept=identifier, topic=topic):
+                    self.assertIn(topic.casefold(), source)
 
-    def test_discovery_and_related_ids(self):
-        root = (ROOT / "README.md").read_text(encoding="utf-8")
+    def test_workflow_links_guidance_and_discloses_limits(self):
+        path = ROOT / "governance/visual-craftsmanship-workflow.md"
+        workflow = path.read_text(encoding="utf-8")
+        for topic in ("Reference", "Explore directions", "Compose the UI", "Render and inspect",
+                      "Validate behavior", "NOT VERIFIED", "synthetic"):
+            self.assertIn(topic.casefold(), workflow.casefold())
         governance = (ROOT / "governance/README.md").read_text(encoding="utf-8")
         agent = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
-        self.assertIn("governance/visual-craftsmanship-workflow.md", root)
         self.assertIn("visual-craftsmanship-workflow.md", governance)
-        self.assertIn("visual-craftsmanship-workflow.md", agent)
-        for entry in self.entries:
-            for rel in [*entry.get("related", []), *entry.get("depends_on", [])]:
-                with self.subTest(entry=entry["id"], related=rel):
-                    self.assertIn(rel, self.ids)
-
-
-if __name__ == "__main__":
-    unittest.main()
+        self.assertIn("visual-design-craftsmanship.md", agent)
+        for item in self.entries:
+            for target in item.get("related", []) + item.get("depends_on", []):
+                self.assertIn(target, self.by_id)

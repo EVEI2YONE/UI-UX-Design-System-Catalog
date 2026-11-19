@@ -25,10 +25,10 @@ This pattern owns **turn-taking, speech/text continuity, transcript/edit afforda
 
 ```text
 Choose modality -> permission and ready state -> user input / upload
-  -> capturing -> partial recognition / correction -> committed intent
-  -> understanding / clarifying -> tentative answer or proposed action
-  -> final confirmed response / approved side effect / failure
-  -> continue, interrupt, switch modality, edit or exit
+ -> capturing -> partial recognition / correction -> committed intent
+ -> understanding / clarifying -> tentative answer or proposed action
+ -> final confirmed response / approved side effect / failure
+ -> continue, interrupt, switch modality, edit or exit
 ```
 
 - Clearly distinguish *user is speaking*, *microphone capturing*, *speech being transcribed*, *assistant generating*, *assistant speaking*, and *agent executing a tool*. These do not necessarily happen sequentially in realtime systems.

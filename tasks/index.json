@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "description": "Task-focused discovery pointers; canonical guidance lives in catalog/index.json and linked Markdown.",
+  "tasks": [
+    {
+      "id": "narrow-long-list",
+      "group": "Find and discover",
+      "title": "Narrow a long list",
+      "summary": "Refine many results with visible applied filters, reversible selections and a clear reset.",
+      "intent_phrases": [
+        "narrow a long list",
+        "filter a long list",
+        "find an item with filters",
+        "show applied filters",
+        "clear all filters"
+      ],
+      "primary_id": "pattern.search-filter",
+      "related_ids": [
+        "pattern.interaction-recovery",
+        "component.checkbox"
+      ]
+    },
+    {
+      "id": "compare-records",
+      "group": "Understand and compare",
+      "title": "Compare records quickly",
+      "summary": "Choose comparable columns, sorting, search and accessible row actions.",
+      "intent_phrases": [
+        "compare records quickly",
+        "compare many records",
+        "compare records side by side",
+        "sort records to compare"
+      ],
+      "primary_id": "pattern.data-tables",
+      "related_ids": [
+        "guidance.data-visualization"
+      ]
+    },
+    {
+      "id": "empty-state-next-action",
+      "group": "Recover and resume",
+      "title": "Find a way forward from an empty screen",
+      "summary": "Separate first use, filtered-zero and service failure with an appropriate action.",
+      "intent_phrases": [
+        "find a way forward from an empty screen",
+        "what to do on an empty state",
+        "empty state next step",
+        "recover from no results"
+      ],
+      "primary_id": "pattern.interaction-recovery",
+      "related_ids": [
+        "guidance.content-design",
+        "pattern.search-filter"
+      ]
+    },
+    {
+      "id": "logical-form",
+      "group": "Enter and complete",
+      "title": "Complete a form in the right order",
+      "summary": "Present clear labels, meaningful groups, a logical reading sequence and predictable validation.",
+      "intent_phrases": [
+        "complete a form in the right order",
+        "fill out a long form",
+        "form logical order",
+        "group fields logically"
+      ],
+      "primary_id": "pattern.forms",
+      "related_ids": [
+        "component.field",
+        "guidance.content-design"
+      ]
+    },
+    {
+      "id": "recover-submission",
+      "group": "Recover and resume",
+      "title": "Recover from a failed submission",
+      "summary": "Preserve answers, connect errors to fields and provide a safe retry.",
+      "intent_phrases": [
+        "recover from a failed submission",
+        "form submission failed",
+        "save entered values on error",
+        "fix form validation errors"
+      ],
+      "primary_id": "pattern.forms",
+      "related_ids": [
+        "pattern.interaction-recovery",
+        "component.field"
+      ]
+    },
+    {
+      "id": "consequential-submission",
+      "group": "Decide and confirm",
+      "title": "Submit something consequential",
+      "summary": "Review answers, change specific responses and confirm the authoritative outcome.",
+      "intent_phrases": [
+        "submit something consequential",
+        "review answers before submitting",
+        "confirm a submitted form",
+        "check answers before final submission"
+      ],
+      "primary_id": "pattern.task-flows",
+      "related_ids": [
+        "pattern.forms",
+        "guidance.content-design"
+      ]
+    },
+    {
+      "id": "confirm-irreversible",
+      "group": "Decide and confirm",
+      "title": "Confirm an irreversible action",
+      "summary": "Explain consequences, offer a clear cancel action and return focus appropriately.",
+      "intent_phrases": [
+        "confirm an irreversible action",
+        "delete permanently with confirmation",
+        "destructive action confirmation",
+        "confirm a delete dialog"
+      ],
+      "primary_id": "component.dialog",
+      "related_ids": [
+        "pattern.advanced-interactions",
+        "guidance.content-design"
+      ]
+    }
+  ]
+}

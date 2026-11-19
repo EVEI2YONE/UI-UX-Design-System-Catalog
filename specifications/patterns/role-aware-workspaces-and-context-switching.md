@@ -1,6 +1,6 @@
 # Role-aware workspaces and context switching
 
-**ID:** `pattern.role-aware-workspaces` · **Kind:** guideline · **Status:** proposed · **Primary layer:** experiences  
+**ID:** `pattern.role-aware-workspaces` · **Kind:** guideline · **Status:** proposed · **Primary layer:** experiences
 **Owner:** Design-system/catalog maintainers (review assignment pending) · **Reviewed:** 2026-11-07
 
 ## Purpose and scope
@@ -24,16 +24,16 @@ A visual preview is **not** evidence that the customer has the same permissions,
 
 ```text
 Sign in -> load authenticated identity and server-authorized memberships/roles
-  -> no eligible workspace: clear no-access / request-access path
-  -> one eligible workspace: go directly to its appropriate landing page
-  -> multiple: preferred eligible workspace OR explicit chooser (product decision)
-  -> show persistent, legible current workspace/role/organization
-  -> user selects another eligible context
-      -> validate authorization and unsaved-work state
-      -> apply context server-side / obtain context-bound session as required
-      -> clear stale privileged or tenant-scoped data/caches
-      -> navigate to valid destination; announce updated context
-      -> error: preserve or restore safe prior context and explain recovery
+ -> no eligible workspace: clear no-access / request-access path
+ -> one eligible workspace: go directly to its appropriate landing page
+ -> multiple: preferred eligible workspace OR explicit chooser (product decision)
+ -> show persistent, legible current workspace/role/organization
+ -> user selects another eligible context
+ -> validate authorization and unsaved-work state
+ -> apply context server-side / obtain context-bound session as required
+ -> clear stale privileged or tenant-scoped data/caches
+ -> navigate to valid destination; announce updated context
+ -> error: preserve or restore safe prior context and explain recovery
 ```
 
 A remembered preference is only a navigation preference, never proof of authorization. Deep links must re-check access; a forbidden deep link gets a clear 403/no-permission experience, not data leakage or a misleading empty state. Account, role or tenant revocation must invalidate stale context. Return navigation and browser history must not accidentally re-expose a previous tenant's privileged content.
@@ -70,9 +70,9 @@ A remembered preference is only a navigation preference, never proof of authoriz
 
 ## Reference examples and anti-patterns
 
-**Example:** An admin signs in to the admin dashboard, chooses `Preview customer portal`, sees a clearly persistent `Customer preview (sample data) — Return to admin` banner, and cannot invoke customer mutations. Returning restores admin navigation.  
-**Example:** A person who belongs to two organizations chooses an organization in a header selector; the app updates scoped routes and data after fresh authorization.  
-**Anti-pattern:** An admin taps `Customer view` and silently assumes a real customer's identity, with no visible banner or audit.  
+**Example:** An admin signs in to the admin dashboard, chooses `Preview customer portal`, sees a clearly persistent `Customer preview (sample data) — Return to admin` banner, and cannot invoke customer mutations. Returning restores admin navigation.
+**Example:** A person who belongs to two organizations chooses an organization in a header selector; the app updates scoped routes and data after fresh authorization.
+**Anti-pattern:** An admin taps `Customer view` and silently assumes a real customer's identity, with no visible banner or audit.
 **Anti-pattern:** Hiding an admin sidebar while APIs still accept administrator actions from forged requests.
 
 ## Verification / measurement
@@ -96,7 +96,7 @@ Do users truly need one shared login and distinct workspaces, or only a role-sen
 
 **Status:** proposed catalog guidance only. No target app, component implementation, security penetration test, or user research was executed.
 
-## Batch 10 extension — enterprise approvals, delegation and audit visibility
+## Enterprise approvals, delegation and audit visibility
 
 Role/workspace *selection* remains the core contract above. Enterprise teams additionally need explicit task state, authorized handoffs and understandable permission boundaries. These are **feature-level workflows**, not reasons to change the authorization model in the UI.
 
@@ -128,7 +128,6 @@ Role/workspace *selection* remains the core contract above. Enterprise teams add
 
 References: [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) (server-side access control); [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (web accessibility criteria); [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) only when a matching custom widget is used.
 
-
 ## Managed profiles versus authenticated collaborators (Little Wins learning, 2026-11-07)
 
 **Observed context:** Little Wins documents owner-managed participant profiles within a Sites-authenticated, owner-scoped D1 workspace; profile roles are descriptive and are explicitly **not** independent login identities or security permissions. Do not invent a missing sign-in requirement without asking whether owner-operation is the intended product scope.
@@ -139,8 +138,7 @@ References: [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org
 
 **Acceptance (implementation NOT VERIFIED):** own versus other workspace, group and project ID tampering; revoked/expired membership; member-versus-reviewer actions; session change during an approval; actor/subject audit labeling; keyboard and localized no-access feedback.
 
-
-## Account-level access and sensitive settings actions — batch 2 (KG-023)
+## Account-level access and sensitive settings actions
 
 **Owner:** server authorization rules remain with the product, not with a settings component. For each settings operation distinguish **actor**, **subject**, **account/workspace scope**, **permission**, **assurance needed**, **audit visibility** and **effective result**.
 
