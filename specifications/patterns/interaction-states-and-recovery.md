@@ -23,6 +23,8 @@ This chooser applies across [forms](forms.md), [feedback](feedback.md), [offline
 
 **Loss-of-acknowledgement example:** A save request times out after the user clicks Confirm. Show *outcome unknown*; check authoritative state before retry, preserve the last typed values, and return focus to a surviving meaningful action. Treat the real behavior as NOT VERIFIED until tested.
 
+The requested file reference is not currently visible. Use files.search or files.list to rediscover the file, then retry with a returned ref_id or file_id.
+
 ## State model
 
 | State | Guidance | Recovery / accessibility |
