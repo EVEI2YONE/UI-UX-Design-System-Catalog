@@ -2,12 +2,6 @@
 
 **Kind:** guideline · **Status:** proposed · **Owner:** unassigned · **Review:** pending
 
-## Context and coverage at batch start
-
-[Application selection](application-architecture.md) now outlines complexity-aware profiles; [module boundaries](module-boundaries-and-developer-navigation.md) defines ownership and imports. The existing [component model](component-model.md) already describes one-workflow-at-a-time UI extraction, and [quality gates](../../governance/quality-gates.md) cover regressions and rollback. The remaining gap is a repeatable **application-wide transition and evidence** protocol. Reuse the existing checks rather than creating a conflicting release process.
-
-Before recommending migration, capture the pinned repo version, framework/routing, affected user journeys and URLs, file/import graph, hot spots from actual change history, duplicate implementations, build and tests, teams and package ownership, deployment and rollback constraints. Mark missing telemetry or user research UNKNOWN.
-
 ## Architecture transitions: triggers, not file counts
 
 | Transition | Evidence-based trigger | Guard against |

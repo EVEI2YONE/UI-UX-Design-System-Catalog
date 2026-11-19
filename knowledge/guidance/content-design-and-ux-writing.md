@@ -70,5 +70,5 @@ For every high-impact phrase record **user goal, moment, constraint, proposed co
 - [W3C WAI form instructions](https://www.w3.org/WAI/tutorials/forms/instructions/) (accessed 2026-11-07): accessible labels, required information and format instructions.
 - [GOV.UK error messages](https://design-system.service.gov.uk/components/error-message/) (accessed 2026-11-07): actionable field errors and preserving input; local implementation guidance is not a universal widget specification.
 
-**Canonical ID:** `guidance.content-design` · **Owner:** unassigned · **Human review date:** null. Guidance proposed 2026-11-07; product tests not performed.  
+**Canonical ID:** `guidance.content-design` · **Owner:** unassigned · **Human review date:** null. Guidance proposed 2026-11-07; product tests not performed.
 **Related:** [form composition](../../specifications/patterns/forms.md), [search/filtering](../../specifications/patterns/search-and-filter.md), [service recovery](../../specifications/patterns/service-recovery-and-support.md), [localization](internationalization.md), [accessibility](accessibility.md).

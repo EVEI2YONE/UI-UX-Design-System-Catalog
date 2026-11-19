@@ -43,15 +43,5 @@ class ArchitectureEnforcementKnowledgeTests(unittest.TestCase):
         self.assertIn("architecture.module-boundaries", concept["depends_on"])
         self.assertIn("architecture.evolution", concept["depends_on"])
 
-    def test_source_ledger_and_expected_topics_are_present(self):
-        ledger = ROOT / "archive/planning/application-architecture-batch-18-context-and-gaps.md"
-        self.assertTrue(ledger.is_file())
-        content = (ROOT / self.by_id["architecture.enforcement-ci"]["path"]).read_text(encoding="utf-8")
-        for phrase in ["no-restricted-imports", "dependency-cruiser", "@nx/enforce-module-boundaries",
-                       "relative imports", "Expected FAIL", "Expected PASS", "CI"]:
-            with self.subTest(phrase=phrase):
-                self.assertIn(phrase, content)
-
-
 if __name__ == "__main__":
     unittest.main()

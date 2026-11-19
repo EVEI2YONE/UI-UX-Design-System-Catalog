@@ -6,12 +6,16 @@ import json
 import os
 import re
 import shutil
+import sys
 from pathlib import Path, PurePosixPath
-from html.parser import HTMLParser
 from urllib.parse import quote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT))
+from catalog.core.navigation import CATEGORIES as CORE_CATEGORIES, category as core_category, route as core_route
+from catalog.core.discovery import load_tasks, validate_tasks, terms_by_concept
+from shell.components import navigation, concept_card, concept_metadata, task_index
 def source_repo_url(reference):
     """Build a repository source link for a reviewed branch or immutable SHA."""
     if (not isinstance(reference, str) or not reference or
@@ -23,40 +27,20 @@ def source_repo_url(reference):
 
 
 REPO = source_repo_url(os.environ.get("CATALOG_SOURCE_REF", "main"))
-CATEGORIES = ("components", "patterns", "features", "foundations", "architecture", "guidance", "governance", "other")
+CATEGORIES = CORE_CATEGORIES
 LINK = re.compile(r"\[([^\]\n]+)\]\(([^)\n]+)\)")
 HEAD = re.compile(r"^(#{1,6})\s+(.+)$")
 ITEM = re.compile(r"^\s*([-*+]|\d+\.)\s+(.+)$")
 
 
 def category(item):
-    """Keep public catalog routes stable when Markdown sources move directories."""
-    prefix = item["id"].split(".", 1)[0]
-    by_id = {
-        "component": "components", "pattern": "patterns", "feature": "features",
-        "foundation": "foundations", "principle": "foundations",
-        "architecture": "architecture", "guidance": "guidance",
-        "governance": "governance",
-    }
-    if prefix in by_id:
-        return by_id[prefix]
-    parts = PurePosixPath(item["path"]).parts
-    if len(parts) > 1 and parts[0] == "specifications":
-        return {"components": "components", "patterns": "patterns",
-                "experiences": "features"}.get(parts[1], "other")
-    if len(parts) > 1 and parts[0] == "knowledge":
-        return {"foundations": "foundations", "architecture": "architecture",
-                "guidance": "guidance"}.get(parts[1], "other")
-    first = parts[0]
-    return first if first in CATEGORIES else "other"
+    """Return stable, concept-ID-based category from the catalog shell."""
+    return core_category(item)
 
 
 def route(item):
-    segment = item["id"].split(".", 1)[-1].lower()
-    slug = re.sub(r"[^a-z0-9-]+", "-", segment).strip("-")
-    if not slug:
-        raise ValueError("Invalid canonical ID: " + item["id"])
-    return "/catalog/" + category(item) + "/" + slug + "/"
+    """Return a stable public URL independent of source file placement."""
+    return core_route(item)
 
 
 def target_url(target, source, by_path):
@@ -100,86 +84,9 @@ def inline(text, source, by_path):
     return text
 
 
-# Website copy intentionally omits repository migration history. These filters
-# affect only rendered HTML; the canonical Markdown and its historical anchors
-# stay intact in Git and remain accessible through the source link.
-INTERNAL_REFERENCE_HEADING = re.compile(
-    r"^#{2}\s+Phase\s+[4-9]\s+.*(?:reference|implementation)", re.I)
-INTERNAL_STAGE = re.compile(r"\b(?:Phase|Batch)\s*\d+(?:\s*[-–]\s*\d+)?\b", re.I)
-INTERNAL_PR = re.compile(r"\b(?:draft\s+)?PR\s*#\d+\b", re.I)
-
-
-def public_markdown(content):
-    """Hide implementation-only reference addenda, not substantive batch guidance."""
-    lines = content.splitlines()
-    kept, suppress = [], False
-    for line in lines:
-        heading = HEAD.match(line)
-        if heading and len(heading.group(1)) <= 2:
-            if INTERNAL_REFERENCE_HEADING.match(line):
-                suppress = True
-                continue
-            suppress = False
-        if not suppress:
-            if re.match(r"^\s*(?:This section is Batch\s+\d+|\*\*Fresh-context check:|\*\*Status:\*\* proposed knowledge on draft PR)", line, re.I):
-                continue
-            kept.append(line)
-    return "\n".join(kept)
-
-
-def public_label(value):
-    """Convert process-oriented visible labels into lasting subject labels."""
-    value = re.sub(r"^\s*(?:Batch\s*\d+\s*(?:extension|boundary)?\s*[-–—:]?\s*)", "", value, flags=re.I)
-    value = re.sub(r"\s*[-–—:]?\s*(?:proposed\s+)?(?:Batch|Phase)\s*\d+\b(?:\s+proposal)?", "", value, flags=re.I)
-    value = INTERNAL_STAGE.sub("catalog update", value)
-    value = INTERNAL_PR.sub("repository review", value)
-    value = re.sub(r"^\s*B\d{2}\s*[-–—:]\s*", "", value, flags=re.I)
-    value = re.sub(r"\b(?:CKG|KG)-\d+(?:[-–]\d+)?\b", "", value, flags=re.I)
-    leading = " " if value[:1].isspace() else ""
-    trailing = " " if value[-1:].isspace() else ""
-    cleaned = re.sub(r"\s{2,}", " ", value).strip()
-    return leading + cleaned + trailing if cleaned else value
-
-
-class PublicCopy(HTMLParser):
-    """Edit only visible text, never hrefs, IDs, code or raw examples."""
-    def __init__(self):
-        super().__init__(convert_charrefs=False)
-        self.parts, self.literal_depth = [], 0
-
-    def handle_starttag(self, tag, attrs):
-        self.parts.append(self.get_starttag_text())
-        if tag in ("pre", "code"):
-            self.literal_depth += 1
-
-    def handle_endtag(self, tag):
-        self.parts.append("</" + tag + ">")
-        if tag in ("pre", "code"):
-            self.literal_depth = max(0, self.literal_depth - 1)
-
-    def handle_startendtag(self, tag, attrs):
-        self.parts.append(self.get_starttag_text())
-
-    def handle_data(self, data):
-        self.parts.append(data if self.literal_depth else public_label(data))
-
-    def handle_entityref(self, name):
-        self.parts.append("&" + name + ";")
-
-    def handle_charref(self, name):
-        self.parts.append("&#" + name + ";")
-
-    def handle_comment(self, data):
-        self.parts.append("<!--" + data + "-->")
-
-    def clean(self, markup):
-        self.feed(markup)
-        self.close()
-        return "".join(self.parts)
-
-
 def public_guidance(content, source, by_path):
-    return PublicCopy().clean(render_md(public_markdown(content), source, by_path))
+    """Render concept-first source Markdown without silently hiding its prose."""
+    return render_md(content, source, by_path)
 
 
 def render_md(content, source, by_path):
@@ -266,11 +173,10 @@ def render_md(content, source, by_path):
 
 
 def page(title, subtitle, content, active="browse"):
-    nav = "".join('<a href="' + url + '"' + (' aria-current="page" class="active"' if name == active else "") + ">" + label + "</a>"
-                  for url, label, name in (("/", "Home", "home"), ("/tasks/", "Tasks", "tasks"), ("/catalog/", "Browse", "browse"), ("/search/", "Search", "search")))
+    nav = navigation(active)
     return ('<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             '<meta name="color-scheme" content="light dark"><title>' + html.escape(title) + ' | UI/UX Design Catalog</title>'
-            '<link rel="stylesheet" href="/assets/styles.css"><script defer src="/assets/search.js"></script></head><body>'
+            '<link rel="stylesheet" href="/assets/styles.css"><link rel="stylesheet" href="/assets/shell/shell.css"><script defer src="/assets/shell/query.js"></script><script defer src="/assets/search.js"></script></head><body>'
             '<a class="skip" href="#main">Skip to main content</a><header class="topbar"><div class="topbar-inner">'
             '<a class="brand" href="/"><span class="mark" aria-hidden="true">◈</span>UI/UX <strong>Catalog</strong></a>'
             '<nav aria-label="Primary">' + nav + '</nav><a class="repo" href="https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog">Repository ↗</a></div></header>'
@@ -286,14 +192,11 @@ def write(out, url, content):
     file.write_text(content, encoding="utf-8")
 
 
-def card(e):
-    terms = " ".join([e["id"], e["title"], e["summary"], *e["aliases"], *e["domains"], *e.get("capabilities", [])]).lower()
-    is_interactive = e.get("implementation") is not None
-    return ('<article class="card" data-interactive="' + str(is_interactive).lower() + '" data-category="' + category(e) + '" data-search="' + html.escape(terms, quote=True) +
-            '"><a href="' + route(e) + '"><span class="category">' + category(e).title() + '</span><h3>' +
-            html.escape(e["title"]) + '</h3><p>' + html.escape(e["summary"]) +
-            '</p><span class="availability">' + ('Interactive reference' if is_interactive else 'Specification only') + '</span><span class="card-foot"><code>' + html.escape(e["id"]) + '</code><span aria-hidden="true">↗</span></span></a></article>')
-
+def card(e, task_terms=None):
+    """Generate an accessible resource card using semantic kind and task aliases."""
+    terms = " ".join([e["id"], e["title"], e["summary"], *e["aliases"], *e["domains"],
+                      *e.get("capabilities", []), *(task_terms or {}).get(e["id"], [])]).lower()
+    return concept_card(e, category(e), route(e), terms)
 
 
 def inline_script(path):
@@ -316,7 +219,7 @@ def reference_preview(entry, out):
     impl = entry.get("implementation")
     if impl is None:
         return ('<section class="spec"><span class="spec-icon" aria-hidden="true">▧</span>'
-                '<div><h2>Specification only</h2><p>No working reference implementation is registered. '
+                '<div><h2>No runnable reference</h2><p>No working reference implementation is registered. '
                 'This content documents design guidance, not tested UI.</p></div></section>')
     if impl["preview_path"].rstrip("/") != route(entry).rstrip("/"):
         raise ValueError("Preview URL must match canonical entry route: " + entry["id"])
@@ -424,6 +327,9 @@ def section_navigation(guidance, has_example):
 
 def build(out):
     entries = json.loads((ROOT / "catalog/index.json").read_text(encoding="utf-8"))["entries"]
+    tasks = load_tasks(ROOT)
+    validate_tasks(tasks, entries)
+    task_terms = terms_by_concept(tasks)
     by_path = {e["path"]: e for e in entries}
     if len(by_path) != len(entries) or len({route(e) for e in entries}) != len(entries):
         raise ValueError("Duplicate canonical path or visual route")
@@ -434,7 +340,7 @@ def build(out):
     shutil.copyfile(SITE / "src/previews/preview-runner.js", out / "assets/preview-runner.js")
     shutil.copyfile(SITE / "src/previews/preview-host.css", out / "assets/preview-host.css")
     ordered = sorted(entries, key=lambda e: (CATEGORIES.index(category(e)), e["title"]))
-    cards = "".join(card(e) for e in ordered)
+    cards = "".join(card(e, task_terms) for e in ordered)
     chips = "".join('<button class="chip" type="button" data-filter="' + cat + '" aria-pressed="' +
                     ("true" if cat == "all" else "false") + '">' + cat.title() + "</button>" for cat in ("all", *CATEGORIES))
     tools = ('<section class="tools" aria-label="Search and filter concepts"><label for="catalog-filter">Search concepts</label>'
@@ -453,7 +359,7 @@ def build(out):
             '<div id="empty-results" hidden><p>No matching concepts. Try a different task or category.</p>'
             '<button type="button" id="clear-filters">Clear search and filters</button></div>')
     write(out, "/tasks/", page("Start with a user task", "Browse by what a user needs to accomplish.",
-        '<article class="markdown">' + render_md((ROOT / "tasks/README.md").read_text(encoding="utf-8"), "tasks/README.md", by_path) + "</article>", "tasks"))
+        task_index(tasks, {entry["id"]: route(entry) for entry in entries}), "tasks"))
     write(out, "/catalog/", page("Explore the catalog", "Browse the canonical components, patterns and design guidance.", tools + grid))
     write(out, "/search/", page("Find the right guidance", "Search by name, user task or canonical ID.", tools + '<p class="hint">Without JavaScript, all entries remain listed below. Agents can search the JSON registry directly.</p>' + grid, "search"))
     write(out, "/", page("Make better interfaces, deliberately.", "A visual, searchable design reference with interactive examples backed by real source code.",
@@ -466,9 +372,7 @@ def build(out):
         canonical = ROOT / e["path"]
         if not canonical.is_file():
             raise FileNotFoundError(e["path"])
-        info = ('<section class="meta" aria-label="Concept metadata"><div><span>Canonical ID</span><code>' + html.escape(e["id"]) +
-                '</code></div><div><span>Knowledge layer</span>' + html.escape(e["layer"]) + '</div><div><span>Artifact type</span>' +
-                html.escape(e["kind"]) + '</div><div><span>Review status</span><strong>' + html.escape(e["status"]) + '</strong></div></section>')
+        info = concept_metadata(e)
         preview = reference_preview(e, out)
         refs = set(e.get("related", []) + e.get("depends_on", []))
         rel = [r for r in entries if r["id"] in refs]

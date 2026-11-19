@@ -8,7 +8,7 @@ Use this reference to create a coherent aesthetic language for an interface **af
 
 **Use when:** a page is functionally organized but lacks a clear visual direction; designing a new brand or adapting a UI system; reviewing inconsistent typography, color or whitespace. **Avoid when:** copying another brand's distinctive design without rights, pursuing visual novelty over task success, or declaring a style universally superior without user evidence.
 
-## KG-01 — Composition and optical balance
+## Composition and optical balance
 
 1. Write a **focal-point sentence**: “On this screen, the eye should find [information] first and [action] second.” Keep required safety, price, and status information discoverable.
 2. Divide into **dominant, supporting and quiet** areas. Establish dominance with a deliberate difference in scale, contrast, position or whitespace; do not maximize every dimension simultaneously.
@@ -20,7 +20,7 @@ Use this reference to create a coherent aesthetic language for an interface **af
 
 **Review exercise:** shrink a screenshot until details are unreadable. Can a reviewer still distinguish the intended first, second and background emphasis? Then verify with actual content and representative users; the squint test is only a critique aid.
 
-## KG-02 — Typography craftsmanship
+## Typography craftsmanship
 
 - Start with content roles: display/hero, page title, section heading, body, label, caption, code/numerals. Define a **small role-based type system** with size, weight, line height and responsive adjustments; do not invent a role for every screen.
 - Select faces for task and language coverage: readability at real body sizes, distinctive-but-clear headings, glyph support, variable-weight behavior and stable font fallbacks. A restrained single-family system is preferable to an unjustified pairing.
@@ -31,7 +31,7 @@ Use this reference to create a coherent aesthetic language for an interface **af
 
 **Good example:** a readable sans-serif body with one confident display style, consistent section jumps, and no tiny low-contrast metadata. **Anti-example:** three display faces, letter-spaced body copy, arbitrary weight jumps and headings clipped at mobile widths.
 
-## KG-03 — Color composition and palette formation
+## Color composition and palette formation
 
 1. Choose an **emotional and functional direction** informed by brand and audience (calm, energetic, editorial, technical), then make an initial palette hypothesis.
 2. Build a restrained **neutral tonal ramp** for text, page, surfaces and dividers; add one primary action family and only purposeful secondary accents. A token scale is not a reason to expose every swatch at once.
@@ -44,7 +44,7 @@ Use this reference to create a coherent aesthetic language for an interface **af
 
 **Anti-example:** assigning unrelated saturated colors to every card and treating color alone as status.
 
-## KG-04 — Spatial rhythm, density and whitespace
+## Spatial rhythm, density and whitespace
 
 - Decide the product's **density intent** (comfortable reading, dense operational scanning, touch-first entry) based on user tasks and evidence, not taste alone.
 - Design spacing by **relationship**: within-label/control, within-component, between related groups, between sections, between major page regions. Stronger separation should generally communicate a stronger conceptual boundary.
@@ -55,7 +55,7 @@ Use this reference to create a coherent aesthetic language for an interface **af
 
 **Good:** a settings form has tight label-to-control grouping, moderate field separation and a clearly larger section break. **Poor:** equal gaps everywhere make unrelated sections appear connected while compact help text becomes illegible.
 
-## KG-05 — Art direction and visual identity
+## Art direction and visual identity
 
 Before choosing tokens or components, create a **one-page direction brief**:
 
@@ -73,32 +73,31 @@ Explore **two or three meaningfully different directions** at the same content f
 
 **Illustrative contrast:** a financial operations tool might use compact numerals, restrained neutral surfaces and clear status markers; an arts publication might use expansive typography and expressive editorial crops. Neither style is inherently better; the user's context determines fit.
 
-## Starter acceptance checklist for Batch 1
+## Acceptance checklist
 
 - [ ] One explicit screen focal point and clear secondary hierarchy; comparable content and states across alternatives.
 - [ ] Typography roles defined with rationale, long-copy and fallback tests; no clipped critical text.
 - [ ] Color roles map to semantic tokens, with color not the sole status cue; contrast **tested in implementation**, or labeled NOT VERIFIED.
 - [ ] Spacing relationship hierarchy, density and responsive reflow documented.
 - [ ] Art-direction brief records brand rationale, comparison alternatives, reference provenance and tradeoffs.
-- [ ] Reviewer can identify a concrete example and anti-example for each of KG-01–KG-05.
+- [ ] Reviewer can identify a concrete example and anti-example for each of –.
 - [ ] Manual visual, screen reader, zoom, keyboard, localization, and real-user checks remain **NOT VERIFIED** unless executed on a rendered product.
 
 ## Evidence and limitations
 
-This is synthesis of the catalog's existing design principles, tokens, accessibility and UX measurement policies; composition and art-direction prescriptions are **design heuristics**, not normative W3C standards or proven conversion gains. Validate against context and representative users. For normative accessibility criteria see [WCAG 2.2](https://www.w3.org/TR/WCAG22/); for language and bidirectional layout see [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/); for token interchange see [DTCG 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/), a Community Group report rather than W3C Recommendation. External reference availability and rendered UI behavior were not verified in this documentation-only batch.
+This is synthesis of the catalog's existing design principles, tokens, accessibility and UX measurement policies; composition and art-direction prescriptions are **design heuristics**, not normative W3C standards or proven conversion gains. Validate against context and representative users. For normative accessibility criteria see [WCAG 2.2](https://www.w3.org/TR/WCAG22/); for language and bidirectional layout see [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/); for token interchange see [DTCG 2025.10](https://www.w3.org/community/reports/design-tokens/CG-FINAL-format-20251028/), a Community Group report rather than W3C Recommendation. External reference availability and rendered UI behavior were not verified for this guidance.
 
 **Related:** [design principles](design-principles.md), [tokens and themes](design-tokens-and-themes.md), [component contracts](../architecture/component-contracts.md), [accessibility](../guidance/accessibility.md), [quality gates](../../governance/quality-gates.md).
 
-## Practical styling continuation — Batch 2 (proposed)
+## Practical styling
 
-After selecting a coherent visual direction, use [Practical UI styling recipes](practical-ui-styling-recipes.md) for grid and responsive layout patterns (KG-06), surfaces and depth (KG-07), iconography/imagery (KG-08), interface archetypes (KG-09) and purposeful motion (KG-10). That companion page supplies *implementation hypotheses*; this page remains the canonical owner of composition, typography, palette, spatial rhythm and art-direction choices.
+After selecting a coherent visual direction, use [Practical UI styling recipes](practical-ui-styling-recipes.md) for grid and responsive layout patterns, surfaces and depth, iconography/imagery, interface archetypes and purposeful motion. That companion page supplies *implementation hypotheses*; this page remains the canonical owner of composition, typography, palette, spatial rhythm and art-direction choices.
 
+## Art-direction research, exploration and selection
 
-## Batch 3 — Art-direction research, exploration and selection (KG-11–14; proposed)
+This section **operationalizes the art-direction brief**. Its purpose is a repeatable method for studying visual references and choosing an aesthetic direction **without confusing precedent, brand preference, user research or implemented usability evidence**. Use the existing [UX research](../guidance/ux-research-methods.md) entry for participant studies and [wireframe methodology](../guidance/wireframe-methodology.md) for representation fidelity and prototype escalation. No reference is proof of conversion, accessibility or a universal best practice.
 
-This section **operationalizes the KG-05 art-direction brief**. Its purpose is a repeatable method for studying visual references and choosing an aesthetic direction **without confusing precedent, brand preference, user research or implemented usability evidence**. Use the existing [UX research](../guidance/ux-research-methods.md) entry for participant studies and [wireframe methodology](../guidance/wireframe-methodology.md) for representation fidelity and prototype escalation. No reference is proof of conversion, accessibility or a universal best practice.
-
-### KG-11 — Inspiration gathering and source appraisal
+### Inspiration gathering and source appraisal
 
 Start with a documented design question such as *“How could a data-heavy planning application appear calm while retaining obvious priority and status?”* Collect a **small, diverse set of references**, not a bulk moodboard. Search across relevant and intentionally contrasting product categories so that the first famous design system does not become the default answer.
 
@@ -117,7 +116,7 @@ For every source, create a **reference card**:
 
 **Example:** A quiet editorial layout demonstrates a generous heading-to-body gap. Record the grouping principle, then test it against the product's actual content density. **Anti-example:** “Copy this site's homepage, including its distinctive hero illustration and unique brand palette.”
 
-### KG-12 — Translate references into ownable design rules
+### Translate references into ownable design rules
 
 Use **observe → hypothesize → abstract → adapt → verify**. Keep those five stages separate so neither a screenshot nor a designer's interpretation becomes an unearned requirement.
 
@@ -135,7 +134,7 @@ Use **observe → hypothesize → abstract → adapt → verify**. Keep those fi
 | A finance UI uses neutral cards and one strong status color | Reserve dominant accent for meaningful action or exception | Exact palette, status colors without labels | Accessible contrast, urgency comprehension, dark mode |
 | A creative portfolio uses asymmetrical image blocks | Use asymmetric composition when it directs attention | Exact crop/arrangement tied to original creator | Reading order, keyboard sequence, compact layout |
 
-### KG-13 — Divergent design-direction exploration
+### Divergent design-direction exploration
 
 Prepare **two or three materially distinct directions** using the *same representative screen, text, tasks and critical states*. Differences should be strategic, not cosmetic hue swaps. Keep priority content and disclosure fixed so stakeholders can judge visual treatment rather than altered functionality.
 
@@ -158,7 +157,7 @@ For each direction record:
 
 At low fidelity, assess structure; at high fidelity, assess visual fit; use an interactive prototype when the decision involves real navigation, focus, validation or recovery. See [wireframe methodology](../guidance/wireframe-methodology.md). Do **not** treat a static mock as evidence of working accessibility.
 
-### KG-14 — Transparent aesthetic tradeoffs and decisions
+### Transparent aesthetic tradeoffs and decisions
 
 Make a decision using a **two-stage gate** rather than a single ungrounded beauty score.
 
@@ -179,7 +178,7 @@ Make a decision using a **two-stage gate** rather than a single ungrounded beaut
 
 **Good decision:** “Choose Quiet Utility provisionally for operational tasks: clearer status grouping and fewer competing accents in expert review; test novice comprehension and compact error states before release.” **Bad decision:** “The Warm Editorial variant is 92% more beautiful, so it must improve conversion,” with no valid instrument, denominator or user study.
 
-### Batch 3 reusable handoff and acceptance
+### Design handoff and acceptance
 
 For each actual design request, produce a compact **art-direction decision packet** containing (1) task/brand brief, (2) three or fewer annotated and rights-aware references, (3) extracted principles and contraindications, (4) at least two comparable candidate grammars or a documented rationale for one, (5) constraint checks and evidence status, and (6) selected provisional direction with an explicit revisit trigger.
 

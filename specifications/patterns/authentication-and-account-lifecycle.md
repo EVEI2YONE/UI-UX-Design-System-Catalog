@@ -64,8 +64,7 @@ Identity/security owners define authentication assurance, session timeouts, perm
 
 Related: [role-aware workspaces](role-aware-workspaces-and-context-switching.md), [forms](forms.md), [interaction recovery](interaction-states-and-recovery.md), [privacy](../../knowledge/guidance/privacy-consent-and-trust.md), [offline and sync](offline-sync-and-conflicts.md).
 
-
-## Hosted-platform identity boundary — Little Wins evidence-led extension (2026-11-07)
+## Hosted-platform identity boundary — Little Wins evidence-led extension
 
 **Context before guidance:** The Little Wins source README describes a Sites-native private owner-operated pilot; `app/api/workspace/route.ts` derives workspace ownership from `oai-authenticated-user-id`, scopes D1 queries by that owner, and supplies a development-only preview identity. The README warns that its raw Worker must not be exposed outside trusted Sites authentication. This is **source-observed configuration**, not an independently tested guarantee about every deployment.
 
@@ -79,17 +78,16 @@ Related: [role-aware workspaces](role-aware-workspaces-and-context-switching.md)
 
 **Verification (NOT VERIFIED for Little Wins):** authenticated/unauthenticated direct API requests; forged identity header through every reachable endpoint; cross-owner workspace IDs; revoked membership; session expiry; private-site audience policy; development-identity isolation; no sensitive cache/history leakage. Report deploy-specific findings separately from reusable design guidance.
 
-
-## Account security settings journey — account/settings batch 2 (KG-007–010)
+## Account security settings journey — account/settings
 
 **Scope:** extends existing sign-in/recovery guidance to **authenticated account maintenance**, not a new authentication component. Identity and security owners must confirm available actions and policies; no credential factor, session or API is assumed to exist.
 
 | User task | States and controls | Required recovery / evidence |
 | --- | --- | --- |
-| Change password or credentials (KG-007) | Method available/unavailable, step-up required, current value verification when policy requires, processing, success, denial | Preserve account recovery, password-manager compatibility and error privacy; never echo secrets or claim change before server confirmation |
-| Add, replace or remove MFA/passkey (KG-008) | Eligible, enrollment pending, platform prompt, challenge verified, backup/recovery method offered, factor active, factor revocation | Do not strand users with no authorized factor; require risk-approved recovery and reauthentication; verify active factors server-side |
-| View sessions/devices (KG-009) | Device/session inventory, current vs other, last activity with timezone/uncertainty, revoke pending/completed, stale/unknown | Never present approximate device geolocation as exact; require policy controls on revoke-all/current session and test stale tabs |
-| Link/unlink external provider or app (KG-010) | Provider identity and scopes, pending authorization, linked, conflict, expired, unlink pending/completed | Explicitly distinguish identity provider link from delegated app permissions; explain consequences, keep a usable sign-in route and handle callback errors |
+| Change password or credentials | Method available/unavailable, step-up required, current value verification when policy requires, processing, success, denial | Preserve account recovery, password-manager compatibility and error privacy; never echo secrets or claim change before server confirmation |
+| Add, replace or remove MFA/passkey | Eligible, enrollment pending, platform prompt, challenge verified, backup/recovery method offered, factor active, factor revocation | Do not strand users with no authorized factor; require risk-approved recovery and reauthentication; verify active factors server-side |
+| View sessions/devices | Device/session inventory, current vs other, last activity with timezone/uncertainty, revoke pending/completed, stale/unknown | Never present approximate device geolocation as exact; require policy controls on revoke-all/current session and test stale tabs |
+| Link/unlink external provider or app | Provider identity and scopes, pending authorization, linked, conflict, expired, unlink pending/completed | Explicitly distinguish identity provider link from delegated app permissions; explain consequences, keep a usable sign-in route and handle callback errors |
 
 **Flow:** enter security section → inspect effective server-side status → optional step-up → disclose impact → initiate action → confirm authoritative result → show durable, accessible history/next step. A successful OAuth redirect, passkey dialog close or request receipt does **not** imply account state changed.
 

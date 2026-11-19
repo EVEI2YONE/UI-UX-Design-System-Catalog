@@ -92,11 +92,11 @@
   }
 
   function update(announce) {
-    const terms = search.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+    const terms = window.CatalogQuery.terms(search.value);
     let visible = 0;
     cards.forEach((card) => {
       const content = card.dataset.search || "";
-      const matches = terms.every((term) => content.includes(term));
+      const matches = window.CatalogQuery.matches(content, terms);
       const matchesCategory = category === "all" || category === card.dataset.category;
       const matchesPreview = !interactive?.checked || card.dataset.interactive === "true";
       const show = matches && matchesCategory && matchesPreview;

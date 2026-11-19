@@ -48,7 +48,7 @@ Record event version, deduplication rule, session/attempt timeout, retry treatme
 
 **Decision gate:** specify evidence needed to ship, iterate or rollback (including accessibility and performance regressions). An observed improvement does not itself establish causation.
 
-## Batch 12 extension — experiment, field performance and task metrics
+## Experiment, field performance and task metrics
 
 The existing task-success contract remains authoritative for user outcomes. For rendering and responsiveness use [performance and perceived speed](performance-and-perceived-speed.md); for causal comparisons use [experimentation and causal evidence](experimentation-and-causal-evidence.md). Good web performance or a significant experiment is not automatically evidence of task success or accessibility.
 
@@ -68,14 +68,13 @@ For **web** journeys, current external good thresholds are LCP ≤2.5 seconds, I
 
 Sources consulted 2026-11-07: [web.dev Web Vitals](https://web.dev/articles/vitals), [User-centric performance metrics](https://web.dev/articles/user-centric-performance-metrics), and [Microsoft Research SRM guidance](https://www.microsoft.com/en-us/research/articles/diagnosing-sample-ratio-mismatch-in-a-b-testing/). This is proposed measurement guidance, not measured application data.
 
-
-## Collaborative reviews and shared-value journeys (2026-11-07)
+## Collaborative reviews and shared-value journeys
 
 Use journey-aligned metrics instead of generic dashboard engagement. Prioritize **submission completion** (server-confirmed successful contributions / eligible started attempts), **review turnaround** (median and p75 elapsed from submission to first substantive decision), **return/rework** (returned submissions / eligible reviewed submissions, with reasons), **review correctness** (authorized corrections and error-severity categories), **reward fulfillment** (fulfilled / eligible requested, with pending age), and **scope confusion** (project-switch recovery or wrong-scope attempts from qualitative research). Record eligible cohort, event version, timezone, deduplication and cancellation separately. Compare owner-managed and independently authenticated workflows only if those distinct populations exist.
 
 For toggled-off features, mark related metrics **NOT APPLICABLE** to the disabled period, not zero performance. For offline/timeouts, distinguish server-confirmed transactions from UI requests. Never capture contribution descriptions, private member details, or other sensitive content in telemetry. No Little Wins baseline or causal effect has been verified in this catalog change.
 
-## B04 — interaction-effort measurement without click-count tunnel vision (CKG-14; proposed 2026-11-07)
+## Interaction-effort measurement without click-count tunnel vision
 
 **Purpose:** test whether an interaction consolidation or stable action region improves real user tasks while protecting comprehension, safety and inclusive access. This extends the existing [TCR, time, errors and privacy contract](#core-metrics); [advanced interactions](../../specifications/patterns/advanced-interactions-and-reversible-actions.md) owns choosing buttons, toolbars, menus, split actions and shortcuts. [Task flows](../../specifications/patterns/task-flows-and-information-architecture.md) owns spatial/next-action layout and scope.
 
@@ -109,7 +108,7 @@ Fix a **task start** and **authoritative completion** event, eligible cohort, ob
 
 **Anti-example:** declare a 50% UX improvement because a prototype uses two buttons instead of four, while ignoring hidden Reject, lost keyboard access, unverified approvals and users who abandon the task.
 
-### B04 verification status
+### Verification status
 
 | Evidence | Required before claiming improvement | Status |
 | --- | --- | --- |
@@ -119,8 +118,7 @@ Fix a **task start** and **authoritative completion** event, eligible cohort, ob
 | Privacy-respecting instrumentation | Purpose limitation, data minimization, consent and retention review | NOT VERIFIED |
 | Controlled/observational interpretation | Study design, uncertainty, consistent comparable tasks | NOT VERIFIED |
 
-**References:** [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/), [Nielsen Norman Group: Measuring UX](https://www.nngroup.com/articles/which-ux-research-methods/) (method-selection starting point, not proof of a specific metric threshold), and [experimentation guidance](experimentation-and-causal-evidence.md) (consulted 2026-11-07). Context: proposed Little Wins B06 effort metrics and B07 action-consolidation patterns; product baselines remain unknown.
-
+**References:** [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/), [Nielsen Norman Group: Measuring UX](https://www.nngroup.com/articles/which-ux-research-methods/) (method-selection starting point, not proof of a specific metric threshold), and [experimentation guidance](experimentation-and-causal-evidence.md) (consulted 2026-11-07). Context: proposed Little Wins effort metrics and action-consolidation patterns; product baselines remain unknown.
 
 ## Catalog discoverability and source-trust study protocol
 

@@ -45,8 +45,7 @@ For each screen, annotate: **user and task**, entry point, expected next step, c
 
 **Acceptance evidence:** annotated states at narrow and wide widths; keyboard order; long-label and translated content; task success definition and baseline availability; design reviewer and review date. A prose review is not a production accessibility test.
 
-
-## Wireframe screen hierarchy and action priority (proposed Batch 2, 2026-11-07)
+## Wireframe screen hierarchy and action priority
 
 **Use when** converting a task into a screen or comparing two proposed compositions. **Avoid** starting from a fashionable component layout, treating a large visual element as proof of priority, or imposing one primary CTA when the task genuinely has several equivalent safe choices. This extends `principle.visual-hierarchy`; [task flows](../../specifications/patterns/task-flows-and-information-architecture.md) own sequence and alternatives, while [wireframe methodology](../guidance/wireframe-methodology.md) owns fidelity and prototype escalation.
 
@@ -56,6 +55,6 @@ For each proposed screen, write a compact **hierarchy contract**: (1) context an
 
 **Verification expectation:** review annotation against the user's task brief; compare context-to-action scan order, action label/outcome consistency, safe exit, meaningful grouping and omission of known critical information. Check narrow/reflow and translated labels on rendered implementations when available, recording unexecuted checks as **NOT VERIFIED**. Distinct composition variants must retain the same user/task context for a fair comparison. See [Task-to-screen composition](../../specifications/patterns/task-flows-and-information-architecture.md).
 
-## Visual composition cross-reference — craftsmanship Batch 1 (proposed)
+## Visual composition cross-reference — craftsmanship
 
-This page owns **user-task and action priority**. For optical balance, composition, visual weight, focal-point treatment and practical contrast among visual regions, use [Visual design craftsmanship](visual-design-craftsmanship.md) (KG-01). Do not infer user success from visually attractive hierarchy; verify the actual journey separately.
+This page owns **user-task and action priority**. For optical balance, composition, visual weight, focal-point treatment and practical contrast among visual regions, use [Visual design craftsmanship](visual-design-craftsmanship.md). Do not infer user success from visually attractive hierarchy; verify the actual journey separately.

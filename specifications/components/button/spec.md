@@ -37,11 +37,11 @@ Consume semantic action/text/focus tokens from [tokens guidance](../../../knowle
 | Reflow/translation/theme and contrast | NOT VERIFIED | Verify in each consuming app |
 | Runtime error, pending and duplicate-submission tests | NOT VERIFIED | Test parent flow and component together |
 
-**Canonical ID:** `component.button` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** reuse existing semantic buttons; audit duplicated CTA variants before adoption. This is a **documentation specification**, not shipping code.
+**Canonical ID:** `component.button` · **Owner:** unassigned · **Review date:** not reviewed
 
 Related: [component model](../../../knowledge/architecture/component-model.md), [component contracts](../../../knowledge/architecture/component-contracts.md), [interaction recovery](../../patterns/interaction-states-and-recovery.md), [accessibility](../../../knowledge/guidance/accessibility.md). Primary standards starting point: [WCAG 2.2 and WAI-ARIA APG](../../../governance/references.md), applicability to be reviewed per platform.
 
-## Batch 1 extension — icon-only and icon-bearing action contract (proposed, 2026-11-07)
+## Icon-only and icon-bearing action contract
 
 [Icon semantics](../../../knowledge/foundations/iconography-and-semantics.md) owns the cross-product icon intent/role policy. A Button owns **activation and host semantics**; its optional icon is decorative when the visible button text already names the action. An icon-only button is justified only when discoverability is reasonable in context and the host provides a localized contextual accessible name (e.g., `aria-label="More actions for quarterly report"`), visible focus and an operable target. Tooltip-only naming is insufficient. A bare SVG `onClick` is not a button and an icon must not become an independent interactive descendant of an interactive Button or Link.
 
@@ -49,8 +49,8 @@ Related: [component model](../../../knowledge/architecture/component-model.md), 
 
 **Geometry:** icon glyph dimension and clickable target are distinct. Verify the final hit target under WCAG 2.2 SC 2.5.8 Target Size (Minimum), including applicable exceptions; do not claim every small glyph is nonconforming. Larger practical touch targets may be appropriate. Test high contrast, zoom/reflow, long translated labels, logical leading/trailing icon slots and RTL-aware directional graphics. All checks remain `NOT VERIFIED` until run in an actual consumer.
 
-## Phase 4 reference implementation (2026-11-08; executable, not certified)
+## Interactive reference
 
 The visual catalog now provides a **working reference example** in [Button.js](../../../site/src/implementations/components/button/Button.js), with [deterministic synthetic scenarios](../../../site/src/implementations/components/button/scenarios.js) and a [theme-aware stylesheet](../../../site/src/implementations/components/button/Button.css). The code uses a native `button`, prevents activation while pending/disabled, and exposes a status message for pending state. The reference source is rendered inside an isolated preview frame and displayed verbatim by the source viewer. This **does not change** the canonical specification's `proposed` status or establish real-screen-reader or WCAG conformance. The feature owns whether an action is truly saved, authorized or retried; the preview intentionally performs no backend mutation.
 
-**Verification distinction:** Node source-behavior tests and Python site/registry validation run in CI. Actual keyboard/focus, assistive technology, responsive rendering, visual hierarchy and performance on devices remain **NOT VERIFIED** pending Phase 8 inspection. The original evidence table above describes the pre-implementation snapshot and should not be read as a current absence of all source code.
+**Verification distinction:** Node source-behavior tests and Python site/registry validation run in CI. Actual keyboard/focus, assistive technology, responsive rendering, visual hierarchy and performance on devices remain **NOT VERIFIED** pending inspection. The original evidence table above describes the pre-implementation snapshot and should not be read as a current absence of all source code.

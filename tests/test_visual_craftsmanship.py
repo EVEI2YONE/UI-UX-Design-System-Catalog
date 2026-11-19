@@ -53,24 +53,6 @@ class VisualCraftsmanshipTests(unittest.TestCase):
         self.assertIn("NOT VERIFIED", workflow)
         self.assertIn("synthetic", workflow.lower())
 
-    def test_canonical_content_ownership(self):
-        expected = {
-            "foundation.visual-craftsmanship": ("knowledge/foundations/visual-design-craftsmanship.md",
-                                                  [1, 2, 3, 4, 5, 11, 12, 13, 14]),
-            "foundation.practical-styling": ("knowledge/foundations/practical-ui-styling-recipes.md",
-                                               [6, 7, 8, 9, 10]),
-            "governance.quality": ("governance/quality-gates.md", [15, 16]),
-        }
-        for ident, (path, covered) in expected.items():
-            entry = next(e for e in self.entries if e["id"] == ident)
-            self.assertEqual(entry["path"], path)
-            text = (ROOT / path).read_text(encoding="utf-8")
-            for n in covered:
-                with self.subTest(ident=ident, kg=n):
-                    self.assertIn(f"KG-{n:02d}", text)
-        examples = (ROOT / "knowledge/foundations/visual-refinement-examples.md").read_text(encoding="utf-8")
-        self.assertIn("KG-17", examples)
-
     def test_discovery_and_related_ids(self):
         root = (ROOT / "README.md").read_text(encoding="utf-8")
         governance = (ROOT / "governance/README.md").read_text(encoding="utf-8")

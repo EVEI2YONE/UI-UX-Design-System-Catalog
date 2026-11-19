@@ -56,8 +56,7 @@ Test: minimum and maximum supported windows; intermediate resize; orientation an
 
 Related: [accessibility](accessibility.md), [internationalization](internationalization.md), [task flows](../../specifications/patterns/task-flows-and-information-architecture.md), [advanced interactions](../../specifications/patterns/advanced-interactions-and-reversible-actions.md), [offline sync](../../specifications/patterns/offline-sync-and-conflicts.md).
 
-
-## Responsive wireframe composition contract (proposed Batch 4, 2026-11-07)
+## Responsive wireframe composition contract
 
 **Use when:** preparing representative wireframe images for a task that must work across compact, intermediate and wide windows, or reviewing a proposed navigation/pane change. **Avoid when:** shrinking a desktop screenshot is represented as responsive design, fixed device labels imply runtime breakpoints, or a static image claims verified reflow. This extends `guidance.mobile-adaptive`; [accessibility](accessibility.md) owns zoom/reflow acceptance and [internationalization](internationalization.md) owns localized copy and RTL.
 

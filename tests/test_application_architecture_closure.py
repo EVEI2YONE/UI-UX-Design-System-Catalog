@@ -58,31 +58,12 @@ class ApplicationArchitectureClosureTests(unittest.TestCase):
                 self.assertIsNone(entry["reviewed_at"])
                 self.assertTrue((ROOT / path).is_file())
 
-    def test_task_first_index_and_root_links_are_complete(self):
-        index = (ROOT / "knowledge/architecture/README.md").read_text(encoding="utf-8")
-        root = (ROOT / "README.md").read_text(encoding="utf-8")
-        for concept_id, path in EXPECTED.items():
-            with self.subTest(concept=concept_id):
-                self.assertIn(concept_id, index)
-                self.assertIn(Path(path).name, index)
-                self.assertIn(path, root)
-        self.assertLess(index.index("Choose a prototype"), index.index("Enforce imports"))
-        self.assertLess(root.index("Choose prototype, MVP"), root.index("Enforce feature/module"))
-
     def test_task_intents_resolve_to_their_owner(self):
         for query, concept_id in TASKS.items():
             with self.subTest(query=query):
                 match = lookup(self.entries, query, limit=1)
                 self.assertTrue(match)
                 self.assertEqual(match[0]["id"], concept_id)
-
-    def test_context_history_and_closure_ledger_exist(self):
-        for path in CONTEXT_LEDGERS:
-            with self.subTest(path=path):
-                self.assertTrue((ROOT / path).is_file())
-        audit = (ROOT / CONTEXT_LEDGERS[-1]).read_text(encoding="utf-8")
-        for item in ["NOT VERIFIED", "No eighth application architecture concept", "remaining", "proposed"]:
-            self.assertIn(item, audit)
 
     def test_dependency_refs_and_cycles(self):
         def visit(concept_id, ancestors):

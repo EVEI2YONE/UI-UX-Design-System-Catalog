@@ -32,16 +32,6 @@ class ArchitectureReferenceExamplesTests(unittest.TestCase):
                 self.assertTrue(result)
                 self.assertEqual(result[0]["id"], "architecture.reference-examples")
 
-    def test_page_and_context_exist_and_are_proposed(self):
-        self.assertEqual(self.entry["status"], "proposed")
-        self.assertEqual(self.entry["kind"], "example")
-        for path in [
-            self.entry["path"],
-            "archive/planning/application-architecture-batch-19-context-and-gaps.md",
-        ]:
-            with self.subTest(path=path):
-                self.assertTrue((ROOT / path).is_file())
-
     def test_example_discloses_evidence_limits_and_boundaries(self):
         content = (ROOT / self.entry["path"]).read_text(encoding="utf-8")
         for marker in [

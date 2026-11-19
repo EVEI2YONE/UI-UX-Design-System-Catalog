@@ -28,17 +28,17 @@ The objective is **prevent new coupling** at a cost the team can sustain, not to
 // Fragment for the application's existing eslint.config.mjs array.
 // Merge into the existing configuration; do not replace framework presets.
 {
-  files: ["src/shared/**/*.{ts,tsx,js,jsx}"],
-  rules: {
-    "no-restricted-imports": ["error", {
-      patterns: [
-        {
-          group: ["@features", "@features/**", "@domains", "@domains/**"],
-          message: "Shared code must not import product features or domains."
-        }
-      ]
-    }]
-  }
+ files: ["src/shared/**/*.{ts,tsx,js,jsx}"],
+ rules: {
+ "no-restricted-imports": ["error", {
+ patterns: [
+ {
+ group: ["@features", "@features/**", "@domains", "@domains/**"],
+ message: "Shared code must not import product features or domains."
+ }
+ ]
+ }]
+ }
 }
 ```
 
@@ -52,7 +52,7 @@ import { updateProject } from "@features/projects/api";
 import { Dialog } from "@shared/ui/Dialog";
 ```
 
-**Scope limitation:** This rule does **not** automatically detect relative imports (`../../features/projects/api`), differently named aliases, dynamic `import()`, or every form of CommonJS import. It also does not prevent all sibling-feature deep imports. An application with those paths needs a correctly configured graph-based resolver or a more complete rule set. Validate both positive and negative fixtures rather than assuming a pattern is comprehensive. Reference: [ESLint `no-restricted-imports`](https://eslint.org/docs/latest/rules/no-restricted-imports).
+**Scope limitation:** This rule does **not** automatically detect relative imports (`../../features/projects/api`), differently named aliases, dynamic `import`, or every form of CommonJS import. It also does not prevent all sibling-feature deep imports. An application with those paths needs a correctly configured graph-based resolver or a more complete rule set. Validate both positive and negative fixtures rather than assuming a pattern is comprehensive. Reference: [ESLint `no-restricted-imports`](https://eslint.org/docs/latest/rules/no-restricted-imports).
 
 ## Recipe 2: dependency-cruiser checks for resolved path boundaries and cycles
 
@@ -60,35 +60,35 @@ import { Dialog } from "@shared/ui/Dialog";
 
 ```js
 module.exports = {
-  forbidden: [
-    {
-      name: "no-circular",
-      severity: "error",
-      from: {},
-      to: { circular: true },
-    },
-    {
-      name: "shared-must-not-import-features",
-      severity: "error",
-      from: { path: "^src/shared/" },
-      to: { path: "^src/features/" },
-    },
-    {
-      name: "shared-must-not-import-domains",
-      severity: "error",
-      from: { path: "^src/shared/" },
-      to: { path: "^src/domains/" },
-    },
-    {
-      name: "domains-must-not-import-UI",
-      severity: "error",
-      from: { path: "^src/domains/" },
-      to: { path: "^src/(app|features|shared/ui)/" },
-    },
-  ],
-  options: {
-    // Add the repository's real tsConfig/module resolution settings here.
-  },
+ forbidden: [
+ {
+ name: "no-circular",
+ severity: "error",
+ from: {},
+ to: { circular: true },
+ },
+ {
+ name: "shared-must-not-import-features",
+ severity: "error",
+ from: { path: "^src/shared/" },
+ to: { path: "^src/features/" },
+ },
+ {
+ name: "shared-must-not-import-domains",
+ severity: "error",
+ from: { path: "^src/shared/" },
+ to: { path: "^src/domains/" },
+ },
+ {
+ name: "domains-must-not-import-UI",
+ severity: "error",
+ from: { path: "^src/domains/" },
+ to: { path: "^src/(app|features|shared/ui)/" },
+ },
+ ],
+ options: {
+ // Add the repository's real tsConfig/module resolution settings here.
+ },
 };
 ```
 
@@ -105,14 +105,14 @@ npx depcruise --config .dependency-cruiser.cjs --output-type err src
 
 ```js
 "@nx/enforce-module-boundaries": ["error", {
-  depConstraints: [
-    { sourceTag: "type:shared",
-      onlyDependOnLibsWithTags: ["type:shared"] },
-    { sourceTag: "type:domain",
-      onlyDependOnLibsWithTags: ["type:domain", "type:shared"] },
-    { sourceTag: "type:feature",
-      onlyDependOnLibsWithTags: ["type:feature", "type:domain", "type:shared"] }
-  ]
+ depConstraints: [
+ { sourceTag: "type:shared",
+ onlyDependOnLibsWithTags: ["type:shared"] },
+ { sourceTag: "type:domain",
+ onlyDependOnLibsWithTags: ["type:domain", "type:shared"] },
+ { sourceTag: "type:feature",
+ onlyDependOnLibsWithTags: ["type:feature", "type:domain", "type:shared"] }
+ ]
 }]
 ```
 
@@ -131,10 +131,10 @@ The example enforces broad **project-layer** direction; it does **not** isolate 
 An illustrative CI order for an existing JS/TS app is:
 ```text
 install frozen dependencies
-  → lint and architecture-boundary check
-  → typecheck + unit/integration tests
-  → framework production build
-  → critical user-journey and accessibility checks where available
+ → lint and architecture-boundary check
+ → typecheck + unit/integration tests
+ → framework production build
+ → critical user-journey and accessibility checks where available
 ```
 
 **Do not add these commands to the catalog's own CI.** This repository validates Markdown and lookup metadata; it has no target application dependency graph to enforce.
@@ -151,7 +151,7 @@ For every enforcing change, record a pinned tool/version and resolved paths; sou
 
 Official tool documentation consulted 2026-11-07 (links above). These configurations are **illustrative**, require adaptation to actual resolver/project versions, and have **not been executed in a target application**. This proposed guide extends [module boundaries](module-boundaries-and-developer-navigation.md), [evolution](architecture-evolution.md) and existing [quality gates](../../governance/quality-gates.md) without claiming shipped enforcement.
 
-## B05 — visual redundancy and utility-style enforcement (CKG-16; proposed 2026-11-07)
+## Visual redundancy and utility-style enforcement
 
 **Use** only after reviewing the real styling stack, current selectors, imported components, token formats, existing CI and duplicated *semantics*. [Practical styling](../foundations/practical-ui-styling-recipes.md) owns the visual recipes; [design tokens](../foundations/design-tokens-and-themes.md) owns token validity; [component model](component-model.md) owns reuse and retirement decisions. This section owns **how to detect and enforce ownership drift** in actual consuming applications. The reference catalog itself has no target app CSS compiler or Tailwind configuration to lint.
 
@@ -180,17 +180,17 @@ Official tool documentation consulted 2026-11-07 (links above). These configurat
 
 ```text
 for each application-owned stylesheet:
-    parse selectors with the app's actual CSS parser
-    if selector is global and targets feature-specific implementation markup:
-        report REVIEW with owner, consumer list and authorized exception
+ parse selectors with the app's actual CSS parser
+ if selector is global and targets feature-specific implementation markup:
+ report REVIEW with owner, consumer list and authorized exception
 for each candidate repeated literal or class sequence:
-    compare semantic role, consumers, themes and states
-    report REUSE_CANDIDATE, not automatic failure
+ compare semantic role, consumers, themes and states
+ report REUSE_CANDIDATE, not automatic failure
 ```
 
 **Good:** a project uses its existing linter to prevent *new* global feature selectors after a reviewed baseline, and flags duplicated Button implementations for human ownership review. **Bad:** CI rejects any stylesheet above 200 lines, any repeated `gap-2`, or all inline style objects without reading intent; accessibility-safe styles and dynamic placement are broken to satisfy metrics.
 
-### B05 enforcement verification (not executed in this catalog)
+### Enforcement verification (not executed in this catalog)
 
 | Check | Evidence required | Current status |
 | --- | --- | --- |

@@ -52,12 +52,6 @@ class LittleWinsKnowledgeCoverageTests(unittest.TestCase):
                 self.assertTrue(path.is_relative_to(ROOT))
                 self.assertTrue(path.is_file())
 
-    def test_batch_evidence_ledgers_exist(self):
-        for n in range(6, 11):
-            with self.subTest(batch=n):
-                path = ROOT / "archive" / "planning" / f"little-wins-batch-{n}-context-and-gap-ledger.md"
-                self.assertTrue(path.is_file(), f"missing context audit for Batch {n}")
-
     def test_coverage_does_not_introduce_duplicate_canonical_ids(self):
         ids = [entry["id"] for entry in self.entries]
         self.assertEqual(len(ids), len(set(ids)))

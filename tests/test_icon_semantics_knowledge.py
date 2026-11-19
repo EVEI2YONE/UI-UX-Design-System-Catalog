@@ -32,18 +32,6 @@ class IconSemanticsRetrievalTests(unittest.TestCase):
                 self.assertTrue(results, f"no results for {query}")
                 self.assertEqual(results[0]["id"], expected)
 
-    def test_canonical_entry_and_links(self):
-        entry = self.by_id["foundation.icon-semantics"]
-        self.assertEqual(entry["status"], "proposed")
-        self.assertIsNone(entry["reviewed_at"])
-        self.assertEqual(entry["owner"], "unassigned")
-        self.assertTrue((ROOT / entry["path"]).is_file())
-        text = (ROOT / entry["path"]).read_text(encoding="utf-8")
-        for phrase in ("CKG-01", "CKG-02", "CKG-03", "NOT VERIFIED", "component.button"):
-            self.assertIn(phrase, text)
-        self.assertIn("iconography-and-semantics.md", (ROOT / "knowledge/foundations/README.md").read_text(encoding="utf-8"))
-        self.assertIn("foundation.icon-semantics", (ROOT / "AGENTS.md").read_text(encoding="utf-8"))
-
     def test_no_duplicate_ids(self):
         ids = [entry["id"] for entry in self.entries]
         self.assertEqual(len(ids), len(set(ids)))

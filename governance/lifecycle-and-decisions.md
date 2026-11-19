@@ -58,7 +58,7 @@ Every canonical record must include immutable ID, path, lifecycle status, `owner
 
 **Proposed maintenance cadence:** review ownership and the applicability of authoritative references quarterly, but do not assign a review date or promote an entry without an actual reviewer and recorded evidence. Record affected consumers, migration path, source/edition, test results and unresolved risks in each PR. If a canonical path moves, preserve IDs and provide a redirect or compatibility note. Documentation status is never proof that framework-specific code is deployed.
 
-## Batch 12 extension — DesignOps and design-to-code lifecycle
+## DesignOps and design-to-code lifecycle
 
 When a proposal becomes a real component, track **design decisions, code delivery and evidence separately**. This extends the existing lifecycle policy rather than adding a parallel governance entry.
 
@@ -82,6 +82,6 @@ When a proposal becomes a real component, track **design decisions, code deliver
 
 **Boundary:** a polished design, a passing catalog validator, a component story, and a deployed accessible user journey are different artifacts with different evidence. Follow [quality gates](quality-gates.md), [component contracts](../knowledge/architecture/component-contracts.md), and [tokens](../knowledge/foundations/design-tokens-and-themes.md). No actual toolchain or release is claimed by this proposed process.
 
-## Settings-specific lifecycle application (KG-014, PR #13; proposed 2026-11-07)
+## Settings-specific lifecycle application
 
-The general lifecycle states above govern **catalog concepts**, not product setting values. For settings with stored values and versioned clients, use the [per-setting transition matrix](../specifications/patterns/account-and-settings-portal.md#settings-knowledge-batch-3--configuration-lifecycle-and-migration-kg-014-proposed-2026-11-07) to review missing defaults, key/label renames, split/merge, scope/authority changes, deprecation, and removal. A renamed control must not silently reset an explicit choice; a moved setting must not silently broaden who it affects. Keep app-specific storage migrations and permission checks with the product owner. Product/runtime migration tests remain **NOT VERIFIED** until actually executed.
+The general lifecycle states above govern **catalog concepts**, not product setting values. For settings with stored values and versioned clients, use the [per-setting transition matrix](../specifications/patterns/account-and-settings-portal.md) to review missing defaults, key/label renames, split/merge, scope/authority changes, deprecation, and removal. A renamed control must not silently reset an explicit choice; a moved setting must not silently broaden who it affects. Keep app-specific storage migrations and permission checks with the product owner. Product/runtime migration tests remain **NOT VERIFIED** until actually executed.

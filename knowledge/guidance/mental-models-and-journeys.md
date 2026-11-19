@@ -16,10 +16,10 @@ Understand users' expectations, goals and end-to-end experiences **before** deci
 1. Identify the user **goal** (e.g., “receive a replacement card”), separate from the interface **task** (“submit a form”).
 2. Interview or observe people in relevant situations. Record their vocabulary, predictions, fallback behaviors, use of other channels and actual steps.
 3. Choose an artifact deliberately:
-   - **Mental-model notes** for users' expectations, concepts and mismatches with the product's model.
-   - **Task analysis** for actions, prerequisites, alternative paths, exception branches and cognitive/physical demands.
-   - **Journey/experience map** for stages across time and touchpoints, including needs, emotions and friction.
-   - **Service blueprint** only when backstage support, organizational handoffs or policies meaningfully affect the journey.
+ - **Mental-model notes** for users' expectations, concepts and mismatches with the product's model.
+ - **Task analysis** for actions, prerequisites, alternative paths, exception branches and cognitive/physical demands.
+ - **Journey/experience map** for stages across time and touchpoints, including needs, emotions and friction.
+ - **Service blueprint** only when backstage support, organizational handoffs or policies meaningfully affect the journey.
 4. Decide **current-state vs future-state**, and **evidence-first vs assumption-first**. Label assumptions until tested; keep ideal-state promises separate from current observations.
 5. Segment when users differ by role, access needs, frequency, language or task context; avoid false precision about how common a path is.
 6. Link the map to design decisions, owners, open questions and the [task-flow specification](../../specifications/patterns/task-flows-and-information-architecture.md).
@@ -59,5 +59,5 @@ The table is **illustrative, not participant data**. A real map must preserve tr
 - [GOV.UK, Creating an experience map](https://www.gov.uk/service-manual/user-research/creating-an-experience-map) (2017; consulted 2026-11-07): evidence-based experience mapping in complex services; not a universal prescribed format.
 - [Nielsen Norman Group, Journey-Mapping Approaches](https://www.nngroup.com/articles/journey-mapping-approaches/) (2020): current/future and assumption/research first decisions.
 
-**Canonical ID:** `guidance.journey-mapping` · **Owner:** unassigned · **Last human review:** none; proposed on 2026-11-07.  
+**Canonical ID:** `guidance.journey-mapping` · **Owner:** unassigned · **Last human review:** none; proposed on 2026-11-07.
 **Related:** [research methods](ux-research-methods.md), [task flows](../../specifications/patterns/task-flows-and-information-architecture.md), [design principles](../foundations/design-principles.md), [UX measurement](ux-measurement.md).

@@ -62,7 +62,7 @@ Define discoverable, accessible and reversible behavior for reorder, bulk action
 
 Related: [data tables](data-tables.md), [role-aware workspaces](role-aware-workspaces-and-context-switching.md), [interaction recovery](interaction-states-and-recovery.md), [accessibility](../../knowledge/guidance/accessibility.md), [mobile UX](../../knowledge/guidance/mobile-and-adaptive-platform-ux.md).
 
-## B04 — action consolidation decision contract (CKG-13; proposed 2026-11-07)
+## Action consolidation decision contract
 
 **Purpose:** choose the least complex **discoverable** control arrangement for the user's actual task, without turning one generic control into a business-policy engine. This extends the existing bulk/undo/shortcut guidance. [Task flows](task-flows-and-information-architecture.md) owns sequential task context; [component contracts](../../knowledge/architecture/component-contracts.md) owns event ownership; [interaction recovery](interaction-states-and-recovery.md) owns pending/uncertain outcomes and focus recovery. Use [UX measurement](../../knowledge/guidance/ux-measurement.md) to test effort hypotheses.
 
@@ -108,4 +108,4 @@ Before replacing visible actions with a menu, single CTA, gesture or compact too
 | Permission change, failed and uncertain write | Server authorization, stable ID, no unsafe retry or premature confirmation | NOT VERIFIED |
 | Efficiency vs correctness | TCR/time/error and [effort metrics](../../knowledge/guidance/ux-measurement.md), not click reduction alone | NOT VERIFIED |
 
-**References:** [WAI-ARIA APG Menu Button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/), [WAI-ARIA APG Toolbar](https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [OWASP authorization guidance](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) (consulted 2026-11-07). Design motivation: Little Wins B07 proposed action-consolidation guidance; no observed improvement or deployment is claimed.
+**References:** [WAI-ARIA APG Menu Button](https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/), [WAI-ARIA APG Toolbar](https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [OWASP authorization guidance](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html) (consulted 2026-11-07). Design motivation: Little Wins proposed action-consolidation guidance; no observed improvement or deployment is claimed.

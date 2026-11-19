@@ -58,7 +58,7 @@ class SiteBuildTests(unittest.TestCase):
     def test_unimplemented_entries_advertise_spec_only(self):
         button = next(e for e in self.entries if e["id"] == "pattern.task-flows")
         text = (self.out / site_build.route(button).lstrip("/") / "index.html").read_text(encoding="utf-8")
-        self.assertIn("Specification only", text)
+        self.assertIn("No runnable reference", text)
         self.assertNotIn('class="interactive-preview"', text)
         self.assertIn("View Markdown source", text)
 
@@ -127,7 +127,7 @@ class SiteBuildTests(unittest.TestCase):
                 continue
             with self.subTest(entry=entry["id"]):
                 page = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
-                self.assertIn("Specification only", page)
+                self.assertIn("No runnable reference", page)
                 self.assertNotIn('sandbox="allow-scripts"', page)
 
     def test_button_real_preview_matches_registered_source(self):
@@ -253,14 +253,14 @@ class SiteBuildTests(unittest.TestCase):
                 text = " ".join(parser.parts)
                 self.assertNotRegex(text, re.compile(r"\\b(?:phase|batch)\\s*\\d+\\b|\\bPR\\s*#\\d+\\b", re.I))
 
-    def test_canonical_markdown_and_historical_anchors_are_preserved(self):
+    def test_canonical_markdown_is_current_concept_content(self):
         path = ROOT / "specifications/components/button/spec.md"
         source = path.read_text(encoding="utf-8")
-        self.assertIn("## Batch 1 extension", source)
-        self.assertIn("## Phase 4 reference", source)
+        self.assertNotIn("## Batch", source)
+        self.assertNotIn("## Phase", source)
+        self.assertIn("Interactive reference", source)
         rendered = site_build.public_guidance(source, "specifications/components/button/spec.md", {})
         self.assertIn("icon-only", rendered.lower())
-        self.assertIn('id="batch-1-extension', rendered)
         self.assertNotIn("Phase 4 reference implementation", rendered)
 
     def test_search_export_matches_registry(self):

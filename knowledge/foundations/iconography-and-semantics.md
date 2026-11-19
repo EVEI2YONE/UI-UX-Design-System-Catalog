@@ -8,7 +8,7 @@ Give design systems a consistent, inspectable decision rule for icons inside con
 
 This is a **platform-neutral specification**, not an icon package, approved glyph mapping, automated accessibility guarantee or universal brand style. A product chooses and verifies its own installed exports and semantics. [Practical UI styling recipes](practical-ui-styling-recipes.md) owns broader visual craftsmanship and imagery. [Button](../../specifications/components/button/spec.md) owns activation; [component contracts](../architecture/component-contracts.md) own general states; [feedback](../../specifications/patterns/feedback.md) owns communicating domain results. This page owns the *semantic relationship between an icon, its host component and user meaning*.
 
-## CKG-01 — Semantic icon registry: one meaning, explicit context
+## Semantic icon registry: one meaning, explicit context
 
 Start with the user's recognizable **verb/object or status label**; only then decide whether an icon improves scanning, recognition or wayfinding. Maintain a single product-level semantic registry with **intent ID, human meaning, host role, glyph choice, visible text requirement, accessible-name source, decorative/informative status, RTL behavior, visual token, owner and lifecycle**. This is distinct from importing an arbitrary pictogram by filename.
 
@@ -25,7 +25,7 @@ Start with the user's recognizable **verb/object or status label**; only then de
 
 Example mappings are **intent IDs, not universally mandated icons**. Record alternatives or deprecated symbols rather than proliferating competing names. Do not present the product logo, emoji or brand artwork as part of an interchangeable action-glyph registry.
 
-## CKG-02 — Classify the icon's role before coding
+## Classify the icon's role before coding
 
 | Role | Interaction owner | Accessible contract | Counterexample |
 | --- | --- | --- | --- |
@@ -38,7 +38,7 @@ Example mappings are **intent IDs, not universally mandated icons**. Record alte
 
 **No independently interactive child icons inside already interactive parents.** Give each action its own semantic target or make a bounded non-interactive card with explicit controls. Never make hover, double-click, swipe or long-press the only route to a primary operation. A tooltip is supplementary, not the sole accessible name or explanation.
 
-## CKG-03 — Icon-only action state and geometry contract
+## Icon-only action state and geometry contract
 
 An icon-only control requires: (1) stable purpose and contextual accessible name; (2) a host semantic element; (3) visible keyboard focus; (4) a reasonable target area, not just a glyph-sized hit box; (5) a state-specific visual and programmatic response; (6) disabled reason when it matters; (7) text feedback for consequential results; (8) no unverified outcome claim.
 
@@ -64,18 +64,18 @@ import { Pencil, MoreHorizontal } from "lucide-react";
 // Illustrative React markup; not a published catalog component.
 // The icon is decorative because the Button has a clear text label.
 <button type="button" onClick={onEdit}>
-  <Pencil aria-hidden="true" focusable="false" /> Edit contribution
+ <Pencil aria-hidden="true" focusable="false" /> Edit contribution
 </button>
 
 // Icon-only action, when context makes its meaning sufficiently discoverable.
 <button
-  type="button"
-  aria-label={`More actions for ${itemTitle}`}
-  aria-haspopup="menu"
-  aria-expanded={menuOpen}
-  onClick={toggleMenu}
+ type="button"
+ aria-label={`More actions for ${itemTitle}`}
+ aria-haspopup="menu"
+ aria-expanded={menuOpen}
+ onClick={toggleMenu}
 >
-  <MoreHorizontal aria-hidden="true" focusable="false" />
+ <MoreHorizontal aria-hidden="true" focusable="false" />
 </button>
 ```
 
@@ -103,11 +103,11 @@ The example assumes an implementation with appropriate focus, menu semantics, st
 - [WCAG 2.2](https://www.w3.org/TR/WCAG22/) — applicable text/non-text contrast, name/role/value, keyboard and target-size criteria (consulted 2026-11-07; applicability must be assessed per control).
 - [Lucide accessibility guidance](https://github.com/lucide-icons/lucide/blob/main/docs/how-to/accessibility.md) — decorative vs meaningful icons and visible labels (consulted 2026-11-07; implementation library/version specific).
 
-Motivating example: [Little Wins icon knowledge B05](https://github.com/EVEI2YONE/Little_Wins/blob/main/docs/little-wins/ui-knowledge/batch-05-iconography-and-affordances.md) (app-local proposals, not observed user comprehension or general icon mandates).
+Motivating example: [Little Wins icon knowledge ](https://github.com/EVEI2YONE/Little_Wins/blob/main/docs/little-wins/ui-knowledge/batch-05-iconography-and-affordances.md) (app-local proposals, not observed user comprehension or general icon mandates).
 
 **Related canonical IDs:** `foundation.practical-styling`, `component.button`, `architecture.component-contracts`, `guidance.accessibility`, `guidance.internationalization`, `pattern.feedback`, `pattern.interaction-recovery`. **Lifecycle:** proposed, owner unassigned, no human review or product tests recorded.
 
-## B06 — icon-consistency audit and evolution (CKG-05; proposed 2026-11-07)
+## Icon-consistency audit and evolution
 
 **Scope:** review whether a product's chosen icon family and semantic intent registry remain coherent as new components are added. This is a **decision and audit contract**, not a universal glyph set, a Lucide export list, or evidence of implementation. General visual craftsmanship stays with [practical styling](practical-ui-styling-recipes.md); controls own actual activation through their [component contracts](../architecture/component-contracts.md); verification ownership is [quality gates](../../governance/quality-gates.md).
 
@@ -115,7 +115,7 @@ Motivating example: [Little Wins icon knowledge B05](https://github.com/EVEI2YON
 
 For each intent, capture: `semanticIntent`, human-readable **verb/object or status**, visual glyph identifier and installed package/version, semantic role (decorative/informative/action/navigation/disclosure), allowed host components, icon size/token, required nearby text/accessible name source, state-specific alternatives, directional/RTL policy, owner, consumers, status and migration aliases. Product teams should choose the actual glyph and confirm package exports; the catalog must not mandate an icon family for every consumer.
 
-### CKG-05 consistency and collision matrix
+### Consistency and collision matrix
 
 | Audit question | Positive condition | Error or escalation |
 | --- | --- | --- |
@@ -139,7 +139,7 @@ For each intent, capture: `semanticIntent`, human-readable **verb/object or stat
 
 **Illustrative good:** a task-specific "Edit submission" Button uses a consistent pencil intent, while a pending review Badge shows an informative clock **plus text**; success status waits for authoritative confirmation. **Anti-example:** a clickable check glyph alternates between checking a checkbox and approving a transaction, gains a green fill immediately on click, and has no accessible name.
 
-### CKG-05 verification and adoption
+### Verification and adoption
 
 | Check | Scope/evidence | Status |
 | --- | --- | --- |

@@ -71,8 +71,7 @@ Help people continue work safely across network loss, retries, delayed synchroni
 
 Related: [interaction recovery](interaction-states-and-recovery.md), [form composition](forms.md), [service recovery](service-recovery-and-support.md), [authentication lifecycle](authentication-and-account-lifecycle.md), [privacy/trust](../../knowledge/guidance/privacy-consent-and-trust.md).
 
-
-## Versioned aggregate migrations and safe restore (Batch 6 — proposed, 2026-11-07)
+## Versioned aggregate migrations and safe restore ( — proposed, 2026-11-07)
 
 **Context:** Some small pilots persist one revisioned aggregate per account rather than normalized rows. Little Wins demonstrates compare-and-swap retries and legacy project normalization; it also performs sample-group archival in a workspace read path. This is evidence of a migration approach, **not** proof of backup, restored history, or production concurrency capacity.
 

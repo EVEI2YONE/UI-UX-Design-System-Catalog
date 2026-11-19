@@ -50,5 +50,5 @@ Test at appropriate widths and zoom levels, with keyboard and assistive tech, la
 - [W3C WAI, Cognitive Accessibility](https://www.w3.org/WAI/cognitive/) (consulted 2026-11-07): overview of cognitive disability considerations.
 - [Nielsen Norman Group, Mental Models](https://www.nngroup.com/articles/mental-models/) (2024; reviewed September 2026): user expectations and mismatches.
 
-**Canonical ID:** `guidance.cognitive-load` · **Owner:** unassigned · **Last human review:** none; proposed on 2026-11-07.  
+**Canonical ID:** `guidance.cognitive-load` · **Owner:** unassigned · **Last human review:** none; proposed on 2026-11-07.
 **Related:** [design principles](../foundations/design-principles.md), [research methods](ux-research-methods.md), [journey mapping](mental-models-and-journeys.md), [accessibility](accessibility.md).

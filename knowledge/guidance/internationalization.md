@@ -44,8 +44,7 @@ These are examples of message intent, not a complete message catalog or assuranc
 
 **Disposition:** explicitly record supported locales, whether RTL is supported, pseudolocalization results and unresolved linguistic review. Testing one RTL sample does not prove support for all scripts. See [component contracts](../architecture/component-contracts.md).
 
-
-## Settings language and region journeys — account batch 3 (KG-018–019)
+## Settings language and region journeys — account
 
 A product language selector must list supported names in a recognizable form, preserve the user's task context and switch interface language only when message resources and accessible document language metadata are ready. If a language is unavailable, do not pretend a browser translation is a supported product locale.
 
@@ -61,8 +60,7 @@ Keep **UI language**, **date/number locale**, **timezone**, **billing currency**
 
 **Status:** product checks NOT VERIFIED. Related: [account settings](../../specifications/patterns/account-and-settings-portal.md), [notification preferences](../../specifications/patterns/notifications-and-attention.md), [W3C Internationalization Quick Tips](https://www.w3.org/International/quicktips/) (consulted 2026-11-07).
 
-
-## Text-expansion and RTL wireframe composition review (proposed Batch 4, 2026-11-07)
+## Text-expansion and RTL wireframe composition review
 
 **Use when:** static screen concepts contain translated labels, variable data, dates/amounts, long validation instructions or bidirectional navigation. **Avoid when:** an English-only screenshot is treated as proof of localization, exact expansion factors are invented as universal, or every icon/number/logo is mirrored indiscriminately.
 

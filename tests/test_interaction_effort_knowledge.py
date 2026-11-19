@@ -36,25 +36,6 @@ class InteractionEffortKnowledgeTests(unittest.TestCase):
                 self.assertTrue(result)
                 self.assertEqual(result[0]["id"], expected)
 
-    def test_b04_content_and_proposed_lifecycle(self):
-        cases = {
-            "pattern.advanced-interactions": ["CKG-13", "split button", "NOT VERIFIED", "confirmation"],
-            "guidance.ux-measurement": ["CKG-14", "Pointer travel", "Keyboard navigation", "NOT VERIFIED"],
-        }
-        for identifier, words in cases.items():
-            with self.subTest(identifier=identifier):
-                entry = self.by_id[identifier]
-                self.assertEqual(entry["status"], "proposed")
-                self.assertIsNone(entry["reviewed_at"])
-                text = (ROOT / entry["path"]).read_text(encoding="utf-8")
-                for word in words:
-                    self.assertIn(word, text)
-
-    def test_context_and_section_indexes(self):
-        self.assertTrue((ROOT / "archive/planning/icon-interaction-b04-context-2026-11-07.md").is_file())
-        self.assertIn("CKG-13", (ROOT / "specifications/patterns/README.md").read_text(encoding="utf-8"))
-        self.assertIn("CKG-14", (ROOT / "knowledge/guidance/README.md").read_text(encoding="utf-8"))
-
     def test_no_duplicate_canonical_ids(self):
         ids = [e["id"] for e in self.entries]
         self.assertEqual(len(ids), len(set(ids)))

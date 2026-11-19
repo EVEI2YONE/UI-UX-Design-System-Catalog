@@ -26,11 +26,11 @@ Do not infer low risk merely because a tool can be rolled back locally. Repeated
 
 ```text
 User goal -> propose plan, target, constraints, connection scopes
-  -> inspect / simulate where possible -> preview exact side effects
-  -> check identity + current permissions -> user or policy review if needed
-  -> approved / rejected / timed out
-  -> execute bounded actions -> confirmed, partial, failed or unknown outcome
-  -> report real results + durable audit / recovery -> close or revise
+ -> inspect / simulate where possible -> preview exact side effects
+ -> check identity + current permissions -> user or policy review if needed
+ -> approved / rejected / timed out
+ -> execute bounded actions -> confirmed, partial, failed or unknown outcome
+ -> report real results + durable audit / recovery -> close or revise
 ```
 
 | State | UX must show | Required behavior |

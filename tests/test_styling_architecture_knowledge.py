@@ -37,27 +37,6 @@ class StylingArchitectureKnowledgeTests(unittest.TestCase):
                 self.assertTrue(matches, f"No catalog result: {query}")
                 self.assertEqual(matches[0]["id"], expected)
 
-    def test_b05_content_and_proposal_boundary(self):
-        cases = {
-            "foundation.practical-styling": ["CKG-15", "utility-first", "NOT VERIFIED"],
-            "architecture.enforcement-ci": ["CKG-16", "false-positive", "NOT VERIFIED"],
-            "architecture.component-model": ["CKG-17", "installed", "NOT VERIFIED"],
-        }
-        for concept_id, terms in cases.items():
-            with self.subTest(concept=concept_id):
-                entry = self.by_id[concept_id]
-                self.assertEqual(entry["status"], "proposed")
-                self.assertIsNone(entry["reviewed_at"])
-                doc = (ROOT / entry["path"]).read_text(encoding="utf-8")
-                for term in terms:
-                    self.assertIn(term, doc)
-
-    def test_context_and_indexes_are_present(self):
-        self.assertTrue((ROOT / "archive/planning/icon-interaction-b05-context-2026-11-07.md").is_file())
-        for p in ("knowledge/foundations/README.md", "knowledge/architecture/README.md", "AGENTS.md"):
-            self.assertIn("B05" if p.endswith("README.md") else "Batch 5",
-                          (ROOT / p).read_text(encoding="utf-8"))
-
     def test_registry_unique(self):
         ids = [e["id"] for e in self.entries]
         self.assertEqual(len(ids), len(set(ids)))

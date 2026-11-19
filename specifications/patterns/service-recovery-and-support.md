@@ -66,5 +66,5 @@ Use clear, respectful labels such as “Get help with this request.” If the pr
 - [GOV.UK service-problem pages](https://design-system.service.gov.uk/patterns/problem-with-the-service-pages/) (accessed 2026-11-07): unexpected failure guidance, not a universal uptime promise.
 - [GOV.UK support operations guidance](https://www.gov.uk/service-manual/helping-people-to-use-your-service/set-up-and-manage-user-support) (published 2016; accessed 2026-11-07): channel coordination, follow-up and support telemetry; implementation-specific service considerations.
 
-**Canonical ID:** `pattern.service-recovery` · **Owner:** unassigned · **Human review date:** null. Guidance proposed 2026-11-07; no support-system tests or participant outcomes.  
+**Canonical ID:** `pattern.service-recovery` · **Owner:** unassigned · **Human review date:** null. Guidance proposed 2026-11-07; no support-system tests or participant outcomes.
 **Related:** [interaction recovery](interaction-states-and-recovery.md), [form composition](forms.md), [content design](../../knowledge/guidance/content-design-and-ux-writing.md), [feedback](feedback.md), [UX measurement](../../knowledge/guidance/ux-measurement.md).

@@ -2,12 +2,6 @@
 
 **Kind:** guideline · **Status:** proposed · **Owner:** unassigned · **Review:** pending
 
-## Context collected at batch start
-
-Existing [component-model](component-model.md) defines the primitive/component/feature boundary, public contracts and incremental extraction. [Component contracts](component-contracts.md) document reusable UI behavior; [lifecycle](../../governance/lifecycle-and-decisions.md) covers ownership. Missing at application level: feature vs domain ownership, imports and navigation by developer task. This page extends rather than duplicates component-specific requirements.
-
-Before applying it to a target: record framework/routing, the most-changed user journeys, module imports, repeated behavior vs visual similarity, current file ownership, cross-team changes, testing infrastructure and meaningful examples of slow code lookup. Report unknowns.
-
 ## Single-owner module responsibilities
 
 | Module | Owns | Should not own |

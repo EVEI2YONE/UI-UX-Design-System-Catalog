@@ -43,12 +43,11 @@ Test real request failures, latency, translated errors, retry, touch and keyboar
 
 **Test scenarios:** delayed response, double activation, lost connection after submission, server validation, expired permission, translated error, interrupted modal, and retry from the recovery state. Report actual run status; guidance is not proof of implementation.
 
-## Batch 9 boundary — offline/sync and authentication
+## Boundary — offline/sync and authentication
 
 This page continues to own generic pending, timeout, retry, error and cancellation states. For **Saved on this device → Queued → Syncing → Synced** distinctions, divergent edits, concurrent conflict review and rejected offline work, use [offline work, synchronization and conflicts](offline-sync-and-conflicts.md). For expired sessions, safe reauthentication and legitimate account recovery, use [authentication lifecycle](authentication-and-account-lifecycle.md). Never automatically retry a consequential, potentially non-idempotent mutation after an ambiguous network failure. Describe verified local versus remote state; do not show “All saved” before backend confirmation.
 
-
-## Human review and value-changing transaction lifecycle (2026-11-07)
+## Human review and value-changing transaction lifecycle
 
 **Evidence trigger:** Little Wins supports drafts, submitted contributions, returned-for-changes, approvals/rejections, item-level reviewer edits, points and reward reservation/fulfillment. Generic AI agent approvals are a different concept; do not reuse AI-specific automation assumptions for human-to-human moderation.
 
@@ -60,8 +59,7 @@ This page continues to own generic pending, timeout, retry, error and cancellati
 
 **Tests:** valid/invalid transitions, concurrent reviewers, replay/idempotency, correction history, reward reservation/decline/refund, keyboard focus and announcements, timezone/locale-safe timestamps, recoverable validation errors. All product checks remain NOT VERIFIED unless actually executed.
 
-
-## Batch 8 — paused capabilities and work already in progress (2026-11-07)
+## Paused capabilities and work already in progress
 
 Do not conflate **paused**, **unauthorized**, **empty**, **disabled**, **unsupported** and **completed**. A capability paused by group configuration should identify what stopped, what remains preserved, what existing requests can still be managed, and how an eligible user resumes it. Do not show “No rewards” when redemptions are merely unavailable or hidden.
 
@@ -71,8 +69,7 @@ For feature-sensitive transactions, verify the authoritative configuration again
 
 **Check:** disable during pending request, failed direct command, refresh while editing, re-enable and accurate feedback; record actual persistence and keyboard/screen reader announcements. Source review is not a runtime PASS.
 
-
-## Wireframe state-coverage and recovery annotations (proposed Batch 3, 2026-11-07)
+## Wireframe state-coverage and recovery annotations
 
 **Use when:** preparing a static wireframe, screen sequence or design review of a task with async operations, empty data, permission limits, errors, success or reversible/irreversible actions. **Avoid when:** a polished default-state image is treated as the complete flow, state changes are implied to execute in an image, or speculative server permissions/outcomes are presented as observed behavior.
 
@@ -126,12 +123,11 @@ Use stable screen IDs (for example `S2-pending`, `S2-error`, `S2-confirmed`) and
 
 **Evidence:** this is repository-derived synthesis from existing proposed state, form, offline, feedback, accessibility and quality concepts, with [WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) as implementation-oriented references. Standards are not proof of any illustration's conformance. Static wireframe state coverage can be *document-reviewed*; user studies, browser testing, server confirmation, keyboard/screen reader, RTL and zoom remain **NOT VERIFIED** unless separately performed. No canonical status or owner is promoted by these additions.
 
-
-## B03 — icon/state synchronization and post-mutation focus continuity (CKG-09/10; proposed 2026-11-07)
+## Icon/state synchronization and post-mutation focus continuity
 
 **Purpose:** make transitions from component intent to authoritative outcome legible across icons, status text, action availability, selection and focus. Existing [icon semantics](../../knowledge/foundations/iconography-and-semantics.md) owns icon meaning; [component contracts](../../knowledge/architecture/component-contracts.md) owns event emission and sibling-state coordination; this pattern owns *when a workflow may present an outcome and how it recovers focus when content changes*. This is reusable guidance, not a new UI primitive or a claim that any app has implemented it.
 
-### CKG-09 — synchronized icon, label and domain-state contract
+### Synchronized icon, label and domain-state contract
 
 | State/source | Icon and adjacent text | Action and data behavior | Do not do |
 | --- | --- | --- | --- |
@@ -146,7 +142,7 @@ Use stable screen IDs (for example `S2-pending`, `S2-error`, `S2-confirmed`) and
 
 **Rules:** visual icon swaps must not trigger data mutations; state changes flow from the owning controller's validated state. A status icon and colored badge are never the sole signal. Keep control dimensions stable across idle/pending/confirmed to avoid pointer-target movement; announce material asynchronous changes sparingly via appropriate status regions without repeatedly stealing focus. An icon-only control retains an accurate accessible name; if its underlying action changes, ensure that new purpose is deliberate and discoverable rather than silently overloading the same target. Recheck server authority before consequential transitions. Status badge typography, accessible labels and icon meaning remain localizable and theme/forced-color resilient.
 
-### CKG-10 — focus and contextual continuity after a changing collection
+### Focus and contextual continuity after a changing collection
 
 Before each mutation, identify: **invoking control, active item ID and revision, current list/filters/sort/pagination, editable draft, focus origin and expected focus destination.** Preserve or intentionally revise these based on the observed outcome—not on a guessed successful click.
 
@@ -166,25 +162,25 @@ Before each mutation, identify: **invoking control, active item ID and revision,
 
 ```text
 item_selected
-  -> decision_input_ready
-  -> submitting (current item locked; no repeat)
-  -> server_acknowledged
-  -> authoritative_read_reconciled
-  -> confirmed_result_announced
-  -> next_eligible_selected OR queue_navigation OR user_stop
+ -> decision_input_ready
+ -> submitting (current item locked; no repeat)
+ -> server_acknowledged
+ -> authoritative_read_reconciled
+ -> confirmed_result_announced
+ -> next_eligible_selected OR queue_navigation OR user_stop
 
 submitting
-  -> validation_error (preserve selection + notes)
-  -> definitely_failed (safe retry if contract allows)
-  -> result_uncertain (reconcile first; never blind replay)
-  -> stale_revision / permission_changed (refresh, revalidate, explain)
+ -> validation_error (preserve selection + notes)
+ -> definitely_failed (safe retry if contract allows)
+ -> result_uncertain (reconcile first; never blind replay)
+ -> stale_revision / permission_changed (refresh, revalidate, explain)
 ```
 
-A server acknowledgment is not automatically proof that all dependent read models are reconciled; the appropriate consistency contract is application-specific. Only advance when the task's authoritative completion condition is met. Never select a different item merely because a local optimistic cache removed the old one. The [task-flow contract](task-flows-and-information-architecture.md#b03--spatial-continuity-and-sequential-task-progress-ckg-1112-proposed-2026-11-07) owns when and whether to auto-select the next eligible item.
+A server acknowledgment is not automatically proof that all dependent read models are reconciled; the appropriate consistency contract is application-specific. Only advance when the task's authoritative completion condition is met. Never select a different item merely because a local optimistic cache removed the old one. The [task-flow contract](task-flows-and-information-architecture.md#b03--spatial-continuity-and-sequential-task-progress--proposed-2026-11-07) owns when and whether to auto-select the next eligible item.
 
 **Counterexample:** a reviewer clicks Approve, spinner instantly becomes a green check, pending item is removed from the DOM and focus disappears; a timeout later leaves the actual decision uncertain, yet the UI opens another contribution. Correct behavior leaves the outcome unsettled, retains context and offers authoritative verification before advancing.
 
-### B03 verification (all application checks NOT VERIFIED)
+### Verification (all application checks NOT VERIFIED)
 
 | Scenario | Required observable evidence | Status |
 | --- | --- | --- |
@@ -195,8 +191,8 @@ A server acknowledgment is not automatically proof that all dependent read model
 | Narrow/zoom/RTL/long labels and reduced motion | Stable action identity, readable feedback, practical hit targets | NOT VERIFIED |
 | Live-region and focus announcement behavior | Relevant updates announced once without excessive focus jumps | NOT VERIFIED |
 
-**References:** [WAI-ARIA APG Dialog (Modal)](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG patterns](https://www.w3.org/WAI/ARIA/apg/patterns/) (consulted 2026-11-07). Motivating source: [Little Wins B06/B07/B08 proposed interaction knowledge](https://github.com/EVEI2YONE/Little_Wins/tree/main/docs/little-wins/ui-knowledge/); observed source behavior does not certify UX benefit, accessibility or implementation.
+**References:** [WAI-ARIA APG Dialog (Modal)](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG patterns](https://www.w3.org/WAI/ARIA/apg/patterns/) (consulted 2026-11-07). Motivating source: [Little Wins // proposed interaction knowledge](https://github.com/EVEI2YONE/Little_Wins/tree/main/docs/little-wins/ui-knowledge/); observed source behavior does not certify UX benefit, accessibility or implementation.
 
-## Phase 6 executable pattern reference (2026-11-08)
+## Interactive reference
 
-The visual catalog now includes an actual [Interaction recovery implementation](../../site/src/implementations/patterns/recovery/Recovery.js), its [deterministic synthetic scenarios](../../site/src/implementations/patterns/recovery/scenarios.js), and [scoped demonstration styles](../../site/src/implementations/patterns/recovery/Recovery.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests. See the [Phase 6 evidence ledger](../../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).
+The visual catalog now includes an actual [Interaction recovery implementation](../../site/src/implementations/patterns/recovery/Recovery.js), its [deterministic synthetic scenarios](../../site/src/implementations/patterns/recovery/scenarios.js), and [scoped demonstration styles](../../site/src/implementations/patterns/recovery/Recovery.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests.

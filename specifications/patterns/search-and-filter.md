@@ -38,11 +38,11 @@ Label search and filter groups, expose active selections beyond color, support k
 | Zero/error/timeout/partial results | NOT VERIFIED | Integration and recovery checks |
 | Translation, RTL, narrow layout | NOT VERIFIED | Representative long labels |
 
-**Canonical ID:** `pattern.search-filter` · **Owner:** unassigned · **Review date:** not reviewed · **Migration:** preserve query/deep-link semantics and avoid unnecessary custom widgets. Documentation-only.
+**Canonical ID:** `pattern.search-filter` · **Owner:** unassigned · **Review date:** not reviewed
 
 Related: [task flows](task-flows-and-information-architecture.md), [recovery](interaction-states-and-recovery.md), [measurement](../../knowledge/guidance/ux-measurement.md), [accessibility](../../knowledge/guidance/accessibility.md). Standards: [WCAG 2.2](../../governance/references.md).
 
-## Batch 8 extension — discovery, sorting and result semantics
+## Discovery, sorting and result semantics
 
 ### Choose the discovery model
 
@@ -83,6 +83,6 @@ Each result should show enough safe distinguishing context to support selection,
 
 Related guidance: [content design](../../knowledge/guidance/content-design-and-ux-writing.md), [service recovery](service-recovery-and-support.md).
 
-## Phase 6 executable pattern reference (2026-11-08)
+## Interactive reference
 
-The visual catalog now includes an actual [Search and filtering implementation](../../site/src/implementations/patterns/search-filter/SearchFilter.js), its [deterministic synthetic scenarios](../../site/src/implementations/patterns/search-filter/scenarios.js), and [scoped demonstration styles](../../site/src/implementations/patterns/search-filter/SearchFilter.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests. See the [Phase 6 evidence ledger](../../docs/visual-catalog-refactor/12-phase-6-composed-patterns.md).
+The visual catalog now includes an actual [Search and filtering implementation](../../site/src/implementations/patterns/search-filter/SearchFilter.js), its [deterministic synthetic scenarios](../../site/src/implementations/patterns/search-filter/scenarios.js), and [scoped demonstration styles](../../site/src/implementations/patterns/search-filter/SearchFilter.css). The executable source used by the sandboxed preview is displayed verbatim in the site's source inspector. This is a **reference demonstration**, not a product backend, a verified end-to-end integration or a published package. Canonical review status remains `proposed`. Actual keyboard/AT behavior, responsive visuals, localization, measured performance and authoritative service integration are **NOT VERIFIED** by the Node/Python source tests.
