@@ -2,7 +2,7 @@
 
 > **Editorial assessment, not approval or a usability result.** Every score is a source-only judgment about current written guidance. It does not claim an implemented control, user study, accessibility conformance or an independent human review.
 
-**Source:** [`EVEI2YONE/UI-UX-Design-System-Catalog`](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog) at commit [`5ed1c042aa87`](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/tree/5ed1c042aa87198998b7e96d642a6feeb7ae4a94) (current code only; no history assessed). **Assessed:** 2026-11-19 (UTC). **Coverage:** 92 of 92 canonical concepts.
+**Source:** [`EVEI2YONE/UI-UX-Design-System-Catalog`](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog) at commit [`415d58522197`](https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/tree/415d5852219775d925b08d002559bb1a260fb757) (current code only; no history assessed). **Assessed:** 2026-11-19 (UTC). **Coverage:** 92 of 92 canonical concepts.
 
 **Snapshot:** 87.2/100 average; 68 strong, 24 good drafts, 0 need revision, 0 need rework. Review queue: 0 P1, 71 P2 and 21 P3. Evidence: 92 E0 entries, meaning no independent review is recorded.
 
