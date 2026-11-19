@@ -182,7 +182,7 @@ def page(title, subtitle, content, active="browse"):
             '<nav aria-label="Primary">' + nav + '</nav><a class="repo" href="https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog">Repository ↗</a></div></header>'
             '<main id="main" class="container"><div class="intro"><p class="eyebrow">DESIGN KNOWLEDGE / REFERENCE</p><h1>' +
             html.escape(title) + '</h1><p class="subtitle">' + html.escape(subtitle) + '</p></div>' + content +
-            '</main><footer>Canonical knowledge comes from Markdown and the registry. Interactive previews are labeled separately. '
+            '</main><footer>Canonical knowledge comes from Markdown and the registry; no executable UI library is shipped. '
             '<a href="https://github.com/EVEI2YONE/UI-UX-Design-System-Catalog/blob/main/CONTRIBUTING.md">Contributing</a>.</footer></body></html>')
 
 
@@ -199,101 +199,12 @@ def card(e, task_terms=None):
     return concept_card(e, category(e), route(e), terms)
 
 
-def inline_script(path):
-    """Embed reviewed classic JS without letting HTML close its script element."""
-    source = path.read_text(encoding="utf-8")
-    source = re.sub(r"</script", lambda m: "<\\/" + m.group(0)[2:], source, flags=re.I)
-    return '<script>' + source + '</script>'
-
-
-def inline_style(path):
-    source = path.read_text(encoding="utf-8")
-    # Reviewed CSS is not arbitrary HTML; reject raw-text element breakouts.
-    if re.search(r"</style", source, re.I):
-        raise ValueError("Preview CSS must not contain an HTML style terminator")
-    return '<style>' + source + '</style>'
-
-
-def reference_preview(entry, out):
-    """Render the exact checked-in trusted JS implementation, source, and scenarios."""
-    impl = entry.get("implementation")
-    if impl is None:
-        return ('<section class="spec"><span class="spec-icon" aria-hidden="true">▧</span>'
-                '<div><h2>No runnable reference</h2><p>No working reference implementation is registered. '
-                'This content documents design guidance, not tested UI.</p></div></section>')
-    if impl["preview_path"].rstrip("/") != route(entry).rstrip("/"):
-        raise ValueError("Preview URL must match canonical entry route: " + entry["id"])
-    if impl["status"] not in ("reference", "experimental", "verified"):
-        raise ValueError("Unsupported preview status")
-    root_impl = (ROOT / "site/src/implementations").resolve()
-    source = (ROOT / impl["source_path"]).resolve()
-    manifest = (ROOT / impl["scenario_manifest"]).resolve()
-    if not source.is_file() or not manifest.is_file() or not source.is_relative_to(root_impl) or not manifest.is_relative_to(root_impl):
-        raise ValueError("Missing/unsafe registered source or scenario manifest")
-    if source.parent != manifest.parent or source.suffix != ".js" or manifest.suffix != ".js":
-        raise ValueError("Preview runner requires colocated classic JavaScript references")
-    name = entry["id"]
-    base = out / "reference" / name
-    base.mkdir(parents=True, exist_ok=True)
-    shutil.copyfile(source, base / "source.js")
-    shutil.copyfile(manifest, base / "scenarios.js")
-    # Optional, colocated, reviewed synthetic adapter for multi-step references.
-    adapter = source.parent / "mock-adapter.js"
-    adapter_script = ""
-    adapter_view = ""
-    if adapter.is_file():
-        if not adapter.resolve().is_relative_to(root_impl):
-            raise ValueError("Unsafe mock adapter location")
-        shutil.copyfile(adapter, base / "mock-adapter.js")
-        adapter_script = inline_script(adapter)
-        adapter_view = ('<details class="source-details"><summary>Inspect synthetic adapter source</summary>'
-                        '<p>In-memory fixtures only. No real authorization or persistence.</p>'
-                        '<pre><code>' + html.escape(adapter.read_text(encoding="utf-8")) + '</code></pre></details>')
-    stylesheet = source.with_suffix(".css")
-    if stylesheet.is_file():
-        shutil.copyfile(stylesheet, base / "source.css")
-    else:
-        raise ValueError("Preview requires colocated source CSS: " + str(stylesheet))
-    frame = ('<!doctype html><html lang="en"><head><meta charset="utf-8">'
-             '<meta name="viewport" content="width=device-width,initial-scale=1">'
-             '<title>Interactive reference: ' + html.escape(entry["title"]) + '</title>'
-             + inline_style(SITE / "src/previews/preview-host.css")
-             + inline_style(stylesheet) +
-             '</head><body><p class="note">Synthetic interactive reference · no network writes or backend authorization</p>'
-             '<div class="controls"><div class="control"><label for="scenario">Scenario</label><select id="scenario"></select></div>'
-             '<div class="control"><label for="theme">Theme</label>'
-             '<select id="theme"><option value="light">Light</option><option value="dark">Dark</option>'
-             '<option value="contrast">High contrast</option></select></div>'
-             '<div class="control"><button id="reset" type="button">Reset example</button></div></div>'
-             '<div class="stage"><div id="stage"></div></div>'
-             '<p class="result" id="preview-result" role="status" aria-live="polite"></p>'
-             + inline_script(manifest) + adapter_script
-             + inline_script(source)
-             + inline_script(SITE / "src/previews/preview-runner.js") + '</body></html>')
-    write(out, "/previews/" + name + "/", frame)
-    source_text = html.escape(source.read_text(encoding="utf-8"))
-    return ('<section class="live-preview" id="doc-example" aria-label="Working reference preview">'
-            '<div class="preview-heading"><div><p class="preview-kicker">LIVE REFERENCE · SYNTHETIC DATA</p>'
-            '<h2>Interactive example</h2><p>Rendered from the actual reference source. '
-            'Not a certified production component.</p></div></div>'
-            '<iframe title="' + html.escape(entry["title"], quote=True) +
-            ' — isolated interactive reference" src="/previews/' + html.escape(name, quote=True) +
-            '/" srcdoc="' + html.escape(frame, quote=True) +
-            '" sandbox="allow-scripts" loading="lazy" referrerpolicy="no-referrer"></iframe>'
-            '<details class="source-details"><summary>Inspect implementation source</summary>'
-            '<p>This is the same checked-in file loaded by the reference preview. '
-            'Scenario definitions are maintained beside it.</p>'
-            '<p><code>' + html.escape(impl["source_path"]) + '</code></p>'
-            '<pre><code>' + source_text + '</code></pre></details>' + adapter_view + '</section>')
-
-
-
 STATES_HEADING = re.compile(
     r"^state\b|\bstates\b|\bstate\s+(?:model|matrix|contract|lifecycle|inventory)\b|\bstate$", re.I)
-GENERATED_IDS = ("doc-example", "doc-guidance", "doc-states", "doc-source")
+GENERATED_IDS = ("doc-guidance", "doc-states", "doc-source")
 
 
-def section_navigation(guidance, has_example):
+def section_navigation(guidance):
     """Return (guidance_html, nav_html) linking only sections that exist on the page."""
     ids = re.findall(r'\bid="([^"]+)"', guidance)
     clash = set(ids) & set(GENERATED_IDS)
@@ -316,7 +227,7 @@ def section_navigation(guidance, has_example):
             guidance = (guidance[:table.start()] +
                         '<div class="table-wrap" id="doc-states" tabindex="-1" role="region" aria-label="States">' +
                         table_html)
-    links = ([("doc-example", "Example")] if has_example else []) + [("doc-guidance", "Guidance")]
+    links = [("doc-guidance", "Guidance")]
     links += [(states, "States")] if states else []
     links.append(("doc-source", "Source"))
     nav = ('<nav class="jump-nav" aria-label="On this page"><span class="jump-label" aria-hidden="true">On this page</span><ul>' +
@@ -337,8 +248,6 @@ def build(out):
         shutil.rmtree(out)
     out.mkdir(parents=True)
     shutil.copytree(SITE / "static", out / "assets")
-    shutil.copyfile(SITE / "src/previews/preview-runner.js", out / "assets/preview-runner.js")
-    shutil.copyfile(SITE / "src/previews/preview-host.css", out / "assets/preview-host.css")
     ordered = sorted(entries, key=lambda e: (CATEGORIES.index(category(e)), e["title"]))
     cards = "".join(card(e, task_terms) for e in ordered)
     chips = "".join('<button class="chip" type="button" data-filter="' + cat + '" aria-pressed="' +
@@ -349,7 +258,7 @@ def build(out):
              '<div class="filter-row" id="filter-controls" hidden>'
              '<details class="filter-panel" id="category-panel" open><summary>Category: <span id="category-summary">All</span><span class="category-chevron" aria-hidden="true"></span></summary>'
              '<div class="chips" role="group" aria-label="Filter categories">' + chips + '</div></details>'
-             '<label class="preview-filter"><input id="interactive-only" type="checkbox"> Interactive examples only</label></div>'
+             '</div>'
              '<div class="tools-status"><p class="count" id="result-count">' + str(len(entries)) + ' concepts</p>'
              '<p class="active-filters" id="active-filters" hidden></p>'
              '<button type="button" class="reset-filters" id="reset-filters" hidden>Reset filters</button></div>'
@@ -362,10 +271,10 @@ def build(out):
         task_index(tasks, {entry["id"]: route(entry) for entry in entries}), "tasks"))
     write(out, "/catalog/", page("Explore the catalog", "Browse the canonical components, patterns and design guidance.", tools + grid))
     write(out, "/search/", page("Find the right guidance", "Search by name, user task or canonical ID.", tools + '<p class="hint">Without JavaScript, all entries remain listed below. Agents can search the JSON registry directly.</p>' + grid, "search"))
-    write(out, "/", page("Make better interfaces, deliberately.", "A visual, searchable design reference with interactive examples backed by real source code.",
+    write(out, "/", page("Make better interfaces, deliberately.", "A searchable reference of concepts and design guidance.",
         '<div class="actions"><a class="primary" href="/tasks/">Start with a task →</a><a href="/catalog/">Browse ' + str(len(entries)) + ' concepts</a><a href="/search/">Search the catalog</a></div>'
         '<section class="benefits"><div><h2>Canonical knowledge</h2><p>One registry and source of design guidance.</p></div>'
-        '<div><h2>Real reference source</h2><p>Explore interactive examples and inspect the code behind them.</p></div>'
+        '<div><h2>Clear concept contracts</h2><p>Explore decision rules, states, accessibility and source evidence.</p></div>'
         '<div><h2>Agent-friendly</h2><p>Stable IDs, readable pages and source links.</p></div></section>', "home"))
     records = []
     for e in entries:
@@ -373,16 +282,14 @@ def build(out):
         if not canonical.is_file():
             raise FileNotFoundError(e["path"])
         info = concept_metadata(e)
-        preview = reference_preview(e, out)
         refs = set(e.get("related", []) + e.get("depends_on", []))
         rel = [r for r in entries if r["id"] in refs]
         related = ('<section class="related"><h2>Related guidance</h2><div>' +
                    "".join('<a href="' + route(r) + '">' + html.escape(r["title"]) + ' ↗</a>' for r in rel) +
                    '</div></section>') if rel else ""
         src = REPO + quote(e["path"], safe="/-_.")
-        guidance, jump = section_navigation(public_guidance(canonical.read_text(encoding="utf-8"), e["path"], by_path),
-                                            e.get("implementation") is not None)
-        body = ('<p class="breadcrumb"><a href="/catalog/">Catalog</a> / ' + category(e).title() + '</p>' + jump + info + preview +
+        guidance, jump = section_navigation(public_guidance(canonical.read_text(encoding="utf-8"), e["path"], by_path))
+        body = ('<p class="breadcrumb"><a href="/catalog/">Catalog</a> / ' + category(e).title() + '</p>' + jump + info +
                 '<div class="doc-grid"><article class="markdown" id="doc-guidance" aria-label="Canonical guidance">' + guidance +
                 '</article><aside id="doc-source" aria-labelledby="doc-source-title"><h2 id="doc-source-title">Source of truth</h2>'
                 '<p>These contracts are maintained in the repository.</p>'

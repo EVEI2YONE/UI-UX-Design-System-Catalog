@@ -3,7 +3,7 @@
 Purpose: build navigation, metadata, cards and task entry points from read-only data.
 Context: used by site/build.py at static generation; no backend, auth or writes.
 Relevance: one consistent shell lets users distinguish concept type, review
-maturity and whether an interactive example exists.
+maturity without implying executable implementations.
 """
 import html
 
@@ -25,14 +25,9 @@ def resource_kind(entry):
     }.get(entry["kind"], entry["kind"].title())
 
 
-def implementation_label(entry):
-    return "Interactive reference available" if entry.get("implementation") else "No runnable reference"
-
-
 def concept_metadata(entry):
     fields = (("Canonical ID", entry["id"]), ("Knowledge layer", entry["layer"]),
-              ("Resource type", resource_kind(entry)), ("Review status", entry["status"]),
-              ("Implementation", implementation_label(entry)))
+              ("Resource type", resource_kind(entry)), ("Review status", entry["status"]))
     cells = []
     for label, value in fields:
         display = ("<code>" + html.escape(value) + "</code>") if label == "Canonical ID" else ("<strong>" + html.escape(value) + "</strong>")
@@ -41,17 +36,14 @@ def concept_metadata(entry):
 
 
 def concept_card(entry, category, url, terms):
-    available = "true" if entry.get("implementation") else "false"
-    return ('<article class="card" data-interactive="' + available + '" data-category="' +
+    return ('<article class="card" data-category="' +
             html.escape(category, quote=True) + '" data-search="' + html.escape(terms, quote=True) +
             '"><a href="' + html.escape(url, quote=True) + '"><span class="category">' +
             html.escape(category.title()) + '</span><h3>' + html.escape(entry["title"]) +
             '</h3><p>' + html.escape(entry["summary"]) +
-            '</p><span class="availability">' + html.escape(resource_kind(entry)) +
-            ' · ' + html.escape('Interactive reference' if entry.get('implementation') else 'No runnable reference') +
+            '</p><span class="kind-label">' + html.escape(resource_kind(entry)) +
             '</span><span class="card-foot"><code>' + html.escape(entry["id"]) +
             '</code><span aria-hidden="true">↗</span></span></a></article>')
-
 
 def task_index(tasks, routes):
     cards = []

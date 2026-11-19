@@ -8,7 +8,7 @@ This is a reusable UI/UX knowledge base. Its normative pages must explain the co
 2. Define the user/design decision, when the advice helps or harms, and the evidence sources and limits.
 3. Use [the concept template](templates/concept-entry.md) and current headings. Merge supplementary rules into the appropriate concept section instead of appending dated extensions.
 4. Keep canonical IDs and public URLs stable. Link reusable semantics and patterns by ID instead of duplicating paragraphs.
-5. Distinguish normative contracts, synthetic examples, working previews, research findings and versioned installable packages.
+5. Distinguish proposed contracts, illustrative prose, researched findings and independently verified product behavior. Do not register or add executable component demos, preview fixtures or installable packages.
 
 ## Verify and review
 

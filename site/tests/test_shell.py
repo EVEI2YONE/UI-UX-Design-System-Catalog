@@ -28,11 +28,14 @@ class ShellContractTests(unittest.TestCase):
             self.assertIn(route(self.by_id[task["primary_id"]]), markup)
             self.assertEqual(task_relevance(task["primary_id"], task["title"], self.tasks), 85)
 
-    def test_cards_separate_kind_review_and_implementation(self):
+    def test_cards_separate_kind_and_review_status(self):
         entry = self.by_id["guidance.content-design"]
         html = concept_card(entry, category(entry), route(entry), "content design")
         self.assertIn("Guideline", html)
-        self.assertIn("No runnable reference", html)
+        self.assertIn("Guideline", html)
+        self.assertNotIn("No runnable reference", html)
+        self.assertNotIn("data-interactive=", html)
+        self.assertNotIn("Implementation", concept_metadata(entry))
         self.assertIn("Review status", concept_metadata(entry))
         self.assertIn("proposed", concept_metadata(entry))
         self.assertIn("Content design", html)

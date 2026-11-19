@@ -33,28 +33,19 @@ class QualityBudgets(unittest.TestCase):
         self.assertLess(sizes["search.js"], 8192, sizes)
         print("Build asset sizes (bytes):", sizes)
 
-    def test_each_preview_has_bounded_source_assets(self):
+    def test_no_executable_preview_assets_or_frames_are_generated(self):
+        self.assertFalse((self.output / "previews").exists())
+        self.assertFalse((self.output / "reference").exists())
+        self.assertFalse((self.output / "assets/preview-runner.js").exists())
+        self.assertFalse((self.output / "assets/preview-host.css").exists())
         for entry in self.entries:
-            if "implementation" not in entry:
-                continue
-            root = self.output / "reference" / entry["id"]
-            size = sum(path.stat().st_size for path in root.iterdir() if path.is_file())
+            content=(self.output / build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
             with self.subTest(entry=entry["id"]):
-                self.assertLess(size, 65536, f"{entry['id']} source/fixture/style size {size} exceeds 64KiB")
-                self.assertTrue((root / "source.js").is_file())
-
-    def test_static_pages_do_not_embed_interactive_source_as_inline_script(self):
-        for entry in self.entries:
-            content = (self.output / build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
-            with self.subTest(entry=entry["id"]):
-                self.assertNotIn("<script>", content)
-                # Security guidance may discuss risky iframe options; assert
-                # against the real rendered attributes, not all page prose.
-                for frame in re.findall(r"<iframe\b[^>]*>", content, flags=re.I):
-                    self.assertIn('sandbox="allow-scripts"', frame)
-                    self.assertNotIn("allow-same-origin", frame)
-                self.assertIn('href="/assets/styles.css"', content)
-                self.assertIn('href="https://github.com/', content)
+                self.assertNotIn("<iframe",content)
+                self.assertNotIn("<script>",content)
+                self.assertNotIn("Inspect implementation source",content)
+                self.assertIn('href="/assets/styles.css"',content)
+                self.assertIn('href="https://github.com/',content)
 
     def test_entry_routes_are_unique_and_owned_by_canonical_registry(self):
         routes = [build.route(entry) for entry in self.entries]

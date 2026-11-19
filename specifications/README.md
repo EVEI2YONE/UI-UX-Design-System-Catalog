@@ -6,4 +6,4 @@ Normative design contracts and cross-component interaction patterns. A specifica
 - [Patterns](patterns/README.md)
 - [Experiences](experiences/README.md)
 
-Reference implementations are maintained separately under [site/src/implementations](../site/src/implementations). Use the [canonical registry](../catalog/index.json) for ownership, review status, and source links.
+This directory contains **conceptual design specifications only**; no importable component library, source implementation or demo preview is shipped. Use the [canonical registry](../catalog/index.json) for ownership, review status and source links.

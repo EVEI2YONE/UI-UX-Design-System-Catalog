@@ -129,9 +129,9 @@ The catalog supports *two different journeys*: a person browsing a source-linked
 | Job | Research question | Acceptable evidence |
 | --- | --- | --- |
 | Find a control contract | Can a user identify the correct canonical owner from a natural-language task? | First chosen concept, correction path and rationale |
-| Understand spec-only status | Can a user tell proposed guidance from runnable reference and from certified library? | User explanation without prompting, misinterpretation notes |
+| Understand spec-only status | Can a user distinguish proposed documentation from verified product behavior and a published component library? | User explanation without prompting, misinterpretation notes |
 | Find relevant recovery guidance | Can a participant distinguish unknown outcome, known failure and retry safety? | Selected canonical concept and reason for action |
-| Reuse source safely | Can a developer locate JS, CSS, fixtures, adapter and installation constraints? | Files found, omitted dependencies and unauthorized production assumptions |
+| Reuse source safely | Can a developer locate the canonical source, its scope, related decisions and evidence limits? | Source found, dependencies understood, no false runtime assumptions |
 | Distinguish approval workflows | Does a user choose human Review Workspace versus AI-agent delegated approval appropriately? | Correct task-owner selection and reasoning |
 | Search an unfamiliar synonym | Does `synthetic review` reveal a gap that a reasonable user could recover from? | Query sequence, no-result behavior, fallback navigation, candidate synonyms |
 

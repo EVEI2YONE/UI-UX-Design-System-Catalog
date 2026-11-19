@@ -18,7 +18,6 @@
   const count = document.getElementById("result-count");
   const status = document.getElementById("result-status");
   const empty = document.getElementById("empty-results");
-  const interactive = document.getElementById("interactive-only");
   const clear = document.getElementById("clear-filters");
   const reset = document.getElementById("reset-filters");
   const controls = document.getElementById("filter-controls");
@@ -33,55 +32,50 @@
   let announceTimer = 0;
   let typingTimer = 0;
 
-  /* URL schema: q (text, <=200 chars), category (a rendered chip value; default "all"),
-     interactive ("1" when on). Unknown values fall back to defaults; other params are kept. */
+  /* URL schema: q (text, <=200 chars) and category (a rendered chip value); 
+     old interactive-only links are normalized to ordinary guidance search. */
   function readUrl() {
     const params = new URLSearchParams(window.location.search);
     const cat = params.get("category");
     return {
       q: (params.get("q") || "").slice(0, MAX_QUERY),
-      category: cat && cat !== "all" && valid.has(cat) ? cat : "all",
-      interactive: params.get("interactive") === "1"
+      category: cat && cat !== "all" && valid.has(cat) ? cat : "all"
     };
   }
 
-  function stateUrl(previousInteractive) {
+  function stateUrl() {
     const params = new URLSearchParams(window.location.search);
     ["q", "category", "interactive"].forEach((key) => params.delete(key));
     const q = search.value.trim();
     if (q) params.set("q", q.slice(0, MAX_QUERY));
     if (category !== "all") params.set("category", category);
-    const only = previousInteractive === undefined ? interactive?.checked : previousInteractive;
-    if (only) params.set("interactive", "1");
     const query = params.toString();
     return window.location.pathname + (query ? "?" + query : "") + window.location.hash;
   }
 
   /* History policy: typing replaces the current entry (debounced); deliberate actions
-     (category, interactive toggle, reset) push one entry; popstate restores without writing. */
+     (category and reset) push one entry; popstate restores without writing. */
   function cancelTyping() {
     window.clearTimeout(typingTimer);
     typingTimer = 0;
   }
 
-  function writeUrl(mode, previousInteractive) {
+  function writeUrl(mode) {
     cancelTyping();
-    const next = stateUrl(previousInteractive);
+    const next = stateUrl();
     if (next === window.location.pathname + window.location.search + window.location.hash) return;
     try {
       window.history[mode === "push" ? "pushState" : "replaceState"]({catalogFilters: true}, "", next);
     } catch (error) { /* Some sandboxed or file contexts reject history writes; filtering still works. */ }
   }
 
-  // A deliberate action must preserve pending typing in the entry *before* the push.
-  // The checkbox has already toggled when its change event fires, so pass its old value.
-  function flushTyping(previousInteractive) {
-    if (typingTimer) writeUrl("replace", previousInteractive);
+  // A deliberate action preserves pending typing in the entry before changing filters.
+  function flushTyping() {
+    if (typingTimer) writeUrl("replace");
   }
 
   function apply(state) {
     search.value = state.q;
-    if (interactive) interactive.checked = state.interactive;
     category = state.category;
     chips.forEach((chip) => chip.setAttribute("aria-pressed", String(chip.dataset.filter === category)));
   }
@@ -98,8 +92,7 @@
       const content = card.dataset.search || "";
       const matches = window.CatalogQuery.matches(content, terms);
       const matchesCategory = category === "all" || category === card.dataset.category;
-      const matchesPreview = !interactive?.checked || card.dataset.interactive === "true";
-      const show = matches && matchesCategory && matchesPreview;
+      const show = matches && matchesCategory;
       card.hidden = !show;
       if (show) visible += 1;
     });
@@ -108,7 +101,6 @@
     if (empty) empty.hidden = visible !== 0;
     const parts = [];
     if (category !== "all") parts.push(label(category));
-    if (interactive?.checked) parts.push("Interactive only");
     if (summary) summary.textContent = label(category);
     if (active) {
       active.hidden = parts.length === 0;
@@ -126,7 +118,7 @@
 
   function resetAll() {
     flushTyping();
-    apply({q: "", category: "all", interactive: false});
+    apply({q: "", category: "all"});
     update("now");
     writeUrl("push");
     search.focus();
@@ -136,11 +128,6 @@
     update("typing");
     cancelTyping();
     typingTimer = window.setTimeout(() => writeUrl("replace"), 300);
-  });
-  interactive?.addEventListener("change", () => {
-    flushTyping(!interactive.checked);
-    update("now");
-    writeUrl("push");
   });
   chips.forEach((button) => button.addEventListener("click", () => {
     flushTyping();

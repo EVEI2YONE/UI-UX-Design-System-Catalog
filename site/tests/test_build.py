@@ -55,142 +55,21 @@ class SiteBuildTests(unittest.TestCase):
         self.assertIn('href="/tasks/"', home)
         self.assertIn('class="skip"', tasks)
 
-    def test_unimplemented_entries_advertise_spec_only(self):
-        button = next(e for e in self.entries if e["id"] == "pattern.task-flows")
-        text = (self.out / site_build.route(button).lstrip("/") / "index.html").read_text(encoding="utf-8")
-        self.assertIn("No runnable reference", text)
-        self.assertNotIn('class="interactive-preview"', text)
-        self.assertIn("View Markdown source", text)
-
-    def test_all_six_registered_control_previews(self):
-        controls = [e for e in self.entries if e["id"].startswith("component.") and "implementation" in e]
-        self.assertEqual(len(controls), 6)
-        for entry in controls:
-            with self.subTest(entry=entry["id"]):
-                detail = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
-                frame = (self.out / "previews" / entry["id"] / "index.html").read_text(encoding="utf-8")
-                original = (ROOT / entry["implementation"]["source_path"]).read_text(encoding="utf-8")
-                copied = (self.out / "reference" / entry["id"] / "source.js").read_text(encoding="utf-8")
-                self.assertIn('sandbox="allow-scripts"', detail)
-                self.assertNotIn('sandbox="allow-scripts allow-same-origin"', detail)
-                self.assertEqual(original, copied)
-                self.assertIn("Inspect implementation source", detail)
-                self.assertIn(site_build.inline_script(ROOT / entry['implementation']['source_path']), frame)
-                self.assertIn(site_build.inline_script(ROOT / entry['implementation']['scenario_manifest']), frame)
-                self.assertTrue((self.out / "reference" / entry["id"] / "source.css").is_file())
-
-    def test_five_composed_pattern_previews_match_canonical_registration(self):
-        expected = {
-            "pattern.forms", "pattern.navigation", "pattern.search-filter",
-            "pattern.data-tables", "pattern.interaction-recovery"
-        }
-        actual = [e for e in self.entries if e["id"] in expected]
-        self.assertEqual(len(actual), 5)
-        for entry in actual:
-            with self.subTest(entry=entry["id"]):
-                impl = entry["implementation"]
-                self.assertEqual(impl["status"], "reference")
-                page = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
-                frame = (self.out / "previews" / entry["id"] / "index.html").read_text(encoding="utf-8")
-                source = (ROOT / impl["source_path"]).read_text(encoding="utf-8")
-                copied = (self.out / "reference" / entry["id"] / "source.js").read_text(encoding="utf-8")
-                scenarios = (self.out / "reference" / entry["id"] / "scenarios.js").read_text(encoding="utf-8")
-                self.assertEqual(source, copied)
-                self.assertIn('sandbox="allow-scripts"', page)
-                self.assertNotIn("allow-same-origin", page)
-                self.assertIn("Inspect implementation source", page)
-                self.assertIn("CatalogScenarios", scenarios)
-                self.assertIn(site_build.inline_script(ROOT / entry['implementation']['source_path']), frame)
-                self.assertTrue((self.out / "reference" / entry["id"] / "source.css").is_file())
-
-    def test_review_workspace_has_real_source_and_synthetic_adapter(self):
-        feature = next(e for e in self.entries if e["id"] == "feature.review-workspace")
-        self.assertEqual(feature["implementation"]["status"], "reference")
-        page = (self.out / site_build.route(feature).lstrip("/") / "index.html").read_text(encoding="utf-8")
-        frame = (self.out / "previews" / feature["id"] / "index.html").read_text(encoding="utf-8")
-        directory = ROOT / "site/src/implementations/features/review-workspace"
-        generated = self.out / "reference" / feature["id"]
-        self.assertIn('sandbox="allow-scripts"', page)
-        self.assertNotIn("allow-same-origin", page)
-        self.assertIn("Inspect implementation source", page)
-        self.assertIn("Inspect synthetic adapter source", page)
-        self.assertEqual((directory / "ReviewWorkspace.js").read_bytes(), (generated / "source.js").read_bytes())
-        self.assertEqual((directory / "mock-adapter.js").read_bytes(), (generated / "mock-adapter.js").read_bytes())
-        self.assertEqual((directory / "scenarios.js").read_bytes(), (generated / "scenarios.js").read_bytes())
-        self.assertIn(site_build.inline_script(directory / 'mock-adapter.js'), frame)
-        self.assertIn(site_build.inline_script(directory / 'ReviewWorkspace.js'), frame)
-        self.assertIn("Synthetic interactive reference", frame)
-
-    def test_all_unimplemented_entries_stay_spec_only(self):
+    def test_all_concepts_are_readable_without_executable_examples(self):
+        self.assertFalse((self.out / "previews").exists())
+        self.assertFalse((self.out / "reference").exists())
+        self.assertFalse((self.out / "assets/preview-runner.js").exists())
+        self.assertFalse((self.out / "assets/preview-host.css").exists())
         for entry in self.entries:
-            if "implementation" in entry:
-                continue
             with self.subTest(entry=entry["id"]):
-                page = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
-                self.assertIn("No runnable reference", page)
-                self.assertNotIn('sandbox="allow-scripts"', page)
-
-    def test_button_real_preview_matches_registered_source(self):
-        entry = next(e for e in self.entries if e["id"] == "component.button")
-        self.assertEqual(entry["implementation"]["status"], "reference")
-        text = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
-        frame = (self.out / "previews/component.button/index.html").read_text(encoding="utf-8")
-        src = (ROOT / entry["implementation"]["source_path"]).read_text(encoding="utf-8")
-        rendered = (self.out / "reference/component.button/source.js").read_text(encoding="utf-8")
-        scenarios = (self.out / "reference/component.button/scenarios.js").read_text(encoding="utf-8")
-        self.assertIn('sandbox="allow-scripts"', text)
-        self.assertNotIn('allow-same-origin', text)
-        self.assertIn("Inspect implementation source", text)
-        self.assertIn("Interactive example", text)
-        self.assertEqual(src, rendered)
-        self.assertIn("CatalogReference", src)
-        self.assertIn("CatalogScenarios", scenarios)
-        self.assertIn(site_build.inline_script(ROOT / entry['implementation']['source_path']), frame)
-        self.assertIn(site_build.inline_script(ROOT / entry['implementation']['scenario_manifest']), frame)
-        self.assertIn(site_build.inline_script(SITE / 'src/previews/preview-runner.js'), frame)
-
-    def test_preview_runner_assets_and_isolated_host(self):
-        self.assertTrue((self.out / "assets/preview-runner.js").is_file())
-        self.assertTrue((self.out / "assets/preview-host.css").is_file())
-        text = (self.out / "previews/component.button/index.html").read_text(encoding="utf-8")
-        for label in ("Scenario", "Theme", "Reset example", "High contrast"):
-            self.assertIn(label, text)
-        self.assertNotIn("https://", text)
-
-    def test_embedded_previews_need_no_authenticated_subresource_requests(self):
-        class Elements(HTMLParser):
-            def __init__(self):
-                super().__init__()
-                self.tags = []
-            def handle_starttag(self, tag, attrs):
-                self.tags.append((tag, dict(attrs)))
-        for entry in self.entries:
-            if "implementation" not in entry:
-                continue
-            with self.subTest(entry=entry["id"]):
-                page = (self.out / site_build.route(entry).lstrip("/") / "index.html").read_text()
-                parsed = Elements()
-                parsed.feed(page)
-                frames = [attrs for tag, attrs in parsed.tags if tag == "iframe"]
-                self.assertEqual(len(frames), 1)
-                self.assertEqual(frames[0]["sandbox"], "allow-scripts")
-                document = frames[0]["srcdoc"]
-                self.assertEqual(document, (self.out / "previews" / entry["id"] / "index.html").read_text())
-                child = Elements()
-                child.feed(document)
-                for tag, attrs in child.tags:
-                    if tag in {"script", "link", "img", "iframe"}:
-                        self.assertNotIn("src", attrs)
-                        self.assertNotIn("href", attrs)
-                self.assertIn(site_build.inline_script(ROOT / entry["implementation"]["source_path"]), document)
-
-    def test_script_terminator_cannot_escape_embedded_document(self):
-        with tempfile.TemporaryDirectory() as directory:
-            path = Path(directory) / "example.js"
-            path.write_text('const label = "</ScRiPt><p>not markup</p>";')
-            result = site_build.inline_script(path)
-            self.assertEqual(result.lower().count("</script>"), 1)
-            self.assertIn("<\\/ScRiPt>", result)
+                self.assertNotIn("implementation", entry)
+                text=(self.out / site_build.route(entry).lstrip("/") / "index.html").read_text(encoding="utf-8")
+                self.assertIn("View Markdown source",text)
+                self.assertIn('aria-label="Canonical guidance"',text)
+                self.assertNotIn('data-interactive=',text)
+                self.assertNotIn('class="live-preview"',text)
+                self.assertNotIn("<iframe",text)
+                self.assertNotIn('id="doc-example"',text)
 
     def test_public_site_hides_project_phase_and_batch_labels(self):
         import re
@@ -220,7 +99,7 @@ class SiteBuildTests(unittest.TestCase):
 
         button = (self.out / "catalog/components/button/index.html").read_text(encoding="utf-8")
         self.assertNotIn("Phase 4 reference implementation", button)
-        self.assertIn("Interactive example", button)
+        self.assertNotIn("Interactive example", button)
         self.assertIn("icon-only", button.lower())
         guidance = (self.out / "catalog/patterns/forms/index.html").read_text(encoding="utf-8")
         self.assertNotIn("Phase 6 executable pattern reference", guidance)
@@ -258,7 +137,7 @@ class SiteBuildTests(unittest.TestCase):
         source = path.read_text(encoding="utf-8")
         self.assertNotIn("## Batch", source)
         self.assertNotIn("## Phase", source)
-        self.assertIn("Interactive reference", source)
+        self.assertNotIn("Interactive reference", source)
         rendered = site_build.public_guidance(source, "specifications/components/button/spec.md", {})
         self.assertIn("icon-only", rendered.lower())
         self.assertNotIn("Phase 4 reference implementation", rendered)
@@ -305,7 +184,7 @@ class SiteBuildTests(unittest.TestCase):
                 self.assertIn('<details class="filter-panel" id="category-panel" open>', text)
                 self.assertIn('<div class="filter-row" id="filter-controls" hidden>', text)
                 self.assertEqual(len(re.findall(r'data-filter="([a-z]+)"', text)), 1 + len(site_build.CATEGORIES))
-                self.assertIn('id="interactive-only" type="checkbox"', text)
+                self.assertNotIn('id="interactive-only"', text)
                 self.assertIn('id="category-summary">All<', text)
                 self.assertIn('<span class="category-chevron" aria-hidden="true"></span>', text)
                 self.assertIn('id="active-filters" hidden', text)
@@ -331,12 +210,8 @@ class SiteBuildTests(unittest.TestCase):
                     self.assertIn(anchor, ids, "dead jump link #" + anchor)
                 self.assertEqual(labels[-1], "Source")
                 self.assertIn("Guidance", labels)
-                if entry.get("implementation"):
-                    self.assertEqual(labels[0], "Example")
-                    self.assertIn('id="doc-example"', text)
-                else:
-                    self.assertNotIn("Example", labels)
-                    self.assertNotIn('id="doc-example"', text)
+                self.assertNotIn("Example", labels)
+                self.assertNotIn('id="doc-example"', text)
                 with_states += "States" in labels
                 # Jump navigation precedes metadata and the example/spec notice.
                 self.assertLess(text.index('class="jump-nav"'), text.index('class="meta"'))
@@ -365,14 +240,14 @@ class SiteBuildTests(unittest.TestCase):
         sample = site_build.render_md(
             "| State | Behavior |\n| --- | --- |\n| Idle | Ready |\n",
             "specifications/components/button/spec.md", {})
-        output, links = site_build.section_navigation(sample, False)
+        output, links = site_build.section_navigation(sample)
         self.assertIn('href="#doc-states"', links)
         self.assertIn('aria-label="States table"', output)
         self.assertNotIn('aria-label="Scrollable table"', output)
 
     def test_phase3_reserved_anchor_collision_fails_closed(self):
         with self.assertRaises(ValueError):
-            site_build.section_navigation('<h2 id="doc-source">Source</h2>', False)
+            site_build.section_navigation('<h2 id="doc-source">Source</h2>')
 
     def test_phase3_tables_keep_focusable_region_and_scroll_hint(self):
         body = site_build.render_md("| A | B |\n| --- | --- |\n| 1 | 2 |\n", "specifications/components/button/spec.md", {})

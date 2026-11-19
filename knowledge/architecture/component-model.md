@@ -118,58 +118,40 @@ For each observed component or repeated UI pattern, record:
 
 **Related:** [component contracts](component-contracts.md), [module boundaries](module-boundaries-and-developer-navigation.md), [styling recipes](../foundations/practical-ui-styling-recipes.md), [CI guardrails](architecture-enforcement-and-ci.md), [lifecycle policy](../../governance/lifecycle-and-decisions.md). Motivating proposals: [Little Wins component architecture](https://github.com/EVEI2YONE/Little_Wins/blob/main/docs/little-wins/ui-knowledge/batch-03-component-architecture.md).
 
-## Visual catalog representation and feature reference boundary
+## Knowledge-only concept boundaries
 
-The existing foundations → primitives → components → patterns/features → pages hierarchy remains the authoritative **reuse decision model**. The visual catalog introduces a **second, orthogonal classification** for which concepts have executable website examples; it does **not** replace registry `layer` values or reclassify existing `experiences` entries. A knowledge item may have no runtime representation, one component example, or a composed pattern/feature example without changing its canonical ID.
+The foundations → primitives → components → patterns/experiences → pages hierarchy is a **decision and reuse taxonomy**, not a directory of installable UI code. Every registered item owns one canonical Markdown source, status, ID, use/avoid conditions, relations and verification limits. The documentation website displays those sources; it is not the runtime product whose interfaces the specifications describe.
 
-**Canonical knowledge owner:** registry ID plus Markdown contract, with existing paths and `related` relationships retained. **Actual runtime example:** `site/src/implementations/`, optional and directly rendered by the future site. **Browse chrome:** `site/src/catalog-ui/`, not a normative component spec. **Feature reference specification:** `specifications/experiences/<slug>/spec.md` only after a reuse audit, with website implementation under `site/src/implementations/features/<slug>/`. Keep website app routing and scenario machinery separate from these examples.
-
-A **pattern** states reusable interaction rules and compositions (e.g., sorting, form validation, save uncertainty). A **feature reference** demonstrates a bounded, multi-stage job using a coherent state machine, accessible composition and **synthetic adapter**—without application-specific identity, payments, permissions enforcement or persistence guarantees. A **product feature/page** supplies actual domain authority, API integrations, authorization and routing in the consumer application. Feature reference examples are not a reason to clone the complete normative guidance already owned by `specifications/patterns/account-and-settings-portal.md` or `specifications/patterns/agentic-actions-and-approvals.md`.
-
-**Promotion checklist:** require a distinct multi-step user job; two credible reuse contexts or documented strategic need; concept/alias search; a bounded data/command interface; state, keyboard/focus and recovery contract; no real-product mutations; owner and evidence. Prefer **reuse/extend/compose** before assigning a new `feature.*` ID. Unimplemented candidates remain unregistered and must not advertise live previews. Use [feature reference navigation](../../specifications/experiences/README.md), [authoring template](../../templates/feature-reference-spec.md) and .
-
-**Dependency invariant:** tokens/primitives ← components ← composed patterns ← feature references, with domain integration only in consuming apps. A reference implementation must import lower-tier controls and fixtures, never a product API client, auth authority or private business state. Keep code/status evidence separate from concept lifecycle; a stable written guideline does not certify an implementation.
-
-## Executable reference maintainability and composition contract
-
-This section applies the existing reuse/extend/compose decision to **actual source-linked examples**. It does not create a parallel component taxonomy or require all reference patterns to be rewritten as package dependencies.
-
-### Source organization and boundaries
-
-| Layer | May own | Must not silently own | Change-review signal |
-| --- | --- | --- | --- |
-| Catalog renderer | Navigation, registry-derived routes, safe Markdown, preview isolation, source inspection | Implementation-specific domain rules, another canonical concept index | A change to a component must not require editing unrelated navigation chrome |
-| Reference control | Semantic element, supported variants, focus/disabled behavior, state-specific markup, scoped styles | Product identity, API calls, persistence, authorization | Public options, events and invalid combinations remain documented/testable |
-| Composed pattern | Interaction choreography, local form/collection state, validation presentation, focus recovery | Parallel implementations of all primitive semantics, real server outcome guarantees | Reuse existing contracts where compatible; explicitly document deliberate native control use |
-| Feature reference | Multi-step task, view selection, status presentation, synthetic adapter boundary | Real data ownership, access policy or security assertions | Adapter outcome semantics remain inspectable and independently testable |
-| Consuming application | Actual adapters, authorization, domain policies, storage and monitoring | Mutation of canonical guidance or unreviewed shared API | Explicit integration acceptance and version plan |
-
-A reference can use native HTML without importing the corresponding catalog component's implementation. That is **not** proof of production component reuse. In particular, the present form, navigation and table patterns demonstrate compositions but do not share a packaged Button/Field runtime. Do not advertise a dependency graph that the code does not have.
-
-### Readability and state ownership
-
-1. Prefer named, single-purpose helpers for state transitions, validation and DOM rendering. Keep pure checks and display wiring independently inspectable; compressing a full workflow onto one line is not a quality goal.
-2. Establish a single owner for each mutable state item. For asynchronous decisions, distinguish `idle`, `pending`, `confirmed`, `known failure` and `unknown outcome`; only the authoritative adapter can reconcile uncertainty.
-3. Define inputs/outputs and failures for every reference entry point. Reject invalid options deliberately; document whether remounting resets state. Theme changes must preserve the existing task where feasible.
-4. Prefer native semantics, explicit names and data-bound text construction over building HTML from untrusted strings. Review `innerHTML` boundaries; synthetic fixture content is not automatically safe to use for production input.
-5. Use *semantic* tokens with per-example scoping. Extract shared styling only after identifying actual repetition with stable meaning across two references; avoid global selectors that leak into catalog navigation or other previews.
-6. Use fixed deterministic fixtures and explicit pending/error/empty/denied/conflict states, with one reproducible scenario per material branch. A synthetic success announcement must not imply real persistence.
-7. Keep reference source, scenario manifest, optional adapter, CSS and tests discoverable in one local subtree; generate inspector text from those same checked-in files rather than rewriting demonstration snippets.
-
-### Change and extraction decision
-
-| Situation | Default choice | Evidence needed to change default |
+| Concept tier | Guidance owns | Consuming application owns |
 | --- | --- | --- |
-| Two examples merely look alike | Keep scoped implementations | Shared behavior and lifecycle verified, not only identical CSS |
-| Two examples share an event contract | Consider composed helper | Tests for keyboard, asynchronous errors, focus and event ownership in both consumers |
-| A feature needs an app-specific API | Inject an adapter at the feature boundary | Explicit auth, idempotency and data minimization contract; no UI-only privilege check |
-| A new token alias is suggested | Reuse existing semantic role | Demonstrated intent difference, light/dark/contrast mapping and migration compatibility |
-| A general reference is proposed as a package | Keep it as source-linked reference | Two actual adopters, public API/version owner, tests, license and support policy |
+| Foundation | Visual/semantic token intent, contrast and responsive principles | Resolved theme values and real platform rendering |
+| Component | Semantic control purpose, states, focus and interaction rules | Framework implementation, public API, unit/AT tests, deployment |
+| Pattern | Composition of controls, task context and recoverable outcomes | Product data flow, server validation, authorization and storage |
+| Experience | Complete multi-stage task journey and cross-pattern tradeoffs | Product-specific roles, domain outcomes, persistence and routing |
+| Documentation browser | Task search, canonical links and Markdown source discoverability | No business action or component library responsibility |
 
-### Review checklist and performance of maintenance
+**Promotion checklist:** a new concept must justify a distinct reusable user decision, pass an alias/duplicate search, name credible use and avoid cases, document accessible behavior and failure recovery, and remain `proposed` until independent review. A feature/experience specification documents a bounded multi-step task rather than introducing runnable mock adapters. Reuse the [experience authoring template](../../templates/feature-reference-spec.md) and [experience index](../../specifications/experiences/README.md).
 
-Record the source path, review commit, owner/reviewer, state coverage, imports and known duplication. Review one ordinary path and at least one error/unknown path before accepting a refactor. Require a source-parity build, syntax/unit tests and browser task test after changes. If actual developer comprehension is the claim, measure a developer lookup/change task rather than treating shorter code or passing CI as proof. Avoid inventing a fixed time-to-change threshold without a baseline.
+**Dependency invariant:** foundations inform component semantics; components inform pattern compositions; patterns inform multi-stage experiences. These are documentation relationships (`related` and `depends_on`), not actual JavaScript import graphs. No source file in this repository is a deployable implementation of Button, Form, Navigation or Review Workspace.
 
-**Observed baseline:** six controls, five patterns and one feature are registered as source-linked references. The source-level form example currently uses dense inline DOM and validation logic and deserves human readability review; that is an audit candidate, not a demonstrated defect in all twelve sources. Shared theme and token behavior is covered separately by [Design tokens and themes](../foundations/design-tokens-and-themes.md); implementation contract evidence is owned by [Component contracts](component-contracts.md), and module import rules are owned by [Module boundaries](module-boundaries-and-developer-navigation.md).
+## Executable reference maintainability in consuming applications
 
-**Evidence state:** This contract is authored guidance. It does **not** mean that a named engineer has inspected all 12 sources, that duplicate styling was removed, or that any component package is production-ready.
+This is **guidance for an independently maintained product codebase**, not an instruction to add executable references to this repository. Consumers can apply the following decisions while preserving the catalog as concepts-only:
+
+1. **State ownership:** identify the one owner of editable, pending, confirmed, known-failure and unknown-outcome states; keep service authority distinct from local presentation.
+2. **Semantic reuse:** adopt native behavior where suitable, and compose typed controls only when they meet the documented role, names, focus and keyboard requirements.
+3. **Event contracts:** define inputs, outputs, cancellation, error and duplicate-activation policy without conflating a UI click with an authorized mutation.
+4. **Token intent:** use semantic color, spacing, typography and focus roles, with actual light/dark/high-contrast and RTL verification in the consumer.
+5. **Source exploration and quality:** keep the consumer's code and tests discoverable; verify one ordinary state and at least one failure/unknown path, using browser and assistive-technology tests where applicable.
+6. **Service boundary:** authorization, persistence, concurrency, idempotency and private data remain app-specific. This knowledge catalog cannot certify them.
+7. **Extraction decision:** only move consumer code into an owned shared library when actual reuse, compatibility, maintenance and testing justify it. That library must live **outside** this guidance repository.
+
+| Consumer situation | Default decision | Evidence for a different choice |
+| --- | --- | --- |
+| Similar-looking controls with different behavior | Keep separate implementations | Verified common interaction and state contract |
+| Shared focus/keyboard/event behavior across tasks | Compose around a stable contract | Tests in each actual consumer and assigned owner |
+| App-specific API and permissions | Keep service adapter in app | Reviewed integration/authorization contract |
+| Repeated styles or token roles | Reuse semantic design tokens | Theme/locale/contrast evidence and compatible migration |
+| A general UI package is proposed | Do not add it here | Separate repository, lifecycle owner and real adopters |
+
+**Evidence state:** these are design principles only. Code quality, runtime accessibility, product adoption and successful migrations are **NOT VERIFIED** by the existence of a canonical knowledge page.

@@ -585,12 +585,6 @@
         "accessibility",
         "error-handling"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/patterns/recovery/Recovery.js",
-        "scenario_manifest": "site/src/implementations/patterns/recovery/scenarios.js",
-        "preview_path": "/catalog/patterns/interaction-recovery"
-      },
       "use_when": [
         "designing loading error and empty states",
         "defining recoverable form validation",
@@ -982,12 +976,6 @@
         "pending-state",
         "keyboard-operation"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/components/button/Button.js",
-        "scenario_manifest": "site/src/implementations/components/button/scenarios.js",
-        "preview_path": "/catalog/components/button"
-      },
       "use_when": [
         "initiating an action",
         "defining an asynchronous action button"
@@ -1029,12 +1017,6 @@
         "validation",
         "label-association"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/components/input/Input.js",
-        "scenario_manifest": "site/src/implementations/components/input/scenarios.js",
-        "preview_path": "/catalog/components/input"
-      },
       "use_when": [
         "collecting short text input",
         "providing accessible editable fields"
@@ -1076,12 +1058,6 @@
         "selection",
         "keyboard-operation"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/components/select/Select.js",
-        "scenario_manifest": "site/src/implementations/components/select/scenarios.js",
-        "preview_path": "/catalog/components/select"
-      },
       "use_when": [
         "choosing from a bounded list",
         "specifying native versus custom selection"
@@ -1123,12 +1099,6 @@
         "mixed-state",
         "keyboard-operation"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/components/checkbox/Checkbox.js",
-        "scenario_manifest": "site/src/implementations/components/checkbox/scenarios.js",
-        "preview_path": "/catalog/components/checkbox"
-      },
       "use_when": [
         "toggling an independent choice",
         "representing mixed group selection"
@@ -1176,12 +1146,6 @@
         "dismissal",
         "confirmation"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/components/dialog/Dialog.js",
-        "scenario_manifest": "site/src/implementations/components/dialog/scenarios.js",
-        "preview_path": "/catalog/components/dialog"
-      },
       "use_when": [
         "building focused foreground tasks",
         "managing modal focus and dismissal",
@@ -1225,12 +1189,6 @@
         "help-text",
         "error-association"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/components/field/Field.js",
-        "scenario_manifest": "site/src/implementations/components/field/scenarios.js",
-        "preview_path": "/catalog/components/field"
-      },
       "use_when": [
         "grouping control labels and errors",
         "displaying accessible validation guidance"
@@ -1274,12 +1232,6 @@
         "ux",
         "forms"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/patterns/form/Form.js",
-        "scenario_manifest": "site/src/implementations/patterns/form/scenarios.js",
-        "preview_path": "/catalog/patterns/forms"
-      },
       "use_when": [
         "designing multi-field forms",
         "handling server validation and submit recovery",
@@ -1326,12 +1278,6 @@
         "ux",
         "navigation"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/patterns/navigation/Navigation.js",
-        "scenario_manifest": "site/src/implementations/patterns/navigation/scenarios.js",
-        "preview_path": "/catalog/patterns/navigation"
-      },
       "use_when": [
         "designing app navigation",
         "preserving deep links and active location"
@@ -1375,12 +1321,6 @@
         "ux",
         "search"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/patterns/search-filter/SearchFilter.js",
-        "scenario_manifest": "site/src/implementations/patterns/search-filter/scenarios.js",
-        "preview_path": "/catalog/patterns/search-filter"
-      },
       "use_when": [
         "designing searchable result collections",
         "handling zero results and filter reset",
@@ -1430,12 +1370,6 @@
         "ux",
         "data"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/patterns/data-tables/DataTables.js",
-        "scenario_manifest": "site/src/implementations/patterns/data-tables/scenarios.js",
-        "preview_path": "/catalog/patterns/data-tables"
-      },
       "use_when": [
         "comparing rows and columns",
         "reviewing row actions and sorting",
@@ -2843,16 +2777,10 @@
         "queue-selection",
         "record-inspection",
         "decision-reasons",
-        "simulated-authorization",
+        "authorization-boundaries",
         "conflict-recovery",
         "unknown-outcome-verification"
       ],
-      "implementation": {
-        "status": "reference",
-        "source_path": "site/src/implementations/features/review-workspace/ReviewWorkspace.js",
-        "scenario_manifest": "site/src/implementations/features/review-workspace/scenarios.js",
-        "preview_path": "/catalog/features/review-workspace"
-      },
       "use_when": [
         "reviewing submitted records before accepting, returning or rejecting",
         "building a reusable human review workspace with explicit decision states",

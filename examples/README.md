@@ -1,6 +1,6 @@
 # Design and visual examples
 
-This directory is reserved for curated **visual direction comparisons**, **before/after rendered refinements**, **screen compositions**, and **end-to-end journey examples**. The existing [interactive references](../site/src/implementations/) remain where the website builder expects them until a reviewed implementation migration is justified.
+This directory is reserved for curated **visual direction comparisons**, **before/after rendered refinements**, **screen compositions**, and **end-to-end journey examples**. This repository intentionally ships **no executable examples, component packages or preview fixtures**. Use written, clearly scoped scenarios to illustrate concepts.
 
 Existing written synthetic examples: [visual refinement examples](../knowledge/foundations/visual-refinement-examples.md). They are **descriptions**, not actual rendered screenshots or user-tested results.
 
