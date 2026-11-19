@@ -10,6 +10,17 @@ Improve user task success, comprehension and trust through a coherent visual gra
 
 **Use** these rules when structuring a screen, composing a pattern, reviewing navigation, or critiquing a new component. **Avoid** applying uniformity mechanically when context genuinely requires a different affordance or when cosmetic consistency compromises accessibility or task completion.
 
+## One-minute screen hierarchy contract
+
+Before choosing a grid or colors, write the screen's **user, entry context, current task, required decision, authoritative state and safe next action**. Map those to:
+
+1. **Location and scope:** where the person is, whose data/permissions are in force, and which filter or stage is selected.
+2. **Required information:** facts, price/risk/privacy and prerequisites needed before acting.
+3. **Task action:** the clear next step, with secondary/back/cancel alternatives. Several equally valid actions may be peers—never force a fake single CTA.
+4. **Recovery and evidence:** what happens on validation error, unknown outcome or loss of permission; what would be observed to judge success.
+
+**Decision test:** Ask a reviewer to identify the *task and next safe action* without prompts, then verify the same ordering survives keyboard navigation, text enlargement and translated/RTL content. A static wireframe verifies proposed grouping only, not focus or task completion. [NN/g's explanation of visual hierarchy](https://www.nngroup.com/articles/visual-hierarchy-ux-definition/) offers grouping/contrast principles; [WCAG 2.2](https://www.w3.org/TR/WCAG22/) defines applicable web accessibility criteria. Neither supplies evidence for this particular screen.
+
 ## Core principles
 
 | Principle | Decision rule | Failure to avoid |
@@ -32,28 +43,19 @@ Inspect the primary action in each viewport, keyboard order, long translated lab
 
 ## Operational review rubric (illustrative, not user-tested)
 
-For each screen, annotate: **user and task**, entry point, expected next step, competing actions, content groupings, state feedback, and a recoverable exit. Review in this order: (1) can users recognize where they are, (2) can they identify the primary action, (3) can they predict consequences, (4) can they recover from failure? Capture the observable evidence for each judgment rather than assigning an aesthetic score.
+Use this checklist after drafting a screen; compare alternatives with the **same task and content**, not different copy or features.
 
-| Decision | Prefer | Reconsider when |
+| Question | Acceptance evidence to collect | Flag |
 | --- | --- | --- |
-| Primary action | One dominant action within the current task context | Multiple equally frequent next steps genuinely exist |
-| Grouping | Labels near fields, related items in one visual group | Grouping hides necessary comparisons |
-| Disclosure | Advanced options remain discoverable | Safety, price, privacy or destructive consequences would be hidden |
-| Feedback | Persistent result or inline validation when users must act | A transient toast is the only explanation of failure |
+| Can users identify location and current scope? | Correct heading, route state, active filters and permission context | Missing or misleading scope |
+| Is the task and safe next action discernible? | Predictable label, order and consequence before activation | Competing false-primary actions |
+| Are essential details visible in time? | Status, fees, destructive impact, required fields and explanations | Important risk buried in progressive disclosure |
+| Can a user recover or exit? | Error, retry safety, cancel/back and draft preservation | Dead-end or irreversible unconfirmed action |
+| Does hierarchy survive inclusive contexts? | Narrow/wide, zoom, long/RTL labels, keyboard focus and contrast | Visually prioritized but operationally inaccessible |
 
-**Review example:** In a multi-step settings form, keep Save identifiable, show unsaved edits, preserve input on validation failure and expose a Cancel path. Do not replace evidence from task tests with internal design preference. Compare representative first-time and returning users; record unexpected behavior as a hypothesis for research.
+**Worked example — appointment selection:** Show chosen service and date; present available slots; enable “Continue to review” only when a valid slot exists. Keep “Change service” and Back discoverable. If the selected slot expires, explain the conflict and preserve other input rather than claiming success. **Anti-example:** large promotions appear above availability, “Confirm” is active before selection, and a failed submission clears answers.
 
-**Acceptance evidence:** annotated states at narrow and wide widths; keyboard order; long-label and translated content; task success definition and baseline availability; design reviewer and review date. A prose review is not a production accessibility test.
-
-## Wireframe screen hierarchy and action priority
-
-**Use when** converting a task into a screen or comparing two proposed compositions. **Avoid** starting from a fashionable component layout, treating a large visual element as proof of priority, or imposing one primary CTA when the task genuinely has several equivalent safe choices. This extends `principle.visual-hierarchy`; [task flows](../../specifications/patterns/task-flows-and-information-architecture.md) own sequence and alternatives, while [wireframe methodology](../guidance/wireframe-methodology.md) owns fidelity and prototype escalation.
-
-For each proposed screen, write a compact **hierarchy contract**: (1) context and location; (2) user goal and the decision required *now*; (3) prerequisite information and risk/price/privacy disclosures; (4) one prominent primary next action where appropriate; (5) secondary/back/cancel/support affordances; (6) resulting state and next screen. Rank content by its role in safe task completion, not visual novelty. Include visible scope and status when data is filtered or permissions matter. Copy and grouping should allow users to predict action consequences. A static drawing only illustrates that order; real affordance and focus behavior still require implementation tests.
-
-**Good synthetic example:** an appointment-selection screen leads with service and date context, then available slots, then “Continue to review”; change service and back remain discoverable. **Anti-example:** promotional cards dominate, “Confirm” appears before a time is chosen, and no exit or recovery route is visible. A visually balanced screen may still be task-incomplete.
-
-**Verification expectation:** review annotation against the user's task brief; compare context-to-action scan order, action label/outcome consistency, safe exit, meaningful grouping and omission of known critical information. Check narrow/reflow and translated labels on rendered implementations when available, recording unexecuted checks as **NOT VERIFIED**. Distinct composition variants must retain the same user/task context for a fair comparison. See [Task-to-screen composition](../../specifications/patterns/task-flows-and-information-architecture.md).
+**Verification status:** the example is synthetic. A design review can check annotated structure and content; a rendered browser test can check reflow and focus; a task study can measure comprehension and completion. Report reviewer, revision, scenario, context and **PASS/FAIL/NOT VERIFIED** separately. [Task flows](../../specifications/patterns/task-flows-and-information-architecture.md) own journey sequence and alternatives; [wireframe methodology](../guidance/wireframe-methodology.md) owns fidelity and prototype escalation.
 
 ## Visual composition cross-reference — craftsmanship
 

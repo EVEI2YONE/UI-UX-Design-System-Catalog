@@ -6,6 +6,16 @@
 
 Measure whether people can complete valuable tasks and understand interfaces. Design polish, survey sentiment and business conversion are not substitutes for observed task success.
 
+## Measurement decision — specify before collecting events
+
+1. Define **one user task** and eligible population, including start, authoritative success, failure, cancellation and timeout outcomes.
+2. Choose a **primary outcome** (usually task success or error severity), and guardrails (accessibility, data correctness, privacy and retention). A lower click count is not success by itself.
+3. Record numerator, denominator, unit, device/input/locale, observation window, sample/exclusion rules, event instrumentation version and missingness.
+4. Compare matched conditions or specify randomization, assignment unit and analysis before exposure. Without a baseline, write **UNKNOWN**, not zero.
+5. Report uncertainty, sample context, outliers, missing events, decision owner, changes to make and rollback criteria.
+
+**Example metric card (synthetic):** "Eligible completed form submissions / all eligible form attempts started during a seven-day window"; verify completion from the service, include failed/abandoned attempts in the denominator policy, and segment keyboard/touch without treating either as a lesser cohort. Do not record private form contents. These are definitions, **not measured values**.
+
 ## Core metrics
 
 | Measure | Definition / caution |
@@ -76,96 +86,37 @@ For toggled-off features, mark related metrics **NOT APPLICABLE** to the disable
 
 ## Interaction-effort measurement without click-count tunnel vision
 
-**Purpose:** test whether an interaction consolidation or stable action region improves real user tasks while protecting comprehension, safety and inclusive access. This extends the existing [TCR, time, errors and privacy contract](#core-metrics); [advanced interactions](../../specifications/patterns/advanced-interactions-and-reversible-actions.md) owns choosing buttons, toolbars, menus, split actions and shortcuts. [Task flows](../../specifications/patterns/task-flows-and-information-architecture.md) owns spatial/next-action layout and scope.
+When comparing a consolidated toolbar or successive-review flow, use [advanced interactions](../../specifications/patterns/advanced-interactions-and-reversible-actions.md) for control design and [task flows](../../specifications/patterns/task-flows-and-information-architecture.md) for action location. Keep completion, accuracy and safety ahead of interaction counts.
 
-### Operational task-cost worksheet
+| Secondary measure | Operational definition and caution |
+| --- | --- |
+| Pointer travel distance | Task-relevant movement in CSS pixels for observed pointer sessions; **not applicable** to keyboard-only input |
+| Keyboard navigation effort | Meaningful focus transitions or key activations before the required action; count stranded/misdirected focus separately |
+| Time to next action | Time from **authoritatively confirmed prior completion** to a deliberate next eligible action; exclude no eligible next task with reason |
+| Re-entry / re-selection | Repeated unchanged inputs or item choice caused by interface interruption; distinguish deliberate corrections |
+| Comprehension and errors | Prediction of consequences, duplicate action attempts, recovery and permission confusion—mandatory guardrails |
 
-Fix a **task start** and **authoritative completion** event, eligible cohort, observed device/input modality, viewport/zoom and same work complexity before comparing versions. Optional, secondary effort measures follow; none replaces successful completion.
+**Evaluation protocol:** define baseline and variant task, eligibility, matched contexts, input modes, start/success, dropouts and missing data. Compare distribution, TCR and errors alongside secondary costs; do not infer causality from convenience samples or call fewer steps universally better. Collect only consented, minimized interaction data; sensitive text and continuous pointer recordings are not necessary for a task-cost audit.
 
-| Measure | Operational definition and unit | Interpretation / limit |
-| --- | --- | --- |
-| Pointer travel | Sum of distances between successive task-relevant pointer positions in **CSS pixels** during eligible pointer tasks; record sampling/missingness and normalization by task/viewport when comparing | Describes travel burden, not motor effort or universally optimal pixels; not applicable to keyboard-only attempts |
-| Pointer target relocations | Count of unexpected action-target position changes during the same task, especially after async updates | May reveal unstable actions; distinguish deliberate responsive reflow |
-| Click/tap activations | Count **intentional activations** per eligible task attempt, separated by successful, cancelled and incomplete attempts | Fewer clicks is not inherently better if confirmations protect users |
-| Keyboard navigation effort | Tab/Shift+Tab/arrow activations or focus transitions to target, with missed/stranded focus reported separately | Modality-specific; do not compare raw counts to mouse travel |
-| Scroll/viewport interruptions | Count of substantial manual scroll changes or independent scroll-container switches on the way to the next required action; define threshold before study | Detects reorientation, not a universal optimum |
-| Re-entry and re-selection | Count of repeated entries of unchanged values or repeated item selections caused by refresh/navigation | Must distinguish deliberate correction or change in authorized scope |
-| Time to next actionable item | Elapsed **milliseconds/seconds from authoritative completion of prior item** to first intentional action on the next **eligible** item; report unavailable/abandoned cases separately | Do not measure from an optimistic click; do not exclude slow or failed attempts silently |
-| Comprehension/safety | Rate of users who can correctly predict consequences, plus task errors, duplicate attempts, permission/scope confusion and recovery | Guardrail against overcompressed, ambiguous controls |
-
-**For pointer telemetry**, record only consented, minimized, task-scoped interaction measurements; do not collect raw screen recordings, exact private text, sensitive item coordinates, names or identifiers without explicit privacy/legal review. In many cases moderated observation, aggregate interaction counts and coarse positioning categories are preferable to collecting continuous trajectories.
-
-### Study and inference protocol
-
-1. State the **hypothesis** (e.g., keeping a review action bar stable reduces re-selection), selected task, candidate variants, eligible user cohort, baseline and target condition. If actual baseline is unavailable, label it **UNKNOWN** rather than inventing counts.
-2. Define **confirmed success** independently of UI intent. Preserve failure, cancellation, partial and uncertain outcomes in the denominator policy; do not classify them all as valid zero-duration successes.
-3. Compare equivalent tasks under matched devices, viewports, zoom, task complexity, input modality and permissions. Include novice and returning users when relevant; describe observed differences without causal claims unless the study design justifies them.
-4. Report TCR, error severity, time distributions and recovery alongside any pointer/step reduction. Stratify keyboard, touch and assistive technology separately; never give nonpointer attempts a fabricated pointer distance of zero.
-5. Review discoverability, comprehension, focus, translation/RTL, touch, safety and server-correctness guardrails; do not adopt an optimization if fewer actions increase consequential mistakes.
-6. Record consent/data minimization, versioned instrumentation, missing events, confidence limitations, decision owner, rollout/rollback and actual PASS/FAIL/NOT VERIFIED results.
-
-**Illustrative example:** version A requires choosing a new record after each acknowledged review; version B presents the next eligible item in a stable pane. Compare completion, decision correctness, time-to-next-action, focus recovery and deliberate stops across matched sessions. Without observed attempts, both a faster pointer path and its actual benefit remain hypotheses.
-
-**Anti-example:** declare a 50% UX improvement because a prototype uses two buttons instead of four, while ignoring hidden Reject, lost keyboard access, unverified approvals and users who abandon the task.
-
-### Verification status
-
-| Evidence | Required before claiming improvement | Status |
-| --- | --- | --- |
-| Task definition, cohort and baseline | Versioned start/success events, validated attempts and sampling | NOT VERIFIED |
-| Input-modality coverage | Pointer, keyboard, touch, assistive technology where applicable | NOT VERIFIED |
-| Outcome and error safeguards | TCR, server correctness, recovery, scope/permission errors | NOT VERIFIED |
-| Privacy-respecting instrumentation | Purpose limitation, data minimization, consent and retention review | NOT VERIFIED |
-| Controlled/observational interpretation | Study design, uncertainty, consistent comparable tasks | NOT VERIFIED |
-
-**References:** [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/), [Nielsen Norman Group: Measuring UX](https://www.nngroup.com/articles/which-ux-research-methods/) (method-selection starting point, not proof of a specific metric threshold), and [experimentation guidance](experimentation-and-causal-evidence.md) (consulted 2026-11-07). Context: proposed Little Wins effort metrics and action-consolidation patterns; product baselines remain unknown.
+**Illustrative scenario:** A review queue offers a stable next-item panel after confirmation. Compare corrected decisions, time-to-next-action, focus return, cancellations and unknown acknowledgements, not merely click totals. **All proposed gains are NOT VERIFIED.**
 
 ## Catalog discoverability and source-trust study protocol
 
-The catalog supports *two different journeys*: a person browsing a source-linked visual reference and an agent retrieving a canonical ID with a deterministic lexical ranker. Successful automation for those journeys is not evidence that representative people or independent agents find the right design rule or judge its trust correctly.
+The catalog serves both people browsing source-linked guidance and deterministic search agents. Internal lookup tests do **not** establish that people find, understand or trust the correct concept.
 
-### Test questions and hypotheses
+### Representative discovery tasks and reporting
 
-| Job | Research question | Acceptable evidence |
+| Task | Observable outcome | Guardrail |
 | --- | --- | --- |
-| Find a control contract | Can a user identify the correct canonical owner from a natural-language task? | First chosen concept, correction path and rationale |
-| Understand spec-only status | Can a user distinguish proposed documentation from verified product behavior and a published component library? | User explanation without prompting, misinterpretation notes |
-| Find relevant recovery guidance | Can a participant distinguish unknown outcome, known failure and retry safety? | Selected canonical concept and reason for action |
-| Reuse source safely | Can a developer locate the canonical source, its scope, related decisions and evidence limits? | Source found, dependencies understood, no false runtime assumptions |
-| Distinguish approval workflows | Does a user choose human Review Workspace versus AI-agent delegated approval appropriately? | Correct task-owner selection and reasoning |
-| Search an unfamiliar synonym | Does `synthetic review` reveal a gap that a reasonable user could recover from? | Query sequence, no-result behavior, fallback navigation, candidate synonyms |
+| Find a Button or Dialog contract from task language | **First-hit relevance**: canonical first selected concept matches the predetermined task owner | No assisted hints or hidden reranking between participants |
+| Recover from an unknown submission result | Participant distinguishes known failure from unknown outcome and chooses safe next step | Do not reward an unsafe duplicate submit |
+| Distinguish a proposal from an implementation | Participant correctly identifies `proposed` and E0 as unverified documentation | No claim that a working component or test result exists |
+| Find and reuse source responsibly | Participant opens source, understands owner, related rules and evidence limitations | No copied incomplete example treated as production code |
 
-### Study design before collecting results
+**Study contract:** pre-register a small set of representative tasks and target answers; choose and report recruiting criteria, participant count, ability and role diversity, modality (pointer/keyboard/screen reader where available), environment, query vocabulary and task order. Observe first choice, recovery path, correction count, time and trust comprehension. Protect confidentiality, do not prompt the target answer, and log zero-result/abandoned attempts instead of excluding them.
 
-Specify study owner, study date, target roles (designer, frontend engineer, accessibility reviewer, agent/tool integrator), experience level, device/assistive-technology context, number invited/completed and any exclusions. Recruit people who have not authored the catalog where feasible. Use neutral tasks without canonical ID or direct solution terms. Randomize or counterbalance task order across participants to limit learning effects. Record whether participants received training or saw previous solutions.
+**Worked hypothetical analysis (not a study result):** If five sample users independently choose the correct source first and two recover after a wrong first hit, report 5/7 first-hit and 7/7 eventual discovery **as illustrative arithmetic only**. Actual participant outcomes, confidence intervals and usability gains are NOT VERIFIED until observations exist.
 
-For a paired human/agent comparison, provide agents the same user intent, allowed tools, repository revision and explicit constraints. Preserve the actual prompts, retrieved IDs, rank, sources inspected, tool version and outcomes. Distinguish ranking correctness from whether the selected guidance actually resolves the user's need. Do not aggregate human and machine "success" into one indistinguishable score.
+**Decision and governance:** measure pre/post against the same task set; track true positives and false confidence from query ranking. Require review before changing search aliases or hidden relevance weights, test direct links/keyboard/empty states, and record traceable evidence. See [experiment design](experimentation-and-causal-evidence.md), [UX research methods](ux-research-methods.md) and [quality gates](../../governance/quality-gates.md).
 
-### Measures and reporting
-
-| Measure | Definition | Watch out for |
-| --- | --- | --- |
-| First-hit relevance | Eligible tasks where first opened/selected result is correct, divided by eligible tasks | Rank one is not always uniquely correct for ambiguous terms |
-| Task completion | Tasks resolved to a suitable canonical source with correct applicability, divided by eligible tasks attempted | A correct clicked URL without comprehension is incomplete |
-| Time to first useful concept | Elapsed time from task start to first suitable source, by task/participant | Include failures/censoring rather than dropping them |
-| Query reformulations | Number and category of edited phrases before a useful result | High counts may mean vague task phrasing, not only a ranking defect |
-| Incorrect maturity inference | Tasks where user treats proposal or mock adapter as production approval | Source preview presentation may amplify misplaced trust |
-| Dependency completeness | Required source/scenario/style/adapter files correctly identified divided by required files | One file found does not prove safe integration |
-| Accessible task recovery | Screen-reader/keyboard user can find an error/empty state and continue | Distinguish information access from a completed workflow |
-
-Use counts and denominators, per-task context, failures, median and spread where sample size supports them; do not invent statistical significance from a tiny exploratory study. Keep qualitative remarks anonymized and separate direct observations from researcher inference. Never collect passwords, production records or sensitive identities for the study.
-
-### Relevance changes and governance
-
-1. Freeze a registry revision and run the existing `tests/fixtures/retrieval_cases.json` suite as the automated *baseline*.
-2. Record new organic queries, intended task, all plausibly relevant canonical owners and the participant's expectation. A query like `settings` can correctly yield multiple results; no forced winner.
-3. Classify failure: missing concept, poor alias, unclear title/summary, incorrect task hierarchy, source-status confusion, rendering/navigation problem or inadequate user training.
-4. Suggest the smallest remedy: clearer public wording or synonym, navigation signpost, linked related concept, task-specific index alias, or a genuinely missing contract. Avoid changing scoring weights to mask ambiguous data.
-5. Review candidate improvements against the unchanged exact ID/alias ranking, all historical fixtures, known misses and human outcomes. If an alias creates an overlap, record the tradeoff explicitly.
-6. Re-run comparable tasks with a separately documented sample. Report adverse effects and follow-up questions instead of claiming a universal discovery improvement.
-
-### Worked hypothetical analysis (not a study result)
-
-Suppose a developer searches for "synthetic review", sees no result, then finds `feature.review-workspace` through "human approval queue". This would show *recovery through reformulation*, not first-hit success. A candidate alias is only justified if review confirms the phrase refers to that human review workflow rather than an agent approval or testing concept. Record that distinction and test both before changing the index.
-
-**Current evidence:** the deterministic agent lookup has curated acceptance fixtures, and real Chromium confirmed a scripted human approval queue route. **NOT VERIFIED:** participant cohort, independently observed task completion, source-comprehension baseline and agent/human comparative study. No such study has been run. This protocol is documented knowledge; actual participant and agent research remains outstanding.
+**Source scope:** [NN/g's research-method selection](https://www.nngroup.com/articles/which-ux-research-methods/) distinguishes behavioral observation from attitude surveys; it does not provide user results for this catalog. [WCAG 2.2](https://www.w3.org/TR/WCAG22/) provides applicable accessibility outcomes, not an analytics denominator. The `SUS` total is a transformed 0–100 questionnaire score, **not** a percent of users or a task success rate. No actual participant study was conducted for this entry.

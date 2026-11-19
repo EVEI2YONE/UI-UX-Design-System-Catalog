@@ -8,6 +8,20 @@ Use this reference to create a coherent aesthetic language for an interface **af
 
 **Use when:** a page is functionally organized but lacks a clear visual direction; designing a new brand or adapting a UI system; reviewing inconsistent typography, color or whitespace. **Avoid when:** copying another brand's distinctive design without rights, pursuing visual novelty over task success, or declaring a style universally superior without user evidence.
 
+## Select a visual direction in five decisions
+
+Use a task-first choice, not a moodboard vote. This page owns **art direction and optical composition**; [design principles](design-principles.md) own the task/action hierarchy, [design tokens](design-tokens-and-themes.md) own encoded semantic values, and [styling recipes](practical-ui-styling-recipes.md) own CSS/layout implementation.
+
+| Decision | Requirement to record | Reject or revise when |
+| --- | --- | --- |
+| 1. Task and audience | The primary screen, content extremes, user capability and required next action | Visual novelty displaces safety, price, privacy or task context |
+| 2. Expression | Two or three *materially different* theses: typography, tonal hierarchy, spatial rhythm, imagery and geometry | Directions differ only by hue or follow someone else's signature identity |
+| 3. Hard constraints | Brand rights, platform, localization, performance, contrast, focus, reduced motion | Known accessibility/rights violations are merely offset by aesthetic votes |
+| 4. Comparable artifact | Same real content, states, viewports and interaction intent for all directions | One option wins because its copy or functionality was artificially improved |
+| 5. Decision and evidence | Named reviewer, criteria, rejected alternatives, unknowns and next evaluation | An attractive static mock is labeled as working, tested UI |
+
+**Illustrative tradeoff:** a data-heavy review workspace may prefer a quiet, tightly aligned table over expressive editorial columns, *unless* representative tasks reveal a comprehension benefit from the latter. Compare with equal content and known failure states; preference is a hypothesis until observed. The [aesthetic-usability effect](https://www.nngroup.com/articles/aesthetic-usability-effect/) warns that perceived polish can conceal actual usability problems, not that attractive visual design is harmful.
+
 ## Composition and optical balance
 
 1. Write a **focal-point sentence**: “On this screen, the eye should find [information] first and [action] second.” Keep required safety, price, and status information discoverable.
@@ -95,98 +109,28 @@ After selecting a coherent visual direction, use [Practical UI styling recipes](
 
 ## Art-direction research, exploration and selection
 
-This section **operationalizes the art-direction brief**. Its purpose is a repeatable method for studying visual references and choosing an aesthetic direction **without confusing precedent, brand preference, user research or implemented usability evidence**. Use the existing [UX research](../guidance/ux-research-methods.md) entry for participant studies and [wireframe methodology](../guidance/wireframe-methodology.md) for representation fidelity and prototype escalation. No reference is proof of conversion, accessibility or a universal best practice.
+### Observe, abstract and document sources
 
-### Inspiration gathering and source appraisal
+Gather a **small contrasting set** of references: comparable task, different density/personality, and one transferable pattern. For every reference record creator/URL, capture date, intended audience/platform, rights, observed typography/color/spacing, inferred purpose, transfer decision, counterexample and evidence level. A screenshot is evidence of **appearance**, not of task completion, conversion or accessibility.
 
-Start with a documented design question such as *“How could a data-heavy planning application appear calm while retaining obvious priority and status?”* Collect a **small, diverse set of references**, not a bulk moodboard. Search across relevant and intentionally contrasting product categories so that the first famous design system does not become the default answer.
+Use **observe → hypothesize → abstract → adapt → verify**. For example, a publication's expansive heading-to-body rhythm may suggest clearer page sectioning, but do not copy its trademark typeface or exact hero composition. Test the abstracted rule with the target product's long labels, data density, keyboard order and real constraints. [NN/g visual hierarchy](https://www.nngroup.com/articles/visual-hierarchy-ux-definition/) explains contrast, scale and grouping as design mechanisms; its examples do not certify a given layout.
 
-For every source, create a **reference card**:
+### Compare distinct directions with the same task
 
-| Field | Required observation |
-| --- | --- |
-| Source and provenance | URL or offline source, creator/organization, capture date, license/usage restrictions if known |
-| Context | Intended audience, use case, device/viewport and whether this is a live screen, marketing render or concept |
-| Observed traits | Specific typography, color balance, shape, density, spacing, imagery, hierarchy and motion visible in the source |
-| Proposed transfer | One generalizable principle, explained independently of brand assets |
-| Contraindication | When the trait could fail in our product, e.g. translated content, high-density tasks, focus visibility or performance |
-| Evidence status | Observed screenshot vs inferred intent vs independently user-tested (only if real study evidence exists) |
-
-**Search and selection rule:** Include at least one reference serving a similar task, one counterpoint with different density/personality, and one example that demonstrates a specific pattern worth evaluating. Source popularity or visual attractiveness alone is not evidence of usability. Avoid retaining third-party screenshots or copyrighted artwork in a distributed catalog without permission; descriptions and source links are usually sufficient.
-
-**Example:** A quiet editorial layout demonstrates a generous heading-to-body gap. Record the grouping principle, then test it against the product's actual content density. **Anti-example:** “Copy this site's homepage, including its distinctive hero illustration and unique brand palette.”
-
-### Translate references into ownable design rules
-
-Use **observe → hypothesize → abstract → adapt → verify**. Keep those five stages separate so neither a screenshot nor a designer's interpretation becomes an unearned requirement.
-
-1. **Observe** measurable features: alignment axis, number and relative weight of type roles, accent placement, corner family, surface grouping and image crop behavior. State when geometry is estimated from an image.
-2. **Hypothesize** what job each feature may serve: improving scan order, expressing warmth, indicating interaction, or simplifying hierarchy. Label motivation inferred unless backed by evidence.
-3. **Abstract** a transferable rule without copying a signature composition: e.g. *“Reserve saturated color for one decisive action and meaningful state, while keeping data comparisons on quiet surfaces.”*
-4. **Adapt** to the target product's design tokens, component contracts, content constraints and brand. Preserve semantic and keyboard order.
-5. **Verify** with comparable states and representative content: empty/error/loading, mobile, long text, RTL where supported, supported themes, contrast and focus. If no rendered implementation exists, mark verification **NOT VERIFIED**.
-
-**Reference-to-rule ledger (illustrative):**
-
-| Observation | Generalizable rule | Avoid copying | Verify |
+| Direction (synthetic project dashboard) | Distinct grammar | Hypothesis to test | Risk |
 | --- | --- | --- | --- |
-| A publication uses high-contrast display type over narrow editorial text | Deliberately distinguish storytelling heading from body reading | Its distinctive font/logotype and exact hero artwork | Headlines, font fallbacks, long translations, zoom |
-| A finance UI uses neutral cards and one strong status color | Reserve dominant accent for meaningful action or exception | Exact palette, status colors without labels | Accessible contrast, urgency comprehension, dark mode |
-| A creative portfolio uses asymmetrical image blocks | Use asymmetric composition when it directs attention | Exact crop/arrangement tied to original creator | Reading order, keyboard sequence, compact layout |
+| Quiet Utility | Neutral palette, compact type, aligned rows, little elevation | Rapid work-item recognition | Weak category differentiation |
+| Warm Editorial | Confident headings, generous spacing and restrained warm surfaces | Better first-use orientation | Excess scroll and reduced dense-data comparability |
+| Technical Precision | Tabular figures, clear grid, pronounced status labels | Better numeric comparison | Heavy cognitive load for infrequent users |
 
-### Divergent design-direction exploration
+**Gate A (must satisfy):** applicable contrast and focus requirements, required disclosures, licensed assets, content reading order, translation/RTL, reduced motion, and platform performance constraints. If not tested, label the gate **NOT VERIFIED**, not PASS.
 
-Prepare **two or three materially distinct directions** using the *same representative screen, text, tasks and critical states*. Differences should be strategic, not cosmetic hue swaps. Keep priority content and disclosure fixed so stakeholders can judge visual treatment rather than altered functionality.
+**Gate B (compare survivors):** rate *task legibility*, brand fit, composition clarity, dense/empty/error states, inclusive flexibility and implementation cost against agreed project criteria. Include owner, evidence source and dissent; do not reduce unlike measures to a cosmetic universal score. Offer an accessible alternative where imagery, asymmetric layouts or low-density editorial formatting would block required content.
 
-For each direction record:
+### Handoff and acceptance
 
-- **Name and thesis:** e.g. “Quiet Utility: quick scanning with subdued visual noise.”
-- **Brand fit and non-goals:** 2–3 target traits and a rejected trait.
-- **Visual grammar:** type roles and pairing, tonal palette/accent, section rhythm, geometry/borders/depth, icon/photo treatment and optional motion.
-- **Example frame:** one common task screen, including title, context, primary action, secondary content and error/empty state.
-- **Risks and constraints:** density, localization, contrast/focus, performance, third-party assets and implementation complexity.
-- **Unknowns:** statements requiring actual participant or implementation checks, not declared truths.
+A direction handoff contains one thesis sentence, type roles, semantic color intent (not untested hex values), spacing rhythm, optical alignment, image/rights guidance, relevant component and token owners, representative screen states, responsive/RTL variations and explicit risks. The [practical styling recipes](practical-ui-styling-recipes.md) implement the chosen visual grammar; this document does not publish assets or code.
 
-**Illustrative direction set for a project dashboard:**
+**Test scenarios:** compare the same dense dashboard at narrow and wide widths; translate labels by 30–50% expansion; enable dark/forced-color and reduced-motion modes where supported; traverse keyboard focus; inspect pending, empty and invalid content; compare focal order at 200% zoom. Record actual screenshots, device/browser, test participant when available, revision and observed problems. **No scenarios were executed here.** For applicable web conformance criteria consult [WCAG 2.2](https://www.w3.org/TR/WCAG22/); a design review does not replace an assistive-technology test.
 
-| Direction | Expressive move | Strength hypothesis | Main risk to test |
-| --- | --- | --- | --- |
-| Quiet Utility | Restrained neutrals, compact functional typography, minimal elevation | Fast recognition of work items | Feels too sparse or weakly differentiated |
-| Warm Editorial | Distinctive display headings, warm background and airy section rhythm | Approachable orientation and storytelling | Slower scanning or excessive scroll on dense workflows |
-| Technical Precision | Monospaced numeric accents, clearly ruled grids, crisp status labels | Confident comparison and clear status | Mechanical or overwhelming for novices |
-
-At low fidelity, assess structure; at high fidelity, assess visual fit; use an interactive prototype when the decision involves real navigation, focus, validation or recovery. See [wireframe methodology](../guidance/wireframe-methodology.md). Do **not** treat a static mock as evidence of working accessibility.
-
-### Transparent aesthetic tradeoffs and decisions
-
-Make a decision using a **two-stage gate** rather than a single ungrounded beauty score.
-
-**Gate 1 — hard constraints:** Reject or revise a direction if it obscures critical action/price/privacy information, produces known inaccessible contrast or focus, contradicts brand/legal rights, prevents required localization, breaks the primary task, or exceeds a non-negotiable performance/platform constraint. Unverified criteria must be labelled pending rather than passed.
-
-**Gate 2 — compare surviving directions** using explicit evidence and team priorities:
-
-| Criterion | Question | Evidence / status |
-| --- | --- | --- |
-| Task legibility | Can a user rapidly locate purpose, current state and next action? | Representative task walkthrough; test pending if not run |
-| Brand distinctiveness | Does the grammar express the desired traits without imitating another source? | Design brief and reviewer rationale |
-| Cross-screen coherence | Can the grammar extend to forms, tables, dialogs, errors and small widths? | Comparative screen set and state coverage |
-| Inclusive resilience | Do type, color and layout remain workable with zoom, focus, themes, translated text and reduced motion? | Actual verification required |
-| Maintainability | Can styles be tokenized and owned without unbounded variants or global overrides? | Architecture and component review |
-| Delivery risk | What is the asset, font, performance, compatibility and rollback cost? | Owner estimate; unresolved risk explicit |
-
-**Decision record:** chosen direction; alternatives; reasons and supporting observations; design owner; user/research uncertainty; accepted tradeoffs; implementation dependencies; next evaluation trigger and date. Do not assign pseudo-scientific weights unless stakeholders agree what they mean. If two directions are close, prototype the riskiest assumption rather than adding ornamental variants.
-
-**Good decision:** “Choose Quiet Utility provisionally for operational tasks: clearer status grouping and fewer competing accents in expert review; test novice comprehension and compact error states before release.” **Bad decision:** “The Warm Editorial variant is 92% more beautiful, so it must improve conversion,” with no valid instrument, denominator or user study.
-
-### Design handoff and acceptance
-
-For each actual design request, produce a compact **art-direction decision packet** containing (1) task/brand brief, (2) three or fewer annotated and rights-aware references, (3) extracted principles and contraindications, (4) at least two comparable candidate grammars or a documented rationale for one, (5) constraint checks and evidence status, and (6) selected provisional direction with an explicit revisit trigger.
-
-- [ ] Source provenance and permission/asset limits recorded; no wholesale imitation.
-- [ ] Observations and hypotheses distinguished from real user research.
-- [ ] Candidate screens share task, content, hierarchy and comparable fidelity.
-- [ ] Selection includes accessibility, i18n/RTL, responsive, performance and implementation tradeoffs.
-- [ ] Relevant [token architecture](design-tokens-and-themes.md), [styling recipes](practical-ui-styling-recipes.md), [UX research](../guidance/ux-research-methods.md) and [quality gates](../../governance/quality-gates.md) identified.
-- [ ] Visual, prototype, user and manual accessibility tests remain **NOT VERIFIED** unless actually run.
-
-**Source scope and applicability (reviewed as references 2026-11-07):** [GOV.UK Service Manual — Making prototypes](https://www.gov.uk/service-manual/design/making-prototypes) and [How the alpha phase works](https://www.gov.uk/service-manual/agile-delivery/how-the-alpha-phase-works) support exploring alternatives and testing uncertain design decisions, not the aesthetic value of any specific palette. [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) provides applicable normative web accessibility criteria, not a measure of attractiveness. Reference-card fields and the direction-comparison rubric above are proposed catalog heuristics, not a claimed W3C or GOV.UK requirement.
+**Evidence hierarchy:** traceable visual references and authored design decisions are editorial evidence; measured usability, brand approvals and implementation passes require separate recorded observations. All catalog entries remain proposed until reviewed.
