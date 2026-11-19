@@ -147,7 +147,7 @@ For each option deliver: brief contract with KNOWN/ASSUMED/ILLUSTRATIVE/BLOCKED 
 
 ## Spatial continuity and sequential task progress
 
-**Scope:** how a flow keeps the current object, next action, selection and task location predictable across repeated items. This extends the task-first map, not a universal requirement to automate review queues. [Interaction recovery](interaction-states-and-recovery.md#b03--iconstate-synchronization-and-post-mutation-focus-continuity--proposed-2026-11-07) owns outcome truth and focus fallback. [Component contracts](../../knowledge/architecture/component-contracts.md) owns event boundaries. owns action-control consolidation and effort measurement.
+**Scope:** how a flow keeps the current object, next action, selection and task location predictable across repeated items. This extends the task-first map, not a universal requirement to automate review queues. [Interaction recovery](interaction-states-and-recovery.md) owns outcome truth and focus fallback. [Component contracts](../../knowledge/architecture/component-contracts.md) owns event boundaries. [Advanced interactions](advanced-interactions-and-reversible-actions.md) covers action-control consolidation and interaction effort.
 
 ### Spatial continuity before action compression
 

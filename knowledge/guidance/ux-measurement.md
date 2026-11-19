@@ -157,7 +157,7 @@ Use counts and denominators, per-task context, failures, median and spread where
 
 ### Relevance changes and governance
 
-1. Freeze a registry revision and run the existing `tests/fixtures/phase9_retrieval_cases.json` suite as the automated *baseline*.
+1. Freeze a registry revision and run the existing `tests/fixtures/retrieval_cases.json` suite as the automated *baseline*.
 2. Record new organic queries, intended task, all plausibly relevant canonical owners and the participant's expectation. A query like `settings` can correctly yield multiple results; no forced winner.
 3. Classify failure: missing concept, poor alias, unclear title/summary, incorrect task hierarchy, source-status confusion, rendering/navigation problem or inadequate user training.
 4. Suggest the smallest remedy: clearer public wording or synonym, navigation signpost, linked related concept, task-specific index alias, or a genuinely missing contract. Avoid changing scoring weights to mask ambiguous data.

@@ -176,7 +176,7 @@ submitting
  -> stale_revision / permission_changed (refresh, revalidate, explain)
 ```
 
-A server acknowledgment is not automatically proof that all dependent read models are reconciled; the appropriate consistency contract is application-specific. Only advance when the task's authoritative completion condition is met. Never select a different item merely because a local optimistic cache removed the old one. The [task-flow contract](task-flows-and-information-architecture.md#b03--spatial-continuity-and-sequential-task-progress--proposed-2026-11-07) owns when and whether to auto-select the next eligible item.
+A server acknowledgment is not automatically proof that all dependent read models are reconciled; the appropriate consistency contract is application-specific. Only advance when the task's authoritative completion condition is met. Never select a different item merely because a local optimistic cache removed the old one. The [task-flow contract](task-flows-and-information-architecture.md) owns when and whether to auto-select the next eligible item.
 
 **Counterexample:** a reviewer clicks Approve, spinner instantly becomes a green check, pending item is removed from the DOM and focus disappears; a timeout later leaves the actual decision uncertain, yet the UI opens another contribution. Correct behavior leaves the outcome unsettled, retains context and offers authoritative verification before advancing.
 

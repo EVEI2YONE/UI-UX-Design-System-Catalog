@@ -18,7 +18,7 @@ from find_concept import lookup
 def audit(root=ROOT):
     registry=json.loads((root/"catalog/index.json").read_text(encoding="utf-8"))
     entries=registry["entries"]
-    cases=json.loads((root/"tests/fixtures/phase9_retrieval_cases.json").read_text(encoding="utf-8"))
+    cases=json.loads((root/"tests/fixtures/retrieval_cases.json").read_text(encoding="utf-8"))
     ids={e["id"] for e in entries}
     errors=[]
     cases_out=[]

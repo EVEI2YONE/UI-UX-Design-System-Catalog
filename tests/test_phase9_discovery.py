@@ -15,7 +15,7 @@ class Phase9DiscoveryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.entries=json.loads((ROOT/"catalog/index.json").read_text(encoding="utf-8"))["entries"]
-        cls.cases=json.loads((ROOT/"tests/fixtures/phase9_retrieval_cases.json").read_text(encoding="utf-8"))
+        cls.cases=json.loads((ROOT/"tests/fixtures/retrieval_cases.json").read_text(encoding="utf-8"))
         cls.by_id={entry["id"]:entry for entry in cls.entries}
         cls.out=tempfile.TemporaryDirectory()
         cls.generated=Path(cls.out.name)/"site"
