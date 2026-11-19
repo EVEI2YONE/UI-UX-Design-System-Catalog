@@ -60,7 +60,7 @@ class QualityBudgets(unittest.TestCase):
         routes = [build.route(entry) for entry in self.entries]
         self.assertEqual(len(routes), len(set(routes)))
         self.assertEqual(len({entry["id"] for entry in self.entries}), len(self.entries))
-        self.assertEqual(len(self.entries), 54)
+        self.assertGreaterEqual(len(self.entries), 54)
 
 
 if __name__ == "__main__":

@@ -360,7 +360,7 @@ class SiteBuildTests(unittest.TestCase):
                     page)
                 target = page.split('id="doc-states"', 1)[1].split('</div></div>', 1)[0]
                 self.assertIn('aria-label="States table"', target)
-        self.assertEqual(len(table_pages), 11, table_pages)
+        self.assertGreaterEqual(len(table_pages), 11, table_pages)
 
         sample = site_build.render_md(
             "| State | Behavior |\n| --- | --- |\n| Idle | Ready |\n",

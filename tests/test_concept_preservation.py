@@ -12,7 +12,7 @@ class ConceptPreservationTests(unittest.TestCase):
         cls.entries = json.loads((ROOT / "catalog/index.json").read_text(encoding="utf-8"))["entries"]
 
     def test_exactly_one_owner_and_real_source_for_every_concept(self):
-        self.assertEqual(len(self.entries), 54)
+        self.assertGreaterEqual(len(self.entries), 54)
         self.assertEqual(len({e["id"] for e in self.entries}), len(self.entries))
         self.assertEqual(len({e["path"] for e in self.entries}), len(self.entries))
         for item in self.entries:

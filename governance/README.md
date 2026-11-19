@@ -6,5 +6,6 @@
 | [Quality gates](quality-gates.md) | Concept applicability, interaction, keyboard, localization, source and performance verification |
 | [Standards and research references](references.md) | Source authority, edition, intended scope and limitations |
 | [Visual craftsmanship workflow](visual-craftsmanship-workflow.md) | Concept-oriented design, critique and iteration with evidence |
+| [Design-system adoption and change management](design-system-adoption-and-change-management.md) | Discover, pilot, migrate, deprecate and monitor shared guidance |
 
 Governance documents define current standards and acceptance expectations. Historical implementation commentary belongs in Git history and is not part of the knowledge surface. Review/approval must be independently recorded.
