@@ -48,7 +48,7 @@ def concept_card(entry, category, url, terms):
             html.escape(category.title()) + '</span><h3>' + html.escape(entry["title"]) +
             '</h3><p>' + html.escape(entry["summary"]) +
             '</p><span class="availability">' + html.escape(resource_kind(entry)) +
-            ' · ' + html.escape(implementation_label(entry)) +
+            ' · ' + html.escape('Interactive reference' if entry.get('implementation') else 'No runnable reference') +
             '</span><span class="card-foot"><code>' + html.escape(entry["id"]) +
             '</code><span aria-hidden="true">↗</span></span></a></article>')
 
