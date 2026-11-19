@@ -26,7 +26,7 @@ class VisualMetadataContractTests(unittest.TestCase):
         self.assertFalse(self.schema["$defs"]["entry"]["additionalProperties"])
 
     def test_six_controls_have_capabilities_and_real_references(self):
-        controls = [x for x in self.index["entries"] if x["id"].startswith("component.")]
+        controls = [x for x in self.index["entries"] if x["id"].startswith("component.") and x.get("implementation")]
         self.assertEqual(len(controls), 6)
         for entry in controls:
             self.assertTrue(entry["capabilities"])

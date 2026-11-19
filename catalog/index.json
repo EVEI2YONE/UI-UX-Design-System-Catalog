@@ -2879,6 +2879,964 @@
       ],
       "owner": "unassigned",
       "reviewed_at": null
+    },
+    {
+      "id": "component.combobox",
+      "title": "Combobox and autocomplete",
+      "path": "specifications/components/combobox/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Editable choice with a suggestion popup and explicit committed value.",
+      "aliases": [
+        "combobox",
+        "autocomplete",
+        "typeahead",
+        "select with search"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "Choosing a large constrained option set by typing improves selection"
+      ],
+      "avoid_when": [
+        "A native Select or free-text Input better fits"
+      ],
+      "related": [
+        "component.select",
+        "component.input",
+        "pattern.search-filter"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.radio-group",
+      "title": "Radio group",
+      "path": "specifications/components/radio-group/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Mutually exclusive choices with group labeling and native radio semantics.",
+      "aliases": [
+        "radio",
+        "radio buttons",
+        "single choice",
+        "exclusive choices"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "One of several peer options must be selected"
+      ],
+      "avoid_when": [
+        "Choices are independent or an immediate toggle"
+      ],
+      "related": [
+        "component.checkbox",
+        "component.field",
+        "pattern.forms"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.switch",
+      "title": "Switch and immediate toggle",
+      "path": "specifications/components/switch/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Binary on/off setting with truthful immediate and persisted states.",
+      "aliases": [
+        "switch",
+        "toggle switch",
+        "on off control",
+        "binary setting"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "A binary setting changes or saves immediately"
+      ],
+      "avoid_when": [
+        "Consent or deferred form choices are required"
+      ],
+      "related": [
+        "component.checkbox",
+        "pattern.account-settings-portal",
+        "pattern.interaction-recovery"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.tabs",
+      "title": "Tabs and tab panels",
+      "path": "specifications/components/tabs/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Peer content panels with a documented selection and keyboard model.",
+      "aliases": [
+        "tabs",
+        "tab panels",
+        "tablist",
+        "tabbed interface"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "Several peer views share one context"
+      ],
+      "avoid_when": [
+        "A sequential wizard or primary site navigation is needed"
+      ],
+      "related": [
+        "pattern.navigation",
+        "pattern.task-flows",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.disclosure",
+      "title": "Disclosure and accordion",
+      "path": "specifications/components/disclosure/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Collapsible optional content with expansion semantics and focus recovery.",
+      "aliases": [
+        "accordion",
+        "disclosure",
+        "expand collapse",
+        "show hide"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "Secondary content benefits from being collapsible"
+      ],
+      "avoid_when": [
+        "Safety-critical or required content would be hidden"
+      ],
+      "related": [
+        "component.button",
+        "guidance.accessibility",
+        "pattern.task-flows"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.textarea",
+      "title": "Textarea and long-form input",
+      "path": "specifications/components/textarea/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Multiline editing, validation, text growth and reliable draft states.",
+      "aliases": [
+        "textarea",
+        "multiline input",
+        "notes field",
+        "long text input"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "Paragraphs or multiline content are needed"
+      ],
+      "avoid_when": [
+        "A short structured field or rich editor is justified"
+      ],
+      "related": [
+        "component.field",
+        "component.input",
+        "pattern.forms"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.menu-button",
+      "title": "Menu button and action menu",
+      "path": "specifications/components/menu-button/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Action menu trigger, item semantics, dismissal and keyboard operation.",
+      "aliases": [
+        "menu button",
+        "action menu",
+        "overflow menu",
+        "more actions"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "Related secondary commands need a compact discoverable surface"
+      ],
+      "avoid_when": [
+        "The choices are form values or top-level navigation"
+      ],
+      "related": [
+        "component.button",
+        "pattern.advanced-interactions",
+        "pattern.navigation"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.date-time-input",
+      "title": "Date and time input",
+      "path": "specifications/components/date-time-input/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Locale-aware date/time entry with unambiguous time-zone interpretation.",
+      "aliases": [
+        "date picker",
+        "time picker",
+        "date field",
+        "calendar input"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "Users enter dates or times, including scheduled contexts"
+      ],
+      "avoid_when": [
+        "A simple text value or calendar visualization alone fits better"
+      ],
+      "related": [
+        "guidance.internationalization",
+        "pattern.forms",
+        "pattern.scheduling-availability"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.tooltip",
+      "title": "Tooltip",
+      "path": "specifications/components/tooltip/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Noninteractive supporting explanation for hover or keyboard focus.",
+      "aliases": [
+        "tooltip",
+        "hover help",
+        "focus help",
+        "hint popup"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "Short optional clarification is useful"
+      ],
+      "avoid_when": [
+        "Essential or interactive content needs another surface"
+      ],
+      "related": [
+        "component.popover",
+        "guidance.accessibility",
+        "guidance.content-design"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.popover",
+      "title": "Popover and non-modal overlay",
+      "path": "specifications/components/popover/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Contextual interactive overlay without inappropriate modal focus trapping.",
+      "aliases": [
+        "popover",
+        "nonmodal overlay",
+        "contextual panel",
+        "floating panel"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "Contextual interactive content should remain alongside the page"
+      ],
+      "avoid_when": [
+        "A modal dialog or noninteractive tooltip suffices"
+      ],
+      "related": [
+        "component.dialog",
+        "component.tooltip",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.slider",
+      "title": "Slider and bounded range control",
+      "path": "specifications/components/slider/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Select a value on a bounded scale with keyboard and precision alternatives.",
+      "aliases": [
+        "slider",
+        "range control",
+        "range input",
+        "numeric slider"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "Relative position on a numeric range is meaningful"
+      ],
+      "avoid_when": [
+        "An exact input or discrete choices better fit"
+      ],
+      "related": [
+        "component.input",
+        "component.radio-group",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "component.tree-view",
+      "title": "Hierarchical tree view",
+      "path": "specifications/components/tree-view/spec.md",
+      "layer": "components",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Expand and select hierarchical items with consistent focus and keyboard navigation.",
+      "aliases": [
+        "treeview",
+        "tree view",
+        "folder explorer",
+        "hierarchical selection"
+      ],
+      "domains": [
+        "components",
+        "accessibility",
+        "interaction"
+      ],
+      "use_when": [
+        "A hierarchy has meaningful expandable nested levels"
+      ],
+      "avoid_when": [
+        "A simple linked list or treegrid is more appropriate"
+      ],
+      "related": [
+        "pattern.navigation",
+        "pattern.data-tables",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "architecture.component-contracts",
+        "foundation.design-tokens"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.onboarding-first-use",
+      "title": "Onboarding and first-use experiences",
+      "path": "specifications/patterns/onboarding-and-first-use.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Help people reach meaningful first success through optional contextual learning and resumable setup.",
+      "aliases": [
+        "onboarding",
+        "first time user",
+        "guided setup",
+        "getting started",
+        "product tour"
+      ],
+      "domains": [
+        "patterns",
+        "user-journey",
+        "ux"
+      ],
+      "use_when": [
+        "First use has unfamiliar steps or prerequisites"
+      ],
+      "avoid_when": [
+        "Existing contextual help is sufficient or tours block urgent tasks"
+      ],
+      "related": [
+        "pattern.task-flows",
+        "pattern.interaction-recovery",
+        "guidance.content-design"
+      ],
+      "depends_on": [
+        "pattern.task-flows",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.file-upload",
+      "title": "File upload and attachment workflows",
+      "path": "specifications/patterns/file-upload-and-attachments.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Select, inspect, transfer, validate and recover file attachments with truthful status.",
+      "aliases": [
+        "file upload",
+        "attachments",
+        "upload progress",
+        "drag and drop files"
+      ],
+      "domains": [
+        "patterns",
+        "user-journey",
+        "ux"
+      ],
+      "use_when": [
+        "Users need to attach one or more files"
+      ],
+      "avoid_when": [
+        "No file transfer is involved"
+      ],
+      "related": [
+        "pattern.forms",
+        "pattern.interaction-recovery",
+        "guidance.accessibility"
+      ],
+      "depends_on": [
+        "pattern.task-flows",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.collaboration-sharing",
+      "title": "Collaboration and sharing",
+      "path": "specifications/patterns/collaboration-and-sharing.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Invite, share, revoke and co-edit resources with accurate access and conflict state.",
+      "aliases": [
+        "collaboration",
+        "resource sharing",
+        "invite collaborator",
+        "shared editing"
+      ],
+      "domains": [
+        "patterns",
+        "user-journey",
+        "ux"
+      ],
+      "use_when": [
+        "Resources have multiple participants or access levels"
+      ],
+      "avoid_when": [
+        "The workspace is personal-only"
+      ],
+      "related": [
+        "pattern.role-aware-workspaces",
+        "pattern.offline-sync",
+        "guidance.privacy-trust"
+      ],
+      "depends_on": [
+        "pattern.task-flows",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.content-publishing",
+      "title": "Content creation and publishing",
+      "path": "specifications/patterns/content-creation-and-publishing.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Manage drafts, previews, review, publication, revisions and undo with authoritative states.",
+      "aliases": [
+        "content publishing",
+        "draft editor",
+        "publish content",
+        "autosave draft"
+      ],
+      "domains": [
+        "patterns",
+        "user-journey",
+        "ux"
+      ],
+      "use_when": [
+        "Content has a publication or review lifecycle"
+      ],
+      "avoid_when": [
+        "A simple one-field task suffices"
+      ],
+      "related": [
+        "pattern.forms",
+        "pattern.interaction-recovery",
+        "pattern.offline-sync"
+      ],
+      "depends_on": [
+        "pattern.task-flows",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.scheduling-availability",
+      "title": "Scheduling and availability",
+      "path": "specifications/patterns/scheduling-and-availability.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Choose and confirm available slots, time zones, recurrence and cancellations.",
+      "aliases": [
+        "scheduling",
+        "appointment booking",
+        "time slots",
+        "calendar availability"
+      ],
+      "domains": [
+        "patterns",
+        "user-journey",
+        "ux"
+      ],
+      "use_when": [
+        "Resources or appointments are reserved in time"
+      ],
+      "avoid_when": [
+        "Only a date field without availability is needed"
+      ],
+      "related": [
+        "component.date-time-input",
+        "guidance.internationalization",
+        "pattern.interaction-recovery"
+      ],
+      "depends_on": [
+        "pattern.task-flows",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.checkout",
+      "title": "Purchasing and checkout journeys",
+      "path": "specifications/patterns/purchasing-and-checkout.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Review prices and terms, complete payment and recover uncertain outcomes.",
+      "aliases": [
+        "checkout",
+        "purchase",
+        "payment confirmation",
+        "shopping cart"
+      ],
+      "domains": [
+        "patterns",
+        "user-journey",
+        "ux"
+      ],
+      "use_when": [
+        "Users commit money or complete a purchase"
+      ],
+      "avoid_when": [
+        "Only managing a saved subscription is needed"
+      ],
+      "related": [
+        "pattern.billing-subscription-settings",
+        "pattern.forms",
+        "pattern.interaction-recovery"
+      ],
+      "depends_on": [
+        "pattern.task-flows",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.master-detail",
+      "title": "Master-detail exploration",
+      "path": "specifications/patterns/master-detail-exploration.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Inspect items from collections without losing selection, focus or navigation context.",
+      "aliases": [
+        "master detail",
+        "split pane",
+        "list detail",
+        "record inspection"
+      ],
+      "domains": [
+        "patterns",
+        "user-journey",
+        "ux"
+      ],
+      "use_when": [
+        "People repeatedly inspect items from a collection"
+      ],
+      "avoid_when": [
+        "A single-item page is enough"
+      ],
+      "related": [
+        "pattern.data-tables",
+        "pattern.search-filter",
+        "pattern.navigation"
+      ],
+      "depends_on": [
+        "pattern.task-flows",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "pattern.comparison-decision",
+      "title": "Comparison and decision support",
+      "path": "specifications/patterns/comparison-and-decision-support.md",
+      "layer": "experiences",
+      "kind": "specification",
+      "status": "proposed",
+      "summary": "Compare alternatives fairly with aligned criteria and transparent consequences.",
+      "aliases": [
+        "option comparison",
+        "decision support",
+        "compare plans",
+        "feature comparison"
+      ],
+      "domains": [
+        "patterns",
+        "user-journey",
+        "ux"
+      ],
+      "use_when": [
+        "Several consequential options need structured comparison"
+      ],
+      "avoid_when": [
+        "A simple radio choice or data table suffices"
+      ],
+      "related": [
+        "pattern.data-tables",
+        "guidance.data-visualization",
+        "guidance.privacy-trust"
+      ],
+      "depends_on": [
+        "pattern.task-flows",
+        "pattern.interaction-recovery"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.content-architecture",
+      "title": "Content architecture, taxonomy and findability",
+      "path": "knowledge/guidance/content-architecture-and-taxonomy.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Model content types, labels, metadata, categories and retrieval paths.",
+      "aliases": [
+        "content architecture",
+        "taxonomy",
+        "content modeling",
+        "metadata design"
+      ],
+      "domains": [
+        "guidance",
+        "design-decisions",
+        "inclusive-ux"
+      ],
+      "use_when": [
+        "Content types and categories need shared structure"
+      ],
+      "avoid_when": [
+        "Only copyediting or one-page hierarchy is needed"
+      ],
+      "related": [
+        "pattern.task-flows",
+        "guidance.content-design",
+        "guidance.ux-research"
+      ],
+      "depends_on": [
+        "guidance.ux-research"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.inclusive-design",
+      "title": "Inclusive design beyond conformance",
+      "path": "knowledge/guidance/inclusive-design-beyond-conformance.md",
+      "layer": "cross-cutting",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Investigate capability, literacy, environmental and situational barriers alongside accessibility conformance.",
+      "aliases": [
+        "inclusive design",
+        "access needs",
+        "situational disability",
+        "cognitive accessibility"
+      ],
+      "domains": [
+        "guidance",
+        "design-decisions",
+        "inclusive-ux"
+      ],
+      "use_when": [
+        "A task should work across diverse contexts and abilities"
+      ],
+      "avoid_when": [
+        "The guidance is used to replace applicable accessibility standards"
+      ],
+      "related": [
+        "guidance.accessibility",
+        "guidance.cognitive-load",
+        "guidance.mobile-adaptive"
+      ],
+      "depends_on": [
+        "guidance.ux-research"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "foundation.responsive-composition",
+      "title": "Responsive spatial composition",
+      "path": "knowledge/foundations/responsive-spatial-composition.md",
+      "layer": "foundations",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Content-driven spatial layout and reading order across containers and zoom.",
+      "aliases": [
+        "responsive composition",
+        "spatial hierarchy",
+        "container queries",
+        "fluid layout"
+      ],
+      "domains": [
+        "guidance",
+        "design-decisions",
+        "inclusive-ux"
+      ],
+      "use_when": [
+        "Content must adapt to narrow and wide contexts"
+      ],
+      "avoid_when": [
+        "Breakpoints are picked only by device brand"
+      ],
+      "related": [
+        "foundation.practical-styling",
+        "foundation.design-tokens",
+        "guidance.mobile-adaptive"
+      ],
+      "depends_on": [
+        "guidance.ux-research"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.ia-validation",
+      "title": "Information architecture validation",
+      "path": "knowledge/guidance/information-architecture-validation.md",
+      "layer": "intelligence",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Validate taxonomy and navigation choices with card sorting, tree tests and representative tasks.",
+      "aliases": [
+        "tree testing",
+        "card sorting",
+        "navigation testing",
+        "information architecture testing"
+      ],
+      "domains": [
+        "guidance",
+        "design-decisions",
+        "inclusive-ux"
+      ],
+      "use_when": [
+        "Proposed categories and wayfinding need evidence"
+      ],
+      "avoid_when": [
+        "One informal test is treated as proof for all users"
+      ],
+      "related": [
+        "guidance.ux-research",
+        "guidance.journey-mapping",
+        "pattern.task-flows"
+      ],
+      "depends_on": [
+        "guidance.ux-research"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "guidance.ethical-engagement",
+      "title": "Ethical motivation and engagement",
+      "path": "knowledge/guidance/ethical-motivation-and-engagement.md",
+      "layer": "principles",
+      "kind": "guideline",
+      "status": "proposed",
+      "summary": "Design truthful progress, rewards and reminders without manipulative engagement pressure.",
+      "aliases": [
+        "ethical engagement",
+        "motivation design",
+        "gamification",
+        "streaks",
+        "reward cues"
+      ],
+      "domains": [
+        "guidance",
+        "design-decisions",
+        "inclusive-ux"
+      ],
+      "use_when": [
+        "Progress and reminders are added to support user goals"
+      ],
+      "avoid_when": [
+        "Attention extraction or dark patterns are the goal"
+      ],
+      "related": [
+        "guidance.privacy-trust",
+        "guidance.ux-measurement",
+        "pattern.notifications-attention"
+      ],
+      "depends_on": [
+        "guidance.ux-research"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
+    },
+    {
+      "id": "governance.adoption-change",
+      "title": "Design-system adoption and change management",
+      "path": "governance/design-system-adoption-and-change-management.md",
+      "layer": "cross-cutting",
+      "kind": "policy",
+      "status": "proposed",
+      "summary": "Coordinate discovery, incremental migration, communication and deprecation of reusable guidance.",
+      "aliases": [
+        "design system adoption",
+        "change management",
+        "rollout guidance",
+        "component migration"
+      ],
+      "domains": [
+        "guidance",
+        "design-decisions",
+        "inclusive-ux"
+      ],
+      "use_when": [
+        "Cross-team changes require managed adoption"
+      ],
+      "avoid_when": [
+        "A mandatory big-bang rewrite would harm users"
+      ],
+      "related": [
+        "governance.lifecycle",
+        "governance.quality",
+        "architecture.component-model"
+      ],
+      "depends_on": [
+        "guidance.ux-research"
+      ],
+      "owner": "unassigned",
+      "reviewed_at": null
     }
   ]
 }
