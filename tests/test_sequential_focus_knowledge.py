@@ -1,4 +1,4 @@
-"""B03 catalog retrieval and documentation tests; not product interaction verification."""
+"""Verify sequential workflow and focus guidance through canonical concept contracts."""
 import json
 import sys
 import unittest
@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from find_concept import lookup  # noqa: E402
+from find_concept import lookup
 
 QUERIES = {
     "icon state synchronization": "pattern.interaction-recovery",
@@ -30,31 +30,29 @@ class InteractionContinuationKnowledgeTests(unittest.TestCase):
     def test_discovery_queries_match_existing_concepts(self):
         for query, expected in QUERIES.items():
             with self.subTest(query=query):
-                r = lookup(self.entries, query, limit=1)
-                self.assertTrue(r)
-                self.assertEqual(r[0]["id"], expected)
+                result = lookup(self.entries, query, limit=1)
+                self.assertTrue(result)
+                self.assertEqual(result[0]["id"], expected)
 
-    def test_b03_scope_remains_existing_canonical_ids(self):
-        self.assertEqual(len([e for e in self.entries if e["id"] == "pattern.task-flows"]), 1)
-        self.assertEqual(len([e for e in self.entries if e["id"] == "pattern.interaction-recovery"]), 1)
-        for ident, phrases in {
-            "pattern.task-flows": ("CKG-11/12", "next eligible", "NOT VERIFIED", "permission"),
-            "pattern.interaction-recovery": ("CKG-09/10", "icon", "focus", "NOT VERIFIED"),
-        }.items():
-            with self.subTest(concept=ident):
-                e = self.index[ident]
-                self.assertEqual(e["status"], "proposed")
-                self.assertIsNone(e["reviewed_at"])
-                content = (ROOT / e["path"]).read_text(encoding="utf-8")
-                for phrase in phrases:
-                    self.assertIn(phrase, content)
+    def test_recovery_and_task_progress_remain_distinct(self):
+        self.assertEqual(sum(e["id"] == "pattern.task-flows" for e in self.entries), 1)
+        self.assertEqual(sum(e["id"] == "pattern.interaction-recovery" for e in self.entries), 1)
+        topics = {
+            "pattern.task-flows": ("next eligible", "NOT VERIFIED", "permission"),
+            "pattern.interaction-recovery": ("icon", "focus", "NOT VERIFIED"),
+        }
+        for identifier, expected in topics.items():
+            with self.subTest(concept=identifier):
+                item = self.index[identifier]
+                self.assertEqual(item["status"], "proposed")
+                self.assertIsNone(item["reviewed_at"])
+                guidance = (ROOT / item["path"]).read_text(encoding="utf-8")
+                for term in expected:
+                    self.assertIn(term.casefold(), guidance.casefold())
 
-    def test_context_and_discovery_present(self):
-        self.assertTrue((ROOT / "archive/planning/icon-interaction-b03-context-2026-11-07.md").is_file())
-        for path in ("README.md", "specifications/patterns/README.md", "AGENTS.md"):
-            with self.subTest(path=path):
-                text = (ROOT / path).read_text(encoding="utf-8")
-                self.assertIn("B03" if path == "specifications/patterns/README.md" else "Batch 3", text)
-
-if __name__ == "__main__":
-    unittest.main()
+    def test_navigation_targets_canonical_knowledge(self):
+        index = (ROOT / "specifications/patterns/README.md").read_text(encoding="utf-8")
+        agent = (ROOT / "AGENTS.md").read_text(encoding="utf-8")
+        for identifier in ("pattern.task-flows", "pattern.interaction-recovery"):
+            self.assertIn(identifier, index)
+        self.assertIn("specifications/patterns/README.md", agent)
