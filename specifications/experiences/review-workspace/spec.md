@@ -96,3 +96,10 @@ Bound rendered rows or paginate larger queues instead of rendering unbounded lis
 | Actual adoption in other applications | NOT VERIFIED | Consuming application identifiers and migration evidence |
 
 The review journey remains **proposed guidance**. It does not ship executable code, data fixtures, a synthetic adapter or an installable package. The consuming team owns server authority and the proof of effective decisions.
+
+## Worked decision and fitness verification
+
+**Bounded adoption exercise (illustrative):** Validate one approve, reject and unknown-outcome reconciliation task. Specify the actual consumer task or developer change, the alternative architecture or UI contract, expected outcome and a failure/rollback condition. Preserve one canonical owner and avoid multiplying abstractions merely to improve a document's rating.
+
+**Fitness evidence:** Observe task-to-file location, import boundary conformance, keyboard/focus where relevant, compatible consumers, deployment or rollback only when available. Log tool/repository revision, expected versus actual result, owner and limitations; no unrun case is a pass. [Relevant implementation or platform reference](https://www.w3.org/WAI/ARIA/apg/) motivates the decision in its own scope and is not proof of a particular consumer result.
+

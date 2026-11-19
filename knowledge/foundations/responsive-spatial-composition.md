@@ -54,3 +54,10 @@ This concept is proposed guidance, not a real-user study, implementation, compli
 - [W3C i18n](https://www.w3.org/International/quicktips/) — review scope and edition for the consuming context.
 - Related canonical sources: [Practical styling](practical-ui-styling-recipes.md), [Tokens and themes](design-tokens-and-themes.md), [Mobile and adaptive](../guidance/mobile-and-adaptive-platform-ux.md).
 - Record a human owner, review date, evidence and known limitations before changing the proposed status.
+
+## Worked decision and fitness verification
+
+**Bounded adoption exercise (illustrative):** Add a 320px and zoom/reflow verification record. Specify the actual consumer task or developer change, the alternative architecture or UI contract, expected outcome and a failure/rollback condition. Preserve one canonical owner and avoid multiplying abstractions merely to improve a document's rating.
+
+**Fitness evidence:** Observe task-to-file location, import boundary conformance, keyboard/focus where relevant, compatible consumers, deployment or rollback only when available. Log tool/repository revision, expected versus actual result, owner and limitations; no unrun case is a pass. [Relevant implementation or platform reference](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html) motivates the decision in its own scope and is not proof of a particular consumer result.
+

@@ -63,3 +63,10 @@ Define owner, affected routes/consumers, tests executed (PASS/FAIL/NOT VERIFIED)
 ## Evidence status
 
 These are proposed migration practices, not proof a specific repo needs restructuring. Framework-specific recommendations require current official docs and actual source inspection.
+
+## Worked decision and fitness verification
+
+**Bounded adoption exercise (illustrative):** Document one real before-and-after task-location, import-boundary and regression record, with the measured environment and rollback outcome. Specify the actual consumer task or developer change, the alternative architecture or UI contract, expected outcome and a failure/rollback condition. Preserve one canonical owner and avoid multiplying abstractions merely to improve a document's rating.
+
+**Fitness evidence:** Observe task-to-file location, import boundary conformance, keyboard/focus where relevant, compatible consumers, deployment or rollback only when available. Log tool/repository revision, expected versus actual result, owner and limitations; no unrun case is a pass. [Relevant implementation or platform reference](https://martinfowler.com/bliki/StranglerFigApplication.html) motivates the decision in its own scope and is not proof of a particular consumer result.
+

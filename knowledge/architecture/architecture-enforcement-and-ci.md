@@ -200,3 +200,10 @@ for each candidate repeated literal or class sequence:
 | CI rollout or blocking status | Real target repository workflow/PR result | NOT VERIFIED |
 
 **References:** [ESLint custom rules](https://eslint.org/docs/latest/extend/custom-rules), [Stylelint rule catalog](https://stylelint.io/user-guide/rules/), [Tailwind theme variables](https://tailwindcss.com/docs/theme/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/) (consulted 2026-11-07). These tools are optional depending on target stack, and reference syntax must be checked against installed versions.
+
+## Worked decision and fitness verification
+
+**Bounded adoption exercise (illustrative):** Split tool choice from recipes and verify one ruleset against a sample repo. Specify the actual consumer task or developer change, the alternative architecture or UI contract, expected outcome and a failure/rollback condition. Preserve one canonical owner and avoid multiplying abstractions merely to improve a document's rating.
+
+**Fitness evidence:** Observe task-to-file location, import boundary conformance, keyboard/focus where relevant, compatible consumers, deployment or rollback only when available. Log tool/repository revision, expected versus actual result, owner and limitations; no unrun case is a pass. [Relevant implementation or platform reference](https://nx.dev/features/enforce-module-boundaries) motivates the decision in its own scope and is not proof of a particular consumer result.
+

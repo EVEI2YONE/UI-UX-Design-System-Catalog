@@ -103,3 +103,10 @@ Measure path-to-change discoverability (task-to-owner lookup), dependency cycles
 ## Source status
 
 Grounded in existing catalog architecture and governance contracts. These profiles are **proposed design heuristics**, not a normative industry standard or an empirically validated optimum. Before recommending specific framework layout, consult its current official routing/build documentation; validate with the application's own dependency graph and usability tests.
+
+## Worked decision and fitness verification
+
+**Bounded adoption exercise (illustrative):** Add a source-scoped comparison and a small framework-specific selection example. Specify the actual consumer task or developer change, the alternative architecture or UI contract, expected outcome and a failure/rollback condition. Preserve one canonical owner and avoid multiplying abstractions merely to improve a document's rating.
+
+**Fitness evidence:** Observe task-to-file location, import boundary conformance, keyboard/focus where relevant, compatible consumers, deployment or rollback only when available. Log tool/repository revision, expected versus actual result, owner and limitations; no unrun case is a pass. [Relevant implementation or platform reference](https://martinfowler.com/articles/modularizing-react-apps.html) motivates the decision in its own scope and is not proof of a particular consumer result.
+
