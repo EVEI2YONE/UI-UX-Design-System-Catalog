@@ -3487,7 +3487,12 @@
         "master detail",
         "split pane",
         "list detail",
-        "record inspection"
+        "record inspection",
+        "choose task surface",
+        "inline edit versus dialog or route",
+        "drawer versus route",
+        "record detail edit history",
+        "nested dialog alternatives"
       ],
       "domains": [
         "patterns",
@@ -3495,7 +3500,9 @@
         "ux"
       ],
       "use_when": [
-        "People repeatedly inspect items from a collection"
+        "People repeatedly inspect items from a collection",
+        "Choosing inline editing, detail subviews, a single modal, drawer, or route for related-record tasks",
+        "Preserving draft, browser Back, Escape and focus while moving among record details, edit and history"
       ],
       "avoid_when": [
         "A single-item page is enough"
@@ -3503,7 +3510,10 @@
       "related": [
         "pattern.data-tables",
         "pattern.search-filter",
-        "pattern.navigation"
+        "pattern.navigation",
+        "component.dialog",
+        "component.tabs",
+        "pattern.collection-views"
       ],
       "depends_on": [
         "pattern.task-flows",
