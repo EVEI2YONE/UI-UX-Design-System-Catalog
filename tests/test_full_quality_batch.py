@@ -45,6 +45,11 @@ class FullQualityBatchSourceContractTests(unittest.TestCase):
                 self.assertIsNone(self.index[identifier]["reviewed_at"])
                 self.assertEqual(self.scorecard[identifier]["evidence_level"], "E0")
 
+    def test_icon_state_table_is_navigable_from_static_catalog(self):
+        source = self.source("foundation.icon-semantics")
+        self.assertIn("| State | Contract and accessible alternative | Check |", source)
+        self.assertIn("Pending / unknown result", source)
+
     def test_dtcg_example_is_self_contained_valid_json(self):
         src = self.source("foundation.design-tokens")
         block = src.split("## Token authoring, interchange and release contract", 1)[1]
