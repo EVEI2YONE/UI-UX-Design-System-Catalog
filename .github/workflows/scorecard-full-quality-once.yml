@@ -5,6 +5,8 @@ on:
       - review/full-quality-nine-concepts-20261119
     paths:
       - catalog/concept-scorecard.json
+      - knowledge/foundations/visual-design-craftsmanship.md
+      - tests/test_full_quality_batch.py
       - .github/workflows/scorecard-full-quality-once.yml
 permissions:
   contents: write
