@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TOPICS = {
     "architecture.component-model": ("Executable reference maintainability", "state ownership", "token"),
-    "guidance.accessibility": ("Reference-state accessibility", "200%", "RTL"),
+    "guidance.accessibility": ("Documentation browser versus consuming-product verification", "200%", "RTL"),
     "architecture.component-contracts": ("Source exploration", "license", "NOT VERIFIED"),
     "guidance.ux-measurement": ("Catalog discoverability and source-trust", "First-hit relevance", "participant"),
     "governance.quality": ("Static visual catalog hosting", "frame-ancestors", "NOT VERIFIED"),
