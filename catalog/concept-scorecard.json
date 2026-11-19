@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "source_repository": "EVEI2YONE/UI-UX-Design-System-Catalog",
-  "source_commit": "415d5852219775d925b08d002559bb1a260fb757",
+  "source_commit": "b8e15e1cfb2a10ad1ce4c0db4a2f885d39a5bbe9",
   "assessment_date_utc": "2026-11-19",
-  "assessment_type": "source-only editorial reassessment against seven written-guidance dimensions; not an independent human review or a verified implementation, accessibility audit, user study, or production outcome",
+  "assessment_type": "source-only targeted editorial reassessment of written guidance after the 83-concept decision-scenario update; not an independent human review, verified implementation, accessibility audit, user study, or production outcome",
   "weights_percent": {
     "purpose": 15,
     "actionability": 20,
@@ -58,13 +58,13 @@
         "research": 4,
         "discoverability": 4,
         "verification": 4,
-        "signal_to_noise": 4
+        "signal_to_noise": 3
       },
-      "score": 100,
+      "score": 95,
       "priority": "P3",
       "issue_flag": "visual-task-evidence",
-      "explanation": "A five-decision direction selector, comparable visual alternatives, source appraisal, hard accessibility gates and observable handoff checks make the art-direction process task-first and scannable.",
-      "next_action": "Independently compare proposed visual directions with representative users, rendered states and documented brand constraints before treating any aesthetic hypothesis as measured.",
+      "explanation": "The five-decision visual-direction method and source-aware comparisons are strong; later art-direction, acceptance and handoff sections repeat selection guidance and slow scanning.",
+      "next_action": "Consolidate repeated selection and acceptance rules into one agent-first route, keeping optical, typography and research depth linked.",
       "evidence_level": "E0"
     },
     {
@@ -78,13 +78,13 @@
         "research": 4,
         "discoverability": 4,
         "verification": 4,
-        "signal_to_noise": 4
+        "signal_to_noise": 3
       },
-      "score": 100,
+      "score": 95,
       "priority": "P3",
       "issue_flag": "rendered-styling-evidence",
-      "explanation": "The task-first recipe chooser, precise CSS/component ownership, corrected illustration, platform references and observable responsive/theme gates separate visual styling from application behavior.",
-      "next_action": "Review rendered examples against supported viewports, content extremes, locale, themes and keyboard focus; document actual visual and task regressions before adoption.",
+      "explanation": "The recipe chooser, token-backed CSS and inclusive checks are substantial; the long archetype, utility and review sections repeat ownership decisions across sections.",
+      "next_action": "Keep the recipe chooser prominent and trim repeated ownership/evidence notes; test first-hit lookup on a representative styling task.",
       "evidence_level": "E0"
     },
     {
@@ -98,13 +98,13 @@
         "research": 4,
         "discoverability": 4,
         "verification": 4,
-        "signal_to_noise": 4
+        "signal_to_noise": 3
       },
-      "score": 100,
+      "score": 95,
       "priority": "P3",
       "issue_flag": "glyph-recognition-evidence",
-      "explanation": "Role-first icon decisions, one concise interactive-state contract, collision audit, correct host semantics, platform standards and explicit test scope clarify reuse without repeating adoption matrices.",
-      "next_action": "Evaluate representative icon recognition and actual host controls with keyboard, assistive technology, multilingual/RTL and asynchronous outcomes; record actual versions and results.",
+      "explanation": "Role-first icon semantics and accessible host states are strong; overlapping role-classification and registry/audit tables still add unnecessary search steps.",
+      "next_action": "Combine repeated role decisions and link audit detail from a compact choose-host-name-verify route; test agent icon-only lookup.",
       "evidence_level": "E0"
     },
     {
@@ -337,14 +337,14 @@
         "coverage": 4,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 3
       },
-      "score": 83,
+      "score": 85,
       "priority": "P2",
       "issue_flag": "verification-gap",
-      "explanation": "Action semantics, async safety and icon-only use are specified; evidence guidance is repeated without a tested task example.",
-      "next_action": "Add one verified keyboard and double-activation scenario and consolidate evidence notes.",
+      "explanation": "The native action-versus-link boundary now has a concrete double-activation Save case with pending, focus and duplicate-prevention checks; consuming behavior remains unverified.",
+      "next_action": "Test Enter, Space and repeated pointer activation in a real consumer; confirm one mutation, visible pending state, focus and localized error recovery.",
       "evidence_level": "E0"
     },
     {
@@ -353,18 +353,18 @@
       "title": "Input",
       "dimensions": {
         "purpose": 4,
-        "actionability": 3,
+        "actionability": 4,
         "coverage": 3,
         "research": 2,
         "discoverability": 2,
         "verification": 3,
         "signal_to_noise": 4
       },
-      "score": 78,
+      "score": 83,
       "priority": "P3",
       "issue_flag": "example-gap",
-      "explanation": "Native input, persistent labeling and error ownership are clear; the small contract offers few realistic composition cases.",
-      "next_action": "Add one concrete validation, IME or long-label scenario with expected behavior.",
+      "explanation": "The native input contract now demonstrates IME composition, deferred validation and correction without lost caret or entry; platform-specific behavior needs testing.",
+      "next_action": "Exercise IME composition, server validation, caret retention, long translations, zoom and mixed-direction input across supported browsers.",
       "evidence_level": "E0"
     },
     {
@@ -373,18 +373,18 @@
       "title": "Select",
       "dimensions": {
         "purpose": 4,
-        "actionability": 3,
+        "actionability": 4,
         "coverage": 3,
         "research": 2,
         "discoverability": 2,
         "verification": 3,
         "signal_to_noise": 4
       },
-      "score": 78,
+      "score": 83,
       "priority": "P3",
       "issue_flag": "coverage-gap",
-      "explanation": "Native selection and option boundaries are stated concisely; complex empty and unavailable option cases receive little depth.",
-      "next_action": "Provide a no-options and long-label selection check.",
+      "explanation": "The native Select versus Combobox choice is clearer with a no-available-regions case, empty-state reasoning and option refresh checks; product behavior is not tested.",
+      "next_action": "Verify no-choice and refreshed-choice selection, keyboard access, disabled reasons, accessible names and translated option labels.",
       "evidence_level": "E0"
     },
     {
@@ -393,18 +393,18 @@
       "title": "Checkbox",
       "dimensions": {
         "purpose": 4,
-        "actionability": 3,
+        "actionability": 4,
         "coverage": 3,
         "research": 2,
         "discoverability": 2,
         "verification": 3,
         "signal_to_noise": 4
       },
-      "score": 78,
+      "score": 83,
       "priority": "P3",
       "issue_flag": "example-gap",
-      "explanation": "Independent-choice semantics and labels are clear; mixed or group-level failure examples are limited.",
-      "next_action": "Add a group validation example and clarify indeterminate presentation where applicable.",
+      "explanation": "The mixed Select all case makes group aggregation, disabled-child handling and independent choice semantics concrete; actual screen-reader output is unknown.",
+      "next_action": "Test all, none and mixed selection with disabled children, Space activation, group labeling and spoken state updates.",
       "evidence_level": "E0"
     },
     {
@@ -417,14 +417,14 @@
         "coverage": 4,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 3
       },
-      "score": 83,
+      "score": 85,
       "priority": "P2",
       "issue_flag": "verification-gap",
-      "explanation": "Modal focus and ownership rules are strong, including native dialog integration; runtime focus behavior remains unverified.",
-      "next_action": "Add a focus-entry, Escape and focus-return acceptance scenario.",
+      "explanation": "A list-row confirmation example specifies Escape and focus return alongside background inertness and error recovery, making acceptance more concrete; no runtime test is claimed.",
+      "next_action": "Check initial focus, modal Tab containment, Escape, focus return after a row disappears, reflow and long translated content.",
       "evidence_level": "E0"
     },
     {
@@ -433,18 +433,18 @@
       "title": "Field and error",
       "dimensions": {
         "purpose": 4,
-        "actionability": 3,
+        "actionability": 4,
         "coverage": 3,
         "research": 2,
         "discoverability": 2,
         "verification": 3,
         "signal_to_noise": 4
       },
-      "score": 78,
+      "score": 83,
       "priority": "P3",
       "issue_flag": "example-gap",
-      "explanation": "The label, help and error composition boundary is concise; a field-level recovery example would improve adoption.",
-      "next_action": "Show one inline error announcement and correction sequence.",
+      "explanation": "An invalid-email correction example makes label, help, error and domain-validation ownership actionable, with explicit preservation of input and focus.",
+      "next_action": "Test a failed and corrected email submission, linked descriptions, nonduplicated announcement, translated error text and retained input.",
       "evidence_level": "E0"
     },
     {
@@ -1117,14 +1117,14 @@
         "coverage": 3,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 85,
+      "score": 88,
       "priority": "P2",
       "issue_flag": "verification-gap",
-      "explanation": "Editable selection and keyboard states are well structured; the complex popup needs a tested focus and commit example.",
-      "next_action": "Add a keyboard selection and cancellation verification case.",
+      "explanation": "The editable suggestion Enter-commit and Escape-cancel example adds active-descendant, popup and no-results checks to an already useful contract.",
+      "next_action": "Exercise typing, Enter commit, Escape cancel, async no-results, touch selection and screen-reader focus in an actual combobox.",
       "evidence_level": "E0"
     },
     {
@@ -1133,18 +1133,18 @@
       "title": "Radio group",
       "dimensions": {
         "purpose": 4,
-        "actionability": 3,
+        "actionability": 4,
         "coverage": 4,
         "research": 2,
         "discoverability": 3,
         "verification": 3,
         "signal_to_noise": 4
       },
-      "score": 83,
+      "score": 88,
       "priority": "P3",
       "issue_flag": "example-gap",
-      "explanation": "Native exclusive-choice rules and group naming are clear; complex required-group behavior has limited illustration.",
-      "next_action": "Demonstrate required selection error and focus movement.",
+      "explanation": "The empty required delivery-choice case illustrates form-level validation, legend and group focus ownership without claiming tested behavior.",
+      "next_action": "Verify the required empty group, associated error, arrow/Space selection, focus order and translated fieldset legend.",
       "evidence_level": "E0"
     },
     {
@@ -1157,14 +1157,14 @@
         "coverage": 4,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 88,
+      "score": 90,
       "priority": "P2",
       "issue_flag": "verification-gap",
-      "explanation": "Immediate versus persisted toggle truth is well separated; delayed failures need a realistic confirmation case.",
-      "next_action": "Add a failed-save rollback and accessible status test.",
+      "explanation": "The server-backed preference rejection example makes rollback, checked-state truth and error feedback testable; persistence remains unverified.",
+      "next_action": "Exercise pending, rejected and retried saves with accessible checked truth, readable errors and no false success state.",
       "evidence_level": "E0"
     },
     {
@@ -1177,14 +1177,14 @@
         "coverage": 3,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 85,
+      "score": 88,
       "priority": "P2",
       "issue_flag": "verification-gap",
-      "explanation": "Peer-panel semantics and keyboard rules are concise; dynamic content and tab activation choices need one applied check.",
-      "next_action": "Add manual versus automatic activation and focus-retention examples.",
+      "explanation": "The slow remote-panel example explains when manual activation prevents unwanted fetches and adds keyboard and focus acceptance criteria.",
+      "next_action": "Validate manual Arrow, Home, End, Tab and Enter behavior, panel labels, pending states and focus continuity on slow loads.",
       "evidence_level": "E0"
     },
     {
@@ -1197,14 +1197,14 @@
         "coverage": 4,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 88,
+      "score": 90,
       "priority": "P3",
       "issue_flag": "example-gap",
-      "explanation": "Optional-content boundaries and focus recovery are explicit; nested disclosure behavior needs a bounded example.",
-      "next_action": "Test keyboard expansion and retained focus in a nested section.",
+      "explanation": "Nested disclosure collapse now has an explicit child-focus recovery scenario, strengthening the keyboard and expanded-state acceptance contract.",
+      "next_action": "Expand nested help, focus a descendant, collapse the parent and verify safe focus relocation, keyboard operation and text growth.",
       "evidence_level": "E0"
     },
     {
@@ -1213,18 +1213,18 @@
       "title": "Textarea and long-form input",
       "dimensions": {
         "purpose": 4,
-        "actionability": 3,
+        "actionability": 4,
         "coverage": 3,
         "research": 2,
         "discoverability": 3,
         "verification": 3,
         "signal_to_noise": 4
       },
-      "score": 80,
+      "score": 85,
       "priority": "P3",
       "issue_flag": "example-gap",
-      "explanation": "Multiline state and draft recovery are covered; text growth and autosave conflicts deserve a worked example.",
-      "next_action": "Add a long-content draft recovery scenario.",
+      "explanation": "A multilingual autosave draft losing connectivity illustrates text growth, caret stability, conflict disclosure and safe resumption beyond a state inventory.",
+      "next_action": "Test a long translated draft, offline autosave, reconnect conflict, intentional recovery and preserved caret/selection.",
       "evidence_level": "E0"
     },
     {
@@ -1237,14 +1237,14 @@
         "coverage": 3,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 85,
+      "score": 88,
       "priority": "P2",
       "issue_flag": "verification-gap",
-      "explanation": "Action-menu semantics and dismissal are clear; overflow and mixed disabled actions need task evidence.",
-      "next_action": "Add a keyboard menu close and disabled-action scenario.",
+      "explanation": "The menu example now specifies disabled-item navigation, Escape dismissal and focus return, supplying useful acceptance details without runtime evidence.",
+      "next_action": "Verify Arrow navigation, disabled actions, activation, Escape and focus restoration in a consuming menu with accessible names.",
       "evidence_level": "E0"
     },
     {
@@ -1257,14 +1257,14 @@
         "coverage": 3,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 85,
+      "score": 88,
       "priority": "P2",
       "issue_flag": "verification-gap",
-      "explanation": "Locale and timezone interpretation are explicit; ambiguous DST entry remains a high-value validation case.",
-      "next_action": "Add a daylight-saving ambiguous-time test with an explicit outcome.",
+      "explanation": "An explicit daylight-saving fallback case makes ambiguous instants and offset selection verifiable alongside locale and timezone guidance.",
+      "next_action": "Test ambiguous fallback and nonexistent spring-forward times, checking user choice, errors, keyboard access and locale formats.",
       "evidence_level": "E0"
     },
     {
@@ -1277,14 +1277,14 @@
         "coverage": 3,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 85,
+      "score": 88,
       "priority": "P3",
       "issue_flag": "example-gap",
-      "explanation": "The noninteractive boundary is strong; touch and hidden essential information need a demonstrated alternative.",
-      "next_action": "Add an equivalent always-available help-text example.",
+      "explanation": "The hover/focus example clarifies why essential instructions cannot depend on a tooltip and names dismissal and touch checks.",
+      "next_action": "Verify hover, focus, Escape, touch alternative and described-by semantics while keeping critical instructions persistent.",
       "evidence_level": "E0"
     },
     {
@@ -1297,40 +1297,20 @@
         "coverage": 3,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 85,
+      "score": 88,
       "priority": "P2",
       "issue_flag": "verification-gap",
-      "explanation": "Nonmodal interaction is distinguished from dialogs and tooltips; outside-click and focus return need applied checks.",
-      "next_action": "Validate focus, Escape and nested overlay dismissal.",
+      "explanation": "A nested nonmodal overlay case adds practical dismissal-stack, outside-interaction and focus criteria beyond generic popover semantics.",
+      "next_action": "Test nested Escape ordering, outside clicks, background access, focus continuity and narrow-screen positioning in a consumer.",
       "evidence_level": "E0"
     },
     {
       "id": "component.slider",
       "path": "specifications/components/slider/spec.md",
       "title": "Slider and bounded range control",
-      "dimensions": {
-        "purpose": 4,
-        "actionability": 3,
-        "coverage": 3,
-        "research": 2,
-        "discoverability": 3,
-        "verification": 3,
-        "signal_to_noise": 4
-      },
-      "score": 80,
-      "priority": "P2",
-      "issue_flag": "verification-gap",
-      "explanation": "Range, keyboard and precision alternatives are specified; exact-entry and touch interaction evidence is thin.",
-      "next_action": "Add a fine-grained numeric entry and keyboard adjustment scenario.",
-      "evidence_level": "E0"
-    },
-    {
-      "id": "component.tree-view",
-      "path": "specifications/components/tree-view/spec.md",
-      "title": "Hierarchical tree view",
       "dimensions": {
         "purpose": 4,
         "actionability": 4,
@@ -1343,8 +1323,28 @@
       "score": 85,
       "priority": "P2",
       "issue_flag": "verification-gap",
-      "explanation": "Hierarchy and navigation semantics are laid out; large-tree typeahead and recovery would benefit from tests.",
-      "next_action": "Verify keyboard typeahead and collapse-focus behavior.",
+      "explanation": "The coarse keyboard choice versus precise numeric-entry case helps agents decide when a slider is appropriate and what alternative to provide.",
+      "next_action": "Verify Arrow, Home, End, value text, exact numeric entry, invalid values, touch and localized number format.",
+      "evidence_level": "E0"
+    },
+    {
+      "id": "component.tree-view",
+      "path": "specifications/components/tree-view/spec.md",
+      "title": "Hierarchical tree view",
+      "dimensions": {
+        "purpose": 4,
+        "actionability": 4,
+        "coverage": 3,
+        "research": 2,
+        "discoverability": 3,
+        "verification": 4,
+        "signal_to_noise": 4
+      },
+      "score": 88,
+      "priority": "P2",
+      "issue_flag": "verification-gap",
+      "explanation": "The typeahead-and-collapse case makes visible-ancestor focus recovery and virtualized-item checks more directly testable.",
+      "next_action": "Exercise typeahead, collapse, Arrow navigation and focus retention on a virtualized tree with assistive technology.",
       "evidence_level": "E0"
     },
     {
@@ -1594,17 +1594,17 @@
       "dimensions": {
         "purpose": 4,
         "actionability": 4,
-        "coverage": 3,
+        "coverage": 4,
         "research": 2,
         "discoverability": 3,
         "verification": 3,
         "signal_to_noise": 4
       },
-      "score": 85,
+      "score": 88,
       "priority": "P2",
       "issue_flag": "evidence-gap",
-      "explanation": "Progress and rewards avoid manipulative framing; user outcome evidence is still absent.",
-      "next_action": "Add an example balancing completion value against attention pressure.",
+      "explanation": "The voluntary continue-or-exit learner example improves coverage of useful engagement and pressure-related harms without inventing a successful study.",
+      "next_action": "Evaluate voluntary exit, comprehension and learning success with representative users, recording pressure and autonomy signals.",
       "evidence_level": "E0"
     },
     {
@@ -1613,18 +1613,18 @@
       "title": "Design-system adoption and change management",
       "dimensions": {
         "purpose": 4,
-        "actionability": 3,
+        "actionability": 4,
         "coverage": 3,
         "research": 2,
         "discoverability": 3,
         "verification": 3,
         "signal_to_noise": 4
       },
-      "score": 80,
+      "score": 85,
       "priority": "P2",
       "issue_flag": "ownership-gap",
-      "explanation": "Incremental rollout and deprecation guidance is sensible; ownership and adoption metrics need a real example.",
-      "next_action": "Show a staged adoption plan with owner and fallback measures.",
+      "explanation": "The Field-error pilot scenario now ties catalog ownership to rollout, task baseline, fallback, support and a defined sunset decision; outcomes remain hypotheses.",
+      "next_action": "Pilot a consequential form with named owners, measured recovery, support burden, rollback trigger and legacy retirement decision.",
       "evidence_level": "E0"
     },
     {
@@ -1777,14 +1777,14 @@
         "coverage": 3,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 85,
+      "score": 88,
       "priority": "P2",
       "issue_flag": "coverage-gap",
-      "explanation": "Freshness and reconnect semantics avoid stealing focus; high-frequency update noise is not tested.",
-      "next_action": "Verify burst updates with an explicit pause or catch-up path.",
+      "explanation": "The burst-update pause and catch-up scenario makes freshness, announcement noise and focus stability more observable; product results remain unknown.",
+      "next_action": "Exercise high-frequency updates with pause, catch-up, stable selection, screen-reader announcements and truthful freshness.",
       "evidence_level": "E0"
     },
     {
@@ -1797,14 +1797,14 @@
         "coverage": 4,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 88,
+      "score": 90,
       "priority": "P2",
       "issue_flag": "verification-gap",
-      "explanation": "Trigger-condition-action rules and safe pauses are clear; conflicting or failing rules need test evidence.",
-      "next_action": "Test a paused rule, failed execution and replay safety.",
+      "explanation": "A paused-rule, failed-execution and replay case sharpens acceptance of uncertain outcomes and safe retries without asserting an implementation.",
+      "next_action": "Test pause, failed execution and replay against audit truth, permission enforcement, duplication and accessible recovery.",
       "evidence_level": "E0"
     },
     {
@@ -1817,14 +1817,14 @@
         "coverage": 3,
         "research": 2,
         "discoverability": 3,
-        "verification": 3,
+        "verification": 4,
         "signal_to_noise": 4
       },
-      "score": 85,
+      "score": 88,
       "priority": "P2",
       "issue_flag": "evidence-gap",
-      "explanation": "List, card and feed selection criteria are covered; dense feed discoverability needs representative scanning evidence.",
-      "next_action": "Test a large collection with focus restoration and meaningful filters.",
+      "explanation": "The large filtered-collection case adds clearer expectations for stale results, focus return and meaningful filtering; real task performance is unknown.",
+      "next_action": "Test filters, item-to-list focus return, empty/error states and narrow-screen selection with representative content.",
       "evidence_level": "E0"
     },
     {
