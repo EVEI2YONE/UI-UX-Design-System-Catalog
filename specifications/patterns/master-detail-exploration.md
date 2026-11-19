@@ -40,6 +40,8 @@ Provide keyboard and assistive-technology routes through each stage, visible hea
 
 **Anti-example:** Selecting row 4 by array index so a sort instantly shows a different person's private details.
 
+For a worked cross-pattern composition using a card, detail, related-record editor, classification, recovery and return, see the [illustrative collection-to-related-record journey](../../examples/collection-to-related-record-journey.md). Use the canonical card, form, lifecycle and recovery contracts for normative decisions; the reference journey is **NOT VERIFIED** in a consuming product.
+
 ## Verification and research handoff
 
 | Scenario | Expected evidence | Current status |
