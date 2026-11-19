@@ -21,4 +21,6 @@ Choose the user's problem before choosing a component. The [task index](index.js
 | Manage related records from a collection card | [Master-detail](../specifications/patterns/master-detail-exploration.md) |
 | Drill down from a KPI card | [Data visualization](../knowledge/guidance/data-visualization-and-dashboards.md) |
 
+| Edit a related record without nested dialogs | [Master-detail task surfaces](../specifications/patterns/master-detail-exploration.md#choose-one-task-surface-across-detail-edit-and-history) |
+
 Each task points to related components, content guidance and recovery rules. Choose a pattern after checking the actual context, risks, accessibility requirements and research evidence; a phrase match does not replace user research.
