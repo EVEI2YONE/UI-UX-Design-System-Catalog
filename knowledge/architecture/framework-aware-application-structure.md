@@ -2,7 +2,7 @@
 
 **Kind:** guideline · **Status:** proposed · **Primary layer:** cross-cutting · **Owner:** unassigned · **Review:** pending
 
-## Context-first coverage audit
+## Framework-specific coverage considerations
 
 [Application selection](application-architecture.md) gives complexity-based profiles; [module boundaries](module-boundaries-and-developer-navigation.md) defines feature/domain/shared ownership; [evolution](architecture-evolution.md) covers safe migration. The missing knowledge is **adapting those profiles to frameworks where file location or filename has runtime meaning**. An illustrative `src/app/routes/` architecture can be harmful when interpreted as a required location in a framework with its own routing rules.
 

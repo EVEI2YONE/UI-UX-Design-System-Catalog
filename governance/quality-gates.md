@@ -77,7 +77,7 @@ For each implementing PR, record: **canonical ID**, version/owner, linked contra
 
 ## Hosted collaborative product assurance — context-driven checks
 
-Before this gate, gather: actual hosting trust boundary, public/raw endpoint exposure, authenticated subject contract, owner and tenant data model, command/state transitions, storage concurrency scheme, and domain tests. Little Wins, for example, documents Sites sign-in, an owner-derived D1 workspace, a revision-checked JSON aggregate and 11 domain tests; this **does not verify** a deployed identity boundary or browser behavior.
+Before this gate, gather: actual hosting trust boundary, public/raw endpoint exposure, authenticated subject contract, owner and tenant data model, command/state transitions, storage concurrency scheme, and domain tests. A hosted application's design notes or domain tests are insufficient proof of deployed identity isolation or browser behavior; validate the actual environment.
 
 | Gate | Required scenario | Disposition without execution |
 | --- | --- | --- |
@@ -157,7 +157,7 @@ For an app architecture recommendation, record the repository/ref, framework and
 
 For real application releases, document the owner and allowed dependency contract, installed tool/version, alias and relative-import resolution, positive/negative fixture results, existing-versus-new violations, CI check results, approved exception expirations, and cross-feature consumer impact. A green static import check alone does not establish that relative imports, dynamic imports or other languages are covered. The catalog's document validator **cannot** prove application architecture enforcement. Follow [architecture enforcement recipes](../knowledge/architecture/architecture-enforcement-and-ci.md) and the .
 
-## Account/settings acceptance matrix
+## Account and settings acceptance matrix
 
 The portal's release gate must validate a **real joined journey**, not just isolated component demos:
 

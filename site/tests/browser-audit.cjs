@@ -20,8 +20,16 @@ async function checks(){
   const page=await browser.newPage({viewport:{width:1440,height:900},reducedMotion:'reduce'});
   const errors=[];
   page.on('pageerror',e=>errors.push(e.message));
+  // Task landing: semantic discovery should reach canonical decisions with no extra registry.
+  await page.goto(base+'/tasks/',{waitUntil:'load'});
+  assert.equal(await page.locator('article.task-card').count(),7);
+  assert.equal(await page.getByRole('link',{name:'Narrow a long list'}).getAttribute('href'),'/catalog/patterns/search-filter/');
+  assert.equal(await page.getByRole('link',{name:'Confirm an irreversible action'}).getAttribute('href'),'/catalog/components/dialog/');
   await page.goto(base+'/catalog/',{waitUntil:'load'});
   assert.equal(await page.locator('article.card').count(),registry.length);
+  await page.locator('#catalog-filter').fill('recover from a failed submission');
+  assert.ok(await page.locator('article.card:visible a[href="/catalog/patterns/forms/"]').count()>0,
+    'user-phrased failed submission must discover form recovery guidance');
   await page.locator('#catalog-filter').fill('loading button');
   assert.ok(await page.locator('article.card:visible').count()>0,'task search returns at least one result');
   // Human-facing discovery should resolve the same canonical task as agent lookup.
@@ -337,7 +345,7 @@ async function phase3(browser,errors){
  // Axe serious/critical on the changed shell pages (preview iframes are scanned separately above).
  for(const [width,height] of [[390,844],[1440,900]]){
   const a=await browser.newPage({viewport:{width,height}});
-  for(const route of ['/catalog/','/search/?q=button&category=components&interactive=1','/catalog/components/button/','/catalog/foundations/design-tokens/']){
+  for(const route of ['/tasks/','/catalog/','/search/?q=button&category=components&interactive=1','/catalog/components/button/','/catalog/foundations/design-tokens/']){
    await a.goto(base+route,{waitUntil:'load'});
    await a.addScriptTag({content:axe.source});
    const report=await a.evaluate(async()=>window.axe.run({exclude:[['iframe']]},{runOnly:{type:'tag',values:['wcag2a','wcag2aa','wcag21a','wcag21aa','wcag22aa']}}));

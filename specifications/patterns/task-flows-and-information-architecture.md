@@ -47,7 +47,7 @@ Record a task as **entry → orientation → choose → act → pending → outc
 
 ## Multi-scope task context and optional features
 
-**Observed example:** Little Wins scopes Overview, Review and History by project, but Members and Rewards by group. Groups own membership/points, while projects own challenges/submissions. Moving a challenge recalculates project progress without moving the submission or point ledger.
+**Illustrative scope example:** A product may show some records at the project scope and other membership or account records at a group scope. Moving a task between projects can update project-level progress without moving its underlying submissions or financial/history ledger. Make every scope visible and verify the effects of context switching.
 
 **Guidance:** before drawing navigation, make a resource/scope matrix (account -> workspace -> group -> project -> record) with visible scope for every list, aggregate, action and deep link. Keep the active project explicit where data is project-filtered; distinguish global/group-wide views with their own headings and filter affordances. Verify changing project with unsaved forms, old links, return navigation and no-results states. Avoid suggesting a product-wide project filter that misleadingly narrows group-wide rewards.
 
@@ -61,7 +61,7 @@ Record a task as **entry → orientation → choose → act → pending → outc
 
 **Purpose:** extend the earlier multi-scope/optional-feature guidance with a testable **capability matrix**, not an assumption that independently stored toggles represent independent user capabilities. Use when owners can pause/re-enable optional tasks or features whose actions depend on other features. Avoid prescribing universal flag names, infrastructure or authorization from a UI control.
 
-**Context-first trigger:** Little Wins persists `pointsEnabled`, `rewardsEnabled` and `challengesEnabled` independently on each group. Its redemption command requires **both points and rewards**, whereas challenges have separate visibility. The Rewards navigation is hidden when either prerequisite is off, yet the Rewards page contains a paused-state notice and preserves existing requests. These are source-observed behaviors, not live UI test results.
+**Illustrative dependency:** A product stores points, rewards and challenges as separate configuration values, while a redemption action depends on both points and rewards being available. Its navigation may hide unavailable rewards, yet authorized historical requests still need a discoverable management route. Configuration independence is not the same as capability independence.
 
 **Define before implementation:**
 1. **Configuration versus capability:** map each stored flag to the actual action preconditions and derived availability. Define one centralized, documented capability predicate per protected action; a hidden tab does not authorize or block a direct command.
@@ -71,7 +71,7 @@ Record a task as **entry → orientation → choose → act → pending → outc
 5. **Discoverability:** if navigation disappears but requests remain pending, provide a deliberate authorized route to review/manage those requests; do not assume a deep link is discoverable.
 6. **Scope and roles:** group versus project flags, defaults for new groups, membership permissions and deployment gating are distinct decisions. Keep one source of truth for actual action availability; test a denied direct command independently of visual gating.
 
-**Illustrative capability table (Little Wins source, simplified):**
+**Illustrative capability matrix (hypothetical):**
 
 | Points | Rewards | Challenges | Redeem new reward | Challenge task | Historical points/redemptions |
 | --- | --- | --- | --- | --- | --- |
@@ -213,4 +213,4 @@ pending
 | Keyboard, screen reader, touch and zoom | Navigation/focus predictable across content changes | NOT VERIFIED |
 | User research and task metrics | Recorded task success, errors, context loss and travel with baseline | NOT VERIFIED |
 
-**Sources and applicability:** [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) for relevant focus/keyboard semantics (consulted 2026-11-07); product-inspired examples from [Little Wins UI knowledge](https://github.com/EVEI2YONE/Little_Wins/tree/main/docs/little-wins/ui-knowledge/). These documents do not certify interaction improvements or backend behavior.
+**Sources and applicability:** [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) and [WCAG 2.2](https://www.w3.org/TR/WCAG22/) inform applicable focus and keyboard semantics. Capability matrices here are hypothetical examples, not evidence of implemented server behavior or measured task outcomes.

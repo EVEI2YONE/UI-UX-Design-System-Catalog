@@ -71,9 +71,9 @@ Help people continue work safely across network loss, retries, delayed synchroni
 
 Related: [interaction recovery](interaction-states-and-recovery.md), [form composition](forms.md), [service recovery](service-recovery-and-support.md), [authentication lifecycle](authentication-and-account-lifecycle.md), [privacy/trust](../../knowledge/guidance/privacy-consent-and-trust.md).
 
-## Versioned aggregate migrations and safe restore ( — proposed, 2026-11-07)
+## Versioned aggregate migrations and safe restore
 
-**Context:** Some small pilots persist one revisioned aggregate per account rather than normalized rows. Little Wins demonstrates compare-and-swap retries and legacy project normalization; it also performs sample-group archival in a workspace read path. This is evidence of a migration approach, **not** proof of backup, restored history, or production concurrency capacity.
+**Application context:** A small application may persist a revisioned aggregate per account rather than normalized rows. Compare-and-swap retry loops, legacy record normalization and archival during reads create distinct concurrency and migration risks. These are implementation approaches requiring explicit verification, not proof of usable backup, data restoration or production capacity.
 
 **Decision rules:**
 1. Separate read-time *presentation normalization* from durable schema migration. If GET can cause a write, document why and test revision changes, repeated reads, partial failure, idempotency and concurrent writers; avoid unannounced history changes on apparently read-only navigation.

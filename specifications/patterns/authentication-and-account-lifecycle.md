@@ -64,9 +64,9 @@ Identity/security owners define authentication assurance, session timeouts, perm
 
 Related: [role-aware workspaces](role-aware-workspaces-and-context-switching.md), [forms](forms.md), [interaction recovery](interaction-states-and-recovery.md), [privacy](../../knowledge/guidance/privacy-consent-and-trust.md), [offline and sync](offline-sync-and-conflicts.md).
 
-## Hosted-platform identity boundary — Little Wins evidence-led extension
+## Hosted-platform identity and application authorization
 
-**Context before guidance:** The Little Wins source README describes a Sites-native private owner-operated pilot; `app/api/workspace/route.ts` derives workspace ownership from `oai-authenticated-user-id`, scopes D1 queries by that owner, and supplies a development-only preview identity. The README warns that its raw Worker must not be exposed outside trusted Sites authentication. This is **source-observed configuration**, not an independently tested guarantee about every deployment.
+**Application context:** A hosted product may delegate sign-in to a trusted platform and derive an owner/workspace subject from server-validated identity. The app still needs a separately enforced access model for workspaces, membership and operations; development-only identity shortcuts must not be exposed through production endpoints.
 
 **Decision rule:** Inventory the hosting platform and its existing authentication before recommending sign-up, passwords, MFA, or a second identity system. Separate: (1) identity proof by the hosting platform, (2) trustworthy delivery of identity to the backend, (3) app-specific membership and roles, and (4) server-authorized operations. Do not treat a user-provided header, cookie, route, or UI role label as authorization; verify trusted proxy/header stripping, direct-origin reachability, session revocation and owner isolation with the actual deployment owner.
 
@@ -76,7 +76,7 @@ Related: [role-aware workspaces](role-aware-workspaces-and-context-switching.md)
 
 **Anti-example:** recommend a new login UI solely because the app has owner-managed member profiles, or claim the identity header is secure without testing whether clients can spoof it at the deployed boundary.
 
-**Verification (NOT VERIFIED for Little Wins):** authenticated/unauthenticated direct API requests; forged identity header through every reachable endpoint; cross-owner workspace IDs; revoked membership; session expiry; private-site audience policy; development-identity isolation; no sensitive cache/history leakage. Report deploy-specific findings separately from reusable design guidance.
+**Verification scenarios (NOT VERIFIED until executed):** authenticated/unauthenticated direct API requests; forged identity header through every reachable endpoint; cross-owner workspace IDs; revoked membership; session expiry; private-site audience policy; development-identity isolation; no sensitive cache/history leakage. Report deploy-specific findings separately from reusable design guidance.
 
 ## Account security settings journey — account/settings
 

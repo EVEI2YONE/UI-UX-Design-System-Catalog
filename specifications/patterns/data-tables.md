@@ -64,7 +64,7 @@ Related decisions: [advanced interactions and undo](advanced-interactions-and-re
 
 ## Accessible row actions without inventing a grid
 
-**Context-first example:** The Little Wins source renders semantic data cells but attaches `onClick`, `tabIndex=0` and Enter handling to the `<tr>`, with a decorative chevron in the final Actions column. This is a code observation, **not** a verified screen-reader failure. Its `specifications/components/ui` library also contains accessible control primitives; their mere presence does not establish usage.
+**Illustrative anti-pattern:** A semantic table uses `onClick`, `tabIndex=0` and Enter handling on `<tr>` with only a decorative chevron in an Actions column. The row may lack the clear activation semantics and accessible name of a native control. This is a design risk to verify with the implemented table, not a claim of a measured screen-reader failure.
 
 **Decision:** keep table semantics for scan-and-compare tasks. Prefer a native `<button>` inside an action cell for opening a review/details task, or a native `<a>` for route navigation. Give the action a record-specific accessible name such as “Review contribution: Garden cleanup”; avoid a row-wide tab stop whose activation semantics, label, and Space behavior are unclear. Do not change the table to `role=grid` simply to make rows clickable. Where an entire-row pointer target is useful, ensure it does not create nested interactive actions or duplicate keyboard stops; the explicit native control remains the primary accessible path.
 

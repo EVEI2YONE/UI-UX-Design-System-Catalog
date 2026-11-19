@@ -71,7 +71,7 @@ Prefer an explicit save for high-consequence or multi-field forms; autosave may 
 
 **Canonical ID:** `pattern.account-settings-portal` · **Drafted:** 2026-11-07.
 
-## Workspace configuration foundation — Settings knowledge
+## Workspace configuration foundation
 
 **Scope:** generalizable settings *knowledge* for applications with personal and workspace configuration.
 
@@ -265,8 +265,8 @@ Use [design tokens and themes](../../knowledge/foundations/design-tokens-and-the
 ### Evidence and unresolved decisions
 
 - **Reusable sources:** [IANA Time Zone Database](https://www.iana.org/time-zones) (tzdb, consulted 2026-11-07; political/DST revisions occur), [MDN `Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) (locale-aware display and explicit `timeZone`, consulted 2026-11-07), [W3C Internationalization](https://www.w3.org/International/quicktips/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
-- **Little Wins source snapshot:** cleaned F20 archive provided by the user; direct inspection of `docs/little-wins/03_DECISIONS_AND_OPEN_QUESTIONS.md`, `shell/context/display-preferences.ts`, `shell/context/display-preferences-provider.tsx`, and `server/modules/history/index.ts`. Source inspection supports only those observed claims, not deployed behavior.
-- **Open product decision:** `DEC-010` is unresolved. Do not infer the workspace timezone or choose activity versus award date semantics on behalf of the product owner.
+
+- **Unresolved design decision:** The owner must define whether reporting periods use a workspace timezone, a user's display timezone, or source event timezone; never infer activity-versus-award-date semantics from presentation choices.
 
 ## Configuration governance and audit
 
@@ -315,7 +315,7 @@ Before implementation, assign the product/security owners and determine which ch
 }
 ```
 
-The event illustrates audit semantics only. The specific setting and trusted mode are **not** evidence of an implemented Little Wins configuration capability.
+The event is a synthetic audit example. It illustrates the event contract but does not demonstrate a deployed configuration capability.
 
 **Anti-examples:** a settings switch saves but the only audit trace is a client console message; a “Revert” button promises to erase awards granted while a permissive review policy was active; a settings export exposes secret values or unrelated workspaces.
 
@@ -409,7 +409,7 @@ Before implementation, list for each setting: authoritative scope and version; d
 5. If one downstream refresh fails, show an honest “Settings saved; some views may be outdated” state if the core write was verified; offer refetch rather than reissuing a possibly non-idempotent write.
 6. On revision conflict, permission loss or ambiguous timeout, preserve drafts according to privacy policy, fetch current server state, and offer compare/reapply or safe restart. Never silently overwrite.
 
-**Consumer contract example (illustrative, not a Little Wins implementation):**
+**Consumer contract example (illustrative):**
 
 | Setting family | Direct consumer | Dependent consumer | Invariant to verify |
 | --- | --- | --- | --- |
@@ -479,6 +479,6 @@ For each setting record its stable key, documented default and effective value, 
 5. **Verify:** compare effective values before/after, saved explicit choices, missing/unset defaults, mixed-version clients, stale tabs, offline drafts, tenant isolation, dependent capabilities and history. Record real tests and responsible owner.
 6. **Retire:** stop writing aliases once supported readers are migrated; remove UI, code and dead styles only with verified consumers and rollback evidence.
 
-**Target-specific boundary:** The catalog does not prescribe Little Wins' timezone default, points/rewards transition policy, or which clients remain supported; those are application decisions. Nor does documentation prove an actual migration, deployment or backup.
+**Application-specific boundary:** A reusable settings contract cannot choose the product's timezone defaults, feature-transition policies or supported clients. These decisions require domain ownership and must not be inferred from documentation alone.
 
 **Verification status:** Documentation guidance **proposed**; reviewer unassigned. Real schema fixtures, application upgrades, data safety, accessibility, multi-client behavior and restore tests are **NOT VERIFIED**. Reuse [lifecycle governance](../../governance/lifecycle-and-decisions.md), [offline synchronization](offline-sync-and-conflicts.md), configuration propagation, [W3C WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/) (reference date 2026-11-07; external revalidation not performed).

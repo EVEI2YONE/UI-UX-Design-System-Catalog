@@ -72,11 +72,11 @@ Related: [content design](content-design-and-ux-writing.md), [authentication lif
 
 **Preservation rules:** treat historical points and review outcomes as an auditable sequence rather than mutable totals; where policy allows corrections, append a reasoned correction record and keep actor/subject distinctions. Archiving a sample group or disabling a feature is not data deletion. Data minimization and subject-access duties require product-specific privacy/legal review; do not treat archival history as indefinitely retainable by default.
 
-**Illustrative trigger:** Little Wins stores an owner-scoped D1 workspace JSON aggregate, preserves legacy unscoped activity by normalizing it to a General project, archives demo groups, and does not document an end-user export/restore flow. These source observations are not evidence that production backup or privacy requests are implemented.
+**Example boundary:** An owner-scoped, revisioned JSON record and a migration that normalizes legacy content do not automatically supply an end-user export, secure restore, privacy-request workflow or production backup. Those capabilities must be explicitly designed, authorized and verified.
 
 **Acceptance (NOT VERIFIED unless tested):** export consistency against backend records; record-level access/redaction; bulk file size; versioned export schema; duplicate import/idempotency; role revocation during download; deletion and backup-retention boundaries; screen-reader/keyboard export feedback; safe error and interrupted-download recovery.
 
-## Account privacy and lifecycle control center —
+## Account privacy and lifecycle control center
 
 **Scope:** extends generic privacy and data lifecycle guidance for a settings portal. Consent and rights options depend on the controller, jurisdiction, policy and processing basis. The interface must not label all processing as optional consent.
 

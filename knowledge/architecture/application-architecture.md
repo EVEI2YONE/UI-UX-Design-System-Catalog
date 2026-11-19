@@ -6,7 +6,7 @@
 
 Select the least complex application source organization that supports user journeys, code ownership, discoverability and expected change. This document concerns *application code*, not the UI catalog's directory structure, and complements [component placement](component-model.md). Profiles are starting points, not mandatory progression stages. Repository size or engineer count alone does not justify a migration.
 
-## Context-first assessment
+## Context and selection criteria
 
 Before recommending an architecture, record: repository URL and pinned revision; runtime/framework and routing model; one or several apps; key user journeys; team and release ownership; current source tree, import graph and duplication; shared domain rules; build/test and deployment boundaries; accessibility/i18n needs; observed change friction, and unknown evidence. Do not assume React, Next.js, microfrontends or monorepos.
 

@@ -45,7 +45,7 @@ Related: [component contracts](../../../knowledge/architecture/component-contrac
 
 ## Native dialog integration and task continuity
 
-**Source trigger:** Little Wins composes a native `<dialog>`, calls `showModal` after mount, handles `cancel` with a parent callback, and closes via a parent-controlled unmount and backdrop click. Its contribution form can hold unsaved input inside that dialog. These are implementation facts from the supplied ZIP, **not** evidence that focus or drafts are actually lost.
+**Example context:** A native `<dialog>` may contain an unsaved form and be opened with `showModal()`, dismissed through a `cancel` event, or closed by a parent-controlled state change. These are distinct lifecycle paths that require defined draft-preservation and focus-return behavior; mounting a native dialog does not itself verify them.
 
 **Decision contract:** for a stateful modal, specify an invocation focus target, initial focus strategy, `cancel`/Escape path, close-button path, backdrop behavior, save/discard/cancel policy, post-commit focus destination and fallback when the invoker disappears. Make the handling of the native `cancel` event explicit; if the app denies dismissal to protect unsaved work, use an accessible confirmation flow and state-based close policy, not a broken Escape key. Confirm that backdrop clicks cannot silently destroy a draft. Use the platform's dialog focus/inert behavior where supported; do not assume a custom mount/unmount wrapper implements every return-focus case.
 
