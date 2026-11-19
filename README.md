@@ -1,6 +1,6 @@
 # UI/UX Design System Catalog
 
-> **Status:** proposed knowledge catalog. A source-backed reference for UI/UX decisions, not an installable UI library or evidence of product accessibility conformance.
+> **Status:** proposed, **guidance-only** knowledge catalog. It contains design concepts, specifications and decision frameworks—not an installable component library, runnable UI examples or evidence of product accessibility conformance.
 
 ## Start with the user's task
 
@@ -18,15 +18,14 @@ Use the [task discovery index](tasks/README.md) for finding, comparing, completi
 | [Experience specifications](specifications/experiences/README.md) | Cross-pattern reference journeys |
 | [Governance](governance/README.md) | Lifecycle, quality gates and source review |
 | [Research](research/README.md) | Methods and source provenance (no completed studies claimed) |
-| [Examples](examples/README.md) | Clearly labeled illustrative and runnable references |
-| [Reusable packages](packages/README.md) | Future capability only; none are shipped |
+| [Examples](examples/README.md) | Written illustrative scenarios and design comparisons (not runnable components) |
 
 ## How to use a concept
 
 1. Search by task or [concept ID](catalog/README.md) with `python3 scripts/find_concept.py "form submission failed" --json`.
 2. Read the canonical page's **use when**, **avoid when**, variants, states, accessibility, content and verification requirements.
 3. Check the registry's **kind**, **status**, **owner** and **reviewed_at** before treating the entry as established practice. Today all entries are proposed and no editor review is recorded.
-4. Follow `related` and `depends_on` as needed. Inspect the registered interactive source only when it exists; examples are synthetic and not product integrations.
+4. Follow `related` and `depends_on` as needed. Component specifications document meaning, states and accessibility; they are not shipped UI code.
 5. Check cited standards and evidence for applicability. Record independent user research, accessibility and product outcomes before claiming improvements.
 
 ## Repository contracts

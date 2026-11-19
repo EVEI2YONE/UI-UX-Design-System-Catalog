@@ -22,10 +22,9 @@ class ConceptPreservationTests(unittest.TestCase):
                 self.assertEqual(item["status"], "proposed")
                 self.assertIsNone(item["reviewed_at"])
 
-    def test_references_distinguish_executable_previews(self):
-        references = [e for e in self.entries if e.get("implementation")]
-        self.assertEqual(len(references), 12)
-        for item in references:
-            with self.subTest(id=item["id"]):
-                self.assertEqual(item["implementation"]["status"], "reference")
-                self.assertTrue((ROOT / item["implementation"]["source_path"]).is_file())
+    def test_catalog_contains_only_conceptual_sources(self):
+        self.assertTrue(self.entries)
+        self.assertFalse(any("implementation" in e for e in self.entries))
+        self.assertFalse((ROOT / "site/src/implementations").exists())
+        self.assertFalse((ROOT / "site/src/previews").exists())
+        self.assertFalse((ROOT / "packages").exists())

@@ -40,7 +40,3 @@ Use semantic surface/border/text/focus/error tokens and logical spacing. Do not 
 **Canonical ID:** `component.select` · **Owner:** unassigned · **Review date:** not reviewed
 
 Related: [Input](../input/spec.md), [Field](../field/spec.md), [accessibility](../../../knowledge/guidance/accessibility.md), [component contracts](../../../knowledge/architecture/component-contracts.md). Primary reference: [WAI-ARIA APG](../../../governance/references.md), when applicable to custom widgets.
-
-## Interactive reference
-
-An actual [Select reference implementation](../../../site/src/implementations/components/select/Select.js), its [synthetic scenario manifest](../../../site/src/implementations/components/select/scenarios.js), and token-aware [preview styles](../../../site/src/implementations/components/select/Select.css) now exist in the embedded visual catalog. The catalog renders the checked-in reference source and exposes the same source for inspection. This **does not** promote the specification out of `proposed` or establish production adoption, WCAG conformance, real persistence or business validation. The earlier evidence table records the historical documentation-only state; keyboard/AT, real-browser behavior, long-content and visual performance still require observed review.

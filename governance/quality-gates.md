@@ -337,58 +337,53 @@ Do not infer a successful run merely from the presence of these commands in docu
 
 **Review and ownership:** Proposed knowledge, owner unassigned. Human review, observed consumer accessibility, production release and UX metrics remain **NOT VERIFIED** until supported by separate evidence. References (consulted 2026-11-07): [WAI-ARIA APG](https://www.w3.org/WAI/ARIA/apg/), [WCAG 2.2](https://www.w3.org/TR/WCAG22/), [Playwright testing](https://playwright.dev/docs/intro), [Storybook interaction tests](https://storybook.js.org/docs/writing-tests/interaction-testing), and the catalog's own `scripts/validate_catalog.py` and `scripts/find_concept.py`.
 
-## Static visual catalog hosting, supply-chain and preview security gate
+## Static visual catalog hosting and documentation supply-chain gate
 
-This checklist applies to a potential **public release** of the source-derived visual catalog. It extends the existing documentation and product quality gates; it does not assert a deployment, provide a security certification or set an unreviewed production hosting policy.
+This is a publication-readiness checklist for a **read-only documentation browser**. The repository provides a canonical concept registry, Markdown guidance, a small static generator and progressive search; it intentionally does **not** ship executable UI examples, sandboxed demo frames or reusable component packages. Hosting and browser checks do not verify any consuming application's behavior.
 
 ### Hosting decisions before publication
 
-| Decision | Required contract | Current catalog limitation |
+| Decision | Required review | Current limitation |
 | --- | --- | --- |
-| Origin/base path | Decide root versus repository subpath; verify every page, search URL, CSS/JS asset, iframe, source URL and redirect on the target host | Generated links and assets currently assume origin-root hosting |
-| Immutable provenance | Bind published source links to a reviewed branch/tag/commit, ideally an immutable commit | CI already supports validated `CATALOG_SOURCE_REF`; default local builds use `main` |
-| Build artifact and release | Name artifact digest, build commit, verification status, responsible approver, deploy/revert commands | No public deployment exists |
-| Cache and indexability | Define cache invalidation, redirects, robots/indexing, sitemap and handling of removed/deprecated concepts | No deployment-specific cache/header controls are evidenced |
-| Privacy and telemetry | Declare any analytics, consent, data retention, no production user records in synthetic preview, artifact access | CI-generated accessibility reports and screenshots should be reviewed for accidental sensitive content |
+| Origin/base path | Verify root-versus-subpath routes, CSS/JS links, search query parameters and source URLs on the target host | The generated site uses root-relative links; subpath deployment needs a tested strategy |
+| Source provenance | Tie published Markdown source links to a reviewed commit or known immutable revision | The builder accepts `CATALOG_SOURCE_REF`; default local builds use `main` |
+| Build artifact and rollback | Record release commit/digest, authorized approver, deployment and revert procedure | No public deployment or recovery SLO is established here |
+| Cache and indexability | Review caching, robots/indexing, redirects and deprecation links | These are host-dependent and NOT VERIFIED |
+| Privacy and telemetry | Disclose analytics if introduced and avoid publishing sensitive records or test artifacts | The documentation builder uses repository-authored content; browser audit screenshots still need review |
 
-For root-to-subpath publishing, tests must exercise `/catalog/`, `/search/`, all references and `/previews/` from that *actual path*. Changing a host configuration alone does not rewrite root-absolute URLs. Do not ship to GitHub Pages subpath unless a verified base-path strategy exists.
+For public hosting, crawl `/catalog/`, `/search/`, representative concept pages and the task index at the **actual deployment path**. Verify canonical ID-based URLs remain stable, every relative source link resolves and query-state restoration does not expose sensitive data. Do not infer deployment success from a local build.
 
-### Threat boundaries and CSP review
+### Security, content policy and CSP
 
-The site must use **trusted, checked-in** reference source—not code typed by visitors or unreviewed remote scripts. The compiler verifies source paths under `site/src/implementations/` and copies them into a sandboxed iframe. The iframe's `allow-scripts` permission supports the demo; its omission of `allow-same-origin` makes its origin opaque and blocks ordinary access to parent-origin cookies/storage. Do not add `allow-same-origin`, `allow-top-navigation`, `allow-popups` or `allow-forms` for convenience without a threat-model review. **This isolation is defense in depth**, not authorization or proof that every JS source is secure.
+The documentation site has no preview iframes or injected executable example source. Markdown rendering must escape unsafe markup and reject active unsafe links; generated pages should load only the minimal local navigation/search assets. The repository validator rejects implementation metadata and legacy implementation directories.
 
-Before choosing any CSP, enumerate all necessary assets/scripts/styles/iframes, then test a server-delivered **enforcing** policy plus a reporting rollout. The policy must distinguish top-level pages from preview routes where needed; do not copy a globally strict `frame-ancestors 'none'` rule onto preview documents that intentionally need to be embedded. A possible *review starting point*, **not a ready-to-deploy header**, is:
+Before setting an enforcing Content-Security-Policy, inventory actual scripts, styles, images and links, then test on the serving origin. A **review starting point, not a ready-to-deploy header**, is:
 
 ```text
-Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'self'
+Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
 ```
 
-Validate whether `data:` is necessary and remove it if not; limit frame ancestry and resource origins to actual host needs. The real server sets headers; a Markdown document or static HTML meta tag does not establish them. Check CSP enforcement and console violations in Chromium, Firefox and Safari, and explicitly test iframe bootstrap, scenario selection and source disclosure. Keep any approval tied to a tested host/environment.
+Confirm the appropriate `img-src`, form and framing requirements with hosting owners. For a stand-alone documentation site, `frame-ancestors 'none'` may be considered; any different embedding requirement demands an explicit threat review. Only real response headers can enforce this policy. Check browser console violations, asset loading and expected network requests in all supported environments; automated tests are not security certification.
 
-### Supply chain, dependency and license gate
+### Build dependency and source integrity
 
-The Python static builder uses the standard library, while **CI only** currently installs Playwright and axe with pinned top-level versions through `npm install --no-package-lock`. That does *not* guarantee transitive resolution reproducibility. Before release:
+The Python static builder uses the standard library; CI installs Playwright and axe for browser checks. The current ad hoc npm install without a checked-in lockfile does not guarantee transitive reproducibility. Before deployment, record dependencies, decide on a supported pinned toolchain and lockfile, review third-party licenses and advisories, and use a reproducible install. The docs-only boundary also requires:
 
-1. Record a reviewed toolchain version and project-level package manifest with exact direct dependencies and a committed integrity-bearing lockfile.
-2. Change CI to `npm ci` using that lockfile; verify clean installation from scratch. The npm documentation specifies that `npm ci` requires a matching lock and does not rewrite dependency declarations.
-3. Run dependency vulnerability and license review on the locked tree; record reviewed advisories, exceptions, affected paths and decision owners. `npm audit` alone does not constitute license clearance or a full threat model.
-4. Pin or review third-party GitHub Actions usage and their transitive dependencies; keep minimum workflow permissions and avoid secrets in preview sources.
-5. Verify no vendored fonts, customer data, unknown image licenses or runtime network requests are silently introduced. If including third-party code, record license and attribution requirements.
-6. Repeat after any material dependency/host change; do not re-use old approvals for new revisions.
+1. No `site/src/implementations/`, `site/src/previews/` or `packages/` content, and no registry `implementation` property.
+2. No generated `/previews/` or `/reference/` routes or embedded demo iframes; all 92 canonical IDs and their documentation URLs remain unchanged.
+3. No prose or catalog badge suggesting a component is importable, previewable or independently approved.
+4. Catalog, editorial, retrieval, static-site and browser documentation tests pass without claiming product UX conformance.
+5. Cross-browser, assistive-technology, real user task and consumer integration evidence is recorded separately when someone adopts the guidance.
 
-### Decision, acceptance and rollback
+### Acceptance and rollback
 
-| Gate | PASS evidence | FAIL / NOT VERIFIED handling |
+| Gate | Evidence needed | Without evidence |
 | --- | --- | --- |
-| Site routes under actual host | Automated crawl plus manual navigation at deployment path | No publication; fix and rerun |
-| CSP/framing | Enforcing response headers, no unexpected blocked assets, iframe isolation tests | No publication; document policy adjustment |
-| Dependencies/licenses | Lockfile, reproducible install, audit and approved license inventory | Do not describe site as supply-chain reviewed |
-| Data/privacy | Synthetic-only fixture inspection, artifact/access review, no secret leakage | Remove or replace unsafe evidence before publishing |
-| Accessibility | Human task + AT evidence and automated reports, clear scope | No WCAG certification without applicable evidence |
-| Performance | Lab and production field metrics with environment/cohort/percentile | Do not replace real-user measurements with static size budgets |
-| Approval | Named design, security and maintainer decision plus release SHA | Keep PR draft/no-go; never treat Git mergeability as approval |
-| Rollback | Previous artifact/source revision, reversible switch, owner and verification | Stop release until an executable revert path exists |
+| Canonical catalog | Unique IDs/paths, valid relative links, status and source accuracy | Do not publish broken guidance |
+| No shipped library | No executable preview files/metadata/routes, source-only documentation links | Remove unintentional runtime artifacts |
+| Accessibility | Browser shell automated tests and manual keyboard/AT review of actual deployment | Do not claim full WCAG conformance |
+| Hosting/CSP | Checked response headers, routing and allowed resources | Keep unpublished until validated |
+| Supply chain | Reproducible dependencies and license/security review | Do not claim verified dependency safety |
+| Rollback | Prior artifact and named release owner | Do not proceed with irreversible rollout |
 
-**Provenance:** [OWASP Content Security Policy Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html) describes CSP as defense in depth and host-specific framing rules; [MDN iframe sandbox](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe#sandbox) warns against combining `allow-scripts` and `allow-same-origin` for same-origin embedders; [npm ci](https://docs.npmjs.com/cli/commands/npm-ci/) documents reproducible clean installs with a lockfile. These are reference sources, not evidence that this repository has satisfied the controls.
-
-**Current disposition:** the release checklist is authored knowledge, but hosting, CSP enforcement, locked CI dependencies, license review and named security signoff remain **NOT VERIFIED**. The documents the original blockers; merging did not establish security approval or deployment authorization.
+**Provenance:** [OWASP Content Security Policy Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html) and [web.dev deployment guidance](https://web.dev/) provide context rather than proof this site is secured. The repo's read-only build and checks are documentation infrastructure; runtime component and product security verification belong to consuming applications. All actual deployment conditions remain **NOT VERIFIED** until tested.

@@ -40,7 +40,3 @@ Use semantic text/muted/error/spacing/focus tokens. Layout uses logical properti
 **Canonical ID:** `component.field` · **Owner:** unassigned · **Review date:** not reviewed
 
 Related: [Input](../input/spec.md), [Select](../select/spec.md), [Checkbox](../checkbox/spec.md), [accessibility](../../../knowledge/guidance/accessibility.md), [interaction recovery](../../patterns/interaction-states-and-recovery.md). Reference: [WCAG 2.2](../../../governance/references.md).
-
-## Interactive reference
-
-An actual [Field reference implementation](../../../site/src/implementations/components/field/Field.js), its [synthetic scenario manifest](../../../site/src/implementations/components/field/scenarios.js), and token-aware [preview styles](../../../site/src/implementations/components/field/Field.css) now exist in the embedded visual catalog. The catalog renders the checked-in reference source and exposes the same source for inspection. This **does not** promote the specification out of `proposed` or establish production adoption, WCAG conformance, real persistence or business validation. The earlier evidence table records the historical documentation-only state; keyboard/AT, real-browser behavior, long-content and visual performance still require observed review.

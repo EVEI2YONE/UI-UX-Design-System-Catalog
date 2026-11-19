@@ -37,22 +37,10 @@ def audit(root=ROOT):
         if not path.is_file(): errors.append("Missing canonical document "+e["path"])
         for relation in relationships:
             if relation not in ids: errors.append("Unresolved relation "+e["id"]+" -> "+relation)
-        implementation=e.get("implementation")
-        if implementation:
-            source=root/implementation["source_path"]
-            scenario=root/implementation["scenario_manifest"]
-            if not source.is_file() or not scenario.is_file():
-                errors.append("Missing source/scenarios "+e["id"])
-            if implementation["preview_path"]+"/" !=route(e):
-                errors.append("Route mismatch "+e["id"])
         references.append({"id":e["id"],"path":e["path"],"route":route(e),
-                           "implementation":implementation["source_path"] if implementation else None,
-                           "scenario":implementation["scenario_manifest"] if implementation else None,
-                           "review_status":e["status"],
-                           "implementation_status":implementation["status"] if implementation else None})
+                           "review_status":e["status"], "source_present":path.is_file()})
     return {"schema_version":1,"generated_at_utc":datetime.now(timezone.utc).isoformat(),
-            "canonical_count":len(entries),"reference_count":sum(bool(e.get("implementation")) for e in entries),
-            "spec_only_count":sum(not e.get("implementation") for e in entries),
+            "canonical_count":len(entries),"documentation_count":len(entries),
             "query_checks":cases_out,"provenance":references,"errors":errors,"pass":not errors}
 
 def main():
@@ -66,7 +54,7 @@ def main():
         args.output.write_text(result,encoding="utf-8")
     print("Discovery audit:", "PASS" if report["pass"] else "FAIL",
           "| concepts:",report["canonical_count"],
-          "| executable:",report["reference_count"],
+          "| documentation:",report["documentation_count"],
           "| retrieval checks:",len(report["query_checks"]),
           "| errors:",len(report["errors"]))
     for error in report["errors"]:

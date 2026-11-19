@@ -17,7 +17,7 @@ Search ranks exact IDs, aliases and titles first, then recognized task-intent ph
 
 - `kind` distinguishes guideline, contract, specification, policy, checklist or example.
 - `status` is the editorial review lifecycle and **not** code availability.
-- `implementation` is a separate optional pointer to a runnable, synthetic reference under `site/src/implementations/`.
+- `capabilities`, when present, describe conceptual behaviors for discovery. No executable `implementation` metadata is allowed; this registry indexes guidance only.
 - `owner` and `reviewed_at` are evidence of responsibility only when actually assigned and reviewed.
 - `related` points to useful context; `depends_on` is an acyclic prerequisite relationship.
 - Source Markdown contains current decisions, examples, limitations and actual references. It must not describe the drafting history.

@@ -57,27 +57,18 @@ class Phase9DiscoveryTests(unittest.TestCase):
                 self.assertIn(entry["id"],html)
                 self.assertIn("View Markdown source",html)
 
-    def test_reference_provenance_matches_actual_generated_source(self):
+    def test_canonical_source_provenance_is_documentation_only(self):
         for entry in self.entries:
-            detail=(self.generated/site_build.route(entry).lstrip("/")/"index.html").read_text(encoding="utf-8")
-            implementation=entry.get("implementation")
-            if not implementation:
-                self.assertIn("No runnable reference",detail)
-                continue
             with self.subTest(entry=entry["id"]):
-                self.assertIn("Inspect implementation source",detail)
-                self.assertIn('sandbox="allow-scripts"',detail)
-                self.assertNotIn("allow-same-origin",detail)
-                source=ROOT/implementation["source_path"]
-                scenario=ROOT/implementation["scenario_manifest"]
-                self.assertTrue(source.is_file())
-                self.assertTrue(scenario.is_file())
-                bundled=self.generated/"reference"/entry["id"]
-                self.assertEqual(source.read_bytes(),(bundled/"source.js").read_bytes())
-                self.assertEqual(scenario.read_bytes(),(bundled/"scenarios.js").read_bytes())
-                self.assertEqual(implementation["preview_path"]+"/",site_build.route(entry))
-                self.assertEqual(entry["status"],"proposed")
-                self.assertEqual(implementation["status"],"reference")
+                detail=(self.generated/site_build.route(entry).lstrip("/")/"index.html").read_text(encoding="utf-8")
+                self.assertNotIn("implementation",entry)
+                self.assertNotIn('class="live-preview"',detail)
+                self.assertNotIn('data-interactive=',detail)
+                self.assertNotIn("<iframe",detail)
+                self.assertNotIn("Inspect implementation source",detail)
+                self.assertIn("View Markdown source",detail)
+        self.assertFalse((self.generated/"previews").exists())
+        self.assertFalse((self.generated/"reference").exists())
 
     def test_safe_source_ref_links_support_reviewed_branch_and_sha(self):
         branch = site_build.source_repo_url("review/shell-routes")

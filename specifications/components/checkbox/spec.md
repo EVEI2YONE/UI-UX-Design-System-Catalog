@@ -40,7 +40,3 @@ Use semantic border, action, text and focus roles. Maintain a sufficient target 
 **Canonical ID:** `component.checkbox` · **Owner:** unassigned · **Review date:** not reviewed
 
 Related: [Field](../field/spec.md), [component contracts](../../../knowledge/architecture/component-contracts.md), [accessibility](../../../knowledge/guidance/accessibility.md), [internationalization](../../../knowledge/guidance/internationalization.md). Reference: [WCAG 2.2 and WAI-ARIA APG](../../../governance/references.md).
-
-## Interactive reference
-
-An actual [Checkbox reference implementation](../../../site/src/implementations/components/checkbox/Checkbox.js), its [synthetic scenario manifest](../../../site/src/implementations/components/checkbox/scenarios.js), and token-aware [preview styles](../../../site/src/implementations/components/checkbox/Checkbox.css) now exist in the embedded visual catalog. The catalog renders the checked-in reference source and exposes the same source for inspection. This **does not** promote the specification out of `proposed` or establish production adoption, WCAG conformance, real persistence or business validation. The earlier evidence table records the historical documentation-only state; keyboard/AT, real-browser behavior, long-content and visual performance still require observed review.
